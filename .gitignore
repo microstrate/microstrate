@@ -1,4 +1,3 @@
-.DS_Store
 apollo/apollo
 bellerophon-bsc/bsc/bsc
 bellerophon-cli/bcli/bcli
@@ -33,3 +32,99 @@ sdk/nodejs/dist-sdk
 sdk/nodejs/node_modules
 storage-service/storage-service
 zeus/zeus
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+*.sublime-workspace
+*.sublime-project
+
+# Dependency directories
+node_modules/
+bower_components/
+jspm_packages/
+vendor/
+.pnp/
+.pnp.js
+
+# Build outputs
+build/
+dist/
+out/
+target/
+*.class
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables and secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.development
+.env.test
+.env.production
+*.pem
+
+# Cache and temporary files
+.cache/
+.temp/
+.tmp/
+tmp/
+temp/
+.eslintcache
+.stylelintcache
+.pytest_cache/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Package manager files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+composer.lock
+
+# Misc
+.DS_Store
+.project
+.classpath
+.settings/
+.factorypath
