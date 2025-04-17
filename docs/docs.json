@@ -1,11 +1,12 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Microstrate Docs",
+  "description": "",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#4641F2",
+    "light": "#ffffff",
+    "dark": "#4641F2"
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -53,24 +54,35 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "Change Log",
+        "groups": [
+          {
+            "group": "Change Log",
+            "pages": [
+              "changelog/product-updates"
+            ]
+          }
+        ]
       }
     ],
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Developer Portal",
+          "href": "https://app.microstrate.io/en/hub",
+          "icon": "code"
         },
         {
           "anchor": "Community",
-          "href": "https://mintlify.com/community",
+          "href": "https://microstrate.io/community",
           "icon": "slack"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Support",
+          "href": "https://microstrate.io/support",
+          "icon": "headset"
         }
       ]
     }
@@ -79,17 +91,23 @@
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
   },
+  "fonts": {
+    "family": "Be Vietnam Pro"
+  },
+  "appearance": {
+    "default": "system"
+  },
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "Log in",
+        "href": "https://app.staging.microstrate.io/en/login"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Try for free",
+      "href": "https://app.staging.microstrate.io/en/signup"
     }
   },
   "footer": {
