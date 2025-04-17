@@ -7,7 +7,6 @@ bellerophon/jwt
 bin/
 creds
 data-point-service/data-point-service
-docs
 function-service/function-service
 gateway-service/gateway-service
 go.work*
