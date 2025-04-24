@@ -1,0 +1,1310 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+      "title": "Workflow API",
+      "version": "1.0.0"
+  },
+  "tags": [
+      {
+          "name": "flow",
+          "description": "Workflow"
+      },
+      {
+          "name": "node",
+          "description": "Node"
+      },
+      {
+          "name": "collection",
+          "description": "Collection"
+      }
+  ],
+  "servers": [
+      {
+          "url": "https://gzzrccf1riaa.staging.microstrate.io"
+      }
+  ],
+  "paths": {
+    "/hub/collections": {
+      "get": {
+        "summary": "List all collections",
+        "tags": [
+            "collection"
+        ],
+        "parameters": [
+            {
+                "name": "type",
+                "in": "query",
+                "description": "Collection type",
+                "schema": {
+                    "type": "string",
+                    "enum": [
+                        "node",
+                        "workflow"
+                    ]
+                }
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Success",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/CreateCollectionResponseBody"
+                        }
+                    }
+                }
+            }
+        }
+    }
+      
+  },
+      "/hub/collection": {
+          "post": {
+              "summary": "Create collection",
+              "tags": [
+                  "collection"
+              ],
+              "requestBody": {
+                  "required": true,
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "$ref": "#/components/schemas/CreateCollectionBody"
+                          },
+                          "examples": {
+                              "node": {
+                                  "summary": "Create node collection",
+                                  "value": {
+                                      "name": "http nodes",
+                                      "description": "Http Node Templates",
+                                      "type": "node"
+                                  }
+                              },
+                              "workflow": {
+                                  "summary": "Create workflow collection",
+                                  "value": {
+                                      "name": "business flows",
+                                      "description": "Business Workflows",
+                                      "type": "workflow"
+                                  }
+                              }
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "200": {
+                      "description": "Success",
+                      "content": {
+                          "application/json": {
+                              "schema": {
+                                  "title": "Collection",
+                                  "type": "object",
+                                  "properties": {
+                                      "body": {
+                                          "$ref": "#/components/schemas/CreateCollectionResponseBody"
+                                      }
+                                  },
+                                  "required": [
+                                      "body"
+                                  ]
+                              }
+                          }
+                      }
+                  },
+                  "400": {
+                      "description": "Bad Request",
+                      "content": {
+                          "application/json": {
+                              "schema": {
+                                  "type": "object",
+                                  "properties": {
+                                      "error": {
+                                          "type": "string",
+                                          "example": "a name is required"
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  },
+                  "409": {
+                      "description": "Conflict",
+                      "content": {
+                          "application/json": {
+                              "schema": {
+                                  "type": "object",
+                                  "properties": {
+                                      "error": {
+                                          "type": "string",
+                                          "example": "collection exists:hub.config.collection.node.3047938212"
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      },
+      "/hub/collection/{subject}": {
+          "get": {
+              "summary": "Get collection",
+              "tags": [
+                  "collection"
+              ],
+              "parameters": [
+                  {
+                      "name": "subject",
+                      "in": "path",
+                      "required": true,
+                      "description": "Collection subject",
+                      "schema": {
+                          "type": "string"
+                      }
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "Success",
+                      "content": {
+                          "application/json": {
+                              "schema": {
+                                  "$ref": "#/components/schemas/CreateCollectionResponseBody"
+                              }
+                          }
+                      }
+                  }
+              }
+          },
+          "patch": {
+              "summary": "Update collection",
+              "tags": [
+                  "collection"
+              ],
+              "parameters": [
+                {
+                    "name": "subject",
+                    "in": "path",
+                    "required": true,
+                    "description": "Collection subject",
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+              "requestBody": {
+                  "required": true,
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "$ref": "#/components/schemas/UpsertCollectionBody"
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "200": {
+                      "description": "Success"
+                  }
+              }
+          },
+          "delete": {
+              "summary": "Delete collection",
+              "tags": [
+                  "collection"
+              ],
+              "parameters": [
+                {
+                    "name": "subject",
+                    "in": "path",
+                    "required": true,
+                    "description": "Collection subject",
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+              "responses": {
+                  "200": {
+                      "description": "Success"
+                  }
+              }
+          }
+      },
+      "/hub/create/node": {
+          "post": {
+              "summary": "Create node",
+              "tags": [
+                  "node"
+              ],
+              "requestBody": {
+                  "required": true,
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "$ref": "#/components/schemas/CreateNode"
+                          },
+                          "examples": {
+                              "node": {
+                                  "summary": "Create node collection",
+                                  "value": {
+                                      "name": "http nodes",
+                                      "description": "Http Node Templates",
+                                      "type": "node"
+                                  }
+                              }
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "200": {
+                      "description": "Success"
+                  }
+              }
+          }
+      },
+      "/hub/update/node": {
+          "patch": {
+              "summary": "Update node",
+              "tags": [
+                  "node"
+              ],
+              "requestBody": {
+                  "required": true,
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "$ref": "#/components/schemas/UpsertNode"
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "200": {
+                      "description": "Success"
+                  }
+              }
+          }
+      },
+      "/hub/create/workflow": {
+          "post": {
+              "summary": "Create workflow",
+              "tags": [
+                  "flow"
+              ],
+              "requestBody": {
+                  "required": true,
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "$ref": "#/components/schemas/CreateWorkflowBody"
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "200": {
+                      "description": "Success"
+                  }
+              }
+          }
+      },
+      "/hub/update/workflow": {
+          "patch": {
+              "summary": "Update workflow",
+              "tags": [
+                  "flow"
+              ],
+              "requestBody": {
+                  "required": true,
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "$ref": "#/components/schemas/UpsertWorkflowBody"
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "200": {
+                      "description": "Success"
+                  }
+              }
+          }
+      },
+      "/hub/publish/workflow": {
+          "post": {
+              "summary": "Publish workflow",
+              "tags": [
+                  "flow"
+              ],
+              "requestBody": {
+                  "required": true,
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "title": "Workflow",
+                              "type": "object",
+                              "properties": {
+                                  "subject": {
+                                      "type": "string",
+                                      "description": "Existing workflow draft subject"
+                                  }
+                              },
+                              "required": [
+                                  "subject"
+                              ]
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "200": {
+                      "description": "Success"
+                  }
+              }
+          }
+      },
+      "/hub/run/workflow": {
+          "post": {
+              "summary": "Run workflow",
+              "tags": [
+                  "flow"
+              ],
+              "requestBody": {
+                  "required": true,
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "$ref": "#/components/schemas/RunWorkflowBody"
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "200": {
+                      "description": "Success"
+                  }
+              }
+          }
+      }
+  },
+  "components": {
+      "schemas": {
+          "CreateCollection": {
+              "title": "Collection",
+              "type": "object",
+              "properties": {
+                  "command": {
+                      "type": "string",
+                      "enum": [
+                          "create-flow-collection",
+                          "create-node-collection"
+                      ],
+                      "example": "create-flow-collection"
+                  },
+                  "body": {
+                      "$ref": "#/components/schemas/CreateCollectionBody"
+                  }
+              },
+              "required": [
+                  "command",
+                  "body"
+              ]
+          },
+          "CreateNode": {
+              "$ref": "#/components/schemas/NodeData"
+          },
+          "UpsertNode": {
+              "$ref": "#/components/schemas/NodeData"
+          },
+          "CreateNodeResponseBody": {
+              "title": "Node",
+              "type": "object",
+              "properties": {
+                  "body": {
+                      "type": "object",
+                      "properties": {
+                          "subject": {
+                              "type": "string",
+                              "description": "Node subject",
+                              "example": "hub.config.node.3047938212.4215762071"
+                          },
+                          "name": {
+                              "type": "string",
+                              "description": "Name of the node",
+                              "example": ""
+                          },
+                          "description": {
+                              "type": "string",
+                              "description": "Description of the node"
+                          },
+                          "collection": {
+                              "type": "string",
+                              "description": "Collection subject"
+                          },
+                          "data": {
+                              "$ref": "#/components/schemas/NodeData",
+                              "description": "These properties describe all that is needed to run the node."
+                          }
+                      }
+                  }
+              },
+              "required": [
+                  "body"
+              ]
+          },
+          "CreateCollectionBody": {
+              "type": "object",
+              "properties": {
+                  "name": {
+                      "type": "string",
+                      "description": "Collection name. The collection name is hashed to create an idempotent subject. The name can be updated but the subject will remain the same as it is the unique identifierfor the collection",
+                      "example": "http nodes"
+                  },
+                  "description": {
+                      "type": "string",
+                      "description": "Description of the collection",
+                      "example": "Http Node Templates"
+                  }
+              },
+              "required": [
+                  "name"
+              ]
+          },
+          "CreateCollectionResponseBody": {
+              "type": "object",
+              "properties": {
+                  "subject": {
+                      "type": "string",
+                      "nullable": true,
+                      "example": "hub.config.collection.node.3047938212"
+                  },
+                  "name": {
+                      "type": "string",
+                      "nullable": true,
+                      "example": "http nodes"
+                  },
+                  "nameHash": {
+                      "type": "string",
+                      "description": "A hash of the name that the collection was created with",
+                      "example": "3047938212"
+                  },
+                  "description": {
+                      "type": "string",
+                      "nullable": true,
+                      "example": "Http Node Templates"
+                  },
+                  "modified": {
+                      "type": "integer",
+                      "format": "int64",
+                      "example": 1745389404
+                  }
+              },
+              "required": [
+                  "subject",
+                  "name",
+                  "nameHash",
+                  "modified"
+              ]
+          },
+          "UpsertCollectionBody": {
+              "type": "object",
+              "properties": {
+                  "subject": {
+                      "type": "string",
+                      "description": "Collection subject"
+                  },
+                  "name": {
+                      "type": "string",
+                      "description": "Collection name"
+                  },
+                  "description": {
+                      "type": "string",
+                      "description": "Description of the collection"
+                  }
+              },
+              "required": [
+                  "subject"
+              ]
+          },
+          "CreateWorkflowBody": {
+              "title": "Workflow",
+              "type": "object",
+              "properties": {
+                  "name": {
+                      "type": "string",
+                      "description": "Name of the workflow"
+                  },
+                  "description": {
+                      "type": "string",
+                      "description": "Description of the workflow"
+                  },
+                  "config": {
+                      "$ref": "#/components/schemas/WorkflowConfig"
+                  },
+                  "collection": {
+                      "type": "string",
+                      "description": "Collection subject. Has to be a valid workflow collection subject"
+                  }
+              },
+              "required": [
+                  "name",
+                  "collection"
+              ],
+              "example": {
+                  "description": "Receive a submission, run multiple APIs and resolve decline rules and product selection",
+                  "name": "Builders Risk Product Selection",
+                  "config": {
+                      "edges": [
+                          {
+                              "id": "xy-edge__HAZARD_HUB_REQUEStHAZARD_HUB_REQUEST-CHECK_UWING_RULESCHECK_UWING_RULES",
+                              "source": "HAZARD_HUB_REQUESt",
+                              "sourceHandle": "HAZARD_HUB_REQUESt",
+                              "target": "CHECK_UWING_RULES",
+                              "targetHandle": "CHECK_UWING_RULES"
+                          },
+                          {
+                              "id": "xy-edge__HAZARD_HUB_REQUEStHAZARD_HUB_REQUEST-PRODUCT_SELECTION_RULESPRODUCT_SELECTION_RULES",
+                              "source": "HAZARD_HUB_REQUESt",
+                              "sourceHandle": "HAZARD_HUB_REQUESt",
+                              "target": "PRODUCT_SELECTION_RULES",
+                              "targetHandle": "PRODUCT_SELECTION_RULES"
+                          },
+                          {
+                              "id": "xy-edge__GEOCODE_ADDRESsGEOCODE_ADDRESs-GEOCODE_RESPONSEGEOCODE_RESPONSE",
+                              "source": "GEOCODE_ADDRESs",
+                              "sourceHandle": "GEOCODE_ADDRESs",
+                              "target": "GEOCODE_RESPONSE",
+                              "targetHandle": "GEOCODE_RESPONSE"
+                          },
+                          {
+                              "id": "xy-edge__GEOCODE_RESPONSEGEOCODE_RESPONSE-HAZARD_HUB_REQUEStHAZARD_HUB_REQUEST",
+                              "source": "GEOCODE_RESPONSE",
+                              "sourceHandle": "GEOCODE_RESPONSE",
+                              "target": "HAZARD_HUB_REQUESt",
+                              "targetHandle": "HAZARD_HUB_REQUESt"
+                          },
+                          {
+                              "id": "xy-edge__CHECK_UWING_RULESCHECK_UWING_RULES-CREATE_QUOTeCREATE_QUOTE",
+                              "source": "CHECK_UWING_RULES",
+                              "sourceHandle": "CHECK_UWING_RULES",
+                              "target": "CREATE_QUOTe",
+                              "targetHandle": "CREATE_QUOTe"
+                          },
+                          {
+                              "id": "xy-edge__PRODUCT_SELECTION_RULESPRODUCT_SELECTION_RULES-CREATE_QUOTeCREATE_QUOTE",
+                              "source": "PRODUCT_SELECTION_RULES",
+                              "sourceHandle": "PRODUCT_SELECTION_RULES",
+                              "target": "CREATE_QUOTe",
+                              "targetHandle": "CREATE_QUOTe"
+                          },
+                          {
+                              "id": "xy-edge__Get_UW_RulesGet_UW_Rules-CHECK_UWING_RULESCHECK_UWING_RULES",
+                              "source": "Get_UW_Rules",
+                              "sourceHandle": "Get_UW_Rules",
+                              "target": "CHECK_UWING_RULES",
+                              "targetHandle": "CHECK_UWING_RULES"
+                          },
+                          {
+                              "id": "xy-edge__GET_PRODUCT_SELECTION_RULESGET_PRODUCT_SELECTION_RULES-PRODUCT_SELECTION_RULESPRODUCT_SELECTION_RULES",
+                              "source": "GET_PRODUCT_SELECTION_RULES",
+                              "sourceHandle": "GET_PRODUCT_SELECTION_RULES",
+                              "target": "PRODUCT_SELECTION_RULES",
+                              "targetHandle": "PRODUCT_SELECTION_RULES"
+                          }
+                      ],
+                      "nodes": [
+                          {
+                              "data": {
+                                  "description": "Call Google Geocode API with the submitted address and return result",
+                                  "id": "GEOCODE_ADDRESs",
+                                  "name": "Google Geocode",
+                                  "nodeType": "function",
+                                  "options": {
+                                      "attempts": 3,
+                                      "backoffMS": 1000,
+                                      "flatMap": false,
+                                      "ignoreResponseCodes": [],
+                                      "timeout": 20000
+                                  },
+                                  "payload": {
+                                      "method": "get",
+                                      "query": {
+                                          "address": "$.trigger.address",
+                                          "components": "street_number|route|locality|administrative_area_level_1|postal_code",
+                                          "key": "SECRET::GOOGLE_PLACES_API_KEY::"
+                                      },
+                                      "url": "https://maps.googleapis.com/maps/api/geocode/json"
+                                  },
+                                  "subject": "function.1753641292.function.2318534212"
+                              },
+                              "dragging": false,
+                              "id": "GEOCODE_ADDRESs",
+                              "measured": {
+                                  "height": 66,
+                                  "width": 320
+                              },
+                              "origin": [
+                                  0.5,
+                                  0
+                              ],
+                              "position": {
+                                  "x": -207.10861846751186,
+                                  "y": -17.11904720798334
+                              },
+                              "selected": false,
+                              "type": "custom"
+                          },
+                          {
+                              "data": {
+                                  "description": "Make a Hazard Hub request with the geocode result from the previous step",
+                                  "id": "HAZARD_HUB_REQUESt",
+                                  "name": "Get Perils Info",
+                                  "nodeType": "function",
+                                  "options": {
+                                      "attempts": 3,
+                                      "backoffMS": 1000,
+                                      "flatMap": false,
+                                      "ignoreResponseCodes": [],
+                                      "timeout": 20000
+                                  },
+                                  "payload": {
+                                      "data": {
+                                          "address": "$.GEOCODE_RESPONSE.address",
+                                          "city": "$.GEOCODE_RESPONSE.city",
+                                          "state": "$.GEOCODE_RESPONSE.state",
+                                          "zip": "$.GEOCODE_RESPONSE.zip"
+                                      },
+                                      "headers": {
+                                          "Authorization": "SECRET::HAZARDHUB::",
+                                          "Content-Type": "application/json"
+                                      },
+                                      "method": "get",
+                                      "url": "https://api.hazardhub.com/v1/risks_and_enhanced_property"
+                                  },
+                                  "subject": "function.1753641292.function.2318534212"
+                              },
+                              "dragging": false,
+                              "id": "HAZARD_HUB_REQUESt",
+                              "measured": {
+                                  "height": 66,
+                                  "width": 320
+                              },
+                              "origin": [
+                                  0.5,
+                                  0
+                              ],
+                              "position": {
+                                  "x": 609.0120221021506,
+                                  "y": -17.17361242553318
+                              },
+                              "selected": false,
+                              "type": "custom"
+                          },
+                          {
+                              "data": {
+                                  "description": "Check the underwriting rules for decline triggers",
+                                  "id": "CHECK_UWING_RULES",
+                                  "name": "Check Underwriting Rules",
+                                  "nodeType": "function",
+                                  "options": {
+                                      "attempts": 3,
+                                      "backoffMS": 1000,
+                                      "flatMap": false,
+                                      "ignoreResponseCodes": [],
+                                      "timeout": 20000
+                                  },
+                                  "payload": {
+                                      "facts": {
+                                          "CIP_BR_Bankruptcy.value": "$.trigger.CIP_BR_Bankruptcy",
+                                          "CIP_BR_FireWaterSmokeMold.value": "$.trigger.CIP_BR_FireWaterSmokeMold",
+                                          "CIP_BR_FoundationWork.value": "$.trigger.CIP_BR_FoundationWork",
+                                          "CIP_BR_Haz_CoastDistance.value": "$.HAZARD_HUB_REQUESt.risks.coast_distance.distance| |$.HAZARD_HUB_REQUESt.risks.coast_distance.units",
+                                          "CIP_BR_Haz_FireScore.value": "$.HAZARD_HUB_REQUESt.risks.enhanced_wildfire.score",
+                                          "CIP_BR_Haz_HurricaneScore.value": "$.HAZARD_HUB_REQUESt.risks.enhanced_hurricane_params.score",
+                                          "CIP_BR_HistoricLandmark.value": "$.trigger.CIP_BR_HistoricLandmark",
+                                          "CIP_BR_InsFraudArson.value": "$.trigger.CIP_BR_InsFraudArson",
+                                          "CIP_BR_NonConvConst.value": "$.trigger.CIP_BR_NonConvConst",
+                                          "CIP_BR_RENOVATION.value": "$.trigger.CIP_BR_RENOVATION",
+                                          "CIP_BR_RiskOverWater.value": "$.trigger.CIP_BR_RiskOverWater",
+                                          "CIP_BR_SolarPanels.value": "$.trigger.CIP_BR_SolarPanels",
+                                          "CIP_BR_StateCoast.value": "$.trigger.CIP_BR_StateCoast"
+                                      },
+                                      "rules": "$.Get_UW_Rules.body.body.value"
+                                  },
+                                  "subject": "function.1753641292.function.1912933367"
+                              },
+                              "dragging": false,
+                              "id": "CHECK_UWING_RULES",
+                              "measured": {
+                                  "height": 66,
+                                  "width": 320
+                              },
+                              "origin": [
+                                  0.5,
+                                  0
+                              ],
+                              "position": {
+                                  "x": 1006.1458566107526,
+                                  "y": -142.20459887888697
+                              },
+                              "selected": false,
+                              "type": "custom"
+                          },
+                          {
+                              "data": {
+                                  "description": "Decide what product and capacity is selected",
+                                  "id": "PRODUCT_SELECTION_RULES",
+                                  "name": "Product Selection Rules",
+                                  "nodeType": "function",
+                                  "options": {
+                                      "attempts": 3,
+                                      "backoffMS": 1000,
+                                      "flatMap": false,
+                                      "ignoreResponseCodes": [],
+                                      "timeout": 20000
+                                  },
+                                  "payload": {
+                                      "facts": {
+                                          "CIP_BR_CompValueLimit.value": "$.trigger.CIP_BR_CompValueLimit",
+                                          "state.value": "$.GEOCODE_RESPONSE.state"
+                                      },
+                                      "rules": "$.GET_PRODUCT_SELECTION_RULES.body.body.value"
+                                  },
+                                  "subject": "function.1753641292.function.1912933367"
+                              },
+                              "dragging": false,
+                              "id": "PRODUCT_SELECTION_RULES",
+                              "measured": {
+                                  "height": 66,
+                                  "width": 320
+                              },
+                              "origin": [
+                                  0.5,
+                                  0
+                              ],
+                              "position": {
+                                  "x": 1019.6499672256494,
+                                  "y": 114.33873075886217
+                              },
+                              "selected": false,
+                              "type": "custom"
+                          },
+                          {
+                              "data": {
+                                  "description": "Take the response and map it into the desired shape",
+                                  "id": "GEOCODE_RESPONSE",
+                                  "name": "Google Response Map",
+                                  "nodeType": "map",
+                                  "options": {
+                                      "attempts": 3,
+                                      "backoffMS": 1000,
+                                      "flatMap": false,
+                                      "ignoreResponseCodes": [],
+                                      "timeout": 20000
+                                  },
+                                  "payload": {
+                                      "address": "$.GEOCODE_ADDRESs.data.results..address_components[?(@.types[0] === 'street_number')].long_name| |$..address_components[?(@.types[0] === 'route')].long_name",
+                                      "city": "$.GEOCODE_ADDRESs.data.results..address_components[?(@.types[0] === 'locality')].long_name",
+                                      "state": "$.GEOCODE_ADDRESs.data.results..address_components[?(@.types[0] === 'administrative_area_level_1')].short_name",
+                                      "zip": "$.GEOCODE_ADDRESs.data.results..address_components[?(@.types[0] === 'postal_code')].long_name"
+                                  },
+                                  "subject": "function.1753641292.function.2313470552"
+                              },
+                              "dragging": false,
+                              "id": "GEOCODE_RESPONSE",
+                              "measured": {
+                                  "height": 66,
+                                  "width": 320
+                              },
+                              "origin": [
+                                  0.5,
+                                  0
+                              ],
+                              "position": {
+                                  "x": 208.43119633544413,
+                                  "y": -18.852804850362617
+                              },
+                              "selected": false,
+                              "type": "custom"
+                          },
+                          {
+                              "data": {
+                                  "description": "Map enrichment data and rule results for creating a quote",
+                                  "id": "CREATE_QUOTe",
+                                  "name": "Create Quote",
+                                  "nodeType": "map",
+                                  "options": {
+                                      "attempts": 3,
+                                      "backoffMS": 1000,
+                                      "flatMap": false,
+                                      "ignoreResponseCodes": [],
+                                      "timeout": 20000
+                                  },
+                                  "payload": {
+                                      "hazard": "$.HAZARD_HUB_REQUESt.data.risks",
+                                      "productDecision": "$.PRODUCT_SELECTION_RULES..outcome",
+                                      "submission": "$.trigger",
+                                      "underwritingDecision": "$.CHECK_UWING_RULES."
+                                  },
+                                  "subject": "function.1753641292.function.2313470552"
+                              },
+                              "dragging": false,
+                              "id": "CREATE_QUOTe",
+                              "measured": {
+                                  "height": 66,
+                                  "width": 320
+                              },
+                              "origin": [
+                                  0.5,
+                                  0
+                              ],
+                              "position": {
+                                  "x": 1436.9322812774924,
+                                  "y": -12.945012040869257
+                              },
+                              "selected": false,
+                              "type": "custom"
+                          },
+                          {
+                              "data": {
+                                  "description": "Get underwriting rules",
+                                  "id": "Get_UW_Rules",
+                                  "name": "Get UW Rules",
+                                  "nodeType": "function",
+                                  "options": {
+                                      "attempts": 3,
+                                      "backoffMS": 1000,
+                                      "flatMap": false,
+                                      "ignoreResponseCodes": [],
+                                      "timeout": 20000
+                                  },
+                                  "payload": {
+                                      "bucket": "rules",
+                                      "json": true,
+                                      "key": "UW_RULES"
+                                  },
+                                  "subject": "function.1753641292.function.2631565996"
+                              },
+                              "dragging": false,
+                              "id": "Get_UW_Rules",
+                              "measured": {
+                                  "height": 66,
+                                  "width": 320
+                              },
+                              "origin": [
+                                  0.5,
+                                  0
+                              ],
+                              "position": {
+                                  "x": 73.95787888412778,
+                                  "y": -239.75450307222968
+                              },
+                              "selected": false,
+                              "type": "custom"
+                          },
+                          {
+                              "data": {
+                                  "description": "Get underwriting rules",
+                                  "id": "GET_PRODUCT_SELECTION_RULES",
+                                  "name": "Get Product Selection Rules",
+                                  "nodeType": "function",
+                                  "options": {
+                                      "attempts": 3,
+                                      "backoffMS": 1000,
+                                      "flatMap": false,
+                                      "ignoreResponseCodes": [],
+                                      "timeout": 20000
+                                  },
+                                  "payload": {
+                                      "bucket": "rules",
+                                      "json": true,
+                                      "key": "PRODUCT_SELECTION_RULES"
+                                  },
+                                  "subject": "function.1753641292.function.2631565996"
+                              },
+                              "dragging": false,
+                              "id": "GET_PRODUCT_SELECTION_RULES",
+                              "measured": {
+                                  "height": 66,
+                                  "width": 321
+                              },
+                              "origin": [
+                                  0.5,
+                                  0
+                              ],
+                              "position": {
+                                  "x": 71.75325141448326,
+                                  "y": 197.71159464549078
+                              },
+                              "selected": true,
+                              "type": "custom"
+                          },
+                          {
+                              "data": {
+                                  "description": "Publish the result of create-quote to stream",
+                                  "id": "Store_Quote",
+                                  "name": "Store Quote",
+                                  "nodeType": "function",
+                                  "options": {
+                                      "attempts": 3,
+                                      "backoffMS": 1000,
+                                      "flatMap": false,
+                                      "ignoreResponseCodes": [],
+                                      "timeout": 20000
+                                  },
+                                  "payload": {
+                                      "description": "A stream event of all created builders risk quotes",
+                                      "name": "Builders Risk Quotes",
+                                      "storage": "File",
+                                      "subject": [
+                                          "buiders_risk_quotes"
+                                      ]
+                                  },
+                                  "subject": "function.1753641292.function.1750562384"
+                              },
+                              "dragging": false,
+                              "id": "Store_Quote",
+                              "measured": {
+                                  "height": 66,
+                                  "width": 320
+                              },
+                              "origin": [
+                                  0.5,
+                                  0
+                              ],
+                              "position": {
+                                  "x": 1808.1624189110396,
+                                  "y": -15.522415727890436
+                              },
+                              "selected": false,
+                              "type": "custom"
+                          }
+                      ]
+                  }
+              }
+          },
+          "UpsertWorkflowBody": {
+              "title": "Workflow",
+              "type": "object",
+              "properties": {
+                  "subject": {
+                      "type": "string",
+                      "description": "Existing workflow subject"
+                  },
+                  "name": {
+                      "type": "string",
+                      "description": "Name of the workflow"
+                  },
+                  "description": {
+                      "type": "string",
+                      "description": "Description of the workflow"
+                  },
+                  "config": {
+                      "$ref": "#/components/schemas/WorkflowConfig"
+                  }
+              },
+              "required": [
+                  "subject"
+              ]
+          },
+          "WorkflowConfig": {
+              "description": "Workflow run configuration",
+              "type": "object",
+              "properties": {
+                  "edges": {
+                      "type": "array",
+                      "description": "An array of edges",
+                      "items": {
+                          "$ref": "#/components/schemas/Edge"
+                      }
+                  },
+                  "nodes": {
+                      "description": "An array of nodes",
+                      "type": "array",
+                      "items": {
+                          "$ref": "#/components/schemas/UpsertNodeWorkflow"
+                      }
+                  },
+                  "static": {
+                      "type": "object",
+                      "description": "Static parameters of the workflow as a key-value object. These parameters will be available everywhere in the flow."
+                  },
+                  "result": {
+                      "nullable": true,
+                      "description": "Final response map of the flow. If not specified, the flow will return the parameters and results of all of the nodes."
+                  },
+                  "options": {
+                      "$ref": "#/components/schemas/WorkflowRunOptions"
+                  }
+              },
+              "required": [
+                  "edges",
+                  "nodes"
+              ]
+          },
+          "WorkflowRunOptions": {
+              "type": "object",
+              "properties": {
+                  "runType": {
+                      "type": "string",
+                      "nullable": true,
+                      "enum": [
+                          "debounced",
+                          "ordered",
+                          ""
+                      ],
+                      "description": "Type of run. Can be one of the following:\n - **debounced** - run the workflow only after a certain time has passed since the last event\n - **ordered** - run the workflow in order of events\n - empty string or null - run the workflow immediately"
+                  },
+                  "orderOn": {
+                      "type": "string",
+                      "description": "This key is used to group ordered flows. Flows with the same key will run in order."
+                  },
+                  "debounceOn": {
+                      "type": "string",
+                      "description": "This key is used to group debounced flows. Flows with the same key be debounced."
+                  },
+                  "debounceTime": {
+                      "type": "number",
+                      "description": "Amount of time to wait after the last message before processing"
+                  },
+                  "debounceMax": {
+                      "type": "number",
+                      "description": "The maximum amount of time in nanoseconds to wait before processing a message"
+                  }
+              }
+          },
+          "Edge": {
+              "type": "object",
+              "properties": {
+                  "source": {
+                      "type": "string",
+                      "description": "Source node ID"
+                  },
+                  "target": {
+                      "type": "string",
+                      "description": "Target node ID"
+                  },
+                  "id": {
+                      "type": "string",
+                      "description": "The unique identifier of the edge within the workflow. "
+                  }
+              }
+          },
+          "UpsertNodeWorkflow": {
+              "type": "object",
+              "properties": {
+                  "data": {
+                      "$ref": "#/components/schemas/NodeData"
+                  },
+                  "id": {
+                      "type": "string"
+                  },
+                  "position": {
+                      "type": "object",
+                      "nullable": true
+                  },
+                  "type": {
+                      "type": "object",
+                      "nullable": true
+                  },
+                  "sourcePosition": {
+                      "type": "object",
+                      "nullable": true
+                  },
+                  "targetPosition": {
+                      "type": "object",
+                      "nullable": true
+                  },
+                  "hidden": {
+                      "type": "boolean"
+                  },
+                  "selected": {
+                      "type": "boolean"
+                  },
+                  "dragging": {
+                      "type": "boolean"
+                  },
+                  "draggable": {
+                      "type": "boolean"
+                  },
+                  "selectable": {
+                      "type": "boolean"
+                  },
+                  "connectable": {
+                      "type": "boolean"
+                  },
+                  "resizing": {
+                      "type": "boolean"
+                  },
+                  "deletable": {
+                      "type": "boolean"
+                  },
+                  "dragHandle": {
+                      "type": "string"
+                  },
+                  "width": {
+                      "type": "object",
+                      "nullable": true
+                  },
+                  "height": {
+                      "type": "object",
+                      "nullable": true
+                  },
+                  "parentId": {
+                      "type": "string"
+                  },
+                  "zIndex": {
+                      "type": "integer"
+                  },
+                  "extent": {
+                      "type": "object",
+                      "nullable": true
+                  },
+                  "ariaLabel": {
+                      "type": "string"
+                  },
+                  "origin": {
+                      "type": "object",
+                      "nullable": true
+                  },
+                  "style": {
+                      "type": "string"
+                  },
+                  "class": {
+                      "type": "string"
+                  },
+                  "measured": {
+                      "type": "object",
+                      "nullable": true
+                  }
+              },
+              "required": [
+                  "data"
+              ]
+          },
+          "NodeOptions": {
+              "type": "object",
+              "properties": {
+                  "flatMap": {
+                      "type": "boolean"
+                  },
+                  "backoffMS": {
+                      "type": "integer",
+                      "description": "Duration in milliseconds"
+                  },
+                  "timeout": {
+                      "type": "integer",
+                      "description": "Duration in milliseconds"
+                  },
+                  "attempts": {
+                      "type": "integer"
+                  },
+                  "ignoreResponseCodes": {
+                      "type": "array",
+                      "items": {
+                          "type": "integer"
+                      }
+                  }
+              }
+          },
+          "NodeSchema": {
+              "type": "object",
+              "properties": {
+                  "input": {
+                      "type": "object",
+                      "nullable": true
+                  },
+                  "output": {
+                      "type": "array",
+                      "items": {
+                          "type": "string"
+                      }
+                  }
+              }
+          },
+          "NodeData": {
+              "type": "object",
+              "properties": {
+                  "id": {
+                      "type": "string",
+                      "description": "Unique identifier for the node within the workflow. Can contain only alpanumeric characters and underscores. Must start with a letter of underscore. The preferred convention is to use uppser snake case. For exampe, *GET_DATA*."
+                  },
+                  "name": {
+                      "type": "string",
+                      "description": "Name of the node"
+                  },
+                  "description": {
+                      "type": "string",
+                      "description": "Description of the node"
+                  },
+                  "subject": {
+                      "type": "string",
+                      "description": "Function or flow subject. Required only for node types **function** and **flow**"
+                  },
+                  "nodeType": {
+                      "type": "string",
+                      "enum": [
+                          "function",
+                          "rule",
+                          "map",
+                          "flow",
+                          "eval"
+                      ],
+                      "description": "Type of node\n - **function** - invoke functions\n - **rule** - select a different path of execution based on conditions\n - **map** - reshape the output from previous seteps using json path mappings\n - **flow** - invoke other flows\n - **eval** - run safe evaluation on snippets of javascript code"
+                  },
+                  "payload": {
+                      "nullable": true,
+                      "description": "The payload that the node will execute. Supports json path mappings."
+                  },
+                  "responseMap": {
+                      "nullable": true,
+                      "description": "Reshapes the result of the node. Can be used with types **function** and **flow**"
+                  },
+                  "options": {
+                      "$ref": "#/components/schemas/NodeOptions"
+                  },
+                  "await": {
+                      "type": "boolean",
+                      "description": "Used for type **flow**. If true, the result of the flow will be awaited."
+                  },
+                  "schema": {
+                      "$ref": "#/components/schemas/NodeSchema"
+                  }
+              }
+          },
+          "RunWorkflowBody": {
+              "type": "object",
+              "properties": {
+                  "subject": {
+                      "type": "string",
+                      "description": "Workflow subject"
+                  },
+                  "trigger": {
+                      "description": "Trigger event data. Mutually exclusive with **triggers**."
+                  },
+                  "triggers": {
+                      "type": "array",
+                      "items": {},
+                      "description": "Array of trigger event data. Mutually exclusive with **trigger**."
+                  },
+                  "await": {
+                      "type": "boolean",
+                      "description": "Await the result of the workflow run if this flag is true. Run async otherwise"
+                  },
+                  "enableLog": {
+                      "type": "boolean",
+                      "description": "When *await=true*, the the execution logs are not written to the log stream. To enable logging in this case, set this flag to true."
+                  }
+              },
+              "required": [
+                  "subject"
+              ]
+          }
+      }
+  }
+}

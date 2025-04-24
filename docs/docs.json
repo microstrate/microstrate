@@ -39,21 +39,16 @@
         "tab": "API Reference",
         "groups": [
           {
-            "group": "API Documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
+            "group": "Flows",
+            "openapi": {
+              "source": "api-reference/endpoint/flows/openapi.json"
+            }
           },
           {
-            "group": "Endpoint Examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
-            ]
+            "group": "Plants",
+            "openapi": "https://petstore3.swagger.io/api/v3/openapi.json"
           }
-        ]
+        ]    
       },
       {
         "tab": "Change Log",
