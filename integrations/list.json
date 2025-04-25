@@ -1,0 +1,20 @@
+[
+    {
+        "name" : "Slack",
+        "schema" : "slack/slack.json",
+        "image" : "slack/slack.png",
+        "examples" : "slack/examples.json"
+    },
+    {
+        "name" : "Sendgrid",
+        "schema" : "sendgrid/sendgrid.json",
+        "image" : "sendgrid/sendgrid.png",
+        "examples" : "sendgrid/examples.json"
+    },
+    {
+        "name" : "Open AI",
+        "schema" : "openai/openai.json",
+        "image" : "openai/openai.png",
+         "examples" : "openai/examples.json"
+    }
+]

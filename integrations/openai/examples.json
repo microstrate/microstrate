@@ -1,0 +1,2302 @@
+{
+    "listAssistants": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/assistants",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "limit": "<limit>",
+                "order": "<order>",
+                "after": "<after>",
+                "before": "<before>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "createAssistant": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/assistants",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {
+                "model": "gpt-4o",
+                "name": "<name>",
+                "description": "<description>",
+                "instructions": "<instructions>",
+                "reasoning_effort": "<reasoning_effort>",
+                "tools": [
+                    "<tools>"
+                ],
+                "tool_resources": {
+                    "code_interpreter": {
+                        "file_ids": [
+                            "<file_ids>"
+                        ]
+                    },
+                    "file_search": {
+                        "vector_store_ids": [
+                            "<vector_store_ids>"
+                        ],
+                        "vector_stores": [
+                            {
+                                "file_ids": [
+                                    "<file_ids>"
+                                ],
+                                "chunking_strategy": {},
+                                "metadata": {}
+                            }
+                        ]
+                    }
+                },
+                "metadata": {},
+                "temperature": 1,
+                "top_p": 1,
+                "response_format": "<response_format>"
+            }
+        }
+    ],
+    "getAssistant": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/assistants/{assistant_id}",
+            "method": "get",
+            "parameters": {
+                "assistant_id": "<assistant_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "modifyAssistant": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/assistants/{assistant_id}",
+            "method": "post",
+            "parameters": {
+                "assistant_id": "<assistant_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {
+                "model": "<model>",
+                "reasoning_effort": "<reasoning_effort>",
+                "name": "<name>",
+                "description": "<description>",
+                "instructions": "<instructions>",
+                "tools": [
+                    "<tools>"
+                ],
+                "tool_resources": {
+                    "code_interpreter": {
+                        "file_ids": [
+                            "<file_ids>"
+                        ]
+                    },
+                    "file_search": {
+                        "vector_store_ids": [
+                            "<vector_store_ids>"
+                        ]
+                    }
+                },
+                "metadata": {},
+                "temperature": 1,
+                "top_p": 1,
+                "response_format": "<response_format>"
+            }
+        }
+    ],
+    "deleteAssistant": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/assistants/{assistant_id}",
+            "method": "delete",
+            "parameters": {
+                "assistant_id": "<assistant_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "createSpeech": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/audio/speech",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {
+                "model": "<model>",
+                "input": "<input>",
+                "instructions": "<instructions>",
+                "voice": "ash",
+                "response_format": "<response_format>",
+                "speed": 0
+            }
+        }
+    ],
+    "createTranscription": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/audio/transcriptions",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {
+                "file": "<file>",
+                "model": "gpt-4o-transcribe",
+                "language": "<language>",
+                "prompt": "<prompt>",
+                "response_format": "<response_format>",
+                "temperature": 0,
+                "include[]": [
+                    "<include[]>"
+                ],
+                "timestamp_granularities[]": [
+                    "<timestamp_granularities[]>"
+                ],
+                "stream": true
+            }
+        }
+    ],
+    "createTranslation": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/audio/translations",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {
+                "file": "<file>",
+                "model": "whisper-1",
+                "prompt": "<prompt>",
+                "response_format": "<response_format>",
+                "temperature": 0
+            }
+        }
+    ],
+    "createBatch": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/batches",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {
+                "input_file_id": "<input_file_id>",
+                "endpoint": "<endpoint>",
+                "completion_window": "<completion_window>",
+                "metadata": {}
+            }
+        }
+    ],
+    "listBatches": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/batches",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "after": "<after>",
+                "limit": "<limit>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "retrieveBatch": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/batches/{batch_id}",
+            "method": "get",
+            "parameters": {
+                "batch_id": "<batch_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "cancelBatch": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/batches/{batch_id}/cancel",
+            "method": "post",
+            "parameters": {
+                "batch_id": "<batch_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "listChatCompletions": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/chat/completions",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "model": "<model>",
+                "metadata": "<metadata>",
+                "after": "<after>",
+                "limit": "<limit>",
+                "order": "<order>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "createChatCompletion": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/chat/completions",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": "<value>"
+        }
+    ],
+    "getChatCompletion": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/chat/completions/{completion_id}",
+            "method": "get",
+            "parameters": {
+                "completion_id": "<completion_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "updateChatCompletion": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/chat/completions/{completion_id}",
+            "method": "post",
+            "parameters": {
+                "completion_id": "<completion_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {
+                "metadata": {}
+            }
+        }
+    ],
+    "deleteChatCompletion": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/chat/completions/{completion_id}",
+            "method": "delete",
+            "parameters": {
+                "completion_id": "<completion_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "getChatCompletionMessages": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/chat/completions/{completion_id}/messages",
+            "method": "get",
+            "parameters": {
+                "completion_id": "<completion_id>"
+            },
+            "query": {
+                "after": "<after>",
+                "limit": "<limit>",
+                "order": "<order>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "createCompletion": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/completions",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {
+                "model": "<model>",
+                "prompt": "<prompt>",
+                "best_of": 0,
+                "echo": true,
+                "frequency_penalty": 0,
+                "logit_bias": {},
+                "logprobs": 0,
+                "max_tokens": 16,
+                "n": 1,
+                "presence_penalty": 0,
+                "seed": 0,
+                "stop": "<stop>",
+                "stream": true,
+                "stream_options": {
+                    "include_usage": true
+                },
+                "suffix": "test.",
+                "temperature": 1,
+                "top_p": 1,
+                "user": "user-1234"
+            }
+        }
+    ],
+    "createEmbedding": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/embeddings",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {
+                "input": "The quick brown fox jumped over the lazy dog",
+                "model": "text-embedding-3-small",
+                "encoding_format": "float",
+                "dimensions": 0,
+                "user": "user-1234"
+            }
+        }
+    ],
+    "listFiles": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/files",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "purpose": "<purpose>",
+                "limit": "<limit>",
+                "order": "<order>",
+                "after": "<after>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "createFile": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/files",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {
+                "file": "<file>",
+                "purpose": "<purpose>"
+            }
+        }
+    ],
+    "deleteFile": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/files/{file_id}",
+            "method": "delete",
+            "parameters": {
+                "file_id": "<file_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "retrieveFile": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/files/{file_id}",
+            "method": "get",
+            "parameters": {
+                "file_id": "<file_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "downloadFile": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/files/{file_id}/content",
+            "method": "get",
+            "parameters": {
+                "file_id": "<file_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "listFineTuningCheckpointPermissions": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/fine_tuning/checkpoints/{permission_id}/permissions",
+            "method": "get",
+            "parameters": {
+                "permission_id": "<permission_id>"
+            },
+            "query": {
+                "project_id": "<project_id>",
+                "after": "<after>",
+                "limit": "<limit>",
+                "order": "<order>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "createFineTuningCheckpointPermission": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/fine_tuning/checkpoints/{permission_id}/permissions",
+            "method": "post",
+            "parameters": {
+                "permission_id": "<permission_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {
+                "project_ids": [
+                    "<project_ids>"
+                ]
+            }
+        }
+    ],
+    "deleteFineTuningCheckpointPermission": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/fine_tuning/checkpoints/{permission_id}/permissions",
+            "method": "delete",
+            "parameters": {
+                "permission_id": "<permission_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "createFineTuningJob": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/fine_tuning/jobs",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {
+                "model": "gpt-4o-mini",
+                "training_file": "file-abc123",
+                "hyperparameters": {
+                    "batch_size": "<batch_size>",
+                    "learning_rate_multiplier": "<learning_rate_multiplier>",
+                    "n_epochs": "<n_epochs>"
+                },
+                "suffix": "<suffix>",
+                "validation_file": "file-abc123",
+                "integrations": [
+                    {
+                        "type": "<type>",
+                        "wandb": {
+                            "project": "my-wandb-project",
+                            "name": "<name>",
+                            "entity": "<entity>",
+                            "tags": [
+                                "custom-tag"
+                            ]
+                        }
+                    }
+                ],
+                "seed": 42,
+                "method": {
+                    "type": "<type>",
+                    "supervised": {
+                        "hyperparameters": {
+                            "batch_size": "<batch_size>",
+                            "learning_rate_multiplier": "<learning_rate_multiplier>",
+                            "n_epochs": "<n_epochs>"
+                        }
+                    },
+                    "dpo": {
+                        "hyperparameters": {
+                            "beta": "<beta>",
+                            "batch_size": "<batch_size>",
+                            "learning_rate_multiplier": "<learning_rate_multiplier>",
+                            "n_epochs": "<n_epochs>"
+                        }
+                    }
+                },
+                "metadata": {}
+            }
+        }
+    ],
+    "listPaginatedFineTuningJobs": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/fine_tuning/jobs",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "after": "<after>",
+                "limit": "<limit>",
+                "metadata": "<metadata>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "retrieveFineTuningJob": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/fine_tuning/jobs/{fine_tuning_job_id}",
+            "method": "get",
+            "parameters": {
+                "fine_tuning_job_id": "<fine_tuning_job_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "cancelFineTuningJob": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/fine_tuning/jobs/{fine_tuning_job_id}/cancel",
+            "method": "post",
+            "parameters": {
+                "fine_tuning_job_id": "<fine_tuning_job_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "listFineTuningJobCheckpoints": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/fine_tuning/jobs/{fine_tuning_job_id}/checkpoints",
+            "method": "get",
+            "parameters": {
+                "fine_tuning_job_id": "<fine_tuning_job_id>"
+            },
+            "query": {
+                "after": "<after>",
+                "limit": "<limit>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "listFineTuningEvents": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/fine_tuning/jobs/{fine_tuning_job_id}/events",
+            "method": "get",
+            "parameters": {
+                "fine_tuning_job_id": "<fine_tuning_job_id>"
+            },
+            "query": {
+                "after": "<after>",
+                "limit": "<limit>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "createImageEdit": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/images/edits",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {
+                "image": "<image>",
+                "prompt": "A cute baby sea otter wearing a beret",
+                "mask": "<mask>",
+                "model": "dall-e-2",
+                "n": 1,
+                "size": "1024x1024",
+                "response_format": "url",
+                "user": "user-1234"
+            }
+        }
+    ],
+    "createImage": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/images/generations",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {
+                "prompt": "A cute baby sea otter",
+                "model": "dall-e-3",
+                "n": 1,
+                "quality": "standard",
+                "response_format": "url",
+                "size": "1024x1024",
+                "style": "vivid",
+                "user": "user-1234"
+            }
+        }
+    ],
+    "createImageVariation": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/images/variations",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {
+                "image": "<image>",
+                "model": "dall-e-2",
+                "n": 1,
+                "response_format": "url",
+                "size": "1024x1024",
+                "user": "user-1234"
+            }
+        }
+    ],
+    "listModels": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/models",
+            "method": "get",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "retrieveModel": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/models/{model}",
+            "method": "get",
+            "parameters": {
+                "model": "<model>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "deleteModel": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/models/{model}",
+            "method": "delete",
+            "parameters": {
+                "model": "<model>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "createModeration": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/moderations",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {
+                "input": "<input>",
+                "model": "omni-moderation-2024-09-26"
+            }
+        }
+    ],
+    "admin-api-keys-list": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/admin_api_keys",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "after": "<after>",
+                "order": "<order>",
+                "limit": "<limit>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "admin-api-keys-create": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/admin_api_keys",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {
+                "name": "New Admin Key"
+            }
+        }
+    ],
+    "admin-api-keys-get": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/admin_api_keys/{key_id}",
+            "method": "get",
+            "parameters": {
+                "key_id": "<key_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "admin-api-keys-delete": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/admin_api_keys/{key_id}",
+            "method": "delete",
+            "parameters": {
+                "key_id": "<key_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "list-audit-logs": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/audit_logs",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "effective_at": "<effective_at>",
+                "project_ids[]": "<project_ids[]>",
+                "event_types[]": "<event_types[]>",
+                "actor_ids[]": "<actor_ids[]>",
+                "actor_emails[]": "<actor_emails[]>",
+                "resource_ids[]": "<resource_ids[]>",
+                "limit": "<limit>",
+                "after": "<after>",
+                "before": "<before>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "usage-costs": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/costs",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "start_time": "<start_time>",
+                "end_time": "<end_time>",
+                "bucket_width": "<bucket_width>",
+                "project_ids": "<project_ids>",
+                "group_by": "<group_by>",
+                "limit": "<limit>",
+                "page": "<page>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "list-invites": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/invites",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "limit": "<limit>",
+                "after": "<after>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "inviteUser": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/invites",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {
+                "email": "<email>",
+                "role": "<role>",
+                "projects": [
+                    {
+                        "id": "<id>",
+                        "role": "<role>"
+                    }
+                ]
+            }
+        }
+    ],
+    "retrieve-invite": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/invites/{invite_id}",
+            "method": "get",
+            "parameters": {
+                "invite_id": "<invite_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "delete-invite": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/invites/{invite_id}",
+            "method": "delete",
+            "parameters": {
+                "invite_id": "<invite_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "list-projects": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/projects",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "limit": "<limit>",
+                "after": "<after>",
+                "include_archived": "<include_archived>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "create-project": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/projects",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {
+                "name": "<name>"
+            }
+        }
+    ],
+    "retrieve-project": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/projects/{project_id}",
+            "method": "get",
+            "parameters": {
+                "project_id": "<project_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "modify-project": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/projects/{project_id}",
+            "method": "post",
+            "parameters": {
+                "project_id": "<project_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {
+                "name": "<name>"
+            }
+        }
+    ],
+    "list-project-api-keys": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/projects/{project_id}/api_keys",
+            "method": "get",
+            "parameters": {
+                "project_id": "<project_id>"
+            },
+            "query": {
+                "limit": "<limit>",
+                "after": "<after>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "retrieve-project-api-key": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/projects/{project_id}/api_keys/{key_id}",
+            "method": "get",
+            "parameters": {
+                "project_id": "<project_id>",
+                "key_id": "<key_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "delete-project-api-key": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/projects/{project_id}/api_keys/{key_id}",
+            "method": "delete",
+            "parameters": {
+                "project_id": "<project_id>",
+                "key_id": "<key_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "archive-project": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/projects/{project_id}/archive",
+            "method": "post",
+            "parameters": {
+                "project_id": "<project_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "list-project-rate-limits": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/projects/{project_id}/rate_limits",
+            "method": "get",
+            "parameters": {
+                "project_id": "<project_id>"
+            },
+            "query": {
+                "limit": "<limit>",
+                "after": "<after>",
+                "before": "<before>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "update-project-rate-limits": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/projects/{project_id}/rate_limits/{rate_limit_id}",
+            "method": "post",
+            "parameters": {
+                "project_id": "<project_id>",
+                "rate_limit_id": "<rate_limit_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {
+                "max_requests_per_1_minute": 0,
+                "max_tokens_per_1_minute": 0,
+                "max_images_per_1_minute": 0,
+                "max_audio_megabytes_per_1_minute": 0,
+                "max_requests_per_1_day": 0,
+                "batch_1_day_max_input_tokens": 0
+            }
+        }
+    ],
+    "list-project-service-accounts": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/projects/{project_id}/service_accounts",
+            "method": "get",
+            "parameters": {
+                "project_id": "<project_id>"
+            },
+            "query": {
+                "limit": "<limit>",
+                "after": "<after>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "create-project-service-account": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/projects/{project_id}/service_accounts",
+            "method": "post",
+            "parameters": {
+                "project_id": "<project_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {
+                "name": "<name>"
+            }
+        }
+    ],
+    "retrieve-project-service-account": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/projects/{project_id}/service_accounts/{service_account_id}",
+            "method": "get",
+            "parameters": {
+                "project_id": "<project_id>",
+                "service_account_id": "<service_account_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "delete-project-service-account": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/projects/{project_id}/service_accounts/{service_account_id}",
+            "method": "delete",
+            "parameters": {
+                "project_id": "<project_id>",
+                "service_account_id": "<service_account_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "list-project-users": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/projects/{project_id}/users",
+            "method": "get",
+            "parameters": {
+                "project_id": "<project_id>"
+            },
+            "query": {
+                "limit": "<limit>",
+                "after": "<after>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "create-project-user": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/projects/{project_id}/users",
+            "method": "post",
+            "parameters": {
+                "project_id": "<project_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {
+                "user_id": "<user_id>",
+                "role": "<role>"
+            }
+        }
+    ],
+    "retrieve-project-user": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/projects/{project_id}/users/{user_id}",
+            "method": "get",
+            "parameters": {
+                "project_id": "<project_id>",
+                "user_id": "<user_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "modify-project-user": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/projects/{project_id}/users/{user_id}",
+            "method": "post",
+            "parameters": {
+                "project_id": "<project_id>",
+                "user_id": "<user_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {
+                "role": "<role>"
+            }
+        }
+    ],
+    "delete-project-user": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/projects/{project_id}/users/{user_id}",
+            "method": "delete",
+            "parameters": {
+                "project_id": "<project_id>",
+                "user_id": "<user_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "usage-audio-speeches": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/usage/audio_speeches",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "start_time": "<start_time>",
+                "end_time": "<end_time>",
+                "bucket_width": "<bucket_width>",
+                "project_ids": "<project_ids>",
+                "user_ids": "<user_ids>",
+                "api_key_ids": "<api_key_ids>",
+                "models": "<models>",
+                "group_by": "<group_by>",
+                "limit": "<limit>",
+                "page": "<page>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "usage-audio-transcriptions": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/usage/audio_transcriptions",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "start_time": "<start_time>",
+                "end_time": "<end_time>",
+                "bucket_width": "<bucket_width>",
+                "project_ids": "<project_ids>",
+                "user_ids": "<user_ids>",
+                "api_key_ids": "<api_key_ids>",
+                "models": "<models>",
+                "group_by": "<group_by>",
+                "limit": "<limit>",
+                "page": "<page>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "usage-code-interpreter-sessions": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/usage/code_interpreter_sessions",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "start_time": "<start_time>",
+                "end_time": "<end_time>",
+                "bucket_width": "<bucket_width>",
+                "project_ids": "<project_ids>",
+                "group_by": "<group_by>",
+                "limit": "<limit>",
+                "page": "<page>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "usage-completions": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/usage/completions",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "start_time": "<start_time>",
+                "end_time": "<end_time>",
+                "bucket_width": "<bucket_width>",
+                "project_ids": "<project_ids>",
+                "user_ids": "<user_ids>",
+                "api_key_ids": "<api_key_ids>",
+                "models": "<models>",
+                "batch": "<batch>",
+                "group_by": "<group_by>",
+                "limit": "<limit>",
+                "page": "<page>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "usage-embeddings": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/usage/embeddings",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "start_time": "<start_time>",
+                "end_time": "<end_time>",
+                "bucket_width": "<bucket_width>",
+                "project_ids": "<project_ids>",
+                "user_ids": "<user_ids>",
+                "api_key_ids": "<api_key_ids>",
+                "models": "<models>",
+                "group_by": "<group_by>",
+                "limit": "<limit>",
+                "page": "<page>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "usage-images": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/usage/images",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "start_time": "<start_time>",
+                "end_time": "<end_time>",
+                "bucket_width": "<bucket_width>",
+                "sources": "<sources>",
+                "sizes": "<sizes>",
+                "project_ids": "<project_ids>",
+                "user_ids": "<user_ids>",
+                "api_key_ids": "<api_key_ids>",
+                "models": "<models>",
+                "group_by": "<group_by>",
+                "limit": "<limit>",
+                "page": "<page>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "usage-moderations": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/usage/moderations",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "start_time": "<start_time>",
+                "end_time": "<end_time>",
+                "bucket_width": "<bucket_width>",
+                "project_ids": "<project_ids>",
+                "user_ids": "<user_ids>",
+                "api_key_ids": "<api_key_ids>",
+                "models": "<models>",
+                "group_by": "<group_by>",
+                "limit": "<limit>",
+                "page": "<page>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "usage-vector-stores": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/usage/vector_stores",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "start_time": "<start_time>",
+                "end_time": "<end_time>",
+                "bucket_width": "<bucket_width>",
+                "project_ids": "<project_ids>",
+                "group_by": "<group_by>",
+                "limit": "<limit>",
+                "page": "<page>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "list-users": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/users",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "limit": "<limit>",
+                "after": "<after>",
+                "emails": "<emails>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "retrieve-user": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/users/{user_id}",
+            "method": "get",
+            "parameters": {
+                "user_id": "<user_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "modify-user": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/users/{user_id}",
+            "method": "post",
+            "parameters": {
+                "user_id": "<user_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {
+                "role": "<role>"
+            }
+        }
+    ],
+    "delete-user": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/organization/users/{user_id}",
+            "method": "delete",
+            "parameters": {
+                "user_id": "<user_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "create-realtime-session": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/realtime/sessions",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {
+                "modalities": "<modalities>",
+                "model": "<model>",
+                "instructions": "<instructions>",
+                "voice": "ash",
+                "input_audio_format": "<input_audio_format>",
+                "output_audio_format": "<output_audio_format>",
+                "input_audio_transcription": {
+                    "model": "<model>",
+                    "language": "<language>",
+                    "prompt": "<prompt>"
+                },
+                "turn_detection": {
+                    "type": "<type>",
+                    "eagerness": "<eagerness>",
+                    "threshold": 0,
+                    "prefix_padding_ms": 0,
+                    "silence_duration_ms": 0,
+                    "create_response": true,
+                    "interrupt_response": true
+                },
+                "input_audio_noise_reduction": {
+                    "type": "<type>"
+                },
+                "tools": [
+                    {
+                        "type": "<type>",
+                        "name": "<name>",
+                        "description": "<description>",
+                        "parameters": {}
+                    }
+                ],
+                "tool_choice": "<tool_choice>",
+                "temperature": 0,
+                "max_response_output_tokens": "<max_response_output_tokens>"
+            }
+        }
+    ],
+    "create-realtime-transcription-session": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/realtime/transcription_sessions",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {
+                "modalities": "<modalities>",
+                "input_audio_format": "<input_audio_format>",
+                "input_audio_transcription": {
+                    "model": "<model>",
+                    "language": "<language>",
+                    "prompt": "<prompt>"
+                },
+                "turn_detection": {
+                    "type": "<type>",
+                    "eagerness": "<eagerness>",
+                    "threshold": 0,
+                    "prefix_padding_ms": 0,
+                    "silence_duration_ms": 0,
+                    "create_response": true,
+                    "interrupt_response": true
+                },
+                "input_audio_noise_reduction": {
+                    "type": "<type>"
+                },
+                "include": [
+                    "<include>"
+                ]
+            }
+        }
+    ],
+    "createResponse": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/responses",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": "<value>"
+        }
+    ],
+    "getResponse": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/responses/{response_id}",
+            "method": "get",
+            "parameters": {
+                "response_id": "<response_id>"
+            },
+            "query": {
+                "include": "<include>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "deleteResponse": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/responses/{response_id}",
+            "method": "delete",
+            "parameters": {
+                "response_id": "<response_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "listInputItems": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/responses/{response_id}/input_items",
+            "method": "get",
+            "parameters": {
+                "response_id": "<response_id>"
+            },
+            "query": {
+                "limit": "<limit>",
+                "order": "<order>",
+                "after": "<after>",
+                "before": "<before>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "createThread": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/threads",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {
+                "messages": [
+                    {
+                        "role": "<role>",
+                        "content": "<content>",
+                        "attachments": [
+                            {
+                                "file_id": "<file_id>",
+                                "tools": [
+                                    "<tools>"
+                                ]
+                            }
+                        ],
+                        "metadata": {}
+                    }
+                ],
+                "tool_resources": {
+                    "code_interpreter": {
+                        "file_ids": [
+                            "<file_ids>"
+                        ]
+                    },
+                    "file_search": {
+                        "vector_store_ids": [
+                            "<vector_store_ids>"
+                        ],
+                        "vector_stores": [
+                            {
+                                "file_ids": [
+                                    "<file_ids>"
+                                ],
+                                "chunking_strategy": {},
+                                "metadata": {}
+                            }
+                        ]
+                    }
+                },
+                "metadata": {}
+            }
+        }
+    ],
+    "createThreadAndRun": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/threads/runs",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {
+                "assistant_id": "<assistant_id>",
+                "thread": {
+                    "messages": [
+                        {
+                            "role": "<role>",
+                            "content": "<content>",
+                            "attachments": [
+                                {
+                                    "file_id": "<file_id>",
+                                    "tools": [
+                                        "<tools>"
+                                    ]
+                                }
+                            ],
+                            "metadata": {}
+                        }
+                    ],
+                    "tool_resources": {
+                        "code_interpreter": {
+                            "file_ids": [
+                                "<file_ids>"
+                            ]
+                        },
+                        "file_search": {
+                            "vector_store_ids": [
+                                "<vector_store_ids>"
+                            ],
+                            "vector_stores": [
+                                {
+                                    "file_ids": [
+                                        "<file_ids>"
+                                    ],
+                                    "chunking_strategy": {},
+                                    "metadata": {}
+                                }
+                            ]
+                        }
+                    },
+                    "metadata": {}
+                },
+                "model": "gpt-4o",
+                "instructions": "<instructions>",
+                "tools": [
+                    "<tools>"
+                ],
+                "tool_resources": {
+                    "code_interpreter": {
+                        "file_ids": [
+                            "<file_ids>"
+                        ]
+                    },
+                    "file_search": {
+                        "vector_store_ids": [
+                            "<vector_store_ids>"
+                        ]
+                    }
+                },
+                "metadata": {},
+                "temperature": 1,
+                "top_p": 1,
+                "stream": true,
+                "max_prompt_tokens": 0,
+                "max_completion_tokens": 0,
+                "truncation_strategy": "<truncation_strategy>",
+                "tool_choice": "<tool_choice>",
+                "parallel_tool_calls": true,
+                "response_format": "<response_format>"
+            }
+        }
+    ],
+    "getThread": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/threads/{thread_id}",
+            "method": "get",
+            "parameters": {
+                "thread_id": "<thread_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "modifyThread": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/threads/{thread_id}",
+            "method": "post",
+            "parameters": {
+                "thread_id": "<thread_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {
+                "tool_resources": {
+                    "code_interpreter": {
+                        "file_ids": [
+                            "<file_ids>"
+                        ]
+                    },
+                    "file_search": {
+                        "vector_store_ids": [
+                            "<vector_store_ids>"
+                        ]
+                    }
+                },
+                "metadata": {}
+            }
+        }
+    ],
+    "deleteThread": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/threads/{thread_id}",
+            "method": "delete",
+            "parameters": {
+                "thread_id": "<thread_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "listMessages": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/threads/{thread_id}/messages",
+            "method": "get",
+            "parameters": {
+                "thread_id": "<thread_id>"
+            },
+            "query": {
+                "limit": "<limit>",
+                "order": "<order>",
+                "after": "<after>",
+                "before": "<before>",
+                "run_id": "<run_id>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "createMessage": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/threads/{thread_id}/messages",
+            "method": "post",
+            "parameters": {
+                "thread_id": "<thread_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {
+                "role": "<role>",
+                "content": "<content>",
+                "attachments": [
+                    {
+                        "file_id": "<file_id>",
+                        "tools": [
+                            "<tools>"
+                        ]
+                    }
+                ],
+                "metadata": {}
+            }
+        }
+    ],
+    "getMessage": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/threads/{thread_id}/messages/{message_id}",
+            "method": "get",
+            "parameters": {
+                "thread_id": "<thread_id>",
+                "message_id": "<message_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "modifyMessage": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/threads/{thread_id}/messages/{message_id}",
+            "method": "post",
+            "parameters": {
+                "thread_id": "<thread_id>",
+                "message_id": "<message_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {
+                "metadata": {}
+            }
+        }
+    ],
+    "deleteMessage": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/threads/{thread_id}/messages/{message_id}",
+            "method": "delete",
+            "parameters": {
+                "thread_id": "<thread_id>",
+                "message_id": "<message_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "listRuns": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/threads/{thread_id}/runs",
+            "method": "get",
+            "parameters": {
+                "thread_id": "<thread_id>"
+            },
+            "query": {
+                "limit": "<limit>",
+                "order": "<order>",
+                "after": "<after>",
+                "before": "<before>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "createRun": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/threads/{thread_id}/runs",
+            "method": "post",
+            "parameters": {
+                "thread_id": "<thread_id>"
+            },
+            "query": {
+                "include[]": "<include[]>"
+            },
+            "headers": {},
+            "data": {
+                "assistant_id": "<assistant_id>",
+                "model": "gpt-4o",
+                "reasoning_effort": "<reasoning_effort>",
+                "instructions": "<instructions>",
+                "additional_instructions": "<additional_instructions>",
+                "additional_messages": [
+                    {
+                        "role": "<role>",
+                        "content": "<content>",
+                        "attachments": [
+                            {
+                                "file_id": "<file_id>",
+                                "tools": [
+                                    "<tools>"
+                                ]
+                            }
+                        ],
+                        "metadata": {}
+                    }
+                ],
+                "tools": [
+                    "<tools>"
+                ],
+                "metadata": {},
+                "temperature": 1,
+                "top_p": 1,
+                "stream": true,
+                "max_prompt_tokens": 0,
+                "max_completion_tokens": 0,
+                "truncation_strategy": "<truncation_strategy>",
+                "tool_choice": "<tool_choice>",
+                "parallel_tool_calls": true,
+                "response_format": "<response_format>"
+            }
+        }
+    ],
+    "getRun": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/threads/{thread_id}/runs/{run_id}",
+            "method": "get",
+            "parameters": {
+                "thread_id": "<thread_id>",
+                "run_id": "<run_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "modifyRun": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/threads/{thread_id}/runs/{run_id}",
+            "method": "post",
+            "parameters": {
+                "thread_id": "<thread_id>",
+                "run_id": "<run_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {
+                "metadata": {}
+            }
+        }
+    ],
+    "cancelRun": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/threads/{thread_id}/runs/{run_id}/cancel",
+            "method": "post",
+            "parameters": {
+                "thread_id": "<thread_id>",
+                "run_id": "<run_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "listRunSteps": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/threads/{thread_id}/runs/{run_id}/steps",
+            "method": "get",
+            "parameters": {
+                "thread_id": "<thread_id>",
+                "run_id": "<run_id>"
+            },
+            "query": {
+                "limit": "<limit>",
+                "order": "<order>",
+                "after": "<after>",
+                "before": "<before>",
+                "include[]": "<include[]>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "getRunStep": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/threads/{thread_id}/runs/{run_id}/steps/{step_id}",
+            "method": "get",
+            "parameters": {
+                "thread_id": "<thread_id>",
+                "run_id": "<run_id>",
+                "step_id": "<step_id>"
+            },
+            "query": {
+                "include[]": "<include[]>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "submitToolOuputsToRun": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/threads/{thread_id}/runs/{run_id}/submit_tool_outputs",
+            "method": "post",
+            "parameters": {
+                "thread_id": "<thread_id>",
+                "run_id": "<run_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {
+                "tool_outputs": [
+                    {
+                        "tool_call_id": "<tool_call_id>",
+                        "output": "<output>"
+                    }
+                ],
+                "stream": true
+            }
+        }
+    ],
+    "createUpload": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/uploads",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {
+                "filename": "<filename>",
+                "purpose": "<purpose>",
+                "bytes": 0,
+                "mime_type": "<mime_type>"
+            }
+        }
+    ],
+    "cancelUpload": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/uploads/{upload_id}/cancel",
+            "method": "post",
+            "parameters": {
+                "upload_id": "<upload_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "completeUpload": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/uploads/{upload_id}/complete",
+            "method": "post",
+            "parameters": {
+                "upload_id": "<upload_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {
+                "part_ids": [
+                    "<part_ids>"
+                ],
+                "md5": "<md5>"
+            }
+        }
+    ],
+    "addUploadPart": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/uploads/{upload_id}/parts",
+            "method": "post",
+            "parameters": {
+                "upload_id": "<upload_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {
+                "data": "<data>"
+            }
+        }
+    ],
+    "listVectorStores": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/vector_stores",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "limit": "<limit>",
+                "order": "<order>",
+                "after": "<after>",
+                "before": "<before>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "createVectorStore": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/vector_stores",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {
+                "file_ids": [
+                    "<file_ids>"
+                ],
+                "name": "<name>",
+                "expires_after": {
+                    "anchor": "<anchor>",
+                    "days": 0
+                },
+                "chunking_strategy": {},
+                "metadata": {}
+            }
+        }
+    ],
+    "getVectorStore": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/vector_stores/{vector_store_id}",
+            "method": "get",
+            "parameters": {
+                "vector_store_id": "<vector_store_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "modifyVectorStore": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/vector_stores/{vector_store_id}",
+            "method": "post",
+            "parameters": {
+                "vector_store_id": "<vector_store_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {
+                "name": "<name>",
+                "expires_after": "<expires_after>",
+                "metadata": {}
+            }
+        }
+    ],
+    "deleteVectorStore": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/vector_stores/{vector_store_id}",
+            "method": "delete",
+            "parameters": {
+                "vector_store_id": "<vector_store_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "createVectorStoreFileBatch": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/vector_stores/{vector_store_id}/file_batches",
+            "method": "post",
+            "parameters": {
+                "vector_store_id": "<vector_store_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {
+                "file_ids": [
+                    "<file_ids>"
+                ],
+                "chunking_strategy": {},
+                "attributes": {}
+            }
+        }
+    ],
+    "getVectorStoreFileBatch": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/vector_stores/{vector_store_id}/file_batches/{batch_id}",
+            "method": "get",
+            "parameters": {
+                "vector_store_id": "<vector_store_id>",
+                "batch_id": "<batch_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "cancelVectorStoreFileBatch": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/vector_stores/{vector_store_id}/file_batches/{batch_id}/cancel",
+            "method": "post",
+            "parameters": {
+                "vector_store_id": "<vector_store_id>",
+                "batch_id": "<batch_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "listFilesInVectorStoreBatch": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/vector_stores/{vector_store_id}/file_batches/{batch_id}/files",
+            "method": "get",
+            "parameters": {
+                "vector_store_id": "<vector_store_id>",
+                "batch_id": "<batch_id>"
+            },
+            "query": {
+                "limit": "<limit>",
+                "order": "<order>",
+                "after": "<after>",
+                "before": "<before>",
+                "filter": "<filter>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "listVectorStoreFiles": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/vector_stores/{vector_store_id}/files",
+            "method": "get",
+            "parameters": {
+                "vector_store_id": "<vector_store_id>"
+            },
+            "query": {
+                "limit": "<limit>",
+                "order": "<order>",
+                "after": "<after>",
+                "before": "<before>",
+                "filter": "<filter>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "createVectorStoreFile": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/vector_stores/{vector_store_id}/files",
+            "method": "post",
+            "parameters": {
+                "vector_store_id": "<vector_store_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {
+                "file_id": "<file_id>",
+                "chunking_strategy": {},
+                "attributes": {}
+            }
+        }
+    ],
+    "getVectorStoreFile": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/vector_stores/{vector_store_id}/files/{file_id}",
+            "method": "get",
+            "parameters": {
+                "vector_store_id": "<vector_store_id>",
+                "file_id": "<file_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "deleteVectorStoreFile": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/vector_stores/{vector_store_id}/files/{file_id}",
+            "method": "delete",
+            "parameters": {
+                "vector_store_id": "<vector_store_id>",
+                "file_id": "<file_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "updateVectorStoreFileAttributes": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/vector_stores/{vector_store_id}/files/{file_id}",
+            "method": "post",
+            "parameters": {
+                "vector_store_id": "<vector_store_id>",
+                "file_id": "<file_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {
+                "attributes": {}
+            }
+        }
+    ],
+    "retrieveVectorStoreFileContent": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/vector_stores/{vector_store_id}/files/{file_id}/content",
+            "method": "get",
+            "parameters": {
+                "vector_store_id": "<vector_store_id>",
+                "file_id": "<file_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "searchVectorStore": [
+        {
+            "baseUrl": "https://api.openai.com/v1",
+            "url": "/vector_stores/{vector_store_id}/search",
+            "method": "post",
+            "parameters": {
+                "vector_store_id": "<vector_store_id>"
+            },
+            "query": {},
+            "headers": {},
+            "data": {
+                "query": "<query>",
+                "rewrite_query": true,
+                "max_num_results": 0,
+                "filters": "<filters>",
+                "ranking_options": {
+                    "ranker": "<ranker>",
+                    "score_threshold": 0
+                }
+            }
+        }
+    ]
+}

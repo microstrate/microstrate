@@ -1,0 +1,2474 @@
+{
+    "admin_apps_approve": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.apps.approve",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_apps_approved_list": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.apps.approved.list",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "limit": "<integer>",
+                "cursor": "<string>",
+                "team_id": "<string>",
+                "enterprise_id": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "admin_apps_requests_list": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.apps.requests.list",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "limit": "<integer>",
+                "cursor": "<string>",
+                "team_id": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "admin_apps_restrict": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.apps.restrict",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_apps_restricted_list": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.apps.restricted.list",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "limit": "<integer>",
+                "cursor": "<string>",
+                "team_id": "<string>",
+                "enterprise_id": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "admin_conversations_archive": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.conversations.archive",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_conversations_convertToPrivate": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.conversations.convertToPrivate",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_conversations_create": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.conversations.create",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_conversations_delete": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.conversations.delete",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_conversations_disconnectShared": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.conversations.disconnectShared",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_conversations_ekm_listOriginalConnectedChannelInfo": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.conversations.ekm.listOriginalConnectedChannelInfo",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "channel_ids": "<string>",
+                "team_ids": "<string>",
+                "limit": "<integer>",
+                "cursor": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "admin_conversations_getConversationPrefs": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.conversations.getConversationPrefs",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "channel_id": "<string>"
+            },
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_conversations_getTeams": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.conversations.getTeams",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "channel_id": "<string>",
+                "cursor": "<string>",
+                "limit": "<integer>"
+            },
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_conversations_invite": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.conversations.invite",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_conversations_rename": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.conversations.rename",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_conversations_restrictAccess_addGroup": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.conversations.restrictAccess.addGroup",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "admin_conversations_restrictAccess_listGroups": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.conversations.restrictAccess.listGroups",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "channel_id": "<string>",
+                "team_id": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "admin_conversations_restrictAccess_removeGroup": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.conversations.restrictAccess.removeGroup",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "admin_conversations_search": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.conversations.search",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "team_ids": "<string>",
+                "query": "<string>",
+                "limit": "<integer>",
+                "cursor": "<string>",
+                "search_channel_types": "<string>",
+                "sort": "<string>",
+                "sort_dir": "<string>"
+            },
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_conversations_setConversationPrefs": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.conversations.setConversationPrefs",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_conversations_setTeams": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.conversations.setTeams",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_conversations_unarchive": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.conversations.unarchive",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_emoji_add": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.emoji.add",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "admin_emoji_addAlias": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.emoji.addAlias",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "admin_emoji_list": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.emoji.list",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "cursor": "<string>",
+                "limit": "<integer>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "admin_emoji_remove": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.emoji.remove",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "admin_emoji_rename": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.emoji.rename",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "admin_inviteRequests_approve": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.inviteRequests.approve",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_inviteRequests_approved_list": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.inviteRequests.approved.list",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "team_id": "<string>",
+                "cursor": "<string>",
+                "limit": "<integer>"
+            },
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_inviteRequests_denied_list": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.inviteRequests.denied.list",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "team_id": "<string>",
+                "cursor": "<string>",
+                "limit": "<integer>"
+            },
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_inviteRequests_deny": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.inviteRequests.deny",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_inviteRequests_list": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.inviteRequests.list",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "team_id": "<string>",
+                "cursor": "<string>",
+                "limit": "<integer>"
+            },
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_teams_admins_list": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.teams.admins.list",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "limit": "<integer>",
+                "cursor": "<string>",
+                "team_id": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "admin_teams_create": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.teams.create",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_teams_list": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.teams.list",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "limit": "<integer>",
+                "cursor": "<string>"
+            },
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_teams_owners_list": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.teams.owners.list",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "team_id": "<string>",
+                "limit": "<integer>",
+                "cursor": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "admin_teams_settings_info": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.teams.settings.info",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "team_id": "<string>"
+            },
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_teams_settings_setDefaultChannels": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.teams.settings.setDefaultChannels",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "admin_teams_settings_setDescription": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.teams.settings.setDescription",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_teams_settings_setDiscoverability": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.teams.settings.setDiscoverability",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_teams_settings_setIcon": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.teams.settings.setIcon",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "admin_teams_settings_setName": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.teams.settings.setName",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_usergroups_addChannels": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.usergroups.addChannels",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_usergroups_addTeams": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.usergroups.addTeams",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_usergroups_listChannels": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.usergroups.listChannels",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "usergroup_id": "<string>",
+                "team_id": "<string>",
+                "include_num_members": "<boolean>"
+            },
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_usergroups_removeChannels": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.usergroups.removeChannels",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_users_assign": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.users.assign",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_users_invite": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.users.invite",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_users_list": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.users.list",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "team_id": "<string>",
+                "cursor": "<string>",
+                "limit": "<integer>"
+            },
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_users_remove": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.users.remove",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_users_session_invalidate": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.users.session.invalidate",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_users_session_reset": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.users.session.reset",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_users_setAdmin": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.users.setAdmin",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_users_setExpiration": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.users.setExpiration",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_users_setOwner": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.users.setOwner",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "admin_users_setRegular": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/admin.users.setRegular",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "api_test": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/api.test",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "error": "<string>",
+                "foo": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "apps_event_authorizations_list": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/apps.event.authorizations.list",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "event_context": "<string>",
+                "cursor": "<string>",
+                "limit": "<integer>"
+            },
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "apps_permissions_info": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/apps.permissions.info",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "apps_permissions_request": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/apps.permissions.request",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "scopes": "<string>",
+                "trigger_id": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "apps_permissions_resources_list": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/apps.permissions.resources.list",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "cursor": "<string>",
+                "limit": "<integer>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "apps_permissions_scopes_list": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/apps.permissions.scopes.list",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "apps_permissions_users_list": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/apps.permissions.users.list",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "cursor": "<string>",
+                "limit": "<integer>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "apps_permissions_users_request": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/apps.permissions.users.request",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "scopes": "<string>",
+                "trigger_id": "<string>",
+                "user": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "apps_uninstall": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/apps.uninstall",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "client_id": "<string>",
+                "client_secret": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "auth_revoke": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/auth.revoke",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "test": "<boolean>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "auth_test": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/auth.test",
+            "method": "get",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "bots_info": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/bots.info",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "bot": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "calls_add": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/calls.add",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "calls_end": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/calls.end",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "calls_info": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/calls.info",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "id": "<string>"
+            },
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "calls_participants_add": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/calls.participants.add",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "calls_participants_remove": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/calls.participants.remove",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "calls_update": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/calls.update",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "chat_delete": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/chat.delete",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "chat_deleteScheduledMessage": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/chat.deleteScheduledMessage",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "chat_getPermalink": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/chat.getPermalink",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "channel": "<string>",
+                "message_ts": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "chat_meMessage": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/chat.meMessage",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "chat_postEphemeral": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/chat.postEphemeral",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "chat_postMessage": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/chat.postMessage",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "chat_scheduleMessage": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/chat.scheduleMessage",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "chat_scheduledMessages_list": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/chat.scheduledMessages.list",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "channel": "<string>",
+                "latest": "<number>",
+                "oldest": "<number>",
+                "limit": "<integer>",
+                "cursor": "<string>"
+            },
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "chat_unfurl": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/chat.unfurl",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "chat_update": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/chat.update",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "conversations_archive": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/conversations.archive",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "conversations_close": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/conversations.close",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "conversations_create": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/conversations.create",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "conversations_history": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/conversations.history",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "channel": "<string>",
+                "latest": "<number>",
+                "oldest": "<number>",
+                "inclusive": "<boolean>",
+                "limit": "<integer>",
+                "cursor": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "conversations_info": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/conversations.info",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "channel": "<string>",
+                "include_locale": "<boolean>",
+                "include_num_members": "<boolean>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "conversations_invite": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/conversations.invite",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "conversations_join": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/conversations.join",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "conversations_kick": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/conversations.kick",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "conversations_leave": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/conversations.leave",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "conversations_list": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/conversations.list",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "exclude_archived": "<boolean>",
+                "types": "<string>",
+                "limit": "<integer>",
+                "cursor": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "conversations_mark": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/conversations.mark",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "conversations_members": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/conversations.members",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "channel": "<string>",
+                "limit": "<integer>",
+                "cursor": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "conversations_open": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/conversations.open",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "conversations_rename": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/conversations.rename",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "conversations_replies": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/conversations.replies",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "channel": "<string>",
+                "ts": "<number>",
+                "latest": "<number>",
+                "oldest": "<number>",
+                "inclusive": "<boolean>",
+                "limit": "<integer>",
+                "cursor": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "conversations_setPurpose": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/conversations.setPurpose",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "conversations_setTopic": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/conversations.setTopic",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "conversations_unarchive": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/conversations.unarchive",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "dialog_open": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/dialog.open",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "dialog": "<string>",
+                "trigger_id": "<string>"
+            },
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "dnd_endDnd": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/dnd.endDnd",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "dnd_endSnooze": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/dnd.endSnooze",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "dnd_info": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/dnd.info",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "user": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "dnd_setSnooze": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/dnd.setSnooze",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "dnd_teamInfo": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/dnd.teamInfo",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "users": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "emoji_list": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/emoji.list",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "files_comments_delete": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/files.comments.delete",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "files_delete": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/files.delete",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "files_info": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/files.info",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "file": "<string>",
+                "count": "<string>",
+                "page": "<string>",
+                "limit": "<integer>",
+                "cursor": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "files_list": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/files.list",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "user": "<string>",
+                "channel": "<string>",
+                "ts_from": "<number>",
+                "ts_to": "<number>",
+                "types": "<string>",
+                "count": "<string>",
+                "page": "<string>",
+                "show_files_hidden_by_limit": "<boolean>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "files_remote_add": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/files.remote.add",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "files_remote_info": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/files.remote.info",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "file": "<string>",
+                "external_id": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "files_remote_list": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/files.remote.list",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "channel": "<string>",
+                "ts_from": "<number>",
+                "ts_to": "<number>",
+                "limit": "<integer>",
+                "cursor": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "files_remote_remove": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/files.remote.remove",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "files_remote_share": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/files.remote.share",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "file": "<string>",
+                "external_id": "<string>",
+                "channels": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "files_remote_update": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/files.remote.update",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "files_revokePublicURL": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/files.revokePublicURL",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "files_sharedPublicURL": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/files.sharedPublicURL",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "files_upload": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/files.upload",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "migration_exchange": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/migration.exchange",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "users": "<string>",
+                "team_id": "<string>",
+                "to_old": "<boolean>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "oauth_access": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/oauth.access",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "client_id": "<string>",
+                "client_secret": "<string>",
+                "code": "<string>",
+                "redirect_uri": "<string>",
+                "single_channel": "<boolean>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "oauth_token": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/oauth.token",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "client_id": "<string>",
+                "client_secret": "<string>",
+                "code": "<string>",
+                "redirect_uri": "<string>",
+                "single_channel": "<boolean>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "oauth_v2_access": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/oauth.v2.access",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "client_id": "<string>",
+                "client_secret": "<string>",
+                "code": "<string>",
+                "redirect_uri": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "pins_add": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/pins.add",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "pins_list": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/pins.list",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "channel": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "pins_remove": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/pins.remove",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "reactions_add": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/reactions.add",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "reactions_get": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/reactions.get",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "channel": "<string>",
+                "file": "<string>",
+                "file_comment": "<string>",
+                "full": "<boolean>",
+                "timestamp": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "reactions_list": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/reactions.list",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "user": "<string>",
+                "full": "<boolean>",
+                "count": "<integer>",
+                "page": "<integer>",
+                "cursor": "<string>",
+                "limit": "<integer>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "reactions_remove": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/reactions.remove",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "reminders_add": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/reminders.add",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "reminders_complete": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/reminders.complete",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "reminders_delete": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/reminders.delete",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "reminders_info": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/reminders.info",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "reminder": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "reminders_list": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/reminders.list",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "rtm_connect": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/rtm.connect",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "batch_presence_aware": "<boolean>",
+                "presence_sub": "<boolean>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "search_messages": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/search.messages",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "count": "<integer>",
+                "highlight": "<boolean>",
+                "page": "<integer>",
+                "query": "<string>",
+                "sort": "<string>",
+                "sort_dir": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "stars_add": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/stars.add",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "stars_list": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/stars.list",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "count": "<string>",
+                "page": "<string>",
+                "cursor": "<string>",
+                "limit": "<integer>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "stars_remove": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/stars.remove",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "team_accessLogs": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/team.accessLogs",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "before": "<string>",
+                "count": "<string>",
+                "page": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "team_billableInfo": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/team.billableInfo",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "user": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "team_info": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/team.info",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "team": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "team_integrationLogs": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/team.integrationLogs",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "app_id": "<string>",
+                "change_type": "<string>",
+                "count": "<string>",
+                "page": "<string>",
+                "service_id": "<string>",
+                "user": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "team_profile_get": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/team.profile.get",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "visibility": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "usergroups_create": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/usergroups.create",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "usergroups_disable": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/usergroups.disable",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "usergroups_enable": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/usergroups.enable",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "usergroups_list": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/usergroups.list",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "include_users": "<boolean>",
+                "token": "<string>",
+                "include_count": "<boolean>",
+                "include_disabled": "<boolean>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "usergroups_update": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/usergroups.update",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "usergroups_users_list": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/usergroups.users.list",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "include_disabled": "<boolean>",
+                "usergroup": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "usergroups_users_update": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/usergroups.users.update",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "users_conversations": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/users.conversations",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "user": "<string>",
+                "types": "<string>",
+                "exclude_archived": "<boolean>",
+                "limit": "<integer>",
+                "cursor": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "users_deletePhoto": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/users.deletePhoto",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "users_getPresence": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/users.getPresence",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "user": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "users_identity": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/users.identity",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "users_info": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/users.info",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "include_locale": "<boolean>",
+                "user": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "users_list": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/users.list",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "limit": "<integer>",
+                "cursor": "<string>",
+                "include_locale": "<boolean>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "users_lookupByEmail": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/users.lookupByEmail",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "email": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "users_profile_get": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/users.profile.get",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "token": "<string>",
+                "include_labels": "<boolean>",
+                "user": "<string>"
+            },
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "users_profile_set": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/users.profile.set",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "users_setActive": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/users.setActive",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "users_setPhoto": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/users.setPhoto",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {},
+            "data": {}
+        }
+    ],
+    "users_setPresence": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/users.setPresence",
+            "method": "post",
+            "parameters": {},
+            "query": {},
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "views_open": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/views.open",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "trigger_id": "<string>",
+                "view": "<string>"
+            },
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "views_publish": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/views.publish",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "user_id": "<string>",
+                "view": "<string>",
+                "hash": "<string>"
+            },
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "views_push": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/views.push",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "trigger_id": "<string>",
+                "view": "<string>"
+            },
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "views_update": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/views.update",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "view_id": "<string>",
+                "external_id": "<string>",
+                "view": "<string>",
+                "hash": "<string>"
+            },
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "workflows_stepCompleted": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/workflows.stepCompleted",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "workflow_step_execute_id": "<string>",
+                "outputs": "<string>"
+            },
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "workflows_stepFailed": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/workflows.stepFailed",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "workflow_step_execute_id": "<string>",
+                "error": "<string>"
+            },
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ],
+    "workflows_updateStep": [
+        {
+            "baseUrl": "https://slack.com/api",
+            "url": "/workflows.updateStep",
+            "method": "get",
+            "parameters": {},
+            "query": {
+                "workflow_step_edit_id": "<string>",
+                "inputs": "<string>",
+                "outputs": "<string>",
+                "step_name": "<string>",
+                "step_image_url": "<string>"
+            },
+            "headers": {
+                "token": "<string>"
+            },
+            "data": {}
+        }
+    ]
+}
