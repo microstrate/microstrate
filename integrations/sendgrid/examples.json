@@ -1,6 +1,6 @@
 {
-    "POST_mail-send": [
-        {
+    "POST_mail-send": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/mail/send",
             "method": "post",
@@ -117,9 +117,9 @@
                 }
             }
         }
-    ],
-    "POST_mail-batch": [
-        {
+    },
+    "POST_mail-batch": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/mail/batch",
             "method": "post",
@@ -131,9 +131,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_user-scheduled_sends": [
-        {
+    },
+    "POST_user-scheduled_sends": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/user/scheduled_sends",
             "method": "post",
@@ -148,9 +148,9 @@
                 "status": "pause"
             }
         }
-    ],
-    "GET_user-scheduled_sends": [
-        {
+    },
+    "GET_user-scheduled_sends": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/user/scheduled_sends",
             "method": "get",
@@ -162,9 +162,9 @@
             },
             "data": {}
         }
-    ],
-    "/mail/batch/{batch_id} - parameters": [
-        {
+    },
+    "/mail/batch/{batch_id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/mail/batch/{batch_id}",
             "method": "parameters",
@@ -175,9 +175,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_mail-batch-batch_id": [
-        {
+    },
+    "GET_mail-batch-batch_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/mail/batch/{batch_id}",
             "method": "get",
@@ -189,9 +189,9 @@
             },
             "data": {}
         }
-    ],
-    "/user/scheduled_sends/{batch_id} - parameters": [
-        {
+    },
+    "/user/scheduled_sends/{batch_id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/user/scheduled_sends/{batch_id}",
             "method": "parameters",
@@ -202,9 +202,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_user-scheduled_sends-batch_id": [
-        {
+    },
+    "GET_user-scheduled_sends-batch_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/user/scheduled_sends/{batch_id}",
             "method": "get",
@@ -216,9 +216,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_user-scheduled_sends-batch_id": [
-        {
+    },
+    "PATCH_user-scheduled_sends-batch_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/user/scheduled_sends/{batch_id}",
             "method": "patch",
@@ -232,9 +232,9 @@
                 "status": "pause"
             }
         }
-    ],
-    "DELETE_user-scheduled_sends-batch_id": [
-        {
+    },
+    "DELETE_user-scheduled_sends-batch_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/user/scheduled_sends/{batch_id}",
             "method": "delete",
@@ -246,9 +246,9 @@
             },
             "data": {}
         }
-    ],
-    "create-api-keys": [
-        {
+    },
+    "create-api-keys": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/api_keys",
             "method": "post",
@@ -267,9 +267,9 @@
                 ]
             }
         }
-    ],
-    "GET_api_keys": [
-        {
+    },
+    "GET_api_keys": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/api_keys",
             "method": "get",
@@ -283,9 +283,9 @@
             },
             "data": {}
         }
-    ],
-    "/api_keys/{api_key_id} - parameters": [
-        {
+    },
+    "/api_keys/{api_key_id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/api_keys/{api_key_id}",
             "method": "parameters",
@@ -296,9 +296,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_api_keys-api_key_id": [
-        {
+    },
+    "GET_api_keys-api_key_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/api_keys/{api_key_id}",
             "method": "get",
@@ -310,9 +310,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_api_keys-api_key_id": [
-        {
+    },
+    "PATCH_api_keys-api_key_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/api_keys/{api_key_id}",
             "method": "patch",
@@ -326,9 +326,9 @@
                 "name": "A New Hope"
             }
         }
-    ],
-    "PUT_api_keys-api_key_id": [
-        {
+    },
+    "PUT_api_keys-api_key_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/api_keys/{api_key_id}",
             "method": "put",
@@ -346,9 +346,9 @@
                 ]
             }
         }
-    ],
-    "DELETE_api_keys-api_key_id": [
-        {
+    },
+    "DELETE_api_keys-api_key_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/api_keys/{api_key_id}",
             "method": "delete",
@@ -360,9 +360,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_scopes": [
-        {
+    },
+    "GET_scopes": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/scopes",
             "method": "get",
@@ -374,9 +374,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_user-settings-enforced_tls": [
-        {
+    },
+    "GET_user-settings-enforced_tls": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/user/settings/enforced_tls",
             "method": "get",
@@ -388,9 +388,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_user-settings-enforced_tls": [
-        {
+    },
+    "PATCH_user-settings-enforced_tls": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/user/settings/enforced_tls",
             "method": "patch",
@@ -405,9 +405,9 @@
                 "require_valid_cert": true
             }
         }
-    ],
-    "POST_access_settings-whitelist": [
-        {
+    },
+    "POST_access_settings-whitelist": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/access_settings/whitelist",
             "method": "post",
@@ -431,9 +431,9 @@
                 ]
             }
         }
-    ],
-    "GET_access_settings-whitelist": [
-        {
+    },
+    "GET_access_settings-whitelist": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/access_settings/whitelist",
             "method": "get",
@@ -445,9 +445,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_access_settings-whitelist": [
-        {
+    },
+    "DELETE_access_settings-whitelist": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/access_settings/whitelist",
             "method": "delete",
@@ -465,9 +465,9 @@
                 ]
             }
         }
-    ],
-    "GET_access_settings-activity": [
-        {
+    },
+    "GET_access_settings-activity": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/access_settings/activity",
             "method": "get",
@@ -481,9 +481,9 @@
             },
             "data": {}
         }
-    ],
-    "/access_settings/whitelist/{rule_id} - parameters": [
-        {
+    },
+    "/access_settings/whitelist/{rule_id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/access_settings/whitelist/{rule_id}",
             "method": "parameters",
@@ -494,9 +494,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_access_settings-whitelist-rule_id": [
-        {
+    },
+    "GET_access_settings-whitelist-rule_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/access_settings/whitelist/{rule_id}",
             "method": "get",
@@ -508,9 +508,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_access_settings-whitelist-rule_id": [
-        {
+    },
+    "DELETE_access_settings-whitelist-rule_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/access_settings/whitelist/{rule_id}",
             "method": "delete",
@@ -522,9 +522,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_sso-certificates": [
-        {
+    },
+    "POST_sso-certificates": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/sso/certificates",
             "method": "post",
@@ -539,9 +539,9 @@
                 "integration_id": "b0b98502-9408-4b24-9e3d-31ed7cb15312"
             }
         }
-    ],
-    "/sso/integrations/{integration_id}/certificates - parameters": [
-        {
+    },
+    "/sso/integrations/{integration_id}/certificates - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/sso/integrations/{integration_id}/certificates",
             "method": "parameters",
@@ -552,9 +552,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_sso-integrations-integration_id-certificates": [
-        {
+    },
+    "GET_sso-integrations-integration_id-certificates": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/sso/integrations/{integration_id}/certificates",
             "method": "get",
@@ -565,9 +565,9 @@
             },
             "data": {}
         }
-    ],
-    "/sso/certificates/{cert_id} - parameters": [
-        {
+    },
+    "/sso/certificates/{cert_id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/sso/certificates/{cert_id}",
             "method": "parameters",
@@ -578,9 +578,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_sso-certificates-cert_id": [
-        {
+    },
+    "GET_sso-certificates-cert_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/sso/certificates/{cert_id}",
             "method": "get",
@@ -591,9 +591,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_sso-certificates-cert_id": [
-        {
+    },
+    "PATCH_sso-certificates-cert_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/sso/certificates/{cert_id}",
             "method": "patch",
@@ -608,9 +608,9 @@
                 "intergration_id": "b0b98502-9408-4b24-9e3d-31ed7cb15312"
             }
         }
-    ],
-    "DELETE_sso-certificates-cert_id": [
-        {
+    },
+    "DELETE_sso-certificates-cert_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/sso/certificates/{cert_id}",
             "method": "delete",
@@ -621,9 +621,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_sso-integrations": [
-        {
+    },
+    "POST_sso-integrations": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/sso/integrations",
             "method": "post",
@@ -641,9 +641,9 @@
                 "completed_integration": true
             }
         }
-    ],
-    "GET_sso-integrations": [
-        {
+    },
+    "GET_sso-integrations": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/sso/integrations",
             "method": "get",
@@ -656,9 +656,9 @@
             },
             "data": {}
         }
-    ],
-    "/sso/integrations/{id} - parameters": [
-        {
+    },
+    "/sso/integrations/{id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/sso/integrations/{id}",
             "method": "parameters",
@@ -669,9 +669,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_sso-integrations-id": [
-        {
+    },
+    "GET_sso-integrations-id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/sso/integrations/{id}",
             "method": "get",
@@ -684,9 +684,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_sso-integrations-id": [
-        {
+    },
+    "PATCH_sso-integrations-id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/sso/integrations/{id}",
             "method": "patch",
@@ -706,9 +706,9 @@
                 "completed_integration": true
             }
         }
-    ],
-    "DELETE_sso-integrations-id": [
-        {
+    },
+    "DELETE_sso-integrations-id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/sso/integrations/{id}",
             "method": "delete",
@@ -719,9 +719,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_sso-teammates": [
-        {
+    },
+    "POST_sso-teammates": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/sso/teammates",
             "method": "post",
@@ -732,9 +732,9 @@
             },
             "data": "<value>"
         }
-    ],
-    "/sso/teammates/{username} - parameters": [
-        {
+    },
+    "/sso/teammates/{username} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/sso/teammates/{username}",
             "method": "parameters",
@@ -745,9 +745,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_sso-teammates-username": [
-        {
+    },
+    "PATCH_sso-teammates-username": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/sso/teammates/{username}",
             "method": "patch",
@@ -770,9 +770,9 @@
                 "is_admin": false
             }
         }
-    ],
-    "GET_mail_settings": [
-        {
+    },
+    "GET_mail_settings": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/mail_settings",
             "method": "get",
@@ -787,9 +787,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_mail_settings-address_whitelist": [
-        {
+    },
+    "PATCH_mail_settings-address_whitelist": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/mail_settings/address_whitelist",
             "method": "patch",
@@ -807,9 +807,9 @@
                 ]
             }
         }
-    ],
-    "GET_mail_settings-address_whitelist": [
-        {
+    },
+    "GET_mail_settings-address_whitelist": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/mail_settings/address_whitelist",
             "method": "get",
@@ -821,9 +821,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_mail_settings-footer": [
-        {
+    },
+    "PATCH_mail_settings-footer": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/mail_settings/footer",
             "method": "patch",
@@ -839,9 +839,9 @@
                 "plain_content": "Example plain content"
             }
         }
-    ],
-    "GET_mail_settings-footer": [
-        {
+    },
+    "GET_mail_settings-footer": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/mail_settings/footer",
             "method": "get",
@@ -853,9 +853,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_mail_settings-forward_spam": [
-        {
+    },
+    "PATCH_mail_settings-forward_spam": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/mail_settings/forward_spam",
             "method": "patch",
@@ -870,9 +870,9 @@
                 "enabled": true
             }
         }
-    ],
-    "GET_mail_settings-forward_spam": [
-        {
+    },
+    "GET_mail_settings-forward_spam": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/mail_settings/forward_spam",
             "method": "get",
@@ -884,9 +884,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_mail_settings-template": [
-        {
+    },
+    "PATCH_mail_settings-template": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/mail_settings/template",
             "method": "patch",
@@ -901,9 +901,9 @@
                 "html_content": "<% body %>"
             }
         }
-    ],
-    "GET_mail_settings-template": [
-        {
+    },
+    "GET_mail_settings-template": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/mail_settings/template",
             "method": "get",
@@ -915,9 +915,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_mail_settings-bounce_purge": [
-        {
+    },
+    "PATCH_mail_settings-bounce_purge": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/mail_settings/bounce_purge",
             "method": "patch",
@@ -933,9 +933,9 @@
                 "hard_bounces": null
             }
         }
-    ],
-    "GET_mail_settings-bounce_purge": [
-        {
+    },
+    "GET_mail_settings-bounce_purge": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/mail_settings/bounce_purge",
             "method": "get",
@@ -947,9 +947,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_mail_settings-forward_bounce": [
-        {
+    },
+    "PATCH_mail_settings-forward_bounce": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/mail_settings/forward_bounce",
             "method": "patch",
@@ -964,9 +964,9 @@
                 "email": null
             }
         }
-    ],
-    "GET_mail_settings-forward_bounce": [
-        {
+    },
+    "GET_mail_settings-forward_bounce": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/mail_settings/forward_bounce",
             "method": "get",
@@ -978,9 +978,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_partner_settings-new_relic": [
-        {
+    },
+    "PATCH_partner_settings-new_relic": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/partner_settings/new_relic",
             "method": "patch",
@@ -996,9 +996,9 @@
                 "enable_subuser_statistics": true
             }
         }
-    ],
-    "GET_partner_settings-new_relic": [
-        {
+    },
+    "GET_partner_settings-new_relic": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/partner_settings/new_relic",
             "method": "get",
@@ -1010,9 +1010,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_partner_settings": [
-        {
+    },
+    "GET_partner_settings": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/partner_settings",
             "method": "get",
@@ -1027,9 +1027,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_v3-teammates": [
-        {
+    },
+    "POST_v3-teammates": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/teammates",
             "method": "post",
@@ -1048,9 +1048,9 @@
                 "is_admin": false
             }
         }
-    ],
-    "GET_v3-teammates": [
-        {
+    },
+    "GET_v3-teammates": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/teammates",
             "method": "get",
@@ -1065,9 +1065,9 @@
             },
             "data": {}
         }
-    ],
-    "/teammates/pending/{token}/resend - parameters": [
-        {
+    },
+    "/teammates/pending/{token}/resend - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/teammates/pending/{token}/resend",
             "method": "parameters",
@@ -1078,9 +1078,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_v3-teammates-pending-token-resend": [
-        {
+    },
+    "POST_v3-teammates-pending-token-resend": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/teammates/pending/{token}/resend",
             "method": "post",
@@ -1092,9 +1092,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_v3-scopes-requests": [
-        {
+    },
+    "GET_v3-scopes-requests": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/scopes/requests",
             "method": "get",
@@ -1108,9 +1108,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_v3-teammates-pending": [
-        {
+    },
+    "GET_v3-teammates-pending": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/teammates/pending",
             "method": "get",
@@ -1122,9 +1122,9 @@
             },
             "data": {}
         }
-    ],
-    "/teammates/{username} - parameters": [
-        {
+    },
+    "/teammates/{username} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/teammates/{username}",
             "method": "parameters",
@@ -1135,9 +1135,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_v3-teammates-username": [
-        {
+    },
+    "GET_v3-teammates-username": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/teammates/{username}",
             "method": "get",
@@ -1149,9 +1149,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_v3-teammates-username": [
-        {
+    },
+    "PATCH_v3-teammates-username": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/teammates/{username}",
             "method": "patch",
@@ -1169,9 +1169,9 @@
                 "is_admin": false
             }
         }
-    ],
-    "DELETE_v3-teammates-username": [
-        {
+    },
+    "DELETE_v3-teammates-username": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/teammates/{username}",
             "method": "delete",
@@ -1183,9 +1183,9 @@
             },
             "data": {}
         }
-    ],
-    "/scopes/requests/{request_id}/approve - parameters": [
-        {
+    },
+    "/scopes/requests/{request_id}/approve - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/scopes/requests/{request_id}/approve",
             "method": "parameters",
@@ -1196,9 +1196,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_v3-scopes-requests-approve-id": [
-        {
+    },
+    "PATCH_v3-scopes-requests-approve-id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/scopes/requests/{request_id}/approve",
             "method": "patch",
@@ -1209,9 +1209,9 @@
             },
             "data": {}
         }
-    ],
-    "/scopes/requests/{request_id} - parameters": [
-        {
+    },
+    "/scopes/requests/{request_id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/scopes/requests/{request_id}",
             "method": "parameters",
@@ -1222,9 +1222,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_v3-scopes-requests-request_id": [
-        {
+    },
+    "DELETE_v3-scopes-requests-request_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/scopes/requests/{request_id}",
             "method": "delete",
@@ -1235,9 +1235,9 @@
             },
             "data": {}
         }
-    ],
-    "/teammates/pending/{token} - parameters": [
-        {
+    },
+    "/teammates/pending/{token} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/teammates/pending/{token}",
             "method": "parameters",
@@ -1248,9 +1248,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_v3-teammates-pending-token": [
-        {
+    },
+    "DELETE_v3-teammates-pending-token": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/teammates/pending/{token}",
             "method": "delete",
@@ -1262,9 +1262,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_alerts": [
-        {
+    },
+    "POST_alerts": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/alerts",
             "method": "post",
@@ -1280,9 +1280,9 @@
                 "frequency": "daily"
             }
         }
-    ],
-    "GET_alerts": [
-        {
+    },
+    "GET_alerts": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/alerts",
             "method": "get",
@@ -1294,9 +1294,9 @@
             },
             "data": {}
         }
-    ],
-    "/alerts/{alert_id} - parameters": [
-        {
+    },
+    "/alerts/{alert_id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/alerts/{alert_id}",
             "method": "parameters",
@@ -1307,9 +1307,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_alerts-alert_id": [
-        {
+    },
+    "GET_alerts-alert_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/alerts/{alert_id}",
             "method": "get",
@@ -1321,9 +1321,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_alerts-alert_id": [
-        {
+    },
+    "DELETE_alerts-alert_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/alerts/{alert_id}",
             "method": "delete",
@@ -1335,9 +1335,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_alerts-alert_id": [
-        {
+    },
+    "PATCH_alerts-alert_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/alerts/{alert_id}",
             "method": "patch",
@@ -1351,9 +1351,9 @@
                 "email_to": "example@example.com"
             }
         }
-    ],
-    "GET_user-profile": [
-        {
+    },
+    "GET_user-profile": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/user/profile",
             "method": "get",
@@ -1365,9 +1365,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_user-profile": [
-        {
+    },
+    "PATCH_user-profile": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/user/profile",
             "method": "patch",
@@ -1391,9 +1391,9 @@
                 "zip": "80202"
             }
         }
-    ],
-    "GET_user-account": [
-        {
+    },
+    "GET_user-account": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/user/account",
             "method": "get",
@@ -1405,9 +1405,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_user-email": [
-        {
+    },
+    "GET_user-email": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/user/email",
             "method": "get",
@@ -1419,9 +1419,9 @@
             },
             "data": {}
         }
-    ],
-    "PUT_user-email": [
-        {
+    },
+    "PUT_user-email": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/user/email",
             "method": "put",
@@ -1435,9 +1435,9 @@
                 "email": "example@example.com"
             }
         }
-    ],
-    "GET_user-username": [
-        {
+    },
+    "GET_user-username": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/user/username",
             "method": "get",
@@ -1449,9 +1449,9 @@
             },
             "data": {}
         }
-    ],
-    "PUT_user-username": [
-        {
+    },
+    "PUT_user-username": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/user/username",
             "method": "put",
@@ -1465,9 +1465,9 @@
                 "username": "test_username"
             }
         }
-    ],
-    "GET_user-credits": [
-        {
+    },
+    "GET_user-credits": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/user/credits",
             "method": "get",
@@ -1479,9 +1479,9 @@
             },
             "data": {}
         }
-    ],
-    "PUT_user-password": [
-        {
+    },
+    "PUT_user-password": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/user/password",
             "method": "put",
@@ -1496,9 +1496,9 @@
                 "old_password": "old_password"
             }
         }
-    ],
-    "GET_subusers": [
-        {
+    },
+    "GET_subusers": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/subusers",
             "method": "get",
@@ -1513,9 +1513,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_subusers": [
-        {
+    },
+    "POST_subusers": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/subusers",
             "method": "post",
@@ -1534,9 +1534,9 @@
                 ]
             }
         }
-    ],
-    "/subusers/{subuser_name} - parameters": [
-        {
+    },
+    "/subusers/{subuser_name} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/subusers/{subuser_name}",
             "method": "parameters",
@@ -1547,9 +1547,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_subusers-subuser_name": [
-        {
+    },
+    "PATCH_subusers-subuser_name": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/subusers/{subuser_name}",
             "method": "patch",
@@ -1562,9 +1562,9 @@
                 "disabled": false
             }
         }
-    ],
-    "DELETE_subusers-subuser_name": [
-        {
+    },
+    "DELETE_subusers-subuser_name": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/subusers/{subuser_name}",
             "method": "delete",
@@ -1575,9 +1575,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_subusers-reputations": [
-        {
+    },
+    "GET_subusers-reputations": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/subusers/reputations",
             "method": "get",
@@ -1590,9 +1590,9 @@
             },
             "data": {}
         }
-    ],
-    "/subusers/{subuser_name}/ips - parameters": [
-        {
+    },
+    "/subusers/{subuser_name}/ips - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/subusers/{subuser_name}/ips",
             "method": "parameters",
@@ -1603,9 +1603,9 @@
             },
             "data": {}
         }
-    ],
-    "PUT_subusers-subuser_name-ips": [
-        {
+    },
+    "PUT_subusers-subuser_name-ips": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/subusers/{subuser_name}/ips",
             "method": "put",
@@ -1618,9 +1618,9 @@
                 "127.0.0.1"
             ]
         }
-    ],
-    "/subusers/{subuser_name}/monitor - parameters": [
-        {
+    },
+    "/subusers/{subuser_name}/monitor - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/subusers/{subuser_name}/monitor",
             "method": "parameters",
@@ -1631,9 +1631,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_subusers-subuser_name-monitor": [
-        {
+    },
+    "GET_subusers-subuser_name-monitor": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/subusers/{subuser_name}/monitor",
             "method": "get",
@@ -1644,9 +1644,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_subusers-subuser_name-monitor": [
-        {
+    },
+    "POST_subusers-subuser_name-monitor": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/subusers/{subuser_name}/monitor",
             "method": "post",
@@ -1660,9 +1660,9 @@
                 "frequency": 50000
             }
         }
-    ],
-    "PUT_subusers-subuser_name-monitor": [
-        {
+    },
+    "PUT_subusers-subuser_name-monitor": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/subusers/{subuser_name}/monitor",
             "method": "put",
@@ -1676,9 +1676,9 @@
                 "frequency": 50000
             }
         }
-    ],
-    "DELETE_subusers-subuser_name-monitor": [
-        {
+    },
+    "DELETE_subusers-subuser_name-monitor": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/subusers/{subuser_name}/monitor",
             "method": "delete",
@@ -1689,9 +1689,9 @@
             },
             "data": {}
         }
-    ],
-    "/subusers/{subuser_name}/stats/monthly - parameters": [
-        {
+    },
+    "/subusers/{subuser_name}/stats/monthly - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/subusers/{subuser_name}/stats/monthly",
             "method": "parameters",
@@ -1702,9 +1702,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_subusers-subuser_name-stats-monthly": [
-        {
+    },
+    "GET_subusers-subuser_name-stats-monthly": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/subusers/{subuser_name}/stats/monthly",
             "method": "get",
@@ -1721,9 +1721,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_subusers-stats-monthly": [
-        {
+    },
+    "GET_subusers-stats-monthly": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/subusers/stats/monthly",
             "method": "get",
@@ -1741,9 +1741,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_subusers-stats-sums": [
-        {
+    },
+    "GET_subusers-stats-sums": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/subusers/stats/sums",
             "method": "get",
@@ -1762,9 +1762,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_subusers-stats": [
-        {
+    },
+    "GET_subusers-stats": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/subusers/stats",
             "method": "get",
@@ -1782,9 +1782,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_whitelabel-links": [
-        {
+    },
+    "POST_whitelabel-links": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/links",
             "method": "post",
@@ -1800,9 +1800,9 @@
                 "default": true
             }
         }
-    ],
-    "GET_whitelabel-links": [
-        {
+    },
+    "GET_whitelabel-links": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/links",
             "method": "get",
@@ -1816,9 +1816,9 @@
             },
             "data": {}
         }
-    ],
-    "/whitelabel/links/{id}/validate - parameters": [
-        {
+    },
+    "/whitelabel/links/{id}/validate - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/links/{id}/validate",
             "method": "parameters",
@@ -1829,9 +1829,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_whitelabel-links-id-validate": [
-        {
+    },
+    "POST_whitelabel-links-id-validate": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/links/{id}/validate",
             "method": "post",
@@ -1843,9 +1843,9 @@
             },
             "data": {}
         }
-    ],
-    "/whitelabel/links/{link_id}/subuser - parameters": [
-        {
+    },
+    "/whitelabel/links/{link_id}/subuser - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/links/{link_id}/subuser",
             "method": "parameters",
@@ -1856,9 +1856,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_whitelabel-links-link_id-subuser": [
-        {
+    },
+    "POST_whitelabel-links-link_id-subuser": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/links/{link_id}/subuser",
             "method": "post",
@@ -1871,9 +1871,9 @@
                 "username": "jane@example.com"
             }
         }
-    ],
-    "/whitelabel/links/{id} - parameters": [
-        {
+    },
+    "/whitelabel/links/{id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/links/{id}",
             "method": "parameters",
@@ -1884,9 +1884,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_whitelabel-links-id": [
-        {
+    },
+    "GET_whitelabel-links-id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/links/{id}",
             "method": "get",
@@ -1898,9 +1898,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_whitelabel-links-id": [
-        {
+    },
+    "PATCH_whitelabel-links-id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/links/{id}",
             "method": "patch",
@@ -1914,9 +1914,9 @@
                 "default": true
             }
         }
-    ],
-    "DELETE_whitelabel-links-id": [
-        {
+    },
+    "DELETE_whitelabel-links-id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/links/{id}",
             "method": "delete",
@@ -1928,9 +1928,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_whitelabel-links-default": [
-        {
+    },
+    "GET_whitelabel-links-default": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/links/default",
             "method": "get",
@@ -1944,9 +1944,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_whitelabel-links-subuser": [
-        {
+    },
+    "GET_whitelabel-links-subuser": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/links/subuser",
             "method": "get",
@@ -1959,9 +1959,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_whitelabel-links-subuser": [
-        {
+    },
+    "DELETE_whitelabel-links-subuser": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/links/subuser",
             "method": "delete",
@@ -1974,9 +1974,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_ips-warmup": [
-        {
+    },
+    "POST_ips-warmup": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/ips/warmup",
             "method": "post",
@@ -1989,9 +1989,9 @@
                 "ip": "0.0.0.0"
             }
         }
-    ],
-    "GET_ips-warmup": [
-        {
+    },
+    "GET_ips-warmup": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/ips/warmup",
             "method": "get",
@@ -2002,9 +2002,9 @@
             },
             "data": {}
         }
-    ],
-    "/ips/warmup/{ip_address} - parameters": [
-        {
+    },
+    "/ips/warmup/{ip_address} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/ips/warmup/{ip_address}",
             "method": "parameters",
@@ -2015,9 +2015,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_ips-warmup-ip_address": [
-        {
+    },
+    "GET_ips-warmup-ip_address": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/ips/warmup/{ip_address}",
             "method": "get",
@@ -2028,9 +2028,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_ips-warmup-ip_address": [
-        {
+    },
+    "DELETE_ips-warmup-ip_address": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/ips/warmup/{ip_address}",
             "method": "delete",
@@ -2041,9 +2041,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_whitelabel-ips": [
-        {
+    },
+    "POST_whitelabel-ips": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/ips",
             "method": "post",
@@ -2059,9 +2059,9 @@
                 "domain": "example.com"
             }
         }
-    ],
-    "GET_whitelabel-ips": [
-        {
+    },
+    "GET_whitelabel-ips": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/ips",
             "method": "get",
@@ -2077,9 +2077,9 @@
             },
             "data": {}
         }
-    ],
-    "/whitelabel/ips/{id}/validate - parameters": [
-        {
+    },
+    "/whitelabel/ips/{id}/validate - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/ips/{id}/validate",
             "method": "parameters",
@@ -2090,9 +2090,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_whitelabel-ips-id-validate": [
-        {
+    },
+    "POST_whitelabel-ips-id-validate": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/ips/{id}/validate",
             "method": "post",
@@ -2104,9 +2104,9 @@
             },
             "data": {}
         }
-    ],
-    "/whitelabel/ips/{id} - parameters": [
-        {
+    },
+    "/whitelabel/ips/{id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/ips/{id}",
             "method": "parameters",
@@ -2117,9 +2117,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_whitelabel-ips-id": [
-        {
+    },
+    "GET_whitelabel-ips-id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/ips/{id}",
             "method": "get",
@@ -2131,9 +2131,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_whitelabel-ips-id": [
-        {
+    },
+    "DELETE_whitelabel-ips-id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/ips/{id}",
             "method": "delete",
@@ -2145,9 +2145,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_validations-email": [
-        {
+    },
+    "POST_validations-email": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/validations/email",
             "method": "post",
@@ -2161,9 +2161,9 @@
                 "source": "signup"
             }
         }
-    ],
-    "POST_whitelabel-dns-email": [
-        {
+    },
+    "POST_whitelabel-dns-email": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/dns/email",
             "method": "post",
@@ -2179,9 +2179,9 @@
                 "message": "DNS Record for verification"
             }
         }
-    ],
-    "POST_ips-pools": [
-        {
+    },
+    "POST_ips-pools": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/ips/pools",
             "method": "post",
@@ -2194,9 +2194,9 @@
                 "name": "marketing"
             }
         }
-    ],
-    "GET_ips-pools": [
-        {
+    },
+    "GET_ips-pools": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/ips/pools",
             "method": "get",
@@ -2207,9 +2207,9 @@
             },
             "data": {}
         }
-    ],
-    "/ips/pools/{pool_name}/ips - parameters": [
-        {
+    },
+    "/ips/pools/{pool_name}/ips - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/ips/pools/{pool_name}/ips",
             "method": "parameters",
@@ -2220,9 +2220,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_ips-pools-pool_name-ips": [
-        {
+    },
+    "POST_ips-pools-pool_name-ips": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/ips/pools/{pool_name}/ips",
             "method": "post",
@@ -2235,9 +2235,9 @@
                 "ip": "0.0.0.0"
             }
         }
-    ],
-    "/ips/pools/{pool_name} - parameters": [
-        {
+    },
+    "/ips/pools/{pool_name} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/ips/pools/{pool_name}",
             "method": "parameters",
@@ -2248,9 +2248,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_ips-pools-pool_name": [
-        {
+    },
+    "GET_ips-pools-pool_name": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/ips/pools/{pool_name}",
             "method": "get",
@@ -2261,9 +2261,9 @@
             },
             "data": {}
         }
-    ],
-    "PUT_ips-pools-pool_name": [
-        {
+    },
+    "PUT_ips-pools-pool_name": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/ips/pools/{pool_name}",
             "method": "put",
@@ -2276,9 +2276,9 @@
                 "name": "new_pool_name"
             }
         }
-    ],
-    "DELETE_ips-pools-pool_name": [
-        {
+    },
+    "DELETE_ips-pools-pool_name": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/ips/pools/{pool_name}",
             "method": "delete",
@@ -2289,9 +2289,9 @@
             },
             "data": {}
         }
-    ],
-    "/ips/pools/{pool_name}/ips/{ip} - parameters": [
-        {
+    },
+    "/ips/pools/{pool_name}/ips/{ip} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/ips/pools/{pool_name}/ips/{ip}",
             "method": "parameters",
@@ -2302,9 +2302,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_ips-pools-pool_name-ips-ip": [
-        {
+    },
+    "DELETE_ips-pools-pool_name-ips-ip": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/ips/pools/{pool_name}/ips/{ip}",
             "method": "delete",
@@ -2315,9 +2315,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_ips": [
-        {
+    },
+    "POST_ips": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/ips",
             "method": "post",
@@ -2336,9 +2336,9 @@
                 "user_can_send": true
             }
         }
-    ],
-    "GET_ips": [
-        {
+    },
+    "GET_ips": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/ips",
             "method": "get",
@@ -2356,9 +2356,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_ips-remaining": [
-        {
+    },
+    "GET_ips-remaining": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/ips/remaining",
             "method": "get",
@@ -2369,9 +2369,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_ips-assigned": [
-        {
+    },
+    "GET_ips-assigned": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/ips/assigned",
             "method": "get",
@@ -2382,9 +2382,9 @@
             },
             "data": {}
         }
-    ],
-    "/ips/{ip_address} - parameters": [
-        {
+    },
+    "/ips/{ip_address} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/ips/{ip_address}",
             "method": "parameters",
@@ -2395,9 +2395,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_ips-ip_address": [
-        {
+    },
+    "GET_ips-ip_address": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/ips/{ip_address}",
             "method": "get",
@@ -2408,9 +2408,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_whitelabel-domains": [
-        {
+    },
+    "GET_whitelabel-domains": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/domains",
             "method": "get",
@@ -2428,9 +2428,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_whitelabel-domains": [
-        {
+    },
+    "POST_whitelabel-domains": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/domains",
             "method": "post",
@@ -2453,9 +2453,9 @@
                 "automatic_security": false
             }
         }
-    ],
-    "/whitelabel/domains/{domain_id} - parameters": [
-        {
+    },
+    "/whitelabel/domains/{domain_id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/domains/{domain_id}",
             "method": "parameters",
@@ -2466,9 +2466,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_whitelabel-domains-domain_id": [
-        {
+    },
+    "GET_whitelabel-domains-domain_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/domains/{domain_id}",
             "method": "get",
@@ -2480,9 +2480,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_whitelabel-domains-domain_id": [
-        {
+    },
+    "PATCH_whitelabel-domains-domain_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/domains/{domain_id}",
             "method": "patch",
@@ -2497,9 +2497,9 @@
                 "custom_spf": true
             }
         }
-    ],
-    "DELETE_whitelabel-domains-domain_id": [
-        {
+    },
+    "DELETE_whitelabel-domains-domain_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/domains/{domain_id}",
             "method": "delete",
@@ -2511,9 +2511,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_whitelabel-domains-default": [
-        {
+    },
+    "GET_whitelabel-domains-default": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/domains/default",
             "method": "get",
@@ -2527,9 +2527,9 @@
             },
             "data": {}
         }
-    ],
-    "/whitelabel/domains/{id}/ips - parameters": [
-        {
+    },
+    "/whitelabel/domains/{id}/ips - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/domains/{id}/ips",
             "method": "parameters",
@@ -2540,9 +2540,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_whitelabel-domains-id-ips": [
-        {
+    },
+    "POST_whitelabel-domains-id-ips": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/domains/{id}/ips",
             "method": "post",
@@ -2556,9 +2556,9 @@
                 "ip": "192.168.0.1"
             }
         }
-    ],
-    "/whitelabel/domains/{id}/ips/{ip} - parameters": [
-        {
+    },
+    "/whitelabel/domains/{id}/ips/{ip} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/domains/{id}/ips/{ip}",
             "method": "parameters",
@@ -2569,9 +2569,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_whitelabel-domains-id-ips-ip": [
-        {
+    },
+    "DELETE_whitelabel-domains-id-ips-ip": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/domains/{id}/ips/{ip}",
             "method": "delete",
@@ -2583,9 +2583,9 @@
             },
             "data": {}
         }
-    ],
-    "/whitelabel/domains/{id}/validate - parameters": [
-        {
+    },
+    "/whitelabel/domains/{id}/validate - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/domains/{id}/validate",
             "method": "parameters",
@@ -2596,9 +2596,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_whitelabel-domains-id-validate": [
-        {
+    },
+    "POST_whitelabel-domains-id-validate": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/domains/{id}/validate",
             "method": "post",
@@ -2610,9 +2610,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_whitelabel-domains-subuser": [
-        {
+    },
+    "GET_whitelabel-domains-subuser": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/domains/subuser",
             "method": "get",
@@ -2625,9 +2625,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_whitelabel-domains-subuser": [
-        {
+    },
+    "DELETE_whitelabel-domains-subuser": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/domains/subuser",
             "method": "delete",
@@ -2640,9 +2640,9 @@
             },
             "data": {}
         }
-    ],
-    "/whitelabel/domains/{domain_id}/subuser - parameters": [
-        {
+    },
+    "/whitelabel/domains/{domain_id}/subuser - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/domains/{domain_id}/subuser",
             "method": "parameters",
@@ -2653,9 +2653,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_whitelabel-domains-domain_id-subuser": [
-        {
+    },
+    "POST_whitelabel-domains-domain_id-subuser": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/whitelabel/domains/{domain_id}/subuser",
             "method": "post",
@@ -2668,9 +2668,9 @@
                 "username": "jdoe"
             }
         }
-    ],
-    "GET_verified_senders-domains": [
-        {
+    },
+    "GET_verified_senders-domains": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/verified_senders/domains",
             "method": "get",
@@ -2681,9 +2681,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_verified_senders-steps_completed": [
-        {
+    },
+    "GET_verified_senders-steps_completed": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/verified_senders/steps_completed",
             "method": "get",
@@ -2694,9 +2694,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_verified_senders": [
-        {
+    },
+    "POST_verified_senders": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/verified_senders",
             "method": "post",
@@ -2719,9 +2719,9 @@
                 "zip": "94105"
             }
         }
-    ],
-    "GET_verified_senders": [
-        {
+    },
+    "GET_verified_senders": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/verified_senders",
             "method": "get",
@@ -2736,9 +2736,9 @@
             },
             "data": {}
         }
-    ],
-    "/verified_senders/verify/{token} - parameters": [
-        {
+    },
+    "/verified_senders/verify/{token} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/verified_senders/verify/{token}",
             "method": "parameters",
@@ -2749,9 +2749,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_verified_senders-verify-token": [
-        {
+    },
+    "GET_verified_senders-verify-token": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/verified_senders/verify/{token}",
             "method": "get",
@@ -2762,9 +2762,9 @@
             },
             "data": {}
         }
-    ],
-    "/verified_senders/{id} - parameters": [
-        {
+    },
+    "/verified_senders/{id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/verified_senders/{id}",
             "method": "parameters",
@@ -2775,9 +2775,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_verified_senders-id": [
-        {
+    },
+    "PATCH_verified_senders-id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/verified_senders/{id}",
             "method": "patch",
@@ -2800,9 +2800,9 @@
                 "zip": "94105"
             }
         }
-    ],
-    "DELETE_verified_senders-id": [
-        {
+    },
+    "DELETE_verified_senders-id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/verified_senders/{id}",
             "method": "delete",
@@ -2813,9 +2813,9 @@
             },
             "data": {}
         }
-    ],
-    "/verified_senders/resend/{id} - parameters": [
-        {
+    },
+    "/verified_senders/resend/{id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/verified_senders/resend/{id}",
             "method": "parameters",
@@ -2826,9 +2826,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_verified_senders-resend-id": [
-        {
+    },
+    "POST_verified_senders-resend-id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/verified_senders/resend/{id}",
             "method": "post",
@@ -2839,9 +2839,9 @@
             },
             "data": {}
         }
-    ],
-    "/designs/{id} - parameters": [
-        {
+    },
+    "/designs/{id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/designs/{id}",
             "method": "parameters",
@@ -2852,9 +2852,9 @@
             },
             "data": {}
         }
-    ],
-    "POST-design": [
-        {
+    },
+    "POST-design": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/designs",
             "method": "post",
@@ -2871,9 +2871,9 @@
                 "plain_content": "Ahoy, World!\n\n{{Sender_Name}}\n\n{{Sender_Address}} , {{Sender_City}} , {{Sender_State}} {{Sender_Zip}}\n\nUnsubscribe ( {{{unsubscribe}}} ) - Unsubscribe Preferences ( {{{unsubscribe_preferences}}} )"
             }
         }
-    ],
-    "GET-design": [
-        {
+    },
+    "GET-design": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/designs/{id}",
             "method": "get",
@@ -2884,9 +2884,9 @@
             },
             "data": {}
         }
-    ],
-    "PUT-design": [
-        {
+    },
+    "PUT-design": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/designs/{id}",
             "method": "patch",
@@ -2905,9 +2905,9 @@
                 ]
             }
         }
-    ],
-    "DELETE-design": [
-        {
+    },
+    "DELETE-design": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/designs/{id}",
             "method": "delete",
@@ -2918,9 +2918,9 @@
             },
             "data": {}
         }
-    ],
-    "LIST-designs": [
-        {
+    },
+    "LIST-designs": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/designs",
             "method": "get",
@@ -2935,9 +2935,9 @@
             },
             "data": {}
         }
-    ],
-    "/designs/pre-builts/{id} - parameters": [
-        {
+    },
+    "/designs/pre-builts/{id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/designs/pre-builts/{id}",
             "method": "parameters",
@@ -2948,9 +2948,9 @@
             },
             "data": {}
         }
-    ],
-    "POST-sendgrid-pre-built-design": [
-        {
+    },
+    "POST-sendgrid-pre-built-design": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/designs/pre-builts/{id}",
             "method": "post",
@@ -2964,9 +2964,9 @@
                 "editor": "design"
             }
         }
-    ],
-    "GET-sendgrid-pre-built-design": [
-        {
+    },
+    "GET-sendgrid-pre-built-design": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/designs/pre-builts/{id}",
             "method": "get",
@@ -2977,9 +2977,9 @@
             },
             "data": {}
         }
-    ],
-    "LIST-Sendgrid-Pre-built-designs": [
-        {
+    },
+    "LIST-Sendgrid-Pre-built-designs": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/designs/pre-builts",
             "method": "get",
@@ -2994,9 +2994,9 @@
             },
             "data": {}
         }
-    ],
-    "PUT_mc-contacts": [
-        {
+    },
+    "PUT_mc-contacts": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/contacts",
             "method": "put",
@@ -3032,9 +3032,9 @@
                 ]
             }
         }
-    ],
-    "DELETE_mc-contacts": [
-        {
+    },
+    "DELETE_mc-contacts": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/contacts",
             "method": "delete",
@@ -3048,9 +3048,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_mc-contats": [
-        {
+    },
+    "GET_mc-contats": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/contacts",
             "method": "get",
@@ -3061,9 +3061,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_mc-contacts-count": [
-        {
+    },
+    "GET_mc-contacts-count": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/contacts/count",
             "method": "get",
@@ -3074,9 +3074,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_mc-contacts-exports": [
-        {
+    },
+    "POST_mc-contacts-exports": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/contacts/exports",
             "method": "post",
@@ -3099,9 +3099,9 @@
                 "max_file_size": 0
             }
         }
-    ],
-    "GET_marketing-contacts-exports": [
-        {
+    },
+    "GET_marketing-contacts-exports": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/contacts/exports",
             "method": "get",
@@ -3112,9 +3112,9 @@
             },
             "data": {}
         }
-    ],
-    "/marketing/contacts/{id} - parameters": [
-        {
+    },
+    "/marketing/contacts/{id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/contacts/{id}",
             "method": "parameters",
@@ -3125,9 +3125,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_mc-contacts-id": [
-        {
+    },
+    "GET_mc-contacts-id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/contacts/{id}",
             "method": "get",
@@ -3138,9 +3138,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_mc-contacts-search": [
-        {
+    },
+    "POST_mc-contacts-search": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/contacts/search",
             "method": "post",
@@ -3153,9 +3153,9 @@
                 "query": "email LIKE 'ENTER_COMPLETE_OR_PARTIAL_EMAIL_ADDRESS_HERE%' AND CONTAINS(list_ids, 'YOUR_LIST_IDs')"
             }
         }
-    ],
-    "PUT_mc-contacts-imports": [
-        {
+    },
+    "PUT_mc-contacts-imports": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/contacts/imports",
             "method": "put",
@@ -3174,9 +3174,9 @@
                 ]
             }
         }
-    ],
-    "/marketing/contacts/imports/{id} - parameters": [
-        {
+    },
+    "/marketing/contacts/imports/{id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/contacts/imports/{id}",
             "method": "parameters",
@@ -3187,9 +3187,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_marketing-contacts-imports-id": [
-        {
+    },
+    "GET_marketing-contacts-imports-id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/contacts/imports/{id}",
             "method": "get",
@@ -3200,9 +3200,9 @@
             },
             "data": {}
         }
-    ],
-    "/marketing/contacts/exports/{id} - parameters": [
-        {
+    },
+    "/marketing/contacts/exports/{id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/contacts/exports/{id}",
             "method": "parameters",
@@ -3213,9 +3213,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_mc-contacts-exports-id": [
-        {
+    },
+    "GET_mc-contacts-exports-id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/contacts/exports/{id}",
             "method": "get",
@@ -3226,9 +3226,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_marketing-contacts-batch": [
-        {
+    },
+    "POST_marketing-contacts-batch": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/contacts/batch",
             "method": "post",
@@ -3244,9 +3244,9 @@
                 ]
             }
         }
-    ],
-    "POST_marketing-contacts-search-emails": [
-        {
+    },
+    "POST_marketing-contacts-search-emails": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/contacts/search/emails",
             "method": "post",
@@ -3263,9 +3263,9 @@
                 ]
             }
         }
-    ],
-    "POST_segments": [
-        {
+    },
+    "POST_segments": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/segments/2.0",
             "method": "post",
@@ -3282,9 +3282,9 @@
                 "query_dsl": "<query_dsl>"
             }
         }
-    ],
-    "GET_segments": [
-        {
+    },
+    "GET_segments": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/segments/2.0",
             "method": "get",
@@ -3298,9 +3298,9 @@
             },
             "data": {}
         }
-    ],
-    "/marketing/segments/2.0/{segment_id} - parameters": [
-        {
+    },
+    "/marketing/segments/2.0/{segment_id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/segments/2.0/{segment_id}",
             "method": "parameters",
@@ -3311,9 +3311,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_segments-segment_id": [
-        {
+    },
+    "PATCH_segments-segment_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/segments/2.0/{segment_id}",
             "method": "patch",
@@ -3327,9 +3327,9 @@
                 "query_dsl": "<query_dsl>"
             }
         }
-    ],
-    "GET_segments-segment_id": [
-        {
+    },
+    "GET_segments-segment_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/segments/2.0/{segment_id}",
             "method": "get",
@@ -3342,9 +3342,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_segments-segment_id": [
-        {
+    },
+    "DELETE_segments-segment_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/segments/2.0/{segment_id}",
             "method": "delete",
@@ -3355,9 +3355,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_marketing-senders": [
-        {
+    },
+    "POST_marketing-senders": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/senders",
             "method": "post",
@@ -3385,9 +3385,9 @@
                 "country": "United States"
             }
         }
-    ],
-    "POST_mc-lists": [
-        {
+    },
+    "POST_mc-lists": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/lists",
             "method": "post",
@@ -3400,9 +3400,9 @@
                 "name": "list-name"
             }
         }
-    ],
-    "GET_mc-lists": [
-        {
+    },
+    "GET_mc-lists": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/lists",
             "method": "get",
@@ -3416,9 +3416,9 @@
             },
             "data": {}
         }
-    ],
-    "/marketing/lists/{id}/contacts/count - parameters": [
-        {
+    },
+    "/marketing/lists/{id}/contacts/count - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/lists/{id}/contacts/count",
             "method": "parameters",
@@ -3429,9 +3429,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_mc-lists-id-contacts-count": [
-        {
+    },
+    "GET_mc-lists-id-contacts-count": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/lists/{id}/contacts/count",
             "method": "get",
@@ -3442,9 +3442,9 @@
             },
             "data": {}
         }
-    ],
-    "/marketing/lists/{id} - parameters": [
-        {
+    },
+    "/marketing/lists/{id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/lists/{id}",
             "method": "parameters",
@@ -3455,9 +3455,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_mc-lists-id": [
-        {
+    },
+    "GET_mc-lists-id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/lists/{id}",
             "method": "get",
@@ -3470,9 +3470,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_mc-lists-id": [
-        {
+    },
+    "PATCH_mc-lists-id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/lists/{id}",
             "method": "patch",
@@ -3485,9 +3485,9 @@
                 "name": "updated-list-name"
             }
         }
-    ],
-    "DELETE_lists-id": [
-        {
+    },
+    "DELETE_lists-id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/lists/{id}",
             "method": "delete",
@@ -3500,9 +3500,9 @@
             },
             "data": {}
         }
-    ],
-    "/marketing/lists/{id}/contacts - parameters": [
-        {
+    },
+    "/marketing/lists/{id}/contacts - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/lists/{id}/contacts",
             "method": "parameters",
@@ -3513,9 +3513,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_mc-lists-id-contacts": [
-        {
+    },
+    "DELETE_mc-lists-id-contacts": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/lists/{id}/contacts",
             "method": "delete",
@@ -3528,9 +3528,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_mc-field_definitions": [
-        {
+    },
+    "POST_mc-field_definitions": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/field_definitions",
             "method": "post",
@@ -3544,9 +3544,9 @@
                 "field_type": "Text"
             }
         }
-    ],
-    "GET_mc-field_definitions": [
-        {
+    },
+    "GET_mc-field_definitions": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/field_definitions",
             "method": "get",
@@ -3557,9 +3557,9 @@
             },
             "data": {}
         }
-    ],
-    "/marketing/field_definitions/{custom_field_id} - parameters": [
-        {
+    },
+    "/marketing/field_definitions/{custom_field_id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/field_definitions/{custom_field_id}",
             "method": "parameters",
@@ -3570,9 +3570,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_mc-field_definitions-custom_field_id": [
-        {
+    },
+    "PATCH_mc-field_definitions-custom_field_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/field_definitions/{custom_field_id}",
             "method": "patch",
@@ -3585,9 +3585,9 @@
                 "name": "new_custom_field_name"
             }
         }
-    ],
-    "DELETE_mc-field_definitions-custom_field_id": [
-        {
+    },
+    "DELETE_mc-field_definitions-custom_field_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/field_definitions/{custom_field_id}",
             "method": "delete",
@@ -3598,9 +3598,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_marketing-segments": [
-        {
+    },
+    "POST_marketing-segments": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/segments",
             "method": "post",
@@ -3611,9 +3611,9 @@
             },
             "data": "<value>"
         }
-    ],
-    "GET_marketing-segments": [
-        {
+    },
+    "GET_marketing-segments": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/segments",
             "method": "get",
@@ -3627,9 +3627,9 @@
             },
             "data": {}
         }
-    ],
-    "/marketing/segments/{segment_id} - parameters": [
-        {
+    },
+    "/marketing/segments/{segment_id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/segments/{segment_id}",
             "method": "parameters",
@@ -3640,9 +3640,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_marketing-segments-segment_id": [
-        {
+    },
+    "GET_marketing-segments-segment_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/segments/{segment_id}",
             "method": "get",
@@ -3655,9 +3655,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_marketing-segments-segment_id": [
-        {
+    },
+    "PATCH_marketing-segments-segment_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/segments/{segment_id}",
             "method": "patch",
@@ -3674,9 +3674,9 @@
                 "query_dsl": "<query_dsl>"
             }
         }
-    ],
-    "DELETE_marketing-segments-segment_id": [
-        {
+    },
+    "DELETE_marketing-segments-segment_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/segments/{segment_id}",
             "method": "delete",
@@ -3687,9 +3687,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_marketing-segments-delete": [
-        {
+    },
+    "POST_marketing-segments-delete": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/segments/delete",
             "method": "post",
@@ -3708,9 +3708,9 @@
                 ]
             }
         }
-    ],
-    "POST_marketing-singlesends": [
-        {
+    },
+    "POST_marketing-singlesends": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/singlesends",
             "method": "post",
@@ -3748,9 +3748,9 @@
                 }
             }
         }
-    ],
-    "GET_marketing-singlesends": [
-        {
+    },
+    "GET_marketing-singlesends": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/singlesends",
             "method": "get",
@@ -3764,9 +3764,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_marketing-singlesends": [
-        {
+    },
+    "DELETE_marketing-singlesends": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/singlesends",
             "method": "delete",
@@ -3779,9 +3779,9 @@
             },
             "data": {}
         }
-    ],
-    "/marketing/singlesends/{id} - parameters": [
-        {
+    },
+    "/marketing/singlesends/{id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/singlesends/{id}",
             "method": "parameters",
@@ -3792,9 +3792,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_marketing-singlesends-id": [
-        {
+    },
+    "POST_marketing-singlesends-id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/singlesends/{id}",
             "method": "post",
@@ -3807,9 +3807,9 @@
                 "name": "<name>"
             }
         }
-    ],
-    "PATCH_marketing-singlesends-id": [
-        {
+    },
+    "PATCH_marketing-singlesends-id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/singlesends/{id}",
             "method": "patch",
@@ -3847,9 +3847,9 @@
                 }
             }
         }
-    ],
-    "GET_marketing-singlesends-id": [
-        {
+    },
+    "GET_marketing-singlesends-id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/singlesends/{id}",
             "method": "get",
@@ -3860,9 +3860,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_marketing-singlesends-id": [
-        {
+    },
+    "DELETE_marketing-singlesends-id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/singlesends/{id}",
             "method": "delete",
@@ -3873,9 +3873,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_marketing-singlesends-search": [
-        {
+    },
+    "POST_marketing-singlesends-search": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/singlesends/search",
             "method": "post",
@@ -3897,9 +3897,9 @@
                 ]
             }
         }
-    ],
-    "/marketing/singlesends/{id}/schedule - parameters": [
-        {
+    },
+    "/marketing/singlesends/{id}/schedule - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/singlesends/{id}/schedule",
             "method": "parameters",
@@ -3910,9 +3910,9 @@
             },
             "data": {}
         }
-    ],
-    "PUT_marketing-singlesends-id-schedule": [
-        {
+    },
+    "PUT_marketing-singlesends-id-schedule": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/singlesends/{id}/schedule",
             "method": "put",
@@ -3925,9 +3925,9 @@
                 "send_at": "3752-01-28T23:21:52.575Z"
             }
         }
-    ],
-    "DELETE_marketing-singlesends-id-schedule": [
-        {
+    },
+    "DELETE_marketing-singlesends-id-schedule": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/singlesends/{id}/schedule",
             "method": "delete",
@@ -3938,9 +3938,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_marketing-singlesends-categories": [
-        {
+    },
+    "GET_marketing-singlesends-categories": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/singlesends/categories",
             "method": "get",
@@ -3951,9 +3951,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_marketing-test-send_email": [
-        {
+    },
+    "POST_marketing-test-send_email": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/test/send_email",
             "method": "post",
@@ -3975,9 +3975,9 @@
                 ]
             }
         }
-    ],
-    "getall-automation-stats": [
-        {
+    },
+    "getall-automation-stats": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/stats/automations",
             "method": "get",
@@ -3992,9 +3992,9 @@
             },
             "data": {}
         }
-    ],
-    "/marketing/stats/automations/{id} - parameters": [
-        {
+    },
+    "/marketing/stats/automations/{id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/stats/automations/{id}",
             "method": "parameters",
@@ -4005,9 +4005,9 @@
             },
             "data": {}
         }
-    ],
-    "get-automation-stat": [
-        {
+    },
+    "get-automation-stat": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/stats/automations/{id}",
             "method": "get",
@@ -4027,9 +4027,9 @@
             },
             "data": {}
         }
-    ],
-    "getall-singlesend-stats": [
-        {
+    },
+    "getall-singlesend-stats": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/stats/singlesends",
             "method": "get",
@@ -4044,9 +4044,9 @@
             },
             "data": {}
         }
-    ],
-    "/marketing/stats/singlesends/{id} - parameters": [
-        {
+    },
+    "/marketing/stats/singlesends/{id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/stats/singlesends/{id}",
             "method": "parameters",
@@ -4057,9 +4057,9 @@
             },
             "data": {}
         }
-    ],
-    "get-singlesend-stat": [
-        {
+    },
+    "get-singlesend-stat": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/stats/singlesends/{id}",
             "method": "get",
@@ -4078,9 +4078,9 @@
             },
             "data": {}
         }
-    ],
-    "/marketing/stats/automations/{id}/links - parameters": [
-        {
+    },
+    "/marketing/stats/automations/{id}/links - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/stats/automations/{id}/links",
             "method": "parameters",
@@ -4091,9 +4091,9 @@
             },
             "data": {}
         }
-    ],
-    "get-automation-link-stat": [
-        {
+    },
+    "get-automation-link-stat": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/stats/automations/{id}/links",
             "method": "get",
@@ -4109,9 +4109,9 @@
             },
             "data": {}
         }
-    ],
-    "/marketing/stats/singlesends/{id}/links - parameters": [
-        {
+    },
+    "/marketing/stats/singlesends/{id}/links - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/stats/singlesends/{id}/links",
             "method": "parameters",
@@ -4122,9 +4122,9 @@
             },
             "data": {}
         }
-    ],
-    "get-singlesend-link-stat": [
-        {
+    },
+    "get-singlesend-link-stat": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/stats/singlesends/{id}/links",
             "method": "get",
@@ -4141,9 +4141,9 @@
             },
             "data": {}
         }
-    ],
-    "get-singlesend-stats-export": [
-        {
+    },
+    "get-singlesend-stats-export": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/stats/singlesends/export",
             "method": "get",
@@ -4157,9 +4157,9 @@
             },
             "data": {}
         }
-    ],
-    "get-automations-stats-export": [
-        {
+    },
+    "get-automations-stats-export": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/marketing/stats/automations/export",
             "method": "get",
@@ -4173,9 +4173,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_senders": [
-        {
+    },
+    "POST_senders": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/senders",
             "method": "post",
@@ -4203,9 +4203,9 @@
                 "country": "United States"
             }
         }
-    ],
-    "GET_v3-senders": [
-        {
+    },
+    "GET_v3-senders": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/senders",
             "method": "get",
@@ -4217,9 +4217,9 @@
             },
             "data": {}
         }
-    ],
-    "/senders/{sender_id} - parameters": [
-        {
+    },
+    "/senders/{sender_id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/senders/{sender_id}",
             "method": "parameters",
@@ -4230,9 +4230,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_v3-senders-sender_id": [
-        {
+    },
+    "GET_v3-senders-sender_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/senders/{sender_id}",
             "method": "get",
@@ -4244,9 +4244,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_v3-senders-sender_id": [
-        {
+    },
+    "PATCH_v3-senders-sender_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/senders/{sender_id}",
             "method": "patch",
@@ -4274,9 +4274,9 @@
                 "country": "United States"
             }
         }
-    ],
-    "DELETE_v3-senders-sender_id": [
-        {
+    },
+    "DELETE_v3-senders-sender_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/senders/{sender_id}",
             "method": "delete",
@@ -4288,9 +4288,9 @@
             },
             "data": {}
         }
-    ],
-    "/senders/{sender_id}/resend_verification - parameters": [
-        {
+    },
+    "/senders/{sender_id}/resend_verification - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/senders/{sender_id}/resend_verification",
             "method": "parameters",
@@ -4301,9 +4301,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_v3-senders-sender_id-resend_verification": [
-        {
+    },
+    "POST_v3-senders-sender_id-resend_verification": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/senders/{sender_id}/resend_verification",
             "method": "post",
@@ -4315,9 +4315,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_contactdb-lists": [
-        {
+    },
+    "POST_contactdb-lists": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/lists",
             "method": "post",
@@ -4331,9 +4331,9 @@
                 "name": "your list name"
             }
         }
-    ],
-    "GET_contactdb-lists": [
-        {
+    },
+    "GET_contactdb-lists": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/lists",
             "method": "get",
@@ -4345,9 +4345,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_contactdb-lists": [
-        {
+    },
+    "DELETE_contactdb-lists": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/lists",
             "method": "delete",
@@ -4364,9 +4364,9 @@
                 4
             ]
         }
-    ],
-    "/contactdb/lists/{list_id} - parameters": [
-        {
+    },
+    "/contactdb/lists/{list_id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/lists/{list_id}",
             "method": "parameters",
@@ -4377,9 +4377,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_contactdb-lists-list_id": [
-        {
+    },
+    "GET_contactdb-lists-list_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/lists/{list_id}",
             "method": "get",
@@ -4393,9 +4393,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_contactdb-lists-list_id": [
-        {
+    },
+    "PATCH_contactdb-lists-list_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/lists/{list_id}",
             "method": "patch",
@@ -4411,9 +4411,9 @@
                 "name": "newlistname"
             }
         }
-    ],
-    "DELETE_contactdb-lists-list_id": [
-        {
+    },
+    "DELETE_contactdb-lists-list_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/lists/{list_id}",
             "method": "delete",
@@ -4427,9 +4427,9 @@
             },
             "data": "<value>"
         }
-    ],
-    "/contactdb/lists/{list_id}/recipients - parameters": [
-        {
+    },
+    "/contactdb/lists/{list_id}/recipients - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/lists/{list_id}/recipients",
             "method": "parameters",
@@ -4440,9 +4440,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_contactdb-lists-list_id-recipients": [
-        {
+    },
+    "GET_contactdb-lists-list_id-recipients": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/lists/{list_id}/recipients",
             "method": "get",
@@ -4458,9 +4458,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_contactdb-lists-list_id-recipients": [
-        {
+    },
+    "POST_contactdb-lists-list_id-recipients": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/lists/{list_id}/recipients",
             "method": "post",
@@ -4475,9 +4475,9 @@
                 "recipient_id2"
             ]
         }
-    ],
-    "/contactdb/lists/{list_id}/recipients/{recipient_id} - parameters": [
-        {
+    },
+    "/contactdb/lists/{list_id}/recipients/{recipient_id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/lists/{list_id}/recipients/{recipient_id}",
             "method": "parameters",
@@ -4488,9 +4488,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_contactdb-lists-list_id-recipients-recipient_id": [
-        {
+    },
+    "POST_contactdb-lists-list_id-recipients-recipient_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/lists/{list_id}/recipients/{recipient_id}",
             "method": "post",
@@ -4502,9 +4502,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_contactdb-lists-list_id-recipients-recipient_id": [
-        {
+    },
+    "DELETE_contactdb-lists-list_id-recipients-recipient_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/lists/{list_id}/recipients/{recipient_id}",
             "method": "delete",
@@ -4519,9 +4519,9 @@
             },
             "data": "<value>"
         }
-    ],
-    "POST_contactdb-recipients": [
-        {
+    },
+    "POST_contactdb-recipients": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/recipients",
             "method": "post",
@@ -4546,9 +4546,9 @@
                 }
             ]
         }
-    ],
-    "PATCH_contactdb-recipients": [
-        {
+    },
+    "PATCH_contactdb-recipients": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/recipients",
             "method": "patch",
@@ -4566,9 +4566,9 @@
                 }
             ]
         }
-    ],
-    "DELETE_contactdb-recipients": [
-        {
+    },
+    "DELETE_contactdb-recipients": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/recipients",
             "method": "delete",
@@ -4583,9 +4583,9 @@
                 "recipient_id2"
             ]
         }
-    ],
-    "GET_contactdb-recipients": [
-        {
+    },
+    "GET_contactdb-recipients": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/recipients",
             "method": "get",
@@ -4600,9 +4600,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_contactdb-status": [
-        {
+    },
+    "GET_contactdb-status": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/status",
             "method": "get",
@@ -4614,9 +4614,9 @@
             },
             "data": {}
         }
-    ],
-    "/contactdb/recipients/{recipient_id} - parameters": [
-        {
+    },
+    "/contactdb/recipients/{recipient_id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/recipients/{recipient_id}",
             "method": "parameters",
@@ -4627,9 +4627,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_contactdb-recipients-recipient_id": [
-        {
+    },
+    "GET_contactdb-recipients-recipient_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/recipients/{recipient_id}",
             "method": "get",
@@ -4641,9 +4641,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_contactdb-recipients-recipient_id": [
-        {
+    },
+    "DELETE_contactdb-recipients-recipient_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/recipients/{recipient_id}",
             "method": "delete",
@@ -4655,9 +4655,9 @@
             },
             "data": {}
         }
-    ],
-    "/contactdb/recipients/{recipient_id}/lists - parameters": [
-        {
+    },
+    "/contactdb/recipients/{recipient_id}/lists - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/recipients/{recipient_id}/lists",
             "method": "parameters",
@@ -4668,9 +4668,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_contactdb-recipients-recipient_id-lists": [
-        {
+    },
+    "GET_contactdb-recipients-recipient_id-lists": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/recipients/{recipient_id}/lists",
             "method": "get",
@@ -4682,9 +4682,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_contactdb-recipients-billable_count": [
-        {
+    },
+    "GET_contactdb-recipients-billable_count": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/recipients/billable_count",
             "method": "get",
@@ -4696,9 +4696,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_contactdb-recipients-count": [
-        {
+    },
+    "GET_contactdb-recipients-count": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/recipients/count",
             "method": "get",
@@ -4710,9 +4710,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_contactdb-recipients-search": [
-        {
+    },
+    "GET_contactdb-recipients-search": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/recipients/search",
             "method": "get",
@@ -4726,9 +4726,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_contactdb-recipients-search": [
-        {
+    },
+    "POST_contactdb-recipients-search": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/recipients/search",
             "method": "post",
@@ -4767,9 +4767,9 @@
                 ]
             }
         }
-    ],
-    "POST_contactdb-custom_fields": [
-        {
+    },
+    "POST_contactdb-custom_fields": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/custom_fields",
             "method": "post",
@@ -4784,9 +4784,9 @@
                 "type": "text"
             }
         }
-    ],
-    "GET_contactdb-custom_fields": [
-        {
+    },
+    "GET_contactdb-custom_fields": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/custom_fields",
             "method": "get",
@@ -4798,9 +4798,9 @@
             },
             "data": {}
         }
-    ],
-    "/contactdb/custom_fields/{custom_field_id} - parameters": [
-        {
+    },
+    "/contactdb/custom_fields/{custom_field_id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/custom_fields/{custom_field_id}",
             "method": "parameters",
@@ -4811,9 +4811,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_contactdb-custom_fields-custom_field_id": [
-        {
+    },
+    "GET_contactdb-custom_fields-custom_field_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/custom_fields/{custom_field_id}",
             "method": "get",
@@ -4825,9 +4825,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_contactdb-custom_fields-custom_field_id": [
-        {
+    },
+    "DELETE_contactdb-custom_fields-custom_field_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/custom_fields/{custom_field_id}",
             "method": "delete",
@@ -4839,9 +4839,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_contactdb-reserved_fields": [
-        {
+    },
+    "GET_contactdb-reserved_fields": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/reserved_fields",
             "method": "get",
@@ -4853,9 +4853,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_contactdb-segments": [
-        {
+    },
+    "POST_contactdb-segments": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/segments",
             "method": "post",
@@ -4891,9 +4891,9 @@
                 "recipient_count": 1234
             }
         }
-    ],
-    "GET_contactdb-segments": [
-        {
+    },
+    "GET_contactdb-segments": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/segments",
             "method": "get",
@@ -4905,9 +4905,9 @@
             },
             "data": {}
         }
-    ],
-    "/contactdb/segments/{segment_id} - parameters": [
-        {
+    },
+    "/contactdb/segments/{segment_id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/segments/{segment_id}",
             "method": "parameters",
@@ -4918,9 +4918,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_contactdb-segments-segment_id": [
-        {
+    },
+    "GET_contactdb-segments-segment_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/segments/{segment_id}",
             "method": "get",
@@ -4934,9 +4934,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_contactdb-segments-segment_id": [
-        {
+    },
+    "PATCH_contactdb-segments-segment_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/segments/{segment_id}",
             "method": "patch",
@@ -4961,9 +4961,9 @@
                 ]
             }
         }
-    ],
-    "DELETE_contactdb-segments-segment_id": [
-        {
+    },
+    "DELETE_contactdb-segments-segment_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/segments/{segment_id}",
             "method": "delete",
@@ -4977,9 +4977,9 @@
             },
             "data": "<value>"
         }
-    ],
-    "/contactdb/segments/{segment_id}/recipients - parameters": [
-        {
+    },
+    "/contactdb/segments/{segment_id}/recipients - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/segments/{segment_id}/recipients",
             "method": "parameters",
@@ -4990,9 +4990,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_contactdb-segments-segment_id-recipients": [
-        {
+    },
+    "GET_contactdb-segments-segment_id-recipients": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/contactdb/segments/{segment_id}/recipients",
             "method": "get",
@@ -5007,9 +5007,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_categories": [
-        {
+    },
+    "GET_categories": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/categories",
             "method": "get",
@@ -5025,9 +5025,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_categories-stats-sums": [
-        {
+    },
+    "GET_categories-stats-sums": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/categories/stats/sums",
             "method": "get",
@@ -5047,9 +5047,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_categories-stats": [
-        {
+    },
+    "GET_categories-stats": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/categories/stats",
             "method": "get",
@@ -5068,9 +5068,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_campaigns": [
-        {
+    },
+    "POST_campaigns": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/campaigns",
             "method": "post",
@@ -5103,9 +5103,9 @@
                 "status": "Draft"
             }
         }
-    ],
-    "GET_campaigns": [
-        {
+    },
+    "GET_campaigns": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/campaigns",
             "method": "get",
@@ -5120,9 +5120,9 @@
             },
             "data": {}
         }
-    ],
-    "/campaigns/{campaign_id} - parameters": [
-        {
+    },
+    "/campaigns/{campaign_id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/campaigns/{campaign_id}",
             "method": "parameters",
@@ -5133,9 +5133,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_campaigns-campaign_id": [
-        {
+    },
+    "GET_campaigns-campaign_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/campaigns/{campaign_id}",
             "method": "get",
@@ -5147,9 +5147,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_campaigns-campaign_id": [
-        {
+    },
+    "DELETE_campaigns-campaign_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/campaigns/{campaign_id}",
             "method": "delete",
@@ -5161,9 +5161,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_campaigns-campaign_id": [
-        {
+    },
+    "PATCH_campaigns-campaign_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/campaigns/{campaign_id}",
             "method": "patch",
@@ -5183,9 +5183,9 @@
                 "plain_content": "Check out our summer line!"
             }
         }
-    ],
-    "/campaigns/{campaign_id}/schedules/now - parameters": [
-        {
+    },
+    "/campaigns/{campaign_id}/schedules/now - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/campaigns/{campaign_id}/schedules/now",
             "method": "parameters",
@@ -5196,9 +5196,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_campaigns-campaign_id-schedules-now": [
-        {
+    },
+    "POST_campaigns-campaign_id-schedules-now": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/campaigns/{campaign_id}/schedules/now",
             "method": "post",
@@ -5210,9 +5210,9 @@
             },
             "data": {}
         }
-    ],
-    "/campaigns/{campaign_id}/schedules - parameters": [
-        {
+    },
+    "/campaigns/{campaign_id}/schedules - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/campaigns/{campaign_id}/schedules",
             "method": "parameters",
@@ -5223,9 +5223,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_campaigns-campaign_id-schedules": [
-        {
+    },
+    "POST_campaigns-campaign_id-schedules": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/campaigns/{campaign_id}/schedules",
             "method": "post",
@@ -5239,9 +5239,9 @@
                 "send_at": 1489771528
             }
         }
-    ],
-    "PATCH_campaigns-campaign_id-schedules": [
-        {
+    },
+    "PATCH_campaigns-campaign_id-schedules": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/campaigns/{campaign_id}/schedules",
             "method": "patch",
@@ -5255,9 +5255,9 @@
                 "send_at": 1489451436
             }
         }
-    ],
-    "GET_campaigns-campaign_id-schedules": [
-        {
+    },
+    "GET_campaigns-campaign_id-schedules": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/campaigns/{campaign_id}/schedules",
             "method": "get",
@@ -5269,9 +5269,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_campaigns-campaign_id-schedules": [
-        {
+    },
+    "DELETE_campaigns-campaign_id-schedules": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/campaigns/{campaign_id}/schedules",
             "method": "delete",
@@ -5283,9 +5283,9 @@
             },
             "data": {}
         }
-    ],
-    "/campaigns/{campaign_id}/schedules/test - parameters": [
-        {
+    },
+    "/campaigns/{campaign_id}/schedules/test - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/campaigns/{campaign_id}/schedules/test",
             "method": "parameters",
@@ -5296,9 +5296,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_campaigns-campaign_id-schedules-test": [
-        {
+    },
+    "POST_campaigns-campaign_id-schedules-test": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/campaigns/{campaign_id}/schedules/test",
             "method": "post",
@@ -5312,9 +5312,9 @@
                 "to": "your.email@example.com"
             }
         }
-    ],
-    "POST_templates": [
-        {
+    },
+    "POST_templates": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/templates",
             "method": "post",
@@ -5329,9 +5329,9 @@
                 "generation": "dynamic"
             }
         }
-    ],
-    "GET_templates": [
-        {
+    },
+    "GET_templates": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/templates",
             "method": "get",
@@ -5347,9 +5347,9 @@
             },
             "data": {}
         }
-    ],
-    "/templates/{template_id} - parameters": [
-        {
+    },
+    "/templates/{template_id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/templates/{template_id}",
             "method": "parameters",
@@ -5360,9 +5360,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_templates-template_id": [
-        {
+    },
+    "POST_templates-template_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/templates/{template_id}",
             "method": "post",
@@ -5376,9 +5376,9 @@
                 "name": "example_name"
             }
         }
-    ],
-    "GET_templates-template_id": [
-        {
+    },
+    "GET_templates-template_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/templates/{template_id}",
             "method": "get",
@@ -5390,9 +5390,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_templates-template_id": [
-        {
+    },
+    "PATCH_templates-template_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/templates/{template_id}",
             "method": "patch",
@@ -5406,9 +5406,9 @@
                 "name": "new_example_name"
             }
         }
-    ],
-    "DELETE_templates-template_id": [
-        {
+    },
+    "DELETE_templates-template_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/templates/{template_id}",
             "method": "delete",
@@ -5420,9 +5420,9 @@
             },
             "data": {}
         }
-    ],
-    "/templates/{template_id}/versions - parameters": [
-        {
+    },
+    "/templates/{template_id}/versions - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/templates/{template_id}/versions",
             "method": "parameters",
@@ -5433,9 +5433,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_templates-template_id-versions": [
-        {
+    },
+    "POST_templates-template_id-versions": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/templates/{template_id}/versions",
             "method": "post",
@@ -5456,9 +5456,9 @@
                 "plain_content": "labore dolore"
             }
         }
-    ],
-    "/templates/{template_id}/versions/{version_id}/activate - parameters": [
-        {
+    },
+    "/templates/{template_id}/versions/{version_id}/activate - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/templates/{template_id}/versions/{version_id}/activate",
             "method": "parameters",
@@ -5469,9 +5469,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_templates-template_id-versions-version_id-activate": [
-        {
+    },
+    "POST_templates-template_id-versions-version_id-activate": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/templates/{template_id}/versions/{version_id}/activate",
             "method": "post",
@@ -5483,9 +5483,9 @@
             },
             "data": {}
         }
-    ],
-    "/templates/{template_id}/versions/{version_id} - parameters": [
-        {
+    },
+    "/templates/{template_id}/versions/{version_id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/templates/{template_id}/versions/{version_id}",
             "method": "parameters",
@@ -5496,9 +5496,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_templates-template_id-versions-version_id": [
-        {
+    },
+    "GET_templates-template_id-versions-version_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/templates/{template_id}/versions/{version_id}",
             "method": "get",
@@ -5510,9 +5510,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_templates-template_id-versions-version_id": [
-        {
+    },
+    "PATCH_templates-template_id-versions-version_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/templates/{template_id}/versions/{version_id}",
             "method": "patch",
@@ -5533,9 +5533,9 @@
                 "plain_content": "labore dolore"
             }
         }
-    ],
-    "DELETE_templates-template_id-versions-version_id": [
-        {
+    },
+    "DELETE_templates-template_id-versions-version_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/templates/{template_id}/versions/{version_id}",
             "method": "delete",
@@ -5547,9 +5547,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_user-webhooks-event-settings": [
-        {
+    },
+    "GET_user-webhooks-event-settings": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/user/webhooks/event/settings",
             "method": "get",
@@ -5561,9 +5561,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_user-webhooks-event-settings": [
-        {
+    },
+    "PATCH_user-webhooks-event-settings": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/user/webhooks/event/settings",
             "method": "patch",
@@ -5592,9 +5592,9 @@
                 "oauth_token_url": "<oauth_token_url>"
             }
         }
-    ],
-    "GET_user-webhooks-parse-settings": [
-        {
+    },
+    "GET_user-webhooks-parse-settings": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/user/webhooks/parse/settings",
             "method": "get",
@@ -5606,9 +5606,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_user-webhooks-parse-settings": [
-        {
+    },
+    "POST_user-webhooks-parse-settings": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/user/webhooks/parse/settings",
             "method": "post",
@@ -5625,9 +5625,9 @@
                 "send_raw": true
             }
         }
-    ],
-    "GET_user-webhooks-parse-stats": [
-        {
+    },
+    "GET_user-webhooks-parse-stats": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/user/webhooks/parse/stats",
             "method": "get",
@@ -5645,9 +5645,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_user-webhooks-event-settings-signed": [
-        {
+    },
+    "GET_user-webhooks-event-settings-signed": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/user/webhooks/event/settings/signed",
             "method": "get",
@@ -5659,9 +5659,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_user-webhooks-event-settings-signed": [
-        {
+    },
+    "PATCH_user-webhooks-event-settings-signed": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/user/webhooks/event/settings/signed",
             "method": "patch",
@@ -5675,9 +5675,9 @@
                 "enabled": true
             }
         }
-    ],
-    "POST_user-webhooks-event-test": [
-        {
+    },
+    "POST_user-webhooks-event-test": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/user/webhooks/event/test",
             "method": "post",
@@ -5694,9 +5694,9 @@
                 "oauth_token_url": "dolor Duis"
             }
         }
-    ],
-    "GET-messages": [
-        {
+    },
+    "GET-messages": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/messages",
             "method": "get",
@@ -5712,9 +5712,9 @@
             },
             "data": {}
         }
-    ],
-    "/messages/{msg_id} - parameters": [
-        {
+    },
+    "/messages/{msg_id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/messages/{msg_id}",
             "method": "parameters",
@@ -5725,9 +5725,9 @@
             },
             "data": {}
         }
-    ],
-    "GET-v3-messages-msg_id": [
-        {
+    },
+    "GET-v3-messages-msg_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/messages/{msg_id}",
             "method": "get",
@@ -5738,9 +5738,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_v3-messages-download": [
-        {
+    },
+    "POST_v3-messages-download": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/messages/download",
             "method": "post",
@@ -5753,9 +5753,9 @@
             },
             "data": {}
         }
-    ],
-    "/messages/download/{download_uuid} - parameters": [
-        {
+    },
+    "/messages/download/{download_uuid} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/messages/download/{download_uuid}",
             "method": "parameters",
@@ -5766,9 +5766,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_v3-messages-download-download_uuid": [
-        {
+    },
+    "GET_v3-messages-download-download_uuid": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/messages/download/{download_uuid}",
             "method": "get",
@@ -5779,9 +5779,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_tracking_settings": [
-        {
+    },
+    "GET_tracking_settings": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/tracking_settings",
             "method": "get",
@@ -5793,9 +5793,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_tracking_settings-click": [
-        {
+    },
+    "GET_tracking_settings-click": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/tracking_settings/click",
             "method": "get",
@@ -5807,9 +5807,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_tracking_settings-click": [
-        {
+    },
+    "PATCH_tracking_settings-click": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/tracking_settings/click",
             "method": "patch",
@@ -5823,9 +5823,9 @@
                 "enabled": true
             }
         }
-    ],
-    "GET_tracking_settings-google_analytics": [
-        {
+    },
+    "GET_tracking_settings-google_analytics": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/tracking_settings/google_analytics",
             "method": "get",
@@ -5837,9 +5837,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_tracking_settings-google_analytics": [
-        {
+    },
+    "PATCH_tracking_settings-google_analytics": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/tracking_settings/google_analytics",
             "method": "patch",
@@ -5858,9 +5858,9 @@
                 "utm_campaign": "website"
             }
         }
-    ],
-    "GET_tracking_settings-open": [
-        {
+    },
+    "GET_tracking_settings-open": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/tracking_settings/open",
             "method": "get",
@@ -5872,9 +5872,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_tracking_settings-open": [
-        {
+    },
+    "PATCH_tracking_settings-open": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/tracking_settings/open",
             "method": "patch",
@@ -5888,9 +5888,9 @@
                 "enabled": true
             }
         }
-    ],
-    "GET_tracking_settings-subscription": [
-        {
+    },
+    "GET_tracking_settings-subscription": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/tracking_settings/subscription",
             "method": "get",
@@ -5902,9 +5902,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_tracking_settings-subscription": [
-        {
+    },
+    "PATCH_tracking_settings-subscription": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/tracking_settings/subscription",
             "method": "patch",
@@ -5923,9 +5923,9 @@
                 "url": "<url>"
             }
         }
-    ],
-    "GET_stats": [
-        {
+    },
+    "GET_stats": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/stats",
             "method": "get",
@@ -5943,9 +5943,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_geo-stats": [
-        {
+    },
+    "GET_geo-stats": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/geo/stats",
             "method": "get",
@@ -5964,9 +5964,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_devices-stats": [
-        {
+    },
+    "GET_devices-stats": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/devices/stats",
             "method": "get",
@@ -5984,9 +5984,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_clients-stats": [
-        {
+    },
+    "GET_clients-stats": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/clients/stats",
             "method": "get",
@@ -6002,9 +6002,9 @@
             },
             "data": {}
         }
-    ],
-    "/clients/{client_type}/stats - parameters": [
-        {
+    },
+    "/clients/{client_type}/stats - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/clients/{client_type}/stats",
             "method": "parameters",
@@ -6015,9 +6015,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_clients-client_type-stats": [
-        {
+    },
+    "GET_clients-client_type-stats": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/clients/{client_type}/stats",
             "method": "get",
@@ -6033,9 +6033,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_mailbox_providers-stats": [
-        {
+    },
+    "GET_mailbox_providers-stats": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/mailbox_providers/stats",
             "method": "get",
@@ -6054,9 +6054,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_browsers-stats": [
-        {
+    },
+    "GET_browsers-stats": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/browsers/stats",
             "method": "get",
@@ -6075,9 +6075,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_suppression-bounces": [
-        {
+    },
+    "GET_suppression-bounces": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/suppression/bounces",
             "method": "get",
@@ -6093,9 +6093,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_suppression-bounces": [
-        {
+    },
+    "DELETE_suppression-bounces": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/suppression/bounces",
             "method": "delete",
@@ -6113,9 +6113,9 @@
                 ]
             }
         }
-    ],
-    "/suppression/bounces/{email} - parameters": [
-        {
+    },
+    "/suppression/bounces/{email} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/suppression/bounces/{email}",
             "method": "parameters",
@@ -6126,9 +6126,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_suppression-bounces-email": [
-        {
+    },
+    "GET_suppression-bounces-email": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/suppression/bounces/{email}",
             "method": "get",
@@ -6140,9 +6140,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_suppression-bounces-email": [
-        {
+    },
+    "DELETE_suppression-bounces-email": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/suppression/bounces/{email}",
             "method": "delete",
@@ -6156,9 +6156,9 @@
             },
             "data": "<value>"
         }
-    ],
-    "GET_suppression-blocks": [
-        {
+    },
+    "GET_suppression-blocks": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/suppression/blocks",
             "method": "get",
@@ -6175,9 +6175,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_suppression-blocks": [
-        {
+    },
+    "DELETE_suppression-blocks": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/suppression/blocks",
             "method": "delete",
@@ -6195,9 +6195,9 @@
                 ]
             }
         }
-    ],
-    "/suppression/blocks/{email} - parameters": [
-        {
+    },
+    "/suppression/blocks/{email} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/suppression/blocks/{email}",
             "method": "parameters",
@@ -6208,9 +6208,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_suppression-blocks-email": [
-        {
+    },
+    "GET_suppression-blocks-email": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/suppression/blocks/{email}",
             "method": "get",
@@ -6222,9 +6222,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_suppression-blocks-email": [
-        {
+    },
+    "DELETE_suppression-blocks-email": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/suppression/blocks/{email}",
             "method": "delete",
@@ -6236,9 +6236,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_suppression-spam_reports": [
-        {
+    },
+    "GET_suppression-spam_reports": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/suppression/spam_reports",
             "method": "get",
@@ -6255,9 +6255,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_suppression-spam_reports": [
-        {
+    },
+    "DELETE_suppression-spam_reports": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/suppression/spam_reports",
             "method": "delete",
@@ -6275,9 +6275,9 @@
                 ]
             }
         }
-    ],
-    "/suppression/spam_reports/{email} - parameters": [
-        {
+    },
+    "/suppression/spam_reports/{email} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/suppression/spam_reports/{email}",
             "method": "parameters",
@@ -6288,9 +6288,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_suppression-spam_reports-email": [
-        {
+    },
+    "GET_suppression-spam_reports-email": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/suppression/spam_reports/{email}",
             "method": "get",
@@ -6302,9 +6302,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_suppression-spam_reports-email": [
-        {
+    },
+    "DELETE_suppression-spam_reports-email": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/suppression/spam_reports/{email}",
             "method": "delete",
@@ -6316,9 +6316,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_asm-suppressions-global": [
-        {
+    },
+    "POST_asm-suppressions-global": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/asm/suppressions/global",
             "method": "post",
@@ -6335,9 +6335,9 @@
                 ]
             }
         }
-    ],
-    "GET_suppression-unsubscribes": [
-        {
+    },
+    "GET_suppression-unsubscribes": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/suppression/unsubscribes",
             "method": "get",
@@ -6354,9 +6354,9 @@
             },
             "data": {}
         }
-    ],
-    "/asm/suppressions/global/{email} - parameters": [
-        {
+    },
+    "/asm/suppressions/global/{email} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/asm/suppressions/global/{email}",
             "method": "parameters",
@@ -6367,9 +6367,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_asm-suppressions-global-email": [
-        {
+    },
+    "GET_asm-suppressions-global-email": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/asm/suppressions/global/{email}",
             "method": "get",
@@ -6381,9 +6381,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_asm-suppressions-global-email": [
-        {
+    },
+    "DELETE_asm-suppressions-global-email": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/asm/suppressions/global/{email}",
             "method": "delete",
@@ -6395,9 +6395,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_asm-groups": [
-        {
+    },
+    "POST_asm-groups": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/asm/groups",
             "method": "post",
@@ -6413,9 +6413,9 @@
                 "is_default": true
             }
         }
-    ],
-    "GET_asm-groups": [
-        {
+    },
+    "GET_asm-groups": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/asm/groups",
             "method": "get",
@@ -6429,9 +6429,9 @@
             },
             "data": {}
         }
-    ],
-    "/asm/groups/{group_id} - parameters": [
-        {
+    },
+    "/asm/groups/{group_id} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/asm/groups/{group_id}",
             "method": "parameters",
@@ -6442,9 +6442,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_asm-groups-group_id": [
-        {
+    },
+    "GET_asm-groups-group_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/asm/groups/{group_id}",
             "method": "get",
@@ -6456,9 +6456,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_asm-groups-group_id": [
-        {
+    },
+    "PATCH_asm-groups-group_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/asm/groups/{group_id}",
             "method": "patch",
@@ -6474,9 +6474,9 @@
                 "description": "Suggestions for items our users might like."
             }
         }
-    ],
-    "DELETE_asm-groups-group_id": [
-        {
+    },
+    "DELETE_asm-groups-group_id": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/asm/groups/{group_id}",
             "method": "delete",
@@ -6488,9 +6488,9 @@
             },
             "data": {}
         }
-    ],
-    "/asm/groups/{group_id}/suppressions - parameters": [
-        {
+    },
+    "/asm/groups/{group_id}/suppressions - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/asm/groups/{group_id}/suppressions",
             "method": "parameters",
@@ -6501,9 +6501,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_asm-groups-group_id-suppressions": [
-        {
+    },
+    "POST_asm-groups-group_id-suppressions": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/asm/groups/{group_id}/suppressions",
             "method": "post",
@@ -6520,9 +6520,9 @@
                 ]
             }
         }
-    ],
-    "GET_asm-groups-group_id-suppressions": [
-        {
+    },
+    "GET_asm-groups-group_id-suppressions": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/asm/groups/{group_id}/suppressions",
             "method": "get",
@@ -6534,9 +6534,9 @@
             },
             "data": {}
         }
-    ],
-    "/asm/groups/{group_id}/suppressions/search - parameters": [
-        {
+    },
+    "/asm/groups/{group_id}/suppressions/search - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/asm/groups/{group_id}/suppressions/search",
             "method": "parameters",
@@ -6547,9 +6547,9 @@
             },
             "data": {}
         }
-    ],
-    "POST_asm-groups-group_id-suppressions-search": [
-        {
+    },
+    "POST_asm-groups-group_id-suppressions-search": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/asm/groups/{group_id}/suppressions/search",
             "method": "post",
@@ -6566,9 +6566,9 @@
                 ]
             }
         }
-    ],
-    "GET_asm-suppressions": [
-        {
+    },
+    "GET_asm-suppressions": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/asm/suppressions",
             "method": "get",
@@ -6580,9 +6580,9 @@
             },
             "data": {}
         }
-    ],
-    "/asm/suppressions/{email} - parameters": [
-        {
+    },
+    "/asm/suppressions/{email} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/asm/suppressions/{email}",
             "method": "parameters",
@@ -6593,9 +6593,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_asm-suppressions-email": [
-        {
+    },
+    "GET_asm-suppressions-email": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/asm/suppressions/{email}",
             "method": "get",
@@ -6607,9 +6607,9 @@
             },
             "data": {}
         }
-    ],
-    "/asm/groups/{group_id}/suppressions/{email} - parameters": [
-        {
+    },
+    "/asm/groups/{group_id}/suppressions/{email} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/asm/groups/{group_id}/suppressions/{email}",
             "method": "parameters",
@@ -6620,9 +6620,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_asm-groups-group_id-suppressions-email": [
-        {
+    },
+    "DELETE_asm-groups-group_id-suppressions-email": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/asm/groups/{group_id}/suppressions/{email}",
             "method": "delete",
@@ -6634,9 +6634,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_suppression-invalid_emails": [
-        {
+    },
+    "GET_suppression-invalid_emails": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/suppression/invalid_emails",
             "method": "get",
@@ -6653,9 +6653,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_suppression-invalid_emails": [
-        {
+    },
+    "DELETE_suppression-invalid_emails": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/suppression/invalid_emails",
             "method": "delete",
@@ -6673,9 +6673,9 @@
                 ]
             }
         }
-    ],
-    "/suppression/invalid_emails/{email} - parameters": [
-        {
+    },
+    "/suppression/invalid_emails/{email} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/suppression/invalid_emails/{email}",
             "method": "parameters",
@@ -6686,9 +6686,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_suppression-invalid_emails-email": [
-        {
+    },
+    "GET_suppression-invalid_emails-email": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/suppression/invalid_emails/{email}",
             "method": "get",
@@ -6700,9 +6700,9 @@
             },
             "data": {}
         }
-    ],
-    "DELETE_suppression-invalid_emails-email": [
-        {
+    },
+    "DELETE_suppression-invalid_emails-email": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/suppression/invalid_emails/{email}",
             "method": "delete",
@@ -6714,9 +6714,9 @@
             },
             "data": {}
         }
-    ],
-    "/user/webhooks/parse/settings/{hostname} - parameters": [
-        {
+    },
+    "/user/webhooks/parse/settings/{hostname} - parameters": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/user/webhooks/parse/settings/{hostname}",
             "method": "parameters",
@@ -6727,9 +6727,9 @@
             },
             "data": {}
         }
-    ],
-    "GET_user-webhooks-parse-settings-hostname": [
-        {
+    },
+    "GET_user-webhooks-parse-settings-hostname": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/user/webhooks/parse/settings/{hostname}",
             "method": "get",
@@ -6741,9 +6741,9 @@
             },
             "data": {}
         }
-    ],
-    "PATCH_user-webhooks-parse-settings-hostname": [
-        {
+    },
+    "PATCH_user-webhooks-parse-settings-hostname": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/user/webhooks/parse/settings/{hostname}",
             "method": "patch",
@@ -6760,9 +6760,9 @@
                 "send_raw": true
             }
         }
-    ],
-    "DELETE_user-webhooks-parse-settings-hostname": [
-        {
+    },
+    "DELETE_user-webhooks-parse-settings-hostname": {
+        "Basic Example": {
             "baseUrl": "https://api.sendgrid.com/v3",
             "url": "/user/webhooks/parse/settings/{hostname}",
             "method": "delete",
@@ -6774,5 +6774,5 @@
             },
             "data": {}
         }
-    ]
+    }
 }
