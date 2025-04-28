@@ -1,0 +1,1615 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Gateway Service API",
+    "description": "API for managing Microstrate Gateways, Mappings, and Mapping Versions.\n\nA Gateway serves as an entry point for requests, a Mapping defines routes within a gateway,\nand a Mapping Version defines specific implementations of a mapping.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Microstrate Support",
+      "email": "support@microstrate.io"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.microstrate.io",
+      "description": "Production API"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Gateways",
+      "description": "Gateway management endpoints"
+    },
+    {
+      "name": "Mappings",
+      "description": "Gateway Mapping management endpoints"
+    },
+    {
+      "name": "Mapping Versions",
+      "description": "Gateway Mapping Version management endpoints"
+    }
+  ],
+  "paths": {
+    "/gateway": {
+      "post": {
+        "tags": [
+          "Gateways"
+        ],
+        "summary": "Create a new gateway",
+        "description": "Creates a new gateway with default configurations",
+        "operationId": "postGateway",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.gateway.post.gateway",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GatewayCreateRequest"
+              },
+              "examples": {
+                "basicGateway": {
+                  "value": {
+                    "name": "My API Gateway",
+                    "description": "Gateway for my service APIs",
+                    "active": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Gateway created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GatewayResponse"
+                },
+                "example": {
+                  "name": "My API Gateway",
+                  "description": "Gateway for my service APIs",
+                  "url": "https://api.microstrate.com/gateways/abcdef123456",
+                  "subject": "gateway.abcdef123456.gateway",
+                  "active": true,
+                  "timeout": 30000,
+                  "limit": {
+                    "request": 10000,
+                    "time": 1000
+                  },
+                  "modified": 1713531894,
+                  "type": "created"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          }
+        }
+      }
+    },
+    "/gateway/{gatewayId}": {
+      "get": {
+        "tags": [
+          "Gateways"
+        ],
+        "summary": "Get a specific gateway",
+        "description": "Retrieves details about a specific gateway",
+        "operationId": "getGateway",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.gateway.get.gateway",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/gatewayIdParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gateway details retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GatewayResponse"
+                },
+                "example": {
+                  "name": "My API Gateway",
+                  "description": "Gateway for my service APIs",
+                  "url": "https://api.microstrate.com/gateways/abcdef123456",
+                  "subject": "gateway.abcdef123456.gateway",
+                  "active": true,
+                  "timeout": 30000,
+                  "limit": {
+                    "request": 10000,
+                    "time": 1000
+                  },
+                  "modified": 1713531894,
+                  "type": "created"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Gateways"
+        ],
+        "summary": "Update a gateway",
+        "description": "Update an existing gateway's configuration",
+        "operationId": "patchGateway",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.gateway.patch.gateway",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/gatewayIdParam"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GatewayUpdateRequest"
+              },
+              "example": {
+                "subject": "gateway.abcdef123456.gateway",
+                "name": "Updated Gateway Name",
+                "description": "Updated description for my gateway",
+                "active": true,
+                "timeout": 60000,
+                "limit": {
+                  "request": 5000,
+                  "time": 1000
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Gateway updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Gateways"
+        ],
+        "summary": "Delete a gateway",
+        "description": "Mark a gateway as deleted (poison-pilled)",
+        "operationId": "deleteGateway",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.gateway.delete.item",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/gatewayIdParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gateway marked as deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/gateway/all": {
+      "get": {
+        "tags": [
+          "Gateways"
+        ],
+        "summary": "Get all gateways",
+        "description": "Retrieves a list of all available gateways",
+        "operationId": "getAllGateways",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.gateway.get.all-gateways",
+        "responses": {
+          "200": {
+            "description": "List of gateways retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GatewayListResponse"
+                },
+                "example": {
+                  "results": [
+                    {
+                      "name": "Gateway 1",
+                      "description": "First gateway",
+                      "subject": "gateway.abc123.gateway",
+                      "active": true,
+                      "timeout": 30000,
+                      "limit": {
+                        "request": 10000,
+                        "time": 1000
+                      },
+                      "modified": 1713531894,
+                      "type": "created"
+                    },
+                    {
+                      "name": "Gateway 2",
+                      "description": "Second gateway",
+                      "subject": "gateway.def456.gateway",
+                      "active": true,
+                      "timeout": 60000,
+                      "limit": {
+                        "request": 5000,
+                        "time": 1000
+                      },
+                      "modified": 1713532000,
+                      "type": "created"
+                    }
+                  ],
+                  "resultsTotal": 2
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          }
+        }
+      }
+    },
+    "/gateway/{gatewayId}/mapping": {
+      "post": {
+        "tags": [
+          "Mappings"
+        ],
+        "summary": "Create a new mapping for a gateway",
+        "description": "Creates a new path mapping within the specified gateway",
+        "operationId": "postGatewayMapping",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.gateway.post.mapping",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/gatewayIdParam"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MappingCreateRequest"
+              },
+              "example": {
+                "gateway": "gateway.abcdef123456.gateway",
+                "path": "/api/users",
+                "method": "GET",
+                "isPublic": true,
+                "timeout": 30000,
+                "limit": {
+                  "request": 5000,
+                  "time": 1000
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Mapping created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MappingResponse"
+                },
+                "example": {
+                  "subject": "gateway.abcdef123456.mapping.get.api.users",
+                  "path": "/api/users",
+                  "method": "GET",
+                  "isPublic": true,
+                  "timeout": 30000,
+                  "limit": {
+                    "request": 5000,
+                    "time": 1000
+                  },
+                  "trafficDistribution": {
+                    "1": 100
+                  },
+                  "modified": 1713531894,
+                  "type": "created"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Mappings"
+        ],
+        "summary": "Get all mappings for a gateway",
+        "description": "Retrieves all mappings defined for the specified gateway",
+        "operationId": "getGatewayMappings",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.gateway.get.mappings",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/gatewayIdParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of mappings retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MappingListResponse"
+                },
+                "example": {
+                  "results": [
+                    {
+                      "subject": "gateway.abcdef123456.mapping.get.api.users",
+                      "path": "/api/users",
+                      "method": "GET",
+                      "isPublic": true,
+                      "timeout": 30000,
+                      "limit": {
+                        "request": 5000,
+                        "time": 1000
+                      },
+                      "trafficDistribution": {"1": 100},
+                      "modified": 1713531894,
+                      "type": "created"
+                    },
+                    {
+                      "subject": "gateway.abcdef123456.mapping.post.api.users",
+                      "path": "/api/users",
+                      "method": "POST",
+                      "isPublic": true,
+                      "timeout": 30000,
+                      "limit": {
+                        "request": 5000,
+                        "time": 1000
+                      },
+                      "trafficDistribution": {},
+                      "modified": 1713532000,
+                      "type": "created"
+                    }
+                  ],
+                  "resultsTotal": 2
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/gateway/mapping/{mappingId}": {
+      "get": {
+        "tags": [
+          "Mappings"
+        ],
+        "summary": "Get a specific mapping",
+        "description": "Retrieves details about a specific gateway mapping",
+        "operationId": "getGatewayMapping",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.gateway.get.mapping",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/mappingIdParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Mapping details retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MappingResponse"
+                },
+                "example": {
+                  "subject": "gateway.abcdef123456.mapping.get.api.users",
+                  "path": "/api/users",
+                  "method": "GET",
+                  "isPublic": true,
+                  "timeout": 30000,
+                  "limit": {
+                    "request": 5000,
+                    "time": 1000
+                  },
+                  "trafficDistribution": {
+                    "1": 100
+                  },
+                  "modified": 1713531894,
+                  "type": "created"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Mappings"
+        ],
+        "summary": "Update a mapping",
+        "description": "Update an existing gateway mapping configuration",
+        "operationId": "patchGatewayMapping",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.gateway.patch.mapping",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/mappingIdParam"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MappingUpdateRequest"
+              },
+              "example": {
+                "subject": "gateway.abcdef123456.mapping.get.api.users",
+                "path": "/api/users/v2",
+                "isPublic": false,
+                "timeout": 60000,
+                "limit": {
+                  "request": 1000,
+                  "time": 1000
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Mapping updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Mappings"
+        ],
+        "summary": "Delete a mapping",
+        "description": "Mark a gateway mapping as deleted (poison-pilled)",
+        "operationId": "deleteMapping",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.gateway.delete.item",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/mappingIdParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Mapping marked as deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/gateway/mapping/all": {
+      "get": {
+        "tags": [
+          "Mappings"
+        ],
+        "summary": "Get all mappings",
+        "description": "Retrieves a list of all available gateway mappings across all gateways",
+        "operationId": "getAllGatewayMappings",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.gateway.get.all-mappings",
+        "responses": {
+          "200": {
+            "description": "List of mappings retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MappingListResponse"
+                },
+                "example": {
+                  "results": [
+                    {
+                      "subject": "gateway.abc123.mapping.get.api.users",
+                      "path": "/api/users",
+                      "method": "GET",
+                      "isPublic": true,
+                      "timeout": 30000,
+                      "limit": {
+                        "request": 5000,
+                        "time": 1000
+                      },
+                      "trafficDistribution": {},
+                      "modified": 1713531894,
+                      "type": "created"
+                    },
+                    {
+                      "subject": "gateway.def456.mapping.post.api.products",
+                      "path": "/api/products",
+                      "method": "POST",
+                      "isPublic": true,
+                      "timeout": 30000,
+                      "limit": {
+                        "request": 5000,
+                        "time": 1000
+                      },
+                      "trafficDistribution": {},
+                      "modified": 1713532000,
+                      "type": "created"
+                    }
+                  ],
+                  "resultsTotal": 2
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          }
+        }
+      }
+    },
+    "/gateway/mapping/{mappingId}/version": {
+      "post": {
+        "tags": [
+          "Mapping Versions"
+        ],
+        "summary": "Create a new mapping version",
+        "description": "Creates a new version for an existing mapping",
+        "operationId": "postGatewayMappingVersion",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.gateway.post.mapping-version",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/mappingIdParam"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MappingVersionCreateRequest"
+              },
+              "example": {
+                "mapping": "gateway.abcdef123456.mapping.get.api.users",
+                "resourceType": "function",
+                "resource": "user-service.getUsers",
+                "resourceVersion": "latest",
+                "active": true,
+                "description": "Gets all users with pagination"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Mapping version created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MappingVersionResponse"
+                },
+                "example": {
+                  "subject": "gateway.abcdef123456.mapping-version.get.api.users.1",
+                  "resourceType": "function",
+                  "resource": "user-service.getUsers",
+                  "resourceVersion": "latest",
+                  "active": true,
+                  "description": "Gets all users with pagination",
+                  "version": 1,
+                  "modified": 1713531894,
+                  "type": "created"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Mapping Versions"
+        ],
+        "summary": "Get all versions for a mapping",
+        "description": "Retrieves all versions defined for the specified mapping",
+        "operationId": "getGatewayMappingVersions",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.gateway.get.mapping-versions",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/mappingIdParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of mapping versions retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MappingVersionListResponse"
+                },
+                "example": {
+                  "results": [
+                    {
+                      "subject": "gateway.abcdef123456.mapping-version.get.api.users.1",
+                      "resourceType": "function",
+                      "resource": "user-service.getUsers",
+                      "resourceVersion": "latest",
+                      "active": true,
+                      "description": "Initial version",
+                      "version": 1,
+                      "modified": 1713531894,
+                      "type": "created"
+                    },
+                    {
+                      "subject": "gateway.abcdef123456.mapping-version.get.api.users.2",
+                      "resourceType": "function",
+                      "resource": "user-service.getUsersV2",
+                      "resourceVersion": "latest",
+                      "active": true,
+                      "description": "Improved version with better filtering",
+                      "version": 2,
+                      "modified": 1713532000,
+                      "type": "created"
+                    }
+                  ],
+                  "resultsTotal": 2
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/gateway/mapping-version/{versionId}": {
+      "get": {
+        "tags": [
+          "Mapping Versions"
+        ],
+        "summary": "Get a specific mapping version",
+        "description": "Retrieves details about a specific mapping version",
+        "operationId": "getGatewayMappingVersion",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.gateway.get.mapping-version",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/versionIdParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Mapping version details retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MappingVersionResponse"
+                },
+                "example": {
+                  "subject": "gateway.abcdef123456.mapping-version.get.api.users.1",
+                  "resourceType": "function",
+                  "resource": "user-service.getUsers",
+                  "resourceVersion": "latest",
+                  "active": true,
+                  "description": "Gets all users with pagination",
+                  "version": 1,
+                  "modified": 1713531894,
+                  "type": "created"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Mapping Versions"
+        ],
+        "summary": "Update a mapping version",
+        "description": "Update an existing mapping version configuration",
+        "operationId": "patchGatewayMappingVersion",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.gateway.patch.mapping-version",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/versionIdParam"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MappingVersionUpdateRequest"
+              },
+              "example": {
+                "subject": "gateway.abcdef123456.mapping-version.get.api.users.1",
+                "active": false,
+                "description": "Updated description for version 1"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Mapping version updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Mapping Versions"
+        ],
+        "summary": "Delete a mapping version",
+        "description": "Mark a mapping version as deleted (poison-pilled)",
+        "operationId": "deleteMappingVersion",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.gateway.delete.item",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/versionIdParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Mapping version marked as deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/gateway/mapping-version/all": {
+      "get": {
+        "tags": [
+          "Mapping Versions"
+        ],
+        "summary": "Get all mapping versions",
+        "description": "Retrieves a list of all available mapping versions across all mappings",
+        "operationId": "getAllGatewayMappingVersions",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.gateway.get.all-mapping-versions",
+        "responses": {
+          "200": {
+            "description": "List of mapping versions retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MappingVersionListResponse"
+                },
+                "example": {
+                  "results": [
+                    {
+                      "subject": "gateway.abc123.mapping-version.get.api.users.1",
+                      "resourceType": "function",
+                      "resource": "user-service.getUsers",
+                      "resourceVersion": "latest",
+                      "active": true,
+                      "description": "Version 1",
+                      "version": 1,
+                      "modified": 1713531894,
+                      "type": "created"
+                    },
+                    {
+                      "subject": "gateway.def456.mapping-version.post.api.products.1",
+                      "resourceType": "function",
+                      "resource": "product-service.createProduct",
+                      "resourceVersion": "latest",
+                      "active": true,
+                      "description": "Version 1",
+                      "version": 1,
+                      "modified": 1713532000,
+                      "type": "created"
+                    }
+                  ],
+                  "resultsTotal": 2
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "gatewayIdParam": {
+        "name": "gatewayId",
+        "in": "path",
+        "description": "ID of the gateway",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "example": "abcdef123456"
+      },
+      "mappingIdParam": {
+        "name": "mappingId",
+        "in": "path",
+        "description": "ID of the mapping in format 'gateway.[gatewayId].mapping.[method].[path]'",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "example": "gateway.abcdef123456.mapping.get.api.users"
+      },
+      "versionIdParam": {
+        "name": "versionId",
+        "in": "path",
+        "description": "ID of the mapping version in format 'gateway.[gatewayId].mapping-version.[method].[path].[version]'",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "example": "gateway.abcdef123456.mapping-version.get.api.users.1"
+      }
+    },
+    "schemas": {
+      "Limit": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "integer",
+            "description": "Maximum number of requests allowed",
+            "default": 10000,
+            "example": 5000
+          },
+          "time": {
+            "type": "integer",
+            "description": "Time window for rate limiting in milliseconds",
+            "default": 1000,
+            "example": 1000
+          }
+        }
+      },
+      "Middleware": {
+        "type": "object",
+        "properties": {
+          "order": {
+            "type": "integer",
+            "description": "Execution order of the middleware",
+            "example": 1
+          },
+          "resource": {
+            "type": "string",
+            "description": "Resource identifier for the middleware",
+            "example": "auth-middleware"
+          },
+          "resourceType": {
+            "type": "string",
+            "description": "Type of resource",
+            "example": "function"
+          },
+          "resourceVersion": {
+            "type": "string",
+            "description": "Version of the resource",
+            "example": "latest"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of middleware",
+            "example": "pre-request"
+          }
+        }
+      },
+      "GatewayCreateRequest": {
+        "type": "object",
+        "required": [
+          "name",
+          "active"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the gateway",
+            "example": "My API Gateway"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the gateway",
+            "example": "Gateway for my service APIs"
+          },
+          "active": {
+            "type": "boolean",
+            "description": "Whether the gateway is active",
+            "default": true,
+            "example": true
+          },
+          "middleware": {
+            "type": "array",
+            "description": "List of middleware to be applied to the gateway",
+            "items": {
+              "$ref": "#/components/schemas/Middleware"
+            }
+          },
+          "limit": {
+            "$ref": "#/components/schemas/Limit"
+          },
+          "timeout": {
+            "type": "integer",
+            "description": "Timeout in milliseconds for gateway requests",
+            "default": 30000,
+            "example": 30000
+          }
+        }
+      },
+      "GatewayUpdateRequest": {
+        "type": "object",
+        "required": [
+          "subject"
+        ],
+        "properties": {
+          "subject": {
+            "type": "string",
+            "description": "Subject of the gateway to update",
+            "example": "gateway.abcdef123456.gateway"
+          },
+          "name": {
+            "type": "string",
+            "description": "Updated name of the gateway",
+            "example": "Updated Gateway Name"
+          },
+          "description": {
+            "type": "string",
+            "description": "Updated description of the gateway",
+            "example": "Updated description for my gateway"
+          },
+          "active": {
+            "type": "boolean",
+            "description": "Whether the gateway is active",
+            "example": true
+          },
+          "middleware": {
+            "type": "array",
+            "description": "Updated list of middleware to be applied to the gateway",
+            "items": {
+              "$ref": "#/components/schemas/Middleware"
+            }
+          },
+          "limit": {
+            "$ref": "#/components/schemas/Limit"
+          },
+          "timeout": {
+            "type": "integer",
+            "description": "Updated timeout in milliseconds for gateway requests",
+            "example": 60000
+          }
+        }
+      },
+      "GatewayResponse": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the gateway",
+            "example": "My API Gateway"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the gateway",
+            "example": "Gateway for my service APIs"
+          },
+          "url": {
+            "type": "string",
+            "description": "URL of the gateway",
+            "example": "https://api.microstrate.com/gateways/abcdef123456"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Subject identifier of the gateway",
+            "example": "gateway.abcdef123456.gateway"
+          },
+          "active": {
+            "type": "boolean",
+            "description": "Whether the gateway is active",
+            "example": true
+          },
+          "timeout": {
+            "type": "integer",
+            "description": "Timeout in milliseconds for gateway requests",
+            "example": 30000
+          },
+          "limit": {
+            "$ref": "#/components/schemas/Limit"
+          },
+          "middleware": {
+            "type": "array",
+            "description": "List of middleware applied to the gateway",
+            "items": {
+              "$ref": "#/components/schemas/Middleware"
+            }
+          },
+          "modified": {
+            "type": "integer",
+            "description": "Unix timestamp of when the gateway was last modified",
+            "example": 1713531894
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of the gateway record",
+            "example": "created"
+          }
+        }
+      },
+      "GatewayListResponse": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "description": "List of gateways",
+            "items": {
+              "$ref": "#/components/schemas/GatewayResponse"
+            }
+          },
+          "resultsTotal": {
+            "type": "integer",
+            "description": "Total number of gateways returned",
+            "example": 2
+          }
+        }
+      },
+      "MappingCreateRequest": {
+        "type": "object",
+        "required": [
+          "gateway",
+          "path"
+        ],
+        "properties": {
+          "gateway": {
+            "type": "string",
+            "description": "Subject of the gateway to create the mapping on",
+            "example": "gateway.abcdef123456.gateway"
+          },
+          "path": {
+            "type": "string",
+            "description": "URL path for the mapping",
+            "example": "/api/users"
+          },
+          "method": {
+            "type": "string",
+            "description": "HTTP method for the mapping",
+            "default": "POST",
+            "enum": [
+              "GET",
+              "POST",
+              "PUT",
+              "DELETE",
+              "PATCH",
+              "OPTIONS",
+              "HEAD"
+            ],
+            "example": "GET"
+          },
+          "isPublic": {
+            "type": "boolean",
+            "description": "Whether the mapping is publicly accessible",
+            "default": false,
+            "example": true
+          },
+          "limit": {
+            "$ref": "#/components/schemas/Limit"
+          },
+          "timeout": {
+            "type": "integer",
+            "description": "Timeout in milliseconds for mapping requests",
+            "default": 30000,
+            "example": 30000
+          },
+          "trafficDistribution": {
+            "type": "object",
+            "description": "Traffic distribution configuration for A/B testing",
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "example": {
+              "1": 100
+            }
+          }
+        }
+      },
+      "MappingUpdateRequest": {
+        "type": "object",
+        "required": [
+          "subject"
+        ],
+        "properties": {
+          "subject": {
+            "type": "string",
+            "description": "Subject of the mapping to update",
+            "example": "gateway.abcdef123456.mapping.get.api.users"
+          },
+          "path": {
+            "type": "string",
+            "description": "Updated URL path for the mapping",
+            "example": "/api/users/v2"
+          },
+          "isPublic": {
+            "type": "boolean",
+            "description": "Whether the mapping is publicly accessible",
+            "example": false
+          },
+          "limit": {
+            "$ref": "#/components/schemas/Limit"
+          },
+          "timeout": {
+            "type": "integer",
+            "description": "Updated timeout in milliseconds for mapping requests",
+            "example": 60000
+          },
+          "trafficDistribution": {
+            "type": "object",
+            "description": "Updated traffic distribution configuration for A/B testing",
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "example": {
+              "1": 80,
+              "2": 20
+            }
+          }
+        }
+      },
+      "MappingResponse": {
+        "type": "object",
+        "properties": {
+          "subject": {
+            "type": "string",
+            "description": "Subject identifier of the mapping",
+            "example": "gateway.abcdef123456.mapping.get.api.users"
+          },
+          "path": {
+            "type": "string",
+            "description": "URL path for the mapping",
+            "example": "/api/users"
+          },
+          "method": {
+            "type": "string",
+            "description": "HTTP method for the mapping",
+            "example": "GET"
+          },
+          "isPublic": {
+            "type": "boolean",
+            "description": "Whether the mapping is publicly accessible",
+            "example": true
+          },
+          "limit": {
+            "$ref": "#/components/schemas/Limit"
+          },
+          "timeout": {
+            "type": "integer",
+            "description": "Timeout in milliseconds for mapping requests",
+            "example": 30000
+          },
+          "trafficDistribution": {
+            "type": "object",
+            "description": "Traffic distribution configuration for A/B testing",
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "example": {
+              "1": 100
+            }
+          },
+          "modified": {
+            "type": "integer",
+            "description": "Unix timestamp of when the mapping was last modified",
+            "example": 1713531894
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of the mapping record",
+            "example": "created"
+          }
+        }
+      },
+      "MappingListResponse": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "description": "List of mappings",
+            "items": {
+              "$ref": "#/components/schemas/MappingResponse"
+            }
+          },
+          "resultsTotal": {
+            "type": "integer",
+            "description": "Total number of mappings returned",
+            "example": 2
+          }
+        }
+      },
+      "MappingVersionCreateRequest": {
+        "type": "object",
+        "required": [
+          "mapping",
+          "resourceType",
+          "resource"
+        ],
+        "properties": {
+          "mapping": {
+            "type": "string",
+            "description": "Subject of the mapping to create the version for",
+            "example": "gateway.abcdef123456.mapping.get.api.users"
+          },
+          "resourceType": {
+            "type": "string",
+            "description": "Type of resource that will handle requests",
+            "example": "function"
+          },
+          "resource": {
+            "type": "string",
+            "description": "Resource identifier that will handle requests",
+            "example": "user-service.getUsers"
+          },
+          "resourceVersion": {
+            "type": "string",
+            "description": "Version of the resource",
+            "default": "latest",
+            "example": "latest"
+          },
+          "active": {
+            "type": "boolean",
+            "description": "Whether the mapping version is active",
+            "default": true,
+            "example": true
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the mapping version",
+            "example": "Gets all users with pagination"
+          },
+          "middleware": {
+            "type": "array",
+            "description": "List of middleware to be applied to the mapping version",
+            "items": {
+              "$ref": "#/components/schemas/Middleware"
+            }
+          },
+          "exactMatch": {
+            "type": "boolean",
+            "description": "Whether the path should be matched exactly",
+            "default": false,
+            "example": false
+          },
+          "attributes": {
+            "type": "array",
+            "description": "Attributes for the mapping version",
+            "items": {
+              "type": "string"
+            },
+            "example": []
+          },
+          "booleanLogic": {
+            "type": "string",
+            "description": "Boolean logic expression for request routing",
+            "example": ""
+          },
+          "invocationType": {
+            "type": "string",
+            "description": "Type of invocation for the resource",
+            "example": "RequestResponse"
+          }
+        }
+      },
+      "MappingVersionUpdateRequest": {
+        "type": "object",
+        "required": [
+          "subject"
+        ],
+        "properties": {
+          "subject": {
+            "type": "string",
+            "description": "Subject of the mapping version to update",
+            "example": "gateway.abcdef123456.mapping-version.get.api.users.1"
+          },
+          "active": {
+            "type": "boolean",
+            "description": "Whether the mapping version is active",
+            "example": false
+          },
+          "description": {
+            "type": "string",
+            "description": "Updated description of the mapping version",
+            "example": "Updated description for version 1"
+          },
+          "middleware": {
+            "type": "array",
+            "description": "Updated list of middleware to be applied to the mapping version",
+            "items": {
+              "$ref": "#/components/schemas/Middleware"
+            }
+          },
+          "exactMatch": {
+            "type": "boolean",
+            "description": "Whether the path should be matched exactly",
+            "example": true
+          },
+          "attributes": {
+            "type": "array",
+            "description": "Updated attributes for the mapping version",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "premium"
+            ]
+          },
+          "booleanLogic": {
+            "type": "string",
+            "description": "Updated boolean logic expression for request routing",
+            "example": "user.premium == true"
+          },
+          "invocationType": {
+            "type": "string",
+            "description": "Updated type of invocation for the resource",
+            "example": "Event"
+          }
+        }
+      },
+      "MappingVersionResponse": {
+        "type": "object",
+        "properties": {
+          "subject": {
+            "type": "string",
+            "description": "Subject identifier of the mapping version",
+            "example": "gateway.abcdef123456.mapping-version.get.api.users.1"
+          },
+          "resourceType": {
+            "type": "string",
+            "description": "Type of resource that handles requests",
+            "example": "function"
+          },
+          "resource": {
+            "type": "string",
+            "description": "Resource identifier that handles requests",
+            "example": "user-service.getUsers"
+          },
+          "resourceVersion": {
+            "type": "string",
+            "description": "Version of the resource",
+            "example": "latest"
+          },
+          "active": {
+            "type": "boolean",
+            "description": "Whether the mapping version is active",
+            "example": true
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the mapping version",
+            "example": "Gets all users with pagination"
+          },
+          "middleware": {
+            "type": "array",
+            "description": "List of middleware applied to the mapping version",
+            "items": {
+              "$ref": "#/components/schemas/Middleware"
+            }
+          },
+          "exactMatch": {
+            "type": "boolean",
+            "description": "Whether the path is matched exactly",
+            "example": false
+          },
+          "attributes": {
+            "type": "array",
+            "description": "Attributes for the mapping version",
+            "items": {
+              "type": "string"
+            },
+            "example": []
+          },
+          "booleanLogic": {
+            "type": "string",
+            "description": "Boolean logic expression for request routing",
+            "example": ""
+          },
+          "invocationType": {
+            "type": "string",
+            "description": "Type of invocation for the resource",
+            "example": "RequestResponse"
+          },
+          "version": {
+            "type": "integer",
+            "description": "Version number",
+            "example": 1
+          },
+          "modified": {
+            "type": "integer",
+            "description": "Unix timestamp of when the mapping version was last modified",
+            "example": 1713531894
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of the mapping version record",
+            "example": "created"
+          }
+        }
+      },
+      "MappingVersionListResponse": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "description": "List of mapping versions",
+            "items": {
+              "$ref": "#/components/schemas/MappingVersionResponse"
+            }
+          },
+          "resultsTotal": {
+            "type": "integer",
+            "description": "Total number of mapping versions returned",
+            "example": 2
+          }
+        }
+      }
+    },
+    "responses": {
+      "BadRequest": {
+        "description": "Bad request",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "Invalid request parameters"
+                }
+              }
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "Resource not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "The requested resource does not exist"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
