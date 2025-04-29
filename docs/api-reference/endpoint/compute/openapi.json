@@ -73,7 +73,7 @@
                 "example": {
                   "results": [
                     {
-                      "collection_type": "default",
+                      "collection_type": "function",
                       "description": "A collection for my compute resources",
                       "name": "my-collection",
                       "subject": "compute.123456789.collection",
@@ -111,7 +111,7 @@
               "example": {
                 "name": "my-collection",
                 "description": "A collection for my compute resources",
-                "collection_type": "default"
+                "collection_type": "function"
               }
             }
           }
@@ -125,7 +125,7 @@
                   "$ref": "#/components/schemas/Collection"
                 },
                 "example": {
-                  "collection_type": "default",
+                  "collection_type": "function",
                   "description": "A collection for my compute resources",
                   "name": "my-collection",
                   "subject": "compute.123456789.collection",
@@ -168,7 +168,7 @@
                   "$ref": "#/components/schemas/Collection"
                 },
                 "example": {
-                  "collection_type": "default",
+                  "collection_type": "function",
                   "description": "A collection for my compute resources",
                   "name": "my-collection",
                   "subject": "compute.123456789.collection",
@@ -205,25 +205,25 @@
               },
               "example": {
                 "description": "Updated collection description",
-                "collection_type": "special"
+                "collection_type": "function"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Collection updated successfully",
+            "description": "Collection patched successfully",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Collection"
                 },
                 "example": {
-                  "collection_type": "special",
+                  "collection_type": "function",
                   "description": "Updated collection description",
                   "name": "my-collection",
                   "subject": "compute.123456789.collection",
-                  "type": "updated",
+                  "type": "patched",
                   "modified": 1714380000
                 }
               }
@@ -558,7 +558,7 @@
         },
         "responses": {
           "200": {
-            "description": "Function updated successfully",
+            "description": "Function patched successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -569,7 +569,7 @@
                   "name": "my-function",
                   "runtime": "nodejs",
                   "subject": "compute.my-namespace.function.123456789",
-                  "type": "updated",
+                  "type": "patched",
                   "modified": 1714380000,
                   "monitor_config": {
                     "ttl": 1209600000,
@@ -924,7 +924,7 @@
         },
         "responses": {
           "200": {
-            "description": "Container updated successfully",
+            "description": "Container patched successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -935,7 +935,7 @@
                   "name": "my-container",
                   "runtime": "docker",
                   "subject": "compute.my-namespace.container.123456789",
-                  "type": "updated",
+                  "type": "patched",
                   "modified": 1714380000,
                   "monitor_config": {
                     "ttl": 1209600000,
@@ -1089,7 +1089,7 @@
         },
         "responses": {
           "200": {
-            "description": "Asset updated successfully",
+            "description": "Asset patched successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -1102,7 +1102,7 @@
                   }
                 },
                 "example": {
-                  "message": "Asset updated successfully"
+                  "message": "Asset patched successfully"
                 }
               }
             }
@@ -1225,7 +1225,7 @@
           },
           "type": {
             "type": "string",
-            "description": "Type of resource (created, updated)"
+            "description": "Type of resource (created, patched)"
           },
           "modified": {
             "type": "integer",
@@ -1233,7 +1233,7 @@
           }
         },
         "example": {
-          "collection_type": "default",
+          "collection_type": "function",
           "description": "A collection for my compute resources",
           "name": "my-collection",
           "subject": "compute.123456789.collection",
@@ -1440,7 +1440,7 @@
           },
           "type": {
             "type": "string",
-            "description": "Type of resource (created, updated)"
+            "description": "Type of message (created, patched)"
           },
           "modified": {
             "type": "integer",

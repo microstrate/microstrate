@@ -70,7 +70,7 @@
                 "example": {
                   "name": "My API Gateway",
                   "description": "Gateway for my service APIs",
-                  "url": "https://api.microstrate.com/gateways/abcdef123456",
+                  "url": "https://abc123.microstrate.io",
                   "subject": "gateway.abcdef123456.gateway",
                   "active": true,
                   "timeout": 30000,
@@ -116,7 +116,7 @@
                 "example": {
                   "name": "My API Gateway",
                   "description": "Gateway for my service APIs",
-                  "url": "https://api.microstrate.com/gateways/abcdef123456",
+                  "url": "https://abc123.microstrate.io",
                   "subject": "gateway.abcdef123456.gateway",
                   "active": true,
                   "timeout": 30000,
@@ -1124,7 +1124,7 @@
           "url": {
             "type": "string",
             "description": "URL of the gateway",
-            "example": "https://api.microstrate.com/gateways/abcdef123456"
+            "example": "https://abc123.microstrate.io"
           },
           "subject": {
             "type": "string",
