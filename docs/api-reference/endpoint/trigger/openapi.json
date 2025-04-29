@@ -1,0 +1,895 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Trigger Service API",
+    "description": "The Trigger Service is an API service that provides an interface for managing various types of triggers.\n\nThis API allows you to create, retrieve, and delete different types of triggers including gateway and stream triggers.\n",
+    "contact": {
+      "name": "Microstrate Support",
+      "email": "support@microstrate.io"
+    },
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.microstrate.io",
+      "description": "Production API"
+    }
+  ],
+  "paths": {
+    "/trigger/triggers": {
+      "get": {
+        "summary": "Retrieve all triggers",
+        "description": "Retrieves all triggers matching a specific subject pattern.",
+        "operationId": "getTriggers",
+        "tags": [
+          "Triggers"
+        ],
+        "parameters": [
+          {
+            "name": "subject",
+            "in": "query",
+            "description": "The subject pattern to match triggers",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "microstrate.trigger.subject_pattern"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved triggers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TriggerListResponse"
+                },
+                "example": {
+                  "body": {
+                    "results": [
+                      {
+                        "name": "my-gateway-trigger",
+                        "collection": "my-collection",
+                        "description": "Trigger for API gateway endpoint",
+                        "gateway_mapping_subject": "gateway.1234.gateway",
+                        "subject": "microstrate.trigger.gateway.my-gateway-trigger",
+                        "trigger_type": "gateway",
+                        "type": "gateway-trigger"
+                      },
+                      {
+                        "name": "my-stream-trigger",
+                        "collection": "my-collection",
+                        "description": "Stream data processing trigger",
+                        "subject": "microstrate.trigger.stream.my-stream-trigger",
+                        "trigger_type": "stream",
+                        "type": "stream-trigger"
+                      }
+                    ],
+                    "results_total": 2
+                  },
+                  "metadata": {
+                    "subject": "microstrate.trigger.subject_pattern"
+                  },
+                  "status_code": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/trigger/triggers/{subject}": {
+      "get": {
+        "summary": "Retrieve a specific trigger",
+        "description": "Retrieves a specific trigger by its subject.",
+        "operationId": "getTrigger",
+        "tags": [
+          "Triggers"
+        ],
+        "parameters": [
+          {
+            "name": "subject",
+            "in": "path",
+            "description": "The subject identifier of the trigger to retrieve",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "microstrate.trigger.gateway.my-gateway-trigger"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved trigger",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TriggerResponse"
+                },
+                "examples": {
+                  "gateway": {
+                    "value": {
+                      "body": {
+                        "name": "my-gateway-trigger",
+                        "collection": "my-collection",
+                        "description": "Trigger for API gateway endpoint",
+                        "gateway_mapping_subject": "gateway.1234.gateway",
+                        "subject": "trigger.gateway.my-gateway-trigger",
+                        "trigger_type": "gateway",
+                        "type": "gateway-trigger"
+                      },
+                      "metadata": {
+                        "subject": "trigger.gateway.my-gateway-trigger"
+                      },
+                      "status_code": 200
+                    }
+                  },
+                  "stream": {
+                    "value": {
+                      "body": {
+                        "name": "my-stream-trigger",
+                        "collection": "my-collection",
+                        "description": "Stream data processing trigger",
+                        "source": {
+                          "subject": "microstrate.data.source",
+                          "type": "stream",
+                          "response_type": "Stream"
+                        },
+                        "target": {
+                          "subject": "microstrate.data.target",
+                          "account": "account_identifier",
+                          "type": "stream"
+                        },
+                        "subject": "trigger.stream.my-stream-trigger",
+                        "trigger_type": "stream",
+                        "type": "stream-trigger"
+                      },
+                      "metadata": {
+                        "subject": "trigger.stream.my-stream-trigger"
+                      },
+                      "status_code": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a trigger",
+        "description": "Deletes a trigger by its subject.",
+        "operationId": "deleteTrigger",
+        "tags": [
+          "Triggers"
+        ],
+        "parameters": [
+          {
+            "name": "subject",
+            "in": "path",
+            "description": "The subject identifier of the trigger to delete",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "microstrate.trigger.gateway.my-gateway-trigger"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully deleted trigger",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status_code": {
+                      "type": "integer",
+                      "example": 200
+                    }
+                  }
+                },
+                "example": {
+                  "status_code": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/trigger/gateway": {
+      "post": {
+        "summary": "Create a gateway trigger",
+        "description": "Creates a new gateway trigger for API endpoint management.",
+        "operationId": "createGatewayTrigger",
+        "tags": [
+          "Gateway Triggers"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GatewayTriggerRequest"
+              },
+              "example": {
+                "name": "my-gateway-trigger",
+                "collection": "my-collection",
+                "description": "Trigger for API gateway endpoint",
+                "trigger_type": "gateway",
+                "gateway_mapping": {
+                  "gateway": "gateway.1234.gateway",
+                  "method": "GET",
+                  "path": "/api/resource",
+                  "is_public": true,
+                  "limit": {
+                    "request": 1000,
+                    "time": 1000
+                  },
+                  "timeout": 30000
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Gateway trigger created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GatewayTriggerResponse"
+                },
+                "example": {
+                  "body": {
+                    "name": "my-gateway-trigger",
+                    "collection": "my-collection",
+                    "gateway_mapping_subject": "gateway.1234.gateway",
+                    "subject": "microstrate.trigger.gateway.my-gateway-trigger",
+                    "trigger_type": "gateway",
+                    "type": "gateway-trigger"
+                  },
+                  "status_code": 201
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/trigger/stream": {
+      "post": {
+        "summary": "Create a stream trigger",
+        "description": "Creates a new stream trigger for data processing.",
+        "operationId": "createStreamTrigger",
+        "tags": [
+          "Stream Triggers"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StreamTriggerRequest"
+              },
+              "example": {
+                "name": "my-stream-trigger",
+                "collection": "my-collection",
+                "description": "Stream data processing trigger",
+                "trigger_type": "stream",
+                "source": {
+                  "subject": "microstrate.data.source"
+                },
+                "target": {
+                  "subject": "microstrate.data.target",
+                  "local_subject": "microstrate.data.target"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Stream trigger created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StreamTriggerResponse"
+                },
+                "example": {
+                  "body": {
+                    "name": "my-stream-trigger",
+                    "collection": "my-collection",
+                    "description": "Stream data processing trigger",
+                    "source": {
+                      "subject": "microstrate.data.source",
+                      "type": "stream",
+                      "response_type": "Stream"
+                    },
+                    "target": {
+                      "subject": "microstrate.data.target",
+                      "account": "account_identifier",
+                      "type": "stream"
+                    },
+                    "subject": "microstrate.trigger.stream.my-stream-trigger",
+                    "trigger_type": "stream",
+                    "type": "stream-trigger"
+                  },
+                  "status_code": 201
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "JWT token for authentication"
+      }
+    },
+    "schemas": {
+      "TriggerData": {
+        "type": "object",
+        "required": [
+          "name",
+          "trigger_type"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the trigger"
+          },
+          "collection": {
+            "type": "string",
+            "description": "Collection the trigger belongs to"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the trigger"
+          },
+          "gateway_mapping_subject": {
+            "type": "string",
+            "description": "Subject assigned to the gateway mapping (for gateway triggers)"
+          },
+          "stream": {
+            "type": "string",
+            "description": "Stream identifier"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Generated trigger subject"
+          },
+          "trigger_type": {
+            "type": "string",
+            "enum": [
+              "gateway",
+              "stream",
+              "subject"
+            ],
+            "description": "Type of the trigger"
+          },
+          "type": {
+            "type": "string",
+            "description": "Specific type identifier"
+          },
+          "source": {
+            "$ref": "#/components/schemas/TriggerSource"
+          },
+          "target": {
+            "$ref": "#/components/schemas/TriggerTarget"
+          }
+        }
+      },
+      "TriggerSource": {
+        "type": "object",
+        "properties": {
+          "advertise": {
+            "type": "boolean",
+            "description": "Whether to advertise this trigger source"
+          },
+          "allow_trace": {
+            "type": "boolean",
+            "description": "Whether to allow tracing"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the source"
+          },
+          "response_type": {
+            "type": "string",
+            "enum": [
+              "Singleton",
+              "Stream",
+              "Chunked"
+            ],
+            "description": "Type of response"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Subject for the source"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "stream",
+              "service"
+            ],
+            "description": "Export type"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the source"
+          },
+          "info_url": {
+            "type": "string",
+            "description": "URL for more information"
+          }
+        }
+      },
+      "TriggerTarget": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the target"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Subject for the target"
+          },
+          "account": {
+            "type": "string",
+            "description": "Account identifier"
+          },
+          "local_subject": {
+            "type": "string",
+            "description": "Local subject"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "stream",
+              "service"
+            ],
+            "description": "Export type"
+          },
+          "share": {
+            "type": "boolean",
+            "description": "Whether to share this target"
+          },
+          "allow_trace": {
+            "type": "boolean",
+            "description": "Whether to allow tracing"
+          }
+        }
+      },
+      "GatewayLimit": {
+        "type": "object",
+        "required": [
+          "request",
+          "time"
+        ],
+        "properties": {
+          "request": {
+            "type": "integer",
+            "description": "Max requests allowed in the time window",
+            "minimum": 1
+          },
+          "time": {
+            "type": "integer",
+            "description": "Time window in milliseconds",
+            "minimum": 1
+          }
+        }
+      },
+      "GatewayMapping": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message or identifier"
+          },
+          "gateway": {
+            "type": "string",
+            "description": "Gateway identifier"
+          },
+          "is_public": {
+            "type": "boolean",
+            "description": "Whether the endpoint is publicly accessible"
+          },
+          "limit": {
+            "$ref": "#/components/schemas/GatewayLimit"
+          },
+          "method": {
+            "type": "string",
+            "enum": [
+              "GET",
+              "POST",
+              "PUT",
+              "DELETE",
+              "PATCH",
+              "OPTIONS",
+              "HEAD"
+            ],
+            "description": "HTTP method for the gateway endpoint"
+          },
+          "path": {
+            "type": "string",
+            "description": "URL path for the gateway endpoint"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Subject for the gateway mapping"
+          },
+          "timeout": {
+            "type": "integer",
+            "description": "Timeout in milliseconds",
+            "minimum": 1
+          },
+          "traffic_distribution": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number"
+            },
+            "description": "Traffic distribution configuration"
+          }
+        }
+      },
+      "TriggerResponse": {
+        "type": "object",
+        "properties": {
+          "body": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Trigger data"
+          },
+          "metadata": {
+            "type": "object",
+            "properties": {
+              "subject": {
+                "type": "string",
+                "description": "Subject of the trigger"
+              }
+            }
+          },
+          "status_code": {
+            "type": "integer",
+            "description": "HTTP status code"
+          }
+        }
+      },
+      "TriggerListResponse": {
+        "type": "object",
+        "properties": {
+          "body": {
+            "type": "object",
+            "properties": {
+              "results": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TriggerData"
+                },
+                "description": "List of trigger data"
+              },
+              "results_total": {
+                "type": "integer",
+                "description": "Total number of results"
+              }
+            }
+          },
+          "metadata": {
+            "type": "object",
+            "properties": {
+              "subject": {
+                "type": "string",
+                "description": "Subject pattern used for the query"
+              }
+            }
+          },
+          "status_code": {
+            "type": "integer",
+            "description": "HTTP status code"
+          }
+        }
+      },
+      "GatewayTriggerRequest": {
+        "type": "object",
+        "required": [
+          "name",
+          "trigger_type",
+          "gateway_mapping"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the trigger"
+          },
+          "collection": {
+            "type": "string",
+            "description": "Collection the trigger belongs to"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the trigger"
+          },
+          "trigger_type": {
+            "type": "string",
+            "enum": [
+              "gateway"
+            ],
+            "description": "Must be 'gateway' for gateway triggers"
+          },
+          "gateway_mapping": {
+            "$ref": "#/components/schemas/GatewayMapping"
+          }
+        }
+      },
+      "GatewayTriggerResponse": {
+        "type": "object",
+        "properties": {
+          "body": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name of the trigger"
+              },
+              "collection": {
+                "type": "string",
+                "description": "Collection the trigger belongs to"
+              },
+              "gateway_mapping_subject": {
+                "type": "string",
+                "description": "Subject assigned to the gateway mapping"
+              },
+              "stream": {
+                "type": "string",
+                "description": "Stream identifier"
+              },
+              "subject": {
+                "type": "string",
+                "description": "Generated trigger subject"
+              },
+              "trigger_type": {
+                "type": "string",
+                "enum": [
+                  "gateway"
+                ],
+                "description": "Type of the trigger"
+              },
+              "type": {
+                "type": "string",
+                "description": "Specific type identifier"
+              }
+            }
+          },
+          "status_code": {
+            "type": "integer",
+            "description": "HTTP status code"
+          }
+        }
+      },
+      "StreamTriggerRequest": {
+        "type": "object",
+        "required": [
+          "name",
+          "trigger_type",
+          "source",
+          "target"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the trigger"
+          },
+          "collection": {
+            "type": "string",
+            "description": "Collection the trigger belongs to"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the trigger"
+          },
+          "trigger_type": {
+            "type": "string",
+            "enum": [
+              "stream"
+            ],
+            "description": "Must be 'stream' for stream triggers"
+          },
+          "source": {
+            "$ref": "#/components/schemas/TriggerSource"
+          },
+          "target": {
+            "$ref": "#/components/schemas/TriggerTarget"
+          }
+        }
+      },
+      "StreamTriggerResponse": {
+        "type": "object",
+        "properties": {
+          "body": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name of the trigger"
+              },
+              "collection": {
+                "type": "string",
+                "description": "Collection the trigger belongs to"
+              },
+              "description": {
+                "type": "string",
+                "description": "Description of the trigger"
+              },
+              "source": {
+                "$ref": "#/components/schemas/TriggerSource"
+              },
+              "target": {
+                "$ref": "#/components/schemas/TriggerTarget"
+              },
+              "stream": {
+                "type": "string",
+                "description": "Stream identifier"
+              },
+              "subject": {
+                "type": "string",
+                "description": "Generated trigger subject"
+              },
+              "trigger_type": {
+                "type": "string",
+                "enum": [
+                  "stream"
+                ],
+                "description": "Type of the trigger"
+              },
+              "type": {
+                "type": "string",
+                "description": "Specific type identifier"
+              }
+            }
+          },
+          "status_code": {
+            "type": "integer",
+            "description": "HTTP status code"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          },
+          "status_code": {
+            "type": "integer",
+            "description": "HTTP status code"
+          }
+        }
+      }
+    },
+    "responses": {
+      "BadRequest": {
+        "description": "Invalid request",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "error": "Invalid request: Missing required field",
+              "status_code": 400
+            }
+          }
+        }
+      },
+      "Unauthorized": {
+        "description": "Unauthorized access",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "error": "Unauthorized: Invalid or missing authentication token",
+              "status_code": 401
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "Resource not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "error": "Not found: The requested trigger does not exist",
+              "status_code": 404
+            }
+          }
+        }
+      },
+      "InternalServerError": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "error": "Internal server error",
+              "status_code": 500
+            }
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ]
+}

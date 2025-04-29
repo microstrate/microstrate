@@ -55,6 +55,12 @@
             "openapi": {
               "source": "api-reference/endpoint/gateway/openapi.json"
             }
+          },
+          {
+            "group": "Trigger",
+            "openapi": {
+              "source": "api-reference/endpoint/trigger/openapi.json"
+            }
           }
         ]    
       },
