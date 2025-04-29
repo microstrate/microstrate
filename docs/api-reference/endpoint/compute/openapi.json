@@ -48,6 +48,8 @@
         "summary": "Get all collections",
         "description": "Retrieves a list of all compute collections",
         "operationId": "getCollections",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.compute.get.collections",
         "responses": {
           "200": {
             "description": "A list of collections",
@@ -96,6 +98,8 @@
         "summary": "Create a collection",
         "description": "Creates a new compute collection",
         "operationId": "createCollection",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.compute.post.collection",
         "requestBody": {
           "description": "Collection to create",
           "required": true,
@@ -153,6 +157,8 @@
         "summary": "Get a collection",
         "description": "Retrieves a specific collection by subject",
         "operationId": "getCollection",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.compute.get.collection",
         "responses": {
           "200": {
             "description": "Collection details",
@@ -187,6 +193,8 @@
         "summary": "Update a collection",
         "description": "Updates an existing collection",
         "operationId": "updateCollection",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.compute.patch.collection",
         "requestBody": {
           "description": "Collection properties to update",
           "required": true,
@@ -241,6 +249,8 @@
         "summary": "Get all functions",
         "description": "Retrieves a list of all functions",
         "operationId": "getFunctions",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.compute.get.functions",
         "responses": {
           "200": {
             "description": "A list of functions",
@@ -289,6 +299,8 @@
         "summary": "Create a function",
         "description": "Creates a new serverless function",
         "operationId": "createFunction",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.compute.post.function",
         "requestBody": {
           "description": "Function to create",
           "required": true,
@@ -412,6 +424,8 @@
         "summary": "Get functions by collection",
         "description": "Retrieves all functions belonging to a specific collection",
         "operationId": "getFunctionsByCollection",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.compute.get.functions-by-collection",
         "responses": {
           "200": {
             "description": "A list of functions in the collection",
@@ -470,6 +484,8 @@
         "summary": "Get a function",
         "description": "Retrieves a specific function by subject",
         "operationId": "getFunction",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.compute.get.function",
         "responses": {
           "200": {
             "description": "Function details",
@@ -520,6 +536,8 @@
         "summary": "Update a function",
         "description": "Updates an existing function",
         "operationId": "updateFunction",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.compute.patch.function",
         "requestBody": {
           "description": "Function properties to update",
           "required": true,
@@ -586,6 +604,8 @@
         "summary": "Invoke a function",
         "description": "Invokes a function with the provided payload",
         "operationId": "invokeFunction",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.compute.invoke.function",
         "requestBody": {
           "description": "Function invocation parameters",
           "required": true,
@@ -636,6 +656,8 @@
         "summary": "Get all containers",
         "description": "Retrieves a list of all containers",
         "operationId": "getContainers",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.compute.get.containers",
         "responses": {
           "200": {
             "description": "A list of containers",
@@ -684,6 +706,8 @@
         "summary": "Create a container",
         "description": "Creates a new container",
         "operationId": "createContainer",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.compute.post.container",
         "requestBody": {
           "description": "Container to create",
           "required": true,
@@ -768,6 +792,8 @@
         "summary": "Get containers by collection",
         "description": "Retrieves all containers belonging to a specific collection",
         "operationId": "getContainersByCollection",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.compute.get.containers-by-colleciton",
         "responses": {
           "200": {
             "description": "A list of containers in the collection",
@@ -826,6 +852,8 @@
         "summary": "Get a container",
         "description": "Retrieves a specific container by subject",
         "operationId": "getContainer",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.compute.get.container",
         "responses": {
           "200": {
             "description": "Container details",
@@ -874,6 +902,8 @@
         "summary": "Update a container",
         "description": "Updates an existing container",
         "operationId": "updateContainer",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.compute.patch.container",
         "requestBody": {
           "description": "Container properties to update",
           "required": true,
@@ -940,6 +970,8 @@
         "summary": "Get compute asset history",
         "description": "Retrieves the history of a compute asset",
         "operationId": "getComputeAssetHistory",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.compute.get.compute-asset-history",
         "responses": {
           "200": {
             "description": "Asset history",
@@ -1024,6 +1056,8 @@
         "summary": "Update a compute asset",
         "description": "Updates a compute asset",
         "operationId": "updateComputeAsset",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.compute.patch.compute-asset",
         "requestBody": {
           "description": "Asset properties to update",
           "required": true,
@@ -1093,6 +1127,8 @@
         "summary": "Get runtimes",
         "description": "Retrieves all available runtimes",
         "operationId": "getRuntimes",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.compute.get.runtimes",
         "responses": {
           "200": {
             "description": "A list of available runtimes",

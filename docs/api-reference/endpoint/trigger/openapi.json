@@ -21,6 +21,8 @@
         "summary": "Retrieve all triggers",
         "description": "Retrieves all triggers matching a specific subject pattern.",
         "operationId": "getTriggers",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.trigger.get.triggers",
         "tags": [
           "Triggers"
         ],
@@ -92,6 +94,8 @@
         "summary": "Retrieve a specific trigger",
         "description": "Retrieves a specific trigger by its subject.",
         "operationId": "getTrigger",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.trigger.get.trigger",
         "tags": [
           "Triggers"
         ],
@@ -181,6 +185,8 @@
         "summary": "Delete a trigger",
         "description": "Deletes a trigger by its subject.",
         "operationId": "deleteTrigger",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.trigger.delete.item",
         "tags": [
           "Triggers"
         ],
@@ -236,6 +242,8 @@
         "summary": "Create a gateway trigger",
         "description": "Creates a new gateway trigger for API endpoint management.",
         "operationId": "createGatewayTrigger",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.trigger.post.gateway",
         "tags": [
           "Gateway Triggers"
         ],
@@ -305,6 +313,8 @@
         "summary": "Create a stream trigger",
         "description": "Creates a new stream trigger for data processing.",
         "operationId": "createStreamTrigger",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.trigger.post.stream",
         "tags": [
           "Stream Triggers"
         ],
