@@ -1,0 +1,1678 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Compute Service API",
+    "description": "The Compute Service is an API service that provides functionality for managing compute resources, \nincluding collections, functions, and containers through a RESTful API.\n",
+    "contact": {
+      "email": "support@microstrate.io"
+    },
+    "license": {
+      "name": "Proprietary"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.microstrate.io",
+      "description": "Production server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Collections",
+      "description": "Operations related to compute collections"
+    },
+    {
+      "name": "Functions",
+      "description": "Operations related to serverless functions"
+    },
+    {
+      "name": "Containers",
+      "description": "Operations related to containers"
+    },
+    {
+      "name": "Assets",
+      "description": "Operations related to compute assets"
+    },
+    {
+      "name": "Runtimes",
+      "description": "Operations related to compute runtimes"
+    }
+  ],
+  "paths": {
+    "/compute/collections": {
+      "get": {
+        "tags": [
+          "Collections"
+        ],
+        "summary": "Get all collections",
+        "description": "Retrieves a list of all compute collections",
+        "operationId": "getCollections",
+        "responses": {
+          "200": {
+            "description": "A list of collections",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Collection"
+                      }
+                    },
+                    "results_total": {
+                      "type": "integer",
+                      "description": "Total number of collections"
+                    }
+                  }
+                },
+                "example": {
+                  "results": [
+                    {
+                      "collection_type": "default",
+                      "description": "A collection for my compute resources",
+                      "name": "my-collection",
+                      "subject": "compute.123456789.collection",
+                      "type": "created",
+                      "modified": 1714378974
+                    }
+                  ],
+                  "results_total": 1
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Collections"
+        ],
+        "summary": "Create a collection",
+        "description": "Creates a new compute collection",
+        "operationId": "createCollection",
+        "requestBody": {
+          "description": "Collection to create",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollectionCreate"
+              },
+              "example": {
+                "name": "my-collection",
+                "description": "A collection for my compute resources",
+                "collection_type": "default"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Collection created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Collection"
+                },
+                "example": {
+                  "collection_type": "default",
+                  "description": "A collection for my compute resources",
+                  "name": "my-collection",
+                  "subject": "compute.123456789.collection",
+                  "type": "created",
+                  "modified": 1714378974
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/compute/collections/{subject}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/CollectionSubject"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Collections"
+        ],
+        "summary": "Get a collection",
+        "description": "Retrieves a specific collection by subject",
+        "operationId": "getCollection",
+        "responses": {
+          "200": {
+            "description": "Collection details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Collection"
+                },
+                "example": {
+                  "collection_type": "default",
+                  "description": "A collection for my compute resources",
+                  "name": "my-collection",
+                  "subject": "compute.123456789.collection",
+                  "type": "created",
+                  "modified": 1714378974
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Collections"
+        ],
+        "summary": "Update a collection",
+        "description": "Updates an existing collection",
+        "operationId": "updateCollection",
+        "requestBody": {
+          "description": "Collection properties to update",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollectionUpdate"
+              },
+              "example": {
+                "description": "Updated collection description",
+                "collection_type": "special"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Collection updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Collection"
+                },
+                "example": {
+                  "collection_type": "special",
+                  "description": "Updated collection description",
+                  "name": "my-collection",
+                  "subject": "compute.123456789.collection",
+                  "type": "updated",
+                  "modified": 1714380000
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/compute/functions": {
+      "get": {
+        "tags": [
+          "Functions"
+        ],
+        "summary": "Get all functions",
+        "description": "Retrieves a list of all functions",
+        "operationId": "getFunctions",
+        "responses": {
+          "200": {
+            "description": "A list of functions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Compute"
+                      }
+                    },
+                    "results_total": {
+                      "type": "integer",
+                      "description": "Total number of functions"
+                    }
+                  }
+                },
+                "example": {
+                  "results": [
+                    {
+                      "description": "A serverless function",
+                      "name": "my-function",
+                      "runtime": "nodejs",
+                      "subject": "compute.my-namespace.function.123456789",
+                      "type": "created",
+                      "modified": 1714378974
+                    }
+                  ],
+                  "results_total": 1
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Functions"
+        ],
+        "summary": "Create a function",
+        "description": "Creates a new serverless function",
+        "operationId": "createFunction",
+        "requestBody": {
+          "description": "Function to create",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FunctionCreate"
+              },
+              "example": {
+                "name": "my-function",
+                "description": "A serverless function",
+                "compute_asset": {
+                  "namespace": "my-namespace",
+                  "handler": "index.handler",
+                  "assets": [
+                    {
+                      "asset_name": "index.js",
+                      "asset_type": "file",
+                      "asset_value": "Y29uc29sZS5sb2coIkhlbGxvLCBXb3JsZCEiKTsK",
+                      "link": false
+                    }
+                  ],
+                  "timeout": 30000,
+                  "read_only_fs": true
+                },
+                "monitor_config": {
+                  "ttl": 604800000,
+                  "store_payload": true
+                },
+                "schema": {
+                  "input": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "output": {
+                    "type": "object",
+                    "properties": {
+                      "message": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Function created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Compute"
+                },
+                "example": {
+                  "description": "A serverless function",
+                  "name": "my-function",
+                  "runtime": "nodejs",
+                  "subject": "compute.my-namespace.function.123456789",
+                  "type": "created",
+                  "modified": 1714378974,
+                  "compute_asset": {
+                    "namespace": "my-namespace",
+                    "service": 123456789,
+                    "runtime": "nodejs",
+                    "handler": "index.handler",
+                    "timeout": 30000,
+                    "read_only_fs": true
+                  },
+                  "monitor_config": {
+                    "ttl": 604800000,
+                    "store_payload": true
+                  },
+                  "schema": {
+                    "input": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "output": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/compute/collections/{subject}/functions": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/CollectionSubject"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Functions",
+          "Collections"
+        ],
+        "summary": "Get functions by collection",
+        "description": "Retrieves all functions belonging to a specific collection",
+        "operationId": "getFunctionsByCollection",
+        "responses": {
+          "200": {
+            "description": "A list of functions in the collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Compute"
+                      }
+                    },
+                    "results_total": {
+                      "type": "integer",
+                      "description": "Total number of functions"
+                    }
+                  }
+                },
+                "example": {
+                  "results": [
+                    {
+                      "description": "A serverless function",
+                      "name": "my-function",
+                      "runtime": "nodejs",
+                      "subject": "compute.my-namespace.function.123456789",
+                      "type": "created",
+                      "modified": 1714378974
+                    }
+                  ],
+                  "results_total": 1
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/compute/functions/{subject}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/ComputeSubject"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Functions"
+        ],
+        "summary": "Get a function",
+        "description": "Retrieves a specific function by subject",
+        "operationId": "getFunction",
+        "responses": {
+          "200": {
+            "description": "Function details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComputeWithAsset"
+                },
+                "example": {
+                  "description": "A serverless function",
+                  "name": "my-function",
+                  "runtime": "nodejs",
+                  "subject": "compute.my-namespace.function.123456789",
+                  "type": "created",
+                  "modified": 1714378974,
+                  "compute_asset": {
+                    "namespace": "my-namespace",
+                    "service": 123456789,
+                    "runtime": "nodejs",
+                    "handler": "index.handler",
+                    "assets": [
+                      {
+                        "asset_name": "index.js",
+                        "asset_type": "file",
+                        "asset_value": "Y29uc29sZS5sb2coIkhlbGxvLCBXb3JsZCEiKTsK",
+                        "link": false
+                      }
+                    ],
+                    "timeout": 30000,
+                    "read_only_fs": true
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Functions"
+        ],
+        "summary": "Update a function",
+        "description": "Updates an existing function",
+        "operationId": "updateFunction",
+        "requestBody": {
+          "description": "Function properties to update",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FunctionUpdate"
+              },
+              "example": {
+                "description": "Updated function description",
+                "monitor_config": {
+                  "ttl": 1209600000,
+                  "store_payload": false
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Function updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Compute"
+                },
+                "example": {
+                  "description": "Updated function description",
+                  "name": "my-function",
+                  "runtime": "nodejs",
+                  "subject": "compute.my-namespace.function.123456789",
+                  "type": "updated",
+                  "modified": 1714380000,
+                  "monitor_config": {
+                    "ttl": 1209600000,
+                    "store_payload": false
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/compute/functions/{subject}/invoke": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/ComputeSubject"
+        }
+      ],
+      "post": {
+        "tags": [
+          "Functions"
+        ],
+        "summary": "Invoke a function",
+        "description": "Invokes a function with the provided payload",
+        "operationId": "invokeFunction",
+        "requestBody": {
+          "description": "Function invocation parameters",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FunctionInvoke"
+              },
+              "example": {
+                "payload": "{\"name\":\"World\"}",
+                "invocation_type": "RequestResponse"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Function invoked successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "The response from the function"
+                },
+                "example": {
+                  "message": "Hello, World!"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/compute/containers": {
+      "get": {
+        "tags": [
+          "Containers"
+        ],
+        "summary": "Get all containers",
+        "description": "Retrieves a list of all containers",
+        "operationId": "getContainers",
+        "responses": {
+          "200": {
+            "description": "A list of containers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Compute"
+                      }
+                    },
+                    "results_total": {
+                      "type": "integer",
+                      "description": "Total number of containers"
+                    }
+                  }
+                },
+                "example": {
+                  "results": [
+                    {
+                      "description": "A container for my application",
+                      "name": "my-container",
+                      "runtime": "docker",
+                      "subject": "compute.my-namespace.container.123456789",
+                      "type": "created",
+                      "modified": 1714378974
+                    }
+                  ],
+                  "results_total": 1
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Containers"
+        ],
+        "summary": "Create a container",
+        "description": "Creates a new container",
+        "operationId": "createContainer",
+        "requestBody": {
+          "description": "Container to create",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContainerCreate"
+              },
+              "example": {
+                "name": "my-container",
+                "description": "A container for my application",
+                "compute_asset": {
+                  "namespace": "my-namespace",
+                  "runtime": "docker",
+                  "assets": [
+                    {
+                      "asset_name": "Dockerfile",
+                      "asset_type": "file",
+                      "asset_value": "RlJPTSBub2RlOjE4CldPUktESVIgL2FwcApDT1BZIC4gLgpSVU4gbnBtIGluc3RhbGwKRVhQT1NFIDgwODAKQ01EIFsibm9kZSIsICJpbmRleC5qcyJdCg==",
+                      "link": false
+                    }
+                  ],
+                  "read_only_fs": false
+                },
+                "monitor_config": {
+                  "ttl": 604800000,
+                  "store_payload": true
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Container created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Compute"
+                },
+                "example": {
+                  "description": "A container for my application",
+                  "name": "my-container",
+                  "runtime": "docker",
+                  "subject": "compute.my-namespace.container.123456789",
+                  "type": "created",
+                  "modified": 1714378974,
+                  "compute_asset": {
+                    "namespace": "my-namespace",
+                    "service": 123456789,
+                    "runtime": "docker",
+                    "read_only_fs": false
+                  },
+                  "monitor_config": {
+                    "ttl": 604800000,
+                    "store_payload": true
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/compute/collections/{subject}/containers": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/CollectionSubject"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Containers",
+          "Collections"
+        ],
+        "summary": "Get containers by collection",
+        "description": "Retrieves all containers belonging to a specific collection",
+        "operationId": "getContainersByCollection",
+        "responses": {
+          "200": {
+            "description": "A list of containers in the collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Compute"
+                      }
+                    },
+                    "results_total": {
+                      "type": "integer",
+                      "description": "Total number of containers"
+                    }
+                  }
+                },
+                "example": {
+                  "results": [
+                    {
+                      "description": "A container for my application",
+                      "name": "my-container",
+                      "runtime": "docker",
+                      "subject": "compute.my-namespace.container.123456789",
+                      "type": "created",
+                      "modified": 1714378974
+                    }
+                  ],
+                  "results_total": 1
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/compute/containers/{subject}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/ComputeSubject"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Containers"
+        ],
+        "summary": "Get a container",
+        "description": "Retrieves a specific container by subject",
+        "operationId": "getContainer",
+        "responses": {
+          "200": {
+            "description": "Container details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComputeWithAsset"
+                },
+                "example": {
+                  "description": "A container for my application",
+                  "name": "my-container",
+                  "runtime": "docker",
+                  "subject": "compute.my-namespace.container.123456789",
+                  "type": "created",
+                  "modified": 1714378974,
+                  "compute_asset": {
+                    "namespace": "my-namespace",
+                    "service": 123456789,
+                    "runtime": "docker",
+                    "assets": [
+                      {
+                        "asset_name": "Dockerfile",
+                        "asset_type": "file",
+                        "asset_value": "RlJPTSBub2RlOjE4CldPUktESVIgL2FwcApDT1BZIC4gLgpSVU4gbnBtIGluc3RhbGwKRVhQT1NFIDgwODAKQ01EIFsibm9kZSIsICJpbmRleC5qcyJdCg==",
+                        "link": false
+                      }
+                    ],
+                    "read_only_fs": false
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Containers"
+        ],
+        "summary": "Update a container",
+        "description": "Updates an existing container",
+        "operationId": "updateContainer",
+        "requestBody": {
+          "description": "Container properties to update",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContainerUpdate"
+              },
+              "example": {
+                "description": "Updated container description",
+                "monitor_config": {
+                  "ttl": 1209600000,
+                  "store_payload": false
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Container updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Compute"
+                },
+                "example": {
+                  "description": "Updated container description",
+                  "name": "my-container",
+                  "runtime": "docker",
+                  "subject": "compute.my-namespace.container.123456789",
+                  "type": "updated",
+                  "modified": 1714380000,
+                  "monitor_config": {
+                    "ttl": 1209600000,
+                    "store_payload": false
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/compute/assets/{subject}/history": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/ComputeSubject"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Assets"
+        ],
+        "summary": "Get compute asset history",
+        "description": "Retrieves the history of a compute asset",
+        "operationId": "getComputeAssetHistory",
+        "responses": {
+          "200": {
+            "description": "Asset history",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/ComputeAsset"
+                      }
+                    },
+                    "results_total": {
+                      "type": "integer",
+                      "description": "Total number of history entries"
+                    }
+                  }
+                },
+                "example": {
+                  "results": [
+                    {
+                      "namespace": "my-namespace",
+                      "service": 123456789,
+                      "runtime": "nodejs",
+                      "handler": "index.handler",
+                      "assets": [
+                        {
+                          "asset_name": "index.js",
+                          "asset_type": "file",
+                          "asset_value": "Y29uc29sZS5sb2coIkhlbGxvLCBXb3JsZCEiKTsK",
+                          "link": false
+                        }
+                      ],
+                      "timeout": 30000,
+                      "read_only_fs": true,
+                      "modified": 1714378974
+                    },
+                    {
+                      "namespace": "my-namespace",
+                      "service": 123456789,
+                      "runtime": "nodejs",
+                      "handler": "index.newHandler",
+                      "assets": [
+                        {
+                          "asset_name": "index.js",
+                          "asset_type": "file",
+                          "asset_value": "Y29uc29sZS5sb2coIkhlbGxvLCBVcGRhdGVkIFdvcmxkISIpOwo=",
+                          "link": false
+                        }
+                      ],
+                      "timeout": 60000,
+                      "read_only_fs": true,
+                      "modified": 1714380000
+                    }
+                  ],
+                  "results_total": 2
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/compute/assets/{subject}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/ComputeSubject"
+        }
+      ],
+      "patch": {
+        "tags": [
+          "Assets"
+        ],
+        "summary": "Update a compute asset",
+        "description": "Updates a compute asset",
+        "operationId": "updateComputeAsset",
+        "requestBody": {
+          "description": "Asset properties to update",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ComputeAssetUpdate"
+              },
+              "example": {
+                "namespace": "my-namespace",
+                "service": 123456789,
+                "handler": "index.newHandler",
+                "assets": [
+                  {
+                    "asset_name": "index.js",
+                    "asset_type": "file",
+                    "asset_value": "Y29uc29sZS5sb2coIkhlbGxvLCBVcGRhdGVkIFdvcmxkISIpOwo=",
+                    "link": false
+                  }
+                ],
+                "timeout": 60000,
+                "env_vars": [
+                  "ENV=production"
+                ],
+                "read_only_fs": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Asset updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "description": "Success message"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Asset updated successfully"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/compute/runtimes": {
+      "get": {
+        "tags": [
+          "Runtimes"
+        ],
+        "summary": "Get runtimes",
+        "description": "Retrieves all available runtimes",
+        "operationId": "getRuntimes",
+        "responses": {
+          "200": {
+            "description": "A list of available runtimes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
+                    },
+                    "results_total": {
+                      "type": "integer",
+                      "description": "Total number of runtimes"
+                    }
+                  }
+                },
+                "example": {
+                  "results": [
+                    {
+                      "name": "nodejs",
+                      "version": "18.x",
+                      "description": "Node.js Runtime"
+                    },
+                    {
+                      "name": "python",
+                      "version": 3.1,
+                      "description": "Python Runtime"
+                    },
+                    {
+                      "name": "docker",
+                      "version": "latest",
+                      "description": "Docker Runtime"
+                    }
+                  ],
+                  "results_total": 3
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "CollectionSubject": {
+        "name": "subject",
+        "in": "path",
+        "description": "The subject identifier of the collection",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "example": "compute.123456789.collection"
+      },
+      "ComputeSubject": {
+        "name": "subject",
+        "in": "path",
+        "description": "The subject identifier of the compute item (function or container)",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "example": "compute.my-namespace.function.123456789"
+      }
+    },
+    "schemas": {
+      "Collection": {
+        "type": "object",
+        "properties": {
+          "collection_type": {
+            "type": "string",
+            "description": "Type of collection"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the collection"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the collection"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Subject identifier of the collection"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of resource (created, updated)"
+          },
+          "modified": {
+            "type": "integer",
+            "description": "Timestamp of last modification (Unix time)"
+          }
+        },
+        "example": {
+          "collection_type": "default",
+          "description": "A collection for my compute resources",
+          "name": "my-collection",
+          "subject": "compute.123456789.collection",
+          "type": "created",
+          "modified": 1714378974
+        }
+      },
+      "CollectionCreate": {
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the collection"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the collection"
+          },
+          "collection_type": {
+            "type": "string",
+            "description": "Type of collection"
+          }
+        }
+      },
+      "CollectionUpdate": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the collection"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the collection"
+          },
+          "collection_type": {
+            "type": "string",
+            "description": "Type of collection"
+          }
+        }
+      },
+      "ComputeAssetItem": {
+        "type": "object",
+        "properties": {
+          "asset_name": {
+            "type": "string",
+            "description": "Name of the asset"
+          },
+          "asset_type": {
+            "type": "string",
+            "description": "Type of the asset"
+          },
+          "asset_value": {
+            "type": "string",
+            "description": "Base64 encoded content of the asset"
+          },
+          "link": {
+            "type": "boolean",
+            "description": "Whether the asset is a link to another resource"
+          }
+        }
+      },
+      "ComputeAsset": {
+        "type": "object",
+        "properties": {
+          "namespace": {
+            "type": "string",
+            "description": "Namespace for the compute asset"
+          },
+          "service": {
+            "type": "string",
+            "description": "Service identifier"
+          },
+          "runtime": {
+            "type": "string",
+            "description": "Runtime environment"
+          },
+          "handler": {
+            "type": "string",
+            "description": "Handler for functions"
+          },
+          "assets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ComputeAssetItem"
+            },
+            "description": "Compute asset items (code, config, etc.)"
+          },
+          "timeout": {
+            "type": "integer",
+            "description": "Timeout in milliseconds"
+          },
+          "env_vars": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Environment variables"
+          },
+          "read_only_fs": {
+            "type": "boolean",
+            "description": "Whether filesystem is read-only"
+          },
+          "modified": {
+            "type": "integer",
+            "description": "Timestamp of last modification (Unix time)"
+          }
+        }
+      },
+      "ComputeAssetUpdate": {
+        "type": "object",
+        "required": [
+          "namespace",
+          "service"
+        ],
+        "properties": {
+          "namespace": {
+            "type": "string",
+            "description": "Namespace for the compute asset"
+          },
+          "service": {
+            "type": "string",
+            "description": "Service identifier"
+          },
+          "runtime": {
+            "type": "string",
+            "description": "Runtime environment"
+          },
+          "handler": {
+            "type": "string",
+            "description": "Handler for functions"
+          },
+          "assets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ComputeAssetItem"
+            },
+            "description": "Compute asset items (code, config, etc.)"
+          },
+          "timeout": {
+            "type": "integer",
+            "description": "Timeout in milliseconds"
+          },
+          "env_vars": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Environment variables"
+          },
+          "read_only_fs": {
+            "type": "boolean",
+            "description": "Whether filesystem is read-only"
+          }
+        }
+      },
+      "MonitorConfig": {
+        "type": "object",
+        "properties": {
+          "ttl": {
+            "type": "integer",
+            "description": "Time to live for monitoring data in milliseconds"
+          },
+          "store_payload": {
+            "type": "boolean",
+            "description": "Whether to store invocation/operation payloads"
+          }
+        }
+      },
+      "Schema": {
+        "type": "object",
+        "properties": {
+          "input": {
+            "type": "object",
+            "description": "Input schema definition (JSON Schema)"
+          },
+          "output": {
+            "type": "object",
+            "description": "Output schema definition (JSON Schema)"
+          }
+        }
+      },
+      "Compute": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "Description of the compute item"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the compute item"
+          },
+          "runtime": {
+            "type": "string",
+            "description": "Runtime environment"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Subject identifier of the compute item"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of resource (created, updated)"
+          },
+          "modified": {
+            "type": "integer",
+            "description": "Timestamp of last modification (Unix time)"
+          },
+          "monitor_config": {
+            "$ref": "#/components/schemas/MonitorConfig"
+          },
+          "schema": {
+            "$ref": "#/components/schemas/Schema"
+          }
+        }
+      },
+      "ComputeWithAsset": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Compute"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "compute_asset": {
+                "$ref": "#/components/schemas/ComputeAsset"
+              }
+            }
+          }
+        ]
+      },
+      "FunctionCreate": {
+        "type": "object",
+        "required": [
+          "name",
+          "compute_asset",
+          "monitor_config"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the function"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the function"
+          },
+          "compute_asset": {
+            "type": "object",
+            "required": [
+              "namespace"
+            ],
+            "properties": {
+              "namespace": {
+                "type": "string",
+                "description": "Namespace for the function"
+              },
+              "handler": {
+                "type": "string",
+                "description": "Handler for the function"
+              },
+              "runtime": {
+                "type": "string",
+                "description": "Runtime environment",
+                "default": "nodejs"
+              },
+              "assets": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ComputeAssetItem"
+                },
+                "description": "Function assets (code, config, etc.)"
+              },
+              "timeout": {
+                "type": "integer",
+                "description": "Function timeout in milliseconds"
+              },
+              "read_only_fs": {
+                "type": "boolean",
+                "description": "Whether filesystem is read-only"
+              }
+            }
+          },
+          "monitor_config": {
+            "$ref": "#/components/schemas/MonitorConfig"
+          },
+          "schema": {
+            "$ref": "#/components/schemas/Schema"
+          },
+          "size": {
+            "type": "string",
+            "description": "Size configuration"
+          }
+        }
+      },
+      "FunctionUpdate": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the function"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the function"
+          },
+          "monitor_config": {
+            "$ref": "#/components/schemas/MonitorConfig"
+          },
+          "schema": {
+            "$ref": "#/components/schemas/Schema"
+          },
+          "size": {
+            "type": "string",
+            "description": "Size configuration"
+          }
+        }
+      },
+      "FunctionInvoke": {
+        "type": "object",
+        "required": [
+          "payload",
+          "invocation_type"
+        ],
+        "properties": {
+          "payload": {
+            "type": "string",
+            "description": "JSON payload for the function invocation"
+          },
+          "invocation_type": {
+            "type": "string",
+            "enum": [
+              "Async",
+              "RequestResponse"
+            ],
+            "description": "Type of invocation (asynchronous or request-response)"
+          }
+        }
+      },
+      "ContainerCreate": {
+        "type": "object",
+        "required": [
+          "name",
+          "compute_asset",
+          "monitor_config"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the container"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the container"
+          },
+          "compute_asset": {
+            "type": "object",
+            "required": [
+              "namespace",
+              "runtime"
+            ],
+            "properties": {
+              "namespace": {
+                "type": "string",
+                "description": "Namespace for the container"
+              },
+              "runtime": {
+                "type": "string",
+                "description": "Runtime environment"
+              },
+              "assets": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ComputeAssetItem"
+                },
+                "description": "Container assets (Dockerfile, etc.)"
+              },
+              "read_only_fs": {
+                "type": "boolean",
+                "description": "Whether filesystem is read-only"
+              }
+            }
+          },
+          "monitor_config": {
+            "$ref": "#/components/schemas/MonitorConfig"
+          },
+          "size": {
+            "type": "string",
+            "description": "Size configuration"
+          }
+        }
+      },
+      "ContainerUpdate": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the container"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the container"
+          },
+          "monitor_config": {
+            "$ref": "#/components/schemas/MonitorConfig"
+          },
+          "size": {
+            "type": "string",
+            "description": "Size configuration"
+          }
+        }
+      }
+    },
+    "responses": {
+      "BadRequest": {
+        "description": "Bad request",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message"
+                }
+              }
+            },
+            "example": {
+              "error": "Invalid request parameters"
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "Resource not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message"
+                }
+              }
+            },
+            "example": {
+              "error": "The requested resource was not found"
+            }
+          }
+        }
+      },
+      "InternalServerError": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message"
+                }
+              }
+            },
+            "example": {
+              "error": "An unexpected error occurred"
+            }
+          }
+        }
+      }
+    }
+  }
+}

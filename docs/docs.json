@@ -39,14 +39,22 @@
         "tab": "API Reference",
         "groups": [
           {
+            "group": "Compute",
+            "openapi": {
+              "source": "api-reference/endpoint/compute/openapi.json"
+            }
+          },
+          {
             "group": "Flows",
             "openapi": {
               "source": "api-reference/endpoint/flows/openapi.json"
             }
           },
           {
-            "group": "Plants",
-            "openapi": "https://petstore3.swagger.io/api/v3/openapi.json"
+            "group": "Gateway",
+            "openapi": {
+              "source": "api-reference/endpoint/gateway/openapi.json"
+            }
           }
         ]    
       },
