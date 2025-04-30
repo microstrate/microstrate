@@ -57,6 +57,12 @@
             }
           },
           {
+            "group": "Storage",
+            "openapi": {
+              "source": "api-reference/endpoint/storage/openapi.json"
+            }
+          },
+          {
             "group": "Trigger",
             "openapi": {
               "source": "api-reference/endpoint/trigger/openapi.json"

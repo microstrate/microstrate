@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "Gateway Service API",
+    "title": "Microstrate Gateway",
     "description": "API for managing Microstrate Gateways, Mappings, and Mapping Versions.\n\nA Gateway serves as an entry point for requests, a Mapping defines routes within a gateway,\nand a Mapping Version defines specific implementations of a mapping.",
     "version": "1.0.0",
     "contact": {
@@ -71,7 +71,7 @@
                   "name": "My API Gateway",
                   "description": "Gateway for my service APIs",
                   "url": "https://abc123.microstrate.io",
-                  "subject": "gateway.abcdef123456.gateway",
+                  "subject": "ms.gateway.abcdef123456.gateway",
                   "active": true,
                   "timeout": 30000,
                   "limit": {
@@ -117,7 +117,7 @@
                   "name": "My API Gateway",
                   "description": "Gateway for my service APIs",
                   "url": "https://abc123.microstrate.io",
-                  "subject": "gateway.abcdef123456.gateway",
+                  "subject": "ms.gateway.abcdef123456.gateway",
                   "active": true,
                   "timeout": 30000,
                   "limit": {
@@ -140,7 +140,7 @@
           "Gateways"
         ],
         "summary": "Update a gateway",
-        "description": "Update an existing gateway's configuration",
+        "description": "Update an existing gateways configuration",
         "operationId": "patchGateway",
         "x-resource-type": "service",
         "x-resource": "microstrate.gateway.patch.gateway",
@@ -157,7 +157,7 @@
                 "$ref": "#/components/schemas/GatewayUpdateRequest"
               },
               "example": {
-                "subject": "gateway.abcdef123456.gateway",
+                "subject": "ms.gateway.abcdef123456.gateway",
                 "name": "Updated Gateway Name",
                 "description": "Updated description for my gateway",
                 "active": true,
@@ -255,7 +255,7 @@
                     {
                       "name": "Gateway 1",
                       "description": "First gateway",
-                      "subject": "gateway.abc123.gateway",
+                      "subject": "ms.gateway.abc123.gateway",
                       "active": true,
                       "timeout": 30000,
                       "limit": {
@@ -268,7 +268,7 @@
                     {
                       "name": "Gateway 2",
                       "description": "Second gateway",
-                      "subject": "gateway.def456.gateway",
+                      "subject": "ms.gateway.def456.gateway",
                       "active": true,
                       "timeout": 60000,
                       "limit": {
@@ -313,7 +313,7 @@
                 "$ref": "#/components/schemas/MappingCreateRequest"
               },
               "example": {
-                "gateway": "gateway.abcdef123456.gateway",
+                "gateway": "ms.gateway.abcdef123456.gateway",
                 "path": "/api/users",
                 "method": "GET",
                 "isPublic": true,
@@ -335,7 +335,7 @@
                   "$ref": "#/components/schemas/MappingResponse"
                 },
                 "example": {
-                  "subject": "gateway.abcdef123456.mapping.get.api.users",
+                  "subject": "ms.gateway.abcdef123456.mapping.get.api.users",
                   "path": "/api/users",
                   "method": "GET",
                   "isPublic": true,
@@ -386,7 +386,7 @@
                 "example": {
                   "results": [
                     {
-                      "subject": "gateway.abcdef123456.mapping.get.api.users",
+                      "subject": "ms.gateway.abcdef123456.mapping.get.api.users",
                       "path": "/api/users",
                       "method": "GET",
                       "isPublic": true,
@@ -400,7 +400,7 @@
                       "type": "created"
                     },
                     {
-                      "subject": "gateway.abcdef123456.mapping.post.api.users",
+                      "subject": "ms.gateway.abcdef123456.mapping.post.api.users",
                       "path": "/api/users",
                       "method": "POST",
                       "isPublic": true,
@@ -452,7 +452,7 @@
                   "$ref": "#/components/schemas/MappingResponse"
                 },
                 "example": {
-                  "subject": "gateway.abcdef123456.mapping.get.api.users",
+                  "subject": "ms.gateway.abcdef123456.mapping.get.api.users",
                   "path": "/api/users",
                   "method": "GET",
                   "isPublic": true,
@@ -497,7 +497,7 @@
                 "$ref": "#/components/schemas/MappingUpdateRequest"
               },
               "example": {
-                "subject": "gateway.abcdef123456.mapping.get.api.users",
+                "subject": "ms.gateway.abcdef123456.mapping.get.api.users",
                 "path": "/api/users/v2",
                 "isPublic": false,
                 "timeout": 60000,
@@ -592,7 +592,7 @@
                 "example": {
                   "results": [
                     {
-                      "subject": "gateway.abc123.mapping.get.api.users",
+                      "subject": "ms.gateway.abc123.mapping.get.api.users",
                       "path": "/api/users",
                       "method": "GET",
                       "isPublic": true,
@@ -606,7 +606,7 @@
                       "type": "created"
                     },
                     {
-                      "subject": "gateway.def456.mapping.post.api.products",
+                      "subject": "ms.gateway.def456.mapping.post.api.products",
                       "path": "/api/products",
                       "method": "POST",
                       "isPublic": true,
@@ -654,7 +654,7 @@
                 "$ref": "#/components/schemas/MappingVersionCreateRequest"
               },
               "example": {
-                "mapping": "gateway.abcdef123456.mapping.get.api.users",
+                "mapping": "ms.gateway.abcdef123456.mapping.get.api.users",
                 "resourceType": "function",
                 "resource": "user-service.getUsers",
                 "resourceVersion": "latest",
@@ -673,7 +673,7 @@
                   "$ref": "#/components/schemas/MappingVersionResponse"
                 },
                 "example": {
-                  "subject": "gateway.abcdef123456.mapping-version.get.api.users.1",
+                  "subject": "ms.gateway.abcdef123456.mapping-version.get.api.users.1",
                   "resourceType": "function",
                   "resource": "user-service.getUsers",
                   "resourceVersion": "latest",
@@ -719,7 +719,7 @@
                 "example": {
                   "results": [
                     {
-                      "subject": "gateway.abcdef123456.mapping-version.get.api.users.1",
+                      "subject": "ms.gateway.abcdef123456.mapping-version.get.api.users.1",
                       "resourceType": "function",
                       "resource": "user-service.getUsers",
                       "resourceVersion": "latest",
@@ -730,7 +730,7 @@
                       "type": "created"
                     },
                     {
-                      "subject": "gateway.abcdef123456.mapping-version.get.api.users.2",
+                      "subject": "ms.gateway.abcdef123456.mapping-version.get.api.users.2",
                       "resourceType": "function",
                       "resource": "user-service.getUsersV2",
                       "resourceVersion": "latest",
@@ -779,7 +779,7 @@
                   "$ref": "#/components/schemas/MappingVersionResponse"
                 },
                 "example": {
-                  "subject": "gateway.abcdef123456.mapping-version.get.api.users.1",
+                  "subject": "ms.gateway.abcdef123456.mapping-version.get.api.users.1",
                   "resourceType": "function",
                   "resource": "user-service.getUsers",
                   "resourceVersion": "latest",
@@ -819,7 +819,7 @@
                 "$ref": "#/components/schemas/MappingVersionUpdateRequest"
               },
               "example": {
-                "subject": "gateway.abcdef123456.mapping-version.get.api.users.1",
+                "subject": "ms.gateway.abcdef123456.mapping-version.get.api.users.1",
                 "active": false,
                 "description": "Updated description for version 1"
               }
@@ -909,7 +909,7 @@
                 "example": {
                   "results": [
                     {
-                      "subject": "gateway.abc123.mapping-version.get.api.users.1",
+                      "subject": "ms.gateway.abc123.mapping-version.get.api.users.1",
                       "resourceType": "function",
                       "resource": "user-service.getUsers",
                       "resourceVersion": "latest",
@@ -920,7 +920,7 @@
                       "type": "created"
                     },
                     {
-                      "subject": "gateway.def456.mapping-version.post.api.products.1",
+                      "subject": "ms.gateway.def456.mapping-version.post.api.products.1",
                       "resourceType": "function",
                       "resource": "product-service.createProduct",
                       "resourceVersion": "latest",
@@ -963,7 +963,7 @@
         "schema": {
           "type": "string"
         },
-        "example": "gateway.abcdef123456.mapping.get.api.users"
+        "example": "ms.gateway.abcdef123456.mapping.get.api.users"
       },
       "versionIdParam": {
         "name": "versionId",
@@ -973,7 +973,7 @@
         "schema": {
           "type": "string"
         },
-        "example": "gateway.abcdef123456.mapping-version.get.api.users.1"
+        "example": "ms.gateway.abcdef123456.mapping-version.get.api.users.1"
       }
     },
     "schemas": {
@@ -1074,7 +1074,7 @@
           "subject": {
             "type": "string",
             "description": "Subject of the gateway to update",
-            "example": "gateway.abcdef123456.gateway"
+            "example": "ms.gateway.abcdef123456.gateway"
           },
           "name": {
             "type": "string",
@@ -1129,7 +1129,7 @@
           "subject": {
             "type": "string",
             "description": "Subject identifier of the gateway",
-            "example": "gateway.abcdef123456.gateway"
+            "example": "ms.gateway.abcdef123456.gateway"
           },
           "active": {
             "type": "boolean",
@@ -1190,7 +1190,7 @@
           "gateway": {
             "type": "string",
             "description": "Subject of the gateway to create the mapping on",
-            "example": "gateway.abcdef123456.gateway"
+            "example": "ms.gateway.abcdef123456.gateway"
           },
           "path": {
             "type": "string",
@@ -1248,7 +1248,7 @@
           "subject": {
             "type": "string",
             "description": "Subject of the mapping to update",
-            "example": "gateway.abcdef123456.mapping.get.api.users"
+            "example": "ms.gateway.abcdef123456.mapping.get.api.users"
           },
           "path": {
             "type": "string",
@@ -1287,7 +1287,7 @@
           "subject": {
             "type": "string",
             "description": "Subject identifier of the mapping",
-            "example": "gateway.abcdef123456.mapping.get.api.users"
+            "example": "ms.gateway.abcdef123456.mapping.get.api.users"
           },
           "path": {
             "type": "string",
@@ -1362,7 +1362,7 @@
           "mapping": {
             "type": "string",
             "description": "Subject of the mapping to create the version for",
-            "example": "gateway.abcdef123456.mapping.get.api.users"
+            "example": "ms.gateway.abcdef123456.mapping.get.api.users"
           },
           "resourceType": {
             "type": "string",
@@ -1433,7 +1433,7 @@
           "subject": {
             "type": "string",
             "description": "Subject of the mapping version to update",
-            "example": "gateway.abcdef123456.mapping-version.get.api.users.1"
+            "example": "ms.gateway.abcdef123456.mapping-version.get.api.users.1"
           },
           "active": {
             "type": "boolean",
@@ -1485,7 +1485,7 @@
           "subject": {
             "type": "string",
             "description": "Subject identifier of the mapping version",
-            "example": "gateway.abcdef123456.mapping-version.get.api.users.1"
+            "example": "ms.gateway.abcdef123456.mapping-version.get.api.users.1"
           },
           "resourceType": {
             "type": "string",

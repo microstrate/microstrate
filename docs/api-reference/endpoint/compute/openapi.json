@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "Compute Service API",
+    "title": "Microstrate Gateway",
     "description": "The Compute Service is an API service that provides functionality for managing compute resources, \nincluding collections, functions, and containers through a RESTful API.\n",
     "contact": {
       "email": "support@microstrate.io"

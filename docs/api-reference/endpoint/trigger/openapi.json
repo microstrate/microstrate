@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "Trigger Service API",
+    "title": "Microstrate Gateway",
     "description": "The Trigger Service is an API service that provides an interface for managing various types of triggers.\n\nThis API allows you to create, retrieve, and delete different types of triggers including gateway and stream triggers.\n",
     "contact": {
       "name": "Microstrate Support",
