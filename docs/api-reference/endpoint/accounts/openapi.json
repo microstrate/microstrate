@@ -54,7 +54,7 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "Account name"
+            "description": "Account name that memebers of the account will be using when signing in. It is case-insensitive. Heading and trailing spaces are trimmed"
           },
           "root_first_name": {
             "type": "string",
@@ -67,12 +67,12 @@
           "root_email": {
             "type": "string",
             "format": "email",
-            "description": "Root user email"
+            "description": "Root user email. A user is not allowed to use the same email as a root email for multiple accounts."
           },
           "password": {
             "type": "string",
             "format": "password",
-            "description": "Root user password"
+            "description": "Root user password.\nIt has to be a new password if the user is new to the system.\nIf the user exists, they must provide their current password.\nNew password requirements:\n- Minimum length: 8 characters \n - Must contain at least one uppercase letter \n - Must contain at least one lowercase letter \n - Must contain at least one digit (number) \n - Must contain at least one special character (punctuation or symbol) \n - Maximum length: 99 characters"
           },
           "country": {
             "type": "string",
@@ -84,18 +84,22 @@
           },
           "address": {
             "type": "string",
-            "description": "Address"
+            "description": "Company address"
           },
           "website": {
             "type": "string",
-            "description": "Website"
+            "description": "Company website"
           },
           "phone_number": {
             "type": "string",
-            "description": "Phone number"
+            "description": "Company phone number"
           }
         },
-        "required": ["name", "root_first_name", "root_last_name", "root_email", "password"]
+        "required": [
+          "name",
+          "root_email",
+          "password"
+        ]
       },
       "ContactRequest": {
         "type": "object",
@@ -123,10 +127,18 @@
           },
           "preferred_contact_method": {
             "type": "string",
-            "description": "Preferred contact method"
+            "description": "Preferred contact method",
+            "enum": [
+              "emai",
+              "phone"
+            ]
           }
         },
-        "required": ["to_email", "subject", "message"]
+        "required": [
+          "to_email",
+          "subject",
+          "message"
+        ]
       },
       "RefreshTokenObject": {
         "type": "object",
@@ -181,11 +193,21 @@
           },
           "role": {
             "type": "string",
-            "enum": ["admin", "developer", "monitor", "billing"],
+            "enum": [
+              "admin",
+              "developer",
+              "monitor",
+              "billing"
+            ],
             "description": "Role"
           }
         },
-        "required": ["first_name", "last_name", "email", "role"]
+        "required": [
+          "first_name",
+          "last_name",
+          "email",
+          "role"
+        ]
       },
       "MeshNode": {
         "type": "object",
@@ -230,7 +252,7 @@
           },
           "id": {
             "type": "string",
-            "description": "Account ID"
+            "description": "Account unique identifier - 10 digits"
           },
           "display_name": {
             "type": "string",
@@ -239,11 +261,16 @@
           "root_email": {
             "type": "string",
             "format": "email",
-            "description": "Root user email"
+            "description": "Root user email address"
           },
           "subscription_status": {
             "type": "string",
-            "description": "Subscription status"
+            "description": "Subscription status",
+            "enum": [
+              "active",
+              "pending",
+              "cancelled"
+            ]
           },
           "subscription_plan": {
             "type": "string",
@@ -281,7 +308,7 @@
           "deletion_date": {
             "type": "string",
             "format": "date-time",
-            "description": "Account deletion date"
+            "description": "If the account is scheduled for deletion, it will be deleted on this date"
           },
           "region": {
             "type": "string",
@@ -297,11 +324,11 @@
           },
           "cloud": {
             "type": "boolean",
-            "description": "Cloud enabled"
+            "description": "Cloud functionality enabled. It true, the user has access to Microstrate Cloud"
           },
           "hub": {
             "type": "boolean",
-            "description": "Hub enabled"
+            "description": "Hub functionality enabled. It true, the user has access to Microstrate Hub"
           }
         }
       },
@@ -350,14 +377,216 @@
           }
         }
       },
-      "ApiKeyRequest": {
+      "RefreshTokenRequest": {
         "type": "object",
         "properties": {
+          "auth_token": {
+            "type": "string",
+            "description": "Current authentication token"
+          },
+          "refresh_token": {
+            "type": "string",
+            "description": "Refresh token to use for generating a new authentication token"
+          }
+        },
+        "required": [
+          "auth_token",
+          "refresh_token"
+        ],
+        "example": {
+          "auth_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+          "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+        }
+      },
+      "ExportRequest": {
+        "type": "object",
+        "properties": {
+          "export": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Unique name for the export within the account"
+              },
+              "subject": {
+                "type": "string",
+                "description": "Subject pattern defining what is being exported"
+              },
+              "token_position": {
+                "type": "integer",
+                "description": "Optional parameter that determines how authentication is handled"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "stream",
+                  "service"
+                ],
+                "description": "Type of resource being exported"
+              }
+            },
+            "required": [
+              "name",
+              "subject",
+              "type"
+            ]
+          }
+        },
+        "required": [
+          "export"
+        ]
+      },
+      "ImportRequest": {
+        "type": "object",
+        "properties": {
+          "import": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Unique name for the import within the account"
+              },
+              "subject": {
+                "type": "string",
+                "description": "Subject pattern to be imported"
+              },
+              "account": {
+                "type": "string",
+                "description": "Account from which the resource is being imported"
+              },
+              "token_position": {
+                "type": "integer",
+                "description": "Optional parameter for authentication handling"
+              }
+            },
+            "required": [
+              "name",
+              "subject",
+              "account"
+            ]
+          }
+        },
+        "required": [
+          "import"
+        ]
+      },
+      "CredentialAssertion": {
+        "type": "object",
+        "description": "WebAuthn credential assertion options for the client to process",
+        "properties": {
+          "challenge": {
+            "type": "string",
+            "description": "Base64-encoded challenge to be signed by the authenticator"
+          },
+          "timeout": {
+            "type": "integer",
+            "description": "Time in milliseconds the user has to respond to the authentication prompt"
+          },
+          "rpId": {
+            "type": "string",
+            "description": "Relying party identifier (usually the domain name)"
+          },
+          "allowCredentials": {
+            "type": "array",
+            "description": "List of credentials that are allowed for this authentication",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "Base64-encoded credential ID"
+                },
+                "type": {
+                  "type": "string",
+                  "description": "Credential type (e.g., 'public-key')"
+                },
+                "transports": {
+                  "type": "array",
+                  "description": "List of allowed transports (e.g., 'internal', 'usb')",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "userVerification": {
+            "type": "string",
+            "description": "User verification requirement (e.g., 'preferred', 'required')"
+          }
+        }
+      },
+      "BeginAuthWithPasskeyRequest": {
+        "type": "object",
+        "properties": {
+          "account": {
+            "type": "string",
+            "description": "Account name (optional)"
+          },
           "email": {
             "type": "string",
             "format": "email",
-            "description": "User email (optional, defaults to current user)"
+            "description": "User's email address"
+          }
+        },
+        "required": [
+          "email"
+        ],
+        "example": {
+          "email": "user@example.com",
+          "account": "acme"
+        }
+      },
+      "AuthWithRecoveryCodeRequest": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "description": "MFA token received from password authentication"
           },
+          "code": {
+            "type": "string",
+            "description": "Recovery code"
+          }
+        },
+        "required": [
+          "token",
+          "code"
+        ],
+        "example": {
+          "token": "mfa_token_abcdef1234567890",
+          "code": "ABCD-1234"
+        }
+      },
+      "AuthWithTOTPRequest": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "description": "MFA token received from password authentication"
+          },
+          "code": {
+            "type": "string",
+            "description": "6-digit TOTP code from authenticator app"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "User's email address (optional when authenticated)"
+          }
+        },
+        "required": [
+          "token",
+          "code"
+        ],
+        "example": {
+          "token": "mfa_token_abcdef1234567890",
+          "code": "123456"
+        }
+      },
+      "ApiKeyRequest": {
+        "type": "object",
+        "properties": {
           "key_name": {
             "type": "string",
             "description": "API key name"
@@ -443,28 +672,33 @@
           }
         }
       },
-      "PasswordAuthRequest": {
+      "AuthWithPasswordRequest": {
         "type": "object",
         "properties": {
           "account": {
             "type": "string",
-            "description": "Account name"
+            "description": "Account name (optional). If not provided and the user is a root user, their root account will be used."
           },
           "email": {
             "type": "string",
             "format": "email",
-            "description": "User email"
+            "description": "User's email address"
           },
           "password": {
             "type": "string",
-            "description": "User password",
-            "format": "password"
+            "format": "password",
+            "description": "User's password"
           }
         },
         "required": [
           "email",
           "password"
-        ]
+        ],
+        "example": {
+          "account": "acme",
+          "email": "user@example.com",
+          "password": "SecurePassword123"
+        }
       },
       "AuthResponse": {
         "type": "object",
@@ -575,7 +809,7 @@
     "/accounts/info": {
       "get": {
         "summary": "Get account information",
-        "description": "Retrieves information about the current account",
+        "description": "Retrieves comprehensive information about the authenticated user's current account in a public-facing format (no sensitive data is returned).",
         "operationId": "getAccountInfo",
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.get.info",
@@ -614,7 +848,7 @@
     "/accounts/api-key": {
       "post": {
         "summary": "Issue API key",
-        "description": "Issues a new API key for the specified user",
+        "description": "Issues a new API key for the specified user\n- This function nables users to generate programmatic access credentials for Microstrate API as well as credentials for CLI access. This feature allows developers to integrate the platform's capabilities into external applications, automation scripts, or CI/CD pipelines without requiring interactive login sessions.",
         "operationId": "issueApiKey",
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.post.api-key",
@@ -661,7 +895,7 @@
       },
       "delete": {
         "summary": "Delete API key",
-        "description": "Delete an API key. A key can be delted by providing the full key or by id",
+        "description": "Delete an API key.\n- A key can be delted by providing the full key or by id.\n- Deleted API keys cannot be recovered",
         "operationId": "deleteApiKey",
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.delete.api-key",
@@ -675,18 +909,9 @@
         ],
         "parameters": [
           {
-            "name": "email",
-            "in": "query",
-            "description": "User email (optional, defaults to current user)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "key",
             "in": "query",
-            "description": "Full API key",
+            "description": "Full API key (available for preview only on creation)",
             "required": false,
             "schema": {
               "type": "string"
@@ -695,7 +920,7 @@
           {
             "name": "id",
             "in": "query",
-            "description": "Key id",
+            "description": "Key id (available in the key list)",
             "required": false,
             "schema": {
               "type": "string"
@@ -729,7 +954,7 @@
     "/accounts/api-keys": {
       "get": {
         "summary": "View API keys",
-        "description": "Retrieves all API keys for the specified user",
+        "description": "Retrieves the metadate for all API keys for the specified user.\n- The function allows users to view the metadata for all active API keys for their own account\n- Root and administrator users can view API keys metadata associated with other users on the same account.",
         "operationId": "viewApiKeys",
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.get.api-keys",
@@ -781,20 +1006,37 @@
     },
     "/accounts/auth-with-password": {
       "post": {
-        "summary": "Authenticate with password",
-        "description": "Authenticates a user using their email and password",
-        "operationId": "authWithPassword",
-        "x-resource-type": "service",
-        "x-resource": "microstrate.accounts.post.auth-with-password",
         "tags": [
           "Authentication"
         ],
+        "summary": "Authenticate with password",
+        "description": "Authenticates a user with their email and password. If MFA is enabled, returns an MFA token that must be used with a subsequent authentication request.",
+        "operationId": "authWithPassword",
+        "x-subject-path": "microstrate.accounts.post.auth-with-password",
         "requestBody": {
+          "description": "Authentication credentials",
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PasswordAuthRequest"
+                "$ref": "#/components/schemas/AuthWithPasswordRequest"
+              },
+              "examples": {
+                "basicAuth": {
+                  "summary": "Basic authentication",
+                  "value": {
+                    "email": "user@example.com",
+                    "password": "SecurePassword123"
+                  }
+                },
+                "withAccount": {
+                  "summary": "With account specified",
+                  "value": {
+                    "account": "acme",
+                    "email": "user@example.com",
+                    "password": "SecurePassword123"
+                  }
+                }
               }
             }
           }
@@ -813,16 +1055,45 @@
                       "$ref": "#/components/schemas/MfaRequiredResponse"
                     }
                   ]
+                },
+                "examples": {
+                  "authSuccess": {
+                    "summary": "Authentication successful (no MFA)",
+                    "value": {
+                      "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+                      "auth_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+                      "passkey_enabled": false,
+                      "totp_enabled": false,
+                      "account": {
+                        "name": "acme",
+                        "id": "acct_12345",
+                        "display_name": "ACME Corporation",
+                        "root_email": "admin@acme.com",
+                        "subscription_status": "active"
+                      }
+                    }
+                  },
+                  "mfaRequired": {
+                    "summary": "MFA verification required",
+                    "value": {
+                      "token": "mfa_token_abcdef1234567890",
+                      "passkey_enabled": true,
+                      "totp_enabled": true
+                    }
+                  }
                 }
               }
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "Authentication failed",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "Invalid credentials"
                 }
               }
             }
@@ -931,7 +1202,9 @@
         "summary": "Issue recovery codes",
         "description": "Generates new recovery codes for a user",
         "operationId": "issueRecoveryCodes",
-        "tags": ["Multi-Factor Authentication"],
+        "tags": [
+          "Multi-Factor Authentication"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.post.recovery-codes",
         "security": [
@@ -1004,7 +1277,9 @@
         "summary": "View recovery codes",
         "description": "Retrieves existing recovery codes for a user",
         "operationId": "viewRecoveryCodes",
-        "tags": ["Multi-Factor Authentication"],
+        "tags": [
+          "Multi-Factor Authentication"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.get.recovery-codes",
         "security": [
@@ -1057,32 +1332,23 @@
     },
     "/accounts/auth-with-recovery-code": {
       "post": {
+        "tags": [
+          "Authentication",
+          "Multi-Factor Authentication"
+        ],
         "summary": "Authenticate with recovery code",
-        "description": "Authenticates a user using a recovery code",
+        "description": "Complete authentication using a recovery code after initial password verification. Recovery codes are one-time use.",
         "operationId": "authWithRecoveryCode",
-        "tags": ["Authentication", "Multi-Factor Authentication"],
-        "x-resource-type": "service",
-        "x-resource": "microstrate.accounts.post.auth-with-recovery-code",
+        "x-subject-path": "microstrate.accounts.post.auth-with-recovery-code",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "token": {
-                    "type": "string",
-                    "description": "MFA token from password authentication"
-                  },
-                  "code": {
-                    "type": "string",
-                    "description": "Recovery code"
-                  }
-                },
-                "required": ["token", "code"]
+                "$ref": "#/components/schemas/AuthWithRecoveryCodeRequest"
               },
               "example": {
-                "token": "abcdef123456",
+                "token": "mfa_token_abcdef1234567890",
                 "code": "ABCD-1234"
               }
             }
@@ -1100,11 +1366,14 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "Invalid recovery code or token",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "Used or invalid recovery code"
                 }
               }
             }
@@ -1117,7 +1386,9 @@
         "summary": "Remove user from account",
         "description": "Removes a user from the current account",
         "operationId": "removeUser",
-        "tags": ["User Management"],
+        "tags": [
+          "User Management"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.delete.user",
         "security": [
@@ -1138,7 +1409,9 @@
                     "description": "User email"
                   }
                 },
-                "required": ["email"]
+                "required": [
+                  "email"
+                ]
               },
               "example": {
                 "email": "user@example.com"
@@ -1175,7 +1448,9 @@
         "summary": "Request password reset",
         "description": "Requests a password reset for a user",
         "operationId": "requestResetPassword",
-        "tags": ["Authentication"],
+        "tags": [
+          "Authentication"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.post.request-reset-password",
         "requestBody": {
@@ -1191,7 +1466,9 @@
                     "description": "User email"
                   }
                 },
-                "required": ["email"]
+                "required": [
+                  "email"
+                ]
               },
               "example": {
                 "email": "user@example.com"
@@ -1218,7 +1495,9 @@
         "summary": "Reset password",
         "description": "Resets a user's password",
         "operationId": "resetPassword",
-        "tags": ["Authentication"],
+        "tags": [
+          "Authentication"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.post.reset-password",
         "requestBody": {
@@ -1243,10 +1522,13 @@
                   },
                   "new_password": {
                     "type": "string",
-                    "description": "New password"
+                    "description": "New password.\n\nRequirements:\n- Minimum length: 8 characters \n - Must contain at least one uppercase letter \n - Must contain at least one lowercase letter \n - Must contain at least one digit (number) \n - Must contain at least one special character (punctuation or symbol) \n - Maximum length: 99 characters"
                   }
                 },
-                "required": ["token", "new_password"]
+                "required": [
+                  "token",
+                  "new_password"
+                ]
               },
               "example": {
                 "email": "user@example.com",
@@ -1295,7 +1577,9 @@
         "summary": "Set password",
         "description": "Sets a password for a new user",
         "operationId": "setPassword",
-        "tags": ["Authentication"],
+        "tags": [
+          "Authentication"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.post.set-password",
         "requestBody": {
@@ -1311,10 +1595,13 @@
                   },
                   "password": {
                     "type": "string",
-                    "description": "New password"
+                    "description": "New password.\n\nRequirements:\n- Minimum length: 8 characters \n - Must contain at least one uppercase letter \n - Must contain at least one lowercase letter \n - Must contain at least one digit (number) \n - Must contain at least one special character (punctuation or symbol) \n - Maximum length: 99 characters"
                   }
                 },
-                "required": ["token", "password"]
+                "required": [
+                  "token",
+                  "password"
+                ]
               },
               "example": {
                 "token": "abcdef123456",
@@ -1367,7 +1654,9 @@
         "summary": "Generate TOTP key",
         "description": "Generates a TOTP key for multi-factor authentication",
         "operationId": "generateTotpKey",
-        "tags": ["Multi-Factor Authentication"],
+        "tags": [
+          "Multi-Factor Authentication"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.post.generate-totp-key",
         "security": [
@@ -1418,7 +1707,9 @@
         "summary": "Confirm TOTP registration",
         "description": "Confirms a TOTP registration by validating a code",
         "operationId": "confirmTotpRegistration",
-        "tags": ["Multi-Factor Authentication"],
+        "tags": [
+          "Multi-Factor Authentication"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.post.confirm-totp-registration",
         "security": [
@@ -1442,7 +1733,10 @@
                     "description": "TOTP secret key"
                   }
                 },
-                "required": ["code", "secret"]
+                "required": [
+                  "code",
+                  "secret"
+                ]
               },
               "example": {
                 "code": "123456",
@@ -1495,37 +1789,23 @@
     },
     "/accounts/auth-with-totp": {
       "post": {
+        "tags": [
+          "Authentication",
+          "Multi-Factor Authentication"
+        ],
         "summary": "Authenticate with TOTP",
-        "description": "Authenticates a user using a TOTP code",
+        "description": "Complete authentication using a Time-based One-Time Password (TOTP) after initial password verification.",
         "operationId": "authWithTotp",
-        "tags": ["Authentication", "Multi-Factor Authentication"],
-        "x-resource-type": "service",
-        "x-resource": "microstrate.accounts.post.auth-with-totp",
+        "x-subject-path": "microstrate.accounts.post.auth-with-totp",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "token": {
-                    "type": "string",
-                    "description": "MFA token from password authentication"
-                  },
-                  "code": {
-                    "type": "string",
-                    "description": "TOTP code"
-                  },
-                  "email": {
-                    "type": "string",
-                    "format": "email",
-                    "description": "User email (optional when authenticated)"
-                  }
-                },
-                "required": ["token", "code"]
+                "$ref": "#/components/schemas/AuthWithTOTPRequest"
               },
               "example": {
-                "token": "abcdef123456",
+                "token": "mfa_token_abcdef1234567890",
                 "code": "123456"
               }
             }
@@ -1543,11 +1823,14 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "Invalid TOTP code or token",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "Unauthorized"
                 }
               }
             }
@@ -1560,7 +1843,9 @@
         "summary": "Remove TOTP",
         "description": "Disables TOTP authentication for a user",
         "operationId": "removeTotp",
-        "tags": ["Multi-Factor Authentication"],
+        "tags": [
+          "Multi-Factor Authentication"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.delete.totp",
         "security": [
@@ -1625,9 +1910,11 @@
     "/accounts/set-emergency-credit": {
       "patch": {
         "summary": "Set emergency credit",
-        "description": "Sets the emergency credit amount for an account",
+        "description": "Sets the emergency credit amount for an account.\n- Allows users with appropriate permissions (root, admin, or billing roles) to configure a maximum monthly emergency budget.\n- For accounts with fixed resource allocations, emergency credit funds the provisioning of additional resources when regular allocations are exhausted.",
         "operationId": "setEmergencyCredit",
-        "tags": ["Account Management"],
+        "tags": [
+          "Account Management"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.patch.set-emergency-credit",
         "security": [
@@ -1648,7 +1935,9 @@
                     "description": "Emergency credit amount"
                   }
                 },
-                "required": ["emergency_credit"]
+                "required": [
+                  "emergency_credit"
+                ]
               },
               "example": {
                 "emergency_credit": 100.00
@@ -1693,9 +1982,11 @@
     "/accounts/rename": {
       "patch": {
         "summary": "Rename account",
-        "description": "Renames an account",
+        "description": "Renames an account\n- Allows the root user of an account to change the display name and internal name of their account\n- They must request a verification code to be able to finalize the process (see **/accounts/email-code**)\n- Once an account name is changed, all user sessions will be automatically revoked. Affected users will be notified about the change by email.",
         "operationId": "renameAccount",
-        "tags": ["Account Management"],
+        "tags": [
+          "Account Management"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.patch.rename-account",
         "security": [
@@ -1712,14 +2003,17 @@
                 "properties": {
                   "new_name": {
                     "type": "string",
-                    "description": "New account name"
+                    "description": "New account name. Cannot clash with the name of another account on the platform"
                   },
                   "email_code": {
                     "type": "string",
-                    "description": "Email verification code"
+                    "description": "Email verification code. To obtain one, see **/accounts/email-code**"
                   }
                 },
-                "required": ["new_name", "email_code"]
+                "required": [
+                  "new_name",
+                  "email_code"
+                ]
               },
               "example": {
                 "new_name": "new-acme",
@@ -1775,9 +2069,11 @@
     "/accounts": {
       "post": {
         "summary": "Create account",
-        "description": "Creates a new account",
+        "description": "- Creates a new account and a user if the provided email does not exist on the system.\n- Associates the user with the account with root privileges.\n- Sends an email to the user to verify their email address if the email is not already verified on the system.\n- A user can be a member of any number of accounts but they can be a root of at most one account.",
         "operationId": "createAccount",
-        "tags": ["Account Management"],
+        "tags": [
+          "Account Management"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.post.create-account",
         "requestBody": {
@@ -1816,7 +2112,8 @@
                   }
                 },
                 "example": {
-                  "email_confirmed": false
+                  "email_confirmed": false,
+                  "description": "This flag confirms whether a new or an existing user is the root of the newly created account."
                 }
               }
             }
@@ -1835,9 +2132,11 @@
       },
       "patch": {
         "summary": "Update account",
-        "description": "Updates account information",
+        "description": "Updates account information.\n - An update can be made to any of the non-critical editable account properties only by root and admin users.\n - Critical account properties such as name, ID, and root email address cannot be changed with this request\n - To update *name*, see **/accounts/rename**\n- To update *root_email*, see **/accounts/request-email-address-change**",
         "operationId": "updateAccount",
-        "tags": ["Account Management"],
+        "tags": [
+          "Account Management"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.patch.update-account",
         "security": [
@@ -1902,10 +2201,12 @@
     },
     "/accounts/users": {
       "post": {
-        "summary": "Create user",
-        "description": "Creates a new user in the current account",
+        "summary": "Create/Add user",
+        "description": "Creates a new user and sends an invitation email if the user does not exist. Adds the new or existing user to the current account. If the user already exists and is already a member of the account, an error is returned \n - If the user already exists but isn't a member of the account, they are added without creating a new user record \n - The user won't be able to access the account until they complete the activation process by setting their password \n - For security, new users must set their own password via the activation link \n - The function schedules cleanup tasks to remove unactivated user accounts after a certain period of time (48 hours)",
         "operationId": "createUser",
-        "tags": ["User Management"],
+        "tags": [
+          "User Management"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.post.create-user",
         "security": [
@@ -1966,9 +2267,11 @@
     "/accounts/account": {
       "delete": {
         "summary": "Delete account",
-        "description": "Deletes the current account",
+        "description": "Deletes the current account.\n- Allows the root user of an account to delete the entire account from the platform.\n- The root user must request a verification code to be able to finalize the process (see **/accounts/email-code**)\n- This is a significant operation that removes all account data and revokes access for all users associated with the account.\n- Users, however, are not deleted and they can continue to sign in to the platform if they are members of any other active accounts.\n - There is an option to delete the account immediately or in 14 days. If the latter, the deletion can be unscheduled (see **/accounts/cancel-account-deletion**)",
         "operationId": "deleteAccount",
-        "tags": ["Account Management"],
+        "tags": [
+          "Account Management"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.delete.account",
         "security": [
@@ -1985,14 +2288,16 @@
                 "properties": {
                   "in_14_days": {
                     "type": "boolean",
-                    "description": "Schedule deletion in 14 days"
+                    "description": "Schedule deletion in 14 days. If this flag is set to true, the account data will not be deactivated immediately and will be accessible in the next 14 days. After this period is up, it will no longer be possible to log in with the account. If the root user wishes to recover it, they can contact a platform administrator up to a year after the account was deleted."
                   },
                   "email_code": {
                     "type": "string",
-                    "description": "Email verification code"
+                    "description": "Email verification code. To obtain one, see **/accounts/email-code**"
                   }
                 },
-                "required": ["email_code"]
+                "required": [
+                  "email_code"
+                ]
               },
               "example": {
                 "in_14_days": true,
@@ -2041,9 +2346,11 @@
     "/accounts/cancel-account-deletion": {
       "post": {
         "summary": "Cancel account deletion",
-        "description": "Cancels a scheduled account deletion",
+        "description": "Cancels the deletion of an account.\n- Allows the root user of an account to reverse a scheduled account deletion if the current date is before *deletion_date*.",
         "operationId": "cancelAccountDeletion",
-        "tags": ["Account Management"],
+        "tags": [
+          "Account Management"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.post.cancel-account-deletion",
         "security": [
@@ -2090,7 +2397,9 @@
         "summary": "Delete user",
         "description": "Deletes the current user",
         "operationId": "deleteUser",
-        "tags": ["User Management"],
+        "tags": [
+          "User Management"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.delete.user",
         "security": [
@@ -2135,7 +2444,9 @@
         "summary": "Update user",
         "description": "Updates user information",
         "operationId": "updateUser",
-        "tags": ["User Management"],
+        "tags": [
+          "User Management"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.patch.update-user",
         "security": [
@@ -2198,7 +2509,9 @@
         "summary": "Request email address change",
         "description": "Initiates an email address change process",
         "operationId": "requestEmailAddressChange",
-        "tags": ["User Management"],
+        "tags": [
+          "User Management"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.post.request-email-address-change",
         "security": [
@@ -2227,7 +2540,9 @@
                     "description": "New email address"
                   }
                 },
-                "required": ["new_email"]
+                "required": [
+                  "new_email"
+                ]
               },
               "example": {
                 "password": "SecureP@ssw0rd!",
@@ -2275,7 +2590,9 @@
         "summary": "Complete email address change",
         "description": "Completes an email address change process",
         "operationId": "changeEmailAddressAction",
-        "tags": ["User Management"],
+        "tags": [
+          "User Management"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.post.change-email-address-action",
         "requestBody": {
@@ -2290,7 +2607,9 @@
                     "description": "Email change token"
                   }
                 },
-                "required": ["token"]
+                "required": [
+                  "token"
+                ]
               },
               "example": {
                 "token": "abcdef123456"
@@ -2327,7 +2646,9 @@
         "summary": "Get email verification code",
         "description": "Sends a verification code to the user's email",
         "operationId": "getEmailCode",
-        "tags": ["Authentication"],
+        "tags": [
+          "Authentication"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.get.email-code",
         "security": [
@@ -2362,9 +2683,11 @@
     "/accounts/import": {
       "post": {
         "summary": "Add import",
-        "description": "Adds a new import to the account",
+        "description": "Adds a new import to the account.\n- When an account adds an import, it's essentially creating a mapping that allows it to access and utilize resources (such as data streams or services) that are exported by another account. This request creates a trust relationship between accounts where one account can consume resources produced by another.",
         "operationId": "addImport",
-        "tags": ["Account Management"],
+        "tags": [
+          "Account Management"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.post.import",
         "security": [
@@ -2417,9 +2740,11 @@
       },
       "delete": {
         "summary": "Remove import",
-        "description": "Removes an import from the account",
+        "description": "Removes an import from the account. Allows an account to discontinue the integration with resources from another account. This operation effectively severs the connection to external resources that an account was consuming.",
         "operationId": "removeImport",
-        "tags": ["Account Management"],
+        "tags": [
+          "Account Management"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.delete.import",
         "security": [
@@ -2439,7 +2764,9 @@
                     "description": "Import name"
                   }
                 },
-                "required": ["name"]
+                "required": [
+                  "name"
+                ]
               },
               "example": {
                 "name": "example-import"
@@ -2484,9 +2811,11 @@
     "/accounts/export": {
       "post": {
         "summary": "Add export",
-        "description": "Adds a new export to the account",
+        "description": "Adds a new export to the account.\n - Enables an account to make its internal resources (such as data streams or services) available to other accounts.",
         "operationId": "addExport",
-        "tags": ["Account Management"],
+        "tags": [
+          "Account Management"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.post.export",
         "security": [
@@ -2539,9 +2868,11 @@
       },
       "delete": {
         "summary": "Remove export",
-        "description": "Removes an export from the account",
+        "description": "Removes an export from the account.\n - Allows an account to discontinue sharing a previously exported resource with other accounts. This operation effectively revokes external access to the specified resource.",
         "operationId": "removeExport",
-        "tags": ["Account Management"],
+        "tags": [
+          "Account Management"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.delete.export",
         "security": [
@@ -2561,7 +2892,9 @@
                     "description": "Export name"
                   }
                 },
-                "required": ["name"]
+                "required": [
+                  "name"
+                ]
               },
               "example": {
                 "name": "example-export"
@@ -2608,7 +2941,9 @@
         "summary": "List users by account",
         "description": "Lists all users in the current account",
         "operationId": "listUsersByAccount",
-        "tags": ["User Management"],
+        "tags": [
+          "User Management"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.get.list-users-by-account",
         "security": [
@@ -2648,7 +2983,9 @@
         "summary": "List accounts by user",
         "description": "Lists all accounts for the current user",
         "operationId": "listAccountsByUser",
-        "tags": ["Account Management"],
+        "tags": [
+          "Account Management"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.get.list-accounts-by-user",
         "security": [
@@ -2692,7 +3029,9 @@
         "summary": "Create mesh nodes",
         "description": "Creates new mesh nodes",
         "operationId": "createMeshNodes",
-        "tags": ["Mesh Nodes"],
+        "tags": [
+          "Mesh Nodes"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.post.create-mesh-nodes",
         "security": [
@@ -2714,7 +3053,9 @@
                     }
                   }
                 },
-                "required": ["mesh_nodes"]
+                "required": [
+                  "mesh_nodes"
+                ]
               },
               "example": {
                 "mesh_nodes": [
@@ -2784,7 +3125,9 @@
         "summary": "Update mesh nodes",
         "description": "Updates existing mesh nodes",
         "operationId": "updateMeshNodes",
-        "tags": ["Mesh Nodes"],
+        "tags": [
+          "Mesh Nodes"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.patch.update-mesh-nodes",
         "security": [
@@ -2806,7 +3149,9 @@
                     }
                   }
                 },
-                "required": ["mesh_nodes"]
+                "required": [
+                  "mesh_nodes"
+                ]
               },
               "example": {
                 "mesh_nodes": [
@@ -2877,7 +3222,9 @@
         "summary": "Delete mesh nodes",
         "description": "Deletes mesh nodes",
         "operationId": "deleteMeshNodes",
-        "tags": ["Mesh Nodes"],
+        "tags": [
+          "Mesh Nodes"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.delete.mesh-nodes",
         "security": [
@@ -2900,10 +3247,14 @@
                     "description": "IDs of nodes to delete"
                   }
                 },
-                "required": ["node_ids"]
+                "required": [
+                  "node_ids"
+                ]
               },
               "example": {
-                "node_ids": ["node_123456"]
+                "node_ids": [
+                  "node_123456"
+                ]
               }
             }
           }
@@ -2947,7 +3298,9 @@
         "summary": "Begin passkey registration",
         "description": "Initiates the passkey registration process",
         "operationId": "beginPasskeyRegistration",
-        "tags": ["Multi-Factor Authentication"],
+        "tags": [
+          "Multi-Factor Authentication"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.post.begin-passkey-registration",
         "security": [
@@ -2985,7 +3338,9 @@
         "summary": "Complete passkey registration",
         "description": "Completes the passkey registration process",
         "operationId": "completePasskeyRegistration",
-        "tags": ["Multi-Factor Authentication"],
+        "tags": [
+          "Multi-Factor Authentication"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.post.complete-passkey-registration",
         "security": [
@@ -3009,7 +3364,10 @@
                     "description": "User-friendly name for the passkey"
                   }
                 },
-                "required": ["credential", "credential_alias"]
+                "required": [
+                  "credential",
+                  "credential_alias"
+                ]
               }
             }
           }
@@ -3061,30 +3419,20 @@
     },
     "/accounts/begin-auth-with-passkey": {
       "post": {
+        "tags": [
+          "Authentication",
+          "Multi-Factor Authentication"
+        ],
         "summary": "Begin passkey authentication",
-        "description": "Initiates the passkey authentication process",
+        "description": "Initiates the WebAuthn passkey authentication flow. Returns a challenge for the client to sign with the user's passkey.",
         "operationId": "beginAuthWithPasskey",
-        "tags": ["Authentication", "Multi-Factor Authentication"],
-        "x-resource-type": "service",
-        "x-resource": "microstrate.accounts.post.begin-auth-with-passkey",
+        "x-subject-path": "microstrate.accounts.post.begin-auth-with-passkey",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "email": {
-                    "type": "string",
-                    "format": "email",
-                    "description": "User email"
-                  },
-                  "account": {
-                    "type": "string",
-                    "description": "Account name (optional)"
-                  }
-                },
-                "required": ["email"]
+                "$ref": "#/components/schemas/BeginAuthWithPasskeyRequest"
               },
               "example": {
                 "email": "user@example.com",
@@ -3095,18 +3443,27 @@
         },
         "responses": {
           "200": {
-            "description": "Passkey authentication initiated successfully",
+            "description": "Passkey authentication challenge",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "description": "WebAuthn authentication options"
+                  "$ref": "#/components/schemas/CredentialAssertion"
                 }
               }
             }
           },
           "400": {
-            "description": "Bad request",
+            "description": "Invalid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "User not found or passkeys not enabled",
             "content": {
               "application/json": {
                 "schema": {
@@ -3123,7 +3480,9 @@
         "summary": "Remove passkey",
         "description": "Removes a specific passkey",
         "operationId": "removePasskey",
-        "tags": ["Multi-Factor Authentication"],
+        "tags": [
+          "Multi-Factor Authentication"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.delete.passkey",
         "security": [
@@ -3148,7 +3507,9 @@
                     "description": "User email (optional, defaults to current user)"
                   }
                 },
-                "required": ["id"]
+                "required": [
+                  "id"
+                ]
               },
               "example": {
                 "id": "cGFzc2tleV9pZA==",
@@ -3206,7 +3567,9 @@
         "summary": "Update user role",
         "description": "Updates a user's role in an account",
         "operationId": "updateRole",
-        "tags": ["User Management"],
+        "tags": [
+          "User Management"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.patch.update-role",
         "security": [
@@ -3228,11 +3591,19 @@
                   },
                   "role": {
                     "type": "string",
-                    "enum": ["admin", "developer", "monitor", "billing"],
+                    "enum": [
+                      "admin",
+                      "developer",
+                      "monitor",
+                      "billing"
+                    ],
                     "description": "New role"
                   }
                 },
-                "required": ["email", "role"]
+                "required": [
+                  "email",
+                  "role"
+                ]
               },
               "example": {
                 "email": "user@example.com",
@@ -3278,9 +3649,11 @@
     "/accounts/suspend-user": {
       "patch": {
         "summary": "Suspend user",
-        "description": "Suspends or unsuspends a user in an account",
+        "description": "Suspends or unsuspends a user in an account. Suspended users have no access to any of the resources and services associated with the account",
         "operationId": "suspendUser",
-        "tags": ["User Management"],
+        "tags": [
+          "User Management"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.patch.suspend-user",
         "security": [
@@ -3302,10 +3675,13 @@
                   },
                   "suspend": {
                     "type": "boolean",
-                    "description": "True to suspend, false to unsuspend"
+                    "description": "Set true to suspend, false to unsuspend"
                   }
                 },
-                "required": ["email", "suspend"]
+                "required": [
+                  "email",
+                  "suspend"
+                ]
               },
               "example": {
                 "email": "user@example.com",
@@ -3316,7 +3692,7 @@
         },
         "responses": {
           "200": {
-            "description": "User suspended or unsuspended successfully",
+            "description": "User suspended/unsuspended successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -3353,7 +3729,9 @@
         "summary": "Get user MFA info",
         "description": "Retrieves MFA information for a user",
         "operationId": "getUserMfaInfo",
-        "tags": ["Multi-Factor Authentication"],
+        "tags": [
+          "Multi-Factor Authentication"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.get.user-mfa-info",
         "security": [
@@ -3401,7 +3779,9 @@
         "summary": "Get user login data",
         "description": "Retrieves login data for the current user",
         "operationId": "getUserLoginData",
-        "tags": ["User Management"],
+        "tags": [
+          "User Management"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.get.user-login-data",
         "security": [
@@ -3449,7 +3829,12 @@
                       "$ref": "#/components/schemas/UserProfileImage"
                     }
                   },
-                  "required": ["account", "user", "user_id", "role"]
+                  "required": [
+                    "account",
+                    "user",
+                    "user_id",
+                    "role"
+                  ]
                 }
               }
             }
@@ -3469,12 +3854,13 @@
     },
     "/accounts/token-validate": {
       "post": {
+        "tags": [
+          "Authentication"
+        ],
         "summary": "Validate token",
-        "description": "Validates an authentication token",
+        "description": "Validates an authentication or refresh token.",
         "operationId": "validateToken",
-        "tags": ["Authentication"],
-        "x-resource-type": "service",
-        "x-resource": "microstrate.accounts.post.token-validate",
+        "x-subject-path": "microstrate.accounts.post.token-validate",
         "requestBody": {
           "required": true,
           "content": {
@@ -3487,7 +3873,9 @@
                     "description": "Token to validate"
                   }
                 },
-                "required": ["token"]
+                "required": [
+                  "token"
+                ]
               },
               "example": {
                 "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
@@ -3513,9 +3901,11 @@
     "/accounts/api-creds": {
       "get": {
         "summary": "Get API credentials",
-        "description": "Retrieves credentials for a specific API key",
+        "description": "Retrieves credentials for a specific API key. -Allows users to retrieve the full credential string that can be used with the CLI.",
         "operationId": "getApiCreds",
-        "tags": ["API Keys"],
+        "tags": [
+          "API Keys"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.get.api-creds",
         "security": [
@@ -3532,10 +3922,12 @@
                 "properties": {
                   "key": {
                     "type": "string",
-                    "description": "API key"
+                    "description": "Full API key"
                   }
                 },
-                "required": ["key"]
+                "required": [
+                  "key"
+                ]
               },
               "example": {
                 "key": "ms-d28f9a3c5b6e7d4a1c8f9a3c5b6e7d4a"
@@ -3580,28 +3972,23 @@
     },
     "/accounts/auth-with-api-key": {
       "post": {
+        "tags": [
+          "Authentication",
+          "API Keys"
+        ],
         "summary": "Authenticate with API key",
-        "description": "Authenticates a user using an API key",
+        "description": "Authenticates a user using an API key.",
         "operationId": "authWithApiKey",
-        "tags": ["Authentication"],
-        "x-resource-type": "service",
-        "x-resource": "microstrate.accounts.post.auth-with-api-key",
+        "x-subject-path": "microstrate.accounts.post.auth-with-api-key",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "apiKey": {
-                    "type": "string",
-                    "description": "API key"
-                  }
-                },
-                "required": ["apiKey"]
+                "$ref": "#/components/schemas/AuthWithApiKeyRequest"
               },
               "example": {
-                "apiKey": "ms-d28f9a3c5b6e7d4a1c8f9a3c5b6e7d4a"
+                "api_key": "ms-d28f9a3c5b6e7d4a1c8f9a3c5b6e7d4a"
               }
             }
           }
@@ -3618,11 +4005,14 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "Invalid or expired API key",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "Unauthorized"
                 }
               }
             }
@@ -3635,7 +4025,9 @@
         "summary": "Update MFA settings",
         "description": "Updates multi-factor authentication settings for a user",
         "operationId": "updateMfaSettings",
-        "tags": ["Multi-Factor Authentication"],
+        "tags": [
+          "Multi-Factor Authentication"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.patch.mfa-settings",
         "security": [
@@ -3706,7 +4098,9 @@
         "summary": "Get session tokens",
         "description": "Retrieves all active session tokens for the current user",
         "operationId": "getSessionTokens",
-        "tags": ["Authentication"],
+        "tags": [
+          "Authentication"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.session-tokens",
         "security": [
@@ -3757,7 +4151,9 @@
         "summary": "Revoke auth token",
         "description": "Revokes a specific authentication token",
         "operationId": "revokeAuthToken",
-        "tags": ["Authentication"],
+        "tags": [
+          "Authentication"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.delete.auth-token",
         "security": [
@@ -3777,7 +4173,9 @@
                     "description": "Auth token to revoke"
                   }
                 },
-                "required": ["token"]
+                "required": [
+                  "token"
+                ]
               },
               "example": {
                 "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
@@ -3814,7 +4212,9 @@
         "summary": "Revoke refresh token",
         "description": "Revokes a specific refresh token",
         "operationId": "revokeRefreshToken",
-        "tags": ["Authentication"],
+        "tags": [
+          "Authentication"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.delete.refresh-token",
         "security": [
@@ -3834,7 +4234,9 @@
                     "description": "Refresh token to revoke"
                   }
                 },
-                "required": ["token"]
+                "required": [
+                  "token"
+                ]
               },
               "example": {
                 "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
@@ -3866,29 +4268,19 @@
         }
       },
       "post": {
-        "summary": "Refresh auth token",
-        "description": "Refreshes an auth token using a refresh token",
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Refresh authentication token",
+        "description": "Issues a new authentication token using a valid refresh token.",
         "operationId": "refreshToken",
-        "tags": ["Authentication"],
-        "x-resource-type": "service",
-        "x-resource": "microstrate.accounts.post.refresh-token",
+        "x-subject-path": "microstrate.accounts.post.refresh-token",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "auth_token": {
-                    "type": "string",
-                    "description": "Current auth token"
-                  },
-                  "refresh_token": {
-                    "type": "string",
-                    "description": "Refresh token"
-                  }
-                },
-                "required": ["auth_token", "refresh_token"]
+                "$ref": "#/components/schemas/RefreshTokenRequest"
               },
               "example": {
                 "auth_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
@@ -3899,7 +4291,7 @@
         },
         "responses": {
           "200": {
-            "description": "Token refreshed successfully",
+            "description": "New authentication token issued",
             "content": {
               "application/json": {
                 "schema": {
@@ -3909,11 +4301,14 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "Invalid or expired tokens",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "Unauthorized"
                 }
               }
             }
@@ -3926,7 +4321,9 @@
         "summary": "Revoke all tokens",
         "description": "Revokes all tokens for a specific user",
         "operationId": "revokeTokens",
-        "tags": ["Authentication"],
+        "tags": [
+          "Authentication"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.delete.tokens",
         "security": [
@@ -3947,7 +4344,9 @@
                     "description": "User email"
                   }
                 },
-                "required": ["email"]
+                "required": [
+                  "email"
+                ]
               },
               "example": {
                 "email": "user@example.com"
@@ -3982,9 +4381,11 @@
     "/accounts/confirm-email": {
       "post": {
         "summary": "Confirm email",
-        "description": "Confirms a user's email address using a token or code",
+        "description": "Confirms a user's email address using a token or code\n - This process ensures that the person registering or using an email address actually has access to it. When a user registers a new account or adds a new email address to their profile, the system sends a confirmation email containing either a token (a long, randomly generated string) or a numerical code. This function processes the verification when the user clicks the confirmation link in the email or manually enters the provided code. It accepts either:\n- a) A token parameter, which is included in the confirmation link\n- b) A code parameter, which is a shorter numerical sequence that can be manually entered",
         "operationId": "confirmEmail",
-        "tags": ["Account Management"],
+        "tags": [
+          "Account Management"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.post.confirm-email",
         "requestBody": {
@@ -4004,8 +4405,16 @@
                   }
                 },
                 "oneOf": [
-                  { "required": ["token"] },
-                  { "required": ["code"] }
+                  {
+                    "required": [
+                      "token"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "code"
+                    ]
+                  }
                 ]
               },
               "example": {
@@ -4062,9 +4471,11 @@
     "/accounts/submit-contact-form": {
       "post": {
         "summary": "Submit contact form",
-        "description": "Submits a contact form",
+        "description": "Submits a contact form\n- The function provides a structured mechanism for authenticated users to send inquiries, feedback, or support requests directly to the Microstrate team or specific team members. This communication channel is integrated within the platform, allowing users to reach out for assistance without leaving the application environment.",
         "operationId": "submitContactForm",
-        "tags": ["Account Management"],
+        "tags": [
+          "Account Management"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.post.submit-contact-form",
         "security": [
@@ -4116,50 +4527,27 @@
     },
     "/accounts/complete-auth-with-passkey": {
       "post": {
+        "tags": [
+          "Authentication",
+          "Multi-Factor Authentication"
+        ],
         "summary": "Complete passkey authentication",
-        "description": "Completes the passkey authentication process",
+        "description": "Completes the WebAuthn passkey authentication flow by verifying the signed challenge.",
         "operationId": "completeAuthWithPasskey",
-        "tags": ["Authentication", "Multi-Factor Authentication"],
-        "x-resource-type": "service",
-        "x-resource": "microstrate.accounts.post.complete-auth-with-passkey",
+        "x-subject-path": "microstrate.accounts.post.complete-auth-with-passkey",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "account": {
-                    "type": "string",
-                    "description": "Account name (optional)"
-                  },
-                  "token": {
-                    "type": "string",
-                    "description": "MFA token (required if using MFA flow)"
-                  },
-                  "credential": {
-                    "type": "object",
-                    "description": "WebAuthn credential"
-                  },
-                  "email": {
-                    "type": "string",
-                    "format": "email",
-                    "description": "User email"
-                  }
-                },
-                "required": ["credential", "email"]
-              },
-              "example": {
-                "email": "user@example.com",
-                "account": "acme",
-                "credential": {}
+                "$ref": "#/components/schemas/CompleteAuthWithPasskeyRequest"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Passkey authentication completed successfully",
+            "description": "Authentication successful",
             "content": {
               "application/json": {
                 "schema": {
@@ -4169,7 +4557,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "Invalid credential or verification failed",
             "content": {
               "application/json": {
                 "schema": {
@@ -4186,7 +4574,9 @@
         "summary": "Remove all passkeys",
         "description": "Removes all passkeys for a user",
         "operationId": "removeAllPasskeys",
-        "tags": ["Multi-Factor Authentication"],
+        "tags": [
+          "Multi-Factor Authentication"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.delete.all-passkeys",
         "security": [
@@ -4253,7 +4643,9 @@
         "summary": "Process payment webhook",
         "description": "Processes payment webhooks from Stripe",
         "operationId": "processPaymentWebhook",
-        "tags": ["Payment"],
+        "tags": [
+          "Payment"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.post.payment.webhook",
         "requestBody": {
@@ -4296,7 +4688,9 @@
         "summary": "Get products",
         "description": "Retrieves all available products",
         "operationId": "getProducts",
-        "tags": ["Payment"],
+        "tags": [
+          "Payment"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.get.payment.products",
         "security": [
@@ -4336,7 +4730,9 @@
         "summary": "Get prices",
         "description": "Retrieves all available prices",
         "operationId": "getPrices",
-        "tags": ["Payment"],
+        "tags": [
+          "Payment"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.get.payment.prices",
         "security": [
@@ -4376,7 +4772,9 @@
         "summary": "Get checkout URL",
         "description": "Generates a Stripe checkout URL for subscription",
         "operationId": "getCheckoutUrl",
-        "tags": ["Payment"],
+        "tags": [
+          "Payment"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.get.payment.checkout-url",
         "security": [
@@ -4445,7 +4843,9 @@
         "summary": "Get dashboard URL",
         "description": "Generates a Stripe customer portal URL",
         "operationId": "getDashboardUrl",
-        "tags": ["Payment"],
+        "tags": [
+          "Payment"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.get.payment.dashboard-url",
         "security": [
@@ -4484,7 +4884,9 @@
         "summary": "Get subscription items",
         "description": "Retrieves all items in the current subscription",
         "operationId": "getSubscriptionItems",
-        "tags": ["Payment"],
+        "tags": [
+          "Payment"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.get.payment.subscription-items",
         "security": [
@@ -4542,7 +4944,9 @@
         "summary": "Get subscription",
         "description": "Retrieves the current subscription",
         "operationId": "getSubscription",
-        "tags": ["Payment"],
+        "tags": [
+          "Payment"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.get.payment.subscription",
         "security": [
@@ -4588,7 +4992,9 @@
         "summary": "Update subscription",
         "description": "Updates the current subscription",
         "operationId": "updateSubscription",
-        "tags": ["Payment"],
+        "tags": [
+          "Payment"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.patch.payment.subscription",
         "security": [
@@ -4610,7 +5016,9 @@
                     }
                   }
                 },
-                "required": ["items"]
+                "required": [
+                  "items"
+                ]
               },
               "example": {
                 "items": [
@@ -4671,7 +5079,9 @@
         "summary": "Cancel subscription",
         "description": "Cancels the current subscription",
         "operationId": "cancelSubscription",
-        "tags": ["Payment"],
+        "tags": [
+          "Payment"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.delete.payment.subscription",
         "security": [
@@ -4719,7 +5129,9 @@
         "summary": "Create free subscription",
         "description": "Creates a free subscription",
         "operationId": "createFreeSubscription",
-        "tags": ["Payment"],
+        "tags": [
+          "Payment"
+        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.post.payment.free-subscription",
         "security": [
