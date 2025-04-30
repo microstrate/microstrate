@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "Bellerophon Account Service API",
-    "description": "API for managing accounts, users, authentication, and payments in the Bellerophon platform",
+    "title": "Microstrate Account Service API",
+    "description": "API for managing accounts, users, authentication, and payments in the Microstrate platform",
     "version": "1.0.0",
     "contact": {
       "name": "Microstrate Support",
@@ -3943,7 +3943,7 @@
                 "schema": {
                   "type": "string"
                 },
-                "example": "-----BEGIN BELLEROPHON USER JWT-----\n[JWT TOKEN]\n------END BELLEROPHON USER JWT------\n************************* IMPORTANT *************************\nBKEY Seed printed below can be used to sign and prove identity.\nBKEYs are sensitive and should be treated as secrets.\n-----BEGIN USER BKEY SEED-----\n[BKEY SEED]\n------END USER BKEY SEED------\n*************************************************************"
+                "example": "-----BEGIN Microstrate USER JWT-----\n[JWT TOKEN]\n------END Microstrate USER JWT------\n************************* IMPORTANT *************************\nBKEY Seed printed below can be used to sign and prove identity.\nBKEYs are sensitive and should be treated as secrets.\n-----BEGIN USER BKEY SEED-----\n[BKEY SEED]\n------END USER BKEY SEED------\n*************************************************************"
               }
             }
           },
