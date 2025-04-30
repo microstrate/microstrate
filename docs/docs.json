@@ -39,6 +39,12 @@
         "tab": "API Reference",
         "groups": [
           {
+            "group": "Accounts",
+            "openapi": {
+              "source": "api-reference/endpoint/accounts/openapi.json"
+            }
+          },
+          {
             "group": "Compute",
             "openapi": {
               "source": "api-reference/endpoint/compute/openapi.json"

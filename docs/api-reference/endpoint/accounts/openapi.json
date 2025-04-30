@@ -1,0 +1,4756 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Bellerophon Account Service API",
+    "description": "API for managing accounts, users, authentication, and payments in the Bellerophon platform",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Microstrate Support",
+      "url": "https://app.staging.microstrate.io"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.staging.microstrate.io",
+      "description": "Staging API server"
+    },
+    {
+      "url": "https://api.microstrate.io",
+      "description": "Production API server"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      },
+      "apiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-Api-Key"
+      }
+    },
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          }
+        }
+      },
+      "SuccessResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateAccountRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Account name"
+          },
+          "root_first_name": {
+            "type": "string",
+            "description": "Root user first name"
+          },
+          "root_last_name": {
+            "type": "string",
+            "description": "Root user last name"
+          },
+          "root_email": {
+            "type": "string",
+            "format": "email",
+            "description": "Root user email"
+          },
+          "password": {
+            "type": "string",
+            "format": "password",
+            "description": "Root user password"
+          },
+          "country": {
+            "type": "string",
+            "description": "Country"
+          },
+          "company_name": {
+            "type": "string",
+            "description": "Company name"
+          },
+          "address": {
+            "type": "string",
+            "description": "Address"
+          },
+          "website": {
+            "type": "string",
+            "description": "Website"
+          },
+          "phone_number": {
+            "type": "string",
+            "description": "Phone number"
+          }
+        },
+        "required": ["name", "root_first_name", "root_last_name", "root_email", "password"]
+      },
+      "ContactRequest": {
+        "type": "object",
+        "properties": {
+          "to_email": {
+            "type": "string",
+            "format": "email",
+            "description": "Recipient email"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Email subject"
+          },
+          "location": {
+            "type": "string",
+            "description": "Location in the application"
+          },
+          "message": {
+            "type": "string",
+            "description": "Message content"
+          },
+          "phone_number": {
+            "type": "string",
+            "description": "Phone number"
+          },
+          "preferred_contact_method": {
+            "type": "string",
+            "description": "Preferred contact method"
+          }
+        },
+        "required": ["to_email", "subject", "message"]
+      },
+      "RefreshTokenObject": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "description": "Account ID"
+          },
+          "user_id": {
+            "type": "string",
+            "description": "User ID"
+          },
+          "account": {
+            "type": "string",
+            "description": "Account name"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "User email"
+          },
+          "role": {
+            "type": "string",
+            "description": "Role"
+          },
+          "expiry": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Token expiration timestamp"
+          },
+          "token": {
+            "type": "string",
+            "description": "Refresh token"
+          }
+        }
+      },
+      "CreateUserRequest": {
+        "type": "object",
+        "properties": {
+          "first_name": {
+            "type": "string",
+            "description": "First name"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "Last name"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "Email address"
+          },
+          "role": {
+            "type": "string",
+            "enum": ["admin", "developer", "monitor", "billing"],
+            "description": "Role"
+          }
+        },
+        "required": ["first_name", "last_name", "email", "role"]
+      },
+      "MeshNode": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Node ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Node name"
+          },
+          "provider": {
+            "type": "string",
+            "description": "Cloud provider"
+          },
+          "region": {
+            "type": "string",
+            "description": "Region"
+          }
+        }
+      },
+      "UserProfileImage": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "File name"
+          },
+          "contentType": {
+            "type": "string",
+            "description": "Content type"
+          }
+        }
+      },
+      "AccountPublicInfo": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Account name (normalized)"
+          },
+          "id": {
+            "type": "string",
+            "description": "Account ID"
+          },
+          "display_name": {
+            "type": "string",
+            "description": "Account display name"
+          },
+          "root_email": {
+            "type": "string",
+            "format": "email",
+            "description": "Root user email"
+          },
+          "subscription_status": {
+            "type": "string",
+            "description": "Subscription status"
+          },
+          "subscription_plan": {
+            "type": "string",
+            "description": "Subscription plan"
+          },
+          "emergency_credit": {
+            "type": "number",
+            "format": "float",
+            "description": "Emergency credit amount"
+          },
+          "country": {
+            "type": "string",
+            "description": "Country"
+          },
+          "company_name": {
+            "type": "string",
+            "description": "Company name"
+          },
+          "address": {
+            "type": "string",
+            "description": "Address"
+          },
+          "website": {
+            "type": "string",
+            "description": "Website"
+          },
+          "phone_number": {
+            "type": "string",
+            "description": "Phone number"
+          },
+          "scheduled_for_deletion": {
+            "type": "boolean",
+            "description": "Whether the account is scheduled for deletion"
+          },
+          "deletion_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Account deletion date"
+          },
+          "region": {
+            "type": "string",
+            "description": "Region"
+          },
+          "provider": {
+            "type": "string",
+            "description": "Provider"
+          },
+          "bstier": {
+            "type": "integer",
+            "description": "BS tier"
+          },
+          "cloud": {
+            "type": "boolean",
+            "description": "Cloud enabled"
+          },
+          "hub": {
+            "type": "boolean",
+            "description": "Hub enabled"
+          }
+        }
+      },
+      "UpdateAccountRequest": {
+        "type": "object",
+        "properties": {
+          "country": {
+            "type": "string",
+            "description": "Country"
+          },
+          "company_name": {
+            "type": "string",
+            "description": "Company name"
+          },
+          "address": {
+            "type": "string",
+            "description": "Address"
+          },
+          "website": {
+            "type": "string",
+            "description": "Website"
+          },
+          "phone_number": {
+            "type": "string",
+            "description": "Phone number"
+          },
+          "onboarding_progress": {
+            "type": "object",
+            "description": "Onboarding progress"
+          },
+          "region": {
+            "type": "string",
+            "description": "Region"
+          },
+          "provider": {
+            "type": "string",
+            "description": "Provider"
+          },
+          "cloud": {
+            "type": "boolean",
+            "description": "Cloud enabled"
+          },
+          "hub": {
+            "type": "boolean",
+            "description": "Hub enabled"
+          }
+        }
+      },
+      "ApiKeyRequest": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "User email (optional, defaults to current user)"
+          },
+          "key_name": {
+            "type": "string",
+            "description": "API key name"
+          }
+        },
+        "required": [
+          "key_name"
+        ]
+      },
+      "ApiKeyResponse": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "API key"
+          },
+          "name": {
+            "type": "string",
+            "description": "API key name"
+          },
+          "created_on": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation date"
+          },
+          "expires_on": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Expiration date"
+          },
+          "creds": {
+            "type": "string",
+            "description": "API credentials"
+          }
+        }
+      },
+      "DeleteApiKeyRequest": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "User email (optional, defaults to current user)"
+          },
+          "key": {
+            "type": "string",
+            "description": "API key"
+          },
+          "id": {
+            "type": "string",
+            "description": "API key ID (alternative to key)"
+          }
+        }
+      },
+      "ViewApiKey": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "API key ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "API key name"
+          },
+          "last_4_characters": {
+            "type": "string",
+            "description": "Last 4 characters of API key"
+          },
+          "created_on": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation date"
+          },
+          "expires_on": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Expiration date"
+          },
+          "account": {
+            "type": "string",
+            "description": "Account name"
+          }
+        }
+      },
+      "PasswordAuthRequest": {
+        "type": "object",
+        "properties": {
+          "account": {
+            "type": "string",
+            "description": "Account name"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "User email"
+          },
+          "password": {
+            "type": "string",
+            "description": "User password",
+            "format": "password"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ]
+      },
+      "AuthResponse": {
+        "type": "object",
+        "properties": {
+          "refresh_token": {
+            "type": "string",
+            "description": "Refresh token"
+          },
+          "auth_token": {
+            "type": "string",
+            "description": "Authentication token"
+          },
+          "passkey_enabled": {
+            "type": "boolean",
+            "description": "Whether passkey authentication is enabled"
+          },
+          "totp_enabled": {
+            "type": "boolean",
+            "description": "Whether TOTP authentication is enabled"
+          }
+        }
+      },
+      "MfaRequiredResponse": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "description": "MFA token"
+          },
+          "passkey_enabled": {
+            "type": "boolean",
+            "description": "Whether passkey authentication is enabled"
+          },
+          "totp_enabled": {
+            "type": "boolean",
+            "description": "Whether TOTP authentication is enabled"
+          }
+        }
+      },
+      "ProfileImageUploadRequest": {
+        "type": "object",
+        "properties": {
+          "file_name": {
+            "type": "string",
+            "description": "File name"
+          },
+          "file": {
+            "type": "string",
+            "format": "byte",
+            "description": "Base64 encoded file content"
+          },
+          "content_type": {
+            "type": "string",
+            "description": "Content type"
+          },
+          "is_chunk": {
+            "type": "boolean",
+            "description": "Whether the file is being uploaded in chunks"
+          },
+          "chunk_index": {
+            "type": "integer",
+            "description": "Current chunk index"
+          },
+          "total_chunks": {
+            "type": "integer",
+            "description": "Total number of chunks"
+          }
+        },
+        "required": [
+          "file_name",
+          "file",
+          "content_type"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Account Management",
+      "description": "Operations related to account creation, updating, and deletion"
+    },
+    {
+      "name": "User Management",
+      "description": "Operations related to user creation, updating, and deletion"
+    },
+    {
+      "name": "Authentication",
+      "description": "Operations related to authentication and session management"
+    },
+    {
+      "name": "API Keys",
+      "description": "Operations related to API key management"
+    },
+    {
+      "name": "Multi-Factor Authentication",
+      "description": "Operations related to MFA setup and verification"
+    },
+    {
+      "name": "Payment",
+      "description": "Operations related to subscription and payment management"
+    },
+    {
+      "name": "Mesh Nodes",
+      "description": "Operations related to mesh node management"
+    }
+  ],
+  "paths": {
+    "/accounts/info": {
+      "get": {
+        "summary": "Get account information",
+        "description": "Retrieves information about the current account",
+        "operationId": "getAccountInfo",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.get.info",
+        "tags": [
+          "Account Management"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account information retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountPublicInfo"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/api-key": {
+      "post": {
+        "summary": "Issue API key",
+        "description": "Issues a new API key for the specified user",
+        "operationId": "issueApiKey",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.api-key",
+        "tags": [
+          "API Keys"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiKeyRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "API key created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiKeyResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete API key",
+        "description": "Delete an API key. A key can be delted by providing the full key or by id",
+        "operationId": "deleteApiKey",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.delete.api-key",
+        "tags": [
+          "API Keys"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "description": "User email (optional, defaults to current user)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "key",
+            "in": "query",
+            "description": "Full API key",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "description": "Key id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "API key deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiKeyResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/api-keys": {
+      "get": {
+        "summary": "View API keys",
+        "description": "Retrieves all API keys for the specified user",
+        "operationId": "viewApiKeys",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.get.api-keys",
+        "tags": [
+          "API Keys"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "description": "User email (optional, defaults to current user)",
+            "schema": {
+              "type": "string",
+              "format": "email"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "API keys retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ViewApiKey"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/auth-with-password": {
+      "post": {
+        "summary": "Authenticate with password",
+        "description": "Authenticates a user using their email and password",
+        "operationId": "authWithPassword",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.auth-with-password",
+        "tags": [
+          "Authentication"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasswordAuthRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Authentication successful or MFA required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/AuthResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/MfaRequiredResponse"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/profile-image": {
+      "post": {
+        "summary": "Upload profile image",
+        "description": "Uploads a profile image for the user",
+        "operationId": "uploadProfileImage",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.profile-image",
+        "tags": [
+          "User Management"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileImageUploadRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Profile image uploaded successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete profile image",
+        "description": "Deletes the user's profile image",
+        "operationId": "deleteProfileImage",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.delete.profile-image",
+        "tags": [
+          "User Management"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Profile image deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/recovery-codes": {
+      "post": {
+        "summary": "Issue recovery codes",
+        "description": "Generates new recovery codes for a user",
+        "operationId": "issueRecoveryCodes",
+        "tags": ["Multi-Factor Authentication"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.recovery-codes",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "User email (optional, defaults to current user)"
+                  }
+                }
+              },
+              "example": {
+                "email": "user@example.com"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Recovery codes issued successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "example": [
+                  "ABCD-1234",
+                  "EFGH-5678",
+                  "IJKL-9012"
+                ]
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "View recovery codes",
+        "description": "Retrieves existing recovery codes for a user",
+        "operationId": "viewRecoveryCodes",
+        "tags": ["Multi-Factor Authentication"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.get.recovery-codes",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "description": "User email (optional, defaults to current user)",
+            "schema": {
+              "type": "string",
+              "format": "email"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Recovery codes retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "example": [
+                  "ABCD-1234",
+                  "EFGH-5678",
+                  "IJKL-9012"
+                ]
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/auth-with-recovery-code": {
+      "post": {
+        "summary": "Authenticate with recovery code",
+        "description": "Authenticates a user using a recovery code",
+        "operationId": "authWithRecoveryCode",
+        "tags": ["Authentication", "Multi-Factor Authentication"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.auth-with-recovery-code",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string",
+                    "description": "MFA token from password authentication"
+                  },
+                  "code": {
+                    "type": "string",
+                    "description": "Recovery code"
+                  }
+                },
+                "required": ["token", "code"]
+              },
+              "example": {
+                "token": "abcdef123456",
+                "code": "ABCD-1234"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Authentication successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/remove-user": {
+      "delete": {
+        "summary": "Remove user from account",
+        "description": "Removes a user from the current account",
+        "operationId": "removeUser",
+        "tags": ["User Management"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.delete.user",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "User email"
+                  }
+                },
+                "required": ["email"]
+              },
+              "example": {
+                "email": "user@example.com"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User removed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/request-reset-password": {
+      "post": {
+        "summary": "Request password reset",
+        "description": "Requests a password reset for a user",
+        "operationId": "requestResetPassword",
+        "tags": ["Authentication"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.request-reset-password",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "User email"
+                  }
+                },
+                "required": ["email"]
+              },
+              "example": {
+                "email": "user@example.com"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Password reset request processed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/reset-password": {
+      "post": {
+        "summary": "Reset password",
+        "description": "Resets a user's password",
+        "operationId": "resetPassword",
+        "tags": ["Authentication"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.reset-password",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "User email"
+                  },
+                  "token": {
+                    "type": "string",
+                    "description": "Password reset token"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "Current password (required when authenticated)"
+                  },
+                  "new_password": {
+                    "type": "string",
+                    "description": "New password"
+                  }
+                },
+                "required": ["token", "new_password"]
+              },
+              "example": {
+                "email": "user@example.com",
+                "token": "abcdef123456",
+                "new_password": "NewSecureP@ssw0rd!"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Password reset successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/set-password": {
+      "post": {
+        "summary": "Set password",
+        "description": "Sets a password for a new user",
+        "operationId": "setPassword",
+        "tags": ["Authentication"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.set-password",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string",
+                    "description": "Set password token"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "New password"
+                  }
+                },
+                "required": ["token", "password"]
+              },
+              "example": {
+                "token": "abcdef123456",
+                "password": "SecureP@ssw0rd!"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Password set successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "account_id": {
+                      "type": "string"
+                    },
+                    "user_id": {
+                      "type": "string"
+                    },
+                    "account": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/generate-totp-key": {
+      "post": {
+        "summary": "Generate TOTP key",
+        "description": "Generates a TOTP key for multi-factor authentication",
+        "operationId": "generateTotpKey",
+        "tags": ["Multi-Factor Authentication"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.generate-totp-key",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "TOTP key generated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "otpauth_url": {
+                      "type": "string",
+                      "description": "OTP Auth URL for QR code generation"
+                    },
+                    "secret": {
+                      "type": "string",
+                      "description": "TOTP secret key"
+                    }
+                  }
+                },
+                "example": {
+                  "otpauth_url": "otpauth://totp/Microstrate:user@example.com?secret=JBSWY3DPEHPK3PXP&issuer=Microstrate",
+                  "secret": "JBSWY3DPEHPK3PXP"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/confirm-totp-registration": {
+      "post": {
+        "summary": "Confirm TOTP registration",
+        "description": "Confirms a TOTP registration by validating a code",
+        "operationId": "confirmTotpRegistration",
+        "tags": ["Multi-Factor Authentication"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.confirm-totp-registration",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "code": {
+                    "type": "string",
+                    "description": "TOTP code"
+                  },
+                  "secret": {
+                    "type": "string",
+                    "description": "TOTP secret key"
+                  }
+                },
+                "required": ["code", "secret"]
+              },
+              "example": {
+                "code": "123456",
+                "secret": "JBSWY3DPEHPK3PXP"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "TOTP registration confirmed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "recovery_codes": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/auth-with-totp": {
+      "post": {
+        "summary": "Authenticate with TOTP",
+        "description": "Authenticates a user using a TOTP code",
+        "operationId": "authWithTotp",
+        "tags": ["Authentication", "Multi-Factor Authentication"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.auth-with-totp",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string",
+                    "description": "MFA token from password authentication"
+                  },
+                  "code": {
+                    "type": "string",
+                    "description": "TOTP code"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "User email (optional when authenticated)"
+                  }
+                },
+                "required": ["token", "code"]
+              },
+              "example": {
+                "token": "abcdef123456",
+                "code": "123456"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Authentication successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/totp": {
+      "delete": {
+        "summary": "Remove TOTP",
+        "description": "Disables TOTP authentication for a user",
+        "operationId": "removeTotp",
+        "tags": ["Multi-Factor Authentication"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.delete.totp",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "User email (optional, defaults to current user)"
+                  }
+                }
+              },
+              "example": {
+                "email": "user@example.com"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "TOTP removed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/set-emergency-credit": {
+      "patch": {
+        "summary": "Set emergency credit",
+        "description": "Sets the emergency credit amount for an account",
+        "operationId": "setEmergencyCredit",
+        "tags": ["Account Management"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.patch.set-emergency-credit",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "emergency_credit": {
+                    "type": "number",
+                    "format": "float",
+                    "description": "Emergency credit amount"
+                  }
+                },
+                "required": ["emergency_credit"]
+              },
+              "example": {
+                "emergency_credit": 100.00
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Emergency credit set successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/rename": {
+      "patch": {
+        "summary": "Rename account",
+        "description": "Renames an account",
+        "operationId": "renameAccount",
+        "tags": ["Account Management"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.patch.rename-account",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "new_name": {
+                    "type": "string",
+                    "description": "New account name"
+                  },
+                  "email_code": {
+                    "type": "string",
+                    "description": "Email verification code"
+                  }
+                },
+                "required": ["new_name", "email_code"]
+              },
+              "example": {
+                "new_name": "new-acme",
+                "email_code": "123456"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Account renamed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Account name already exists",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts": {
+      "post": {
+        "summary": "Create account",
+        "description": "Creates a new account",
+        "operationId": "createAccount",
+        "tags": ["Account Management"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.create-account",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAccountRequest"
+              },
+              "example": {
+                "name": "acme",
+                "root_first_name": "John",
+                "root_last_name": "Doe",
+                "root_email": "admin@acme.com",
+                "password": "SecureP@ssw0rd!",
+                "country": "US",
+                "company_name": "ACME Corporation",
+                "address": "123 Main St, Anytown, USA",
+                "website": "https://acme.com",
+                "phone_number": "+1234567890"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Account created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email_confirmed": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "example": {
+                  "email_confirmed": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update account",
+        "description": "Updates account information",
+        "operationId": "updateAccount",
+        "tags": ["Account Management"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.patch.update-account",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAccountRequest"
+              },
+              "example": {
+                "country": "US",
+                "company_name": "ACME Corporation Updated",
+                "address": "456 New St, Anytown, USA",
+                "website": "https://new-acme.com",
+                "phone_number": "+9876543210",
+                "region": "us-east-1",
+                "provider": "aws",
+                "cloud": true,
+                "hub": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Account updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountPublicInfo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/users": {
+      "post": {
+        "summary": "Create user",
+        "description": "Creates a new user in the current account",
+        "operationId": "createUser",
+        "tags": ["User Management"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.create-user",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserRequest"
+              },
+              "example": {
+                "first_name": "Jane",
+                "last_name": "Smith",
+                "email": "jane.smith@example.com",
+                "role": "developer"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/account": {
+      "delete": {
+        "summary": "Delete account",
+        "description": "Deletes the current account",
+        "operationId": "deleteAccount",
+        "tags": ["Account Management"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.delete.account",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "in_14_days": {
+                    "type": "boolean",
+                    "description": "Schedule deletion in 14 days"
+                  },
+                  "email_code": {
+                    "type": "string",
+                    "description": "Email verification code"
+                  }
+                },
+                "required": ["email_code"]
+              },
+              "example": {
+                "in_14_days": true,
+                "email_code": "123456"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Account scheduled for deletion or deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "deletion_date": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "The accounts is going to be deleted on 2023-05-12T12:34:56Z",
+                  "deletion_date": "2023-05-12T12:34:56Z"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/cancel-account-deletion": {
+      "post": {
+        "summary": "Cancel account deletion",
+        "description": "Cancels a scheduled account deletion",
+        "operationId": "cancelAccountDeletion",
+        "tags": ["Account Management"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.cancel-account-deletion",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account deletion cancelled successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Account not scheduled for deletion",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/user": {
+      "delete": {
+        "summary": "Delete user",
+        "description": "Deletes the current user",
+        "operationId": "deleteUser",
+        "tags": ["User Management"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.delete.user",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Cannot delete root user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update user",
+        "description": "Updates user information",
+        "operationId": "updateUser",
+        "tags": ["User Management"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.patch.update-user",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserRequest"
+              },
+              "example": {
+                "first_name": "John",
+                "last_name": "Smith",
+                "theme": "dark",
+                "sound": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/request-email-address-change": {
+      "post": {
+        "summary": "Request email address change",
+        "description": "Initiates an email address change process",
+        "operationId": "requestEmailAddressChange",
+        "tags": ["User Management"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.request-email-address-change",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "password": {
+                    "type": "string",
+                    "description": "Current password"
+                  },
+                  "token": {
+                    "type": "string",
+                    "description": "MFA token (required if MFA is enabled)"
+                  },
+                  "new_email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "New email address"
+                  }
+                },
+                "required": ["new_email"]
+              },
+              "example": {
+                "password": "SecureP@ssw0rd!",
+                "new_email": "new.email@example.com"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Email change request initiated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/change-email-address-action": {
+      "post": {
+        "summary": "Complete email address change",
+        "description": "Completes an email address change process",
+        "operationId": "changeEmailAddressAction",
+        "tags": ["User Management"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.change-email-address-action",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string",
+                    "description": "Email change token"
+                  }
+                },
+                "required": ["token"]
+              },
+              "example": {
+                "token": "abcdef123456"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Email change action completed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/email-code": {
+      "get": {
+        "summary": "Get email verification code",
+        "description": "Sends a verification code to the user's email",
+        "operationId": "getEmailCode",
+        "tags": ["Authentication"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.get.email-code",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Email code sent successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/import": {
+      "post": {
+        "summary": "Add import",
+        "description": "Adds a new import to the account",
+        "operationId": "addImport",
+        "tags": ["Account Management"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.import",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ImportRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Import added successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Remove import",
+        "description": "Removes an import from the account",
+        "operationId": "removeImport",
+        "tags": ["Account Management"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.delete.import",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Import name"
+                  }
+                },
+                "required": ["name"]
+              },
+              "example": {
+                "name": "example-import"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Import removed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/export": {
+      "post": {
+        "summary": "Add export",
+        "description": "Adds a new export to the account",
+        "operationId": "addExport",
+        "tags": ["Account Management"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.export",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExportRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Export added successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Remove export",
+        "description": "Removes an export from the account",
+        "operationId": "removeExport",
+        "tags": ["Account Management"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.delete.export",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Export name"
+                  }
+                },
+                "required": ["name"]
+              },
+              "example": {
+                "name": "example-export"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Export removed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/users/list": {
+      "get": {
+        "summary": "List users by account",
+        "description": "Lists all users in the current account",
+        "operationId": "listUsersByAccount",
+        "tags": ["User Management"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.get.list-users-by-account",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Users retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserInfo"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/list": {
+      "get": {
+        "summary": "List accounts by user",
+        "description": "Lists all accounts for the current user",
+        "operationId": "listAccountsByUser",
+        "tags": ["Account Management"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.get.list-accounts-by-user",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Accounts retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "example": [
+                  "acct_123456789",
+                  "acct_987654321"
+                ]
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/mesh-nodes": {
+      "post": {
+        "summary": "Create mesh nodes",
+        "description": "Creates new mesh nodes",
+        "operationId": "createMeshNodes",
+        "tags": ["Mesh Nodes"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.create-mesh-nodes",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "mesh_nodes": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/MeshNodeCreate"
+                    }
+                  }
+                },
+                "required": ["mesh_nodes"]
+              },
+              "example": {
+                "mesh_nodes": [
+                  {
+                    "name": "Node 1",
+                    "provider": "aws",
+                    "region": "us-east-1"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Mesh nodes created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "created": {
+                            "$ref": "#/components/schemas/MeshNode"
+                          },
+                          "error": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update mesh nodes",
+        "description": "Updates existing mesh nodes",
+        "operationId": "updateMeshNodes",
+        "tags": ["Mesh Nodes"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.patch.update-mesh-nodes",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "mesh_nodes": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/MeshNodeUpdate"
+                    }
+                  }
+                },
+                "required": ["mesh_nodes"]
+              },
+              "example": {
+                "mesh_nodes": [
+                  {
+                    "id": "node_123456",
+                    "name": "Updated Node 1",
+                    "provider": "aws",
+                    "region": "us-west-1"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Mesh nodes updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "updated": {
+                            "$ref": "#/components/schemas/MeshNode"
+                          },
+                          "error": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete mesh nodes",
+        "description": "Deletes mesh nodes",
+        "operationId": "deleteMeshNodes",
+        "tags": ["Mesh Nodes"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.delete.mesh-nodes",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "node_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "IDs of nodes to delete"
+                  }
+                },
+                "required": ["node_ids"]
+              },
+              "example": {
+                "node_ids": ["node_123456"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Mesh nodes deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/begin-passkey-registration": {
+      "post": {
+        "summary": "Begin passkey registration",
+        "description": "Initiates the passkey registration process",
+        "operationId": "beginPasskeyRegistration",
+        "tags": ["Multi-Factor Authentication"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.begin-passkey-registration",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Passkey registration initiated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "WebAuthn registration options"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/complete-passkey-registration": {
+      "post": {
+        "summary": "Complete passkey registration",
+        "description": "Completes the passkey registration process",
+        "operationId": "completePasskeyRegistration",
+        "tags": ["Multi-Factor Authentication"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.complete-passkey-registration",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "credential": {
+                    "type": "object",
+                    "description": "WebAuthn credential"
+                  },
+                  "credential_alias": {
+                    "type": "string",
+                    "description": "User-friendly name for the passkey"
+                  }
+                },
+                "required": ["credential", "credential_alias"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Passkey registration completed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "passkey": {
+                      "$ref": "#/components/schemas/WebAuthCredentialAlias"
+                    },
+                    "recovery_codes": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/begin-auth-with-passkey": {
+      "post": {
+        "summary": "Begin passkey authentication",
+        "description": "Initiates the passkey authentication process",
+        "operationId": "beginAuthWithPasskey",
+        "tags": ["Authentication", "Multi-Factor Authentication"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.begin-auth-with-passkey",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "User email"
+                  },
+                  "account": {
+                    "type": "string",
+                    "description": "Account name (optional)"
+                  }
+                },
+                "required": ["email"]
+              },
+              "example": {
+                "email": "user@example.com",
+                "account": "acme"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Passkey authentication initiated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "WebAuthn authentication options"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/passkey": {
+      "delete": {
+        "summary": "Remove passkey",
+        "description": "Removes a specific passkey",
+        "operationId": "removePasskey",
+        "tags": ["Multi-Factor Authentication"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.delete.passkey",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "description": "Passkey ID (base64 encoded)"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "User email (optional, defaults to current user)"
+                  }
+                },
+                "required": ["id"]
+              },
+              "example": {
+                "id": "cGFzc2tleV9pZA==",
+                "email": "user@example.com"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Passkey removed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Passkey not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/role": {
+      "patch": {
+        "summary": "Update user role",
+        "description": "Updates a user's role in an account",
+        "operationId": "updateRole",
+        "tags": ["User Management"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.patch.update-role",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "User email"
+                  },
+                  "role": {
+                    "type": "string",
+                    "enum": ["admin", "developer", "monitor", "billing"],
+                    "description": "New role"
+                  }
+                },
+                "required": ["email", "role"]
+              },
+              "example": {
+                "email": "user@example.com",
+                "role": "admin"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Role updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/suspend-user": {
+      "patch": {
+        "summary": "Suspend user",
+        "description": "Suspends or unsuspends a user in an account",
+        "operationId": "suspendUser",
+        "tags": ["User Management"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.patch.suspend-user",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "User email"
+                  },
+                  "suspend": {
+                    "type": "boolean",
+                    "description": "True to suspend, false to unsuspend"
+                  }
+                },
+                "required": ["email", "suspend"]
+              },
+              "example": {
+                "email": "user@example.com",
+                "suspend": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User suspended or unsuspended successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/user-mfa-info": {
+      "get": {
+        "summary": "Get user MFA info",
+        "description": "Retrieves MFA information for a user",
+        "operationId": "getUserMfaInfo",
+        "tags": ["Multi-Factor Authentication"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.get.user-mfa-info",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "description": "User email (optional, defaults to current user)",
+            "schema": {
+              "type": "string",
+              "format": "email"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "MFA information retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MfaInfo"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/user-login-data": {
+      "get": {
+        "summary": "Get user login data",
+        "description": "Retrieves login data for the current user",
+        "operationId": "getUserLoginData",
+        "tags": ["User Management"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.get.user-login-data",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User login data retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "account": {
+                      "$ref": "#/components/schemas/AccountPublicInfo"
+                    },
+                    "user": {
+                      "type": "string",
+                      "format": "email"
+                    },
+                    "user_id": {
+                      "type": "string"
+                    },
+                    "first_name": {
+                      "type": "string"
+                    },
+                    "last_name": {
+                      "type": "string"
+                    },
+                    "role": {
+                      "type": "string"
+                    },
+                    "mfa": {
+                      "$ref": "#/components/schemas/MfaInfo"
+                    },
+                    "theme": {
+                      "type": "string"
+                    },
+                    "sound": {
+                      "type": "boolean"
+                    },
+                    "profile_image": {
+                      "$ref": "#/components/schemas/UserProfileImage"
+                    }
+                  },
+                  "required": ["account", "user", "user_id", "role"]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/token-validate": {
+      "post": {
+        "summary": "Validate token",
+        "description": "Validates an authentication token",
+        "operationId": "validateToken",
+        "tags": ["Authentication"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.token-validate",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string",
+                    "description": "Token to validate"
+                  }
+                },
+                "required": ["token"]
+              },
+              "example": {
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Token validation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                },
+                "example": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/api-creds": {
+      "get": {
+        "summary": "Get API credentials",
+        "description": "Retrieves credentials for a specific API key",
+        "operationId": "getApiCreds",
+        "tags": ["API Keys"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.get.api-creds",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string",
+                    "description": "API key"
+                  }
+                },
+                "required": ["key"]
+              },
+              "example": {
+                "key": "ms-d28f9a3c5b6e7d4a1c8f9a3c5b6e7d4a"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "API credentials retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "-----BEGIN BELLEROPHON USER JWT-----\n[JWT TOKEN]\n------END BELLEROPHON USER JWT------\n************************* IMPORTANT *************************\nBKEY Seed printed below can be used to sign and prove identity.\nBKEYs are sensitive and should be treated as secrets.\n-----BEGIN USER BKEY SEED-----\n[BKEY SEED]\n------END USER BKEY SEED------\n*************************************************************"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "API key not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/auth-with-api-key": {
+      "post": {
+        "summary": "Authenticate with API key",
+        "description": "Authenticates a user using an API key",
+        "operationId": "authWithApiKey",
+        "tags": ["Authentication"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.auth-with-api-key",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "apiKey": {
+                    "type": "string",
+                    "description": "API key"
+                  }
+                },
+                "required": ["apiKey"]
+              },
+              "example": {
+                "apiKey": "ms-d28f9a3c5b6e7d4a1c8f9a3c5b6e7d4a"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Authentication successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/mfa-settings": {
+      "patch": {
+        "summary": "Update MFA settings",
+        "description": "Updates multi-factor authentication settings for a user",
+        "operationId": "updateMfaSettings",
+        "tags": ["Multi-Factor Authentication"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.patch.mfa-settings",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "totp_enabled": {
+                    "type": "boolean",
+                    "description": "Enable or disable TOTP (Time-based One-Time Password)"
+                  },
+                  "passkey_enabled": {
+                    "type": "boolean",
+                    "description": "Enable or disable passkey authentication"
+                  }
+                }
+              },
+              "example": {
+                "totp_enabled": true,
+                "passkey_enabled": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "MFA settings updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/session-tokens": {
+      "get": {
+        "summary": "Get session tokens",
+        "description": "Retrieves all active session tokens for the current user",
+        "operationId": "getSessionTokens",
+        "tags": ["Authentication"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.session-tokens",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Session tokens retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "auth": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/SessionObject"
+                      }
+                    },
+                    "refresh": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/RefreshTokenObject"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/auth-token": {
+      "delete": {
+        "summary": "Revoke auth token",
+        "description": "Revokes a specific authentication token",
+        "operationId": "revokeAuthToken",
+        "tags": ["Authentication"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.delete.auth-token",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string",
+                    "description": "Auth token to revoke"
+                  }
+                },
+                "required": ["token"]
+              },
+              "example": {
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Token revoked successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/refresh-token": {
+      "delete": {
+        "summary": "Revoke refresh token",
+        "description": "Revokes a specific refresh token",
+        "operationId": "revokeRefreshToken",
+        "tags": ["Authentication"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.delete.refresh-token",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string",
+                    "description": "Refresh token to revoke"
+                  }
+                },
+                "required": ["token"]
+              },
+              "example": {
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Token revoked successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Refresh auth token",
+        "description": "Refreshes an auth token using a refresh token",
+        "operationId": "refreshToken",
+        "tags": ["Authentication"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.refresh-token",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "auth_token": {
+                    "type": "string",
+                    "description": "Current auth token"
+                  },
+                  "refresh_token": {
+                    "type": "string",
+                    "description": "Refresh token"
+                  }
+                },
+                "required": ["auth_token", "refresh_token"]
+              },
+              "example": {
+                "auth_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+                "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Token refreshed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/tokens": {
+      "delete": {
+        "summary": "Revoke all tokens",
+        "description": "Revokes all tokens for a specific user",
+        "operationId": "revokeTokens",
+        "tags": ["Authentication"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.delete.tokens",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "User email"
+                  }
+                },
+                "required": ["email"]
+              },
+              "example": {
+                "email": "user@example.com"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Tokens revoked successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/confirm-email": {
+      "post": {
+        "summary": "Confirm email",
+        "description": "Confirms a user's email address using a token or code",
+        "operationId": "confirmEmail",
+        "tags": ["Account Management"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.confirm-email",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string",
+                    "description": "Email confirmation token"
+                  },
+                  "code": {
+                    "type": "string",
+                    "description": "Email confirmation code (alternative to token)"
+                  }
+                },
+                "oneOf": [
+                  { "required": ["token"] },
+                  { "required": ["code"] }
+                ]
+              },
+              "example": {
+                "token": "abcdef123456"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Email confirmed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "account": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email"
+                    },
+                    "account_id": {
+                      "type": "string"
+                    },
+                    "user_id": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "account": "acme",
+                  "email": "user@example.com",
+                  "account_id": "acct_123456789",
+                  "user_id": "usr_123456789"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/submit-contact-form": {
+      "post": {
+        "summary": "Submit contact form",
+        "description": "Submits a contact form",
+        "operationId": "submitContactForm",
+        "tags": ["Account Management"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.submit-contact-form",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactRequest"
+              },
+              "example": {
+                "to_email": "support@example.com",
+                "subject": "Billing question",
+                "location": "Account settings",
+                "message": "I have a question about my billing cycle.",
+                "phone_number": "+1234567890",
+                "preferred_contact_method": "email"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Contact form submitted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/complete-auth-with-passkey": {
+      "post": {
+        "summary": "Complete passkey authentication",
+        "description": "Completes the passkey authentication process",
+        "operationId": "completeAuthWithPasskey",
+        "tags": ["Authentication", "Multi-Factor Authentication"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.complete-auth-with-passkey",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "account": {
+                    "type": "string",
+                    "description": "Account name (optional)"
+                  },
+                  "token": {
+                    "type": "string",
+                    "description": "MFA token (required if using MFA flow)"
+                  },
+                  "credential": {
+                    "type": "object",
+                    "description": "WebAuthn credential"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "User email"
+                  }
+                },
+                "required": ["credential", "email"]
+              },
+              "example": {
+                "email": "user@example.com",
+                "account": "acme",
+                "credential": {}
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Passkey authentication completed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/all-passkeys": {
+      "delete": {
+        "summary": "Remove all passkeys",
+        "description": "Removes all passkeys for a user",
+        "operationId": "removeAllPasskeys",
+        "tags": ["Multi-Factor Authentication"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.delete.all-passkeys",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "User email (optional, defaults to current user)"
+                  }
+                }
+              },
+              "example": {
+                "email": "user@example.com"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "All passkeys removed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/payment/webhook": {
+      "post": {
+        "summary": "Process payment webhook",
+        "description": "Processes payment webhooks from Stripe",
+        "operationId": "processPaymentWebhook",
+        "tags": ["Payment"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.payment.webhook",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Stripe webhook event object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Webhook processed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/payment/products": {
+      "get": {
+        "summary": "Get products",
+        "description": "Retrieves all available products",
+        "operationId": "getProducts",
+        "tags": ["Payment"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.get.payment.products",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Products retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StripeProduct"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/payment/prices": {
+      "get": {
+        "summary": "Get prices",
+        "description": "Retrieves all available prices",
+        "operationId": "getPrices",
+        "tags": ["Payment"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.get.payment.prices",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Prices retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StripePrice"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/payment/checkout-url": {
+      "get": {
+        "summary": "Get checkout URL",
+        "description": "Generates a Stripe checkout URL for subscription",
+        "operationId": "getCheckoutUrl",
+        "tags": ["Payment"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.get.payment.checkout-url",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CheckoutURLRequest"
+              },
+              "example": {
+                "base_subscription": "price_1234567890",
+                "addons": [
+                  {
+                    "id": "price_0987654321",
+                    "type": "addon",
+                    "quantity": 2
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Checkout URL generated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "example": "https://checkout.stripe.com/c/pay/cs_test_1234567890"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/payment/dashboard-url": {
+      "get": {
+        "summary": "Get dashboard URL",
+        "description": "Generates a Stripe customer portal URL",
+        "operationId": "getDashboardUrl",
+        "tags": ["Payment"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.get.payment.dashboard-url",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dashboard URL generated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "example": "https://billing.stripe.com/p/session/live_1234567890"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/payment/subscription-items": {
+      "get": {
+        "summary": "Get subscription items",
+        "description": "Retrieves all items in the current subscription",
+        "operationId": "getSubscriptionItems",
+        "tags": ["Payment"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.get.payment.subscription-items",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Subscription items retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "has_default_payment_method": {
+                      "type": "boolean"
+                    },
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/SubscriptionItem"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No subscription found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/payment/subscription": {
+      "get": {
+        "summary": "Get subscription",
+        "description": "Retrieves the current subscription",
+        "operationId": "getSubscription",
+        "tags": ["Payment"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.get.payment.subscription",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Subscription retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "Stripe subscription object"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No subscription found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update subscription",
+        "description": "Updates the current subscription",
+        "operationId": "updateSubscription",
+        "tags": ["Payment"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.patch.payment.subscription",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/SubItem"
+                    }
+                  }
+                },
+                "required": ["items"]
+              },
+              "example": {
+                "items": [
+                  {
+                    "id": "si_1234567890",
+                    "quantity": 2
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Subscription updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "Stripe subscription object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No subscription found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Cancel subscription",
+        "description": "Cancels the current subscription",
+        "operationId": "cancelSubscription",
+        "tags": ["Payment"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.delete.payment.subscription",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Subscription cancelled successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "Stripe subscription object"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No subscription found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/payment/free-subscription": {
+      "post": {
+        "summary": "Create free subscription",
+        "description": "Creates a free subscription",
+        "operationId": "createFreeSubscription",
+        "tags": ["Payment"],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.payment.free-subscription",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Free subscription created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "Stripe subscription object"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
