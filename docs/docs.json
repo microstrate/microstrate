@@ -51,9 +51,9 @@
             }
           },
           {
-            "group": "Flows",
+            "group": "Hub Flows",
             "openapi": {
-              "source": "api-reference/endpoint/flows/openapi.json"
+              "source": "api-reference/endpoint/hub-flows/openapi.json"
             }
           },
           {
