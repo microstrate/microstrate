@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "Microstrate Account Service API",
+    "title": "Microstrate Gateway",
     "description": "API for managing accounts, users, authentication, and payments in the Microstrate platform",
     "version": "1.0.0",
     "contact": {
