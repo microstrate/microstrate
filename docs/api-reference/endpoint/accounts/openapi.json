@@ -1012,7 +1012,8 @@
         "summary": "Authenticate with password",
         "description": "Authenticates a user with their email and password. If MFA is enabled, returns an MFA token that must be used with a subsequent authentication request.",
         "operationId": "authWithPassword",
-        "x-subject-path": "microstrate.accounts.post.auth-with-password",
+        "x-resource": "microstrate.accounts.post.auth-with-password",
+        "x-resource-type": "service",
         "requestBody": {
           "description": "Authentication credentials",
           "required": true,
@@ -1339,7 +1340,8 @@
         "summary": "Authenticate with recovery code",
         "description": "Complete authentication using a recovery code after initial password verification. Recovery codes are one-time use.",
         "operationId": "authWithRecoveryCode",
-        "x-subject-path": "microstrate.accounts.post.auth-with-recovery-code",
+        "x-resource": "microstrate.accounts.post.auth-with-recovery-code",
+        "x-resource-type": "service",
         "requestBody": {
           "required": true,
           "content": {
@@ -1796,7 +1798,8 @@
         "summary": "Authenticate with TOTP",
         "description": "Complete authentication using a Time-based One-Time Password (TOTP) after initial password verification.",
         "operationId": "authWithTotp",
-        "x-subject-path": "microstrate.accounts.post.auth-with-totp",
+        "x-resource": "microstrate.accounts.post.auth-with-totp",
+        "x-resource-type": "service",
         "requestBody": {
           "required": true,
           "content": {
@@ -3426,7 +3429,8 @@
         "summary": "Begin passkey authentication",
         "description": "Initiates the WebAuthn passkey authentication flow. Returns a challenge for the client to sign with the user's passkey.",
         "operationId": "beginAuthWithPasskey",
-        "x-subject-path": "microstrate.accounts.post.begin-auth-with-passkey",
+        "x-resource": "microstrate.accounts.post.begin-auth-with-passkey",
+        "x-resource-type": "service",
         "requestBody": {
           "required": true,
           "content": {
@@ -3860,7 +3864,8 @@
         "summary": "Validate token",
         "description": "Validates an authentication or refresh token.",
         "operationId": "validateToken",
-        "x-subject-path": "microstrate.accounts.post.token-validate",
+        "x-resource": "microstrate.accounts.post.token-validate",
+        "x-resource-type": "service",
         "requestBody": {
           "required": true,
           "content": {
@@ -3979,7 +3984,8 @@
         "summary": "Authenticate with API key",
         "description": "Authenticates a user using an API key.",
         "operationId": "authWithApiKey",
-        "x-subject-path": "microstrate.accounts.post.auth-with-api-key",
+        "x-resource": "microstrate.accounts.post.auth-with-api-key",
+        "x-resource-type": "service",
         "requestBody": {
           "required": true,
           "content": {
@@ -4274,7 +4280,8 @@
         "summary": "Refresh authentication token",
         "description": "Issues a new authentication token using a valid refresh token.",
         "operationId": "refreshToken",
-        "x-subject-path": "microstrate.accounts.post.refresh-token",
+        "x-resource": "microstrate.accounts.post.refresh-token",
+        "x-resource-type": "service",
         "requestBody": {
           "required": true,
           "content": {
@@ -4534,7 +4541,8 @@
         "summary": "Complete passkey authentication",
         "description": "Completes the WebAuthn passkey authentication flow by verifying the signed challenge.",
         "operationId": "completeAuthWithPasskey",
-        "x-subject-path": "microstrate.accounts.post.complete-auth-with-passkey",
+        "x-resource": "microstrate.accounts.post.complete-auth-with-passkey",
+        "x-resource-type": "service",
         "requestBody": {
           "required": true,
           "content": {
