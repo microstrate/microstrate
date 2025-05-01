@@ -29,6 +29,14 @@
       "description": "Gateway Mapping Version management endpoints"
     }
   ],
+  "security": [
+    {
+      "bearerAuth": []
+    },
+    {
+      "apiKeyAuth": []
+    }
+  ],
   "paths": {
     "/gateway": {
       "post": {
@@ -395,7 +403,9 @@
                         "request": 5000,
                         "time": 1000
                       },
-                      "trafficDistribution": {"1": 100},
+                      "trafficDistribution": {
+                        "1": 100
+                      },
                       "modified": 1713531894,
                       "type": "created"
                     },
@@ -944,6 +954,18 @@
     }
   },
   "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      },
+      "apiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-Api-Key"
+      }
+    },
     "parameters": {
       "gatewayIdParam": {
         "name": "gatewayId",

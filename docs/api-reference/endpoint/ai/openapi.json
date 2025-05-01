@@ -29,6 +29,14 @@
             "description": "Endpoints for managing conversational sessions"
         }
     ],
+    "security": [
+        {
+            "bearerAuth": []
+        },
+        {
+            "apiKeyAuth": []
+        }
+    ],
     "paths": {
         "/questions": {
             "post": {
@@ -225,6 +233,18 @@
         }
     },
     "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            },
+            "apiKeyAuth": {
+                "type": "apiKey",
+                "in": "header",
+                "name": "X-Api-Key"
+            }
+        },
         "schemas": {
             "QuestionRequest": {
                 "type": "object",

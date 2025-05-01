@@ -33,7 +33,27 @@
             "description": "Operations related to OpenAPI deployments"
         }
     ],
+    "security": [
+        {
+            "bearerAuth": []
+        },
+        {
+            "apiKeyAuth": []
+        }
+    ],
     "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            },
+            "apiKeyAuth": {
+                "type": "apiKey",
+                "in": "header",
+                "name": "X-Api-Key"
+            }
+        },
         "schemas": {
             "StackSummary": {
                 "type": "object",

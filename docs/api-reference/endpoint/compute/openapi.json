@@ -39,6 +39,14 @@
       "description": "Operations related to compute runtimes"
     }
   ],
+  "security": [
+    {
+      "bearerAuth": []
+    },
+    {
+      "apiKeyAuth": []
+    }
+  ],
   "paths": {
     "/compute/collections": {
       "get": {
@@ -1181,6 +1189,18 @@
     }
   },
   "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      },
+      "apiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-Api-Key"
+      }
+    },
     "parameters": {
       "CollectionSubject": {
         "name": "subject",

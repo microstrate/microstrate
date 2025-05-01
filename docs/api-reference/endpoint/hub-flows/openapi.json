@@ -3039,12 +3039,20 @@
         "scheme": "bearer",
         "bearerFormat": "JWT",
         "description": "JWT Authorization header using the Bearer scheme"
+      },
+      "apiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-Api-Key"
       }
     }
   },
   "security": [
     {
       "bearerAuth": []
+    },
+    {
+      "apiKeyAuth": []
     }
   ],
   "tags": [
