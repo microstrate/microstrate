@@ -1,0 +1,273 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Microstrate Gateway",
+        "description": "API for managing Microstrate platform",
+        "version": "1.0.0",
+        "contact": {
+            "name": "Microstrate Support",
+            "url": "https://app.staging.microstrate.io"
+        }
+    },
+    "servers": [
+        {
+            "url": "https://api.staging.microstrate.io",
+            "description": "Staging API server"
+        },
+        {
+            "url": "https://api.microstrate.io",
+            "description": "Production API server"
+        }
+    ],
+    "tags": [
+        {
+            "name": "questions",
+            "description": "Endpoints for asking questions to the AI"
+        },
+        {
+            "name": "sessions",
+            "description": "Endpoints for managing conversational sessions"
+        }
+    ],
+    "paths": {
+        "/questions": {
+            "post": {
+                "tags": [
+                    "questions"
+                ],
+                "summary": "Ask a single question",
+                "description": "Submit a question to the AI and receive an answer without maintaining context",
+                "operationId": "askQuestion",
+                "x-resource-type": "service",
+                "x-resource": "microstrate.ai.post.ask",
+                "requestBody": {
+                    "description": "Question to be answered",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QuestionRequest"
+                            },
+                            "examples": {
+                                "prime-numbers": {
+                                    "summary": "Ask about prime numbers",
+                                    "value": {
+                                        "question": "write prime numbers functions"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response with answer",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AnswerResponse"
+                                },
+                                "examples": {
+                                    "prime-numbers-answer": {
+                                        "summary": "Answer about prime numbers",
+                                        "value": {
+                                            "message": "success",
+                                            "data": "Here are two functions for working with prime numbers:\n\n```javascript\n// Function to check if a number is prime\nfunction isPrime(num) {\n  if (num <= 1) return false;\n  if (num <= 3) return true;\n  if (num % 2 === 0 || num % 3 === 0) return false;\n  \n  let i = 5;\n  while (i * i <= num) {\n    if (num % i === 0 || num % (i + 2) === 0) return false;\n    i += 6;\n  }\n  return true;\n}\n\n// Function to generate an array of prime numbers up to a given limit\nfunction generatePrimes(limit) {\n  const primes = [];\n  for (let i = 2; i <= limit; i++) {\n    if (isPrime(i)) {\n      primes.push(i);\n    }\n  }\n  return primes;\n}\n```"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request - invalid input",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "example": {
+                                    "error": {
+                                        "message": "The question field is required"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "example": {
+                                    "error": {
+                                        "message": "An internal server error occurred"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-original-subject": "microstrate.ai.post.ask"
+            }
+        },
+        "/sessions/{session_id}/questions": {
+            "post": {
+                "tags": [
+                    "sessions"
+                ],
+                "summary": "Ask a question within a session",
+                "description": "Submit a question to the AI within a session context, allowing for conversational interactions",
+                "operationId": "askSessionQuestion",
+                "x-resource-type": "service",
+                "x-resource": "microstrate.ai.post.session",
+                "parameters": [
+                    {
+                        "name": "session_id",
+                        "in": "path",
+                        "description": "ID of the session",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "ses_123"
+                    }
+                ],
+                "requestBody": {
+                    "description": "Question to be answered within the session context",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QuestionRequest"
+                            },
+                            "examples": {
+                                "prime-numbers": {
+                                    "summary": "Ask about prime numbers in a session",
+                                    "value": {
+                                        "message": "success",
+                                        "question": "write prime numbers functions"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response with answer",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AnswerResponse"
+                                },
+                                "examples": {
+                                    "prime-numbers-answer": {
+                                        "summary": "Answer about prime numbers",
+                                        "value": {
+                                            "message": "success",
+                                            "data": "Here are two functions for working with prime numbers:\n\n```javascript\n// Function to check if a number is prime\nfunction isPrime(num) {\n  if (num <= 1) return false;\n  if (num <= 3) return true;\n  if (num % 2 === 0 || num % 3 === 0) return false;\n  \n  let i = 5;\n  while (i * i <= num) {\n    if (num % i === 0 || num % (i + 2) === 0) return false;\n    i += 6;\n  }\n  return true;\n}\n\n// Function to generate an array of prime numbers up to a given limit\nfunction generatePrimes(limit) {\n  const primes = [];\n  for (let i = 2; i <= limit; i++) {\n    if (isPrime(i)) {\n      primes.push(i);\n    }\n  }\n  return primes;\n}\n```"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request - invalid input",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "example": {
+                                    "error": {
+                                        "message": "The question field is required"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Session not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "example": {
+                                    "error": {
+                                        "message": "An internal server error occurred"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "example": {
+                                    "error": {
+                                        "message": "An internal server error occurred"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "QuestionRequest": {
+                "type": "object",
+                "required": [
+                    "question"
+                ],
+                "properties": {
+                    "question": {
+                        "type": "string",
+                        "description": "The question to ask the AI",
+                        "example": "write prime numbers functions"
+                    }
+                }
+            },
+            "AnswerResponse": {
+                "type": "object",
+                "required": [
+                    "data",
+                    "message"
+                ],
+                "properties": {
+                    "data": {
+                        "type": "string",
+                        "description": "The AI's answer to the question"
+                    },
+                    "message": {
+                        "type": "string",
+                        "description": "Response description, success or failure"
+                    }
+                }
+            },
+            "Error": {
+                "type": "object",
+                "required": [
+                    "message"
+                ],
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "description": "Error message"
+                    }
+                }
+            }
+        }
+    }
+}

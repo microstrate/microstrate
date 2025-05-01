@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Microstrate Hub Service API",
+    "title": "Microstrate Gateway",
     "description": "API for managing collections, nodes, and workflows in Microstrate Hub",
     "version": "0.1.0",
     "contact": {
@@ -21,7 +21,9 @@
   "paths": {
     "/microstrate/hub/collections": {
       "post": {
-        "tags": ["Collections"],
+        "tags": [
+          "Collections"
+        ],
         "summary": "Create a new collection",
         "description": "Creates a new collection for organizing nodes or workflows",
         "operationId": "createCollection",
@@ -113,7 +115,9 @@
         }
       },
       "patch": {
-        "tags": ["Collections"],
+        "tags": [
+          "Collections"
+        ],
         "summary": "Update a collection",
         "description": "Updates an existing collection's properties",
         "operationId": "updateCollection",
@@ -189,7 +193,9 @@
         }
       },
       "get": {
-        "tags": ["Collections"],
+        "tags": [
+          "Collections"
+        ],
         "summary": "Get a collection",
         "description": "Retrieves a specific collection by subject",
         "operationId": "getCollection",
@@ -254,7 +260,9 @@
         }
       },
       "delete": {
-        "tags": ["Collections"],
+        "tags": [
+          "Collections"
+        ],
         "summary": "Delete a collection",
         "description": "Deletes a specific collection by subject",
         "operationId": "deleteCollection",
@@ -314,7 +322,9 @@
     },
     "/microstrate/hub/collections/list": {
       "post": {
-        "tags": ["Collections"],
+        "tags": [
+          "Collections"
+        ],
         "summary": "Create a new collection",
         "description": "Creates a new collection for organizing nodes or workflows",
         "operationId": "createCollection",
@@ -406,7 +416,9 @@
         }
       },
       "patch": {
-        "tags": ["Collections"],
+        "tags": [
+          "Collections"
+        ],
         "summary": "Update a collection",
         "description": "Updates an existing collection's properties",
         "operationId": "updateCollection",
@@ -482,7 +494,9 @@
         }
       },
       "get": {
-        "tags": ["Collections"],
+        "tags": [
+          "Collections"
+        ],
         "summary": "Get a collection",
         "description": "Retrieves a specific collection by subject",
         "operationId": "getCollection",
@@ -549,7 +563,9 @@
     },
     "/microstrate/hub/nodes": {
       "get": {
-        "tags": ["Nodes"],
+        "tags": [
+          "Nodes"
+        ],
         "summary": "Get a node",
         "description": "Retrieves a specific node by subject",
         "operationId": "getNode",
@@ -621,7 +637,9 @@
         }
       },
       "post": {
-        "tags": ["Nodes"],
+        "tags": [
+          "Nodes"
+        ],
         "summary": "Create a new node",
         "description": "Creates a new node template within a collection",
         "operationId": "createNode",
@@ -780,7 +798,9 @@
         }
       },
       "patch": {
-        "tags": ["Nodes"],
+        "tags": [
+          "Nodes"
+        ],
         "summary": "Update a node",
         "description": "Updates an existing node's properties",
         "operationId": "updateNode",
@@ -865,7 +885,9 @@
         }
       },
       "delete": {
-        "tags": ["Nodes"],
+        "tags": [
+          "Nodes"
+        ],
         "summary": "Delete a node",
         "description": "Deletes a specific node by subject",
         "operationId": "deleteNode",
@@ -925,7 +947,9 @@
     },
     "/microstrate/hub/nodes-batch": {
       "patch": {
-        "tags": ["Nodes"],
+        "tags": [
+          "Nodes"
+        ],
         "summary": "Update multiple nodes",
         "description": "Updates multiple existing nodes in a single request",
         "operationId": "updateMultipleNodes",
@@ -1060,7 +1084,9 @@
     },
     "/microstrate/hub/workflows": {
       "get": {
-        "tags": ["Workflows"],
+        "tags": [
+          "Workflows"
+        ],
         "summary": "Get a workflow",
         "description": "Retrieves a specific workflow by subject",
         "operationId": "getWorkflow",
@@ -1156,7 +1182,9 @@
         }
       },
       "post": {
-        "tags": ["Workflows"],
+        "tags": [
+          "Workflows"
+        ],
         "summary": "Create a new workflow",
         "description": "Creates a new workflow for defining node sequences",
         "operationId": "createWorkflow",
@@ -1421,7 +1449,9 @@
         }
       },
       "patch": {
-        "tags": ["Workflows"],
+        "tags": [
+          "Workflows"
+        ],
         "summary": "Update a workflow",
         "description": "Updates an existing draft workflow's properties",
         "operationId": "updateWorkflow",
@@ -1577,7 +1607,9 @@
         }
       },
       "delete": {
-        "tags": ["Workflows"],
+        "tags": [
+          "Workflows"
+        ],
         "summary": "Delete a workflow",
         "description": "Deletes a specific workflow by subject",
         "operationId": "deleteWorkflow",
@@ -1637,7 +1669,9 @@
     },
     "/microstrate/hub/workflows-run": {
       "post": {
-        "tags": ["Workflows"],
+        "tags": [
+          "Workflows"
+        ],
         "summary": "Run a workflow",
         "description": "Executes a workflow with the specified trigger data",
         "operationId": "runWorkflow",
@@ -1800,7 +1834,9 @@
     },
     "/microstrate/hub/workflows-publish": {
       "post": {
-        "tags": ["Workflows"],
+        "tags": [
+          "Workflows"
+        ],
         "summary": "Publish a workflow",
         "description": "Publishes a draft workflow to make it available for execution",
         "operationId": "publishWorkflow",
@@ -1861,7 +1897,9 @@
     },
     "/microstrate/hub/nodes/list": {
       "get": {
-        "tags": ["Nodes"],
+        "tags": [
+          "Nodes"
+        ],
         "summary": "List nodes",
         "description": "Retrieves a list of nodes, optionally filtered by collection",
         "operationId": "listNodes",
@@ -1948,7 +1986,9 @@
     },
     "/microstrate/hub/workflows/list": {
       "get": {
-        "tags": ["Workflows"],
+        "tags": [
+          "Workflows"
+        ],
         "summary": "List workflows",
         "description": "Retrieves a list of workflows, optionally filtered by collection and type",
         "operationId": "listWorkflows",
@@ -1972,7 +2012,10 @@
             "required": false,
             "schema": {
               "type": "string",
-              "enum": ["draft", "published"]
+              "enum": [
+                "draft",
+                "published"
+              ]
             },
             "example": "draft"
           }
@@ -2042,7 +2085,10 @@
     "schemas": {
       "CreateCollectionRequest": {
         "type": "object",
-        "required": ["name", "collection_type"],
+        "required": [
+          "name",
+          "collection_type"
+        ],
         "properties": {
           "name": {
             "type": "string",
@@ -2050,7 +2096,10 @@
           },
           "collection_type": {
             "type": "string",
-            "enum": ["node", "workflow"],
+            "enum": [
+              "node",
+              "workflow"
+            ],
             "description": "Type of the collection (node or workflow)"
           },
           "description": {
@@ -2104,7 +2153,10 @@
       },
       "CreateNodeRequest": {
         "type": "object",
-        "required": ["collection", "data"],
+        "required": [
+          "collection",
+          "data"
+        ],
         "properties": {
           "collection": {
             "type": "string",
@@ -2112,7 +2164,10 @@
           },
           "data": {
             "type": "object",
-            "required": ["name", "payload"],
+            "required": [
+              "name",
+              "payload"
+            ],
             "properties": {
               "name": {
                 "type": "string",
@@ -2124,7 +2179,14 @@
               },
               "node_type": {
                 "type": "string",
-                "enum": ["function", "flow", "rule", "map", "eval", "integration"],
+                "enum": [
+                  "function",
+                  "flow",
+                  "rule",
+                  "map",
+                  "eval",
+                  "integration"
+                ],
                 "description": "Type of the node"
               },
               "subject": {
@@ -2231,7 +2293,14 @@
           },
           "node_type": {
             "type": "string",
-            "enum": ["function", "flow", "rule", "map", "eval", "integration"],
+            "enum": [
+              "function",
+              "flow",
+              "rule",
+              "map",
+              "eval",
+              "integration"
+            ],
             "description": "Type of the node"
           },
           "subject": {
@@ -2258,7 +2327,10 @@
       },
       "Edge": {
         "type": "object",
-        "required": ["source", "target"],
+        "required": [
+          "source",
+          "target"
+        ],
         "properties": {
           "source": {
             "type": "string",
@@ -2325,7 +2397,10 @@
             "properties": {
               "run_type": {
                 "type": "string",
-                "enum": ["debounced", "ordered"],
+                "enum": [
+                  "debounced",
+                  "ordered"
+                ],
                 "description": "Execution mode for the workflow"
               },
               "order_on": {
@@ -2350,7 +2425,10 @@
       },
       "CreateWorkflowRequest": {
         "type": "object",
-        "required": ["name", "collection"],
+        "required": [
+          "name",
+          "collection"
+        ],
         "properties": {
           "name": {
             "type": "string",
@@ -2413,7 +2491,9 @@
       },
       "RunWorkflowRequest": {
         "type": "object",
-        "required": ["subject"],
+        "required": [
+          "subject"
+        ],
         "properties": {
           "subject": {
             "type": "string",
@@ -2479,7 +2559,9 @@
       },
       "PublishWorkflowRequest": {
         "type": "object",
-        "required": ["subject"],
+        "required": [
+          "subject"
+        ],
         "properties": {
           "subject": {
             "type": "string",
@@ -2489,7 +2571,9 @@
       },
       "UpdateCollectionRequest": {
         "type": "object",
-        "required": ["subject"],
+        "required": [
+          "subject"
+        ],
         "properties": {
           "subject": {
             "type": "string",
@@ -2503,7 +2587,10 @@
       },
       "UpdateNodeRequest": {
         "type": "object",
-        "required": ["subject", "data"],
+        "required": [
+          "subject",
+          "data"
+        ],
         "properties": {
           "subject": {
             "type": "string",
@@ -2588,7 +2675,9 @@
       },
       "UpdateWorkflowRequest": {
         "type": "object",
-        "required": ["subject"],
+        "required": [
+          "subject"
+        ],
         "properties": {
           "subject": {
             "type": "string",
