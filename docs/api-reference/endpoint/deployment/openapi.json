@@ -470,7 +470,7 @@
                 }
             }
         },
-        "/deployment/stacks/{name}/{stage}": {
+        "/deployment/stacks/{name}/stages/{stage}": {
             "get": {
                 "summary": "Get stack",
                 "description": "Retrieves information about a stack deployment by name and stage.",
@@ -803,7 +803,7 @@
                 }
             }
         },
-        "/deployment/stacks/{name}/{stage}/history": {
+        "/deployment/stacks/{name}/stages/{stage}/history": {
             "get": {
                 "summary": "Get stack history",
                 "description": "Retrieves the deployment history of a specific stack.",
@@ -975,7 +975,7 @@
                 }
             }
         },
-        "/deployment/stacks/{name}/{stage}/redeploy": {
+        "/deployment/stacks/{name}/stages/{stage}/redeploy": {
             "post": {
                 "summary": "Redeploy stack (full)",
                 "description": "Redeploys an entire stack using its current configuration.",
@@ -1074,7 +1074,7 @@
                 }
             }
         },
-        "/deployment/stacks/{name}/{stage}/resources": {
+        "/deployment/stacks/{name}/stages/{stage}/resources": {
             "patch": {
                 "summary": "Attach resources",
                 "description": "Attaches new resources to an existing stack.",
@@ -1192,7 +1192,7 @@
                 }
             }
         },
-        "/deployment/stacks/{name}/{stage}/resources/{resource_id}": {
+        "/deployment/stacks/{name}/stages/{stage}/resources/{resource_id}": {
             "get": {
                 "summary": "Get resource (without history)",
                 "description": "Retrieves a specific resource from a stack.",
@@ -1470,7 +1470,7 @@
                 }
             }
         },
-        "/deployment/stacks/{name}/{stage}/resources/{resource_id}/history": {
+        "/deployment/stacks/{name}/stages/{stage}/resources/{resource_id}/history": {
             "get": {
                 "summary": "Get resource (with history)",
                 "description": "Retrieves a specific resource from a stack including its deployment history.",
@@ -1640,7 +1640,7 @@
                 }
             }
         },
-        "/deployment/stacks/{name}/{stage}/resources/{resource_id}/redeploy": {
+        "/deployment/stacks/{name}/stages/{stage}/resources/{resource_id}/redeploy": {
             "post": {
                 "summary": "Redeploy stack resource (partial)",
                 "description": "Redeploys a specific resource in a stack.",
