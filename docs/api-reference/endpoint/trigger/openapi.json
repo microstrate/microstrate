@@ -1,40 +1,36 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "Microstrate Gateway",
-    "description": "The Trigger Service is an API service that provides an interface for managing various types of triggers.\n\nThis API allows you to create, retrieve, and delete different types of triggers including gateway and stream triggers.\n",
+    "title": "Bellerophon Trigger Service API",
+    "description": "# Bellerophon Trigger Service API\n\nThe Trigger Service is a Bellerophon API service that provides an interface for managing various types of triggers through a subject-based messaging system.\n\nThis API allows you to create, retrieve, and delete different types of triggers including gateway and stream triggers.\n\n## Core Concepts\n\n### Triggers\nTriggers are the foundation of the Bellerophon platform's event-driven architecture. A trigger connects different parts of the system, allowing events in one component to initiate actions in another. Each trigger has a unique subject identifier that follows a specific naming pattern.\n\n### Gateway Triggers\nGateway triggers create API endpoints that can be accessed from outside the system. They define HTTP methods, paths, rate limits, and connect incoming requests to processing functions.\n\n### Stream Triggers\nStream triggers connect data sources to targets, enabling real-time data flow between components. They define how data should be processed, transformed, and routed within the system.\n\n## Subject Structure\n\nThe service follows a subject naming pattern which typically expands to:\n```\nms.trigger.[trigger_type].[resource_name]\n```\n\nAll API endpoints use the /trigger/ prefix in their paths for consistency and to clearly identify the trigger service.",
     "contact": {
-      "name": "Microstrate Support",
-      "email": "support@microstrate.io"
+      "name": "Bellerophon Support"
     },
     "version": "1.0"
   },
   "servers": [
     {
-      "url": "https://api.microstrate.io",
-      "description": "Production API"
+      "url": "/"
     }
   ],
   "paths": {
     "/trigger/triggers": {
       "get": {
         "summary": "Retrieve all triggers",
-        "description": "Retrieves all triggers matching a specific subject pattern.",
-        "operationId": "getTriggers",
-        "x-resource-type": "service",
-        "x-resource": "microstrate.trigger.get.triggers",
+        "description": "Retrieves all triggers matching a specific subject pattern. This endpoint provides a comprehensive view of all available triggers that match the given pattern, including their configurations, types, and associated metadata.\n\n**Usage Notes:**\n- Use wildcards in the subject pattern to match multiple triggers\n- Results include all trigger types (gateway, stream, subject)\n- Each trigger includes its complete configuration\n- The subject pattern forms part of the unique identifier for triggers\n- The response includes total count of matching triggers",
+        "operationId": "get_triggers",
         "tags": [
           "Triggers"
         ],
         "parameters": [
           {
-            "name": "subject",
+            "name": "subject_pattern",
             "in": "query",
-            "description": "The subject pattern to match triggers",
+            "description": "The subject pattern to match triggers. Can include wildcards (e.g., 'ms.trigger.*' to match all triggers, or 'ms.trigger.gateway.*' to match only gateway triggers).",
             "required": true,
             "schema": {
               "type": "string",
-              "example": "microstrate.trigger.subject_pattern"
+              "example": "ms.trigger.subject_pattern"
             }
           }
         ],
@@ -53,24 +49,26 @@
                         "name": "my-gateway-trigger",
                         "collection": "my-collection",
                         "description": "Trigger for API gateway endpoint",
-                        "gateway_mapping_subject": "gateway.1234.gateway",
-                        "subject": "microstrate.trigger.gateway.my-gateway-trigger",
+                        "gateway_mapping_subject": "ms.trigger.gateway.123456",
+                        "stream": "microstrate-trigger-config",
+                        "subject": "ms.trigger.gateway.my-gateway-trigger",
                         "trigger_type": "gateway",
-                        "type": "gateway-trigger"
+                        "type": "created"
                       },
                       {
                         "name": "my-stream-trigger",
                         "collection": "my-collection",
                         "description": "Stream data processing trigger",
-                        "subject": "microstrate.trigger.stream.my-stream-trigger",
+                        "stream": "microstrate-trigger-config",
+                        "subject": "ms.trigger.stream.my-stream-trigger",
                         "trigger_type": "stream",
-                        "type": "stream-trigger"
+                        "type": "created"
                       }
                     ],
                     "results_total": 2
                   },
                   "metadata": {
-                    "subject": "microstrate.trigger.subject_pattern"
+                    "subject": "ms.trigger.subject_pattern"
                   },
                   "status_code": 200
                 }
@@ -89,26 +87,39 @@
         }
       }
     },
-    "/trigger/triggers/{subject}": {
+    "/trigger/triggers/{trigger_type}/{topic}": {
       "get": {
         "summary": "Retrieve a specific trigger",
-        "description": "Retrieves a specific trigger by its subject.",
-        "operationId": "getTrigger",
-        "x-resource-type": "service",
-        "x-resource": "microstrate.trigger.get.trigger",
+        "description": "Retrieves detailed information about a specific trigger identified by its type and topic. This endpoint returns comprehensive configuration data including all trigger properties, associated resources, and metadata.\n\n**Usage Notes:**\n- The `trigger_type` parameter identifies the category of trigger (gateway, stream, subject)\n- The `topic` parameter is the unique name identifier for the specific trigger\n- The system constructs the full subject using these parameters: `ms.trigger.{trigger_type}.{topic}`\n- Different trigger types will return different sets of properties in the response\n- The response includes the full subject identifier which may be needed for other operations",
+        "operationId": "get_trigger",
         "tags": [
           "Triggers"
         ],
         "parameters": [
           {
-            "name": "subject",
+            "name": "trigger_type",
             "in": "path",
-            "description": "The subject identifier of the trigger to retrieve",
+            "description": "The type of trigger (gateway, stream, subject)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "gateway",
+                "stream",
+                "subject"
+              ]
+            },
+            "example": "gateway"
+          },
+          {
+            "name": "topic",
+            "in": "path",
+            "description": "The unique topic identifier of the trigger (without the prefix)",
             "required": true,
             "schema": {
               "type": "string"
             },
-            "example": "microstrate.trigger.gateway.my-gateway-trigger"
+            "example": "my-gateway-trigger"
           }
         ],
         "responses": {
@@ -126,13 +137,14 @@
                         "name": "my-gateway-trigger",
                         "collection": "my-collection",
                         "description": "Trigger for API gateway endpoint",
-                        "gateway_mapping_subject": "gateway.1234.gateway",
-                        "subject": "trigger.gateway.my-gateway-trigger",
+                        "gateway_mapping_subject": "ms.trigger.gateway.123456",
+                        "stream": "microstrate-trigger-config",
+                        "subject": "ms.trigger.gateway.my-gateway-trigger",
                         "trigger_type": "gateway",
-                        "type": "gateway-trigger"
+                        "type": "created"
                       },
                       "metadata": {
-                        "subject": "trigger.gateway.my-gateway-trigger"
+                        "subject": "ms.trigger.gateway.my-gateway-trigger"
                       },
                       "status_code": 200
                     }
@@ -144,21 +156,22 @@
                         "collection": "my-collection",
                         "description": "Stream data processing trigger",
                         "source": {
-                          "subject": "microstrate.data.source",
+                          "subject": "ms.data.source",
                           "type": "stream",
                           "response_type": "Stream"
                         },
                         "target": {
-                          "subject": "microstrate.data.target",
+                          "subject": "ms.data.target",
                           "account": "account_identifier",
                           "type": "stream"
                         },
-                        "subject": "trigger.stream.my-stream-trigger",
+                        "stream": "microstrate-trigger-config",
+                        "subject": "ms.trigger.stream.my-stream-trigger",
                         "trigger_type": "stream",
-                        "type": "stream-trigger"
+                        "type": "created"
                       },
                       "metadata": {
-                        "subject": "trigger.stream.my-stream-trigger"
+                        "subject": "ms.trigger.stream.my-stream-trigger"
                       },
                       "status_code": 200
                     }
@@ -183,23 +196,36 @@
       },
       "delete": {
         "summary": "Delete a trigger",
-        "description": "Deletes a trigger by its subject.",
-        "operationId": "deleteTrigger",
-        "x-resource-type": "service",
-        "x-resource": "microstrate.trigger.delete.item",
+        "description": "Marks a trigger as deleted (poison-pilled). This operation logically removes the trigger from the system while preserving the record.\n\n**Usage Notes:**\n- This operation cannot be undone through the API\n- The `trigger_type` and `topic` parameters together identify the exact trigger to delete\n- The system constructs the full subject using these parameters: `ms.trigger.{trigger_type}.{topic}`\n- For gateway triggers, associated mappings remain but are no longer accessible\n- For stream triggers, connections between source and target are terminated\n- In-flight operations may still complete, but new operations will be rejected\n- The trigger remains in the system's history for audit purposes",
+        "operationId": "delete_trigger",
         "tags": [
           "Triggers"
         ],
         "parameters": [
           {
-            "name": "subject",
+            "name": "trigger_type",
             "in": "path",
-            "description": "The subject identifier of the trigger to delete",
+            "description": "The type of trigger (gateway, stream, subject)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "gateway",
+                "stream",
+                "subject"
+              ]
+            },
+            "example": "gateway"
+          },
+          {
+            "name": "topic",
+            "in": "path",
+            "description": "The unique topic identifier of the trigger (without the prefix)",
             "required": true,
             "schema": {
               "type": "string"
             },
-            "example": "microstrate.trigger.gateway.my-gateway-trigger"
+            "example": "my-gateway-trigger"
           }
         ],
         "responses": {
@@ -212,6 +238,7 @@
                   "properties": {
                     "status_code": {
                       "type": "integer",
+                      "description": "HTTP status code indicating success",
                       "example": 200
                     }
                   }
@@ -240,10 +267,8 @@
     "/trigger/gateway": {
       "post": {
         "summary": "Create a gateway trigger",
-        "description": "Creates a new gateway trigger for API endpoint management.",
-        "operationId": "createGatewayTrigger",
-        "x-resource-type": "service",
-        "x-resource": "microstrate.trigger.post.gateway",
+        "description": "Creates a new gateway trigger for API endpoint management. A gateway trigger establishes an HTTP endpoint that can be accessed from outside the system and routes requests to appropriate handlers.\n\n**Usage Notes:**\n- The system automatically generates a unique topic for your gateway trigger\n- Default timeout is 30 seconds (30000ms) if not specified\n- Gateway mappings define the HTTP method, path, and access controls\n- Setting `is_public: true` allows the endpoint to be accessed without authentication\n- Rate limits can be configured per endpoint\n- After creation, the gateway endpoint is immediately available for traffic\n- The response includes the full subject identifier which may be needed for other operations",
+        "operationId": "create_gateway_trigger",
         "tags": [
           "Gateway Triggers"
         ],
@@ -260,7 +285,6 @@
                 "description": "Trigger for API gateway endpoint",
                 "trigger_type": "gateway",
                 "gateway_mapping": {
-                  "gateway": "gateway.1234.gateway",
                   "method": "GET",
                   "path": "/api/resource",
                   "is_public": true,
@@ -286,10 +310,11 @@
                   "body": {
                     "name": "my-gateway-trigger",
                     "collection": "my-collection",
-                    "gateway_mapping_subject": "gateway.1234.gateway",
-                    "subject": "microstrate.trigger.gateway.my-gateway-trigger",
+                    "gateway_mapping_subject": "ms.trigger.gateway.123456",
+                    "stream": "microstrate-trigger-config",
+                    "subject": "ms.trigger.gateway.my-gateway-trigger",
                     "trigger_type": "gateway",
-                    "type": "gateway-trigger"
+                    "type": "created"
                   },
                   "status_code": 201
                 }
@@ -311,10 +336,8 @@
     "/trigger/stream": {
       "post": {
         "summary": "Create a stream trigger",
-        "description": "Creates a new stream trigger for data processing.",
-        "operationId": "createStreamTrigger",
-        "x-resource-type": "service",
-        "x-resource": "microstrate.trigger.post.stream",
+        "description": "Creates a new stream trigger for data processing and routing. A stream trigger connects a data source to a target, enabling real-time data flow between components.\n\n**Usage Notes:**\n- The system automatically creates necessary import/export pairs\n- Stream triggers define both source and target configurations\n- The source configuration specifies where data originates\n- The target configuration specifies where data should be delivered\n- Response types can be Singleton (single response), Stream (continuous), or Chunked (paginated)\n- Source and target types determine how data flows through the system\n- The trigger is active immediately after creation\n- Both synchronous and asynchronous data processing patterns are supported",
+        "operationId": "create_stream_trigger",
         "tags": [
           "Stream Triggers"
         ],
@@ -331,11 +354,14 @@
                 "description": "Stream data processing trigger",
                 "trigger_type": "stream",
                 "source": {
-                  "subject": "microstrate.data.source"
+                  "subject": "ms.data.source",
+                  "type": "stream",
+                  "response_type": "Stream"
                 },
                 "target": {
-                  "subject": "microstrate.data.target",
-                  "local_subject": "microstrate.data.target"
+                  "subject": "ms.data.target",
+                  "account": "account_identifier",
+                  "type": "stream"
                 }
               }
             }
@@ -355,18 +381,19 @@
                     "collection": "my-collection",
                     "description": "Stream data processing trigger",
                     "source": {
-                      "subject": "microstrate.data.source",
+                      "subject": "ms.data.source",
                       "type": "stream",
                       "response_type": "Stream"
                     },
                     "target": {
-                      "subject": "microstrate.data.target",
+                      "subject": "ms.data.target",
                       "account": "account_identifier",
                       "type": "stream"
                     },
-                    "subject": "microstrate.trigger.stream.my-stream-trigger",
+                    "stream": "microstrate-trigger-config",
+                    "subject": "ms.trigger.stream.my-stream-trigger",
                     "trigger_type": "stream",
-                    "type": "stream-trigger"
+                    "type": "created"
                   },
                   "status_code": 201
                 }
@@ -388,11 +415,11 @@
   },
   "components": {
     "securitySchemes": {
-      "bearerAuth": {
+      "bearer_auth": {
         "type": "http",
         "scheme": "bearer",
         "bearerFormat": "JWT",
-        "description": "JWT token for authentication"
+        "description": "JWT token for authentication. Required for all API operations to verify identity and access permissions."
       }
     },
     "schemas": {
@@ -405,27 +432,27 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "Name of the trigger"
+            "description": "Unique name identifier for the trigger. Used to construct the trigger's topic and subject."
           },
           "collection": {
             "type": "string",
-            "description": "Collection the trigger belongs to"
+            "description": "Logical grouping the trigger belongs to. Used for organizing and filtering triggers."
           },
           "description": {
             "type": "string",
-            "description": "Description of the trigger"
+            "description": "Human-readable description explaining the trigger's purpose and function."
           },
           "gateway_mapping_subject": {
             "type": "string",
-            "description": "Subject assigned to the gateway mapping (for gateway triggers)"
+            "description": "Full subject identifier assigned to the gateway mapping. Only present for gateway triggers."
           },
           "stream": {
             "type": "string",
-            "description": "Stream identifier"
+            "description": "Stream identifier where the trigger configuration is stored, typically \"microstrate-trigger-config\"."
           },
           "subject": {
             "type": "string",
-            "description": "Generated trigger subject"
+            "description": "Full subject identifier for the trigger, following the pattern \"ms.trigger.[type].[name]\"."
           },
           "trigger_type": {
             "type": "string",
@@ -434,11 +461,11 @@
               "stream",
               "subject"
             ],
-            "description": "Type of the trigger"
+            "description": "Category of trigger determining its behavior and available properties."
           },
           "type": {
             "type": "string",
-            "description": "Specific type identifier"
+            "description": "Specific type identifier providing additional classification information."
           },
           "source": {
             "$ref": "#/components/schemas/TriggerSource"
@@ -453,15 +480,15 @@
         "properties": {
           "advertise": {
             "type": "boolean",
-            "description": "Whether to advertise this trigger source"
+            "description": "Whether to advertise this trigger source to other services. When true, allows other services to discover this source."
           },
           "allow_trace": {
             "type": "boolean",
-            "description": "Whether to allow tracing"
+            "description": "Whether to allow request tracing. When true, enables debugging and performance monitoring."
           },
           "name": {
             "type": "string",
-            "description": "Name of the source"
+            "description": "Human-readable name for the source. Used for identification in logs and monitoring."
           },
           "response_type": {
             "type": "string",
@@ -470,11 +497,11 @@
               "Stream",
               "Chunked"
             ],
-            "description": "Type of response"
+            "description": "Format of response data from this source:\n* Singleton - Returns a single response and closes\n* Stream - Continuously streams data until connection closes\n* Chunked - Returns paginated data in multiple responses"
           },
           "subject": {
             "type": "string",
-            "description": "Subject for the source"
+            "description": "Subject identifier for the source. Used for routing messages to/from this source."
           },
           "type": {
             "type": "string",
@@ -482,15 +509,15 @@
               "stream",
               "service"
             ],
-            "description": "Export type"
+            "description": "Export type categorizing how this source behaves:\n* stream - Emits a continuous flow of data\n* service - Provides request/response functionality"
           },
           "description": {
             "type": "string",
-            "description": "Description of the source"
+            "description": "Detailed information about the source including its purpose and data format."
           },
           "info_url": {
             "type": "string",
-            "description": "URL for more information"
+            "description": "URL pointing to additional documentation or information about this source."
           }
         }
       },
@@ -499,19 +526,19 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "Name of the target"
+            "description": "Human-readable name for the target. Used for identification in logs and monitoring."
           },
           "subject": {
             "type": "string",
-            "description": "Subject for the target"
+            "description": "Subject identifier for the target. Used for routing messages to this target."
           },
           "account": {
             "type": "string",
-            "description": "Account identifier"
+            "description": "Account identifier owning or associated with this target. Used for access control."
           },
           "local_subject": {
             "type": "string",
-            "description": "Local subject"
+            "description": "Alternative subject for local routing within the same account."
           },
           "type": {
             "type": "string",
@@ -519,15 +546,15 @@
               "stream",
               "service"
             ],
-            "description": "Export type"
+            "description": "Export type categorizing how this target behaves:\n* stream - Consumes a continuous flow of data\n* service - Provides request/response functionality"
           },
           "share": {
             "type": "boolean",
-            "description": "Whether to share this target"
+            "description": "Whether this target is shareable with other accounts. When true, allows cross-account access."
           },
           "allow_trace": {
             "type": "boolean",
-            "description": "Whether to allow tracing"
+            "description": "Whether to allow request tracing to this target. When true, enables debugging and performance monitoring."
           }
         }
       },
@@ -540,13 +567,15 @@
         "properties": {
           "request": {
             "type": "integer",
-            "description": "Max requests allowed in the time window",
-            "minimum": 1
+            "description": "Maximum number of requests allowed within the specified time window. Used for rate limiting.",
+            "minimum": 1,
+            "example": 1000
           },
           "time": {
             "type": "integer",
-            "description": "Time window in milliseconds",
-            "minimum": 1
+            "description": "Time window in milliseconds for rate limiting calculations. Typically 1000ms (1 second).",
+            "minimum": 1,
+            "example": 1000
           }
         }
       },
@@ -555,15 +584,17 @@
         "properties": {
           "error": {
             "type": "string",
-            "description": "Error message or identifier"
+            "description": "Error message or identifier for failed mapping attempts or validation issues."
           },
           "gateway": {
             "type": "string",
-            "description": "Gateway identifier"
+            "description": "Gateway identifier associated with this mapping. Links to the specific gateway infrastructure."
           },
           "is_public": {
             "type": "boolean",
-            "description": "Whether the endpoint is publicly accessible"
+            "description": "Whether the endpoint is publicly accessible without authentication. Default is false.",
+            "default": false,
+            "example": true
           },
           "limit": {
             "$ref": "#/components/schemas/GatewayLimit"
@@ -579,27 +610,34 @@
               "OPTIONS",
               "HEAD"
             ],
-            "description": "HTTP method for the gateway endpoint"
+            "description": "HTTP method for the gateway endpoint. Determines how clients should interact with this endpoint.",
+            "example": "GET"
           },
           "path": {
             "type": "string",
-            "description": "URL path for the gateway endpoint"
+            "description": "URL path for the gateway endpoint, including the leading slash. Forms the route that clients use to access this endpoint.",
+            "example": "/api/resource"
           },
           "subject": {
             "type": "string",
-            "description": "Subject for the gateway mapping"
+            "description": "Subject identifier for the gateway mapping. Used internally for routing and message delivery."
           },
           "timeout": {
             "type": "integer",
-            "description": "Timeout in milliseconds",
-            "minimum": 1
+            "description": "Maximum time in milliseconds before the request times out. Default is 30000ms (30 seconds).",
+            "minimum": 1,
+            "default": 30000,
+            "example": 30000
           },
           "traffic_distribution": {
             "type": "object",
             "additionalProperties": {
               "type": "number"
             },
-            "description": "Traffic distribution configuration"
+            "description": "Traffic distribution configuration mapping version numbers to percentage allocations. Used for A/B testing or canary deployments.",
+            "example": {
+              "1": 100
+            }
           }
         }
       },
@@ -609,20 +647,22 @@
           "body": {
             "type": "object",
             "additionalProperties": true,
-            "description": "Trigger data"
+            "description": "Complete trigger data containing all configurations and properties."
           },
           "metadata": {
             "type": "object",
             "properties": {
               "subject": {
                 "type": "string",
-                "description": "Subject of the trigger"
+                "description": "Full subject identifier of the trigger, including type and topic.",
+                "example": "ms.trigger.gateway.my-gateway-trigger"
               }
             }
           },
           "status_code": {
             "type": "integer",
-            "description": "HTTP status code"
+            "description": "HTTP status code indicating the result of the operation.",
+            "example": 200
           }
         }
       },
@@ -637,11 +677,12 @@
                 "items": {
                   "$ref": "#/components/schemas/TriggerData"
                 },
-                "description": "List of trigger data"
+                "description": "Array of trigger data objects matching the query criteria."
               },
               "results_total": {
                 "type": "integer",
-                "description": "Total number of results"
+                "description": "Total count of triggers matching the query criteria.",
+                "example": 2
               }
             }
           },
@@ -650,13 +691,15 @@
             "properties": {
               "subject": {
                 "type": "string",
-                "description": "Subject pattern used for the query"
+                "description": "Subject pattern used for the query. May contain wildcards.",
+                "example": "ms.trigger.subject_pattern"
               }
             }
           },
           "status_code": {
             "type": "integer",
-            "description": "HTTP status code"
+            "description": "HTTP status code indicating the result of the operation.",
+            "example": 200
           }
         }
       },
@@ -670,22 +713,26 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "Name of the trigger"
+            "description": "Unique name identifier for the trigger. Used to construct the trigger's topic and subject.",
+            "example": "my-gateway-trigger"
           },
           "collection": {
             "type": "string",
-            "description": "Collection the trigger belongs to"
+            "description": "Logical grouping the trigger belongs to. Used for organizing and filtering triggers.",
+            "example": "my-collection"
           },
           "description": {
             "type": "string",
-            "description": "Description of the trigger"
+            "description": "Human-readable description explaining the trigger's purpose and function.",
+            "example": "Trigger for API gateway endpoint"
           },
           "trigger_type": {
             "type": "string",
             "enum": [
               "gateway"
             ],
-            "description": "Must be 'gateway' for gateway triggers"
+            "description": "Must be 'gateway' for this endpoint. Determines the trigger's behavior and available properties.",
+            "example": "gateway"
           },
           "gateway_mapping": {
             "$ref": "#/components/schemas/GatewayMapping"
@@ -700,40 +747,48 @@
             "properties": {
               "name": {
                 "type": "string",
-                "description": "Name of the trigger"
+                "description": "Unique name identifier for the trigger. Used to construct the trigger's topic and subject.",
+                "example": "my-gateway-trigger"
               },
               "collection": {
                 "type": "string",
-                "description": "Collection the trigger belongs to"
+                "description": "Logical grouping the trigger belongs to. Used for organizing and filtering triggers.",
+                "example": "my-collection"
               },
               "gateway_mapping_subject": {
                 "type": "string",
-                "description": "Subject assigned to the gateway mapping"
+                "description": "Full subject identifier assigned to the gateway mapping. Used for routing and message delivery.",
+                "example": "ms.trigger.gateway.123456"
               },
               "stream": {
                 "type": "string",
-                "description": "Stream identifier"
+                "description": "Stream identifier where the trigger configuration is stored.",
+                "example": "microstrate-trigger-config"
               },
               "subject": {
                 "type": "string",
-                "description": "Generated trigger subject"
+                "description": "Full subject identifier for the trigger, following the pattern \"ms.trigger.gateway.[name]\".",
+                "example": "ms.trigger.gateway.my-gateway-trigger"
               },
               "trigger_type": {
                 "type": "string",
                 "enum": [
                   "gateway"
                 ],
-                "description": "Type of the trigger"
+                "description": "Type of trigger, always 'gateway' for gateway triggers.",
+                "example": "gateway"
               },
               "type": {
                 "type": "string",
-                "description": "Specific type identifier"
+                "description": "Specific type identifier providing additional classification information.",
+                "example": "gateway-trigger"
               }
             }
           },
           "status_code": {
             "type": "integer",
-            "description": "HTTP status code"
+            "description": "HTTP status code indicating the result of the operation.",
+            "example": 201
           }
         }
       },
@@ -748,22 +803,26 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "Name of the trigger"
+            "description": "Unique name identifier for the trigger. Used to construct the trigger's topic and subject.",
+            "example": "my-stream-trigger"
           },
           "collection": {
             "type": "string",
-            "description": "Collection the trigger belongs to"
+            "description": "Logical grouping the trigger belongs to. Used for organizing and filtering triggers.",
+            "example": "my-collection"
           },
           "description": {
             "type": "string",
-            "description": "Description of the trigger"
+            "description": "Human-readable description explaining the trigger's purpose and function.",
+            "example": "Stream data processing trigger"
           },
           "trigger_type": {
             "type": "string",
             "enum": [
               "stream"
             ],
-            "description": "Must be 'stream' for stream triggers"
+            "description": "Must be 'stream' for this endpoint. Determines the trigger's behavior and available properties.",
+            "example": "stream"
           },
           "source": {
             "$ref": "#/components/schemas/TriggerSource"
@@ -781,15 +840,18 @@
             "properties": {
               "name": {
                 "type": "string",
-                "description": "Name of the trigger"
+                "description": "Unique name identifier for the trigger. Used to construct the trigger's topic and subject.",
+                "example": "my-stream-trigger"
               },
               "collection": {
                 "type": "string",
-                "description": "Collection the trigger belongs to"
+                "description": "Logical grouping the trigger belongs to. Used for organizing and filtering triggers.",
+                "example": "my-collection"
               },
               "description": {
                 "type": "string",
-                "description": "Description of the trigger"
+                "description": "Human-readable description explaining the trigger's purpose and function.",
+                "example": "Stream data processing trigger"
               },
               "source": {
                 "$ref": "#/components/schemas/TriggerSource"
@@ -799,28 +861,33 @@
               },
               "stream": {
                 "type": "string",
-                "description": "Stream identifier"
+                "description": "Stream identifier where the trigger configuration is stored.",
+                "example": "microstrate-trigger-config"
               },
               "subject": {
                 "type": "string",
-                "description": "Generated trigger subject"
+                "description": "Full subject identifier for the trigger, following the pattern \"ms.trigger.stream.[name]\".",
+                "example": "ms.trigger.stream.my-stream-trigger"
               },
               "trigger_type": {
                 "type": "string",
                 "enum": [
                   "stream"
                 ],
-                "description": "Type of the trigger"
+                "description": "Type of trigger, always 'stream' for stream triggers.",
+                "example": "stream"
               },
               "type": {
                 "type": "string",
-                "description": "Specific type identifier"
+                "description": "Specific type identifier providing additional classification information.",
+                "example": "stream-trigger"
               }
             }
           },
           "status_code": {
             "type": "integer",
-            "description": "HTTP status code"
+            "description": "HTTP status code indicating the result of the operation.",
+            "example": 201
           }
         }
       },
@@ -829,32 +896,34 @@
         "properties": {
           "error": {
             "type": "string",
-            "description": "Error message"
+            "description": "Detailed error message explaining what went wrong and potential solutions.",
+            "example": "Invalid request: Missing required field"
           },
           "status_code": {
             "type": "integer",
-            "description": "HTTP status code"
+            "description": "HTTP status code indicating the specific error type.",
+            "example": 400
           }
         }
       }
     },
     "responses": {
       "BadRequest": {
-        "description": "Invalid request",
+        "description": "Invalid request. Occurs when required parameters are missing, validation fails, or the request format is incorrect.",
         "content": {
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/Error"
             },
             "example": {
-              "error": "Invalid request: Missing required field",
+              "error": "Invalid request: Missing required field 'name' in trigger definition",
               "status_code": 400
             }
           }
         }
       },
       "Unauthorized": {
-        "description": "Unauthorized access",
+        "description": "Unauthorized access. Occurs when authentication is missing or invalid, or when the authenticated user lacks permission.",
         "content": {
           "application/json": {
             "schema": {
@@ -868,28 +937,28 @@
         }
       },
       "NotFound": {
-        "description": "Resource not found",
+        "description": "Resource not found. Occurs when attempting to access a trigger or resource that doesn't exist or has been deleted.",
         "content": {
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/Error"
             },
             "example": {
-              "error": "Not found: The requested trigger does not exist",
+              "error": "Not found: The requested trigger with topic 'my-trigger' does not exist",
               "status_code": 404
             }
           }
         }
       },
       "InternalServerError": {
-        "description": "Internal server error",
+        "description": "Internal server error. Occurs when an unexpected condition prevents the server from fulfilling the request.",
         "content": {
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/Error"
             },
             "example": {
-              "error": "Internal server error",
+              "error": "Internal server error: Unable to process request at this time",
               "status_code": 500
             }
           }
@@ -899,7 +968,7 @@
   },
   "security": [
     {
-      "bearerAuth": []
+      "bearer_auth": []
     }
   ]
 }
