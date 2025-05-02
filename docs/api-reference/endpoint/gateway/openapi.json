@@ -436,7 +436,7 @@
         }
       }
     },
-    "/gateway/{gateway_topic}/mapping/details?method=get&path=%2Fapi%2Fusers": {
+    "/gateway/{gateway_topic}/mapping/details": {
       "get": {
         "tags": [
           "Mappings"
@@ -656,7 +656,7 @@
         }
       }
     },
-    "/gateway/{gateway_topic}/mapping/version?method=get&path=%2Fapi%2Fusers": {
+    "/gateway/{gateway_topic}/mapping/version": {
       "post": {
         "tags": [
           "Mapping Versions"
@@ -791,7 +791,7 @@
         }
       }
     },
-    "/gateway/mapping-version/{gateway_topic}/{version_number}?method=get&path=%2Fapi%2Fusers": {
+    "/gateway/mapping-version/{gateway_topic}/{version_number}": {
       "get": {
         "tags": [
           "Mapping Versions"
