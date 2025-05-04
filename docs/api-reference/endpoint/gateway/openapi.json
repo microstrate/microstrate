@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "Microstrate Gateway",
-    "description": "# Microstrate Gateway API\n\nThis API allows you to manage your Microstrate gateway infrastructure, enabling you to create dynamic API endpoints and route requests to your microservices.\n\n## Core Concepts\n\n### Gateways\nA Gateway serves as the entry point for all external requests. Each gateway has a unique topic and URL and can contain multiple mappings. Gateways handle authentication, rate limiting, and provide a central point for managing API access.\n\n### Mappings\nA Mapping defines a specific route within a gateway (e.g., `/api/users` with method `GET`). Mappings connect incoming requests to backend services or functions. Each mapping can have multiple versions to support A/B testing, canary deployments, or gradual migrations.\n\n### Mapping Versions\nA Mapping Version defines the specific implementation of a mapping. This could be a connection to a function, service, or other resource that will handle the request. Multiple versions allow you to maintain different implementations and control traffic distribution between them.\n\n## API Structure\n\nThe API is organized hierarchically:\n1. Gateways contain mappings\n2. Mappings contain versions\n3. Each resource is identified by components in the URL path\n\nFor example, a mapping version is accessed via `/gateway/mapping-version/{gateway_topic}/{method}/{path}/{version}` where each path parameter helps construct the resource identifier.",
+    "description": "Microstrate Gateway API for managing gateway infrastructure and routing API requests.",
     "version": "1.0.0",
     "contact": {
       "name": "Microstrate Support",
@@ -44,7 +44,7 @@
           "Gateways"
         ],
         "summary": "Create a new gateway",
-        "description": "Creates a new gateway with a unique topic and URL. The gateway serves as an entry point for all API requests and provides centralized control for authentication, rate limiting, and request routing.\n\n**Usage Notes:**\n- The system automatically generates a unique topic for your gateway\n- Default rate limits of 10,000 requests per second are applied if not specified\n- Default timeout is 30 seconds (30000ms)\n- You can optionally add middleware to all requests through this gateway",
+        "description": "Creates a new gateway with a unique topic and URL.",
         "operationId": "postGateway",
         "x-resource-type": "service",
         "x-resource": "microstrate.gateway.post.gateway",
@@ -73,21 +73,26 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GatewayResponse"
+                  "$ref": "#/components/schemas/GatewayResponseWrapper"
                 },
                 "example": {
-                  "name": "My API Gateway",
-                  "description": "Gateway for my service APIs",
-                  "url": "https://abc123.microstrate.io",
-                  "subject": "ms.gateway.abcdef123456.gateway",
-                  "active": true,
-                  "timeout": 30000,
-                  "limit": {
-                    "request": 10000,
-                    "time": 1000
+                  "body": {
+                    "name": "My API Gateway",
+                    "description": "Gateway for my service APIs",
+                    "url": "https://abc123.microstrate.io",
+                    "subject": "ms.gateway.abcdef123456.gateway",
+                    "active": true,
+                    "timeout": 30000,
+                    "limit": {
+                      "request": 10000,
+                      "time": 1000
+                    },
+                    "modified": 1713531894,
+                    "type": "created"
                   },
-                  "modified": 1713531894,
-                  "type": "created"
+                  "metadata": {
+                    "subject": "ms.gateway.abcdef123456.gateway"
+                  }
                 }
               }
             }
@@ -104,7 +109,7 @@
           "Gateways"
         ],
         "summary": "Get a specific gateway",
-        "description": "Retrieves complete details about a specific gateway identified by its unique topic. Returns information including the gateway's name, description, URL, rate limits, active status, timeout settings, and any configured middleware.\n\n**Usage Notes:**\n- The `gateway_topic` parameter in the URL path is the unique topic of your gateway (e.g., \"abcdef123456\")\n- Use this endpoint to inspect the current configuration of an existing gateway\n- The response includes the full subject identifier which may be needed for other API calls",
+        "description": "Retrieves details about a specific gateway.",
         "operationId": "getGateway",
         "x-resource-type": "service",
         "x-resource": "microstrate.gateway.get.gateway",
@@ -119,21 +124,26 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GatewayResponse"
+                  "$ref": "#/components/schemas/GatewayResponseWrapper"
                 },
                 "example": {
-                  "name": "My API Gateway",
-                  "description": "Gateway for my service APIs",
-                  "url": "https://abc123.microstrate.io",
-                  "subject": "ms.gateway.abcdef123456.gateway",
-                  "active": true,
-                  "timeout": 30000,
-                  "limit": {
-                    "request": 10000,
-                    "time": 1000
+                  "body": {
+                    "name": "My API Gateway",
+                    "description": "Gateway for my service APIs",
+                    "url": "https://abc123.microstrate.io",
+                    "subject": "ms.gateway.abcdef123456.gateway",
+                    "active": true,
+                    "timeout": 30000,
+                    "limit": {
+                      "request": 10000,
+                      "time": 1000
+                    },
+                    "modified": 1713531894,
+                    "type": "created"
                   },
-                  "modified": 1713531894,
-                  "type": "created"
+                  "metadata": {
+                    "subject": "ms.gateway.abcdef123456.gateway"
+                  }
                 }
               }
             }
@@ -148,7 +158,7 @@
           "Gateways"
         ],
         "summary": "Update a gateway",
-        "description": "Updates an existing gateway's configuration. This endpoint allows you to modify gateway properties such as name, description, active status, timeout settings, rate limits, and middleware configurations.\n\n**Usage Notes:**\n- You only need to include the fields you want to update in the request body\n- To update middleware, you must provide the complete middleware array (partial updates are not supported)\n- Rate limit changes take effect immediately for new requests\n- Setting `active: false` will disable the gateway without deleting it\n- Maximum timeout allowed is 1,800,000ms (30 minutes)",
+        "description": "Updates an existing gateway's configuration.",
         "operationId": "patchGateway",
         "x-resource-type": "service",
         "x-resource": "microstrate.gateway.patch.gateway",
@@ -183,13 +193,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean",
-                      "example": true
-                    }
-                  }
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "message": "success"
                 }
               }
             }
@@ -207,7 +214,7 @@
           "Gateways"
         ],
         "summary": "Delete a gateway",
-        "description": "Marks a gateway as deleted (poison-pilled). This operation is logical rather than physical - the gateway record remains but is no longer active or visible in most queries.\n\n**Usage Notes:**\n- This operation cannot be undone through the API\n- All associated mappings and versions remain in the system but are no longer accessible\n- In-flight requests may still complete, but new requests will be rejected\n- The gateway URL will immediately stop accepting new requests\n- For safety, you may want to set the gateway to inactive (`PATCH` with `active: false`) before deletion",
+        "description": "Marks a gateway as deleted (poison-pilled).",
         "operationId": "deleteGateway",
         "x-resource-type": "service",
         "x-resource": "microstrate.gateway.delete.item",
@@ -222,13 +229,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean",
-                      "example": true
-                    }
-                  }
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "message": "success"
                 }
               }
             }
@@ -245,7 +249,7 @@
           "Gateways"
         ],
         "summary": "Get all gateways",
-        "description": "Retrieves a list of all available gateways for your account. This endpoint returns a paginated list of gateways with their basic configuration details.\n\n**Usage Notes:**\n- The response includes only active gateways by default\n- Use this endpoint to get an overview of all your gateways\n- Each gateway entry includes its ID, which you can use with other endpoints\n- The `results_total` field indicates the total number of gateways returned\n- Gateway details include URLs, rate limits, and other configuration settings",
+        "description": "Retrieves a list of all available gateways.",
         "operationId": "getAllGateways",
         "x-resource-type": "service",
         "x-resource": "microstrate.gateway.get.all-gateways",
@@ -255,38 +259,43 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GatewayListResponse"
+                  "$ref": "#/components/schemas/GatewayListResponseWrapper"
                 },
                 "example": {
-                  "results": [
-                    {
-                      "name": "Gateway 1",
-                      "description": "First gateway",
-                      "subject": "ms.gateway.abc123.gateway",
-                      "active": true,
-                      "timeout": 30000,
-                      "limit": {
-                        "request": 10000,
-                        "time": 1000
+                  "body": {
+                    "results": [
+                      {
+                        "name": "Gateway 1",
+                        "description": "First gateway",
+                        "subject": "ms.gateway.abc123.gateway",
+                        "active": true,
+                        "timeout": 30000,
+                        "limit": {
+                          "request": 10000,
+                          "time": 1000
+                        },
+                        "modified": 1713531894,
+                        "type": "created"
                       },
-                      "modified": 1713531894,
-                      "type": "created"
-                    },
-                    {
-                      "name": "Gateway 2",
-                      "description": "Second gateway",
-                      "subject": "ms.gateway.def456.gateway",
-                      "active": true,
-                      "timeout": 60000,
-                      "limit": {
-                        "request": 5000,
-                        "time": 1000
-                      },
-                      "modified": 1713532000,
-                      "type": "created"
-                    }
-                  ],
-                  "results_total": 2
+                      {
+                        "name": "Gateway 2",
+                        "description": "Second gateway",
+                        "subject": "ms.gateway.def456.gateway",
+                        "active": true,
+                        "timeout": 60000,
+                        "limit": {
+                          "request": 5000,
+                          "time": 1000
+                        },
+                        "modified": 1713532000,
+                        "type": "created"
+                      }
+                    ],
+                    "results_total": 2
+                  },
+                  "metadata": {
+                    "subject": "gateway.*.gateway.>"
+                  }
                 }
               }
             }
@@ -303,7 +312,7 @@
           "Mappings"
         ],
         "summary": "Create a new mapping for a gateway",
-        "description": "Creates a new path mapping within the specified gateway. A mapping connects a URL path and HTTP method to backend functionality. For example, you could map GET /api/users to a function that retrieves user data.\n\n**Usage Notes:**\n- The gateway must exist before you can create mappings for it\n- The combination of `path` and `method` must be unique within a gateway\n- Paths should include a leading slash (e.g., `/api/users`)\n- Methods are specified in lowercase (e.g., `get`, `post`)\n- Setting `is_public: true` allows the endpoint to be accessed without authentication\n- Custom timeouts and rate limits can be applied at the mapping level\n- After creating a mapping, you need to create at least one mapping version for it to handle requests",
+        "description": "Creates a new path mapping within the specified gateway.",
         "operationId": "postGatewayMapping",
         "x-resource-type": "service",
         "x-resource": "microstrate.gateway.post.mapping",
@@ -338,23 +347,28 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MappingResponse"
+                  "$ref": "#/components/schemas/MappingResponseWrapper"
                 },
                 "example": {
-                  "subject": "ms.gateway.abcdef123456.mapping.get.api.users",
-                  "path": "/api/users",
-                  "method": "GET",
-                  "is_public": true,
-                  "timeout": 30000,
-                  "limit": {
-                    "request": 5000,
-                    "time": 1000
+                  "body": {
+                    "subject": "ms.gateway.abcdef123456.mapping.get.api.users",
+                    "path": "/api/users",
+                    "method": "GET",
+                    "is_public": true,
+                    "timeout": 30000,
+                    "limit": {
+                      "request": 5000,
+                      "time": 1000
+                    },
+                    "traffic_distribution": {
+                      "1": 100
+                    },
+                    "modified": 1713531894,
+                    "type": "created"
                   },
-                  "traffic_distribution": {
-                    "1": 100
-                  },
-                  "modified": 1713531894,
-                  "type": "created"
+                  "metadata": {
+                    "subject": "ms.gateway.abcdef123456.mapping.get.api.users"
+                  }
                 }
               }
             }
@@ -372,7 +386,7 @@
           "Mappings"
         ],
         "summary": "Get all mappings for a gateway",
-        "description": "Retrieves all mappings defined for the specified gateway. This provides a comprehensive view of all available endpoints within a gateway, their HTTP methods, paths, and configurations.\n\n**Usage Notes:**\n- Use this endpoint to inventory all routes available within a gateway\n- The response includes details about each mapping, including path, method, and traffic distribution\n- Only active mappings are included by default\n- Mappings without versions will still appear in this list\n- Examine the `traffic_distribution` property to understand how traffic is routed between versions",
+        "description": "Retrieves all mappings defined for the specified gateway.",
         "operationId": "getGatewayMappings",
         "x-resource-type": "service",
         "x-resource": "microstrate.gateway.get.mappings",
@@ -387,42 +401,47 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MappingListResponse"
+                  "$ref": "#/components/schemas/MappingListResponseWrapper"
                 },
                 "example": {
-                  "results": [
-                    {
-                      "subject": "ms.gateway.abcdef123456.mapping.get.api.users",
-                      "path": "/api/users",
-                      "method": "GET",
-                      "is_public": true,
-                      "timeout": 30000,
-                      "limit": {
-                        "request": 5000,
-                        "time": 1000
+                  "body": {
+                    "results": [
+                      {
+                        "subject": "ms.gateway.abcdef123456.mapping.get.api.users",
+                        "path": "/api/users",
+                        "method": "GET",
+                        "is_public": true,
+                        "timeout": 30000,
+                        "limit": {
+                          "request": 5000,
+                          "time": 1000
+                        },
+                        "traffic_distribution": {
+                          "1": 100
+                        },
+                        "modified": 1713531894,
+                        "type": "created"
                       },
-                      "traffic_distribution": {
-                        "1": 100
-                      },
-                      "modified": 1713531894,
-                      "type": "created"
-                    },
-                    {
-                      "subject": "ms.gateway.abcdef123456.mapping.post.api.users",
-                      "path": "/api/users",
-                      "method": "POST",
-                      "is_public": true,
-                      "timeout": 30000,
-                      "limit": {
-                        "request": 5000,
-                        "time": 1000
-                      },
-                      "traffic_distribution": {},
-                      "modified": 1713532000,
-                      "type": "created"
-                    }
-                  ],
-                  "results_total": 2
+                      {
+                        "subject": "ms.gateway.abcdef123456.mapping.post.api.users",
+                        "path": "/api/users",
+                        "method": "POST",
+                        "is_public": true,
+                        "timeout": 30000,
+                        "limit": {
+                          "request": 5000,
+                          "time": 1000
+                        },
+                        "traffic_distribution": {},
+                        "modified": 1713532000,
+                        "type": "created"
+                      }
+                    ],
+                    "results_total": 2
+                  },
+                  "metadata": {
+                    "subject": "ms.gateway.abcdef123456.mapping.>"
+                  }
                 }
               }
             }
@@ -442,7 +461,7 @@
           "Mappings"
         ],
         "summary": "Get a specific mapping",
-        "description": "Retrieves detailed information about a specific gateway mapping. This endpoint returns comprehensive configuration data for a single mapping identified by the gateway topic and query parameters for method and path.\n\n**Usage Notes:**\n- Use query parameters to specify the exact mapping you want to retrieve\n- `method` is the HTTP method in lowercase (e.g., \"get\", \"post\")\n- `path` should include the leading slash (e.g., \"/api/users\")\n- The response includes traffic distribution settings showing how requests are routed across versions\n- Timeout and rate limit configurations specific to this mapping are included\n- This approach avoids path encoding issues when dealing with complex URL paths",
+        "description": "Retrieves information about a specific gateway mapping.",
         "operationId": "getGatewayMapping",
         "x-resource-type": "service",
         "x-resource": "microstrate.gateway.get.mapping",
@@ -463,23 +482,28 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MappingResponse"
+                  "$ref": "#/components/schemas/MappingResponseWrapper"
                 },
                 "example": {
-                  "subject": "ms.gateway.abcdef123456.mapping.get.api.users",
-                  "path": "/api/users",
-                  "method": "GET",
-                  "is_public": true,
-                  "timeout": 30000,
-                  "limit": {
-                    "request": 5000,
-                    "time": 1000
+                  "body": {
+                    "subject": "ms.gateway.abcdef123456.mapping.get.api.users",
+                    "path": "/api/users",
+                    "method": "GET",
+                    "is_public": true,
+                    "timeout": 30000,
+                    "limit": {
+                      "request": 5000,
+                      "time": 1000
+                    },
+                    "traffic_distribution": {
+                      "1": 100
+                    },
+                    "modified": 1713531894,
+                    "type": "created"
                   },
-                  "traffic_distribution": {
-                    "1": 100
-                  },
-                  "modified": 1713531894,
-                  "type": "created"
+                  "metadata": {
+                    "subject": "ms.gateway.abcdef123456.mapping.get.api.users"
+                  }
                 }
               }
             }
@@ -494,7 +518,7 @@
           "Mappings"
         ],
         "summary": "Update a mapping",
-        "description": "Updates an existing gateway mapping configuration. This endpoint allows you to modify properties like path, public access flag, timeout settings, rate limits, and traffic distribution between versions.\n\n**Usage Notes:**\n- You only need to include the fields you want to update in the request body\n- Use query parameters to specify the exact mapping you want to update\n- To update traffic distribution, provide the complete distribution map where keys are version numbers and values are percentage allocations (must total 100)\n- You cannot change the HTTP method of an existing mapping - create a new mapping instead\n- Path changes will change the mapping's subject identifier\n- Rate limit and timeout changes take effect immediately\n- Maximum timeout allowed is 1,800,000ms (30 minutes)",
+        "description": "Updates an existing gateway mapping configuration.",
         "operationId": "patchGatewayMapping",
         "x-resource-type": "service",
         "x-resource": "microstrate.gateway.patch.mapping",
@@ -534,13 +558,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean",
-                      "example": true
-                    }
-                  }
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "message": "success"
                 }
               }
             }
@@ -558,7 +579,7 @@
           "Mappings"
         ],
         "summary": "Delete a mapping",
-        "description": "Marks a gateway mapping as deleted (poison-pilled). This operation logically removes the mapping from the gateway while preserving the record in the system.\n\n**Usage Notes:**\n- This operation cannot be undone through the API\n- Use query parameters to specify the exact mapping you want to delete\n- All associated mapping versions remain in the system but are no longer accessible\n- In-flight requests may still complete, but new requests will be rejected\n- The URL path will immediately stop accepting new requests\n- The mapping remains in the system's history for audit purposes\n- For safety, you may want to redirect traffic to other versions or endpoints before deletion",
+        "description": "Marks a gateway mapping as deleted (poison-pilled).",
         "operationId": "deleteMapping",
         "x-resource-type": "service",
         "x-resource": "microstrate.gateway.delete.item",
@@ -579,13 +600,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean",
-                      "example": true
-                    }
-                  }
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "message": "success"
                 }
               }
             }
@@ -602,7 +620,7 @@
           "Mappings"
         ],
         "summary": "Get all mappings",
-        "description": "Retrieves a list of all available gateway mappings across all gateways in your account. This provides a global view of all API endpoints available in your infrastructure.\n\n**Usage Notes:**\n- This endpoint returns mappings from all gateways\n- Results include the gateway ID, path, method, and configuration for each mapping\n- Use this to get a system-wide view of your API surface area\n- You can identify which gateways contain similar endpoints\n- The `results_total` field indicates the total number of mappings returned\n- This endpoint is useful for auditing, documentation, or finding endpoints that match certain criteria\n- Each mapping entry includes rate limits, timeout settings, and traffic distribution configurations",
+        "description": "Retrieves a list of all available gateway mappings.",
         "operationId": "getAllGatewayMappings",
         "x-resource-type": "service",
         "x-resource": "microstrate.gateway.get.all-mappings",
@@ -612,40 +630,45 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MappingListResponse"
+                  "$ref": "#/components/schemas/MappingListResponseWrapper"
                 },
                 "example": {
-                  "results": [
-                    {
-                      "subject": "ms.gateway.abc123.mapping.get.api.users",
-                      "path": "/api/users",
-                      "method": "GET",
-                      "is_public": true,
-                      "timeout": 30000,
-                      "limit": {
-                        "request": 5000,
-                        "time": 1000
+                  "body": {
+                    "results": [
+                      {
+                        "subject": "ms.gateway.abc123.mapping.get.api.users",
+                        "path": "/api/users",
+                        "method": "GET",
+                        "is_public": true,
+                        "timeout": 30000,
+                        "limit": {
+                          "request": 5000,
+                          "time": 1000
+                        },
+                        "traffic_distribution": {},
+                        "modified": 1713531894,
+                        "type": "created"
                       },
-                      "traffic_distribution": {},
-                      "modified": 1713531894,
-                      "type": "created"
-                    },
-                    {
-                      "subject": "ms.gateway.def456.mapping.post.api.products",
-                      "path": "/api/products",
-                      "method": "POST",
-                      "is_public": true,
-                      "timeout": 30000,
-                      "limit": {
-                        "request": 5000,
-                        "time": 1000
-                      },
-                      "traffic_distribution": {},
-                      "modified": 1713532000,
-                      "type": "created"
-                    }
-                  ],
-                  "results_total": 2
+                      {
+                        "subject": "ms.gateway.def456.mapping.post.api.products",
+                        "path": "/api/products",
+                        "method": "POST",
+                        "is_public": true,
+                        "timeout": 30000,
+                        "limit": {
+                          "request": 5000,
+                          "time": 1000
+                        },
+                        "traffic_distribution": {},
+                        "modified": 1713532000,
+                        "type": "created"
+                      }
+                    ],
+                    "results_total": 2
+                  },
+                  "metadata": {
+                    "subject": "gateway.*.mapping.>"
+                  }
                 }
               }
             }
@@ -662,7 +685,7 @@
           "Mapping Versions"
         ],
         "summary": "Create a new mapping version",
-        "description": "Creates a new version for an existing mapping. A mapping version defines what resource handles requests for a specific path and method combination. This allows you to implement A/B testing, canary deployments, or maintain multiple implementations.\n\n**Usage Notes:**\n- The mapping must exist before you can create versions for it\n- Use query parameters to specify which mapping to create a version for\n- Version numbers are automatically assigned sequentially (1, 2, 3, etc.)\n- Each version points to a specific backend resource (function, service, etc.)\n- Set `active: true` to make the version available to handle requests\n- You can add middleware specific to this version\n- After creating a version, update the mapping's traffic distribution to route requests to it\n- For functions, if no `resource_version` is specified, \"latest\" is used by default",
+        "description": "Creates a new version for an existing mapping.",
         "operationId": "postGatewayMappingVersion",
         "x-resource-type": "service",
         "x-resource": "microstrate.gateway.post.mapping-version",
@@ -700,18 +723,23 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MappingVersionResponse"
+                  "$ref": "#/components/schemas/MappingVersionResponseWrapper"
                 },
                 "example": {
-                  "subject": "ms.gateway.abcdef123456.mapping-version.get.api.users.1",
-                  "resource_type": "function",
-                  "resource": "user-service.getUsers",
-                  "resource_version": "latest",
-                  "active": true,
-                  "description": "Gets all users with pagination",
-                  "version": 1,
-                  "modified": 1713531894,
-                  "type": "created"
+                  "body": {
+                    "subject": "ms.gateway.abcdef123456.mapping-version.get.api.users.1",
+                    "resource_type": "function",
+                    "resource": "user-service.getUsers",
+                    "resource_version": "latest",
+                    "active": true,
+                    "description": "Gets all users with pagination",
+                    "version": 1,
+                    "modified": 1713531894,
+                    "type": "created"
+                  },
+                  "metadata": {
+                    "subject": "ms.gateway.abcdef123456.mapping-version.get.api.users.1"
+                  }
                 }
               }
             }
@@ -729,7 +757,7 @@
           "Mapping Versions"
         ],
         "summary": "Get all versions for a mapping",
-        "description": "Retrieves all versions defined for a specific mapping. This endpoint returns details about each implementation version available for the specified gateway path and method combination.\n\n**Usage Notes:**\n- Use query parameters to specify which mapping's versions you want to retrieve\n- Results include both active and inactive versions\n- Each version entry includes its backend resource configuration, middleware, and other settings\n- Compare with the mapping's traffic distribution to understand how requests are currently routed\n- Version history helps track changes and implementations over time\n- The `results_total` field indicates the total number of versions for this mapping",
+        "description": "Retrieves all versions defined for a specific mapping.",
         "operationId": "getGatewayMappingVersions",
         "x-resource-type": "service",
         "x-resource": "microstrate.gateway.get.mapping-versions",
@@ -750,34 +778,39 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MappingVersionListResponse"
+                  "$ref": "#/components/schemas/MappingVersionListResponseWrapper"
                 },
                 "example": {
-                  "results": [
-                    {
-                      "subject": "ms.gateway.abcdef123456.mapping-version.get.api.users.1",
-                      "resource_type": "function",
-                      "resource": "user-service.getUsers",
-                      "resource_version": "latest",
-                      "active": true,
-                      "description": "Initial version",
-                      "version": 1,
-                      "modified": 1713531894,
-                      "type": "created"
-                    },
-                    {
-                      "subject": "ms.gateway.abcdef123456.mapping-version.get.api.users.2",
-                      "resource_type": "function",
-                      "resource": "user-service.getUsersV2",
-                      "resource_version": "latest",
-                      "active": true,
-                      "description": "Improved version with better filtering",
-                      "version": 2,
-                      "modified": 1713532000,
-                      "type": "created"
-                    }
-                  ],
-                  "results_total": 2
+                  "body": {
+                    "results": [
+                      {
+                        "subject": "ms.gateway.abcdef123456.mapping-version.get.api.users.1",
+                        "resource_type": "function",
+                        "resource": "user-service.getUsers",
+                        "resource_version": "latest",
+                        "active": true,
+                        "description": "Initial version",
+                        "version": 1,
+                        "modified": 1713531894,
+                        "type": "created"
+                      },
+                      {
+                        "subject": "ms.gateway.abcdef123456.mapping-version.get.api.users.2",
+                        "resource_type": "function",
+                        "resource": "user-service.getUsersV2",
+                        "resource_version": "latest",
+                        "active": true,
+                        "description": "Improved version with better filtering",
+                        "version": 2,
+                        "modified": 1713532000,
+                        "type": "created"
+                      }
+                    ],
+                    "results_total": 2
+                  },
+                  "metadata": {
+                    "subject": "ms.gateway.abcdef123456.mapping-version.get.api.users.>"
+                  }
                 }
               }
             }
@@ -797,7 +830,7 @@
           "Mapping Versions"
         ],
         "summary": "Get a specific mapping version",
-        "description": "Retrieves detailed information about a specific mapping version. This endpoint returns comprehensive configuration data for a single implementation of a mapping.\n\n**Usage Notes:**\n- Use query parameters to specify the exact mapping version you want to retrieve\n- `gateway_topic` is the gateway topic (e.g., \"abcdef123456\")\n- `version_number` is the numeric version identifier (e.g., 1, 2, 3)\n- `method` and `path` query parameters identify the mapping\n- The response includes detailed configuration about which backend resource handles requests\n- Middleware, attributes, and matching logic specific to this version are included\n- This approach avoids path encoding issues when dealing with complex URL paths",
+        "description": "Retrieves information about a specific mapping version.",
         "operationId": "getGatewayMappingVersion",
         "x-resource-type": "service",
         "x-resource": "microstrate.gateway.get.mapping-version",
@@ -821,18 +854,23 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MappingVersionResponse"
+                  "$ref": "#/components/schemas/MappingVersionResponseWrapper"
                 },
                 "example": {
-                  "subject": "ms.gateway.abcdef123456.mapping-version.get.api.users.1",
-                  "resource_type": "function",
-                  "resource": "user-service.getUsers",
-                  "resource_version": "latest",
-                  "active": true,
-                  "description": "Gets all users with pagination",
-                  "version": 1,
-                  "modified": 1713531894,
-                  "type": "created"
+                  "body": {
+                    "subject": "ms.gateway.abcdef123456.mapping-version.get.api.users.1",
+                    "resource_type": "function",
+                    "resource": "user-service.getUsers",
+                    "resource_version": "latest",
+                    "active": true,
+                    "description": "Gets all users with pagination",
+                    "version": 1,
+                    "modified": 1713531894,
+                    "type": "created"
+                  },
+                  "metadata": {
+                    "subject": "ms.gateway.abcdef123456.mapping-version.get.api.users.1"
+                  }
                 }
               }
             }
@@ -847,7 +885,7 @@
           "Mapping Versions"
         ],
         "summary": "Update a mapping version",
-        "description": "Updates an existing mapping version configuration. This endpoint allows you to modify properties like active status, middleware, matching behavior, attributes, and other settings specific to this implementation.\n\n**Usage Notes:**\n- You only need to include the fields you want to update in the request body\n- Use query parameters to specify the exact mapping version you want to update\n- You cannot change the backend resource or resource type after creation - create a new version instead\n- Setting `active: false` will prevent this version from receiving traffic even if it's included in traffic distribution\n- To update middleware, provide the complete middleware array (partial updates are not supported)\n- The `exact_match` flag controls whether the path must match exactly or allows subpaths\n- Boolean logic expressions can be used to conditionally route requests based on request attributes",
+        "description": "Updates an existing mapping version configuration.",
         "operationId": "patchGatewayMappingVersion",
         "x-resource-type": "service",
         "x-resource": "microstrate.gateway.patch.mapping-version",
@@ -885,13 +923,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean",
-                      "example": true
-                    }
-                  }
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "message": "success"
                 }
               }
             }
@@ -909,7 +944,7 @@
           "Mapping Versions"
         ],
         "summary": "Delete a mapping version",
-        "description": "Marks a mapping version as deleted (poison-pilled). This operation logically removes the implementation from the system while preserving the record.\n\n**Usage Notes:**\n- This operation cannot be undone through the API\n- Use query parameters to specify the exact mapping version you want to delete\n- Before deletion, ensure this version is not receiving traffic in the mapping's traffic distribution\n- In-flight requests may still complete, but new requests will be rejected\n- The version remains in the system's history for audit purposes\n- If this is the only version for a mapping, the mapping will effectively become non-functional\n- For safety, redirect traffic to other versions before deletion\n- After deletion, version numbers are not reused - new versions will still increment from the highest existing number",
+        "description": "Marks a mapping version as deleted (poison-pilled).",
         "operationId": "deleteMappingVersion",
         "x-resource-type": "service",
         "x-resource": "microstrate.gateway.delete.item",
@@ -933,13 +968,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean",
-                      "example": true
-                    }
-                  }
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "message": "success"
                 }
               }
             }
@@ -956,7 +988,7 @@
           "Mapping Versions"
         ],
         "summary": "Get all mapping versions",
-        "description": "Retrieves a list of all available mapping versions across all mappings and gateways. This global view provides a comprehensive inventory of all implementation versions in your account.\n\n**Usage Notes:**\n- This endpoint returns versions from all gateways and mappings\n- Results are paginated and can be filtered\n- Use this endpoint to get a system-wide view of your implementations\n- Each version entry includes its complete configuration\n- The gateway, method, and path for each version are included in the subject\n- The `results_total` field indicates the total number of versions returned\n- This can be useful for migration planning, auditing, or finding implementations that use a specific resource",
+        "description": "Retrieves a list of all available mapping versions.",
         "operationId": "getAllGatewayMappingVersions",
         "x-resource-type": "service",
         "x-resource": "microstrate.gateway.get.all-mapping-versions",
@@ -966,34 +998,39 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MappingVersionListResponse"
+                  "$ref": "#/components/schemas/MappingVersionListResponseWrapper"
                 },
                 "example": {
-                  "results": [
-                    {
-                      "subject": "ms.gateway.abc123.mapping-version.get.api.users.1",
-                      "resource_type": "function",
-                      "resource": "user-service.getUsers",
-                      "resource_version": "latest",
-                      "active": true,
-                      "description": "Version 1",
-                      "version": 1,
-                      "modified": 1713531894,
-                      "type": "created"
-                    },
-                    {
-                      "subject": "ms.gateway.def456.mapping-version.post.api.products.1",
-                      "resource_type": "function",
-                      "resource": "product-service.createProduct",
-                      "resource_version": "latest",
-                      "active": true,
-                      "description": "Version 1",
-                      "version": 1,
-                      "modified": 1713532000,
-                      "type": "created"
-                    }
-                  ],
-                  "results_total": 2
+                  "body": {
+                    "results": [
+                      {
+                        "subject": "ms.gateway.abc123.mapping-version.get.api.users.1",
+                        "resource_type": "function",
+                        "resource": "user-service.getUsers",
+                        "resource_version": "latest",
+                        "active": true,
+                        "description": "Version 1",
+                        "version": 1,
+                        "modified": 1713531894,
+                        "type": "created"
+                      },
+                      {
+                        "subject": "ms.gateway.def456.mapping-version.post.api.products.1",
+                        "resource_type": "function",
+                        "resource": "product-service.createProduct",
+                        "resource_version": "latest",
+                        "active": true,
+                        "description": "Version 1",
+                        "version": 1,
+                        "modified": 1713532000,
+                        "type": "created"
+                      }
+                    ],
+                    "results_total": 2
+                  },
+                  "metadata": {
+                    "subject": "gateway.*.mapping-version.>"
+                  }
                 }
               }
             }
@@ -1022,7 +1059,7 @@
       "path_param": {
         "name": "path",
         "in": "path",
-        "description": "Path segment of the mapping (URL path converted to dot notation). When creating a mapping with path '/api/users', you would use 'api.users' in this parameter. This format is used in the subject identifiers for mappings and versions. The actual URL path used by clients will still be '/api/users'.",
+        "description": "Path segment of the mapping in dot notation",
         "required": true,
         "schema": {
           "type": "string"
@@ -1032,18 +1069,26 @@
       "method_param": {
         "name": "method",
         "in": "path",
-        "description": "HTTP method for the mapping in lowercase (e.g., 'get', 'post'). This is part of the unique identifier for mappings and versions. When creating a mapping with method 'GET', you would use 'get' in this parameter. Methods must be specified in lowercase in the URL path even though they are typically written in uppercase in documentation.",
+        "description": "HTTP method for the mapping in lowercase",
         "required": true,
         "schema": {
           "type": "string",
-          "enum": ["get", "post", "put", "delete", "patch", "options", "head"]
+          "enum": [
+            "get",
+            "post",
+            "put",
+            "delete",
+            "patch",
+            "options",
+            "head"
+          ]
         },
         "example": "get"
       },
       "gateway_topic_param": {
         "name": "gateway_topic",
         "in": "path",
-        "description": "Unique topic identifier of the gateway. This is the alphanumeric topic generated when the gateway was created (e.g., 'abcdef123456'). This topic is used in all operations that target a specific gateway or its resources. You can find this topic in the subject of your gateway (e.g., 'ms.gateway.abcdef123456.gateway') or in the gateway URL.",
+        "description": "Unique topic identifier of the gateway",
         "required": true,
         "schema": {
           "type": "string"
@@ -1053,7 +1098,7 @@
       "version_number_param": {
         "name": "version_number",
         "in": "path",
-        "description": "Sequential version number of the mapping version (e.g., 1, 2, 3). Each mapping can have multiple versions, identified by sequential integers. Version numbers are automatically assigned when you create a new version for a mapping, starting from 1 and incrementing for each additional version. The version number is used in traffic distribution configurations to specify how requests are routed between different implementations.",
+        "description": "Sequential version number of the mapping version",
         "required": true,
         "schema": {
           "type": "integer"
@@ -1063,18 +1108,26 @@
       "method_query_param": {
         "name": "method",
         "in": "query",
-        "description": "HTTP method for the mapping in uppercase (e.g., 'GET', 'POST'). This query parameter helps identify which mapping you want to work with. Methods are specified in uppercase in query parameters to match their common representation in documentation and code.",
+        "description": "HTTP method for the mapping in uppercase",
         "required": true,
         "schema": {
           "type": "string",
-          "enum": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS", "HEAD"]
+          "enum": [
+            "GET",
+            "POST",
+            "PUT",
+            "DELETE",
+            "PATCH",
+            "OPTIONS",
+            "HEAD"
+          ]
         },
         "example": "GET"
       },
       "path_query_param": {
         "name": "path",
         "in": "query",
-        "description": "URL path for the mapping including the leading slash (e.g., '/api/users'). This query parameter helps identify which mapping you want to work with. The path should be provided exactly as clients would access it, using URL path notation with forward slashes instead of dot notation.",
+        "description": "URL path for the mapping including the leading slash",
         "required": true,
         "schema": {
           "type": "string"
@@ -1105,30 +1158,46 @@
         "properties": {
           "order": {
             "type": "integer",
-            "description": "Execution order of the middleware. Lower numbers execute first. This allows you to create a processing pipeline where middleware executes in a specific sequence.",
+            "description": "Execution order of the middleware",
             "example": 1
           },
           "resource": {
             "type": "string",
-            "description": "Resource identifier for the middleware function or service. This is the name of the function or service that will be invoked as middleware.",
+            "description": "Resource identifier for the middleware function",
             "example": "auth-middleware"
           },
           "resource_type": {
             "type": "string",
-            "description": "Type of resource the middleware points to. Currently supported values include 'function' for serverless functions and 'service' for microservices.",
+            "description": "Type of resource the middleware points to",
             "example": "function",
-            "enum": ["function", "service"]
+            "enum": [
+              "function",
+              "service"
+            ]
           },
           "resource_version": {
             "type": "string",
-            "description": "Version of the middleware resource to use. Can be a specific version identifier or 'latest' to always use the most recent version.",
+            "description": "Version of the middleware resource to use",
             "example": "latest"
           },
           "type": {
             "type": "string",
-            "description": "When the middleware should execute in the request lifecycle. 'pre-request' middleware runs before the main handler, while 'post-request' runs after the response is generated but before it's returned to the client.",
+            "description": "When the middleware should execute",
             "example": "pre-request",
-            "enum": ["pre-request", "post-request"]
+            "enum": [
+              "pre-request",
+              "post-request"
+            ]
+          }
+        }
+      },
+      "Metadata": {
+        "type": "object",
+        "properties": {
+          "subject": {
+            "type": "string",
+            "description": "Subject identifier for the resource",
+            "example": "ms.gateway.abcdef123456.gateway"
           }
         }
       },
@@ -1228,7 +1297,7 @@
           },
           "subject": {
             "type": "string",
-            "description": "Subject identifier of the gateway, containing the gateway topic",
+            "description": "Subject identifier of the gateway",
             "example": "ms.gateway.abcdef123456.gateway"
           },
           "active": {
@@ -1263,7 +1332,18 @@
           }
         }
       },
-      "GatewayListResponse": {
+      "GatewayResponseWrapper": {
+        "type": "object",
+        "properties": {
+          "body": {
+            "$ref": "#/components/schemas/GatewayResponse"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/Metadata"
+          }
+        }
+      },
+      "GatewayListResult": {
         "type": "object",
         "properties": {
           "results": {
@@ -1277,6 +1357,17 @@
             "type": "integer",
             "description": "Total number of gateways returned",
             "example": 2
+          }
+        }
+      },
+      "GatewayListResponseWrapper": {
+        "type": "object",
+        "properties": {
+          "body": {
+            "$ref": "#/components/schemas/GatewayListResult"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/Metadata"
           }
         }
       },
@@ -1372,7 +1463,7 @@
         "properties": {
           "subject": {
             "type": "string",
-            "description": "Subject identifier of the mapping, containing the gateway topic, method, and path",
+            "description": "Subject identifier of the mapping",
             "example": "ms.gateway.abcdef123456.mapping.get.api.users"
           },
           "path": {
@@ -1420,7 +1511,18 @@
           }
         }
       },
-      "MappingListResponse": {
+      "MappingResponseWrapper": {
+        "type": "object",
+        "properties": {
+          "body": {
+            "$ref": "#/components/schemas/MappingResponse"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/Metadata"
+          }
+        }
+      },
+      "MappingListResult": {
         "type": "object",
         "properties": {
           "results": {
@@ -1434,6 +1536,17 @@
             "type": "integer",
             "description": "Total number of mappings returned",
             "example": 2
+          }
+        }
+      },
+      "MappingListResponseWrapper": {
+        "type": "object",
+        "properties": {
+          "body": {
+            "$ref": "#/components/schemas/MappingListResult"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/Metadata"
           }
         }
       },
@@ -1556,7 +1669,7 @@
         "properties": {
           "subject": {
             "type": "string",
-            "description": "Subject identifier of the mapping version, containing the gateway topic, method, path, and version number",
+            "description": "Subject identifier of the mapping version",
             "example": "ms.gateway.abcdef123456.mapping-version.get.api.users.1"
           },
           "resource_type": {
@@ -1631,7 +1744,18 @@
           }
         }
       },
-      "MappingVersionListResponse": {
+      "MappingVersionResponseWrapper": {
+        "type": "object",
+        "properties": {
+          "body": {
+            "$ref": "#/components/schemas/MappingVersionResponse"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/Metadata"
+          }
+        }
+      },
+      "MappingVersionListResult": {
         "type": "object",
         "properties": {
           "results": {
@@ -1645,6 +1769,26 @@
             "type": "integer",
             "description": "Total number of mapping versions returned",
             "example": 2
+          }
+        }
+      },
+      "MappingVersionListResponseWrapper": {
+        "type": "object",
+        "properties": {
+          "body": {
+            "$ref": "#/components/schemas/MappingVersionListResult"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/Metadata"
+          }
+        }
+      },
+      "SuccessResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "success"
           }
         }
       }
