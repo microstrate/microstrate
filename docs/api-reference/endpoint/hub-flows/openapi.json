@@ -19,7 +19,7 @@
     }
   ],
   "paths": {
-    "/microstrate/hub/collections": {
+    "/hub/collections": {
       "post": {
         "tags": [
           "Collections"
@@ -45,7 +45,7 @@
           }
         },
         "responses": {
-          "200": {
+          "201": {
             "description": "Collection created successfully",
             "content": {
               "application/json": {
@@ -53,17 +53,12 @@
                   "$ref": "#/components/schemas/CreateCollectionResponse"
                 },
                 "example": {
-                  "status_code": 200,
-                  "body": {
-                    "body": {
-                      "subject": "ms.hub.config.collection.node.1234567890",
-                      "name": "MyNewCollection",
-                      "collection_type": "node",
-                      "name_hash": "1234567890",
-                      "description": "Collection for storing node templates",
-                      "modified": 1651395678
-                    }
-                  }
+                  "subject": "ms.hub.config.collection.node.1234567890",
+                  "name": "MyNewCollection",
+                  "collection_type": "node",
+                  "topic": "1234567890",
+                  "description": "Collection for storing node templates",
+                  "modified": 1651395678
                 }
               }
             }
@@ -78,18 +73,12 @@
                 "examples": {
                   "NameRequired": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "a name is required"
-                      }
-                    }
+                    "error": "a name is required"
+                  }
                   },
                   "InvalidType": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "invalid collection type. Valid types are: node, workflow"
-                      }
+                      "error": "invalid collection type. Valid types are: node, workflow"
                     }
                   }
                 }
@@ -104,9 +93,127 @@
                   "$ref": "#/components/schemas/ErrorResponse"
                 },
                 "example": {
-                  "status_code": 409,
-                  "body": {
-                    "error": "collection exists:ms.hub.config.collection.node.1234567890"
+                  "error": "collection exists:ms.hub.config.collection.node.1234567890"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Collections"
+        ],
+        "summary": "List collections",
+        "description": "Retrieves a list of collections",
+        "operationId": "getCollection",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.hub.get.list-collections",
+        "parameters": [
+          {
+            "name": "collection_type",
+            "in": "query",
+            "description": "List only 'node' or only 'workflow' collections. If this parameter is omitted, both will be listed",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum" : ["node", "workflow"]
+            },
+            "example": "node"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Collection retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCollectionResponse"
+                },
+                "example": {
+                    "name": "MyCollection",
+                    "collection_type": "node",
+                    "topic": "1234567890",
+                    "description": "Collection for storing node templates",
+                    "subject": "ms.hub.config.collection.node.1234567890",
+                    "modified": 1651395678
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "InvalidSubject": {
+                    "value": {
+                      "error": "invalid subject"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/hub/collections/{collection_type}/{collection_topic}": {
+      "get": {
+        "tags": [
+          "Collections"
+        ],
+        "summary": "Get a collection",
+        "description": "Retrieves a specific collection by subject",
+        "operationId": "getCollection",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.hub.get.collection",
+        "parameters": [
+          {
+            "name": "collection_topic",
+            "in": "path",
+            "description": "The topic is a hash of the name that was used when a collection was created",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "1234567890"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Collection retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCollectionResponse"
+                },
+                "example": {
+                  "name": "MyCollection",
+                  "collection_type": "node",
+                  "topic": "1234567890",
+                  "description": "Collection for storing node templates",
+                  "subject": "ms.hub.config.collection.node.1234567890",
+                  "modified": 1651395678
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "InvalidSubject": {
+                    "value": {
+                      "error": "invalid subject"
+                    }
                   }
                 }
               }
@@ -118,11 +225,23 @@
         "tags": [
           "Collections"
         ],
-        "summary": "Update a collection",
+        "summary": "Update a Workflow or Node collection",
         "description": "Updates an existing collection's properties",
-        "operationId": "updateCollection",
+        "operationId": "updateFlowOrNodeCollection",
         "x-resource-type": "service",
         "x-resource": "microstrate.hub.patch.collection",
+        "parameters": [
+          {
+            "name": "collection_topic",
+            "in": "path",
+            "description": "The topic is a hash of the name that was used when a collection was created",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "1234567890"
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -146,10 +265,7 @@
                   "$ref": "#/components/schemas/SuccessResponse"
                 },
                 "example": {
-                  "status_code": 200,
-                  "body": {
-                    "message": "success"
-                  }
+                  "message": "success"
                 }
               }
             }
@@ -164,10 +280,7 @@
                 "examples": {
                   "SubjectRequired": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "a subject is required"
-                      }
+                      "error": "a subject is required"
                     }
                   }
                 }
@@ -182,77 +295,7 @@
                   "$ref": "#/components/schemas/ErrorResponse"
                 },
                 "example": {
-                  "status_code": 404,
-                  "body": {
-                    "error": "collection does not exists"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "get": {
-        "tags": [
-          "Collections"
-        ],
-        "summary": "Get a collection",
-        "description": "Retrieves a specific collection by subject",
-        "operationId": "getCollection",
-        "x-resource-type": "service",
-        "x-resource": "microstrate.hub.get.collection",
-        "parameters": [
-          {
-            "name": "subject",
-            "in": "query",
-            "description": "Subject of the collection to retrieve",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "example": "ms.hub.config.collection.node.1234567890"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Collection retrieved successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GetCollectionResponse"
-                },
-                "example": {
-                  "status_code": 200,
-                  "body": {
-                    "body": {
-                      "name": "MyCollection",
-                      "collection_type": "node",
-                      "name_hash": "1234567890",
-                      "description": "Collection for storing node templates",
-                      "subject": "ms.hub.config.collection.node.1234567890",
-                      "modified": 1651395678
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                },
-                "examples": {
-                  "InvalidSubject": {
-                    "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "invalid subject"
-                      }
-                    }
-                  }
+                  "error": "collection does not exists"
                 }
               }
             }
@@ -270,14 +313,24 @@
         "x-resource": "microstrate.hub.delete.collection",
         "parameters": [
           {
-            "name": "subject",
-            "in": "query",
-            "description": "Subject of the collection to delete",
+            "name": "collection_topic",
+            "in": "path",
+            "description": "The topic is a hash of the name that was used when a collection was created",
             "required": true,
             "schema": {
               "type": "string"
             },
-            "example": "ms.hub.config.collection.node.1234567890"
+            "example": "1234567890"
+          },
+          {
+            "name": "move_resources_to_collection",
+            "in": "query",
+            "description": "A topic of another collection where resources can be moved",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "993267890"
           }
         ],
         "responses": {
@@ -289,11 +342,9 @@
                   "$ref": "#/components/schemas/SuccessResponse"
                 },
                 "example": {
-                  "status_code": 200,
-                  "body": {
                     "message": "success"
                   }
-                }
+
               }
             }
           },
@@ -307,252 +358,30 @@
                 "examples": {
                   "InvalidSubject": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
                         "error": "invalid subject"
                       }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/microstrate/hub/collections/list": {
-      "post": {
-        "tags": [
-          "Collections"
-        ],
-        "summary": "Create a new collection",
-        "description": "Creates a new collection for organizing nodes or workflows",
-        "operationId": "createCollection",
-        "x-resource-type": "service",
-        "x-resource": "microstrate.hub.post.collection",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateCollectionRequest"
-              },
-              "example": {
-                "name": "MyNewCollection",
-                "collection_type": "node",
-                "description": "Collection for storing node templates"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Collection created successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CreateCollectionResponse"
-                },
-                "example": {
-                  "status_code": 200,
-                  "body": {
-                    "body": {
-                      "subject": "ms.hub.config.collection.node.1234567890",
-                      "name": "MyNewCollection",
-                      "collection_type": "node",
-                      "name_hash": "1234567890",
-                      "description": "Collection for storing node templates",
-                      "modified": 1651395678
-                    }
                   }
                 }
               }
             }
           },
-          "400": {
-            "description": "Bad request",
+          "404":{
+            "description": "Resource not found",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorResponse"
                 },
                 "examples": {
-                  "NameRequired": {
+                  "CollectionNotFount": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "a name is required"
+                        "error": "collection not found"
                       }
-                    }
                   },
-                  "InvalidType": {
+                  "NewResourceCollectionNotFount": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "invalid collection type. Valid types are: node, workflow"
+                        "error": "the new resource collection is not found"
                       }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Collection already exists",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                },
-                "example": {
-                  "status_code": 409,
-                  "body": {
-                    "error": "collection exists:ms.hub.config.collection.node.1234567890"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "patch": {
-        "tags": [
-          "Collections"
-        ],
-        "summary": "Update a collection",
-        "description": "Updates an existing collection's properties",
-        "operationId": "updateCollection",
-        "x-resource-type": "service",
-        "x-resource": "microstrate.hub.patch.collection",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateCollectionRequest"
-              },
-              "example": {
-                "subject": "ms.hub.config.collection.node.1234567890",
-                "description": "Updated collection description"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Collection updated successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SuccessResponse"
-                },
-                "example": {
-                  "status_code": 200,
-                  "body": {
-                    "message": "success"
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                },
-                "examples": {
-                  "SubjectRequired": {
-                    "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "a subject is required"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Collection not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                },
-                "example": {
-                  "status_code": 404,
-                  "body": {
-                    "error": "collection does not exists"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "get": {
-        "tags": [
-          "Collections"
-        ],
-        "summary": "Get a collection",
-        "description": "Retrieves a specific collection by subject",
-        "operationId": "getCollection",
-        "x-resource-type": "service",
-        "x-resource": "microstrate.hub.get.collection",
-        "parameters": [
-          {
-            "name": "subject",
-            "in": "query",
-            "description": "Subject of the collection to retrieve",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "example": "ms.hub.config.collection.node.1234567890"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Collection retrieved successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GetCollectionResponse"
-                },
-                "example": {
-                  "status_code": 200,
-                  "body": {
-                    "body": {
-                      "name": "MyCollection",
-                      "collection_type": "node",
-                      "name_hash": "1234567890",
-                      "description": "Collection for storing node templates",
-                      "subject": "ms.hub.config.collection.node.1234567890",
-                      "modified": 1651395678
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                },
-                "examples": {
-                  "InvalidSubject": {
-                    "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "invalid subject"
-                      }
-                    }
                   }
                 }
               }
@@ -561,81 +390,7 @@
         }
       }
     },
-    "/microstrate/hub/nodes": {
-      "get": {
-        "tags": [
-          "Nodes"
-        ],
-        "summary": "Get a node",
-        "description": "Retrieves a specific node by subject",
-        "operationId": "getNode",
-        "x-resource-type": "service",
-        "x-resource": "microstrate.hub.get.node",
-        "parameters": [
-          {
-            "name": "subject",
-            "in": "query",
-            "description": "Subject of the node to retrieve",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "example": "ms.hub.config.node.1234567890.98765432"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Node retrieved successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GetNodeResponse"
-                },
-                "example": {
-                  "status_code": 200,
-                  "body": {
-                    "body": {
-                      "subject": "ms.hub.config.node.1234567890.98765432",
-                      "data": {
-                        "id": "node-id",
-                        "name": "MyNode",
-                        "description": "Node description",
-                        "node_type": "function",
-                        "subject": "microstrate-function.some-function",
-                        "payload": {
-                          "param1": "value1",
-                          "param2": "value2"
-                        }
-                      },
-                      "modified": 1651395678
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                },
-                "examples": {
-                  "InvalidSubject": {
-                    "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "invalid subject"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
+    "/hub/nodes": {
       "post": {
         "tags": [
           "Nodes"
@@ -668,7 +423,7 @@
           }
         },
         "responses": {
-          "200": {
+          "201": {
             "description": "Node created successfully",
             "content": {
               "application/json": {
@@ -676,25 +431,20 @@
                   "$ref": "#/components/schemas/CreateNodeResponse"
                 },
                 "example": {
-                  "status_code": 200,
-                  "body": {
-                    "body": {
-                      "subject": "ms.hub.config.node.1234567890.98765432",
-                      "collection": "ms.hub.config.collection.node.1234567890",
-                      "data": {
-                        "id": "some-id",
-                        "name": "MyNode",
-                        "node_type": "function",
-                        "subject": "microstrate-function.some-function",
-                        "payload": {
-                          "param1": "value1",
-                          "param2": "value2"
-                        }
-                      },
-                      "type": "created",
-                      "modified": 1651395678
+                  "subject": "ms.hub.config.node.1234567890.98765432",
+                  "collection": "ms.hub.config.collection.node.1234567890",
+                  "data": {
+                    "id": "some-id",
+                    "name": "MyNode",
+                    "node_type": "function",
+                    "subject": "microstrate-function.some-function",
+                    "payload": {
+                      "param1": "value1",
+                      "param2": "value2"
                     }
-                  }
+                  },
+                  "type": "created",
+                  "modified": 1651395678
                 }
               }
             }
@@ -709,42 +459,27 @@
                 "examples": {
                   "NameRequired": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "data.name is required"
-                      }
+                      "error": "data.name is required"
                     }
                   },
                   "CollectionRequired": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "a collection subject is required"
-                      }
+                      "error": "a collection subject is required"
                     }
                   },
                   "InvalidCollection": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "invalid collection subject"
-                      }
+                      "error": "invalid collection subject"
                     }
                   },
                   "PayloadRequired": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "payload is required"
-                      }
+                      "error": "payload is required"
                     }
                   },
                   "FunctionSubjectRequired": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "a function subject is required"
-                      }
+                      "error": "a function subject is required"
                     }
                   }
                 }
@@ -761,18 +496,12 @@
                 "examples": {
                   "CollectionNotFound": {
                     "value": {
-                      "status_code": 404,
-                      "body": {
-                        "error": "collection not found"
-                      }
+                      "error": "collection not found"
                     }
                   },
                   "FunctionNotFound": {
                     "value": {
-                      "status_code": 404,
-                      "body": {
-                        "error": "function not found"
-                      }
+                      "error": "function not found"
                     }
                   }
                 }
@@ -787,9 +516,151 @@
                   "$ref": "#/components/schemas/ErrorResponse"
                 },
                 "example": {
-                  "status_code": 409,
-                  "body": {
-                    "error": "node exists:ms.hub.config.node.1234567890.98765432"
+                  "error": "node exists:ms.hub.config.node.1234567890.98765432"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Nodes"
+        ],
+        "summary": "List node templtes",
+        "description": "Retrieves a list of node templates, optionally filtered by collection and type",
+        "operationId": "listNodeTemplates",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.hub.get.list-nodes",
+        "parameters": [
+          {
+            "name": "collection_topic",
+            "in": "query",
+            "description": "Collection topic",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "1234567890"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Nodes retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListNodesResponse"
+                },
+                "example": {
+                  "results_total": 1,
+                  "results":[
+                  {
+                    "subject": "ms.hub.config.node.1234567890.98765432",
+                    "collection": "ms.hub.config.collection.node.1234567890",
+                    "data": {
+                      "id": "some-id",
+                      "name": "MyNode",
+                      "node_type": "function",
+                      "subject": "microstrate-function.some-function",
+                      "payload": {
+                        "param1": "value1",
+                        "param2": "value2"
+                      }
+                    },
+                    "type": "created",
+                    "modified": 1651395678
+                  }
+                ]}
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "error": "invalid request"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/hub/nodes/{collection_topic}/{node_topic}": {
+      "get": {
+        "tags": [
+          "Nodes"
+        ],
+        "summary": "Get a node",
+        "description": "Retrieves a specific node by subject",
+        "operationId": "getNode",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.hub.get.node",
+        "parameters": [
+          {
+            "name": "collection_topic",
+            "in": "path",
+            "description": "Collection topic",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "1234567890"
+          },
+          {
+            "name": "node_topic",
+            "in": "path",
+            "description": "Node topic - hash of the names the node was created with",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "98765432"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Node retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetNodeResponse"
+                },
+                "example": {
+                  "subject": "ms.hub.config.node.1234567890.98765432",
+                  "data": {
+                    "id": "node-id",
+                    "name": "MyNode",
+                    "description": "Node description",
+                    "node_type": "function",
+                    "subject": "microstrate-function.some-function",
+                    "payload": {
+                      "param1": "value1",
+                      "param2": "value2"
+                    }
+                  },
+                  "modified": 1651395678
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "InvalidSubject": {
+                    "value": {
+                        "error": "invalid subject"
+                      }
                   }
                 }
               }
@@ -806,6 +677,28 @@
         "operationId": "updateNode",
         "x-resource-type": "service",
         "x-resource": "microstrate.hub.patch.node",
+        "parameters": [
+          {
+            "name": "collection_topic",
+            "in": "path",
+            "description": "Collection topic",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "1234567890"
+          },
+          {
+            "name": "node_topic",
+            "in": "path",
+            "description": "Node topic - hash of the names the node was created with",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "98765432"
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -819,7 +712,6 @@
                   "name": "UpdatedNode",
                   "description": "Updated node description",
                   "node_type": "function",
-                  "subject": "microstrate-function.updated-function",
                   "payload": {
                     "param1": "updated-value1",
                     "param2": "updated-value2"
@@ -838,11 +730,9 @@
                   "$ref": "#/components/schemas/SuccessResponse"
                 },
                 "example": {
-                  "status_code": 200,
-                  "body": {
                     "message": "success"
                   }
-                }
+
               }
             }
           },
@@ -856,31 +746,35 @@
                 "examples": {
                   "SubjectRequired": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
                         "error": "a subject is required"
                       }
-                    }
                   },
                   "FunctionNotFound": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "function not found"
-                      }
-                    }
-                  },
-                  "FlowNotFound": {
-                    "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "flow not found"
-                      }
+                      "error": "function not found"
                     }
                   }
                 }
               }
             }
+          },
+          "404": {
+            "description": "Resource not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "FlowNotFound": {
+                    "value": {
+                      "error": "flow not found"
+                    }
+                  }
+                }
+              }
+            }
+
           }
         }
       },
@@ -895,14 +789,24 @@
         "x-resource": "microstrate.hub.delete.node",
         "parameters": [
           {
-            "name": "subject",
-            "in": "query",
-            "description": "Subject of the node to delete",
+            "name": "collection_topic",
+            "in": "path",
+            "description": "Collection topic",
             "required": true,
             "schema": {
               "type": "string"
             },
-            "example": "ms.hub.config.node.1234567890.98765432"
+            "example": "1234567890"
+          },
+          {
+            "name": "node_topic",
+            "in": "path",
+            "description": "Node topic - hash of the names the node was created with",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "98765432"
           }
         ],
         "responses": {
@@ -914,11 +818,9 @@
                   "$ref": "#/components/schemas/SuccessResponse"
                 },
                 "example": {
-                  "status_code": 200,
-                  "body": {
                     "message": "success"
                   }
-                }
+
               }
             }
           },
@@ -932,11 +834,8 @@
                 "examples": {
                   "InvalidSubject": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
                         "error": "invalid subject"
                       }
-                    }
                   }
                 }
               }
@@ -945,7 +844,7 @@
         }
       }
     },
-    "/microstrate/hub/nodes-batch": {
+    "/hub/nodes/batch": {
       "patch": {
         "tags": [
           "Nodes"
@@ -996,40 +895,35 @@
                 "schema": {
                   "$ref": "#/components/schemas/UpdateMultiNodeResponse"
                 },
-                "example": {
-                  "status_code": 200,
-                  "body": {
-                    "body": [
-                      {
-                        "node": {
-                          "subject": "ms.hub.config.node.1234567890.98765432",
-                          "data": {
-                            "name": "UpdatedNode1",
-                            "node_type": "function",
-                            "subject": "microstrate-function.function1",
-                            "payload": {
-                              "param1": "value1"
-                            }
-                          }
-                        },
-                        "result": "succes"
-                      },
-                      {
-                        "node": {
-                          "subject": "ms.hub.config.node.1234567890.12345678",
-                          "data": {
-                            "name": "UpdatedNode2",
-                            "node_type": "map",
-                            "payload": {
-                              "param2": "value2"
-                            }
-                          }
-                        },
-                        "result": "succes"
+                "example": [
+                  {
+                    "node": {
+                      "subject": "ms.hub.config.node.1234567890.98765432",
+                      "data": {
+                        "name": "UpdatedNode1",
+                        "node_type": "function",
+                        "subject": "microstrate-function.function1",
+                        "payload": {
+                          "param1": "value1"
+                        }
                       }
-                    ]
+                    },
+                    "result": "succes"
+                  },
+                  {
+                    "node": {
+                      "subject": "ms.hub.config.node.1234567890.12345678",
+                      "data": {
+                        "name": "UpdatedNode2",
+                        "node_type": "map",
+                        "payload": {
+                          "param2": "value2"
+                        }
+                      }
+                    },
+                    "result": "succes"
                   }
-                }
+                ]
               }
             }
           },
@@ -1041,39 +935,36 @@
                   "$ref": "#/components/schemas/UpdateMultiNodeErrorResponse"
                 },
                 "example": {
-                  "status_code": 400,
-                  "body": {
-                    "body": [
-                      {
-                        "node": {
-                          "subject": "ms.hub.config.node.1234567890.98765432",
-                          "data": {
-                            "name": "UpdatedNode1",
-                            "node_type": "function",
-                            "subject": "microstrate-function.function1",
-                            "payload": {
-                              "param1": "value1"
-                            }
+                  "body": [
+                    {
+                      "node": {
+                        "subject": "ms.hub.config.node.1234567890.98765432",
+                        "data": {
+                          "name": "UpdatedNode1",
+                          "node_type": "function",
+                          "subject": "microstrate-function.function1",
+                          "payload": {
+                            "param1": "value1"
                           }
-                        },
-                        "result": "succes"
+                        }
                       },
-                      {
-                        "node": {
-                          "subject": "ms.hub.config.node.1234567890.12345678",
-                          "data": {
-                            "name": "UpdatedNode2",
-                            "node_type": "function",
-                            "subject": "microstrate-function.non-existing-function",
-                            "payload": {
-                              "param2": "value2"
-                            }
+                      "result": "succes"
+                    },
+                    {
+                      "node": {
+                        "subject": "ms.hub.config.node.1234567890.12345678",
+                        "data": {
+                          "name": "UpdatedNode2",
+                          "node_type": "function",
+                          "subject": "microstrate-function.non-existing-function",
+                          "payload": {
+                            "param2": "value2"
                           }
-                        },
-                        "result": "error: function not found"
-                      }
-                    ]
-                  },
+                        }
+                      },
+                      "result": "error: function not found"
+                    }
+                  ],
                   "error": "some nodes failed to upsert"
                 }
               }
@@ -1082,105 +973,7 @@
         }
       }
     },
-    "/microstrate/hub/workflows": {
-      "get": {
-        "tags": [
-          "Workflows"
-        ],
-        "summary": "Get a workflow",
-        "description": "Retrieves a specific workflow by subject",
-        "operationId": "getWorkflow",
-        "x-resource-type": "service",
-        "x-resource": "microstrate.hub.get.workflow",
-        "parameters": [
-          {
-            "name": "subject",
-            "in": "query",
-            "description": "Subject of the workflow to retrieve",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "example": "ms.hub.config.workflow.1234567890.98765432"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Workflow retrieved successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GetWorkflowResponse"
-                },
-                "example": {
-                  "status_code": 200,
-                  "body": {
-                    "body": {
-                      "subject": "ms.hub.config.workflow.1234567890.98765432",
-                      "name": "MyWorkflow",
-                      "description": "Workflow description",
-                      "config": {
-                        "nodes": [
-                          {
-                            "data": {
-                              "id": "start",
-                              "name": "Start",
-                              "node_type": "map",
-                              "payload": {
-                                "message": "Start of workflow"
-                              }
-                            }
-                          },
-                          {
-                            "data": {
-                              "id": "process",
-                              "name": "Process",
-                              "node_type": "function",
-                              "subject": "microstrate-function.process-function",
-                              "payload": {
-                                "input": "{start}"
-                              }
-                            }
-                          }
-                        ],
-                        "edges": [
-                          {
-                            "source": "start",
-                            "target": "process",
-                            "id": "edge1"
-                          }
-                        ],
-                        "result": "process"
-                      },
-                      "modified": 1651395678
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                },
-                "examples": {
-                  "InvalidSubject": {
-                    "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "invalid subject"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
+    "/hub/workflows": {
       "post": {
         "tags": [
           "Workflows"
@@ -1239,7 +1032,7 @@
           }
         },
         "responses": {
-          "200": {
+          "201": {
             "description": "Workflow created successfully",
             "content": {
               "application/json": {
@@ -1247,49 +1040,44 @@
                   "$ref": "#/components/schemas/CreateWorkflowResponse"
                 },
                 "example": {
-                  "status_code": 200,
-                  "body": {
-                    "body": {
-                      "subject": "ms.hub.config.workflow.draft.1234567890.98765432",
-                      "name": "MyWorkflow",
-                      "collection": "ms.hub.config.collection.workflow.1234567890",
-                      "description": "A workflow that processes data",
-                      "config": {
-                        "nodes": [
-                          {
-                            "data": {
-                              "id": "start",
-                              "name": "Start",
-                              "node_type": "map",
-                              "payload": {
-                                "message": "Start of workflow"
-                              }
-                            }
-                          },
-                          {
-                            "data": {
-                              "id": "process",
-                              "name": "Process",
-                              "node_type": "function",
-                              "subject": "microstrate-function.process-function",
-                              "payload": {
-                                "input": "{start}"
-                              }
-                            }
+                  "subject": "ms.hub.config.workflow.draft.1234567890.98765432",
+                  "name": "MyWorkflow",
+                  "collection": "ms.hub.config.collection.workflow.1234567890",
+                  "description": "A workflow that processes data",
+                  "config": {
+                    "nodes": [
+                      {
+                        "data": {
+                          "id": "start",
+                          "name": "Start",
+                          "node_type": "map",
+                          "payload": {
+                            "message": "Start of workflow"
                           }
-                        ],
-                        "edges": [
-                          {
-                            "source": "start",
-                            "target": "process",
-                            "id": "edge1"
-                          }
-                        ],
-                        "result": "process"
+                        }
                       },
-                      "modified": 1651395678
-                    }
-                  }
+                      {
+                        "data": {
+                          "id": "process",
+                          "name": "Process",
+                          "node_type": "function",
+                          "subject": "microstrate-function.process-function",
+                          "payload": {
+                            "input": "{start}"
+                          }
+                        }
+                      }
+                    ],
+                    "edges": [
+                      {
+                        "source": "start",
+                        "target": "process",
+                        "id": "edge1"
+                      }
+                    ],
+                    "result": "process"
+                  },
+                  "modified": 1651395678
                 }
               }
             }
@@ -1304,98 +1092,62 @@
                 "examples": {
                   "NameRequired": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "a name is required"
-                      }
+                      "error": "a name is required"
                     }
                   },
                   "CollectionRequired": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "a collection subject is required"
-                      }
+                      "error": "a collection subject is required"
                     }
                   },
                   "InvalidCollection": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "invalid collection subject"
-                      }
+                      "error": "invalid collection subject"
                     }
                   },
                   "InvalidNodeId": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "invalid ID. An ID must start with a letter or underscore and must contain only alphanumeric characters, hyphens and underscores"
-                      }
+                      "error": "invalid ID. An ID must start with a letter or underscore and must contain only alphanumeric characters, hyphens and underscores"
                     }
                   },
                   "ReservedWord": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "cannot use a reserved word as a node id:trigger"
-                      }
+                      "error": "cannot use a reserved word as a node id:trigger"
                     }
                   },
                   "PayloadRequired": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "payload is required:nodeId"
-                      }
+                      "error": "payload is required:nodeId"
                     }
                   },
                   "FunctionSubjectRequired": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "a subject is required for the function:nodeId"
-                      }
+                      "error": "a subject is required for the function:nodeId"
                     }
                   },
                   "FlowSubjectRequired": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "a subject is required for the flow:nodeId"
-                      }
+                      "error": "a subject is required for the flow:nodeId"
                     }
                   },
                   "DuplicateNodeId": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "duplicate node id found:nodeId"
-                      }
+                      "error": "duplicate node id found:nodeId"
                     }
                   },
                   "EdgeSourceTargetRequired": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "source and target required on edge: source->target"
-                      }
+                      "error": "source and target required on edge: source->target"
                     }
                   },
                   "SourceNodeNotFound": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "source node not found:source->target"
-                      }
+                      "error": "source node not found:source->target"
                     }
                   },
                   "TargetNodeNotFound": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "target node not found:source->target"
-                      }
+                      "error": "target node not found:source->target"
                     }
                   }
                 }
@@ -1412,18 +1164,12 @@
                 "examples": {
                   "CollectionNotFound": {
                     "value": {
-                      "status_code": 404,
-                      "body": {
-                        "error": "collection not found"
-                      }
+                      "error": "collection not found"
                     }
                   },
                   "FunctionNotFound": {
                     "value": {
-                      "status_code": 404,
-                      "body": {
-                        "error": "function not found"
-                      }
+                      "error": "function not found"
                     }
                   }
                 }
@@ -1438,9 +1184,194 @@
                   "$ref": "#/components/schemas/ErrorResponse"
                 },
                 "example": {
-                  "status_code": 409,
-                  "body": {
-                    "error": "workflow exists:ms.hub.config.workflow.draft.1234567890.98765432"
+                  "error": "workflow exists:ms.hub.config.workflow.draft.1234567890.98765432"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Workflows"
+        ],
+        "summary": "List workflows",
+        "description": "Retrieves a list of workflows, optionally filtered by collection and type",
+        "operationId": "listWorkflows",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.hub.get.list-workflows",
+        "parameters": [
+          {
+            "name": "collection_topic",
+            "in": "query",
+            "description": "Collection topic",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "1234567890"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "Filter workflows by type. If not specified, all types will be listed",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "published"
+              ]
+            },
+            "example": "draft"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Workflows retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListWorkflowsResponse"
+                },
+                "example": {
+                  "results": [
+                    {
+                      "subject": "ms.hub.config.workflow.draft.1234567890.98765432",
+                      "name": "Workflow1",
+                      "description": "First workflow",
+                      "config": {
+                        "nodes": [],
+                        "edges": []
+                      },
+                      "modified": 1651395678
+                    },
+                    {
+                      "subject": "ms.hub.config.workflow.draft.1234567890.12345678",
+                      "name": "Workflow2",
+                      "description": "Second workflow",
+                      "config": {
+                        "nodes": [],
+                        "edges": []
+                      },
+                      "modified": 1651395679
+                    }
+                  ],
+                  "results_total": 2
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "error": "invalid request"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/hub/workflows/{collection_topic}/{flow_topic}": {
+      "get": {
+        "tags": [
+          "Workflows"
+        ],
+        "summary": "Get a workflow",
+        "description": "Retrieves a specific workflow by subject",
+        "operationId": "getWorkflow",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.hub.get.workflow",
+        "parameters": [
+          {
+            "name": "collection_topic",
+            "in": "path",
+            "description": "Collection topic",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "234234234"
+          },
+          {
+            "name": "flow_topic",
+            "in": "path",
+            "description": "Flow topic - hash of the names the node was created with",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "21312322"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Workflow retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetWorkflowResponse"
+                },
+                "example": {
+                  "subject": "ms.hub.config.workflow.1234567890.98765432",
+                  "name": "MyWorkflow",
+                  "description": "Workflow description",
+                  "config": {
+                    "nodes": [
+                      {
+                        "data": {
+                          "id": "start",
+                          "name": "Start",
+                          "node_type": "map",
+                          "payload": {
+                            "message": "Start of workflow"
+                          }
+                        }
+                      },
+                      {
+                        "data": {
+                          "id": "process",
+                          "name": "Process",
+                          "node_type": "function",
+                          "subject": "microstrate-function.process-function",
+                          "payload": {
+                            "input": "{start}"
+                          }
+                        }
+                      }
+                    ],
+                    "edges": [
+                      {
+                        "source": "start",
+                        "target": "process",
+                        "id": "edge1"
+                      }
+                    ],
+                    "result": "process"
+                  },
+                  "modified": 1651395678
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "InvalidSubject": {
+                    "value": {
+                        "error": "invalid subject"
+                      }
                   }
                 }
               }
@@ -1457,6 +1388,28 @@
         "operationId": "updateWorkflow",
         "x-resource-type": "service",
         "x-resource": "microstrate.hub.patch.workflow",
+        "parameters": [
+          {
+            "name": "collection_topic",
+            "in": "path",
+            "description": "Collection topic",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "234234234"
+          },
+          {
+            "name": "flow_topic",
+            "in": "path",
+            "description": "Flow topic - hash of the names the node was created with",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "21312322"
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -1465,7 +1418,6 @@
                 "$ref": "#/components/schemas/UpdateWorkflowRequest"
               },
               "example": {
-                "subject": "ms.hub.config.workflow.draft.1234567890.98765432",
                 "name": "UpdatedWorkflow",
                 "description": "Updated workflow description",
                 "config": {
@@ -1514,48 +1466,43 @@
                   "$ref": "#/components/schemas/UpdateWorkflowResponse"
                 },
                 "example": {
-                  "status_code": 200,
-                  "body": {
-                    "body": {
-                      "subject": "ms.hub.config.workflow.draft.1234567890.98765432",
-                      "name": "UpdatedWorkflow",
-                      "description": "Updated workflow description",
-                      "config": {
-                        "nodes": [
-                          {
-                            "data": {
-                              "id": "start",
-                              "name": "Start",
-                              "node_type": "map",
-                              "payload": {
-                                "message": "Updated start of workflow"
-                              }
-                            }
-                          },
-                          {
-                            "data": {
-                              "id": "process",
-                              "name": "Process",
-                              "node_type": "function",
-                              "subject": "microstrate-function.updated-process-function",
-                              "payload": {
-                                "input": "{start}"
-                              }
-                            }
+                  "subject": "ms.hub.config.workflow.draft.1234567890.98765432",
+                  "name": "UpdatedWorkflow",
+                  "description": "Updated workflow description",
+                  "config": {
+                    "nodes": [
+                      {
+                        "data": {
+                          "id": "start",
+                          "name": "Start",
+                          "node_type": "map",
+                          "payload": {
+                            "message": "Updated start of workflow"
                           }
-                        ],
-                        "edges": [
-                          {
-                            "source": "start",
-                            "target": "process",
-                            "id": "edge1"
-                          }
-                        ],
-                        "result": "process"
+                        }
                       },
-                      "modified": 1651395678
-                    }
-                  }
+                      {
+                        "data": {
+                          "id": "process",
+                          "name": "Process",
+                          "node_type": "function",
+                          "subject": "microstrate-function.updated-process-function",
+                          "payload": {
+                            "input": "{start}"
+                          }
+                        }
+                      }
+                    ],
+                    "edges": [
+                      {
+                        "source": "start",
+                        "target": "process",
+                        "id": "edge1"
+                      }
+                    ],
+                    "result": "process"
+                  },
+                  "modified": 1651395678
                 }
               }
             }
@@ -1570,18 +1517,12 @@
                 "examples": {
                   "SubjectRequired": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "subject is required"
-                      }
+                      "error": "subject is required"
                     }
                   },
                   "InvalidDraftSubject": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "a valid draft subject is required"
-                      }
+                      "error": "a valid draft subject is required"
                     }
                   }
                 }
@@ -1596,10 +1537,7 @@
                   "$ref": "#/components/schemas/ErrorResponse"
                 },
                 "example": {
-                  "status_code": 404,
-                  "body": {
-                    "error": "workflow not found"
-                  }
+                  "error": "workflow not found"
                 }
               }
             }
@@ -1617,14 +1555,35 @@
         "x-resource": "microstrate.hub.delete.workflow",
         "parameters": [
           {
-            "name": "subject",
-            "in": "query",
-            "description": "Subject of the workflow to delete",
+            "name": "collection_topic",
+            "in": "path",
+            "description": "Collection topic",
             "required": true,
             "schema": {
               "type": "string"
             },
-            "example": "ms.hub.config.workflow.1234567890.98765432"
+            "example": "234234234"
+          },
+          {
+            "name": "flow_topic",
+            "in": "path",
+            "description": "Flow topic - hash of the names the node was created with",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "21312322"
+          },
+          {
+            "name": "keep_draft",
+            "in": "query",
+            "description": "Should the draft version of the flow be kept? If not specified, both versions will be deleted.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["true", "false"]
+            },
+            "example": "true"
           }
         ],
         "responses": {
@@ -1636,11 +1595,8 @@
                   "$ref": "#/components/schemas/SuccessResponse"
                 },
                 "example": {
-                  "status_code": 200,
-                  "body": {
                     "message": "success"
                   }
-                }
               }
             }
           },
@@ -1654,11 +1610,8 @@
                 "examples": {
                   "InvalidSubject": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
                         "error": "invalid subject"
                       }
-                    }
                   }
                 }
               }
@@ -1667,7 +1620,7 @@
         }
       }
     },
-    "/microstrate/hub/workflows-run": {
+    "/hub/workflows/run": {
       "post": {
         "tags": [
           "Workflows"
@@ -1728,42 +1681,24 @@
                 "examples": {
                   "Awaited": {
                     "value": {
-                      "status_code": 200,
-                      "body": {
-                        "body": {
-                          "trackingId": "ms.hub.run.abcdef-1234-5678-90ab-cdef12345678.ms.hub.config.workflow.1234567890.98765432",
-                          "result": {
-                            "outputData": "processed result"
-                          }
-                        }
+                      "trackingId": "ms.hub.run.abcdef-1234-5678-90ab-cdef12345678.ms.hub.config.workflow.1234567890.98765432",
+                      "result": {
+                        "outputData": "processed result"
                       }
                     }
                   },
                   "NotAwaited": {
                     "value": {
-                      "status_code": 200,
-                      "body": {
-                        "body": {
-                          "trackingId": "ms.hub.run.abcdef-1234-5678-90ab-cdef12345678.ms.hub.config.workflow.1234567890.98765432"
-                        }
-                      }
+                      "trackingId": "ms.hub.run.abcdef-1234-5678-90ab-cdef12345678.ms.hub.config.workflow.1234567890.98765432"
                     }
                   },
                   "Debounced": {
                     "value": {
-                      "status_code": 200,
-                      "body": {
-                        "body": "debounced run: key-value"
-                      }
+                      "body": "debounced run: key-value"
                     }
                   },
                   "Ordered": {
-                    "value": {
-                      "status_code": 200,
-                      "body": {
-                        "body": "ordered run: key-value"
-                      }
-                    }
+                    "value": "ordered run: key-value"
                   }
                 }
               }
@@ -1779,50 +1714,32 @@
                 "examples": {
                   "NoTrigger": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "no trigger specified"
-                      }
+                      "error": "no trigger specified"
                     }
                   },
                   "ArchivedFlow": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "cannot run an archived flow"
-                      }
+                      "error": "cannot run an archived flow"
                     }
                   },
                   "MissingConfig": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "missing configuration"
-                      }
+                      "error": "missing configuration"
                     }
                   },
                   "NodesRequired": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "nodes are required"
-                      }
+                      "error": "nodes are required"
                     }
                   },
                   "DebounceError": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "failed to resolve debounceOn"
-                      }
+                      "error": "failed to resolve debounceOn"
                     }
                   },
                   "OrderOnError": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "failed to resolve orderOn"
-                      }
+                      "error": "failed to resolve orderOn"
                     }
                   }
                 }
@@ -1832,7 +1749,7 @@
         }
       }
     },
-    "/microstrate/hub/workflows-publish": {
+    "/hub/workflows/publish": {
       "post": {
         "tags": [
           "Workflows"
@@ -1864,11 +1781,8 @@
                   "$ref": "#/components/schemas/SuccessResponse"
                 },
                 "example": {
-                  "status_code": 200,
-                  "body": {
                     "message": "success"
                   }
-                }
               }
             }
           },
@@ -1882,196 +1796,8 @@
                 "examples": {
                   "InvalidSubject": {
                     "value": {
-                      "status_code": 400,
-                      "body": {
-                        "error": "a valid draft subject is required"
-                      }
+                      "error": "a valid draft subject is required"
                     }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/microstrate/hub/nodes/list": {
-      "get": {
-        "tags": [
-          "Nodes"
-        ],
-        "summary": "List nodes",
-        "description": "Retrieves a list of nodes, optionally filtered by collection",
-        "operationId": "listNodes",
-        "x-resource-type": "service",
-        "x-resource": "microstrate.hub.get.list-nodes",
-        "parameters": [
-          {
-            "name": "collection_name_hash",
-            "in": "query",
-            "description": "Hash of the collection name to filter nodes by",
-            "required": false,
-            "schema": {
-              "type": "string"
-            },
-            "example": "1234567890"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Nodes retrieved successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ListNodesResponse"
-                },
-                "example": {
-                  "status_code": 200,
-                  "body": {
-                    "body": {
-                      "results": [
-                        {
-                          "subject": "ms.hub.config.node.1234567890.98765432",
-                          "data": {
-                            "id": "node-id-1",
-                            "name": "Node1",
-                            "description": "First node",
-                            "node_type": "function",
-                            "subject": "microstrate-function.function1",
-                            "payload": {
-                              "param1": "value1"
-                            }
-                          },
-                          "modified": 1651395678
-                        },
-                        {
-                          "subject": "ms.hub.config.node.1234567890.12345678",
-                          "data": {
-                            "id": "node-id-2",
-                            "name": "Node2",
-                            "description": "Second node",
-                            "node_type": "map",
-                            "payload": {
-                              "param2": "value2"
-                            }
-                          },
-                          "modified": 1651395679
-                        }
-                      ],
-                      "results_total": 2
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                },
-                "example": {
-                  "status_code": 400,
-                  "body": {
-                    "error": "invalid request"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/microstrate/hub/workflows/list": {
-      "get": {
-        "tags": [
-          "Workflows"
-        ],
-        "summary": "List workflows",
-        "description": "Retrieves a list of workflows, optionally filtered by collection and type",
-        "operationId": "listWorkflows",
-        "x-resource-type": "service",
-        "x-resource": "microstrate.hub.get.list-workflows",
-        "parameters": [
-          {
-            "name": "collection_name_hash",
-            "in": "query",
-            "description": "Hash of the collection name to filter workflows by",
-            "required": false,
-            "schema": {
-              "type": "string"
-            },
-            "example": "1234567890"
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "description": "Filter workflows by type",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "enum": [
-                "draft",
-                "published"
-              ]
-            },
-            "example": "draft"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Workflows retrieved successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ListWorkflowsResponse"
-                },
-                "example": {
-                  "status_code": 200,
-                  "body": {
-                    "body": {
-                      "results": [
-                        {
-                          "subject": "ms.hub.config.workflow.draft.1234567890.98765432",
-                          "name": "Workflow1",
-                          "description": "First workflow",
-                          "config": {
-                            "nodes": [],
-                            "edges": []
-                          },
-                          "modified": 1651395678
-                        },
-                        {
-                          "subject": "ms.hub.config.workflow.draft.1234567890.12345678",
-                          "name": "Workflow2",
-                          "description": "Second workflow",
-                          "config": {
-                            "nodes": [],
-                            "edges": []
-                          },
-                          "modified": 1651395679
-                        }
-                      ],
-                      "results_total": 2
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                },
-                "example": {
-                  "status_code": 400,
-                  "body": {
-                    "error": "invalid request"
                   }
                 }
               }
@@ -2111,43 +1837,29 @@
       "CreateCollectionResponse": {
         "type": "object",
         "properties": {
-          "status_code": {
-            "type": "integer",
-            "description": "HTTP status code"
+          "subject": {
+            "type": "string",
+            "description": "Subject identifier for the collection"
           },
-          "body": {
-            "type": "object",
-            "properties": {
-              "body": {
-                "type": "object",
-                "properties": {
-                  "subject": {
-                    "type": "string",
-                    "description": "Subject identifier for the collection"
-                  },
-                  "name": {
-                    "type": "string",
-                    "description": "Name of the collection"
-                  },
-                  "collection_type": {
-                    "type": "string",
-                    "description": "Type of the collection (node or workflow)"
-                  },
-                  "name_hash": {
-                    "type": "string",
-                    "description": "Hash of the collection name"
-                  },
-                  "description": {
-                    "type": "string",
-                    "description": "Description of the collection"
-                  },
-                  "modified": {
-                    "type": "integer",
-                    "description": "Timestamp of last modification"
-                  }
-                }
-              }
-            }
+          "name": {
+            "type": "string",
+            "description": "Name of the collection"
+          },
+          "collection_type": {
+            "type": "string",
+            "description": "Type of the collection (node or workflow)"
+          },
+          "topic": {
+            "type": "string",
+            "description": "Hash of the collection name"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the collection"
+          },
+          "modified": {
+            "type": "integer",
+            "description": "Timestamp of last modification"
           }
         }
       },
@@ -2240,39 +1952,25 @@
       "CreateNodeResponse": {
         "type": "object",
         "properties": {
-          "status_code": {
-            "type": "integer",
-            "description": "HTTP status code"
+          "subject": {
+            "type": "string",
+            "description": "Subject identifier for the node"
           },
-          "body": {
+          "collection": {
+            "type": "string",
+            "description": "Subject of the collection this node belongs to"
+          },
+          "data": {
             "type": "object",
-            "properties": {
-              "body": {
-                "type": "object",
-                "properties": {
-                  "subject": {
-                    "type": "string",
-                    "description": "Subject identifier for the node"
-                  },
-                  "collection": {
-                    "type": "string",
-                    "description": "Subject of the collection this node belongs to"
-                  },
-                  "data": {
-                    "type": "object",
-                    "description": "Node data"
-                  },
-                  "type": {
-                    "type": "string",
-                    "description": "Action type (created)"
-                  },
-                  "modified": {
-                    "type": "integer",
-                    "description": "Timestamp of last modification"
-                  }
-                }
-              }
-            }
+            "description": "Node data"
+          },
+          "type": {
+            "type": "string",
+            "description": "Action type (created)"
+          },
+          "modified": {
+            "type": "integer",
+            "description": "Timestamp of last modification"
           }
         }
       },
@@ -2450,42 +2148,28 @@
       "CreateWorkflowResponse": {
         "type": "object",
         "properties": {
-          "status_code": {
-            "type": "integer",
-            "description": "HTTP status code"
+          "subject": {
+            "type": "string",
+            "description": "Subject identifier for the workflow"
           },
-          "body": {
-            "type": "object",
-            "properties": {
-              "body": {
-                "type": "object",
-                "properties": {
-                  "subject": {
-                    "type": "string",
-                    "description": "Subject identifier for the workflow"
-                  },
-                  "name": {
-                    "type": "string",
-                    "description": "Name of the workflow"
-                  },
-                  "collection": {
-                    "type": "string",
-                    "description": "Subject of the collection this workflow belongs to"
-                  },
-                  "description": {
-                    "type": "string",
-                    "description": "Description of the workflow"
-                  },
-                  "config": {
-                    "$ref": "#/components/schemas/WorkflowConfig"
-                  },
-                  "modified": {
-                    "type": "integer",
-                    "description": "Timestamp of last modification"
-                  }
-                }
-              }
-            }
+          "name": {
+            "type": "string",
+            "description": "Name of the workflow"
+          },
+          "collection": {
+            "type": "string",
+            "description": "Subject of the collection this workflow belongs to"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the workflow"
+          },
+          "config": {
+            "$ref": "#/components/schemas/WorkflowConfig"
+          },
+          "modified": {
+            "type": "integer",
+            "description": "Timestamp of last modification"
           }
         }
       },
@@ -2497,7 +2181,8 @@
         "properties": {
           "subject": {
             "type": "string",
-            "description": "Subject of the workflow to run"
+            "description": "Subject of the workflow to run",
+            "example": "ms.hub.config.workflow.draft.1234567890.98765432"
           },
           "trigger": {
             "type": "object",
@@ -2523,39 +2208,25 @@
         }
       },
       "RunWorkflowResponse": {
-        "type": "object",
-        "properties": {
-          "status_code": {
-            "type": "integer",
-            "description": "HTTP status code"
-          },
-          "body": {
+        "oneOf": [
+          {
             "type": "object",
             "properties": {
-              "body": {
-                "oneOf": [
-                  {
-                    "type": "object",
-                    "properties": {
-                      "trackingId": {
-                        "type": "string",
-                        "description": "ID for tracking the workflow execution"
-                      },
-                      "result": {
-                        "type": "object",
-                        "description": "Result of the workflow execution"
-                      }
-                    }
-                  },
-                  {
-                    "type": "string",
-                    "description": "Status message for debounced or ordered executions"
-                  }
-                ]
+              "trackingId": {
+                "type": "string",
+                "description": "ID for tracking the workflow execution"
+              },
+              "result": {
+                "type": "object",
+                "description": "Result of the workflow execution"
               }
             }
+          },
+          {
+            "type": "string",
+            "description": "Status message for debounced or ordered executions"
           }
-        }
+        ]
       },
       "PublishWorkflowRequest": {
         "type": "object",
@@ -2612,30 +2283,16 @@
         }
       },
       "UpdateMultiNodeResponse": {
-        "type": "object",
-        "properties": {
-          "status_code": {
-            "type": "integer",
-            "description": "HTTP status code"
-          },
-          "body": {
-            "type": "object",
-            "properties": {
-              "body": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "node": {
-                      "$ref": "#/components/schemas/UpdateNodeRequest"
-                    },
-                    "result": {
-                      "type": "string",
-                      "description": "Result of the update operation"
-                    }
-                  }
-                }
-              }
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "node": {
+              "$ref": "#/components/schemas/UpdateNodeRequest"
+            },
+            "result": {
+              "type": "string",
+              "description": "Result of the update operation"
             }
           }
         }
@@ -2643,26 +2300,17 @@
       "UpdateMultiNodeErrorResponse": {
         "type": "object",
         "properties": {
-          "status_code": {
-            "type": "integer",
-            "description": "HTTP status code"
-          },
           "body": {
-            "type": "object",
-            "properties": {
-              "body": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "node": {
-                      "$ref": "#/components/schemas/UpdateNodeRequest"
-                    },
-                    "result": {
-                      "type": "string",
-                      "description": "Result of the update operation with error messages"
-                    }
-                  }
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "node": {
+                  "$ref": "#/components/schemas/UpdateNodeRequest"
+                },
+                "result": {
+                  "type": "string",
+                  "description": "Result of the update operation with error messages"
                 }
               }
             }
@@ -2675,14 +2323,7 @@
       },
       "UpdateWorkflowRequest": {
         "type": "object",
-        "required": [
-          "subject"
-        ],
         "properties": {
-          "subject": {
-            "type": "string",
-            "description": "Subject of the workflow to update"
-          },
           "name": {
             "type": "string",
             "description": "Updated name of the workflow"
@@ -2703,332 +2344,175 @@
       "UpdateWorkflowResponse": {
         "type": "object",
         "properties": {
-          "status_code": {
-            "type": "integer",
-            "description": "HTTP status code"
+          "subject": {
+            "type": "string",
+            "description": "Subject identifier for the workflow"
           },
-          "body": {
-            "type": "object",
-            "properties": {
-              "body": {
-                "type": "object",
-                "properties": {
-                  "subject": {
-                    "type": "string",
-                    "description": "Subject identifier for the workflow"
-                  },
-                  "name": {
-                    "type": "string",
-                    "description": "Name of the workflow"
-                  },
-                  "description": {
-                    "type": "string",
-                    "description": "Description of the workflow"
-                  },
-                  "config": {
-                    "$ref": "#/components/schemas/WorkflowConfig"
-                  },
-                  "modified": {
-                    "type": "integer",
-                    "description": "Timestamp of last modification"
-                  }
-                }
-              }
-            }
+          "name": {
+            "type": "string",
+            "description": "Name of the workflow"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the workflow"
+          },
+          "config": {
+            "$ref": "#/components/schemas/WorkflowConfig"
+          },
+          "modified": {
+            "type": "integer",
+            "description": "Timestamp of last modification"
           }
         }
       },
       "GetCollectionResponse": {
         "type": "object",
         "properties": {
-          "status_code": {
-            "type": "integer",
-            "description": "HTTP status code"
+          "name": {
+            "type": "string",
+            "description": "Name of the collection"
           },
-          "body": {
-            "type": "object",
-            "properties": {
-              "body": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "description": "Name of the collection"
-                  },
-                  "collection_type": {
-                    "type": "string",
-                    "description": "Type of the collection (node or workflow)"
-                  },
-                  "name_hash": {
-                    "type": "string",
-                    "description": "Hash of the collection name"
-                  },
-                  "description": {
-                    "type": "string",
-                    "description": "Description of the collection"
-                  },
-                  "subject": {
-                    "type": "string",
-                    "description": "Subject identifier for the collection"
-                  },
-                  "modified": {
-                    "type": "integer",
-                    "description": "Timestamp of last modification"
-                  }
-                }
-              }
-            }
+          "collection_type": {
+            "type": "string",
+            "description": "Type of the collection (node or workflow)"
+          },
+          "topic": {
+            "type": "string",
+            "description": "Hash of the collection name"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the collection"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Subject identifier for the collection"
+          },
+          "modified": {
+            "type": "integer",
+            "description": "Timestamp of last modification"
           }
         }
       },
       "GetNodeResponse": {
         "type": "object",
         "properties": {
-          "status_code": {
-            "type": "integer",
-            "description": "HTTP status code"
+          "subject": {
+            "type": "string",
+            "description": "Subject identifier for the node"
           },
-          "body": {
-            "type": "object",
-            "properties": {
-              "body": {
-                "type": "object",
-                "properties": {
-                  "subject": {
-                    "type": "string",
-                    "description": "Subject identifier for the node"
-                  },
-                  "data": {
-                    "$ref": "#/components/schemas/NodeData"
-                  },
-                  "modified": {
-                    "type": "integer",
-                    "description": "Timestamp of last modification"
-                  }
-                }
-              }
-            }
+          "data": {
+            "$ref": "#/components/schemas/NodeData"
+          },
+          "modified": {
+            "type": "integer",
+            "description": "Timestamp of last modification"
           }
         }
       },
       "GetWorkflowResponse": {
         "type": "object",
         "properties": {
-          "status_code": {
-            "type": "integer",
-            "description": "HTTP status code"
+          "subject": {
+            "type": "string",
+            "description": "Subject identifier for the workflow"
           },
-          "body": {
-            "type": "object",
-            "properties": {
-              "body": {
-                "type": "object",
-                "properties": {
-                  "subject": {
-                    "type": "string",
-                    "description": "Subject identifier for the workflow"
-                  },
-                  "name": {
-                    "type": "string",
-                    "description": "Name of the workflow"
-                  },
-                  "description": {
-                    "type": "string",
-                    "description": "Description of the workflow"
-                  },
-                  "config": {
-                    "$ref": "#/components/schemas/WorkflowConfig"
-                  },
-                  "modified": {
-                    "type": "integer",
-                    "description": "Timestamp of last modification"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "ListCollectionsResponse": {
-        "type": "object",
-        "properties": {
-          "status_code": {
-            "type": "integer",
-            "description": "HTTP status code"
+          "name": {
+            "type": "string",
+            "description": "Name of the workflow"
           },
-          "body": {
-            "type": "object",
-            "properties": {
-              "body": {
-                "type": "object",
-                "properties": {
-                  "results": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "name": {
-                          "type": "string",
-                          "description": "Name of the collection"
-                        },
-                        "collection_type": {
-                          "type": "string",
-                          "description": "Type of the collection (node or workflow)"
-                        },
-                        "name_hash": {
-                          "type": "string",
-                          "description": "Hash of the collection name"
-                        },
-                        "description": {
-                          "type": "string",
-                          "description": "Description of the collection"
-                        },
-                        "subject": {
-                          "type": "string",
-                          "description": "Subject identifier for the collection"
-                        },
-                        "modified": {
-                          "type": "integer",
-                          "description": "Timestamp of last modification"
-                        }
-                      }
-                    }
-                  },
-                  "results_total": {
-                    "type": "integer",
-                    "description": "Total number of results"
-                  }
-                }
-              }
-            }
+          "description": {
+            "type": "string",
+            "description": "Description of the workflow"
+          },
+          "config": {
+            "$ref": "#/components/schemas/WorkflowConfig"
+          },
+          "modified": {
+            "type": "integer",
+            "description": "Timestamp of last modification"
           }
         }
       },
       "ListNodesResponse": {
         "type": "object",
         "properties": {
-          "status_code": {
-            "type": "integer",
-            "description": "HTTP status code"
-          },
-          "body": {
-            "type": "object",
-            "properties": {
-              "body": {
-                "type": "object",
-                "properties": {
-                  "results": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "subject": {
-                          "type": "string",
-                          "description": "Subject identifier for the node"
-                        },
-                        "data": {
-                          "$ref": "#/components/schemas/NodeData"
-                        },
-                        "modified": {
-                          "type": "integer",
-                          "description": "Timestamp of last modification"
-                        }
-                      }
-                    }
-                  },
-                  "results_total": {
-                    "type": "integer",
-                    "description": "Total number of results"
-                  }
+          "results": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "subject": {
+                  "type": "string",
+                  "description": "Subject identifier for the node"
+                },
+                "data": {
+                  "$ref": "#/components/schemas/NodeData"
+                },
+                "modified": {
+                  "type": "integer",
+                  "description": "Timestamp of last modification"
                 }
               }
             }
+          },
+          "results_total": {
+            "type": "integer",
+            "description": "Total number of results"
           }
         }
       },
       "ListWorkflowsResponse": {
         "type": "object",
         "properties": {
-          "status_code": {
-            "type": "integer",
-            "description": "HTTP status code"
-          },
-          "body": {
-            "type": "object",
-            "properties": {
-              "body": {
-                "type": "object",
-                "properties": {
-                  "results": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "subject": {
-                          "type": "string",
-                          "description": "Subject identifier for the workflow"
-                        },
-                        "name": {
-                          "type": "string",
-                          "description": "Name of the workflow"
-                        },
-                        "description": {
-                          "type": "string",
-                          "description": "Description of the workflow"
-                        },
-                        "config": {
-                          "$ref": "#/components/schemas/WorkflowConfig"
-                        },
-                        "modified": {
-                          "type": "integer",
-                          "description": "Timestamp of last modification"
-                        }
-                      }
-                    }
-                  },
-                  "results_total": {
-                    "type": "integer",
-                    "description": "Total number of results"
-                  }
+          "results": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "subject": {
+                  "type": "string",
+                  "description": "Subject identifier for the workflow"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Name of the workflow"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "Description of the workflow"
+                },
+                "config": {
+                  "$ref": "#/components/schemas/WorkflowConfig"
+                },
+                "modified": {
+                  "type": "integer",
+                  "description": "Timestamp of last modification"
                 }
               }
             }
+          },
+          "results_total": {
+            "type": "integer",
+            "description": "Total number of results"
           }
         }
       },
       "SuccessResponse": {
         "type": "object",
         "properties": {
-          "status_code": {
-            "type": "integer",
-            "description": "HTTP status code"
-          },
-          "body": {
-            "type": "object",
-            "properties": {
-              "message": {
-                "type": "string",
-                "description": "Success message"
-              }
-            }
+          "message": {
+            "type": "string",
+            "description": "Success message"
           }
         }
       },
       "ErrorResponse": {
         "type": "object",
         "properties": {
-          "status_code": {
-            "type": "integer",
-            "description": "HTTP status code"
-          },
-          "body": {
-            "type": "object",
-            "properties": {
-              "error": {
-                "type": "string",
-                "description": "Error message"
-              }
-            }
+          "error": {
+            "type": "string",
+            "description": "Error message"
           }
         }
       }
