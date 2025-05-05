@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "Microstrate Gateway",
-    "description": "API service for managing compute resources including collections, functions, and containers",
+    "title": "Microstrate Compute Service",
+    "description": "API service for managing compute resources including collections, functions, containers, and their assets",
     "contact": {
       "email": "support@microstrate.io"
     },
@@ -31,8 +31,8 @@
       "description": "Operations related to containers"
     },
     {
-      "name": "Assets",
-      "description": "Operations related to compute assets"
+      "name": "Compute Assets",
+      "description": "Operations related to compute assets for both functions and containers"
     },
     {
       "name": "Runtimes",
@@ -44,7 +44,7 @@
       "bearerAuth": []
     },
     {
-      "apiKeyAuth": []
+      "api_key_auth": []
     }
   ],
   "paths": {
@@ -53,7 +53,7 @@
         "tags": [
           "Collections"
         ],
-        "summary": "Get all compute collections",
+        "summary": "Get all collections",
         "description": "Retrieves a list of all compute collections",
         "operationId": "getCollections",
         "x-resource-type": "service",
@@ -80,14 +80,6 @@
                           "description": "Total number of collections"
                         }
                       }
-                    },
-                    "metadata": {
-                      "type": "object",
-                      "properties": {
-                        "subject": {
-                          "type": "string"
-                        }
-                      }
                     }
                   }
                 },
@@ -104,16 +96,13 @@
                       }
                     ],
                     "results_total": 1
-                  },
-                  "metadata": {
-                    "subject": "ms.compute.*.collection"
                   }
                 }
               }
             }
           },
           "500": {
-            "$ref": "#/components/responses/InternalServerError"
+            "$ref": "#/components/responses/internal_server_error"
           }
         }
       },
@@ -121,7 +110,7 @@
         "tags": [
           "Collections"
         ],
-        "summary": "Create a compute collection",
+        "summary": "Create a collection",
         "description": "Creates a new compute collection",
         "operationId": "createCollection",
         "x-resource-type": "service",
@@ -152,14 +141,6 @@
                   "properties": {
                     "body": {
                       "$ref": "#/components/schemas/Collection"
-                    },
-                    "metadata": {
-                      "type": "object",
-                      "properties": {
-                        "subject": {
-                          "type": "string"
-                        }
-                      }
                     }
                   }
                 },
@@ -171,35 +152,39 @@
                     "subject": "compute.123456789.collection",
                     "type": "created",
                     "modified": 1714378974
-                  },
-                  "metadata": {
-                    "subject": "compute.123456789.collection"
                   }
                 }
               }
             }
           },
           "400": {
-            "$ref": "#/components/responses/BadRequest"
+            "$ref": "#/components/responses/bad_request"
           },
           "500": {
-            "$ref": "#/components/responses/InternalServerError"
+            "$ref": "#/components/responses/internal_server_error"
           }
         }
       }
     },
-    "/compute/collections/{subject}": {
+    "/compute/collections/{collection_topic}": {
       "parameters": [
         {
-          "$ref": "#/components/parameters/CollectionSubject"
+          "name": "collection_topic",
+          "in": "path",
+          "description": "Collection topic identifier",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "123456789"
         }
       ],
       "get": {
         "tags": [
           "Collections"
         ],
-        "summary": "Get a compute collection",
-        "description": "Retrieves a specific collection by subject",
+        "summary": "Get a collection",
+        "description": "Retrieves a specific collection by topic",
         "operationId": "getCollection",
         "x-resource-type": "service",
         "x-resource": "ms.compute.get.collection",
@@ -213,14 +198,6 @@
                   "properties": {
                     "body": {
                       "$ref": "#/components/schemas/Collection"
-                    },
-                    "metadata": {
-                      "type": "object",
-                      "properties": {
-                        "subject": {
-                          "type": "string"
-                        }
-                      }
                     }
                   }
                 },
@@ -232,19 +209,16 @@
                     "subject": "compute.123456789.collection",
                     "type": "created",
                     "modified": 1714378974
-                  },
-                  "metadata": {
-                    "subject": "compute.123456789.collection"
                   }
                 }
               }
             }
           },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "$ref": "#/components/responses/not_found"
           },
           "500": {
-            "$ref": "#/components/responses/InternalServerError"
+            "$ref": "#/components/responses/internal_server_error"
           }
         }
       },
@@ -252,7 +226,7 @@
         "tags": [
           "Collections"
         ],
-        "summary": "Update a compute collection",
+        "summary": "Update a collection",
         "description": "Updates an existing collection",
         "operationId": "updateCollection",
         "x-resource-type": "service",
@@ -287,13 +261,114 @@
             }
           },
           "400": {
-            "$ref": "#/components/responses/BadRequest"
+            "$ref": "#/components/responses/bad_request"
           },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "$ref": "#/components/responses/not_found"
           },
           "500": {
-            "$ref": "#/components/responses/InternalServerError"
+            "$ref": "#/components/responses/internal_server_error"
+          }
+        }
+      }
+    },
+    "/compute/collections/{collection_topic}/resources": {
+      "parameters": [
+        {
+          "name": "collection_topic",
+          "in": "path",
+          "description": "Collection topic identifier",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "123456789"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Collections"
+        ],
+        "summary": "Get all resources in a collection",
+        "description": "Retrieves all functions and containers belonging to a specific collection",
+        "operationId": "getCollectionResources",
+        "x-resource-type": "service",
+        "x-resource": "ms.compute.get.collection-resources",
+        "parameters": [
+          {
+            "name": "resource_type",
+            "in": "query",
+            "description": "Filter by resource type",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "function",
+                "container",
+                "all"
+              ]
+            },
+            "example": "all"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of resources in the collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/ComputeResource"
+                          }
+                        },
+                        "results_total": {
+                          "type": "integer",
+                          "description": "Total number of resources"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "body": {
+                    "results": [
+                      {
+                        "description": "A serverless function",
+                        "name": "my-function",
+                        "runtime": "nodejs",
+                        "resource_type": "function",
+                        "subject": "compute.my-namespace.function.123456789",
+                        "type": "created",
+                        "modified": 1714378974
+                      },
+                      {
+                        "description": "A container for my application",
+                        "name": "my-container",
+                        "runtime": "docker",
+                        "resource_type": "container",
+                        "subject": "compute.my-namespace.container.123456789",
+                        "type": "created",
+                        "modified": 1714378974
+                      }
+                    ],
+                    "results_total": 2
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/not_found"
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error"
           }
         }
       }
@@ -322,20 +397,12 @@
                         "results": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/Compute"
+                            "$ref": "#/components/schemas/Function"
                           }
                         },
                         "results_total": {
                           "type": "integer",
                           "description": "Total number of functions"
-                        }
-                      }
-                    },
-                    "metadata": {
-                      "type": "object",
-                      "properties": {
-                        "subject": {
-                          "type": "string"
                         }
                       }
                     }
@@ -354,16 +421,13 @@
                       }
                     ],
                     "results_total": 1
-                  },
-                  "metadata": {
-                    "subject": "ms.compute.*.function.>"
                   }
                 }
               }
             }
           },
           "500": {
-            "$ref": "#/components/responses/InternalServerError"
+            "$ref": "#/components/responses/internal_server_error"
           }
         }
       },
@@ -388,7 +452,7 @@
                 "name": "my-function",
                 "description": "A serverless function",
                 "compute_asset": {
-                  "namespace": "my-namespace",
+                  "collection_topic": "my-namespace",
                   "handler": "index.handler",
                   "assets": [
                     {
@@ -436,15 +500,7 @@
                   "type": "object",
                   "properties": {
                     "body": {
-                      "$ref": "#/components/schemas/Compute"
-                    },
-                    "metadata": {
-                      "type": "object",
-                      "properties": {
-                        "subject": {
-                          "type": "string"
-                        }
-                      }
+                      "$ref": "#/components/schemas/Function"
                     }
                   }
                 },
@@ -457,7 +513,7 @@
                     "type": "created",
                     "modified": 1714378974,
                     "compute_asset": {
-                      "namespace": "my-namespace",
+                      "collection_topic": "my-namespace",
                       "service": "123456789",
                       "runtime": "nodejs",
                       "handler": "index.handler",
@@ -486,106 +542,41 @@
                         }
                       }
                     }
-                  },
-                  "metadata": {
-                    "subject": "compute.my-namespace.function.123456789"
                   }
                 }
               }
             }
           },
           "400": {
-            "$ref": "#/components/responses/BadRequest"
+            "$ref": "#/components/responses/bad_request"
           },
           "500": {
-            "$ref": "#/components/responses/InternalServerError"
+            "$ref": "#/components/responses/internal_server_error"
           }
         }
       }
     },
-    "/compute/collections/{subject}/functions": {
+    "/compute/functions/{collection_topic}/{function_topic}": {
       "parameters": [
         {
-          "$ref": "#/components/parameters/CollectionSubject"
-        }
-      ],
-      "get": {
-        "tags": [
-          "Functions",
-          "Collections"
-        ],
-        "summary": "Get functions by collection",
-        "description": "Retrieves all functions belonging to a specific collection",
-        "operationId": "getFunctionsByCollection",
-        "x-resource-type": "service",
-        "x-resource": "ms.compute.get.functions-by-collection",
-        "responses": {
-          "200": {
-            "description": "A list of functions in the collection",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "body": {
-                      "type": "object",
-                      "properties": {
-                        "results": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/Compute"
-                          }
-                        },
-                        "results_total": {
-                          "type": "integer",
-                          "description": "Total number of functions"
-                        }
-                      }
-                    },
-                    "metadata": {
-                      "type": "object",
-                      "properties": {
-                        "subject": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                },
-                "example": {
-                  "body": {
-                    "results": [
-                      {
-                        "description": "A serverless function",
-                        "name": "my-function",
-                        "runtime": "nodejs",
-                        "subject": "compute.my-namespace.function.123456789",
-                        "type": "created",
-                        "modified": 1714378974
-                      }
-                    ],
-                    "results_total": 1
-                  },
-                  "metadata": {
-                    "subject": "ms.compute.123456789.function.>"
-                  }
-                }
-              }
-            }
+          "name": "collection_topic",
+          "in": "path",
+          "description": "Collection topic identifier",
+          "required": true,
+          "schema": {
+            "type": "string"
           },
-          "404": {
-            "$ref": "#/components/responses/NotFound"
-          },
-          "500": {
-            "$ref": "#/components/responses/InternalServerError"
-          }
-        }
-      }
-    },
-    "/compute/functions/{subject}": {
-      "parameters": [
+          "example": "my-namespace"
+        },
         {
-          "$ref": "#/components/parameters/ComputeSubject"
+          "name": "function_topic",
+          "in": "path",
+          "description": "Function topic identifier",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "123456789"
         }
       ],
       "get": {
@@ -593,7 +584,7 @@
           "Functions"
         ],
         "summary": "Get a function",
-        "description": "Retrieves a specific function by subject",
+        "description": "Retrieves a specific function by collection topic and function topic",
         "operationId": "getFunction",
         "x-resource-type": "service",
         "x-resource": "ms.compute.get.compute-item",
@@ -606,15 +597,7 @@
                   "type": "object",
                   "properties": {
                     "body": {
-                      "$ref": "#/components/schemas/ComputeWithAsset"
-                    },
-                    "metadata": {
-                      "type": "object",
-                      "properties": {
-                        "subject": {
-                          "type": "string"
-                        }
-                      }
+                      "$ref": "#/components/schemas/FunctionWithAsset"
                     }
                   }
                 },
@@ -627,7 +610,7 @@
                     "type": "created",
                     "modified": 1714378974,
                     "compute_asset": {
-                      "namespace": "my-namespace",
+                      "collection_topic": "my-namespace",
                       "service": "123456789",
                       "runtime": "nodejs",
                       "handler": "index.handler",
@@ -642,19 +625,16 @@
                       "timeout": 30000,
                       "read_only_fs": true
                     }
-                  },
-                  "metadata": {
-                    "subject": "compute.my-namespace.function.123456789"
                   }
                 }
               }
             }
           },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "$ref": "#/components/responses/not_found"
           },
           "500": {
-            "$ref": "#/components/responses/InternalServerError"
+            "$ref": "#/components/responses/internal_server_error"
           }
         }
       },
@@ -700,21 +680,38 @@
             }
           },
           "400": {
-            "$ref": "#/components/responses/BadRequest"
+            "$ref": "#/components/responses/bad_request"
           },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "$ref": "#/components/responses/not_found"
           },
           "500": {
-            "$ref": "#/components/responses/InternalServerError"
+            "$ref": "#/components/responses/internal_server_error"
           }
         }
       }
     },
-    "/compute/functions/{subject}/invoke": {
+    "/compute/functions/{collection_topic}/{function_topic}/invoke": {
       "parameters": [
         {
-          "$ref": "#/components/parameters/ComputeSubject"
+          "name": "collection_topic",
+          "in": "path",
+          "description": "Collection topic identifier",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "my-namespace"
+        },
+        {
+          "name": "function_topic",
+          "in": "path",
+          "description": "Function topic identifier",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "123456789"
         }
       ],
       "post": {
@@ -762,13 +759,259 @@
             }
           },
           "400": {
-            "$ref": "#/components/responses/BadRequest"
+            "$ref": "#/components/responses/bad_request"
           },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "$ref": "#/components/responses/not_found"
           },
           "500": {
-            "$ref": "#/components/responses/InternalServerError"
+            "$ref": "#/components/responses/internal_server_error"
+          }
+        }
+      }
+    },
+    "/compute/compute-assets/{collection_topic}/{resource_topic}": {
+      "parameters": [
+        {
+          "name": "collection_topic",
+          "in": "path",
+          "description": "Collection topic identifier",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "my-namespace"
+        },
+        {
+          "name": "resource_topic",
+          "in": "path",
+          "description": "Resource topic identifier (function or container)",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "123456789"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Compute Assets"
+        ],
+        "summary": "Get compute assets",
+        "description": "Retrieves all assets for a specific compute resource (function or container)",
+        "operationId": "getComputeAssets",
+        "x-resource-type": "service",
+        "x-resource": "ms.compute.get.compute-assets",
+        "responses": {
+          "200": {
+            "description": "Compute resource assets",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "body": {
+                      "$ref": "#/components/schemas/ComputeAsset"
+                    }
+                  }
+                },
+                "example": {
+                  "body": {
+                    "assets": [
+                      {
+                        "asset_name": "index.js",
+                        "asset_type": "file",
+                        "asset_value": "Y29uc29sZS5sb2coIkhlbGxvLCBXb3JsZCEiKTsK",
+                        "link": false
+                      }
+                    ],
+                    "collection_topic": "my-namespace",
+                    "service": "123456789",
+                    "runtime": "nodejs",
+                    "handler": "index.handler",
+                    "timeout": 30000,
+                    "read_only_fs": true
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/not_found"
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Compute Assets"
+        ],
+        "summary": "Update compute assets",
+        "description": "Updates assets for a specific compute resource (function or container)",
+        "operationId": "updateComputeAssets",
+        "x-resource-type": "service",
+        "x-resource": "ms.compute.patch.compute-assets",
+        "requestBody": {
+          "description": "Compute asset properties to update",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ComputeAssetUpdate"
+              },
+              "example": {
+                "handler": "index.newHandler",
+                "assets": [
+                  {
+                    "asset_name": "index.js",
+                    "asset_type": "file",
+                    "asset_value": "Y29uc29sZS5sb2coIkhlbGxvLCBVcGRhdGVkIFdvcmxkISIpOwo=",
+                    "link": false
+                  }
+                ],
+                "timeout": 60000,
+                "env_vars": [
+                  "ENV=production"
+                ],
+                "read_only_fs": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Compute assets patched successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "message": "success"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/bad_request"
+          },
+          "404": {
+            "$ref": "#/components/responses/not_found"
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error"
+          }
+        }
+      }
+    },
+    "/compute/compute-assets/{collection_topic}/{resource_topic}/history": {
+      "parameters": [
+        {
+          "name": "collection_topic",
+          "in": "path",
+          "description": "Collection topic identifier",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "my-namespace"
+        },
+        {
+          "name": "resource_topic",
+          "in": "path",
+          "description": "Resource topic identifier (function or container)",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "123456789"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Compute Assets"
+        ],
+        "summary": "Get compute asset history",
+        "description": "Retrieves the history of a compute resource's assets (function or container)",
+        "operationId": "getComputeAssetHistory",
+        "x-resource-type": "service",
+        "x-resource": "ms.compute.get.compute-asset-history",
+        "responses": {
+          "200": {
+            "description": "Compute asset history",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/ComputeAsset"
+                          }
+                        },
+                        "results_total": {
+                          "type": "integer",
+                          "description": "Total number of history entries"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "body": {
+                    "results": [
+                      {
+                        "collection_topic": "my-namespace",
+                        "service": "123456789",
+                        "runtime": "nodejs",
+                        "handler": "index.handler",
+                        "assets": [
+                          {
+                            "asset_name": "index.js",
+                            "asset_type": "file",
+                            "asset_value": "Y29uc29sZS5sb2coIkhlbGxvLCBXb3JsZCEiKTsK",
+                            "link": false
+                          }
+                        ],
+                        "timeout": 30000,
+                        "read_only_fs": true,
+                        "modified": 1714378974
+                      },
+                      {
+                        "collection_topic": "my-namespace",
+                        "service": "123456789",
+                        "runtime": "nodejs",
+                        "handler": "index.newHandler",
+                        "assets": [
+                          {
+                            "asset_name": "index.js",
+                            "asset_type": "file",
+                            "asset_value": "Y29uc29sZS5sb2coIkhlbGxvLCBVcGRhdGVkIFdvcmxkISIpOwo=",
+                            "link": false
+                          }
+                        ],
+                        "timeout": 60000,
+                        "read_only_fs": true,
+                        "modified": 1714380000
+                      }
+                    ],
+                    "results_total": 2
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/not_found"
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error"
           }
         }
       }
@@ -797,20 +1040,12 @@
                         "results": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/Compute"
+                            "$ref": "#/components/schemas/Container"
                           }
                         },
                         "results_total": {
                           "type": "integer",
                           "description": "Total number of containers"
-                        }
-                      }
-                    },
-                    "metadata": {
-                      "type": "object",
-                      "properties": {
-                        "subject": {
-                          "type": "string"
                         }
                       }
                     }
@@ -829,16 +1064,13 @@
                       }
                     ],
                     "results_total": 1
-                  },
-                  "metadata": {
-                    "subject": "ms.compute.*.container.>"
                   }
                 }
               }
             }
           },
           "500": {
-            "$ref": "#/components/responses/InternalServerError"
+            "$ref": "#/components/responses/internal_server_error"
           }
         }
       },
@@ -863,7 +1095,7 @@
                 "name": "my-container",
                 "description": "A container for my application",
                 "compute_asset": {
-                  "namespace": "my-namespace",
+                  "collection_topic": "my-namespace",
                   "runtime": "docker",
                   "assets": [
                     {
@@ -892,15 +1124,7 @@
                   "type": "object",
                   "properties": {
                     "body": {
-                      "$ref": "#/components/schemas/Compute"
-                    },
-                    "metadata": {
-                      "type": "object",
-                      "properties": {
-                        "subject": {
-                          "type": "string"
-                        }
-                      }
+                      "$ref": "#/components/schemas/Container"
                     }
                   }
                 },
@@ -913,7 +1137,7 @@
                     "type": "created",
                     "modified": 1714378974,
                     "compute_asset": {
-                      "namespace": "my-namespace",
+                      "collection_topic": "my-namespace",
                       "service": "123456789",
                       "runtime": "docker",
                       "read_only_fs": false
@@ -922,106 +1146,41 @@
                       "ttl": 604800000,
                       "store_payload": true
                     }
-                  },
-                  "metadata": {
-                    "subject": "compute.my-namespace.container.123456789"
                   }
                 }
               }
             }
           },
           "400": {
-            "$ref": "#/components/responses/BadRequest"
+            "$ref": "#/components/responses/bad_request"
           },
           "500": {
-            "$ref": "#/components/responses/InternalServerError"
+            "$ref": "#/components/responses/internal_server_error"
           }
         }
       }
     },
-    "/compute/collections/{subject}/containers": {
+    "/compute/containers/{collection_topic}/{container_topic}": {
       "parameters": [
         {
-          "$ref": "#/components/parameters/CollectionSubject"
-        }
-      ],
-      "get": {
-        "tags": [
-          "Containers",
-          "Collections"
-        ],
-        "summary": "Get containers by collection",
-        "description": "Retrieves all containers belonging to a specific collection",
-        "operationId": "getContainersByCollection",
-        "x-resource-type": "service",
-        "x-resource": "ms.compute.get.containers-by-collection",
-        "responses": {
-          "200": {
-            "description": "A list of containers in the collection",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "body": {
-                      "type": "object",
-                      "properties": {
-                        "results": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/Compute"
-                          }
-                        },
-                        "results_total": {
-                          "type": "integer",
-                          "description": "Total number of containers"
-                        }
-                      }
-                    },
-                    "metadata": {
-                      "type": "object",
-                      "properties": {
-                        "subject": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                },
-                "example": {
-                  "body": {
-                    "results": [
-                      {
-                        "description": "A container for my application",
-                        "name": "my-container",
-                        "runtime": "docker",
-                        "subject": "compute.my-namespace.container.123456789",
-                        "type": "created",
-                        "modified": 1714378974
-                      }
-                    ],
-                    "results_total": 1
-                  },
-                  "metadata": {
-                    "subject": "ms.compute.123456789.container.>"
-                  }
-                }
-              }
-            }
+          "name": "collection_topic",
+          "in": "path",
+          "description": "Collection topic identifier",
+          "required": true,
+          "schema": {
+            "type": "string"
           },
-          "404": {
-            "$ref": "#/components/responses/NotFound"
-          },
-          "500": {
-            "$ref": "#/components/responses/InternalServerError"
-          }
-        }
-      }
-    },
-    "/compute/containers/{subject}": {
-      "parameters": [
+          "example": "my-namespace"
+        },
         {
-          "$ref": "#/components/parameters/ComputeSubject"
+          "name": "container_topic",
+          "in": "path",
+          "description": "Container topic identifier",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "123456789"
         }
       ],
       "get": {
@@ -1029,7 +1188,7 @@
           "Containers"
         ],
         "summary": "Get a container",
-        "description": "Retrieves a specific container by subject",
+        "description": "Retrieves a specific container by collection topic and container topic",
         "operationId": "getContainer",
         "x-resource-type": "service",
         "x-resource": "microstrate.compute.get.compute-item",
@@ -1042,15 +1201,7 @@
                   "type": "object",
                   "properties": {
                     "body": {
-                      "$ref": "#/components/schemas/ComputeWithAsset"
-                    },
-                    "metadata": {
-                      "type": "object",
-                      "properties": {
-                        "subject": {
-                          "type": "string"
-                        }
-                      }
+                      "$ref": "#/components/schemas/ContainerWithAsset"
                     }
                   }
                 },
@@ -1063,7 +1214,7 @@
                     "type": "created",
                     "modified": 1714378974,
                     "compute_asset": {
-                      "namespace": "my-namespace",
+                      "collection_topic": "my-namespace",
                       "service": "123456789",
                       "runtime": "docker",
                       "assets": [
@@ -1076,19 +1227,16 @@
                       ],
                       "read_only_fs": false
                     }
-                  },
-                  "metadata": {
-                    "subject": "compute.my-namespace.container.123456789"
                   }
                 }
               }
             }
           },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "$ref": "#/components/responses/not_found"
           },
           "500": {
-            "$ref": "#/components/responses/InternalServerError"
+            "$ref": "#/components/responses/internal_server_error"
           }
         }
       },
@@ -1134,187 +1282,13 @@
             }
           },
           "400": {
-            "$ref": "#/components/responses/BadRequest"
+            "$ref": "#/components/responses/bad_request"
           },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "$ref": "#/components/responses/not_found"
           },
           "500": {
-            "$ref": "#/components/responses/InternalServerError"
-          }
-        }
-      }
-    },
-    "/compute/assets/{subject}/history": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/ComputeSubject"
-        }
-      ],
-      "get": {
-        "tags": [
-          "Assets"
-        ],
-        "summary": "Get compute asset history",
-        "description": "Retrieves the history of a compute asset",
-        "operationId": "getComputeAssetHistory",
-        "x-resource-type": "service",
-        "x-resource": "ms.compute.get.compute-asset-history",
-        "responses": {
-          "200": {
-            "description": "Asset history",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "body": {
-                      "type": "object",
-                      "properties": {
-                        "results": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/ComputeAsset"
-                          }
-                        },
-                        "results_total": {
-                          "type": "integer",
-                          "description": "Total number of history entries"
-                        }
-                      }
-                    },
-                    "metadata": {
-                      "type": "object",
-                      "properties": {
-                        "subject": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                },
-                "example": {
-                  "body": {
-                    "results": [
-                      {
-                        "namespace": "my-namespace",
-                        "service": "123456789",
-                        "runtime": "nodejs",
-                        "handler": "index.handler",
-                        "assets": [
-                          {
-                            "asset_name": "index.js",
-                            "asset_type": "file",
-                            "asset_value": "Y29uc29sZS5sb2coIkhlbGxvLCBXb3JsZCEiKTsK",
-                            "link": false
-                          }
-                        ],
-                        "timeout": 30000,
-                        "read_only_fs": true,
-                        "modified": 1714378974
-                      },
-                      {
-                        "namespace": "my-namespace",
-                        "service": "123456789",
-                        "runtime": "nodejs",
-                        "handler": "index.newHandler",
-                        "assets": [
-                          {
-                            "asset_name": "index.js",
-                            "asset_type": "file",
-                            "asset_value": "Y29uc29sZS5sb2coIkhlbGxvLCBVcGRhdGVkIFdvcmxkISIpOwo=",
-                            "link": false
-                          }
-                        ],
-                        "timeout": 60000,
-                        "read_only_fs": true,
-                        "modified": 1714380000
-                      }
-                    ],
-                    "results_total": 2
-                  },
-                  "metadata": {
-                    "subject": "ms.compute.my-namespace.function.123456789.asset.>"
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFound"
-          },
-          "500": {
-            "$ref": "#/components/responses/InternalServerError"
-          }
-        }
-      }
-    },
-    "/compute/assets/{subject}": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/ComputeSubject"
-        }
-      ],
-      "patch": {
-        "tags": [
-          "Assets"
-        ],
-        "summary": "Update a compute asset",
-        "description": "Updates a compute asset",
-        "operationId": "updateComputeAsset",
-        "x-resource-type": "service",
-        "x-resource": "ms.compute.patch.compute-asset",
-        "requestBody": {
-          "description": "Asset properties to update",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ComputeAssetUpdate"
-              },
-              "example": {
-                "namespace": "my-namespace",
-                "service": "123456789",
-                "handler": "index.newHandler",
-                "assets": [
-                  {
-                    "asset_name": "index.js",
-                    "asset_type": "file",
-                    "asset_value": "Y29uc29sZS5sb2coIkhlbGxvLCBVcGRhdGVkIFdvcmxkISIpOwo=",
-                    "link": false
-                  }
-                ],
-                "timeout": 60000,
-                "env_vars": [
-                  "ENV=production"
-                ],
-                "read_only_fs": true
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Asset patched successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SuccessResponse"
-                },
-                "example": {
-                  "message": "success"
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/BadRequest"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFound"
-          },
-          "500": {
-            "$ref": "#/components/responses/InternalServerError"
+            "$ref": "#/components/responses/internal_server_error"
           }
         }
       }
@@ -1352,14 +1326,6 @@
                           "description": "Total number of runtimes"
                         }
                       }
-                    },
-                    "metadata": {
-                      "type": "object",
-                      "properties": {
-                        "subject": {
-                          "type": "string"
-                        }
-                      }
                     }
                   }
                 },
@@ -1373,7 +1339,7 @@
                       },
                       {
                         "name": "python",
-                        "version": 3.1,
+                        "version": "3.10",
                         "description": "Python Runtime"
                       },
                       {
@@ -1383,16 +1349,13 @@
                       }
                     ],
                     "results_total": 3
-                  },
-                  "metadata": {
-                    "subject": "ms.compute.runtimes"
                   }
                 }
               }
             }
           },
           "500": {
-            "$ref": "#/components/responses/InternalServerError"
+            "$ref": "#/components/responses/internal_server_error"
           }
         }
       }
@@ -1405,32 +1368,10 @@
         "scheme": "bearer",
         "bearerFormat": "JWT"
       },
-      "apiKeyAuth": {
+      "api_key_auth": {
         "type": "apiKey",
         "in": "header",
         "name": "X-Api-Key"
-      }
-    },
-    "parameters": {
-      "CollectionSubject": {
-        "name": "subject",
-        "in": "path",
-        "description": "Collection subject identifier",
-        "required": true,
-        "schema": {
-          "type": "string"
-        },
-        "example": "ms.compute.123456789.collection"
-      },
-      "ComputeSubject": {
-        "name": "subject",
-        "in": "path",
-        "description": "Compute item subject identifier",
-        "required": true,
-        "schema": {
-          "type": "string"
-        },
-        "example": "ms.compute.my-namespace.function.123456789"
       }
     },
     "schemas": {
@@ -1521,12 +1462,124 @@
           }
         }
       },
+      "ComputeResource": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "Resource description"
+          },
+          "name": {
+            "type": "string",
+            "description": "Resource name"
+          },
+          "runtime": {
+            "type": "string",
+            "description": "Runtime environment"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Subject identifier"
+          },
+          "type": {
+            "type": "string",
+            "description": "Message type (created, patched, etc.)"
+          },
+          "resource_type": {
+            "type": "string",
+            "enum": [
+              "function",
+              "container"
+            ],
+            "description": "Type of compute resource"
+          },
+          "modified": {
+            "type": "integer",
+            "description": "Last modification timestamp"
+          }
+        }
+      },
+      "Function": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "Function description"
+          },
+          "name": {
+            "type": "string",
+            "description": "Function name"
+          },
+          "runtime": {
+            "type": "string",
+            "description": "Runtime environment"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Subject identifier"
+          },
+          "type": {
+            "type": "string",
+            "description": "Message type (created, patched, etc.)"
+          },
+          "modified": {
+            "type": "integer",
+            "description": "Last modification timestamp"
+          },
+          "monitor_config": {
+            "$ref": "#/components/schemas/MonitorConfig"
+          },
+          "schema": {
+            "$ref": "#/components/schemas/Schema"
+          },
+          "size": {
+            "type": "string",
+            "description": "Size configuration for function resources"
+          }
+        }
+      },
+      "Container": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "Container description"
+          },
+          "name": {
+            "type": "string",
+            "description": "Container name"
+          },
+          "runtime": {
+            "type": "string",
+            "description": "Runtime environment"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Subject identifier"
+          },
+          "type": {
+            "type": "string",
+            "description": "Message type (created, patched, etc.)"
+          },
+          "modified": {
+            "type": "integer",
+            "description": "Last modification timestamp"
+          },
+          "monitor_config": {
+            "$ref": "#/components/schemas/MonitorConfig"
+          },
+          "size": {
+            "type": "string",
+            "description": "Size configuration for container resources"
+          }
+        }
+      },
       "ComputeAsset": {
         "type": "object",
         "properties": {
-          "namespace": {
+          "collection_topic": {
             "type": "string",
-            "description": "Asset namespace"
+            "description": "Collection topic identifier"
           },
           "service": {
             "type": "string",
@@ -1538,7 +1591,7 @@
           },
           "handler": {
             "type": "string",
-            "description": "Function handler"
+            "description": "Function handler (only applicable for functions)"
           },
           "assets": {
             "type": "array",
@@ -1549,7 +1602,7 @@
           },
           "timeout": {
             "type": "integer",
-            "description": "Timeout in milliseconds"
+            "description": "Timeout in milliseconds (only applicable for functions)"
           },
           "env_vars": {
             "type": "array",
@@ -1570,26 +1623,14 @@
       },
       "ComputeAssetUpdate": {
         "type": "object",
-        "required": [
-          "namespace",
-          "service"
-        ],
         "properties": {
-          "namespace": {
+          "handler": {
             "type": "string",
-            "description": "Asset namespace"
-          },
-          "service": {
-            "type": "string",
-            "description": "Service identifier"
+            "description": "Function handler (only applicable for functions)"
           },
           "runtime": {
             "type": "string",
             "description": "Runtime environment"
-          },
-          "handler": {
-            "type": "string",
-            "description": "Function handler"
           },
           "assets": {
             "type": "array",
@@ -1600,7 +1641,7 @@
           },
           "timeout": {
             "type": "integer",
-            "description": "Timeout in milliseconds"
+            "description": "Timeout in milliseconds (only applicable for functions)"
           },
           "env_vars": {
             "type": "array",
@@ -1620,11 +1661,11 @@
         "properties": {
           "ttl": {
             "type": "integer",
-            "description": "Monitoring data TTL"
+            "description": "Monitoring data TTL in milliseconds"
           },
           "store_payload": {
             "type": "boolean",
-            "description": "Payload storage flag"
+            "description": "Whether to store invocation payloads"
           }
         }
       },
@@ -1633,53 +1674,33 @@
         "properties": {
           "input": {
             "type": "object",
-            "description": "Input schema"
+            "description": "Input schema definition"
           },
           "output": {
             "type": "object",
-            "description": "Output schema"
+            "description": "Output schema definition"
           }
         }
       },
-      "Compute": {
-        "type": "object",
-        "properties": {
-          "description": {
-            "type": "string",
-            "description": "Compute item description"
-          },
-          "name": {
-            "type": "string",
-            "description": "Compute item name"
-          },
-          "runtime": {
-            "type": "string",
-            "description": "Runtime environment"
-          },
-          "subject": {
-            "type": "string",
-            "description": "Subject identifier"
-          },
-          "type": {
-            "type": "string",
-            "description": "Message type"
-          },
-          "modified": {
-            "type": "integer",
-            "description": "Last modification timestamp"
-          },
-          "monitor_config": {
-            "$ref": "#/components/schemas/MonitorConfig"
-          },
-          "schema": {
-            "$ref": "#/components/schemas/Schema"
-          }
-        }
-      },
-      "ComputeWithAsset": {
+      "FunctionWithAsset": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/Compute"
+            "$ref": "#/components/schemas/Function"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "compute_asset": {
+                "$ref": "#/components/schemas/ComputeAsset"
+              }
+            }
+          }
+        ]
+      },
+      "ContainerWithAsset": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Container"
           },
           {
             "type": "object",
@@ -1710,12 +1731,12 @@
           "compute_asset": {
             "type": "object",
             "required": [
-              "namespace"
+              "collection_topic"
             ],
             "properties": {
-              "namespace": {
+              "collection_topic": {
                 "type": "string",
-                "description": "Function namespace"
+                "description": "Collection topic identifier used as namespace"
               },
               "handler": {
                 "type": "string",
@@ -1735,11 +1756,18 @@
               },
               "timeout": {
                 "type": "integer",
-                "description": "Function timeout"
+                "description": "Function timeout in milliseconds"
               },
               "read_only_fs": {
                 "type": "boolean",
                 "description": "Read-only filesystem flag"
+              },
+              "env_vars": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Environment variables"
               }
             }
           },
@@ -1751,7 +1779,7 @@
           },
           "size": {
             "type": "string",
-            "description": "Size configuration"
+            "description": "Size configuration for function resources"
           }
         }
       },
@@ -1774,7 +1802,7 @@
           },
           "size": {
             "type": "string",
-            "description": "Size configuration"
+            "description": "Size configuration for function resources"
           }
         }
       },
@@ -1787,7 +1815,7 @@
         "properties": {
           "payload": {
             "type": "string",
-            "description": "Function invocation payload"
+            "description": "Function invocation payload (JSON string)"
           },
           "invocation_type": {
             "type": "string",
@@ -1795,7 +1823,7 @@
               "Async",
               "RequestResponse"
             ],
-            "description": "Invocation type"
+            "description": "Type of invocation (Async for background processing, RequestResponse for immediate response)"
           }
         }
       },
@@ -1818,13 +1846,13 @@
           "compute_asset": {
             "type": "object",
             "required": [
-              "namespace",
+              "collection_topic",
               "runtime"
             ],
             "properties": {
-              "namespace": {
+              "collection_topic": {
                 "type": "string",
-                "description": "Container namespace"
+                "description": "Collection topic identifier used as namespace"
               },
               "runtime": {
                 "type": "string",
@@ -1840,6 +1868,13 @@
               "read_only_fs": {
                 "type": "boolean",
                 "description": "Read-only filesystem flag"
+              },
+              "env_vars": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Environment variables"
               }
             }
           },
@@ -1848,7 +1883,7 @@
           },
           "size": {
             "type": "string",
-            "description": "Size configuration"
+            "description": "Size configuration for container resources"
           }
         }
       },
@@ -1868,26 +1903,22 @@
           },
           "size": {
             "type": "string",
-            "description": "Size configuration"
+            "description": "Size configuration for container resources"
+          }
+        }
+      },
+      "SuccessResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Success message"
           }
         }
       }
     },
     "responses": {
-      "SuccessResponse": {
-        "description": "Success",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/SuccessResponse"
-            },
-            "example": {
-              "message": "success"
-            }
-          }
-        }
-      },
-      "BadRequest": {
+      "bad_request": {
         "description": "Bad request",
         "content": {
           "application/json": {
@@ -1906,7 +1937,7 @@
           }
         }
       },
-      "NotFound": {
+      "not_found": {
         "description": "Resource not found",
         "content": {
           "application/json": {
@@ -1925,7 +1956,7 @@
           }
         }
       },
-      "InternalServerError": {
+      "internal_server_error": {
         "description": "Internal server error",
         "content": {
           "application/json": {
