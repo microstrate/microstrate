@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "Microstrate Gateway",
-    "description": "The Compute Service is an API service that provides functionality for managing compute resources, \nincluding collections, functions, and containers through a RESTful API.\n",
+    "description": "API service for managing compute resources including collections, functions, and containers",
     "contact": {
       "email": "support@microstrate.io"
     },
@@ -53,11 +53,11 @@
         "tags": [
           "Collections"
         ],
-        "summary": "Get all collections",
+        "summary": "Get all compute collections",
         "description": "Retrieves a list of all compute collections",
         "operationId": "getCollections",
         "x-resource-type": "service",
-        "x-resource": "microstrate.compute.get.collections",
+        "x-resource": "ms.compute.get.collections",
         "responses": {
           "200": {
             "description": "A list of collections",
@@ -66,30 +66,48 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "results": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/Collection"
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Collection"
+                          }
+                        },
+                        "results_total": {
+                          "type": "integer",
+                          "description": "Total number of collections"
+                        }
                       }
                     },
-                    "results_total": {
-                      "type": "integer",
-                      "description": "Total number of collections"
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "subject": {
+                          "type": "string"
+                        }
+                      }
                     }
                   }
                 },
                 "example": {
-                  "results": [
-                    {
-                      "collection_type": "function",
-                      "description": "A collection for my compute resources",
-                      "name": "my-collection",
-                      "subject": "compute.123456789.collection",
-                      "type": "created",
-                      "modified": 1714378974
-                    }
-                  ],
-                  "results_total": 1
+                  "body": {
+                    "results": [
+                      {
+                        "collection_type": "function",
+                        "description": "A collection for my compute resources",
+                        "name": "my-collection",
+                        "subject": "ms.compute.123456789.collection",
+                        "type": "created",
+                        "modified": 1714378974
+                      }
+                    ],
+                    "results_total": 1
+                  },
+                  "metadata": {
+                    "subject": "ms.compute.*.collection"
+                  }
                 }
               }
             }
@@ -103,11 +121,11 @@
         "tags": [
           "Collections"
         ],
-        "summary": "Create a collection",
+        "summary": "Create a compute collection",
         "description": "Creates a new compute collection",
         "operationId": "createCollection",
         "x-resource-type": "service",
-        "x-resource": "microstrate.compute.post.collection",
+        "x-resource": "ms.compute.post.collection",
         "requestBody": {
           "description": "Collection to create",
           "required": true,
@@ -130,15 +148,33 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Collection"
+                  "type": "object",
+                  "properties": {
+                    "body": {
+                      "$ref": "#/components/schemas/Collection"
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "subject": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
                 },
                 "example": {
-                  "collection_type": "function",
-                  "description": "A collection for my compute resources",
-                  "name": "my-collection",
-                  "subject": "compute.123456789.collection",
-                  "type": "created",
-                  "modified": 1714378974
+                  "body": {
+                    "collection_type": "function",
+                    "description": "A collection for my compute resources",
+                    "name": "my-collection",
+                    "subject": "compute.123456789.collection",
+                    "type": "created",
+                    "modified": 1714378974
+                  },
+                  "metadata": {
+                    "subject": "compute.123456789.collection"
+                  }
                 }
               }
             }
@@ -162,26 +198,44 @@
         "tags": [
           "Collections"
         ],
-        "summary": "Get a collection",
+        "summary": "Get a compute collection",
         "description": "Retrieves a specific collection by subject",
         "operationId": "getCollection",
         "x-resource-type": "service",
-        "x-resource": "microstrate.compute.get.collection",
+        "x-resource": "ms.compute.get.collection",
         "responses": {
           "200": {
             "description": "Collection details",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Collection"
+                  "type": "object",
+                  "properties": {
+                    "body": {
+                      "$ref": "#/components/schemas/Collection"
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "subject": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
                 },
                 "example": {
-                  "collection_type": "function",
-                  "description": "A collection for my compute resources",
-                  "name": "my-collection",
-                  "subject": "compute.123456789.collection",
-                  "type": "created",
-                  "modified": 1714378974
+                  "body": {
+                    "collection_type": "function",
+                    "description": "A collection for my compute resources",
+                    "name": "my-collection",
+                    "subject": "compute.123456789.collection",
+                    "type": "created",
+                    "modified": 1714378974
+                  },
+                  "metadata": {
+                    "subject": "compute.123456789.collection"
+                  }
                 }
               }
             }
@@ -198,7 +252,7 @@
         "tags": [
           "Collections"
         ],
-        "summary": "Update a collection",
+        "summary": "Update a compute collection",
         "description": "Updates an existing collection",
         "operationId": "updateCollection",
         "x-resource-type": "service",
@@ -224,15 +278,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Collection"
+                  "$ref": "#/components/schemas/SuccessResponse"
                 },
                 "example": {
-                  "collection_type": "function",
-                  "description": "Updated collection description",
-                  "name": "my-collection",
-                  "subject": "compute.123456789.collection",
-                  "type": "patched",
-                  "modified": 1714380000
+                  "message": "success"
                 }
               }
             }
@@ -258,7 +307,7 @@
         "description": "Retrieves a list of all functions",
         "operationId": "getFunctions",
         "x-resource-type": "service",
-        "x-resource": "microstrate.compute.get.functions",
+        "x-resource": "ms.compute.get.functions",
         "responses": {
           "200": {
             "description": "A list of functions",
@@ -267,30 +316,48 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "results": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/Compute"
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Compute"
+                          }
+                        },
+                        "results_total": {
+                          "type": "integer",
+                          "description": "Total number of functions"
+                        }
                       }
                     },
-                    "results_total": {
-                      "type": "integer",
-                      "description": "Total number of functions"
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "subject": {
+                          "type": "string"
+                        }
+                      }
                     }
                   }
                 },
                 "example": {
-                  "results": [
-                    {
-                      "description": "A serverless function",
-                      "name": "my-function",
-                      "runtime": "nodejs",
-                      "subject": "compute.my-namespace.function.123456789",
-                      "type": "created",
-                      "modified": 1714378974
-                    }
-                  ],
-                  "results_total": 1
+                  "body": {
+                    "results": [
+                      {
+                        "description": "A serverless function",
+                        "name": "my-function",
+                        "runtime": "nodejs",
+                        "subject": "ms.compute.my-namespace.function.123456789",
+                        "type": "created",
+                        "modified": 1714378974
+                      }
+                    ],
+                    "results_total": 1
+                  },
+                  "metadata": {
+                    "subject": "ms.compute.*.function.>"
+                  }
                 }
               }
             }
@@ -308,7 +375,7 @@
         "description": "Creates a new serverless function",
         "operationId": "createFunction",
         "x-resource-type": "service",
-        "x-resource": "microstrate.compute.post.function",
+        "x-resource": "ms.compute.post.function",
         "requestBody": {
           "description": "Function to create",
           "required": true,
@@ -366,44 +433,62 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Compute"
-                },
-                "example": {
-                  "description": "A serverless function",
-                  "name": "my-function",
-                  "runtime": "nodejs",
-                  "subject": "compute.my-namespace.function.123456789",
-                  "type": "created",
-                  "modified": 1714378974,
-                  "compute_asset": {
-                    "namespace": "my-namespace",
-                    "service": 123456789,
-                    "runtime": "nodejs",
-                    "handler": "index.handler",
-                    "timeout": 30000,
-                    "read_only_fs": true
-                  },
-                  "monitor_config": {
-                    "ttl": 604800000,
-                    "store_payload": true
-                  },
-                  "schema": {
-                    "input": {
-                      "type": "object",
-                      "properties": {
-                        "name": {
-                          "type": "string"
-                        }
-                      }
+                  "type": "object",
+                  "properties": {
+                    "body": {
+                      "$ref": "#/components/schemas/Compute"
                     },
-                    "output": {
+                    "metadata": {
                       "type": "object",
                       "properties": {
-                        "message": {
+                        "subject": {
                           "type": "string"
                         }
                       }
                     }
+                  }
+                },
+                "example": {
+                  "body": {
+                    "description": "A serverless function",
+                    "name": "my-function",
+                    "runtime": "nodejs",
+                    "subject": "ms.compute.my-namespace.function.123456789",
+                    "type": "created",
+                    "modified": 1714378974,
+                    "compute_asset": {
+                      "namespace": "my-namespace",
+                      "service": "123456789",
+                      "runtime": "nodejs",
+                      "handler": "index.handler",
+                      "timeout": 30000,
+                      "read_only_fs": true
+                    },
+                    "monitor_config": {
+                      "ttl": 604800000,
+                      "store_payload": true
+                    },
+                    "schema": {
+                      "input": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "output": {
+                        "type": "object",
+                        "properties": {
+                          "message": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "metadata": {
+                    "subject": "compute.my-namespace.function.123456789"
                   }
                 }
               }
@@ -433,7 +518,7 @@
         "description": "Retrieves all functions belonging to a specific collection",
         "operationId": "getFunctionsByCollection",
         "x-resource-type": "service",
-        "x-resource": "microstrate.compute.get.functions-by-collection",
+        "x-resource": "ms.compute.get.functions-by-collection",
         "responses": {
           "200": {
             "description": "A list of functions in the collection",
@@ -442,30 +527,48 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "results": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/Compute"
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Compute"
+                          }
+                        },
+                        "results_total": {
+                          "type": "integer",
+                          "description": "Total number of functions"
+                        }
                       }
                     },
-                    "results_total": {
-                      "type": "integer",
-                      "description": "Total number of functions"
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "subject": {
+                          "type": "string"
+                        }
+                      }
                     }
                   }
                 },
                 "example": {
-                  "results": [
-                    {
-                      "description": "A serverless function",
-                      "name": "my-function",
-                      "runtime": "nodejs",
-                      "subject": "compute.my-namespace.function.123456789",
-                      "type": "created",
-                      "modified": 1714378974
-                    }
-                  ],
-                  "results_total": 1
+                  "body": {
+                    "results": [
+                      {
+                        "description": "A serverless function",
+                        "name": "my-function",
+                        "runtime": "nodejs",
+                        "subject": "compute.my-namespace.function.123456789",
+                        "type": "created",
+                        "modified": 1714378974
+                      }
+                    ],
+                    "results_total": 1
+                  },
+                  "metadata": {
+                    "subject": "ms.compute.123456789.function.>"
+                  }
                 }
               }
             }
@@ -493,37 +596,55 @@
         "description": "Retrieves a specific function by subject",
         "operationId": "getFunction",
         "x-resource-type": "service",
-        "x-resource": "microstrate.compute.get.function",
+        "x-resource": "ms.compute.get.compute-item",
         "responses": {
           "200": {
             "description": "Function details",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ComputeWithAsset"
+                  "type": "object",
+                  "properties": {
+                    "body": {
+                      "$ref": "#/components/schemas/ComputeWithAsset"
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "subject": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
                 },
                 "example": {
-                  "description": "A serverless function",
-                  "name": "my-function",
-                  "runtime": "nodejs",
-                  "subject": "compute.my-namespace.function.123456789",
-                  "type": "created",
-                  "modified": 1714378974,
-                  "compute_asset": {
-                    "namespace": "my-namespace",
-                    "service": 123456789,
+                  "body": {
+                    "description": "A serverless function",
+                    "name": "my-function",
                     "runtime": "nodejs",
-                    "handler": "index.handler",
-                    "assets": [
-                      {
-                        "asset_name": "index.js",
-                        "asset_type": "file",
-                        "asset_value": "Y29uc29sZS5sb2coIkhlbGxvLCBXb3JsZCEiKTsK",
-                        "link": false
-                      }
-                    ],
-                    "timeout": 30000,
-                    "read_only_fs": true
+                    "subject": "compute.my-namespace.function.123456789",
+                    "type": "created",
+                    "modified": 1714378974,
+                    "compute_asset": {
+                      "namespace": "my-namespace",
+                      "service": "123456789",
+                      "runtime": "nodejs",
+                      "handler": "index.handler",
+                      "assets": [
+                        {
+                          "asset_name": "index.js",
+                          "asset_type": "file",
+                          "asset_value": "Y29uc29sZS5sb2coIkhlbGxvLCBXb3JsZCEiKTsK",
+                          "link": false
+                        }
+                      ],
+                      "timeout": 30000,
+                      "read_only_fs": true
+                    }
+                  },
+                  "metadata": {
+                    "subject": "compute.my-namespace.function.123456789"
                   }
                 }
               }
@@ -570,19 +691,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Compute"
+                  "$ref": "#/components/schemas/SuccessResponse"
                 },
                 "example": {
-                  "description": "Updated function description",
-                  "name": "my-function",
-                  "runtime": "nodejs",
-                  "subject": "compute.my-namespace.function.123456789",
-                  "type": "patched",
-                  "modified": 1714380000,
-                  "monitor_config": {
-                    "ttl": 1209600000,
-                    "store_payload": false
-                  }
+                  "message": "success"
                 }
               }
             }
@@ -613,7 +725,7 @@
         "description": "Invokes a function with the provided payload",
         "operationId": "invokeFunction",
         "x-resource-type": "service",
-        "x-resource": "microstrate.compute.invoke.function",
+        "x-resource": "ms.compute.invoke.function",
         "requestBody": {
           "description": "Function invocation parameters",
           "required": true,
@@ -636,10 +748,15 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "description": "The response from the function"
+                  "properties": {
+                    "body": {
+                      "type": "string",
+                      "description": "Response from function invocation"
+                    }
+                  }
                 },
                 "example": {
-                  "message": "Hello, World!"
+                  "body": "{\"message\":\"Hello, World!\"}"
                 }
               }
             }
@@ -665,7 +782,7 @@
         "description": "Retrieves a list of all containers",
         "operationId": "getContainers",
         "x-resource-type": "service",
-        "x-resource": "microstrate.compute.get.containers",
+        "x-resource": "ms.compute.get.containers",
         "responses": {
           "200": {
             "description": "A list of containers",
@@ -674,30 +791,48 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "results": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/Compute"
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Compute"
+                          }
+                        },
+                        "results_total": {
+                          "type": "integer",
+                          "description": "Total number of containers"
+                        }
                       }
                     },
-                    "results_total": {
-                      "type": "integer",
-                      "description": "Total number of containers"
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "subject": {
+                          "type": "string"
+                        }
+                      }
                     }
                   }
                 },
                 "example": {
-                  "results": [
-                    {
-                      "description": "A container for my application",
-                      "name": "my-container",
-                      "runtime": "docker",
-                      "subject": "compute.my-namespace.container.123456789",
-                      "type": "created",
-                      "modified": 1714378974
-                    }
-                  ],
-                  "results_total": 1
+                  "body": {
+                    "results": [
+                      {
+                        "description": "A container for my application",
+                        "name": "my-container",
+                        "runtime": "docker",
+                        "subject": "ms.compute.my-namespace.container.123456789",
+                        "type": "created",
+                        "modified": 1714378974
+                      }
+                    ],
+                    "results_total": 1
+                  },
+                  "metadata": {
+                    "subject": "ms.compute.*.container.>"
+                  }
                 }
               }
             }
@@ -715,7 +850,7 @@
         "description": "Creates a new container",
         "operationId": "createContainer",
         "x-resource-type": "service",
-        "x-resource": "microstrate.compute.post.container",
+        "x-resource": "ms.compute.post.container",
         "requestBody": {
           "description": "Container to create",
           "required": true,
@@ -754,24 +889,42 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Compute"
+                  "type": "object",
+                  "properties": {
+                    "body": {
+                      "$ref": "#/components/schemas/Compute"
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "subject": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
                 },
                 "example": {
-                  "description": "A container for my application",
-                  "name": "my-container",
-                  "runtime": "docker",
-                  "subject": "compute.my-namespace.container.123456789",
-                  "type": "created",
-                  "modified": 1714378974,
-                  "compute_asset": {
-                    "namespace": "my-namespace",
-                    "service": 123456789,
+                  "body": {
+                    "description": "A container for my application",
+                    "name": "my-container",
                     "runtime": "docker",
-                    "read_only_fs": false
+                    "subject": "compute.my-namespace.container.123456789",
+                    "type": "created",
+                    "modified": 1714378974,
+                    "compute_asset": {
+                      "namespace": "my-namespace",
+                      "service": "123456789",
+                      "runtime": "docker",
+                      "read_only_fs": false
+                    },
+                    "monitor_config": {
+                      "ttl": 604800000,
+                      "store_payload": true
+                    }
                   },
-                  "monitor_config": {
-                    "ttl": 604800000,
-                    "store_payload": true
+                  "metadata": {
+                    "subject": "compute.my-namespace.container.123456789"
                   }
                 }
               }
@@ -801,7 +954,7 @@
         "description": "Retrieves all containers belonging to a specific collection",
         "operationId": "getContainersByCollection",
         "x-resource-type": "service",
-        "x-resource": "microstrate.compute.get.containers-by-colleciton",
+        "x-resource": "ms.compute.get.containers-by-collection",
         "responses": {
           "200": {
             "description": "A list of containers in the collection",
@@ -810,30 +963,48 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "results": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/Compute"
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Compute"
+                          }
+                        },
+                        "results_total": {
+                          "type": "integer",
+                          "description": "Total number of containers"
+                        }
                       }
                     },
-                    "results_total": {
-                      "type": "integer",
-                      "description": "Total number of containers"
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "subject": {
+                          "type": "string"
+                        }
+                      }
                     }
                   }
                 },
                 "example": {
-                  "results": [
-                    {
-                      "description": "A container for my application",
-                      "name": "my-container",
-                      "runtime": "docker",
-                      "subject": "compute.my-namespace.container.123456789",
-                      "type": "created",
-                      "modified": 1714378974
-                    }
-                  ],
-                  "results_total": 1
+                  "body": {
+                    "results": [
+                      {
+                        "description": "A container for my application",
+                        "name": "my-container",
+                        "runtime": "docker",
+                        "subject": "compute.my-namespace.container.123456789",
+                        "type": "created",
+                        "modified": 1714378974
+                      }
+                    ],
+                    "results_total": 1
+                  },
+                  "metadata": {
+                    "subject": "ms.compute.123456789.container.>"
+                  }
                 }
               }
             }
@@ -861,35 +1032,53 @@
         "description": "Retrieves a specific container by subject",
         "operationId": "getContainer",
         "x-resource-type": "service",
-        "x-resource": "microstrate.compute.get.container",
+        "x-resource": "microstrate.compute.get.compute-item",
         "responses": {
           "200": {
             "description": "Container details",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ComputeWithAsset"
+                  "type": "object",
+                  "properties": {
+                    "body": {
+                      "$ref": "#/components/schemas/ComputeWithAsset"
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "subject": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
                 },
                 "example": {
-                  "description": "A container for my application",
-                  "name": "my-container",
-                  "runtime": "docker",
-                  "subject": "compute.my-namespace.container.123456789",
-                  "type": "created",
-                  "modified": 1714378974,
-                  "compute_asset": {
-                    "namespace": "my-namespace",
-                    "service": 123456789,
+                  "body": {
+                    "description": "A container for my application",
+                    "name": "my-container",
                     "runtime": "docker",
-                    "assets": [
-                      {
-                        "asset_name": "Dockerfile",
-                        "asset_type": "file",
-                        "asset_value": "RlJPTSBub2RlOjE4CldPUktESVIgL2FwcApDT1BZIC4gLgpSVU4gbnBtIGluc3RhbGwKRVhQT1NFIDgwODAKQ01EIFsibm9kZSIsICJpbmRleC5qcyJdCg==",
-                        "link": false
-                      }
-                    ],
-                    "read_only_fs": false
+                    "subject": "compute.my-namespace.container.123456789",
+                    "type": "created",
+                    "modified": 1714378974,
+                    "compute_asset": {
+                      "namespace": "my-namespace",
+                      "service": "123456789",
+                      "runtime": "docker",
+                      "assets": [
+                        {
+                          "asset_name": "Dockerfile",
+                          "asset_type": "file",
+                          "asset_value": "RlJPTSBub2RlOjE4CldPUktESVIgL2FwcApDT1BZIC4gLgpSVU4gbnBtIGluc3RhbGwKRVhQT1NFIDgwODAKQ01EIFsibm9kZSIsICJpbmRleC5qcyJdCg==",
+                          "link": false
+                        }
+                      ],
+                      "read_only_fs": false
+                    }
+                  },
+                  "metadata": {
+                    "subject": "compute.my-namespace.container.123456789"
                   }
                 }
               }
@@ -936,19 +1125,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Compute"
+                  "$ref": "#/components/schemas/SuccessResponse"
                 },
                 "example": {
-                  "description": "Updated container description",
-                  "name": "my-container",
-                  "runtime": "docker",
-                  "subject": "compute.my-namespace.container.123456789",
-                  "type": "patched",
-                  "modified": 1714380000,
-                  "monitor_config": {
-                    "ttl": 1209600000,
-                    "store_payload": false
-                  }
+                  "message": "success"
                 }
               }
             }
@@ -979,7 +1159,7 @@
         "description": "Retrieves the history of a compute asset",
         "operationId": "getComputeAssetHistory",
         "x-resource-type": "service",
-        "x-resource": "microstrate.compute.get.compute-asset-history",
+        "x-resource": "ms.compute.get.compute-asset-history",
         "responses": {
           "200": {
             "description": "Asset history",
@@ -988,56 +1168,74 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "results": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/ComputeAsset"
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/ComputeAsset"
+                          }
+                        },
+                        "results_total": {
+                          "type": "integer",
+                          "description": "Total number of history entries"
+                        }
                       }
                     },
-                    "results_total": {
-                      "type": "integer",
-                      "description": "Total number of history entries"
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "subject": {
+                          "type": "string"
+                        }
+                      }
                     }
                   }
                 },
                 "example": {
-                  "results": [
-                    {
-                      "namespace": "my-namespace",
-                      "service": 123456789,
-                      "runtime": "nodejs",
-                      "handler": "index.handler",
-                      "assets": [
-                        {
-                          "asset_name": "index.js",
-                          "asset_type": "file",
-                          "asset_value": "Y29uc29sZS5sb2coIkhlbGxvLCBXb3JsZCEiKTsK",
-                          "link": false
-                        }
-                      ],
-                      "timeout": 30000,
-                      "read_only_fs": true,
-                      "modified": 1714378974
-                    },
-                    {
-                      "namespace": "my-namespace",
-                      "service": 123456789,
-                      "runtime": "nodejs",
-                      "handler": "index.newHandler",
-                      "assets": [
-                        {
-                          "asset_name": "index.js",
-                          "asset_type": "file",
-                          "asset_value": "Y29uc29sZS5sb2coIkhlbGxvLCBVcGRhdGVkIFdvcmxkISIpOwo=",
-                          "link": false
-                        }
-                      ],
-                      "timeout": 60000,
-                      "read_only_fs": true,
-                      "modified": 1714380000
-                    }
-                  ],
-                  "results_total": 2
+                  "body": {
+                    "results": [
+                      {
+                        "namespace": "my-namespace",
+                        "service": "123456789",
+                        "runtime": "nodejs",
+                        "handler": "index.handler",
+                        "assets": [
+                          {
+                            "asset_name": "index.js",
+                            "asset_type": "file",
+                            "asset_value": "Y29uc29sZS5sb2coIkhlbGxvLCBXb3JsZCEiKTsK",
+                            "link": false
+                          }
+                        ],
+                        "timeout": 30000,
+                        "read_only_fs": true,
+                        "modified": 1714378974
+                      },
+                      {
+                        "namespace": "my-namespace",
+                        "service": "123456789",
+                        "runtime": "nodejs",
+                        "handler": "index.newHandler",
+                        "assets": [
+                          {
+                            "asset_name": "index.js",
+                            "asset_type": "file",
+                            "asset_value": "Y29uc29sZS5sb2coIkhlbGxvLCBVcGRhdGVkIFdvcmxkISIpOwo=",
+                            "link": false
+                          }
+                        ],
+                        "timeout": 60000,
+                        "read_only_fs": true,
+                        "modified": 1714380000
+                      }
+                    ],
+                    "results_total": 2
+                  },
+                  "metadata": {
+                    "subject": "ms.compute.my-namespace.function.123456789.asset.>"
+                  }
                 }
               }
             }
@@ -1065,7 +1263,7 @@
         "description": "Updates a compute asset",
         "operationId": "updateComputeAsset",
         "x-resource-type": "service",
-        "x-resource": "microstrate.compute.patch.compute-asset",
+        "x-resource": "ms.compute.patch.compute-asset",
         "requestBody": {
           "description": "Asset properties to update",
           "required": true,
@@ -1076,7 +1274,7 @@
               },
               "example": {
                 "namespace": "my-namespace",
-                "service": 123456789,
+                "service": "123456789",
                 "handler": "index.newHandler",
                 "assets": [
                   {
@@ -1101,16 +1299,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "Success message"
-                    }
-                  }
+                  "$ref": "#/components/schemas/SuccessResponse"
                 },
                 "example": {
-                  "message": "Asset patched successfully"
+                  "message": "success"
                 }
               }
             }
@@ -1136,7 +1328,7 @@
         "description": "Retrieves all available runtimes",
         "operationId": "getRuntimes",
         "x-resource-type": "service",
-        "x-resource": "microstrate.compute.get.runtimes",
+        "x-resource": "ms.compute.get.runtimes",
         "responses": {
           "200": {
             "description": "A list of available runtimes",
@@ -1145,38 +1337,56 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "results": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "additionalProperties": true
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "additionalProperties": true
+                          }
+                        },
+                        "results_total": {
+                          "type": "integer",
+                          "description": "Total number of runtimes"
+                        }
                       }
                     },
-                    "results_total": {
-                      "type": "integer",
-                      "description": "Total number of runtimes"
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "subject": {
+                          "type": "string"
+                        }
+                      }
                     }
                   }
                 },
                 "example": {
-                  "results": [
-                    {
-                      "name": "nodejs",
-                      "version": "18.x",
-                      "description": "Node.js Runtime"
-                    },
-                    {
-                      "name": "python",
-                      "version": 3.1,
-                      "description": "Python Runtime"
-                    },
-                    {
-                      "name": "docker",
-                      "version": "latest",
-                      "description": "Docker Runtime"
-                    }
-                  ],
-                  "results_total": 3
+                  "body": {
+                    "results": [
+                      {
+                        "name": "nodejs",
+                        "version": "18.x",
+                        "description": "Node.js Runtime"
+                      },
+                      {
+                        "name": "python",
+                        "version": 3.1,
+                        "description": "Python Runtime"
+                      },
+                      {
+                        "name": "docker",
+                        "version": "latest",
+                        "description": "Docker Runtime"
+                      }
+                    ],
+                    "results_total": 3
+                  },
+                  "metadata": {
+                    "subject": "ms.compute.runtimes"
+                  }
                 }
               }
             }
@@ -1205,22 +1415,22 @@
       "CollectionSubject": {
         "name": "subject",
         "in": "path",
-        "description": "The subject identifier of the collection",
+        "description": "Collection subject identifier",
         "required": true,
         "schema": {
           "type": "string"
         },
-        "example": "compute.123456789.collection"
+        "example": "ms.compute.123456789.collection"
       },
       "ComputeSubject": {
         "name": "subject",
         "in": "path",
-        "description": "The subject identifier of the compute item (function or container)",
+        "description": "Compute item subject identifier",
         "required": true,
         "schema": {
           "type": "string"
         },
-        "example": "compute.my-namespace.function.123456789"
+        "example": "ms.compute.my-namespace.function.123456789"
       }
     },
     "schemas": {
@@ -1229,36 +1439,28 @@
         "properties": {
           "collection_type": {
             "type": "string",
-            "description": "Type of collection"
+            "description": "Collection type"
           },
           "description": {
             "type": "string",
-            "description": "Description of the collection"
+            "description": "Collection description"
           },
           "name": {
             "type": "string",
-            "description": "Name of the collection"
+            "description": "Collection name"
           },
           "subject": {
             "type": "string",
-            "description": "Subject identifier of the collection"
+            "description": "Collection subject identifier"
           },
           "type": {
             "type": "string",
-            "description": "Type of resource (created, patched)"
+            "description": "Resource type"
           },
           "modified": {
             "type": "integer",
-            "description": "Timestamp of last modification (Unix time)"
+            "description": "Last modification timestamp"
           }
-        },
-        "example": {
-          "collection_type": "function",
-          "description": "A collection for my compute resources",
-          "name": "my-collection",
-          "subject": "compute.123456789.collection",
-          "type": "created",
-          "modified": 1714378974
         }
       },
       "CollectionCreate": {
@@ -1269,15 +1471,15 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "Name of the collection"
+            "description": "Collection name"
           },
           "description": {
             "type": "string",
-            "description": "Description of the collection"
+            "description": "Collection description"
           },
           "collection_type": {
             "type": "string",
-            "description": "Type of collection"
+            "description": "Collection type"
           }
         }
       },
@@ -1286,15 +1488,15 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "Name of the collection"
+            "description": "Collection name"
           },
           "description": {
             "type": "string",
-            "description": "Description of the collection"
+            "description": "Collection description"
           },
           "collection_type": {
             "type": "string",
-            "description": "Type of collection"
+            "description": "Collection type"
           }
         }
       },
@@ -1303,19 +1505,19 @@
         "properties": {
           "asset_name": {
             "type": "string",
-            "description": "Name of the asset"
+            "description": "Asset name"
           },
           "asset_type": {
             "type": "string",
-            "description": "Type of the asset"
+            "description": "Asset type"
           },
           "asset_value": {
             "type": "string",
-            "description": "Base64 encoded content of the asset"
+            "description": "Base64 encoded content"
           },
           "link": {
             "type": "boolean",
-            "description": "Whether the asset is a link to another resource"
+            "description": "Whether asset is a link"
           }
         }
       },
@@ -1324,7 +1526,7 @@
         "properties": {
           "namespace": {
             "type": "string",
-            "description": "Namespace for the compute asset"
+            "description": "Asset namespace"
           },
           "service": {
             "type": "string",
@@ -1336,14 +1538,14 @@
           },
           "handler": {
             "type": "string",
-            "description": "Handler for functions"
+            "description": "Function handler"
           },
           "assets": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ComputeAssetItem"
             },
-            "description": "Compute asset items (code, config, etc.)"
+            "description": "Asset items"
           },
           "timeout": {
             "type": "integer",
@@ -1358,11 +1560,11 @@
           },
           "read_only_fs": {
             "type": "boolean",
-            "description": "Whether filesystem is read-only"
+            "description": "Read-only filesystem flag"
           },
           "modified": {
             "type": "integer",
-            "description": "Timestamp of last modification (Unix time)"
+            "description": "Last modification timestamp"
           }
         }
       },
@@ -1375,7 +1577,7 @@
         "properties": {
           "namespace": {
             "type": "string",
-            "description": "Namespace for the compute asset"
+            "description": "Asset namespace"
           },
           "service": {
             "type": "string",
@@ -1387,14 +1589,14 @@
           },
           "handler": {
             "type": "string",
-            "description": "Handler for functions"
+            "description": "Function handler"
           },
           "assets": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ComputeAssetItem"
             },
-            "description": "Compute asset items (code, config, etc.)"
+            "description": "Asset items"
           },
           "timeout": {
             "type": "integer",
@@ -1409,7 +1611,7 @@
           },
           "read_only_fs": {
             "type": "boolean",
-            "description": "Whether filesystem is read-only"
+            "description": "Read-only filesystem flag"
           }
         }
       },
@@ -1418,11 +1620,11 @@
         "properties": {
           "ttl": {
             "type": "integer",
-            "description": "Time to live for monitoring data in milliseconds"
+            "description": "Monitoring data TTL"
           },
           "store_payload": {
             "type": "boolean",
-            "description": "Whether to store invocation/operation payloads"
+            "description": "Payload storage flag"
           }
         }
       },
@@ -1431,11 +1633,11 @@
         "properties": {
           "input": {
             "type": "object",
-            "description": "Input schema definition (JSON Schema)"
+            "description": "Input schema"
           },
           "output": {
             "type": "object",
-            "description": "Output schema definition (JSON Schema)"
+            "description": "Output schema"
           }
         }
       },
@@ -1444,11 +1646,11 @@
         "properties": {
           "description": {
             "type": "string",
-            "description": "Description of the compute item"
+            "description": "Compute item description"
           },
           "name": {
             "type": "string",
-            "description": "Name of the compute item"
+            "description": "Compute item name"
           },
           "runtime": {
             "type": "string",
@@ -1456,15 +1658,15 @@
           },
           "subject": {
             "type": "string",
-            "description": "Subject identifier of the compute item"
+            "description": "Subject identifier"
           },
           "type": {
             "type": "string",
-            "description": "Type of message (created, patched)"
+            "description": "Message type"
           },
           "modified": {
             "type": "integer",
-            "description": "Timestamp of last modification (Unix time)"
+            "description": "Last modification timestamp"
           },
           "monitor_config": {
             "$ref": "#/components/schemas/MonitorConfig"
@@ -1499,11 +1701,11 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "Name of the function"
+            "description": "Function name"
           },
           "description": {
             "type": "string",
-            "description": "Description of the function"
+            "description": "Function description"
           },
           "compute_asset": {
             "type": "object",
@@ -1513,11 +1715,11 @@
             "properties": {
               "namespace": {
                 "type": "string",
-                "description": "Namespace for the function"
+                "description": "Function namespace"
               },
               "handler": {
                 "type": "string",
-                "description": "Handler for the function"
+                "description": "Function handler"
               },
               "runtime": {
                 "type": "string",
@@ -1529,15 +1731,15 @@
                 "items": {
                   "$ref": "#/components/schemas/ComputeAssetItem"
                 },
-                "description": "Function assets (code, config, etc.)"
+                "description": "Function assets"
               },
               "timeout": {
                 "type": "integer",
-                "description": "Function timeout in milliseconds"
+                "description": "Function timeout"
               },
               "read_only_fs": {
                 "type": "boolean",
-                "description": "Whether filesystem is read-only"
+                "description": "Read-only filesystem flag"
               }
             }
           },
@@ -1558,11 +1760,11 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "Name of the function"
+            "description": "Function name"
           },
           "description": {
             "type": "string",
-            "description": "Description of the function"
+            "description": "Function description"
           },
           "monitor_config": {
             "$ref": "#/components/schemas/MonitorConfig"
@@ -1585,7 +1787,7 @@
         "properties": {
           "payload": {
             "type": "string",
-            "description": "JSON payload for the function invocation"
+            "description": "Function invocation payload"
           },
           "invocation_type": {
             "type": "string",
@@ -1593,7 +1795,7 @@
               "Async",
               "RequestResponse"
             ],
-            "description": "Type of invocation (asynchronous or request-response)"
+            "description": "Invocation type"
           }
         }
       },
@@ -1607,11 +1809,11 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "Name of the container"
+            "description": "Container name"
           },
           "description": {
             "type": "string",
-            "description": "Description of the container"
+            "description": "Container description"
           },
           "compute_asset": {
             "type": "object",
@@ -1622,7 +1824,7 @@
             "properties": {
               "namespace": {
                 "type": "string",
-                "description": "Namespace for the container"
+                "description": "Container namespace"
               },
               "runtime": {
                 "type": "string",
@@ -1633,11 +1835,11 @@
                 "items": {
                   "$ref": "#/components/schemas/ComputeAssetItem"
                 },
-                "description": "Container assets (Dockerfile, etc.)"
+                "description": "Container assets"
               },
               "read_only_fs": {
                 "type": "boolean",
-                "description": "Whether filesystem is read-only"
+                "description": "Read-only filesystem flag"
               }
             }
           },
@@ -1655,11 +1857,11 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "Name of the container"
+            "description": "Container name"
           },
           "description": {
             "type": "string",
-            "description": "Description of the container"
+            "description": "Container description"
           },
           "monitor_config": {
             "$ref": "#/components/schemas/MonitorConfig"
@@ -1672,6 +1874,19 @@
       }
     },
     "responses": {
+      "SuccessResponse": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/SuccessResponse"
+            },
+            "example": {
+              "message": "success"
+            }
+          }
+        }
+      },
       "BadRequest": {
         "description": "Bad request",
         "content": {
