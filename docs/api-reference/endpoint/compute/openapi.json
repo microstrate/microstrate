@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "Microstrate Compute Service",
+    "title": "Microstrate Gateway",
     "description": "API service for managing compute resources including collections, functions, containers, and their assets",
     "contact": {
       "email": "support@microstrate.io"
@@ -57,7 +57,7 @@
         "description": "Retrieves a list of all compute collections",
         "operationId": "getCollections",
         "x-resource-type": "service",
-        "x-resource": "ms.compute.get.collections",
+        "x-resource": "microstrate.compute.get.collections",
         "responses": {
           "200": {
             "description": "A list of collections",
@@ -114,7 +114,7 @@
         "description": "Creates a new compute collection",
         "operationId": "createCollection",
         "x-resource-type": "service",
-        "x-resource": "ms.compute.post.collection",
+        "x-resource": "microstrate.compute.post.collection",
         "requestBody": {
           "description": "Collection to create",
           "required": true,
@@ -187,7 +187,7 @@
         "description": "Retrieves a specific collection by topic",
         "operationId": "getCollection",
         "x-resource-type": "service",
-        "x-resource": "ms.compute.get.collection",
+        "x-resource": "microstrate.compute.get.collection",
         "responses": {
           "200": {
             "description": "Collection details",
@@ -293,7 +293,7 @@
         "description": "Retrieves all functions and containers belonging to a specific collection",
         "operationId": "getCollectionResources",
         "x-resource-type": "service",
-        "x-resource": "ms.compute.get.collection-resources",
+        "x-resource": "microstrate.compute.get.collection-resources",
         "parameters": [
           {
             "name": "resource_type",
@@ -382,7 +382,7 @@
         "description": "Retrieves a list of all functions",
         "operationId": "getFunctions",
         "x-resource-type": "service",
-        "x-resource": "ms.compute.get.functions",
+        "x-resource": "microstrate.compute.get.functions",
         "responses": {
           "200": {
             "description": "A list of functions",
@@ -439,7 +439,7 @@
         "description": "Creates a new serverless function",
         "operationId": "createFunction",
         "x-resource-type": "service",
-        "x-resource": "ms.compute.post.function",
+        "x-resource": "microstrate.compute.post.function",
         "requestBody": {
           "description": "Function to create",
           "required": true,
@@ -587,7 +587,7 @@
         "description": "Retrieves a specific function by collection topic and function topic",
         "operationId": "getFunction",
         "x-resource-type": "service",
-        "x-resource": "ms.compute.get.compute-item",
+        "x-resource": "microstrate.compute.get.compute-item",
         "responses": {
           "200": {
             "description": "Function details",
@@ -722,7 +722,7 @@
         "description": "Invokes a function with the provided payload",
         "operationId": "invokeFunction",
         "x-resource-type": "service",
-        "x-resource": "ms.compute.invoke.function",
+        "x-resource": "microstrate.compute.invoke.function",
         "requestBody": {
           "description": "Function invocation parameters",
           "required": true,
@@ -801,7 +801,7 @@
         "description": "Retrieves all assets for a specific compute resource (function or container)",
         "operationId": "getComputeAssets",
         "x-resource-type": "service",
-        "x-resource": "ms.compute.get.compute-assets",
+        "x-resource": "microstrate.compute.get.compute-assets",
         "responses": {
           "200": {
             "description": "Compute resource assets",
@@ -852,7 +852,7 @@
         "description": "Updates assets for a specific compute resource (function or container)",
         "operationId": "updateComputeAssets",
         "x-resource-type": "service",
-        "x-resource": "ms.compute.patch.compute-assets",
+        "x-resource": "microstrate.compute.patch.compute-assets",
         "requestBody": {
           "description": "Compute asset properties to update",
           "required": true,
@@ -937,7 +937,7 @@
         "description": "Retrieves the history of a compute resource's assets (function or container)",
         "operationId": "getComputeAssetHistory",
         "x-resource-type": "service",
-        "x-resource": "ms.compute.get.compute-asset-history",
+        "x-resource": "microstrate.compute.get.compute-asset-history",
         "responses": {
           "200": {
             "description": "Compute asset history",
@@ -1025,7 +1025,7 @@
         "description": "Retrieves a list of all containers",
         "operationId": "getContainers",
         "x-resource-type": "service",
-        "x-resource": "ms.compute.get.containers",
+        "x-resource": "microstrate.compute.get.containers",
         "responses": {
           "200": {
             "description": "A list of containers",
@@ -1082,7 +1082,7 @@
         "description": "Creates a new container",
         "operationId": "createContainer",
         "x-resource-type": "service",
-        "x-resource": "ms.compute.post.container",
+        "x-resource": "microstrate.compute.post.container",
         "requestBody": {
           "description": "Container to create",
           "required": true,
@@ -1302,7 +1302,7 @@
         "description": "Retrieves all available runtimes",
         "operationId": "getRuntimes",
         "x-resource-type": "service",
-        "x-resource": "ms.compute.get.runtimes",
+        "x-resource": "microstrate.compute.get.runtimes",
         "responses": {
           "200": {
             "description": "A list of available runtimes",
