@@ -45,6 +45,12 @@
             }
           },
           {
+            "group": "Secrets Manager",
+            "openapi": {
+              "source": "api-reference/endpoint/secrets-manager/openapi.json"
+            }
+          },
+          {
             "group": "Compute",
             "openapi": {
               "source": "api-reference/endpoint/compute/openapi.json"

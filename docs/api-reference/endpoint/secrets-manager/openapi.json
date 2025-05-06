@@ -1,0 +1,378 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Microstrate Gateway",
+        "description": "API for managing secrets in the Microstrate platform",
+        "version": "0.1.0",
+        "contact": {
+            "name": "Microstrate Support"
+        }
+    },
+    "servers": [
+        {
+            "url": "https://api.staging.microstrate.io",
+            "description": "Staging API server"
+        },
+        {
+            "url": "https://api.microstrate.io",
+            "description": "Production API server"
+        }
+    ],
+    "security": [
+        {
+            "bearerAuth": []
+        },
+        {
+            "apiKeyAuth": []
+        }
+    ],
+    "paths": {
+        "/secrets": {
+            "get": {
+                "summary": "List secrets",
+                "description": "Retrieves a list of secrets from the secrets bucket. By default, only key names are returned unless reveal=true is specified.",
+                "operationId": "listSecrets",
+                "tags": [
+                    "Secrets"
+                ],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Maximum number of secrets to return (default: 100)",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 100,
+                            "minimum": 1
+                        }
+                    },
+                    {
+                        "name": "reveal",
+                        "in": "query",
+                        "description": "Whether to include secret values in the response",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of secrets retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/SecretListItem"
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "key": "api-key"
+                                    },
+                                    {
+                                        "key": "database-password"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "example": {
+                                    "error": "the list errored"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-resource-type": "service",
+                "x-resource": "microstrate.secrets-manager.get.secret-list"
+            },
+            "put": {
+                "summary": "Create or update a secret",
+                "description": "Stores a new secret or updates an existing one in the secrets bucket",
+                "operationId": "putSecret",
+                "tags": [
+                    "Secrets"
+                ],
+                "requestBody": {
+                    "description": "Secret details to store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SecretCreate"
+                            },
+                            "example": {
+                                "key": "api-key",
+                                "value": "sk_live_abcdefghijklmnopqrstuvwxyz"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Secret created/updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "success"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "message": "success"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "example": {
+                                    "error": "invalid request format"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-resource-type": "service",
+                "x-resource": "microstrate.secrets-manager.put.secret"
+            }
+        },
+        "/secrets/{key}": {
+            "get": {
+                "summary": "Get a secret",
+                "description": "Retrieves a specific secret by its key from the secrets bucket",
+                "operationId": "getSecret",
+                "tags": [
+                    "Secrets"
+                ],
+                "parameters": [
+                    {
+                        "name": "key",
+                        "in": "path",
+                        "description": "The key of the secret to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Secret retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Secret"
+                                },
+                                "example": {
+                                    "key": "api-key",
+                                    "value": "sk_live_abcdefghijklmnopqrstuvwxyz"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "example": {
+                                    "error": "error retrieving secret"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Secret not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "example": {
+                                    "error": "resource not found"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-resource-type": "service",
+                "x-resource": "microstrate.secrets-manager.get.secret"
+            },
+            "delete": {
+                "summary": "Delete a secret",
+                "description": "Removes a specific secret by its key from the secrets bucket",
+                "operationId": "deleteSecret",
+                "tags": [
+                    "Secrets"
+                ],
+                "parameters": [
+                    {
+                        "name": "key",
+                        "in": "path",
+                        "description": "The key of the secret to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Secret deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "success"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "message": "success"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "example": {
+                                    "error": "error deleting secret"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Secret not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "example": {
+                                    "error": "resource not found"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-resource-type": "service",
+                "x-resource": "microstrate.secrets-manager.delete.secret"
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            },
+            "apiKeyAuth": {
+                "type": "apiKey",
+                "in": "header",
+                "name": "X-Api-Key"
+            }
+        },
+        "schemas": {
+            "Secret": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "description": "The unique identifier for the secret"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The secret value"
+                    }
+                },
+                "required": [
+                    "key",
+                    "value"
+                ]
+            },
+            "SecretListItem": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "description": "The unique identifier for the secret"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The secret value (only included when reveal=true)"
+                    }
+                },
+                "required": [
+                    "key"
+                ]
+            },
+            "SecretCreate": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "description": "The unique identifier for the secret"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The secret value to store"
+                    }
+                },
+                "required": [
+                    "key",
+                    "value"
+                ]
+            },
+            "Error": {
+                "type": "object",
+                "properties": {
+                    "error": {
+                        "type": "string",
+                        "description": "Error message describing what went wrong"
+                    }
+                },
+                "required": [
+                    "error"
+                ]
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Secrets",
+            "description": "Operations for managing secrets"
+        }
+    ]
+}
