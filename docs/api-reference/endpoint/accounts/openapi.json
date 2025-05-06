@@ -2330,6 +2330,16 @@
         ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.delete.user",
+        "parameters": [
+          {
+            "name": "email_code",
+            "in": "query",
+            "description": "Email verification code. To obtain one, see **/accounts/email-code**",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "User deleted successfully",
@@ -3741,28 +3751,18 @@
         ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.get.api-creds",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "key": {
-                    "type": "string",
-                    "description": "Full API key"
-                  }
-                },
-                "required": [
-                  "key"
-                ]
-              },
-              "example": {
-                "key": "ms-d28f9a3c5b6e7d4a1c8f9a3c5b6e7d4a"
-              }
-            }
+        "parameters": [
+          {
+            "name": "key",
+            "in": "query",
+            "description": "Full API key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "ms-d28f9a3c5b6e7d4a1c8f9a3c5b6e7d4a"
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "API credentials retrieved successfully",
@@ -3976,28 +3976,18 @@
         ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.delete.auth-token",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "token": {
-                    "type": "string",
-                    "description": "Auth token to revoke"
-                  }
-                },
-                "required": [
-                  "token"
-                ]
-              },
-              "example": {
-                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-              }
-            }
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "description": "Auth token to revoke",
+            "schema": {
+              "type": "string"
+            },
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+            "required": true
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "Token revoked successfully",
@@ -4032,28 +4022,18 @@
         ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.delete.refresh-token",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "token": {
-                    "type": "string",
-                    "description": "Refresh token to revoke"
-                  }
-                },
-                "required": [
-                  "token"
-                ]
-              },
-              "example": {
-                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-              }
-            }
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "description": "Refresh token to revoke",
+            "schema": {
+              "type": "string"
+            },
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+            "required": true
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "Token revoked successfully",
