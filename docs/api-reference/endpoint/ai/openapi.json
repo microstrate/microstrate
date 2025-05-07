@@ -38,7 +38,7 @@
         }
     ],
     "paths": {
-        "/questions": {
+        "/ai/questions": {
             "post": {
                 "tags": [
                     "questions"
@@ -121,7 +121,7 @@
                 "x-original-subject": "microstrate.ai.post.ask"
             }
         },
-        "/sessions/{session_id}/questions": {
+        "/ai/sessions/{session_id}/questions": {
             "post": {
                 "tags": [
                     "sessions"
