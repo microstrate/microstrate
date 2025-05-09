@@ -25,7 +25,7 @@
           {
             "group": "Essentials",
             "pages": [
-              "essentials/markdown",
+              "essentials/compute-credits",
               "essentials/code",
               "essentials/images",
               "essentials/settings",

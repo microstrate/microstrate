@@ -1,0 +1,249 @@
+---
+title: "Compute Credits"
+description: "How compute credits are calculated and used"
+icon: "server"
+---
+
+# Understanding Microstrate Compute Credits
+
+## The Smarter Way to Pay for Cloud Resources
+
+Microstrate's compute credit system represents a fundamental shift in how cloud resources are allocated and billed. Rather than paying for idle resources based on memory blocks, our innovative approach uses precision CPU allocation to ensure you only pay for what you actually use. This guide explains how our credit system works and how to estimate your needs.
+
+## What is a Compute Credit?
+
+A compute credit is our standardized unit of computation that represents a balance of CPU power, memory, and runtime. One credit equals a 128MB function or container running continuously for one hour at our base compute rate.
+
+What makes our credits unique is that they're calculated based on actual CPU consumption [(measured in millicores)](#understanding-millicores%3A-the-key-to-microstrate’s-efficiency) rather than allocated memory blocks that may sit idle. This is how we achieve 40-60% better resource utilization compared to traditional cloud platforms.
+
+## How Credits Are Calculated
+
+Our credit calculation uses a precise formula that considers:
+
+1. **Base Rate**: Our foundation rate for compute time (per millisecond)
+2. **Memory Allocation**: The amount of memory assigned to your function
+3. **Memory Price Scaler**: A factor based on [millicores](#understanding-millicores%3A-the-key-to-microstrate’s-efficiency) assigned (proportional to memory)
+4. **Runtime**: How long your function executes (in milliseconds)
+5. **Compute Mode**: A performance adjustment that consumes more credits for boosting your functions (Basic, Balanced, Performant, Boosted)
+
+### The Formula
+
+```
+Credit Cost = (Base Rate × Memory Price Scaler) × Runtime × Compute Mode Factor
+```
+
+#### Memory Price Scaler Reference Table
+
+Each memory allocation has a specific Memory Price Scaler that reflects the proportional CPU resources [(millicores)](#understanding-millicores%3A-the-key-to-microstrate’s-efficiency) allocated:
+
+| Memory  | Memory Price Scaler |
+| ------- | ------------------- |
+| 128 MB  | 1                   |
+| 256 MB  | 1.15                |
+| 512 MB  | 1.5                 |
+| 1024 MB | 2                   |
+| 2048 MB | 3                   |
+| 4096 MB | 5                   |
+
+#### Compute Mode Factor Reference Table
+
+Microstrate offers different compute modes to optimize for various workload requirements:
+
+| Compute Mode | Factor | Optimal Use Case                             |
+| ------------ | ------ | -------------------------------------------- |
+| Basic        | 1.0    | Standard workloads, cost-optimized           |
+| Balanced     | 1.2    | Mixed workloads requiring better performance |
+| Performant   | 1.6    | Compute-intensive applications               |
+| Boosted      | 2.0    | Maximum performance for critical workloads   |
+
+Let's break down a practical example:
+
+| Component                | Value        | Description                               |
+| ------------------------ | ------------ | ----------------------------------------- |
+| Base Microstrate Rate    | 0.0000000210 | Per millisecond of compute time           |
+| Memory Assigned          | 4096 MB      | Memory allocated to your function         |
+| Memory Price Scaler      | 5            | Based on the table above for 4096 MB      |
+| Runtime                  | 3,600,000 ms | 1 hour of continuous execution            |
+| Raw Price                | $0.378       | Initial calculation before compute mode   |
+| Compute Mode             | Basic        | Standard execution environment            |
+| Compute Mode Factor      | 1.0          | Multiplier for Basic compute mode         |
+| Augmented Price          | $0.378       | Final price after compute mode adjustment |
+| **Credit Cost per Hour** | **$0.0756**  | **Cost per credit hour**                  |
+| **Credits Used**         | **5**        | **For this configuration and runtime**    |
+
+In this example, running a 4GB function for one hour consumes 5 compute credits at a cost of $0.0756 per credit, totaling $0.378.
+
+## Sample Pricing Table
+
+Here's how different configurations translate to credit usage and costs using the Basic compute mode:
+
+| Memory  | Memory Price Scaler | Runtime  | Credits Used | Cost (@$0.0756/credit) |
+| ------- | ------------------- | -------- | ------------ | ---------------------- |
+| 128 MB  | 1                   | 1 hour   | 1            | $0.0756                |
+| 256 MB  | 1.15                | 1 hour   | 1.15         | $0.0869                |
+| 512 MB  | 1.5                 | 1 hour   | 1.5          | $0.1134                |
+| 1024 MB | 2                   | 1 hour   | 2            | $0.1512                |
+| 2048 MB | 3                   | 1 hour   | 3            | $0.2268                |
+| 4096 MB | 5                   | 1 hour   | 5            | $0.3780                |
+| 128 MB  | 1                   | 24 hours | 24           | $1.8144                |
+| 4096 MB | 5                   | 24 hours | 120          | $9.0720                |
+| 4096 MB | 5                   | 30 days  | 3,600        | $272.1600              |
+
+### Impact of Compute Mode on Pricing
+
+The compute mode you select will affect the final price based on the factors below:
+
+| Memory  | Basic (1.0) | Balanced (1.2) | Performant (1.6) | Boosted (2.0) |
+| ------- | ----------- | -------------- | ---------------- | ------------- |
+| 128 MB  | $0.0756/hr  | $0.0907/hr     | $0.1210/hr       | $0.1512/hr    |
+| 1024 MB | $0.1512/hr  | $0.1814/hr     | $0.2419/hr       | $0.3024/hr    |
+| 4096 MB | $0.3780/hr  | $0.4536/hr     | $0.6048/hr       | $0.7560/hr    |
+
+### Important Notes:
+
+- Smaller, shorter-running functions use fewer credits
+- You only pay for actual execution time, not idle time
+- Credit usage scales linearly with runtime for a given configuration
+- Higher compute modes provide more CPU priority and performance at a proportional cost
+
+## Real-World Credit Usage Examples
+
+### Example 1: API Backend
+
+A typical API backend processing 100,000 requests per day with 200ms average execution time using 512MB memory in Basic mode:
+
+- Daily runtime: 100,000 × 0.2 seconds = 20,000 seconds (5.56 hours)
+- Credit usage: 5.56 hours × 1.5 credits/hour = 8.34 credits/day
+- Monthly cost: 8.34 × 30 × $0.0756 = $18.93/month
+
+If we upgraded to Balanced mode for better responsiveness:
+
+- Credit usage with 1.2× factor: 8.34 × 1.2 = 10.01 credits/day
+- Monthly cost: 10.01 × 30 × $0.0756 = $22.71/month
+
+### Example 2: Data Processing Job
+
+A nightly data processing job running for 2 hours with 4GB memory in Basic mode:
+
+- Daily runtime: 2 hours
+- Credit usage: 2 hours × 5 credits/hour = 10 credits/day
+- Monthly cost: 10 × 30 × $0.0756 = $22.68/month
+
+For faster processing using Performant mode:
+
+- Credit usage with 1.6× factor: 10 × 1.6 = 16 credits/day
+- Monthly cost: 16 × 30 × $0.0756 = $36.29/month
+
+### Example 3: Always-On Microservice
+
+A continuously running microservice with 1GB memory in Basic mode:
+
+- Monthly runtime: 24 hours × 30 days = 720 hours
+- Credit usage: 720 hours × 2 credits/hour = 1,440 credits/month
+- Monthly cost: 1,440 × $0.0756 = $108.86/month
+
+For critical services using Boosted mode:
+
+- Credit usage with 2.0× factor: 1,440 × 2.0 = 2,880 credits/month
+- Monthly cost: 2,880 × $0.0756 = $217.73/month
+
+### Example 4: Lightweight Web Server
+
+A lightweight web server handling moderate traffic using 128MB memory in Basic mode:
+
+- Monthly runtime: 24 hours × 30 days = 720 hours
+- Credit usage: 720 hours × 1 credit/hour = 720 credits/month
+- Monthly cost: 720 × $0.0756 = $54.43/month
+
+By optimizing this workload to run efficiently at the 128MB tier instead of 256MB, you save approximately 15% on your compute costs.
+
+## Why This Matters: The Microstrate Advantage
+
+Our credit system delivers several key advantages:
+
+1. **Precise Resource Allocation**: Pay for exactly what you use down to the [millicore](#understanding-millicores%3A-the-key-to-microstrate’s-efficiency) level
+2. **No Cold Start Penalties**: Our architecture eliminates the performance penalty of cold starts
+3. **Predictable Pricing**: Straightforward calculation makes forecasting costs easy
+4. **Better Utilization**: Our [millicore](#understanding-millicores%3A-the-key-to-microstrate’s-efficiency) approach provides more efficient resource usage compared to traditional serverless and compute platforms
+
+## Credit Allocation by Plan
+
+| Plan       | Monthly Credits | Additional Credits |
+| ---------- | --------------- | ------------------ |
+| Starter    | 50              | Not available      |
+| Pro        | 500             | $0.0756 per credit |
+| Business   | 5,000           | $0.0756 per credit |
+| Enterprise | Custom          | Custom pricing     |
+
+## Estimating Your Needs
+
+To estimate your credit requirements:
+
+1. Identify your memory needs per function/container (128MB to 4GB)
+2. Determine the average runtime (how long functions execute)
+3. Calculate the frequency (how often functions run)
+4. Multiply these factors using our credit formula
+
+Our sales team can help you analyze your workloads and recommend the most cost-effective plan for your specific needs.
+
+## Optimizing Credit Usage
+
+Here are some strategies to maximize the value of your compute credits:
+
+1. **Right-size Your Functions**: Choose the optimal memory tier based on your workload. Note that for many applications, the 128MB tier offers excellent value with the lowest Memory Price Scaler (1.0), while 256MB (1.15) provides more memory with only a slight increase in cost.
+
+2. **Choose the Right Compute Mode**:
+
+   - Use **Basic** for background jobs, batch processing, and non-latency-sensitive operations
+   - Use **Balanced** for general-purpose applications with moderate performance requirements
+   - Reserve **Performant** and **Boosted** modes for critical, high-priority workloads where performance justifies the additional cost
+
+3. **Optimize Function Duration**: Refactor long-running functions into smaller, more efficient ones to reduce overall runtime
+
+## Understanding Millicores: The Key to Microstrate's Efficiency
+
+### What Are Millicores?
+
+A millicore is a unit of CPU allocation that represents 1/1000th of a CPU core. This fine-grained approach to resource allocation is central to Microstrate's efficiency advantage:
+
+- Traditional cloud platforms allocate entire CPU cores or rigid fractions (like 0.25 or 0.5 cores)
+- Microstrate allocates precise millicore amounts based on your workload needs
+- 1000 millicores = 1 full CPU core
+
+### How Millicores Work in Microstrate
+
+Unlike traditional serverless and container platforms that bundle CPU and memory into fixed configurations, Microstrate's Hydra compute engine decouples these resources:
+
+1. **Precision Allocation**: When you select a memory tier (e.g., 128MB, 512MB), Hydra automatically assigns the appropriate number of millicores through the Memory Price Scaler. 
+
+2. **Dynamic Utilization**: Your function only consumes the millicores it actually needs at any given moment. When processing demands increase, Hydra can allocate more millicores (up to your configured limit); when demands decrease, those millicores are released back to the pool.
+
+3. **Optimized Sharing**: Multiple functions can share a CPU core through millicore allocation. For example, Hydra can assign 300 millicores to one function and 700 millicores to another, allowing both to run on a single core without wasting resources.
+
+4. **Burst Capability**: During initialization or peak demand, Hydra can temporarily allocate additional millicores to your function (front-loading resources) before settling into the standard allocation for steady-state operation.
+
+5. **Serverless Containers** When containers are not consuming millicores, the container and its state is paused in memory until network traffic is detected again.
+
+### The Advantage of Millicore-Based Pricing
+
+This approach delivers several key benefits:
+
+- **Cost Efficiency**: Pay only for the exact CPU resources you actually use, not for idle capacity
+- **Predictable Performance**: Precise allocation prevents resource contention and performance variability
+- **Better Density**: More workloads can run on the same infrastructure through intelligent resource sharing
+- **Granular Control**: Fine-tune resource allocation to match your application's specific requirements
+
+### Memory and Millicores Relationship
+
+In Microstrate, memory tiers and millicores have a defined relationship expressed through the Memory Price Scaler:
+
+| Memory | Memory Price Scaler | Approximate Millicores | Use Case |
+|--------|---------------------|------------------------|----------|
+| 128 MB | 1 | 100-125 | Lightweight API handlers, simple functions |
+| 256 MB | 1.15 | 115-140 | Web services, small data processing |
+| 512 MB | 1.5 | 150-200 | Medium workloads, background jobs |
+| 1024 MB | 2 | 200-250 | Data processing, moderate APIs |
+| 2048 MB | 3 | 300-400 | Heavy computation, larger datasets |
+| 4096 MB | 5 | 500-700 | Intensive processing, complex applications |
+
+This table shows how higher memory tiers receive proportionally more millicores, but the relationship isn't strictly linear—it's optimized based on real-world workload patterns.
