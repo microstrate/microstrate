@@ -25,6 +25,7 @@
           {
             "group": "Essentials",
             "pages": [
+              "essentials/plans-and-pricing",
               "essentials/compute-credits",
               "essentials/code",
               "essentials/images",

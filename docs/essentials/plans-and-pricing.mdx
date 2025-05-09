@@ -1,0 +1,148 @@
+---
+title: "Plans and Pricing"
+description: "Our plans, limits, and pricing"
+icon: "tags"
+---
+
+# Microstrate Cloud & Hub Pricing Guide
+
+## Understanding Your Cloud Investment
+
+Microstrate isn't just another cloud platform – it's a revolutionary approach to cloud computing and workflow automation that fundamentally changes how your applications consume resources and scale. This guide explains our pricing structure, what makes each plan unique, and how our unified architecture delivers exceptional value.
+
+Every Microstrate account gives you access to both the Cloud Platform, and the Hub workflow automation platform
+
+## Our Unique Advantage
+
+Before diving into the plans, it's important to understand what makes Microstrate different:
+
+- **Unified Messaging Foundation**: Our platform eliminates the need to mix and match disparate messaging, serverless, containerized, queueing, and storage services.
+- **CPU-Optimized Resource Model**: Our Hydra compute engine allocates resources based on actual CPU needs (down to the millicore level) rather than memory blocks, achieving better resource utilization.
+- **Multi-Cloud Mesh**: Run resiliant workloads anywhere, with no extra work... – on-prem, private cloud, hybrid, or across multiple providers – with consistent performance.
+- **Built-in Observability**: Every component emits consistent metrics and traces through OpenTelemetry, transported through our mesh architecture.
+
+## Plan Comparison
+
+### Starter – Free Forever
+**Perfect for solo builders, side projects, and experimentation**
+
+| Feature | Limit | What This Means For You |
+|---------|-------|--------------------------|
+| Active Workflows | 3 | Perfect for testing concepts and building simple automations |
+| Flow Runs | 300/month (up to 1 minute) | Ideal for low-volume processes and development |
+| Compute Credits | 50/month | Run lightweight functions and services for development and testing |
+| Gateway Requests | 50/second | Handle personal projects with moderate traffic |
+| Concurrent Functions | 10 | Execute multiple lightweight processes simultaneously |
+| Storage | 500MB (storage, KV, stream, object, logs) | Store essential data for your applications |
+| Replicas | 3 | Enjoy high availability even on the free tier |
+| Throughput | 4 Mbps read/write | Process data at speeds suitable for personal projects |
+
+**Who it's for**: Developers exploring Microstrate Cloud & Hub capabilities, startups validating concepts, or hobbyists building side projects.
+
+**Get started in seconds. No credit card required.**
+
+### Pro – $99/month
+**For teams and power users running live business-critical workflows**
+
+| Feature | Limit | What This Means For You |
+|---------|-------|--------------------------|
+| Active Workflows | 25 | Build comprehensive automation systems for your business |
+| Flow Runs | 10,000/month ($0.01 per additional run) | Support business operations with reliable, high-volume workflows |
+| Compute Credits | 500/month ($0.0756 per additional credit) | Run multiple services continuously; each credit equals a 128MB function running for 1 hour |
+| Gateway Requests | 500/second | Support applications with significant traffic |
+| Concurrent Functions | 100 | Execute complex processes simultaneously without throttling |
+| Storage | 5GB | Store business data, state information, and logs |
+| Replicas | 3 | Ensure high availability across multiple nodes |
+| Throughput | 16 Mbps read/write | Process data at speeds suitable for business applications |
+
+**Who it's for**: Small to medium businesses, professional developers, and teams deploying production workloads and automations that need reliability and performance.
+
+### Business – Starting at $499/month
+**For fast-scaling teams processing high volumes of data, events, and logic**
+
+| Feature | Limit | What This Means For You |
+|---------|-------|--------------------------|
+| Active Workflows | Unlimited | Build as many automation processes as your business requires |
+| Flow Runs | 100,000/month ($0.005 per additional run) | Support enterprise-scale operation with high-volume workflows |
+| Compute Credits | 5,000/month ($0.0756 per additional credit) | Power data-intensive applications (can run a 4GB function for 23 days non-stop) |
+| Gateway Requests | 5,000/second | Support high-traffic applications with consistent performance |
+| Concurrent Functions | 1,000 | Execute complex, parallel processes at scale |
+| Storage | 50GB | Store substantial data volumes for enterprise applications |
+| Replicas | 3 | Ensure high availability across multiple nodes |
+| Throughput | 32 Mbps read/write | Process data at speeds suitable for enterprise applications |
+
+**Who it's for**: High-growth companies, development teams building complex systems, and businesses processing significant data volumes.
+
+### Enterprise – Custom Pricing
+**For large organizations with compliance, security, and infrastructure needs**
+
+| Feature | Details | What This Means For You |
+|---------|---------|--------------------------|
+| Deployment Options | Private cloud, Hyperscaler or VPC deployment | Meet your specific security and compliance requirements |
+| Service Level | Custom SLAs, support, and training | Receive guarantees aligned with your business needs |
+| Support | Dedicated CSM + white-glove onboarding | Get personalized assistance throughout your journey |
+| Contract | Custom terms | Structure agreements that work for your organization |
+| Replicas | Up to 9 | Maximum reliability for mission-critical applications |
+| Throughput | 100+ Mbps | Process massive data volumes with exceptional performance |
+| Custom Limits | Exceed standard plan limits | Gbps scale across all services including throughput, gateway, compute, and storage |
+
+**Who it's for**: Large enterprises, organizations with strict compliance requirements, and businesses that need maximum performance and reliability.
+
+## All Plans Include
+
+- **Unlimited Users**: Collaborate across your entire organization without user-based fees
+- **Full Custom Code Support**: Leverage the full power of Microstrate Cloud with custom functions
+- **Real-time Monitoring**: Track performance, usage, and availability in real-time
+- **Hub Integration**: Build powerful workflows that connect to your cloud resources
+
+## Understanding Your Resources
+
+### [Compute Credits](/essentials/compute-credits)
+One compute credit equals a 128MB function running continuously for one hour. Our millicore-based allocation means you're only paying for actual CPU usage, not idle resources, resulting in significantly better cost efficiency.
+
+### Flow Runs
+Each workflow execution in Hub counts as one flow run, regardless of complexity. This predictable pricing model makes it easy to forecast costs as your automation needs grow.
+
+### Storage
+Your storage allocation includes all data types in the Microstrate ecosystem: key-value stores, object storage, streams, and logs. This unified approach eliminates the need to manage separate storage services. Storage allocation includes replicas, so if your account has 3 replicas, you will consume your storage allocation at 3x
+
+## Maximum Usage Limits
+
+Additional capacity can be purchased beyond your plan limits:
+
+| Resource | Maximum Limit per Account |
+|----------|---------------------------|
+| Storage | 500GB |
+| Throughput | 100Mbps |
+| Concurrent Executions | 1,000 |
+| Gateway Requests | 5,000/second (up to 10,000/second with approval) |
+
+Enterprise plans can exceed these limits
+
+## How We're Different
+
+Unlike traditional cloud providers that charge separately for compute, storage, messaging, and databases, Microstrate's unified architecture delivers:
+
+1. **Simplified Billing**: One coherent pricing model versus multiple disconnected services
+2. **Economic Efficiency**: Pay for exactly what you use, down to the millicore
+3. **Predictable Performance**: Consistent experience regardless of where your workloads run
+4. **Developer Experience**: Built-in observability and simplified workflows
+5. **Security By Design**: Isolated networks, encrypted channels, and declarative security policies
+6. **Integrated Workflows**: Seamless connection between Hub workflows and Cloud resources
+
+## Common Questions
+
+### How do compute credits work?
+[Compute credits](/essentials/compute-credits) represent CPU time and are consumed based on the actual processing power your functions use. This millicore-based approach means you're not paying for idle resources, resulting in better utilization compared to traditional serverless offerings.
+
+### What's the relationship between Microstrate Cloud and Hub?
+Microstrate Hub is our advanced workflow automation platform built on top of the core Microstrate Cloud infrastructure. Hub leverages Cloud's capabilities to execute workflows, process data, and integrate with external systems. All Hub workflows run on the same high-performance infrastructure as your other Cloud workloads.
+
+### What happens if I exceed my plan limits?
+For most resources (compute credits, flow runs, storage), you'll be billed for additional usage at the rates specified in your plan. Your workflows will continue running without interruption.
+
+### Can I upgrade or downgrade my plan?
+Yes, you can change plans at any time. When upgrading, the new limits and capabilities take effect immediately. When downgrading, changes apply at the start of your next billing cycle.
+
+### How does Microstrate compare to AWS Lambda or similar services?
+Unlike traditional serverless platforms that inefficiently allocate entire memory blocks, Microstrate's Hydra compute engine uses precision resource allocation (millicores) and eliminates cold starts through our multi-layered approach. This results in better performance, predictability, and cost efficiency.
