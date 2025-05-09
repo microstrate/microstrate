@@ -1,5 +1,6 @@
 {
   "name": "OpenAI API",
+  "note":  "Generate and analyze text with powerful language models.",
   "description": "The OpenAI REST API. Please see https://platform.openai.com/docs/api-reference for more details.",
   "nodes": [
       {
