@@ -256,6 +256,93 @@
           }
         }
       },
+      "StreamCreateResponse": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "example": "evari.bellerophon.streaming.api.v1.stream_create_response"
+          },
+          "config": {
+            "$ref": "#/components/schemas/StreamConfig"
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "state": {
+            "type": "object",
+            "properties": {
+              "messages": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "bytes": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "first_seq": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "first_ts": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "last_seq": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "last_ts": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "consumer_count": {
+                "type": "integer"
+              },
+              "deleted": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "num_deleted": {
+                "type": "integer"
+              },
+              "num_subjects": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "subjects": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "did_create": {
+            "type": "boolean"
+          },
+          "error": {
+            "type": "object",
+            "nullable": true,
+            "properties": {
+              "code": {
+                "type": "integer"
+              },
+              "err_code": {
+                "type": "integer"
+              },
+              "description": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
       "KeyValueConfig": {
         "type": "object",
         "required": [
@@ -1079,10 +1166,6 @@
         "properties": {
           "error": {
             "type": "string",
-            "description": "Error code"
-          },
-          "message": {
-            "type": "string",
             "description": "Error message"
           }
         }
@@ -1097,8 +1180,7 @@
               "$ref": "#/components/schemas/ErrorResponse"
             },
             "example": {
-              "error": "validation_error",
-              "message": "Invalid request parameters"
+              "error": "validation_error"
             }
           }
         }
@@ -1111,8 +1193,7 @@
               "$ref": "#/components/schemas/ErrorResponse"
             },
             "example": {
-              "error": "unauthorized",
-              "message": "Authentication required"
+              "error": "unauthorized"
             }
           }
         }
@@ -1125,8 +1206,7 @@
               "$ref": "#/components/schemas/ErrorResponse"
             },
             "example": {
-              "error": "not_found",
-              "message": "Resource not found"
+              "error": "not_found"
             }
           }
         }
@@ -1139,8 +1219,7 @@
               "$ref": "#/components/schemas/ErrorResponse"
             },
             "example": {
-              "error": "internal_error",
-              "message": "An unexpected error occurred"
+              "error": "internal_error"
             }
           }
         }
@@ -2719,36 +2798,227 @@
           }
         },
         "responses": {
-          "201": {
+          "200": {
             "description": "Stream created successfully",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "stream": {
-                      "type": "string"
-                    },
-                    "status": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "stream": "my-stream",
-                  "status": "created"
+                  "$ref": "#/components/schemas/StreamCreateResponse"
                 }
               }
             }
           },
           "400": {
-            "$ref": "#/components/responses/Error400"
-          },
-          "401": {
-            "$ref": "#/components/responses/Error401"
-          },
-          "500": {
-            "$ref": "#/components/responses/Error500"
+            "description": "Invalid request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "BSStreamNameInUse": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10058 description=stream name already in use"
+                    }
+                  },
+                  "BSNotEnabledForAccountErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=503 err_code=10039 description=BStream not enabled for account"
+                    }
+                  },
+                  "BSInvalidJSONErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10025 description=invalid JSON"
+                    }
+                  },
+                  "BSStreamMismatchErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10056 description=stream name in subject does not match request"
+                    }
+                  },
+                  "BSStreamNameContainsPathSeparatorsErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10128 description=Stream name can not contain path separators"
+                    }
+                  },
+                  "BSStreamInvalidConfigF": {
+                    "value": {
+                      "error": "bellerophon: API error: code=500 err_code=10052 description=Stream configuration validation error"
+                    }
+                  },
+                  "BSStreamNameExistErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10058 description=stream name already in use with a different configuration"
+                    }
+                  },
+                  "BSStreamStoreFailedF": {
+                    "value": {
+                      "error": "bellerophon: API error: code=503 err_code=10077 description=Error creating store for stream"
+                    }
+                  },
+                  "BSStreamCreateErrF": {
+                    "value": {
+                      "error": "bellerophon: API error: code=500 err_code=10049 description=Generic stream creation error"
+                    }
+                  },
+                  "BSClusterNotAvailErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=503 err_code=10008 description=BStream system temporarily unavailable"
+                    }
+                  },
+                  "BSMaximumStreamsLimitErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10027 description=maximum number of streams reached"
+                    }
+                  },
+                  "BSStreamLimitsErrF": {
+                    "value": {
+                      "error": "bellerophon: API error: code=500 err_code=10053 description=General stream limits exceeded error"
+                    }
+                  },
+                  "BSInsufficientResourcesErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=503 err_code=10023 description=insufficient resources"
+                    }
+                  },
+                  "BSMemoryResourcesExceededErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=500 err_code=10028 description=insufficient memory resources available"
+                    }
+                  },
+                  "BSStorageResourcesExceededErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=500 err_code=10047 description=insufficient storage resources available"
+                    }
+                  },
+                  "BSStreamReplicasNotSupportedErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=500 err_code=10074 description=replicas > 1 not supported in non-clustered mode"
+                    }
+                  },
+                  "BSMirrorWithSubjectsErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10034 description=stream mirrors can not contain subjects"
+                    }
+                  },
+                  "BSMirrorWithSubjectFiltersErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10033 description=stream mirrors can not contain filtered subjects"
+                    }
+                  },
+                  "BSMirrorWithSourcesErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10031 description=stream mirrors can not also contain other sources"
+                    }
+                  },
+                  "BSMirrorWithStartSeqAndTimeErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10032 description=stream mirrors can not have both start seq and start time configured"
+                    }
+                  },
+                  "BSMirrorWithFirstSeqErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10143 description=stream mirrors can not have first sequence configured"
+                    }
+                  },
+                  "BSMirrorMaxMessageSizeTooBigErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10030 description=stream mirror must have max message size >= source"
+                    }
+                  },
+                  "BSMirrorInvalidStreamName": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10142 description=mirrored stream name is invalid"
+                    }
+                  },
+                  "BSMirrorInvalidSubjectFilter": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10151 description=mirror subject filter is invalid"
+                    }
+                  },
+                  "BSMirrorMultipleFiltersNotAllowed": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10150 description=mirror with multiple subject transforms cannot also have a single subject filter"
+                    }
+                  },
+                  "BSMirrorOverlappingSubjectFilters": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10152 description=mirror subject filters can not overlap"
+                    }
+                  },
+                  "BSSourceInvalidStreamName": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10141 description=sourced stream name is invalid"
+                    }
+                  },
+                  "BSSourceMaxMessageSizeTooBigErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10046 description=stream source must have max message size >= target"
+                    }
+                  },
+                  "BSSourceInvalidSubjectFilter": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10145 description=source subject filter is invalid"
+                    }
+                  },
+                  "BSSourceInvalidTransformDestination": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10146 description=source transform destination is invalid"
+                    }
+                  },
+                  "BSSourceMultipleFiltersNotAllowed": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10144 description=source with multiple subject transforms cannot also have a single subject filter"
+                    }
+                  },
+                  "BSSourceOverlappingSubjectFilters": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10147 description=source filters can not overlap"
+                    }
+                  },
+                  "BSSourceDuplicateDetected": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10140 description=duplicate source configuration detected"
+                    }
+                  },
+                  "BSStreamExternalApiOverlapErrF": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10021 description=stream external api prefix must not overlap with subject"
+                    }
+                  },
+                  "BSStreamExternalDelPrefixOverlapsErrF": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10022 description=stream external delivery prefix overlaps with stream subject"
+                    }
+                  },
+                  "BSStreamExternalDeliverySubjErrF": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10024 description=stream external delivery prefix must not contain wildcards"
+                    }
+                  },
+                  "BSStreamSubjectOverlapErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10065 description=subjects overlap with an existing stream"
+                    }
+                  },
+                  "BSStreamMaxBytesRequired": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10113 description=account requires a stream config to have max bytes set"
+                    }
+                  },
+                  "BSStreamMaxStreamBytesExceeded": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10122 description=stream max bytes exceeds account limit max stream bytes"
+                    }
+                  },
+                  "BSReplicasCountCannotBeNegative": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10133 description=replicas count cannot be negative"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
