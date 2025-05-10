@@ -1,0 +1,666 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Microstrate Gateway",
+        "description": "API for managing Microstrate platform",
+        "version": "1.0.0",
+        "contact": {
+            "name": "Microstrate Support",
+            "url": "https://app.staging.microstrate.io"
+        }
+    },
+    "servers": [
+        {
+            "url": "https://api.staging.microstrate.io",
+            "description": "Staging API server"
+        },
+        {
+            "url": "https://api.microstrate.io",
+            "description": "Production API server"
+        }
+    ],
+    "tags": [
+        {
+            "name": "metrics",
+            "description": "Operations for retrieving metric data"
+        }
+    ],
+    "security": [
+        {
+            "bearerAuth": []
+        },
+        {
+            "apiKeyAuth": []
+        }
+    ],
+    "paths": {
+        "/monitoring/metrics/{metric}/stats": {
+            "get": {
+                "summary": "Get metric statistics over time",
+                "description": "Retrieves metric values over a specified time range with a given interval",
+                "operationId": "getMetricStats",
+                "x-resource-type": "service",
+                "x-resource": "microstrate.monitoring.get.metric-stats",
+                "tags": [
+                    "metrics"
+                ],
+                "parameters": [
+                    {
+                        "name": "metric",
+                        "in": "path",
+                        "required": true,
+                        "description": "Name of the metric to retrieve",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "connections",
+                                "totalConnections",
+                                "numberOfSubscriptions",
+                                "sentMessages",
+                                "sentBytes",
+                                "receivedMessages",
+                                "receivedBytes",
+                                "slowConsumers",
+                                "memory",
+                                "storage",
+                                "accounts",
+                                "haAssets",
+                                "apiTotal",
+                                "apiErrors",
+                                "apiInflight",
+                                "streams",
+                                "consumers",
+                                "totalMessages",
+                                "totalBytes",
+                                "numberOfSubjects",
+                                "numberOfDeleted",
+                                "lostMessages",
+                                "lostBytes",
+                                "numberOfAckPending",
+                                "numberOfRedelivered",
+                                "numberOfWaiting",
+                                "numberOfPending",
+                                "pushBound",
+                                "paused",
+                                "deliveredConsumerSequence",
+                                "deliveredStreamSequence",
+                                "deliveredLastActive",
+                                "ackFloorConsumerSequence",
+                                "ackFloorStreamSequence",
+                                "ackFloorLastActive",
+                                "ram",
+                                "cpu",
+                                "slowConsumersClients",
+                                "slowConsumersRoutes",
+                                "slowConsumersGateways",
+                                "slowConsumersMeshs",
+                                "sentMessagesRate",
+                                "sentBytesRate",
+                                "receivedMessagesRate",
+                                "receivedBytesRate"
+                            ]
+                        },
+                        "example": "memory"
+                    },
+                    {
+                        "name": "from",
+                        "in": "query",
+                        "required": true,
+                        "description": "Start timestamp (ISO format)",
+                        "schema": {
+                            "type": "string",
+                            "format": "date-time"
+                        },
+                        "example": "2025-05-09T10:00:00Z"
+                    },
+                    {
+                        "name": "to",
+                        "in": "query",
+                        "required": true,
+                        "description": "End timestamp (ISO format)",
+                        "schema": {
+                            "type": "string",
+                            "format": "date-time"
+                        },
+                        "example": "2025-05-10T10:00:00Z"
+                    },
+                    {
+                        "name": "interval",
+                        "in": "query",
+                        "required": false,
+                        "description": "Aggregation interval in milliseconds",
+                        "schema": {
+                            "type": "integer",
+                            "default": 5000,
+                            "minimum": 1
+                        },
+                        "example": 60000
+                    },
+                    {
+                        "name": "node",
+                        "in": "query",
+                        "required": false,
+                        "description": "Node identifier",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "node-a1b2c3"
+                    },
+                    {
+                        "name": "account",
+                        "in": "query",
+                        "required": false,
+                        "description": "Account identifier (required if node not provided)",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "acme"
+                    },
+                    {
+                        "name": "stream",
+                        "in": "query",
+                        "required": false,
+                        "description": "Stream name",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "events"
+                    },
+                    {
+                        "name": "consumer",
+                        "in": "query",
+                        "required": false,
+                        "description": "Consumer name (requires stream to be specified)",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "processor"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MetricStatsResponse"
+                                },
+                                "example": {
+                                    "message": "success",
+                                    "data": [
+                                        {
+                                            "ts": 1715155200000,
+                                            "value": 42.5
+                                        },
+                                        {
+                                            "ts": 1715155260000,
+                                            "value": 43.2
+                                        },
+                                        {
+                                            "ts": 1715155320000,
+                                            "value": 41.8
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                },
+                                "example": {
+                                    "message": "from and to fields are required",
+                                    "data": null
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                },
+                                "example": {
+                                    "message": "no data",
+                                    "data": {
+                                        "error": "no data"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                },
+                                "example": {
+                                    "message": "oops",
+                                    "data": null
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/monitoring/metrics/{metric}/current": {
+            "get": {
+                "summary": "Get current metric value",
+                "description": "Retrieves the latest value for a specific metric",
+                "operationId": "getCurrentMetric",
+                "x-resource-type": "service",
+                "x-resource": "microstrate.monitoring.get.metric-current",
+                "tags": [
+                    "metrics"
+                ],
+                "parameters": [
+                    {
+                        "name": "metric",
+                        "in": "path",
+                        "required": true,
+                        "description": "Name of the metric to retrieve",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "connections",
+                                "totalConnections",
+                                "numberOfSubscriptions",
+                                "sentMessages",
+                                "sentBytes",
+                                "receivedMessages",
+                                "receivedBytes",
+                                "slowConsumers",
+                                "memory",
+                                "storage",
+                                "accounts",
+                                "haAssets",
+                                "apiTotal",
+                                "apiErrors",
+                                "apiInflight",
+                                "streams",
+                                "consumers",
+                                "totalMessages",
+                                "totalBytes",
+                                "numberOfSubjects",
+                                "numberOfDeleted",
+                                "lostMessages",
+                                "lostBytes",
+                                "numberOfAckPending",
+                                "numberOfRedelivered",
+                                "numberOfWaiting",
+                                "numberOfPending",
+                                "pushBound",
+                                "paused",
+                                "deliveredConsumerSequence",
+                                "deliveredStreamSequence",
+                                "deliveredLastActive",
+                                "ackFloorConsumerSequence",
+                                "ackFloorStreamSequence",
+                                "ackFloorLastActive",
+                                "ram",
+                                "cpu",
+                                "slowConsumersClients",
+                                "slowConsumersRoutes",
+                                "slowConsumersGateways",
+                                "slowConsumersMeshs",
+                                "sentMessagesRate",
+                                "sentBytesRate",
+                                "receivedMessagesRate",
+                                "receivedBytesRate"
+                            ]
+                        },
+                        "example": "cpu"
+                    },
+                    {
+                        "name": "node",
+                        "in": "query",
+                        "required": false,
+                        "description": "Node identifier",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "node-a1b2c3"
+                    },
+                    {
+                        "name": "account",
+                        "in": "query",
+                        "required": false,
+                        "description": "Account identifier (required if node not provided)",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "acme"
+                    },
+                    {
+                        "name": "stream",
+                        "in": "query",
+                        "required": false,
+                        "description": "Stream name",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "events"
+                    },
+                    {
+                        "name": "consumer",
+                        "in": "query",
+                        "required": false,
+                        "description": "Consumer name (requires stream to be specified)",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "processor"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CurrentMetricResponse"
+                                },
+                                "example": {
+                                    "message": "success",
+                                    "data": {
+                                        "ts": 1715241600000,
+                                        "value": 65.7
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                },
+                                "example": {
+                                    "message": "account is required",
+                                    "data": null
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                },
+                                "example": {
+                                    "message": "no data",
+                                    "data": {
+                                        "error": "no data"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                },
+                                "example": {
+                                    "message": "oops",
+                                    "data": null
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/monitoring/metrics/current": {
+            "post": {
+                "summary": "Get multiple current metric values",
+                "description": "Retrieves the latest values for multiple metrics simultaneously",
+                "operationId": "getCurrentMetrics",
+                "x-resource-type": "service",
+                "x-resource": "microstrate.monitoring.get.metrics-current",
+                "tags": [
+                    "metrics"
+                ],
+                "requestBody": {
+                    "description": "Metrics request parameters",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetMetricsCurrentRequest"
+                            },
+                            "example": {
+                                "metrics": [
+                                    "messages_per_second",
+                                    "memory_usage",
+                                    "error_rate"
+                                ],
+                                "account": "acme",
+                                "stream": "events"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MultipleMetricsResponse"
+                                },
+                                "example": {
+                                    "message": "success",
+                                    "data": [
+                                        {
+                                            "ts": 1715241600000,
+                                            "value": 152.3
+                                        },
+                                        {
+                                            "ts": 1715241600000,
+                                            "value": 78.5
+                                        },
+                                        {
+                                            "error": "no data"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                },
+                                "example": {
+                                    "message": "metrics are required",
+                                    "data": null
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                },
+                                "example": {
+                                    "message": "oops",
+                                    "data": null
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "MetricPoint": {
+                "type": "object",
+                "properties": {
+                    "ts": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Timestamp in milliseconds since epoch"
+                    },
+                    "value": {
+                        "type": "number",
+                        "format": "double",
+                        "description": "Metric value"
+                    }
+                }
+            },
+            "MetricErrorPoint": {
+                "type": "object",
+                "properties": {
+                    "error": {
+                        "type": "string",
+                        "description": "Error message"
+                    }
+                }
+            },
+            "MetricStatsResponse": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "description": "Response message"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/MetricPoint"
+                        },
+                        "description": "Array of metric data points"
+                    },
+                    "metadata": {
+                        "type": "object",
+                        "additionalProperties": true,
+                        "description": "Optional metadata"
+                    }
+                }
+            },
+            "CurrentMetricResponse": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "description": "Response message"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/MetricPoint",
+                        "description": "Current metric data point"
+                    },
+                    "metadata": {
+                        "type": "object",
+                        "additionalProperties": true,
+                        "description": "Optional metadata"
+                    }
+                }
+            },
+            "MultipleMetricsResponse": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "description": "Response message"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "oneOf": [
+                                {
+                                    "$ref": "#/components/schemas/MetricPoint"
+                                },
+                                {
+                                    "$ref": "#/components/schemas/MetricErrorPoint"
+                                }
+                            ]
+                        },
+                        "description": "Array of metric data points or error messages"
+                    },
+                    "metadata": {
+                        "type": "object",
+                        "additionalProperties": true,
+                        "description": "Optional metadata"
+                    }
+                }
+            },
+            "ErrorResponse": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "description": "Error message"
+                    },
+                    "data": {
+                        "type": "object",
+                        "nullable": true,
+                        "additionalProperties": true,
+                        "description": "Additional error details"
+                    },
+                    "metadata": {
+                        "type": "object",
+                        "nullable": true,
+                        "additionalProperties": true,
+                        "description": "Optional metadata"
+                    }
+                }
+            },
+            "GetMetricsCurrentRequest": {
+                "type": "object",
+                "required": [
+                    "metrics"
+                ],
+                "properties": {
+                    "metrics": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Array of metric names to retrieve",
+                        "minItems": 1
+                    },
+                    "node": {
+                        "type": "string",
+                        "description": "Node identifier"
+                    },
+                    "account": {
+                        "type": "string",
+                        "description": "Account identifier (required if node not provided)"
+                    },
+                    "stream": {
+                        "type": "string",
+                        "description": "Stream name"
+                    },
+                    "consumer": {
+                        "type": "string",
+                        "description": "Consumer name (requires stream to be specified)"
+                    }
+                }
+            }
+        }
+    }
+}
