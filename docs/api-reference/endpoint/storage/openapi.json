@@ -875,7 +875,7 @@
           },
           "retention": {
             "type": "string",
-            "description": "Defines the message retention policy for the stream. Defaults to 'limits'.",
+            "description": "Defines the message retention policy for the stream.\n- Limits Policy (default) means that messages are retained until any given limit is reached. This could be one of MaxMsgs, MaxBytes, or MaxAge.\n- Interest Policy specifies that when all known observables have acknowledged a message it can be removed.\n- Work Queue Policy specifies that when the first worker or subscriber acknowledges the message it can be removed.",
             "enum": [
               "limits",
               "interest",
@@ -2816,7 +2816,12 @@
                   "$ref": "#/components/schemas/ErrorResponse"
                 },
                 "examples": {
-                  "BSStreamNameInUse": {
+                   "InvalidSubject": {
+                    "value": {
+                      "error": "bellerophon: API error: code=500 err_code=10052 description=invalid subject"
+                   }
+                  },
+                  "StreamNameInUse": {
                     "value": {
                       "error": "bellerophon: API error: code=400 err_code=10058 description=stream name already in use"
                     }
@@ -2839,11 +2844,6 @@
                   "BSStreamNameContainsPathSeparatorsErr": {
                     "value": {
                       "error": "bellerophon: API error: code=400 err_code=10128 description=Stream name can not contain path separators"
-                    }
-                  },
-                  "BSStreamInvalidConfigF": {
-                    "value": {
-                      "error": "bellerophon: API error: code=500 err_code=10052 description=Stream configuration validation error"
                     }
                   },
                   "BSStreamNameExistErr": {
