@@ -71,7 +71,7 @@ Let's break down a practical example:
 | **Credit Cost per Hour** | **$0.0756**  | **Cost per credit hour**                  |
 | **Credits Used**         | **5**        | **For this configuration and runtime**    |
 
-In this example, running a 4GB function for one hour consumes 5 compute credits at a cost of $0.0756 per credit, totaling $0.378.
+In this example, running a 4GB function for one hour consumes 5 compute credits at a cost of \$0.0756 per credit, totaling \$0.378.
 
 ## Sample Pricing Table
 
@@ -114,12 +114,12 @@ A typical API backend processing 100,000 requests per day with 200ms average exe
 
 - Daily runtime: 100,000 × 0.2 seconds = 20,000 seconds (5.56 hours)
 - Credit usage: 5.56 hours × 1.5 credits/hour = 8.34 credits/day
-- Monthly cost: 8.34 × 30 × $0.0756 = $18.93/month
+- Monthly cost: 8.34 × 30 × \$0.0756 = \$18.93/month
 
 If we upgraded to Balanced mode for better responsiveness:
 
 - Credit usage with 1.2× factor: 8.34 × 1.2 = 10.01 credits/day
-- Monthly cost: 10.01 × 30 × $0.0756 = $22.71/month
+- Monthly cost: 10.01 × 30 × \$0.0756 = \$22.71/month
 
 ### Example 2: Data Processing Job
 
@@ -127,12 +127,12 @@ A nightly data processing job running for 2 hours with 4GB memory in Basic mode:
 
 - Daily runtime: 2 hours
 - Credit usage: 2 hours × 5 credits/hour = 10 credits/day
-- Monthly cost: 10 × 30 × $0.0756 = $22.68/month
+- Monthly cost: 10 × 30 × \$0.0756 = \$22.68/month
 
 For faster processing using Performant mode:
 
 - Credit usage with 1.6× factor: 10 × 1.6 = 16 credits/day
-- Monthly cost: 16 × 30 × $0.0756 = $36.29/month
+- Monthly cost: 16 × 30 × \$0.0756 = \$36.29/month
 
 ### Example 3: Always-On Microservice
 
@@ -140,12 +140,12 @@ A continuously running microservice with 1GB memory in Basic mode:
 
 - Monthly runtime: 24 hours × 30 days = 720 hours
 - Credit usage: 720 hours × 2 credits/hour = 1,440 credits/month
-- Monthly cost: 1,440 × $0.0756 = $108.86/month
+- Monthly cost: 1,440 × \$0.0756 = \$108.86/month
 
 For critical services using Boosted mode:
 
 - Credit usage with 2.0× factor: 1,440 × 2.0 = 2,880 credits/month
-- Monthly cost: 2,880 × $0.0756 = $217.73/month
+- Monthly cost: 2,880 × \$0.0756 = $217.73/month
 
 ### Example 4: Lightweight Web Server
 
@@ -153,7 +153,7 @@ A lightweight web server handling moderate traffic using 128MB memory in Basic m
 
 - Monthly runtime: 24 hours × 30 days = 720 hours
 - Credit usage: 720 hours × 1 credit/hour = 720 credits/month
-- Monthly cost: 720 × $0.0756 = $54.43/month
+- Monthly cost: 720 × \$0.0756 = \$54.43/month
 
 By optimizing this workload to run efficiently at the 128MB tier instead of 256MB, you save approximately 15% on your compute costs.
 

@@ -1,0 +1,327 @@
+---
+title: "Hub Workflows & Automation"
+description: "How do Hub flows work, and what can you do with them"
+icon: "share-nodes"
+---
+
+# Understanding Microstrate Hub Workflows
+
+## Introduction to Microstrate Hub
+
+Microstrate Hub is a powerful integration platform that combines the simplicity of low-code tools with developer-grade capabilities. Built on Microstrate's revolutionary cloud infrastructure, Hub allows you to create sophisticated, stateful workflows that connect applications, process data, and automate complex business processes with unprecedented flexibility and performance.
+
+## What Are Workflows?
+
+A workflow in Microstrate Hub is a visual representation of a business process, integration, or automation sequence. Workflows consist of connected nodes that define how data flows and is transformed from one step to the next.
+
+### Key Components of a Workflow
+
+1. **Triggers**: The events that initiate your workflow
+2. **Nodes**: Individual steps that perform specific actions
+3. **Connections**: The paths data follows between nodes
+4. **State**: Contextual information maintained between executions
+
+## Flow Runs: Understanding Execution
+
+A "flow run" refers to a single execution of a workflow from start to finish. Each time a workflow is triggered—whether by an API call, scheduled event, or external system—it counts as one flow run.
+
+### Anatomy of a Flow Run
+
+Each flow run progresses through several phases:
+
+1. **Trigger Activation**: An event causes the workflow to begin execution. The can be the default endpoints for the flow, or a custom trigger
+2. **Node Processing**: Each node in the workflow processes data in the order in which it is connected to the other nodes. This can be sequentially, or in parallel
+3. **State Management**: The workflow maintains contextual information throughout the execution, and can be dynamically linked in each step.
+4. **Completion**: The workflow finishes execution, either successfully or with errors
+
+### Flow Run Metrics
+
+Microstrate Hub provides detailed metrics for each flow run:
+
+| Metric | Description |
+|--------|-------------|
+| Duration | Total execution time from start to finish |
+| CPU Time | Amount of compute resources consumed |
+| Memory Usage | Peak memory utilized during execution |
+| Status | Success, failure, or partial completion |
+| Error Details | Information about any failures |
+| Node Metrics | Performance data for individual nodes |
+
+## Types of Workflows
+
+### 1. Scheduled Workflows
+
+Scheduled workflows run at predetermined intervals to perform tasks like:
+- Data synchronization
+- Report generation
+- Periodic health checks
+- Maintenance operations
+
+**Example**: A daily workflow that aggregates sales data from multiple sources, calculates commissions, and emails reports to the sales team.
+
+### 2. Event-Driven Workflows
+
+Event-driven workflows respond to external triggers such as:
+- API requests
+- Database changes
+- Message queue events
+- Webhook calls
+
+**Example**: A workflow that processes new customer sign-ups, creates accounts in multiple systems, sends welcome emails, and triggers onboarding sequences.
+
+### 3. Data Processing Workflows
+
+Data processing workflows transform, enrich, and route data between systems:
+- ETL (Extract, Transform, Load) operations
+- Format conversion
+- Data validation and cleansing
+- Analytics preprocessing
+
+**Example**: A workflow that extracts data from CSV uploads, cleanses it, transforms it to match your database schema, and loads it into your data warehouse.
+
+### 4. Integration Workflows
+
+Integration workflows connect different applications and services:
+- API orchestration
+- Multi-system updates
+- Cross-platform data synchronization
+- Legacy system integration
+
+**Example**: A workflow that ensures customer information stays synchronized across your CRM, marketing platform, support system, and billing service.
+
+## What Makes Hub Workflows Different
+
+### Stateful Execution
+
+Unlike many workflow tools that treat each execution as isolated, Microstrate Hub workflows can maintain context and state between runs. This enables:
+
+- Resumable executions
+- Persistent variables
+- Contextual decision-making
+- Multi-step processes that span multiple triggers
+
+This is achieved by using the inbuilt storage that comes with Microstrate Cloud, with state able to be stored with one workflow step, and retreived with another.
+
+### Developer Extensibility
+
+While Hub provides a visual interface, developers can extend capabilities by:
+- Creating custom code nodes in multiple languages
+- Deploying custom functions and containers
+- Using custom functions, containers, streams, and storage directly in workflows
+- Building reusable components
+- Accessing the underlying Microstrate Cloud infrastructure by deploying custom stacks containing entire service architectures inlcuding functions/containers, storage, gateways etc.
+
+### Enterprise-Grade Performance
+
+Built on the same technology that powers Microstrate Cloud, Hub handles high-throughput, latency-sensitive workflows:
+- Parallel execution capabilities
+- Millisecond-level response times
+- Elastic scaling based on demand
+- Optimized resource utilization
+
+### Advanced Function Ecosystem
+
+Hub comes with sophisticated built-in functions:
+- Rule engine for complex conditional logic
+- JSON path mapping for data transformation
+- Direct access to streaming for high-performance data handling
+- Native storage integration with KV and object stores
+- HTTP capabilities for API connectivity and custom integrations
+- Specialized utilities (SFTP, Base64, templating)
+
+## Best Practices for Workflow Design
+
+### Collection management
+
+Collections are designed to create a visual grouping of related flows for easy navigation and management. Keep similar and related flows together in the same collections. 
+
+### Modular Design
+
+Break complex processes into smaller, reusable workflows:
+- Creates manageable components
+- Improves reusability
+- Simplifies testing and debugging
+- Enables parallel development
+
+### Error Handling
+
+Implement robust error management:
+- Add error handling paths for critical nodes
+- Set up retry logic for transient failures
+- Create notification alerts for failures
+- Review logs for comprehensive error information. By default, logs are kept for 14 days.
+
+### Performance Optimization
+
+Optimize for execution efficiency:
+- Use parallel processing where appropriate
+- Minimize external API calls
+- Implement caching strategies
+- Use batch operations for bulk data
+
+### Security Considerations
+
+Build with security in mind:
+- Store credentials in the secure secrets manager
+- Implement appropriate access controls
+- Use encryption for sensitive data
+- Follow the principle of least privilege
+
+## Workflow Limits and Scaling
+
+Each Microstrate plan includes allocations for workflow resources:
+
+| Plan | Active Workflows | Flow Runs/Month | Concurrent Function Executions\* |
+|------|------------------|-----------------|------------------------|
+| Starter | 3 | 300 | 10 |
+| Pro | 25 | 10,000 | 100 |
+| Business | Unlimited | 100,000 | 1,000 |
+| Enterprise | Unlimited | Custom | Custom |
+
+\* Concurrent function executions limit the number of total functions that can be run across your Hub and Cloud account at any one time.
+
+### Understanding Active Workflows
+
+An "active" workflow is one that is published and available for execution. The Starter plan allows up to 3 active workflows, but you can have additional workflows in draft mode for development purposes.
+
+### Flow Run Consumption
+
+Different workflow types consume flow runs differently:
+- **Single-step workflows**: 1 flow run per execution
+- **Multi-step workflows**: 1 flow run per complete execution
+- **Long-running workflows**: 1 flow run per logical execution (even across days)
+
+### Additional Flow Runs
+
+If you exceed your plan's allocation, additional flow runs are billed at:
+- Pro: $0.01 per additional run
+- Business: $0.005 per additional run
+- Enterprise: Custom pricing
+
+## Getting Started with Workflows
+
+### Creating Your First Workflow
+
+1. Navigate to the Hub section in your Microstrate dashboard
+![Hub Selection](/images/select-hub.png)
+2. Navigate to "Flows", and create a new collection. Collections allow you to group similar or related workflows together
+3. Click "Create" and provide a name for your flow.
+4. Add and configure nodes
+5. Connect nodes to define the flow
+6. Test your workflow by using the "run" button
+7. Add a trigger, or access the default triggers
+8. Publish when ready
+
+### Testing and Debugging
+
+Hub provides comprehensive tools for testing:
+- Test execution with sample data
+- Inspect variables and state
+- Review execution logs
+
+Coming soon:
+- Step-through debugging
+- Visualize data flow between nodes
+
+### Monitoring and Analytics
+
+Once published, monitor your workflows with:
+- Real-time execution metrics
+- Historical performance data
+- Error rate tracking
+- Resource utilization statistics
+- SLA compliance monitoring
+
+## Integration with Microstrate Cloud
+
+Hub workflows seamlessly integrate with other Microstrate Cloud features:
+
+### Compute Integration
+
+Workflows can:
+- Execute functions
+- Trigger computationally intensive processes
+- Coordinate distributed tasks
+- Scale dynamically based on load
+
+### Storage Integration
+
+Workflows can interact with:
+- Key-Value stores for state management
+- Object storage for file processing
+- Stream processing for real-time data
+- Structured data storage for complex information
+
+### Gateway Integration
+
+Workflows can be:
+- Exposed as REST APIs through Gateway
+- Triggered by incoming HTTP requests using the default triggers
+- Part of a larger API orchestration
+- Connected to external systems via webhooks
+
+## Common Use Cases for Hub Workflows
+
+### Customer Data Orchestration
+
+Create unified customer profiles by:
+- Synchronizing data across systems
+- Enriching profiles with third-party data
+- Triggering personalized communications
+- Maintaining data quality and consistency
+
+### Business Process Automation
+
+Streamline operations by automating:
+- Approval workflows
+- Document processing
+- Inventory management
+- Order fulfillment
+
+### Data Pipeline Management
+
+Build sophisticated data pipelines for:
+- Real-time analytics
+- Automated reporting
+- Machine learning preprocessing
+- Compliance and audit trails
+
+### System Integration
+
+Connect your technology ecosystem:
+- Bridge legacy and modern systems
+- Create composite APIs
+- Enable cross-platform functionality
+- Implement event-driven architectures
+
+## Advanced Workflow Concepts
+
+### Stateful Workflows
+
+Leverage Hub's stateful capabilities:
+- Implement multi-stage processes
+- Create workflows that remember context
+- Build state machines for complex logic
+- Support long-running business processes
+
+### Workflow Composition
+
+Combine workflows for greater power:
+- Nest workflows within each other
+- Chain workflows together
+- Implement publish-subscribe patterns
+- Create reusable workflow collections
+
+### Event-Driven Architectures
+
+Build responsive systems:
+- Connect to event streams
+- Process real-time data
+- Implement event sourcing patterns
+- Design reactive applications
+
+## Conclusion
+
+Microstrate Hub workflows provide a powerful way to automate processes, integrate systems, and orchestrate data flows. With their unique combination of simplicity, stateful execution, and enterprise-grade performance, they empower both technical and business teams to build sophisticated automations without traditional tradeoffs between ease-of-use and capability.
+
+By leveraging the unified architecture of Microstrate Cloud, Hub workflows deliver unparalleled performance, security, and scalability while simplifying how you build and manage automations.
