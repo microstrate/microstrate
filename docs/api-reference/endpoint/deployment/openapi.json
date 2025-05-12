@@ -1,0 +1,1942 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Microstrate Gateway",
+        "description": "API for managing Microstrate platform",
+        "version": "1.0.0",
+        "contact": {
+            "name": "Microstrate Support",
+            "url": "https://app.staging.microstrate.io"
+        }
+    },
+    "servers": [
+        {
+            "url": "https://api.staging.microstrate.io",
+            "description": "Staging API server"
+        },
+        {
+            "url": "https://api.microstrate.io",
+            "description": "Production API server"
+        }
+    ],
+    "tags": [
+        {
+            "name": "Stacks",
+            "description": "Operations related to stack management"
+        },
+        {
+            "name": "Resources",
+            "description": "Operations related to resource management within stacks"
+        },
+        {
+            "name": "OpenAPI",
+            "description": "Operations related to OpenAPI deployments"
+        }
+    ],
+    "security": [
+        {
+            "bearerAuth": []
+        },
+        {
+            "apiKeyAuth": []
+        }
+    ],
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            },
+            "apiKeyAuth": {
+                "type": "apiKey",
+                "in": "header",
+                "name": "X-Api-Key"
+            }
+        },
+        "schemas": {
+            "StackSummary": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the stack"
+                    },
+                    "stage": {
+                        "type": "string",
+                        "description": "Stage of the stack (e.g., production, development)"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the stack"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Timestamp when the stack was created"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Timestamp when the stack was last updated"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "SUCCESS",
+                            "IN_PROGRESS",
+                            "FAILED"
+                        ],
+                        "description": "Current status of the stack"
+                    }
+                },
+                "required": [
+                    "name",
+                    "stage"
+                ]
+            },
+            "Resource": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "description": "Type of the resource"
+                    },
+                    "deletion_policy": {
+                        "type": "string",
+                        "enum": [
+                            "retain",
+                            "delete"
+                        ],
+                        "default": "retain",
+                        "description": "Policy for handling the resource when removed from a stack"
+                    },
+                    "properties": {
+                        "type": "object",
+                        "description": "Resource-specific properties"
+                    }
+                },
+                "required": [
+                    "type",
+                    "properties"
+                ]
+            },
+            "StackDeployRequest": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the stack"
+                    },
+                    "stage": {
+                        "type": "string",
+                        "description": "Stage of the stack (e.g., production, development)"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the stack"
+                    },
+                    "resources": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/Resource"
+                        },
+                        "description": "Map of resources to deploy, with resource IDs as keys"
+                    }
+                },
+                "required": [
+                    "name",
+                    "stage",
+                    "resources"
+                ]
+            },
+            "SuccessResponse": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "description": "Success message"
+                    },
+                    "data": {
+                        "description": "Response data, varies by endpoint"
+                    },
+                    "metadata": {
+                        "type": "object",
+                        "nullable": true,
+                        "description": "Additional metadata, if any"
+                    }
+                }
+            },
+            "Error": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "description": "Error message"
+                    },
+                    "data": {
+                        "nullable": true,
+                        "description": "Additional error details, if any"
+                    },
+                    "metadata": {
+                        "type": "object",
+                        "nullable": true,
+                        "description": "Additional metadata, if any"
+                    }
+                }
+            },
+            "OpenApiSpec": {
+                "type": "object",
+                "properties": {
+                    "openapi": {
+                        "type": "string",
+                        "description": "OpenAPI specification version"
+                    },
+                    "info": {
+                        "type": "object",
+                        "properties": {
+                            "title": {
+                                "type": "string",
+                                "description": "API title"
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "API description"
+                            },
+                            "version": {
+                                "type": "string",
+                                "description": "API version"
+                            }
+                        },
+                        "required": [
+                            "title",
+                            "version"
+                        ]
+                    },
+                    "paths": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "object",
+                                "properties": {
+                                    "operationId": {
+                                        "type": "string",
+                                        "description": "Unique identifier for the operation"
+                                    },
+                                    "x_resource": {
+                                        "type": "string",
+                                        "description": "Resource identifier"
+                                    },
+                                    "x_resource_type": {
+                                        "type": "string",
+                                        "description": "Resource type"
+                                    },
+                                    "summary": {
+                                        "type": "string",
+                                        "description": "Brief summary of the operation"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "description": "Detailed description of the operation"
+                                    }
+                                },
+                                "required": [
+                                    "operationId",
+                                    "x_resource",
+                                    "x_resource_type"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "required": [
+                    "openapi",
+                    "info",
+                    "paths"
+                ]
+            }
+        }
+    },
+    "paths": {
+        "/deployment/stacks": {
+            "get": {
+                "summary": "List stacks",
+                "description": "Retrieves a list of all available stack deployments.",
+                "operationId": "listStacks",
+                "tags": [
+                    "Stacks"
+                ],
+                "x-resource-type": "service",
+                "x-resource": "microstrate.deployment.get.stack-list",
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved list of stacks",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Deployments fetched"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/StackSummary"
+                                            }
+                                        },
+                                        "metadata": {
+                                            "type": "object",
+                                            "nullable": true
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "message": "Deployments fetched",
+                                    "data": [
+                                        {
+                                            "name": "my-app",
+                                            "stage": "production",
+                                            "description": "My application stack",
+                                            "status": "SUCCESS"
+                                        },
+                                        {
+                                            "name": "analytics-service",
+                                            "stage": "development",
+                                            "description": "Analytics processing service",
+                                            "status": "SUCCESS"
+                                        }
+                                    ],
+                                    "metadata": null
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Deploy stack",
+                "description": "Deploys a new stack with specified resources.",
+                "operationId": "deployStack",
+                "tags": [
+                    "Stacks"
+                ],
+                "x-resource-type": "service",
+                "x-resource": "microstrate.deployment.post.deploy-stack",
+                "requestBody": {
+                    "description": "Stack configuration details",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StackDeployRequest"
+                            },
+                            "example": {
+                                "name": "my-app",
+                                "stage": "production",
+                                "description": "My application stack",
+                                "resources": {
+                                    "gateway": {
+                                        "type": "microstrate::gateway",
+                                        "deletion_policy": "retain",
+                                        "properties": {
+                                            "name": "my-api",
+                                            "active": true
+                                        }
+                                    },
+                                    "function": {
+                                        "type": "microstrate::function",
+                                        "deletion_policy": "retain",
+                                        "properties": {
+                                            "runtime": "nodejs16.x",
+                                            "handler": "index.handler"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Deployment initiated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessResponse"
+                                },
+                                "example": {
+                                    "message": "Deployment in progress",
+                                    "data": {
+                                        "name": "my-app",
+                                        "stage": "production",
+                                        "description": "My application stack",
+                                        "status": "IN_PROGRESS",
+                                        "resources": {
+                                            "gateway": {
+                                                "type": "microstrate::gateway",
+                                                "status": "IN_PROGRESS",
+                                                "properties": {
+                                                    "name": "my-api",
+                                                    "active": true
+                                                }
+                                            },
+                                            "function": {
+                                                "type": "microstrate::function",
+                                                "status": "IN_PROGRESS",
+                                                "properties": {
+                                                    "runtime": "nodejs16.x",
+                                                    "handler": "index.handler"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "metadata": null
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "examples": {
+                                    "noResourcesSpecified": {
+                                        "value": {
+                                            "message": "no resources specified",
+                                            "data": null,
+                                            "metadata": null
+                                        }
+                                    },
+                                    "invalidResources": {
+                                        "value": {
+                                            "message": "invalid resources",
+                                            "data": {
+                                                "function": {
+                                                    "errors": [
+                                                        "Invalid runtime specified"
+                                                    ]
+                                                }
+                                            },
+                                            "metadata": null
+                                        }
+                                    },
+                                    "missingRequiredFields": {
+                                        "value": {
+                                            "message": "stack name and stage required",
+                                            "data": null,
+                                            "metadata": null
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/deployment/stacks/{name}/stages/{stage}": {
+            "get": {
+                "summary": "Get stack",
+                "description": "Retrieves information about a stack deployment by name and stage.",
+                "operationId": "getStack",
+                "tags": [
+                    "Stacks"
+                ],
+                "x-resource-type": "service",
+                "x-resource": "microstrate.deployment.get.stack",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Name of the stack",
+                        "example": "my-app"
+                    },
+                    {
+                        "name": "stage",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Stage of the stack (e.g., production, development)",
+                        "example": "production"
+                    },
+                    {
+                        "name": "from_sequence",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0
+                        },
+                        "description": "Starting sequence number for fetching deployment"
+                    },
+                    {
+                        "name": "to_sequence",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0
+                        },
+                        "description": "Ending sequence number for fetching deployment"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved stack details",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessResponse"
+                                },
+                                "example": {
+                                    "message": "Deployment fetched",
+                                    "data": {
+                                        "name": "my-app",
+                                        "stage": "production",
+                                        "description": "My application stack",
+                                        "resources": {
+                                            "gateway": {
+                                                "type": "microstrate::gateway",
+                                                "deletion_policy": "retain",
+                                                "properties": {
+                                                    "name": "my-api",
+                                                    "active": true,
+                                                    "subject": "ms.resource.gateway.12345"
+                                                }
+                                            },
+                                            "function": {
+                                                "type": "microstrate::function",
+                                                "deletion_policy": "retain",
+                                                "properties": {
+                                                    "runtime": "nodejs16.x",
+                                                    "handler": "index.handler",
+                                                    "subject": "ms.resource.function.67890"
+                                                }
+                                            }
+                                        },
+                                        "result": {
+                                            "gateway": {
+                                                "status": "SUCCESS",
+                                                "timestamp": "2023-01-15T09:30:00Z"
+                                            },
+                                            "function": {
+                                                "status": "SUCCESS",
+                                                "timestamp": "2023-01-15T09:30:00Z"
+                                            }
+                                        },
+                                        "status": "SUCCESS",
+                                        "modified": 1673774400,
+                                        "sequence": 2,
+                                        "subject": "ms.deployment.stack.my-app.production"
+                                    },
+                                    "metadata": null
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Stack not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "example": {
+                                    "message": "resource not found",
+                                    "data": null,
+                                    "metadata": null
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Upsert stack",
+                "description": "Updates stack metadata or creates it if it doesn't exist.",
+                "operationId": "upsertStack",
+                "tags": [
+                    "Stacks"
+                ],
+                "x-resource-type": "service",
+                "x-resource": "microstrate.deployment.patch.stack",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Name of the stack",
+                        "example": "my-app"
+                    },
+                    {
+                        "name": "stage",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Stage of the stack (e.g., production, development)",
+                        "example": "production"
+                    }
+                ],
+                "requestBody": {
+                    "description": "Stack metadata to update",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "description": {
+                                        "type": "string",
+                                        "description": "Updated description for the stack"
+                                    }
+                                }
+                            },
+                            "example": {
+                                "description": "Updated description for my application stack"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Stack successfully updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessResponse"
+                                },
+                                "example": {
+                                    "message": "Stack upserted",
+                                    "data": {
+                                        "name": "my-app",
+                                        "stage": "production",
+                                        "description": "Updated description for my application stack",
+                                        "resources": {
+                                            "gateway": {
+                                                "type": "microstrate::gateway",
+                                                "deletion_policy": "retain",
+                                                "properties": {
+                                                    "name": "my-api",
+                                                    "active": true
+                                                }
+                                            },
+                                            "function": {
+                                                "type": "microstrate::function",
+                                                "deletion_policy": "retain",
+                                                "properties": {
+                                                    "runtime": "nodejs16.x",
+                                                    "handler": "index.handler"
+                                                }
+                                            }
+                                        },
+                                        "result": {
+                                            "gateway": {
+                                                "status": "SUCCESS",
+                                                "timestamp": "2023-01-15T09:30:00Z"
+                                            },
+                                            "function": {
+                                                "status": "SUCCESS",
+                                                "timestamp": "2023-01-15T09:30:00Z"
+                                            }
+                                        }
+                                    },
+                                    "metadata": null
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "example": {
+                                    "message": "Failed to upsert stack",
+                                    "data": null,
+                                    "metadata": null
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Remove stack",
+                "description": "Removes an entire stack and optionally its resources.",
+                "operationId": "removeStack",
+                "tags": [
+                    "Stacks"
+                ],
+                "x-resource-type": "service",
+                "x-resource": "microstrate.deployment.delete.stack",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Name of the stack",
+                        "example": "my-app"
+                    },
+                    {
+                        "name": "stage",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Stage of the stack (e.g., production, development)",
+                        "example": "development"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Stack successfully removed",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessResponse"
+                                },
+                                "example": {
+                                    "message": "Removal success",
+                                    "data": {
+                                        "gateway": {
+                                            "status": "success"
+                                        },
+                                        "function": {
+                                            "status": "success"
+                                        }
+                                    },
+                                    "metadata": null
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request or removal failed",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "example": {
+                                    "message": "Removal failed",
+                                    "data": {
+                                        "gateway": {
+                                            "status": "failed",
+                                            "errors": [
+                                                "Resource is in use by another service"
+                                            ]
+                                        },
+                                        "function": {
+                                            "status": "success"
+                                        }
+                                    },
+                                    "metadata": null
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/deployment/stacks/{name}/stages/{stage}/history": {
+            "get": {
+                "summary": "Get stack history",
+                "description": "Retrieves the deployment history of a specific stack.",
+                "operationId": "getStackHistory",
+                "tags": [
+                    "Stacks"
+                ],
+                "x-resource-type": "service",
+                "x-resource": "microstrate.deployment.get.stack-history",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Name of the stack",
+                        "example": "my-app"
+                    },
+                    {
+                        "name": "stage",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Stage of the stack (e.g., production, development)",
+                        "example": "production"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "default": 10
+                        },
+                        "description": "Maximum number of history entries to return"
+                    },
+                    {
+                        "name": "from_sequence",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0
+                        },
+                        "description": "Starting sequence number for history"
+                    },
+                    {
+                        "name": "to_sequence",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0
+                        },
+                        "description": "Ending sequence number for history"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved stack history",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessResponse"
+                                },
+                                "example": {
+                                    "message": "Deployment history fetched",
+                                    "data": [
+                                        {
+                                            "name": "my-app",
+                                            "stage": "production",
+                                            "description": "Updated description for my application stack",
+                                            "resources": {
+                                                "gateway": {
+                                                    "type": "microstrate::gateway",
+                                                    "deletion_policy": "retain",
+                                                    "properties": {
+                                                        "name": "my-api",
+                                                        "active": true
+                                                    }
+                                                },
+                                                "function": {
+                                                    "type": "microstrate::function",
+                                                    "deletion_policy": "retain",
+                                                    "properties": {
+                                                        "runtime": "nodejs16.x",
+                                                        "handler": "index.handler"
+                                                    }
+                                                }
+                                            },
+                                            "result": {
+                                                "gateway": {
+                                                    "status": "SUCCESS",
+                                                    "timestamp": "2023-01-15T09:30:00Z"
+                                                },
+                                                "function": {
+                                                    "status": "SUCCESS",
+                                                    "timestamp": "2023-01-15T09:30:00Z"
+                                                }
+                                            },
+                                            "status": "SUCCESS",
+                                            "modified": 1673774400,
+                                            "sequence": 2,
+                                            "subject": "ms.deployment.stack.my-app.production"
+                                        },
+                                        {
+                                            "name": "my-app",
+                                            "stage": "production",
+                                            "description": "My application stack",
+                                            "resources": {
+                                                "gateway": {
+                                                    "type": "microstrate::gateway",
+                                                    "deletion_policy": "retain",
+                                                    "properties": {
+                                                        "name": "my-api",
+                                                        "active": true
+                                                    }
+                                                },
+                                                "function": {
+                                                    "type": "microstrate::function",
+                                                    "deletion_policy": "retain",
+                                                    "properties": {
+                                                        "runtime": "nodejs16.x",
+                                                        "handler": "index.handler"
+                                                    }
+                                                }
+                                            },
+                                            "result": {
+                                                "gateway": {
+                                                    "status": "SUCCESS",
+                                                    "timestamp": "2023-01-01T12:00:00Z"
+                                                },
+                                                "function": {
+                                                    "status": "SUCCESS",
+                                                    "timestamp": "2023-01-01T12:00:00Z"
+                                                }
+                                            },
+                                            "status": "SUCCESS",
+                                            "modified": 1672577400,
+                                            "sequence": 1,
+                                            "subject": "ms.deployment.stack.my-app.production"
+                                        }
+                                    ],
+                                    "metadata": {
+                                        "total_messages": 2,
+                                        "next_sequence": 3
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/deployment/stacks/{name}/stages/{stage}/redeploy": {
+            "post": {
+                "summary": "Redeploy stack (full)",
+                "description": "Redeploys an entire stack using its current configuration.",
+                "operationId": "redeployStackFull",
+                "tags": [
+                    "Stacks"
+                ],
+                "x-resource-type": "service",
+                "x-resource": "microstrate.deployment.post.redeploy-stack",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Name of the stack",
+                        "example": "my-app"
+                    },
+                    {
+                        "name": "stage",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Stage of the stack (e.g., production, development)",
+                        "example": "production"
+                    },
+                    {
+                        "name": "from_sequence",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0
+                        },
+                        "description": "Starting sequence number for redeployment"
+                    },
+                    {
+                        "name": "to_sequence",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0
+                        },
+                        "description": "Ending sequence number for redeployment"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Stack redeployment initiated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessResponse"
+                                },
+                                "example": {
+                                    "message": "Stack is being redeployed",
+                                    "data": null,
+                                    "metadata": null
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "examples": {
+                                    "noResources": {
+                                        "value": {
+                                            "message": "no resources to redeploy",
+                                            "data": null,
+                                            "metadata": null
+                                        }
+                                    },
+                                    "stackNotFound": {
+                                        "value": {
+                                            "message": "failed to start redeployment: resource not found",
+                                            "data": null,
+                                            "metadata": null
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/deployment/stacks/{name}/stages/{stage}/resources": {
+            "patch": {
+                "summary": "Attach resources",
+                "description": "Attaches new resources to an existing stack.",
+                "operationId": "attachResources",
+                "tags": [
+                    "Resources"
+                ],
+                "x-resource-type": "service",
+                "x-resource": "microstrate.deployment.patch.attach-resources",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Name of the stack",
+                        "example": "my-app"
+                    },
+                    {
+                        "name": "stage",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Stage of the stack (e.g., production, development)",
+                        "example": "production"
+                    }
+                ],
+                "requestBody": {
+                    "description": "Resources to attach to the stack",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "resources": {
+                                        "type": "object",
+                                        "additionalProperties": {
+                                            "$ref": "#/components/schemas/Resource"
+                                        }
+                                    }
+                                },
+                                "required": [
+                                    "resources"
+                                ]
+                            },
+                            "example": {
+                                "resources": {
+                                    "new-function": {
+                                        "type": "microstrate::function",
+                                        "deletion_policy": "retain",
+                                        "properties": {
+                                            "runtime": "nodejs16.x",
+                                            "handler": "index.handler"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Resources are being attached",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessResponse"
+                                },
+                                "example": {
+                                    "message": "The resources are being attached",
+                                    "data": null,
+                                    "metadata": null
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "examples": {
+                                    "noResourcesSpecified": {
+                                        "value": {
+                                            "message": "no resources specified",
+                                            "data": null,
+                                            "metadata": null
+                                        }
+                                    },
+                                    "invalidResources": {
+                                        "value": {
+                                            "message": "invalid resources",
+                                            "data": {
+                                                "new-function": {
+                                                    "status": "failed",
+                                                    "errors": [
+                                                        "Invalid runtime specified"
+                                                    ]
+                                                }
+                                            },
+                                            "metadata": null
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/deployment/stacks/{name}/stages/{stage}/resources/{resource_id}": {
+            "get": {
+                "summary": "Get resource (without history)",
+                "description": "Retrieves a specific resource from a stack.",
+                "operationId": "getResource",
+                "tags": [
+                    "Resources"
+                ],
+                "x-resource-type": "service",
+                "x-resource": "microstrate.deployment.get.stack-resource",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Name of the stack",
+                        "example": "my-app"
+                    },
+                    {
+                        "name": "stage",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Stage of the stack (e.g., production, development)",
+                        "example": "production"
+                    },
+                    {
+                        "name": "resource_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "ID of the resource",
+                        "example": "gateway"
+                    },
+                    {
+                        "name": "from_sequence",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0
+                        },
+                        "description": "Starting sequence number for fetching resource"
+                    },
+                    {
+                        "name": "to_sequence",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0
+                        },
+                        "description": "Ending sequence number for fetching resource"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved resource",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessResponse"
+                                },
+                                "example": {
+                                    "message": "Resource fetched",
+                                    "data": {
+                                        "name": "my-app",
+                                        "stage": "production",
+                                        "description": "My application stack",
+                                        "resources": {
+                                            "gateway": {
+                                                "type": "microstrate::gateway",
+                                                "deletion_policy": "retain",
+                                                "properties": {
+                                                    "name": "my-api",
+                                                    "active": true,
+                                                    "subject": "ms.resource.gateway.12345"
+                                                }
+                                            }
+                                        },
+                                        "result": {
+                                            "gateway": {
+                                                "status": "SUCCESS",
+                                                "timestamp": "2023-01-15T09:30:00Z"
+                                            }
+                                        }
+                                    },
+                                    "metadata": null
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "examples": {
+                                    "resourceIdMissing": {
+                                        "value": {
+                                            "message": "resourceId not provided",
+                                            "data": null,
+                                            "metadata": null
+                                        }
+                                    },
+                                    "resourceNotFound": {
+                                        "value": {
+                                            "message": "error getting resource: resource not found",
+                                            "data": null,
+                                            "metadata": null
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Remove resource",
+                "description": "Removes a specific resource from a stack.",
+                "operationId": "removeResource",
+                "tags": [
+                    "Resources"
+                ],
+                "x-resource-type": "service",
+                "x-resource": "microstrate.deployment.delete.stack-resource",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Name of the stack",
+                        "example": "my-app"
+                    },
+                    {
+                        "name": "stage",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Stage of the stack (e.g., production, development)",
+                        "example": "production"
+                    },
+                    {
+                        "name": "resource_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "ID of the resource",
+                        "example": "function"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Resource successfully removed",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessResponse"
+                                },
+                                "example": {
+                                    "message": "Removal success",
+                                    "data": null,
+                                    "metadata": null
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "example": {
+                                    "message": "failed to remove resource: resource is in use",
+                                    "data": null,
+                                    "metadata": null
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Detach resource",
+                "description": "Detaches a resource from a stack without deleting it.",
+                "operationId": "detachResource",
+                "tags": [
+                    "Resources"
+                ],
+                "x-resource-type": "service",
+                "x-resource": "microstrate.deployment.patch.detach-stack-resource",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Name of the stack",
+                        "example": "my-app"
+                    },
+                    {
+                        "name": "stage",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Stage of the stack (e.g., production, development)",
+                        "example": "production"
+                    },
+                    {
+                        "name": "resource_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "ID of the resource",
+                        "example": "function"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Resource successfully detached",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessResponse"
+                                },
+                                "example": {
+                                    "message": "Removal success",
+                                    "data": null,
+                                    "metadata": null
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "example": {
+                                    "message": "failed to remove resource: resource not found",
+                                    "data": null,
+                                    "metadata": null
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/deployment/stacks/{name}/stages/{stage}/resources/{resource_id}/history": {
+            "get": {
+                "summary": "Get resource (with history)",
+                "description": "Retrieves a specific resource from a stack including its deployment history.",
+                "operationId": "getResourceHistory",
+                "tags": [
+                    "Resources"
+                ],
+                "x-resource-type": "service",
+                "x-resource": "microstrate.deployment.get.stack-resource-history",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Name of the stack",
+                        "example": "my-app"
+                    },
+                    {
+                        "name": "stage",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Stage of the stack (e.g., production, development)",
+                        "example": "production"
+                    },
+                    {
+                        "name": "resource_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "ID of the resource",
+                        "example": "gateway"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "default": 5
+                        },
+                        "description": "Maximum number of history entries to return"
+                    },
+                    {
+                        "name": "from_sequence",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0
+                        },
+                        "description": "Starting sequence number for history"
+                    },
+                    {
+                        "name": "to_sequence",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0
+                        },
+                        "description": "Ending sequence number for history"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved resource history",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessResponse"
+                                },
+                                "example": {
+                                    "message": "Resource fetched",
+                                    "data": [
+                                        {
+                                            "name": "my-app",
+                                            "stage": "production",
+                                            "resources": {
+                                                "gateway": {
+                                                    "type": "microstrate::gateway",
+                                                    "deletion_policy": "retain",
+                                                    "properties": {
+                                                        "name": "my-api",
+                                                        "active": true,
+                                                        "subject": "ms.resource.gateway.12345"
+                                                    }
+                                                }
+                                            },
+                                            "result": {
+                                                "gateway": {
+                                                    "status": "SUCCESS",
+                                                    "timestamp": "2023-01-15T09:30:00Z"
+                                                }
+                                            },
+                                            "modified": 1673774400,
+                                            "sequence": 2
+                                        },
+                                        {
+                                            "name": "my-app",
+                                            "stage": "production",
+                                            "resources": {
+                                                "gateway": {
+                                                    "type": "microstrate::gateway",
+                                                    "deletion_policy": "retain",
+                                                    "properties": {
+                                                        "name": "my-api",
+                                                        "active": false,
+                                                        "subject": "ms.resource.gateway.12345"
+                                                    }
+                                                }
+                                            },
+                                            "result": {
+                                                "gateway": {
+                                                    "status": "SUCCESS",
+                                                    "timestamp": "2023-01-01T12:00:00Z"
+                                                }
+                                            },
+                                            "modified": 1672577400,
+                                            "sequence": 1
+                                        }
+                                    ],
+                                    "metadata": {
+                                        "total_messages": 2,
+                                        "next_sequence": 3
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "examples": {
+                                    "resourceIdMissing": {
+                                        "value": {
+                                            "message": "resourceId not provided",
+                                            "data": null,
+                                            "metadata": null
+                                        }
+                                    },
+                                    "resourceNotFound": {
+                                        "value": {
+                                            "message": "error getting resource: resource not found",
+                                            "data": null,
+                                            "metadata": null
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/deployment/stacks/{name}/stages/{stage}/resources/{resource_id}/redeploy": {
+            "post": {
+                "summary": "Redeploy stack resource (partial)",
+                "description": "Redeploys a specific resource in a stack.",
+                "operationId": "redeployStackResource",
+                "tags": [
+                    "Resources"
+                ],
+                "x-resource-type": "service",
+                "x-resource": "microstrate.deployment.post.redeploy-stack-resource",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Name of the stack",
+                        "example": "my-app"
+                    },
+                    {
+                        "name": "stage",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Stage of the stack (e.g., production, development)",
+                        "example": "production"
+                    },
+                    {
+                        "name": "resource_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "ID of the resource",
+                        "example": "function"
+                    },
+                    {
+                        "name": "from_sequence",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0
+                        },
+                        "description": "Starting sequence number for redeployment"
+                    },
+                    {
+                        "name": "to_sequence",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 0
+                        },
+                        "description": "Ending sequence number for redeployment"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Resource redeployment initiated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessResponse"
+                                },
+                                "example": {
+                                    "message": "Stack is being redeployed",
+                                    "data": null,
+                                    "metadata": null
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "examples": {
+                                    "resourceIdMissing": {
+                                        "value": {
+                                            "message": "resourceId not provided",
+                                            "data": null,
+                                            "metadata": null
+                                        }
+                                    },
+                                    "resourceNotFound": {
+                                        "value": {
+                                            "message": "failed to start redeployment: resource not found",
+                                            "data": null,
+                                            "metadata": null
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/deployment/openapi": {
+            "post": {
+                "summary": "Deploy OpenAPI",
+                "description": "Deploys stack resources based on an OpenAPI specification.",
+                "operationId": "deployOpenApi",
+                "tags": [
+                    "OpenAPI"
+                ],
+                "x-resource-type": "service",
+                "x-resource": "microstrate.deployment.post.deploy-openapi",
+                "requestBody": {
+                    "description": "OpenAPI specification with extensions",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/OpenApiSpec"
+                            },
+                            "example": {
+                                "openapi": "3.0.0",
+                                "info": {
+                                    "title": "My API",
+                                    "description": "My API Description",
+                                    "version": "1.0.0"
+                                },
+                                "paths": {
+                                    "/users": {
+                                        "get": {
+                                            "operationId": "getUsers",
+                                            "x_resource": "users",
+                                            "x_resource_type": "function",
+                                            "summary": "Retrieve all users",
+                                            "description": "Returns a list of all users"
+                                        },
+                                        "post": {
+                                            "operationId": "createUser",
+                                            "x_resource": "users",
+                                            "x_resource_type": "function",
+                                            "summary": "Create a user",
+                                            "description": "Creates a new user"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OpenAPI deployment successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessResponse"
+                                },
+                                "example": {
+                                    "message": "success",
+                                    "data": {
+                                        "name": "My API",
+                                        "stage": "production",
+                                        "description": "My API Description",
+                                        "resources": {
+                                            "gateway": {
+                                                "type": "microstrate::gateway",
+                                                "deletion_policy": "retain",
+                                                "properties": {
+                                                    "name": "My API",
+                                                    "active": true,
+                                                    "subject": "ms.resource.gateway.12345"
+                                                }
+                                            },
+                                            "getUsers_mapping": {
+                                                "type": "microstrate::gateway::mapping",
+                                                "deletion_policy": "retain",
+                                                "properties": {
+                                                    "path": "/users",
+                                                    "method": "get",
+                                                    "traffic_distribution": {
+                                                        "1": 100
+                                                    },
+                                                    "gateway": "ms.resource.gateway.12345",
+                                                    "description": "Retrieve all users",
+                                                    "subject": "ms.resource.mapping.67890"
+                                                }
+                                            },
+                                            "createUser_mapping": {
+                                                "type": "microstrate::gateway::mapping",
+                                                "deletion_policy": "retain",
+                                                "properties": {
+                                                    "path": "/users",
+                                                    "method": "post",
+                                                    "traffic_distribution": {
+                                                        "1": 100
+                                                    },
+                                                    "gateway": "ms.resource.gateway.12345",
+                                                    "description": "Create a user",
+                                                    "subject": "ms.resource.mapping.67891"
+                                                }
+                                            },
+                                            "getUsers_mapping_version": {
+                                                "type": "microstrate::gateway::mapping::version",
+                                                "deletion_policy": "retain",
+                                                "properties": {
+                                                    "active": true,
+                                                    "mapping": "ms.resource.mapping.67890",
+                                                    "resource": "users",
+                                                    "resource_type": "function",
+                                                    "description": "Returns a list of all users"
+                                                }
+                                            },
+                                            "createUser_mapping_version": {
+                                                "type": "microstrate::gateway::mapping::version",
+                                                "deletion_policy": "retain",
+                                                "properties": {
+                                                    "active": true,
+                                                    "mapping": "ms.resource.mapping.67891",
+                                                    "resource": "users",
+                                                    "resource_type": "function",
+                                                    "description": "Creates a new user"
+                                                }
+                                            }
+                                        },
+                                        "result": {
+                                            "gateway": {
+                                                "status": "SUCCESS",
+                                                "timestamp": "2023-01-01T12:00:00Z"
+                                            },
+                                            "getUsers_mapping": {
+                                                "status": "SUCCESS",
+                                                "timestamp": "2023-01-01T12:00:05Z"
+                                            },
+                                            "createUser_mapping": {
+                                                "status": "SUCCESS",
+                                                "timestamp": "2023-01-01T12:00:05Z"
+                                            },
+                                            "getUsers_mapping_version": {
+                                                "status": "SUCCESS",
+                                                "timestamp": "2023-01-01T12:00:10Z"
+                                            },
+                                            "createUser_mapping_version": {
+                                                "status": "SUCCESS",
+                                                "timestamp": "2023-01-01T12:00:10Z"
+                                            }
+                                        },
+                                        "status": "SUCCESS",
+                                        "modified": 1672577410,
+                                        "sequence": 3,
+                                        "subject": "ms.deployment.stack.My API.production"
+                                    },
+                                    "metadata": null
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "examples": {
+                                    "invalidOpenApiSpec": {
+                                        "value": {
+                                            "message": "Invalid request",
+                                            "data": {
+                                                "errors": [
+                                                    "info.title is required",
+                                                    "operationId is missing on /users get",
+                                                    "x-resource is missing on /users get"
+                                                ]
+                                            },
+                                            "metadata": null
+                                        }
+                                    },
+                                    "deploymentFailed": {
+                                        "value": {
+                                            "message": "failed to deploy gateway mappings",
+                                            "data": null,
+                                            "metadata": null
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

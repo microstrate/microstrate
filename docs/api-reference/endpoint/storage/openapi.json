@@ -1,0 +1,3828 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Microstrate Gateway",
+    "description": "A comprehensive interface for managing key-value stores, object stores, streams, and search indexing",
+    "contact": {
+      "name": "Microstrate Support",
+      "url": "https://microstrate.io/support"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.microstrate.io",
+      "description": "Production server"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      },
+      "apiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-Api-Key"
+      }
+    },
+    "schemas": {
+      "NumReplicas": {
+        "type": "integer",
+        "description": "Number of replicas to keep for the object store in clustered bstream. Defaults to 1, maximum is 5.",
+        "minimum": 1,
+        "maximum": 5,
+        "default": 1,
+        "example": 3
+      },
+      "StorageType": {
+        "type": "integer",
+        "enum": [
+          0,
+          1
+        ],
+        "description": "Storage type: 0 = FileStorage, 1 = MemoryStorage"
+      },
+      "Storage": {
+        "default": "file",
+        "description": "Specifies the type of storage backend used for the stream (file or memory).",
+        "enum": [
+          "file",
+          "memory"
+        ],
+        "example": "file",
+        "type": "string"
+      },
+      "StreamInfo": {
+        "type": "object",
+        "properties": {
+          "config": {
+            "$ref": "#/components/schemas/StreamConfig"
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the stream was created.",
+            "example": "2023-01-01T00:00:00Z"
+          },
+          "state": {
+            "type": "object",
+            "description": "Provides the state of the stream at the time of request, including metrics like the number of messages in the stream, total bytes, etc.",
+            "properties": {
+              "messages": {
+                "type": "integer",
+                "format": "int64",
+                "description": "Number of messages stored in the stream.",
+                "example": 1000
+              },
+              "bytes": {
+                "type": "integer",
+                "format": "int64",
+                "description": "Number of bytes stored in the stream.",
+                "example": 1048576
+              },
+              "first_seq": {
+                "type": "integer",
+                "format": "int64",
+                "description": "Sequence number of the first message in the stream.",
+                "example": 1
+              },
+              "first_ts": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Timestamp of the first message in the stream.",
+                "example": "2023-01-01T00:00:00Z"
+              },
+              "last_seq": {
+                "type": "integer",
+                "format": "int64",
+                "description": "Sequence number of the last message in the stream.",
+                "example": 1000
+              },
+              "last_ts": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Timestamp of the last message in the stream.",
+                "example": "2023-01-02T00:00:00Z"
+              },
+              "consumer_count": {
+                "type": "integer",
+                "description": "Number of consumers on the stream.",
+                "example": 5
+              },
+              "num_subjects": {
+                "type": "integer",
+                "format": "int64",
+                "description": "Number of unique subjects the stream has received messages on.",
+                "example": 10
+              }
+            }
+          },
+          "cluster": {
+            "type": "object",
+            "description": "Contains information about the cluster to which this stream belongs (if applicable).",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name of the cluster.",
+                "example": "west"
+              },
+              "leader": {
+                "type": "string",
+                "description": "Server name of the RAFT leader.",
+                "example": "server-1"
+              },
+              "replicas": {
+                "type": "array",
+                "description": "List of members of the RAFT cluster.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "Server name of the peer.",
+                      "example": "server-2"
+                    },
+                    "current": {
+                      "type": "boolean",
+                      "description": "Indicates if the peer is up to date and synchronized with the leader.",
+                      "example": true
+                    },
+                    "offline": {
+                      "type": "boolean",
+                      "description": "Indicates if the peer is considered offline by the group.",
+                      "example": false
+                    },
+                    "active": {
+                      "type": "integer",
+                      "format": "int64",
+                      "description": "Duration since this peer was last seen, in nanoseconds.",
+                      "example": 1000000
+                    },
+                    "lag": {
+                      "type": "integer",
+                      "format": "int64",
+                      "description": "Number of uncommitted operations this peer is behind the leader.",
+                      "example": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "ts": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the info was gathered by the server.",
+            "example": "2023-01-02T12:00:00Z"
+          }
+        }
+      },
+      "IndexMapping": {
+        "type": "object",
+        "required": [
+          "field",
+          "field_type"
+        ],
+        "properties": {
+          "field": {
+            "type": "string",
+            "description": "Field name to be indexed"
+          },
+          "field_type": {
+            "type": "string",
+            "description": "Type of the field (text, number, etc.)",
+            "enum": [
+              "text",
+              "number",
+              "date",
+              "boolean",
+              "geo_point"
+            ]
+          }
+        }
+      },
+      "IndexSettings": {
+        "type": "object",
+        "required": [
+          "mappings",
+          "partitions",
+          "replicas",
+          "storage_type"
+        ],
+        "properties": {
+          "mappings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IndexMapping"
+            },
+            "description": "Field mappings for indexing"
+          },
+          "partitions": {
+            "type": "integer",
+            "description": "Number of partitions for the index",
+            "minimum": 1
+          },
+          "replicas": {
+            "type": "integer",
+            "description": "Number of replicas for the index",
+            "minimum": 1
+          },
+          "storage_type": {
+            "$ref": "#/components/schemas/StorageType"
+          },
+          "stream": {
+            "type": "string",
+            "description": "Optional stream name for the index"
+          }
+        }
+      },
+      "KVEntry": {
+        "type": "object",
+        "required": [
+          "key",
+          "value"
+        ],
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "Key of the entry"
+          },
+          "value": {
+            "type": "object",
+            "description": "Value of the entry"
+          }
+        }
+      },
+      "StreamCreateResponse": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "example": "evari.bellerophon.streaming.api.v1.stream_create_response"
+          },
+          "config": {
+            "$ref": "#/components/schemas/StreamConfig"
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "state": {
+            "type": "object",
+            "properties": {
+              "messages": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "bytes": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "first_seq": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "first_ts": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "last_seq": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "last_ts": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "consumer_count": {
+                "type": "integer"
+              },
+              "deleted": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "num_deleted": {
+                "type": "integer"
+              },
+              "num_subjects": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "subjects": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "did_create": {
+            "type": "boolean"
+          },
+          "error": {
+            "type": "object",
+            "nullable": true,
+            "properties": {
+              "code": {
+                "type": "integer"
+              },
+              "err_code": {
+                "type": "integer"
+              },
+              "description": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "KeyValueConfig": {
+        "type": "object",
+        "required": [
+          "bucket"
+        ],
+        "properties": {
+          "bucket": {
+            "type": "string",
+            "description": "Name of the Key-Value Store. Must be unique and can only contain alphanumeric characters, dashes, and underscores.",
+            "pattern": "^[a-zA-Z0-9_-]+$",
+            "example": "user-preferences"
+          },
+          "description": {
+            "type": "string",
+            "description": "Optional description for the Key-Value Store.",
+            "example": "Store for user preferences data"
+          },
+          "max_value_size": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Maximum size of a value in bytes. If not specified, the default is -1 (unlimited).",
+            "default": -1,
+            "example": 65536
+          },
+          "history": {
+            "type": "integer",
+            "format": "int8",
+            "minimum": 1,
+            "maximum": 64,
+            "description": "Number of historical values to keep per key. If not specified, the default is 1. Maximum is 64.",
+            "default": 1,
+            "example": 5
+          },
+          "ttl": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Time-to-live for keys in nanoseconds. By default, keys do not expire (0).",
+            "default": 0,
+            "example": 2592000000000000
+          },
+          "max_bytes": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Maximum size in bytes of the Key-Value Store. If not specified, the default is -1 (unlimited).",
+            "default": -1,
+            "example": 1073741824
+          },
+          "storage": {
+            "$ref": "#/components/schemas/Storage"
+          },
+          "num_replicas": {
+            "$ref": "#/components/schemas/NumReplicas"
+          },
+          "placement": {
+            "type": "object",
+            "description": "Configuration for declaring where the stream should be placed via tags and/or an explicit cluster name.",
+            "properties": {
+              "cluster": {
+                "type": "string",
+                "description": "Name of the cluster to which the stream should be assigned.",
+                "example": "east-cluster"
+              },
+              "tags": {
+                "type": "array",
+                "description": "Tags used to match streams to servers in the cluster. A stream will be assigned to a server with a matching tag.",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "production",
+                  "high-throughput"
+                ]
+              }
+            }
+          },
+          "republish": {
+            "type": "object",
+            "description": "Configuration for republishing messages to another subject after they're stored.",
+            "properties": {
+              "src": {
+                "type": "string",
+                "description": "Subject pattern to match incoming messages against.",
+                "example": "$KV.user-preferences.>"
+              },
+              "dest": {
+                "type": "string",
+                "description": "Subject pattern to republish the matched messages to.",
+                "example": "notifications.user-preferences.>"
+              },
+              "headers_only": {
+                "type": "boolean",
+                "description": "If true, only the headers will be republished, not the message body.",
+                "default": false,
+                "example": false
+              }
+            }
+          },
+          "mirror": {
+            "type": "object",
+            "description": "Configuration for mirroring another Key-Value Store.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name of the Key-Value Store to mirror from.",
+                "example": "primary-user-preferences"
+              },
+              "opt_start_seq": {
+                "type": "integer",
+                "format": "uint64",
+                "description": "Optional starting sequence number for mirroring.",
+                "example": 1000
+              },
+              "opt_start_time": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Optional starting timestamp for mirroring.",
+                "example": "2023-01-01T00:00:00Z"
+              },
+              "filter_subject": {
+                "type": "string",
+                "description": "Subject filter to only replicate messages with matching subjects.",
+                "example": "$KV.primary-user-preferences.user-*"
+              }
+            }
+          },
+          "sources": {
+            "type": "array",
+            "description": "Configuration for sources of the Key-Value Store.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Name of the stream to source from.",
+                  "example": "source-preferences"
+                },
+                "opt_start_seq": {
+                  "type": "integer",
+                  "format": "uint64",
+                  "description": "Optional starting sequence number for sourcing.",
+                  "example": 1000
+                },
+                "opt_start_time": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "Optional starting timestamp for sourcing.",
+                  "example": "2023-01-01T00:00:00Z"
+                },
+                "filter_subject": {
+                  "type": "string",
+                  "description": "Subject filter to only replicate messages with matching subjects.",
+                  "example": "$KV.source-preferences.user-*"
+                }
+              }
+            }
+          },
+          "compression": {
+            "type": "boolean",
+            "description": "Enable compression for the underlying stream.",
+            "default": false,
+            "example": true
+          },
+          "metadata": {
+            "type": "object",
+            "description": "Custom metadata for the Key-Value Store.",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "example": {
+              "owner": "app-team",
+              "environment": "production"
+            }
+          },
+          "indexing": {
+            "$ref": "#/components/schemas/IndexSettings"
+          }
+        }
+      },
+      "KeyValueStatus": {
+        "type": "object",
+        "properties": {
+          "bucket": {
+            "type": "string",
+            "description": "Name of the Key-Value Store.",
+            "example": "user-preferences"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the Key-Value Store.",
+            "example": "Store for user preferences data"
+          },
+          "values": {
+            "type": "integer",
+            "format": "uint64",
+            "description": "Number of messages in the bucket, including historical values.",
+            "example": 128
+          },
+          "history": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Configured history kept per key.",
+            "example": 5
+          },
+          "ttl": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Time-to-live for keys in nanoseconds.",
+            "example": 2592000000000000
+          },
+          "bytes": {
+            "type": "integer",
+            "format": "uint64",
+            "description": "Size of the bucket in bytes.",
+            "example": 24576
+          },
+          "backing_store": {
+            "type": "string",
+            "description": "Technology used for storage of the bucket. Currently only 'BStream' is supported.",
+            "example": "BStream"
+          },
+          "is_compressed": {
+            "type": "boolean",
+            "description": "Indicates if the data is compressed on disk.",
+            "example": true
+          },
+          "metadata": {
+            "type": "object",
+            "description": "Custom metadata for the Key-Value Store.",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "example": {
+              "owner": "app-team",
+              "environment": "production"
+            }
+          }
+        }
+      },
+      "ObjectStoreStatus": {
+        "type": "object",
+        "properties": {
+          "bucket": {
+            "type": "string",
+            "description": "Name of the object store",
+            "example": "documents"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the object store",
+            "example": "Document storage for the organization"
+          },
+          "max_age": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Maximum age of objects in the store in nanoseconds",
+            "example": 86400000000000
+          },
+          "storage": {
+            "$ref": "#/components/schemas/Storage"
+          },
+          "num_replicas": {
+            "$ref": "#/components/schemas/NumReplicas"
+          },
+          "sealed": {
+            "type": "boolean",
+            "description": "Indicates if the stream is sealed and cannot be modified",
+            "example": false
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Combined size of all data in the bucket including metadata, in bytes",
+            "example": 1073741824
+          },
+          "backing_store": {
+            "type": "string",
+            "description": "Technology used for storage of the bucket",
+            "example": "BStream"
+          },
+          "is_compressed": {
+            "type": "boolean",
+            "description": "Indicates if the data is compressed on disk",
+            "example": true
+          },
+          "metadata": {
+            "type": "object",
+            "description": "User-supplied metadata for the bucket",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "example": {
+              "created_by": "admin",
+              "department": "engineering"
+            }
+          }
+        }
+      },
+      "ObjectInfo": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the object",
+            "example": "report.pdf"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the object",
+            "example": "Monthly report for January 2023"
+          },
+          "headers": {
+            "type": "object",
+            "description": "User-defined headers for the object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "example": {
+              "Content-Type": "application/pdf",
+              "Cache-Control": "max-age=86400"
+            }
+          },
+          "metadata": {
+            "type": "object",
+            "description": "User-supplied metadata for the object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "example": {
+              "author": "John Doe",
+              "department": "Finance"
+            }
+          },
+          "options": {
+            "type": "object",
+            "description": "Additional options for the object",
+            "properties": {
+              "link": {
+                "type": "object",
+                "description": "Link to another object or object store",
+                "properties": {
+                  "bucket": {
+                    "type": "string",
+                    "description": "Name of the object store the link is pointing to",
+                    "example": "archive"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "Name of the object the link is pointing to. If empty, the link points to the whole store",
+                    "example": "old-report.pdf"
+                  }
+                }
+              },
+              "max_chunk_size": {
+                "type": "integer",
+                "format": "int32",
+                "description": "Maximum size of each chunk in bytes",
+                "example": 131072
+              }
+            }
+          },
+          "bucket": {
+            "type": "string",
+            "description": "Name of the object store",
+            "example": "documents"
+          },
+          "buid": {
+            "type": "string",
+            "description": "Unique identifier for the object",
+            "example": "BAY3OGM6WZGY"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Size of the object in bytes",
+            "example": 1048576
+          },
+          "mtime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last modification time of the object",
+            "example": "2023-01-15T14:30:00Z"
+          },
+          "chunks": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Number of chunks the object is split into",
+            "example": 8
+          },
+          "digest": {
+            "type": "string",
+            "description": "SHA-256 digest of the object for integrity verification",
+            "example": "SHA-256=dGhpcyBpcyBhIGZha2UgYmFzZTY0IGVuY29kZWQgc2hhMjU2IGhhc2g="
+          },
+          "deleted": {
+            "type": "boolean",
+            "description": "Indicates if the object is marked as deleted",
+            "example": false
+          }
+        }
+      },
+      "ObjectStoreConfig": {
+        "type": "object",
+        "required": [
+          "bucket"
+        ],
+        "properties": {
+          "bucket": {
+            "type": "string",
+            "description": "Name of the object store. Bucket name has to be unique and can only contain alphanumeric characters, dashes, and underscores.",
+            "example": "documents"
+          },
+          "description": {
+            "type": "string",
+            "description": "Optional description for the object store",
+            "example": "Document storage for the organization"
+          },
+          "max_age": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Maximum age of objects in the store in nanoseconds. By default, objects do not expire.",
+            "example": 86400000000000
+          },
+          "max_bytes": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Maximum size of the object store in bytes. If not specified, the default is -1 (unlimited).",
+            "example": 1073741824
+          },
+          "storage": {
+            "$ref": "#/components/schemas/Storage"
+          },
+          "num_replicas": {
+            "$ref": "#/components/schemas/NumReplicas"
+          },
+          "placement": {
+            "type": "object",
+            "description": "Used to declare where the object store should be placed via tags and/or an explicit cluster name.",
+            "properties": {
+              "cluster": {
+                "type": "string",
+                "description": "Name of the cluster to which the object store should be assigned.",
+                "example": "west"
+              },
+              "tags": {
+                "type": "array",
+                "description": "Used to match object stores to servers in the cluster. An object store will be assigned to a server with a matching tag.",
+                "items": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          },
+          "compression": {
+            "type": "boolean",
+            "description": "Enables the underlying stream compression.",
+            "default": false,
+            "example": true
+          },
+          "metadata": {
+            "type": "object",
+            "description": "Bucket-specific metadata as key-value pairs.",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "example": {
+              "created_by": "admin",
+              "department": "engineering"
+            }
+          }
+        }
+      },
+      "StreamSource": {
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the source stream"
+          },
+          "opt_start_seq": {
+            "type": "integer",
+            "description": "Optional starting sequence number"
+          },
+          "opt_start_time": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Optional starting time"
+          },
+          "filter_subject": {
+            "type": "string",
+            "description": "Optional subject filter"
+          },
+          "domain": {
+            "type": "string",
+            "description": "Optional domain"
+          }
+        }
+      },
+      "StreamCreateName": {
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the stream. It is the unique identifier and cannot be changed once created. Names cannot contain whitespace, dots, asterisks, greater-than symbols, path separators (forward or backwards slash), and non-printable characters.",
+            "example": "orders"
+          }
+        }
+      },
+      "StreamConfig": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "Optional description of the stream",
+            "example": "Stream for order processing"
+          },
+          "subjects": {
+            "type": "array",
+            "description": "List of subjects that the stream is listening on. Wildcards are supported. Subjects cannot be set if the stream is created as a mirror.",
+            "items": {
+              "type": "string",
+              "example": "orders.*"
+            }
+          },
+          "retention": {
+            "type": "string",
+            "description": "Defines the message retention policy for the stream.\n- Limits Policy (default) means that messages are retained until any given limit is reached. This could be one of MaxMsgs, MaxBytes, or MaxAge.\n- Interest Policy specifies that when all known observables have acknowledged a message it can be removed.\n- Work Queue Policy specifies that when the first worker or subscriber acknowledges the message it can be removed.",
+            "enum": [
+              "limits",
+              "interest",
+              "workqueue"
+            ],
+            "default": "limits",
+            "example": "limits"
+          },
+          "max_consumers": {
+            "type": "integer",
+            "description": "Maximum number of consumers allowed for the stream",
+            "example": 10
+          },
+          "max_msgs": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Maximum number of messages the stream will store. After reaching the limit, stream adheres to the discard policy. If not set, server default is -1 (unlimited).",
+            "example": 1000000
+          },
+          "max_bytes": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Maximum total size of messages the stream will store. After reaching the limit, stream adheres to the discard policy. If not set, server default is -1 (unlimited).",
+            "example": 1073741824
+          },
+          "discard": {
+            "type": "string",
+            "description": "Defines the policy for handling messages when the stream reaches its limits in terms of number of messages or total bytes.",
+            "enum": [
+              "old",
+              "new"
+            ],
+            "default": "old",
+            "example": "old"
+          },
+          "discard_new_per_subject": {
+            "type": "boolean",
+            "description": "Flag to enable discarding new messages per subject when limits are reached. Requires discard policy to be 'new' and the max_msgs_per_subject to be set.",
+            "default": false,
+            "example": false
+          },
+          "max_age": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Maximum age of messages that the stream will retain, in nanoseconds.",
+            "example": 86400000000000
+          },
+          "max_msgs_per_subject": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Maximum number of messages per subject that the stream will retain.",
+            "example": 1000
+          },
+          "max_msg_size": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Maximum size of any single message in the stream.",
+            "example": 1048576
+          },
+          "storage": {
+            "$ref": "#/components/schemas/Storage"
+          },
+          "num_replicas": {
+            "$ref": "#/components/schemas/NumReplicas"
+          },
+          "no_ack": {
+            "type": "boolean",
+            "description": "Flag to disable acknowledging messages received by this stream. If set to true, publish methods from the BStream client will not work as expected, since they rely on acknowledgements.",
+            "default": false,
+            "example": false
+          },
+          "duplicate_window": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Window within which to track duplicate messages, in nanoseconds. If not set, server default is 2 minutes.",
+            "example": 120000000000
+          },
+          "placement": {
+            "type": "object",
+            "description": "Used to declare where the stream should be placed via tags and/or an explicit cluster name.",
+            "properties": {
+              "cluster": {
+                "type": "string",
+                "description": "Name of the cluster to which the stream should be assigned.",
+                "example": "west"
+              },
+              "tags": {
+                "type": "array",
+                "description": "Used to match streams to servers in the cluster. A stream will be assigned to a server with a matching tag.",
+                "items": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          },
+          "mirror": {
+            "type": "object",
+            "description": "Defines the configuration for mirroring another stream.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name of the stream to source from.",
+                "example": "sourceStream"
+              },
+              "opt_start_seq": {
+                "type": "integer",
+                "format": "int64",
+                "description": "Sequence number to start sourcing from.",
+                "example": 0
+              },
+              "opt_start_time": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Timestamp of messages to start sourcing from.",
+                "example": "2023-01-01T00:00:00Z"
+              },
+              "filter_subject": {
+                "type": "string",
+                "description": "Subject filter used to only replicate messages with matching subjects.",
+                "example": "orders.created"
+              }
+            }
+          },
+          "sources": {
+            "type": "array",
+            "description": "List of other streams this stream sources messages from.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Name of the stream to source from.",
+                  "example": "sourceStream"
+                },
+                "opt_start_seq": {
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "Sequence number to start sourcing from.",
+                  "example": 0
+                },
+                "opt_start_time": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "Timestamp of messages to start sourcing from.",
+                  "example": "2023-01-01T00:00:00Z"
+                },
+                "filter_subject": {
+                  "type": "string",
+                  "description": "Subject filter used to only replicate messages with matching subjects.",
+                  "example": "orders.created"
+                }
+              }
+            }
+          },
+          "sealed": {
+            "type": "boolean",
+            "description": "Sealed streams do not allow messages to be published or deleted via limits or API. Sealed streams can not be unsealed via configuration update. Can only be set on already created streams via the Update API.",
+            "default": false,
+            "example": false
+          },
+          "deny_delete": {
+            "type": "boolean",
+            "description": "Restricts the ability to delete messages from a stream via the API. Defaults to false.",
+            "default": false,
+            "example": false
+          },
+          "deny_purge": {
+            "type": "boolean",
+            "description": "Restricts the ability to purge messages from a stream via the API. Defaults to false.",
+            "default": false,
+            "example": false
+          },
+          "allow_rollup_hdrs": {
+            "type": "boolean",
+            "description": "Allows the use of the Evari-Rollup header to replace all contents of a stream, or subject in a stream, with a single new message.",
+            "default": false,
+            "example": false
+          },
+          "compression": {
+            "type": "string",
+            "description": "Specifies the message storage compression algorithm. Defaults to 'none'.",
+            "enum": [
+              "none",
+              "s2"
+            ],
+            "default": "none",
+            "example": "none"
+          },
+          "first_seq": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Initial sequence number of the first message in the stream.",
+            "example": 1
+          },
+          "allow_direct": {
+            "type": "boolean",
+            "description": "Enables direct access to individual messages using direct get API. Defaults to false.",
+            "default": false,
+            "example": true
+          },
+          "mirror_direct": {
+            "type": "boolean",
+            "description": "Enables direct access to individual messages from the origin stream using direct get API. Defaults to false.",
+            "default": false,
+            "example": false
+          },
+          "metadata": {
+            "type": "object",
+            "description": "Set of application-defined key-value pairs for associating metadata on the stream.",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "example": {
+              "created_by": "system",
+              "environment": "production"
+            }
+          }
+        }
+      },
+      "StreamCreate": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/StreamCreateName"
+          },
+          {
+            "$ref": "#/components/schemas/StreamConfig"
+          }
+        ]
+      },
+      "Message": {
+        "type": "object",
+        "required": [
+          "event",
+          "data"
+        ],
+        "properties": {
+          "event": {
+            "type": "string",
+            "description": "Event type"
+          },
+          "data": {
+            "type": "object",
+            "description": "Message payload"
+          }
+        }
+      },
+      "SearchQueryCondition": {
+        "type": "object",
+        "required": [
+          "field",
+          "search"
+        ],
+        "properties": {
+          "field": {
+            "type": "string",
+            "description": "Field to search in"
+          },
+          "search": {
+            "type": "string",
+            "description": "Search term"
+          },
+          "search_type": {
+            "type": "string",
+            "enum": [
+              "term",
+              "prefix",
+              "numeric-range"
+            ],
+            "description": "Type of search"
+          },
+          "min": {
+            "type": "number",
+            "description": "Minimum value for range searches"
+          },
+          "max": {
+            "type": "number",
+            "description": "Maximum value for range searches"
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "required": [
+          "error",
+          "message"
+        ],
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          }
+        }
+      }
+    },
+    "responses": {
+      "Error400": {
+        "description": "Bad Request",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "example": {
+              "error": "validation_error"
+            }
+          }
+        }
+      },
+      "Error401": {
+        "description": "Unauthorized",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "example": {
+              "error": "unauthorized"
+            }
+          }
+        }
+      },
+      "Error404": {
+        "description": "Not Found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "example": {
+              "error": "not_found"
+            }
+          }
+        }
+      },
+      "Error500": {
+        "description": "Internal Server Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "example": {
+              "error": "internal_error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    },
+    {
+      "apiKeyAuth": []
+    }
+  ],
+  "paths": {
+    "/storage/kv": {
+      "get": {
+        "summary": "List all KV buckets",
+        "description": "Retrieves a list of all key-value buckets",
+        "operationId": "getKVBucketList",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.storage.get.kv-list",
+        "tags": [
+          "KV Buckets"
+        ],
+        "responses": {
+          "200": {
+            "description": "Coming soon: Successfully retrieved bucket list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "description": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "results_total": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "duration": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "body": {
+                    "results": [
+                      {
+                        "name": "bucket1",
+                        "description": "First bucket"
+                      },
+                      {
+                        "name": "bucket2",
+                        "description": "Second bucket"
+                      }
+                    ],
+                    "results_total": 2
+                  },
+                  "metadata": {
+                    "duration": "5ms"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new KV bucket",
+        "description": "Creates a new key-value bucket with optional indexing",
+        "operationId": "createKVBucket",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.storage.post.kv",
+        "tags": [
+          "KV Buckets"
+        ],
+        "requestBody": {
+          "description": "Bucket creation parameters",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/KeyValueConfig"
+              },
+              "example": {
+                "bucket": "my-bucket",
+                "description": "My test bucket",
+                "compression": true,
+                "history": 5,
+                "max_bytes": 1048576,
+                "max_value_size": 8192,
+                "replicas": 3,
+                "storage": 0,
+                "indexing": {
+                  "mappings": [
+                    {
+                      "field": "name",
+                      "field_type": "text"
+                    },
+                    {
+                      "field": "age",
+                      "field_type": "number"
+                    }
+                  ],
+                  "partitions": 3,
+                  "replicas": 2,
+                  "storage_type": 0
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Bucket created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "bucket": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "bucket": "my-bucket",
+                  "status": "created"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500"
+          }
+        }
+      }
+    },
+    "/storage/kv/{bucket}": {
+      "parameters": [
+        {
+          "name": "bucket",
+          "in": "path",
+          "required": true,
+          "description": "Name of the Key-Value Store bucket",
+          "schema": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]+$"
+          }
+        }
+      ],
+      "put": {
+        "summary": "Create or update a KV bucket",
+        "description": "Creates a new key-value bucket with optional indexing or updates it if one does not exist",
+        "operationId": "createOrUpdateKVBucket",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.storage.put.kv",
+        "tags": [
+          "KV Buckets"
+        ],
+        "requestBody": {
+          "description": "Bucket creation parameters",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/KeyValueConfig"
+              },
+              "example": {
+                "bucket": "my-bucket",
+                "description": "My test bucket",
+                "compression": true,
+                "history": 5,
+                "max_bytes": 1048576,
+                "max_value_size": 8192,
+                "replicas": 3,
+                "storage": "file",
+                "indexing": {
+                  "mappings": [
+                    {
+                      "field": "name",
+                      "field_type": "text"
+                    },
+                    {
+                      "field": "age",
+                      "field_type": "number"
+                    }
+                  ],
+                  "partitions": 3,
+                  "replicas": 2,
+                  "storage_type": 0
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Bucket created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "bucket": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "bucket": "my-bucket",
+                  "status": "put"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "KV Buckets"
+        ],
+        "summary": "Get Key-Value Store information",
+        "description": "Retrieves information about a specific Key-Value Store including its configuration and runtime status",
+        "operationId": "getKVInfo",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.storage.get.kv",
+        "responses": {
+          "200": {
+            "description": "Coming soon: Key-Value Store information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KeyValueStatus"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a KV bucket",
+        "description": "Deletes a key-value bucket and all its contents",
+        "operationId": "deleteKVBucket",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.storage.delete.kv",
+        "tags": [
+          "KV Buckets"
+        ],
+        "responses": {
+          "200": {
+            "description": "Bucket deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "bucket": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "bucket": "my-bucket",
+                  "status": "deleted"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error404"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500"
+          }
+        }
+      }
+    },
+    "/storage/kv/{bucket}/entries": {
+      "parameters": [
+        {
+          "name": "bucket",
+          "in": "path",
+          "required": true,
+          "description": "Name of the bucket",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get latest KV entries",
+        "description": "Retrieves the latest entries from a KV bucket",
+        "operationId": "getKVLatestEntries",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.storage.get.kv-entries",
+        "tags": [
+          "KV Entries"
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum number of entries to retrieve",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved entries",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/KVEntry"
+                          }
+                        },
+                        "results_total": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "bucket": {
+                          "type": "string"
+                        },
+                        "limit": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "body": {
+                    "results": [
+                      {
+                        "key": "key1",
+                        "value": {
+                          "name": "John Doe",
+                          "age": 30
+                        }
+                      },
+                      {
+                        "key": "key2",
+                        "value": {
+                          "name": "Jane Smith",
+                          "age": 28
+                        }
+                      }
+                    ],
+                    "results_total": 2
+                  },
+                  "metadata": {
+                    "bucket": "my-bucket",
+                    "limit": 10
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error404"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500"
+          }
+        }
+      }
+    },
+    "/storage/kv/{bucket}/entries/{key}": {
+      "parameters": [
+        {
+          "name": "bucket",
+          "in": "path",
+          "required": true,
+          "description": "Name of the bucket",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "key",
+          "in": "path",
+          "required": true,
+          "description": "Key of the entry",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get a KV entry",
+        "description": "Retrieves a specific entry from a KV bucket",
+        "operationId": "getKVEntry",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.storage.get.kv-entry",
+        "tags": [
+          "KV Entries"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved entry",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "body": {
+                      "$ref": "#/components/schemas/KVEntry"
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "bucket": {
+                          "type": "string"
+                        },
+                        "key": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "body": {
+                    "key": "my-key",
+                    "value": {
+                      "name": "John Doe",
+                      "age": 30
+                    }
+                  },
+                  "metadata": {
+                    "bucket": "my-bucket",
+                    "key": "my-key"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error404"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500"
+          }
+        }
+      },
+      "put": {
+        "summary": "Create or update a KV entry",
+        "description": "Creates or updates a key-value entry in the specified bucket",
+        "operationId": "putKVEntry",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.storage.put.kv-entry",
+        "tags": [
+          "KV Entries"
+        ],
+        "requestBody": {
+          "description": "Entry details",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "value"
+                ],
+                "properties": {
+                  "value": {
+                    "type": "object",
+                    "description": "Value to store"
+                  }
+                }
+              },
+              "example": {
+                "value": {
+                  "name": "John Doe",
+                  "email": "john@example.com"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Entry updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "bucket": {
+                      "type": "string"
+                    },
+                    "key": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "bucket": "my-bucket",
+                  "key": "user123",
+                  "status": "updated"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Entry created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "bucket": {
+                      "type": "string"
+                    },
+                    "key": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "bucket": "my-bucket",
+                  "key": "user123",
+                  "status": "created"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error404"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a KV entry",
+        "description": "Deletes a specific entry from a KV bucket",
+        "operationId": "deleteKVEntry",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.storage.delete.kv-entry",
+        "tags": [
+          "KV Entries"
+        ],
+        "responses": {
+          "200": {
+            "description": "Entry deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "bucket": {
+                      "type": "string"
+                    },
+                    "key": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "bucket": "my-bucket",
+                  "key": "my-key",
+                  "status": "deleted"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error404"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500"
+          }
+        }
+      }
+    },
+    "/storage/kv/{bucket}/search": {
+      "parameters": [
+        {
+          "name": "bucket",
+          "in": "path",
+          "required": true,
+          "description": "Name of the bucket",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Search KV entries by field value",
+        "description": "Searches for entries in a KV bucket based on indexed fields",
+        "operationId": "searchKV",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.storage.get.search-kv",
+        "tags": [
+          "KV Search"
+        ],
+        "parameters": [
+          {
+            "name": "field",
+            "in": "query",
+            "required": true,
+            "description": "Field to search in",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "required": true,
+            "description": "Search term",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "search_type",
+            "in": "query",
+            "required": false,
+            "description": "Type of search",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "term",
+                "prefix",
+                "numeric-range"
+              ]
+            }
+          },
+          {
+            "name": "min",
+            "in": "query",
+            "required": false,
+            "description": "Minimum value for range searches",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "required": false,
+            "description": "Maximum value for range searches",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of results to return",
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "required": false,
+            "description": "Field to sort results by",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Search results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/KVEntry"
+                          }
+                        },
+                        "results_total": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "bucket": {
+                          "type": "string"
+                        },
+                        "field": {
+                          "type": "string"
+                        },
+                        "search": {
+                          "type": "string"
+                        },
+                        "index_duration": {
+                          "type": "string"
+                        },
+                        "index_hits": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "body": {
+                    "results": [
+                      {
+                        "key": "user123",
+                        "value": {
+                          "name": "John Doe",
+                          "age": 30
+                        }
+                      }
+                    ],
+                    "results_total": 1
+                  },
+                  "metadata": {
+                    "bucket": "my-bucket",
+                    "field": "name",
+                    "search": "John",
+                    "index_duration": "3ms",
+                    "index_hits": 1
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error404"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500"
+          }
+        }
+      }
+    },
+    "/storage/kv/{bucket}/search-by-key": {
+      "parameters": [
+        {
+          "name": "bucket",
+          "in": "path",
+          "required": true,
+          "description": "Name of the bucket",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Search KV entries by key pattern",
+        "description": "Searches for KV entries using a key pattern (e.g., 'user*')",
+        "operationId": "searchKVByKey",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.storage.get.search-kv-by-key",
+        "tags": [
+          "KV Search"
+        ],
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "required": true,
+            "description": "Key pattern to search for",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of results to return",
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Search results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/KVEntry"
+                          }
+                        },
+                        "results_total": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "bucket": {
+                          "type": "string"
+                        },
+                        "search": {
+                          "type": "string"
+                        },
+                        "hits": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "body": {
+                    "results": [
+                      {
+                        "key": "user123",
+                        "value": {
+                          "name": "John Doe",
+                          "email": "john@example.com"
+                        }
+                      },
+                      {
+                        "key": "user456",
+                        "value": {
+                          "name": "Jane Smith",
+                          "email": "jane@example.com"
+                        }
+                      }
+                    ],
+                    "results_total": 2
+                  },
+                  "metadata": {
+                    "bucket": "my-bucket",
+                    "search": "user*",
+                    "hits": 2
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error404"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500"
+          }
+        }
+      }
+    },
+    "/storage/obj": {
+      "get": {
+        "summary": "List all object store buckets",
+        "description": "Retrieves a list of all object store buckets",
+        "operationId": "getObjectStoreBucketList",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.storage.get.obj-list",
+        "tags": [
+          "Object Store Buckets"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved bucket list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "description": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "results_total": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "duration": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "body": {
+                    "results": [
+                      {
+                        "name": "obj-bucket1",
+                        "description": "First object bucket"
+                      },
+                      {
+                        "name": "obj-bucket2",
+                        "description": "Second object bucket"
+                      }
+                    ],
+                    "results_total": 2
+                  },
+                  "metadata": {
+                    "duration": "5ms"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new object store bucket",
+        "description": "Creates a new object store bucket",
+        "operationId": "createObjectStoreBucket",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.storage.post.obj",
+        "tags": [
+          "Object Store Buckets"
+        ],
+        "requestBody": {
+          "description": "Bucket creation parameters",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ObjectStoreConfig"
+              },
+              "example": {
+                "bucket": "my-obj-bucket",
+                "description": "My object store bucket",
+                "max_bytes": 104857600,
+                "replicas": 3,
+                "storage": "file"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Bucket created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "bucket": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "bucket": "my-obj-bucket",
+                  "status": "created"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500"
+          }
+        }
+      }
+    },
+    "/storage/obj/{bucket}": {
+      "parameters": [
+        {
+          "name": "bucket",
+          "in": "path",
+          "required": true,
+          "description": "Name of the bucket",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "put": {
+        "summary": "Create or update object store",
+        "description": "Creates a new object store bucket if one does not exist or updates it otherwise",
+        "operationId": "createOrUpdateObjectStoreBucket",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.storage.put.obj",
+        "tags": [
+          "Object Store Buckets"
+        ],
+        "requestBody": {
+          "description": "Bucket creation parameters",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ObjectStoreConfig"
+              },
+              "example": {
+                "bucket": "my-obj-bucket",
+                "description": "My object store bucket",
+                "max_bytes": 104857600,
+                "replicas": 3,
+                "storage": "file"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Bucket created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "bucket": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "bucket": "my-obj-bucket",
+                  "status": "created"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500"
+          }
+        }
+      },
+      "get": {
+        "summary": "Get an object store bucket",
+        "description": "Retrieves detailed information about a specific object store, including its configuration and current state.",
+        "operationId": "getObjectStoreBucketInfo",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.storage.get.obj",
+        "tags": [
+          "Object Store Buckets"
+        ],
+        "responses": {
+          "200": {
+            "description": "Coming Soon: Bucket retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "bucket": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "bucket": "my-obj-bucket",
+                  "status": "created"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an object store bucket",
+        "description": "Deletes an object store bucket and all its contents",
+        "operationId": "deleteObjectStoreBucket",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.storage.delete.obj",
+        "tags": [
+          "Object Store Buckets"
+        ],
+        "responses": {
+          "200": {
+            "description": "Bucket deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "bucket": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "bucket": "my-obj-bucket",
+                  "status": "deleted"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error404"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500"
+          }
+        }
+      }
+    },
+    "/storage/obj/{bucket}/entries": {
+      "parameters": [
+        {
+          "name": "bucket",
+          "in": "path",
+          "required": true,
+          "description": "Name of the bucket",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "summary": "List object store entries",
+        "description": "Retrieves entries from an object store bucket",
+        "operationId": "getObjectStoreEntries",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.storage.get.obj-entries",
+        "tags": [
+          "Object Store Entries"
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of entries to retrieve",
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved entries",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string"
+                              },
+                              "size": {
+                                "type": "integer"
+                              }
+                            }
+                          }
+                        },
+                        "results_total": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "bucket": {
+                          "type": "string"
+                        },
+                        "limit": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "body": {
+                    "results": [
+                      {
+                        "key": "object1",
+                        "size": 1024
+                      },
+                      {
+                        "key": "object2",
+                        "size": 2048
+                      }
+                    ],
+                    "results_total": 2
+                  },
+                  "metadata": {
+                    "bucket": "my-obj-bucket",
+                    "limit": 10
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error404"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500"
+          }
+        }
+      }
+    },
+    "/storage/obj/{bucket}/entries/{key}": {
+      "parameters": [
+        {
+          "name": "bucket",
+          "in": "path",
+          "required": true,
+          "description": "Name of the bucket",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "key",
+          "in": "path",
+          "required": true,
+          "description": "Key of the entry",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "delete": {
+        "summary": "Delete an object store entry",
+        "description": "Deletes a specific entry from an object store bucket",
+        "operationId": "deleteObjectStoreEntry",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.storage.delete.obj-entry",
+        "tags": [
+          "Object Store Entries"
+        ],
+        "responses": {
+          "200": {
+            "description": "Entry deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "bucket": {
+                      "type": "string"
+                    },
+                    "key": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "bucket": "my-obj-bucket",
+                  "key": "my-key",
+                  "status": "deleted"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error404"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500"
+          }
+        }
+      }
+    },
+    "/storage/streams": {
+      "get": {
+        "summary": "List all streams",
+        "description": "Retrieves a list of all streams",
+        "operationId": "getStreamList",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.storage.get.stream-list",
+        "tags": [
+          "Streams"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved stream list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "subjects": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "results_total": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "duration": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "body": {
+                    "results": [
+                      {
+                        "name": "stream1",
+                        "subjects": [
+                          "events.*"
+                        ]
+                      },
+                      {
+                        "name": "stream2",
+                        "subjects": [
+                          "logs.*"
+                        ]
+                      }
+                    ],
+                    "results_total": 2
+                  },
+                  "metadata": {
+                    "duration": "5ms"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new stream",
+        "description": "Creates a new stream for message publishing",
+        "operationId": "createStream",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.storage.post.stream",
+        "tags": [
+          "Streams"
+        ],
+        "requestBody": {
+          "description": "Stream creation parameters",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StreamCreate"
+              },
+              "example": {
+                "name": "my-stream",
+                "description": "My event stream",
+                "subjects": [
+                  "events.*",
+                  "logs.*"
+                ],
+                "max_consumers": 5,
+                "max_msgs": 1000000,
+                "max_bytes": 104857600,
+                "discard": 0,
+                "max_msgs_per_subject": 1000,
+                "max_msg_size": 8192,
+                "storage": "file",
+                "num_replicas": 3
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Stream created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StreamCreateResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                   "InvalidSubject": {
+                    "value": {
+                      "error": "bellerophon: API error: code=500 err_code=10052 description=invalid subject"
+                   }
+                  },
+                  "StreamNameInUse": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10058 description=stream name already in use"
+                    }
+                  },
+                  "BSNotEnabledForAccountErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=503 err_code=10039 description=BStream not enabled for account"
+                    }
+                  },
+                  "BSInvalidJSONErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10025 description=invalid JSON"
+                    }
+                  },
+                  "BSStreamMismatchErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10056 description=stream name in subject does not match request"
+                    }
+                  },
+                  "BSStreamNameContainsPathSeparatorsErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10128 description=Stream name can not contain path separators"
+                    }
+                  },
+                  "BSStreamNameExistErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10058 description=stream name already in use with a different configuration"
+                    }
+                  },
+                  "BSStreamStoreFailedF": {
+                    "value": {
+                      "error": "bellerophon: API error: code=503 err_code=10077 description=Error creating store for stream"
+                    }
+                  },
+                  "BSStreamCreateErrF": {
+                    "value": {
+                      "error": "bellerophon: API error: code=500 err_code=10049 description=Generic stream creation error"
+                    }
+                  },
+                  "BSClusterNotAvailErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=503 err_code=10008 description=BStream system temporarily unavailable"
+                    }
+                  },
+                  "BSMaximumStreamsLimitErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10027 description=maximum number of streams reached"
+                    }
+                  },
+                  "BSStreamLimitsErrF": {
+                    "value": {
+                      "error": "bellerophon: API error: code=500 err_code=10053 description=General stream limits exceeded error"
+                    }
+                  },
+                  "BSInsufficientResourcesErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=503 err_code=10023 description=insufficient resources"
+                    }
+                  },
+                  "BSMemoryResourcesExceededErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=500 err_code=10028 description=insufficient memory resources available"
+                    }
+                  },
+                  "BSStorageResourcesExceededErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=500 err_code=10047 description=insufficient storage resources available"
+                    }
+                  },
+                  "BSStreamReplicasNotSupportedErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=500 err_code=10074 description=replicas > 1 not supported in non-clustered mode"
+                    }
+                  },
+                  "BSMirrorWithSubjectsErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10034 description=stream mirrors can not contain subjects"
+                    }
+                  },
+                  "BSMirrorWithSubjectFiltersErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10033 description=stream mirrors can not contain filtered subjects"
+                    }
+                  },
+                  "BSMirrorWithSourcesErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10031 description=stream mirrors can not also contain other sources"
+                    }
+                  },
+                  "BSMirrorWithStartSeqAndTimeErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10032 description=stream mirrors can not have both start seq and start time configured"
+                    }
+                  },
+                  "BSMirrorWithFirstSeqErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10143 description=stream mirrors can not have first sequence configured"
+                    }
+                  },
+                  "BSMirrorMaxMessageSizeTooBigErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10030 description=stream mirror must have max message size >= source"
+                    }
+                  },
+                  "BSMirrorInvalidStreamName": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10142 description=mirrored stream name is invalid"
+                    }
+                  },
+                  "BSMirrorInvalidSubjectFilter": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10151 description=mirror subject filter is invalid"
+                    }
+                  },
+                  "BSMirrorMultipleFiltersNotAllowed": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10150 description=mirror with multiple subject transforms cannot also have a single subject filter"
+                    }
+                  },
+                  "BSMirrorOverlappingSubjectFilters": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10152 description=mirror subject filters can not overlap"
+                    }
+                  },
+                  "BSSourceInvalidStreamName": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10141 description=sourced stream name is invalid"
+                    }
+                  },
+                  "BSSourceMaxMessageSizeTooBigErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10046 description=stream source must have max message size >= target"
+                    }
+                  },
+                  "BSSourceInvalidSubjectFilter": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10145 description=source subject filter is invalid"
+                    }
+                  },
+                  "BSSourceInvalidTransformDestination": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10146 description=source transform destination is invalid"
+                    }
+                  },
+                  "BSSourceMultipleFiltersNotAllowed": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10144 description=source with multiple subject transforms cannot also have a single subject filter"
+                    }
+                  },
+                  "BSSourceOverlappingSubjectFilters": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10147 description=source filters can not overlap"
+                    }
+                  },
+                  "BSSourceDuplicateDetected": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10140 description=duplicate source configuration detected"
+                    }
+                  },
+                  "BSStreamExternalApiOverlapErrF": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10021 description=stream external api prefix must not overlap with subject"
+                    }
+                  },
+                  "BSStreamExternalDelPrefixOverlapsErrF": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10022 description=stream external delivery prefix overlaps with stream subject"
+                    }
+                  },
+                  "BSStreamExternalDeliverySubjErrF": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10024 description=stream external delivery prefix must not contain wildcards"
+                    }
+                  },
+                  "BSStreamSubjectOverlapErr": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10065 description=subjects overlap with an existing stream"
+                    }
+                  },
+                  "BSStreamMaxBytesRequired": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10113 description=account requires a stream config to have max bytes set"
+                    }
+                  },
+                  "BSStreamMaxStreamBytesExceeded": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10122 description=stream max bytes exceeds account limit max stream bytes"
+                    }
+                  },
+                  "BSReplicasCountCannotBeNegative": {
+                    "value": {
+                      "error": "bellerophon: API error: code=400 err_code=10133 description=replicas count cannot be negative"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/storage/streams/{name}": {
+      "put": {
+        "summary": "Create or update a stream",
+        "description": "Creates a new stream or updates an existing stream with the provided configuration. If the stream does not exist, it will be created. If it exists, it will be updated with the new configuration.\n\nNote that some properties cannot be changed after a stream is created, such as the storage type. If you attempt to change these properties, the request will fail with a 400 error.",
+        "operationId": "createOrUpdateStream",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.storage.put.stream",
+        "tags": [
+          "Streams"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "Name of the stream to create or update. Names cannot contain whitespace, dots, asterisks, greater-than symbols, path separators (forward or backwards slash), and non-printable characters.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "orders"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Stream configuration",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StreamConfig"
+              },
+              "examples": {
+                "updateStream": {
+                  "summary": "Update stream configuration",
+                  "value": {
+                    "name": "orders",
+                    "description": "Updated order processing stream",
+                    "subjects": [
+                      "orders.*",
+                      "legacy.orders.*"
+                    ],
+                    "max_age": 172800000000000,
+                    "max_msgs": 2000000,
+                    "max_bytes": 2147483648
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Stream created or updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StreamInfo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "invalidConfig": {
+                    "summary": "Invalid configuration",
+                    "value": {
+                      "code": 10059,
+                      "message": "stream configuration validation failed"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Streams"
+        ],
+        "summary": "Get information about a stream",
+        "description": "Retrieves detailed information about a specific stream, including its configuration and current state. This endpoint provides metrics such as the number of messages, bytes used, first and last sequence numbers, and more.",
+        "operationId": "getStreamInfo",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.storage.get.stream",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "Name of the stream to retrieve information for",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "orders"
+            }
+          },
+          {
+            "name": "subject",
+            "in": "query",
+            "description": "Optional subject filter to get details about a specific subject within the stream",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "orders.created"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Stream information retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StreamInfo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Stream not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "code": 10059,
+                  "message": "stream not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a stream",
+        "description": "Deletes a stream with all the messages and consumers attached to it.",
+        "operationId": "deleteStream",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.storage.delete.stream",
+        "tags": [
+          "Streams"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "Name of the stream to delete.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "orders"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Stream deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StreamInfo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "invalidConfig": {
+                    "summary": "Invalid request",
+                    "value": {
+                      "code": 10059,
+                      "message": "Invalid request"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/storage/streams/{name}/messages": {
+      "delete": {
+        "summary": "Deletes stream messages",
+        "description": "Deletes messages from a stream by sequence(seq).",
+        "operationId": "deleteStreamMessages",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.storage.delete.messages",
+        "tags": [
+          "Streams"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "Name of the stream.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "orders"
+            }
+          },
+          {
+            "name": "seq",
+            "in": "query",
+            "description": "Sequence to delete. Multiple sequences can be specified",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "example": 5
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Messages deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Success"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "invalidConfig": {
+                    "summary": "Invalid request",
+                    "value": {
+                      "code": 10059,
+                      "message": "Invalid request"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/storage/streams/{stream}/search-by-subject": {
+      "parameters": [
+        {
+          "name": "stream",
+          "in": "path",
+          "required": true,
+          "description": "Name of the stream",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Search stream messages by subject pattern",
+        "description": "Searches for stream messages by subject pattern",
+        "operationId": "searchStreamBySubject",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.storage.get.search-stream-by-subject",
+        "tags": [
+          "Stream Search"
+        ],
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "required": true,
+            "description": "Subject pattern to search for",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of results to return",
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Search results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "subject": {
+                                "type": "string"
+                              },
+                              "data": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "results_total": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "stream": {
+                          "type": "string"
+                        },
+                        "search": {
+                          "type": "string"
+                        },
+                        "hits": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "body": {
+                    "results": [
+                      {
+                        "subject": "events.created",
+                        "data": "..."
+                      },
+                      {
+                        "subject": "events.updated",
+                        "data": "..."
+                      }
+                    ],
+                    "results_total": 2
+                  },
+                  "metadata": {
+                    "stream": "my-stream",
+                    "search": "events.*",
+                    "hits": 2
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error404"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500"
+          }
+        }
+      }
+    },
+    "/storage/search/{index}": {
+      "parameters": [
+        {
+          "name": "index",
+          "in": "path",
+          "required": true,
+          "description": "Name of the index",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Search an index",
+        "description": "Performs a search on an index",
+        "operationId": "searchIndex",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.storage.get.search-index",
+        "tags": [
+          "Search"
+        ],
+        "parameters": [
+          {
+            "name": "field",
+            "in": "query",
+            "required": true,
+            "description": "Field to search in",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "required": true,
+            "description": "Search term",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "search_type",
+            "in": "query",
+            "required": false,
+            "description": "Type of search",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "term",
+                "prefix",
+                "numeric-range"
+              ]
+            }
+          },
+          {
+            "name": "min",
+            "in": "query",
+            "required": false,
+            "description": "Minimum value for range searches",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "required": false,
+            "description": "Maximum value for range searches",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of results to return",
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "required": false,
+            "description": "Field to sort results by",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Search results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "fields": {
+                                "type": "object"
+                              },
+                              "score": {
+                                "type": "number"
+                              }
+                            }
+                          }
+                        },
+                        "results_total": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "field": {
+                          "type": "string"
+                        },
+                        "search": {
+                          "type": "string"
+                        },
+                        "index_duration": {
+                          "type": "string"
+                        },
+                        "index_hits": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "body": {
+                    "results": [
+                      {
+                        "id": "1",
+                        "fields": {
+                          "name": "John Doe",
+                          "age": 30
+                        },
+                        "score": 0.95
+                      }
+                    ],
+                    "results_total": 1
+                  },
+                  "metadata": {
+                    "field": "name",
+                    "search": "John",
+                    "index_duration": "3ms",
+                    "index_hits": 1
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error404"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500"
+          }
+        }
+      }
+    },
+    "/storage/indexers": {
+      "get": {
+        "summary": "List all indexers",
+        "description": "Retrieves a list of all indexers",
+        "operationId": "getIndexerList",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.storage.get.indexer-list",
+        "tags": [
+          "Indexers"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved indexer list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "mappings": {
+                                "type": "array",
+                                "items": {
+                                  "$ref": "#/components/schemas/IndexMapping"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "results_total": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "duration": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "body": {
+                    "results": [
+                      {
+                        "name": "index1",
+                        "mappings": [
+                          {
+                            "field": "name",
+                            "field_type": "text"
+                          },
+                          {
+                            "field": "age",
+                            "field_type": "number"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "index2",
+                        "mappings": [
+                          {
+                            "field": "title",
+                            "field_type": "text"
+                          },
+                          {
+                            "field": "created",
+                            "field_type": "date"
+                          }
+                        ]
+                      }
+                    ],
+                    "results_total": 2
+                  },
+                  "metadata": {
+                    "duration": "10ms"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500"
+          }
+        }
+      }
+    },
+    "/storage/messages": {
+      "post": {
+        "summary": "Publish a message",
+        "description": "Publishes a message to a stream",
+        "operationId": "publishMessage",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.storage.post.message",
+        "tags": [
+          "Messages"
+        ],
+        "requestBody": {
+          "description": "Message details",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Message"
+              },
+              "example": {
+                "event": "user_created",
+                "data": {
+                  "user_id": "123",
+                  "name": "John Doe"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Message published successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "event": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "event": "user_created",
+                  "status": "published"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500"
+          }
+        }
+      }
+    }
+  }
+}

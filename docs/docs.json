@@ -25,7 +25,9 @@
           {
             "group": "Essentials",
             "pages": [
-              "essentials/markdown",
+              "essentials/hub",
+              "essentials/plans-and-pricing",
+              "essentials/compute-credits",
               "essentials/code",
               "essentials/images",
               "essentials/settings",
@@ -39,21 +41,48 @@
         "tab": "API Reference",
         "groups": [
           {
-            "group": "API Documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
+            "group": "Accounts",
+            "openapi": {
+              "source": "api-reference/endpoint/accounts/openapi.json"
+            }
           },
           {
-            "group": "Endpoint Examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
-            ]
+            "group": "Secrets Manager",
+            "openapi": {
+              "source": "api-reference/endpoint/secrets-manager/openapi.json"
+            }
+          },
+          {
+            "group": "Compute",
+            "openapi": {
+              "source": "api-reference/endpoint/compute/openapi.json"
+            }
+          },
+          {
+            "group": "Hub Flows",
+            "openapi": {
+              "source": "api-reference/endpoint/hub-flows/openapi.json"
+            }
+          },
+          {
+            "group": "Gateway",
+            "openapi": {
+              "source": "api-reference/endpoint/gateway/openapi.json"
+            }
+          },
+          {
+            "group": "Storage",
+            "openapi": {
+              "source": "api-reference/endpoint/storage/openapi.json"
+            }
+          },
+          {
+            "group": "Trigger",
+            "openapi": {
+              "source": "api-reference/endpoint/trigger/openapi.json"
+            }
           }
-        ]
+        ]    
       },
       {
         "tab": "Change Log",
