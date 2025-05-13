@@ -1,0 +1,281 @@
+---
+title: "User & Account Security"
+description: "How you can manage your account, including signup, user management and closing an account"
+icon: "lock-keyhole"
+---
+
+# Microstrate Cloud: Security Guide & Best Practices
+
+## Introduction
+
+Security is foundational to Microstrate's architecture. This guide outlines the security features available to protect your account and data, along with best practices for maintaining a strong security posture.
+
+## Account Security Features
+
+### Multi-Factor Authentication (MFA)
+
+Microstrate provides robust MFA options to protect your account:
+
+#### Setting Up MFA
+
+1. Navigate to **Account Settings → Security → Multi-Factor Authentication**
+2. Choose your preferred authentication method:
+   - **Authenticator App** (recommended): Compatible with Google Authenticator, Authy, Microsoft Authenticator, and other TOTP apps
+   - **SMS Authentication**: Receive codes via text message
+   - **Email Authentication**: Receive codes via email (least secure option)
+3. Follow the on-screen instructions to complete setup
+
+#### Recovery Codes
+
+When enabling MFA, you'll receive a set of recovery codes:
+
+- Store these codes securely in a password manager or physical safe
+- Each code can only be used once
+- If you lose access to your MFA device, these codes provide emergency account access
+- Once you've used all recovery codes, you'll need to contact support for account recovery
+
+### Single Sign-On (SSO)
+
+Enterprise customers can configure SSO with their identity provider:
+
+1. Navigate to **Account Settings → Security → Single Sign-On**
+2. Select your identity provider (Okta, Azure AD, Google Workspace, etc.)
+3. Configure the connection using the provided instructions
+4. Test the integration before enforcing it company-wide
+
+### IP Restrictions
+
+Limit account access to specific IP addresses or ranges:
+
+1. Navigate to **Account Settings → Security → Network Security**
+2. Enable "IP Restriction"
+3. Add allowed IP addresses or CIDR ranges
+4. Choose to apply restrictions to:
+   - All users
+   - Specific roles
+   - Individual users
+
+> **Note:** Always add your current IP address before enabling restrictions to avoid locking yourself out.
+
+### Session Management
+
+Control how users interact with your account:
+
+1. Navigate to **Account Settings → Security → Session Management**
+2. Configure:
+   - **Session Timeout**: Automatically log users out after a period of inactivity (15 minutes to 7 days)
+   - **Maximum Sessions**: Limit the number of concurrent sessions per user (1-10)
+   - **Session Device Tracking**: Enable to monitor which devices are accessing your account
+
+## API Security
+
+### API Keys
+
+Secure your programmatic access to Microstrate:
+
+1. Navigate to **Account Settings → API → Keys**
+2. Create appropriately scoped API keys:
+   - **Full Access**: Administrative capabilities (use sparingly)
+   - **Read-Only**: For monitoring and reporting tools
+   - **Service-Specific**: Limit to specific Microstrate services
+3. Set appropriate expiration dates for all keys
+
+### Secop Models
+
+Microstrate implements Secop (Secure Operation) security models throughout the platform:
+
+- **Resource-Based Security**: Granular permissions for every resource
+- **Intent-Based Authorization**: Access based on the operation being performed
+- **Least-Privilege by Default**: Services start with minimal permissions
+
+## Security Best Practices
+
+### Password Management
+
+- Use unique, complex passwords (minimum 12 characters)
+- Enable MFA for all user accounts, especially Admin accounts
+- Never share passwords between team members
+- Consider using a corporate password manager
+- Implement a password rotation policy (60-90 days recommended)
+
+### Password Recovery
+
+If you've forgotten your password, Microstrate provides a secure recovery process:
+
+1. **Initiating Password Recovery**
+   - Visit the Microstrate login page at [https://app.staging.microstrate.io/en/login](https://app.staging.microstrate.io/en/login)
+   - Click "Forgot password?" below the login form
+   - Enter the email address associated with your account
+   - Click "Send Recovery Email"
+
+2. **Completing the Recovery Process**
+   - Check your email for a message from Microstrate (subject: "Reset Your Microstrate Password")
+   - You'll receive either:
+     - A "Reset Password" link (recommended method)
+     - A temporary recovery code (alternative method)
+   - If using the link, click it to open the password reset page
+   - If using the code, enter it on the recovery page when prompted
+   - Create a new password following the strength requirements
+   - Confirm your new password
+   - Click "Reset Password"
+
+3. **Post-Recovery Security Steps**
+   - After successfully resetting your password, you'll be logged in automatically
+   - You'll receive an email notification confirming the password change
+   - All other active sessions will be terminated
+   - You may need to re-authenticate your MFA if enabled
+   - Previous API keys will remain active unless manually revoked
+
+> **Security Note:** Password reset links expire after 15 minutes. If your link has expired, you'll need to restart the recovery process.
+
+> **Admin Recovery Options:** Account administrators can assist other users with password recovery by navigating to **Account Settings → Users**, selecting the user, and clicking "Reset Password" from the user action menu.
+
+### Access Control
+
+- Follow the principle of least privilege
+- Regularly audit user access and permissions
+- Remove unused accounts promptly
+- Require MFA for all privileged accounts
+- Use role-based access control consistently
+
+### Network Security
+
+- Access the Microstrate console over HTTPS only
+- When possible, use a dedicated device for administrative access
+- Implement corporate network controls like VPNs when accessing from untrusted networks
+- Consider setting up dedicated admin workstations for highest-privilege users
+
+### Monitoring and Auditing
+
+Microstrate provides comprehensive security monitoring tools:
+
+1. Navigate to **Account Settings → Security → Audit Logs**
+2. Monitor:
+   - Login attempts (successful and failed)
+   - Permission changes
+   - Resource creation and deletion
+   - Configuration modifications
+   - API key usage
+
+Set up alerts for suspicious activities:
+
+1. Navigate to **Account Settings → Security → Alerts**
+2. Configure notifications for:
+   - Failed login attempts
+   - New device logins
+   - Administrative action alerts
+   - Unusual API usage patterns
+   - Account modification events
+
+### Development Security Practices
+
+- Keep your SDK and client libraries updated
+- Rotate credentials regularly
+- Never embed credentials in application code
+- Use environment variables or secure secret management
+- Implement proper error handling to prevent information leakage
+
+## Incident Response
+
+### Account Compromise Response Plan
+
+If you believe your account has been compromised, take these immediate steps in sequence:
+
+1. **Immediate Containment Actions**
+   - Navigate to **Account Settings → Security → Emergency Actions**
+   - Click "Terminate All Sessions" to force all users (including attackers) to log out
+   - Click "Restrict API Access" to temporarily suspend all API keys
+   - Click "Lock Account" to prevent new logins while you investigate
+
+2. **Change Critical Credentials**
+   - Immediately change your password (use a complex, unique password)
+   - Reset MFA if you believe it has been compromised
+   - Revoke and regenerate all API keys
+   - If using SSO, alert your identity provider to reset your credentials there as well
+
+3. **Investigate the Breach**
+   - Navigate to **Account Settings → Security → Audit Logs**
+   - Look for:
+     - Unfamiliar IP addresses or locations
+     - Unusual login times
+     - Unexpected permission changes
+     - Suspicious resource creation or deletion
+     - API calls from unknown sources
+   - Document everything for later analysis
+
+4. **Assess and Mitigate Damage**
+   - Review all account resources for unauthorized changes
+   - Check **Billing → Usage** for unexpected spikes
+   - Verify configuration settings haven't been altered
+   - Restore from backups if necessary
+   - Reset any compromised Gateway credentials
+
+5. **Re-secure Your Account**
+   - Enable MFA if it wasn't already active
+   - Implement IP restrictions if possible
+   - Reduce session timeout lengths
+   - Review all user access and remove unnecessary permissions
+   - Consider implementing SSO with stricter controls
+
+6. **Report the Incident**
+   - Contact Microstrate security team at [security@microstrate.io](mailto:security@microstrate.io)
+   - Call the emergency response line at the number provided in your account portal
+   - Provide all collected evidence and timeline of events
+   - Follow guidance from the security team for further actions
+
+7. **Post-Incident Actions**
+   - Document lessons learned
+   - Update security policies if needed
+   - Consider security training for team members
+   - Implement additional security controls
+   - Schedule a follow-up security review
+
+> **Critical Note:** If you suspect the breach involves access to sensitive customer data, consult your legal team about potential notification requirements based on applicable regulations (GDPR, CCPA, etc.).
+
+### Emergency Support
+
+For urgent security assistance:
+
+1. Navigate to **Account Settings → Security → Emergency Actions**
+2. Click "Contact Support" for priority handling
+3. Select "Security Incident" from the dropdown menu
+4. Provide brief details about the suspected compromise
+
+Report security incidents to [security@microstrate.io](mailto:security@microstrate.io) or call the emergency response line at the number provided in your account portal.
+
+## Security Compliance
+
+Microstrate maintains the following certifications and compliance standards:
+
+- SOC 2 Type II
+- ISO 27001
+- GDPR Compliance
+- HIPAA Compliance (Enterprise Plan only)
+- PCI DSS (for billing data)
+
+View detailed compliance information:
+
+1. Navigate to **Account Settings → Security → Compliance**
+2. Request compliance documentation for your specific needs
+
+## Additional Security Features
+
+### Data Encryption
+
+- All data within Microstrate is encrypted at rest using AES-256
+- All data in transit is protected using TLS 1.3
+- Enterprise customers can use customer-managed encryption keys (CMEK)
+
+### Vulnerability Management
+
+- Microstrate conducts regular penetration testing
+- Security patches are applied automatically to the platform
+- Critical vulnerabilities are addressed within 24 hours
+- Subscribe to security notifications at **Account Settings → Security → Notifications**
+
+## Security Resources
+
+- [Microstrate Security Whitepaper](https://docs.microstrate.io/security/whitepaper)
+- [Security Best Practices Guide](https://docs.microstrate.io/security/best-practices)
+- [Compliance Documentation](https://docs.microstrate.io/security/compliance)
+- [Security Changelog](https://docs.microstrate.io/security/updates)

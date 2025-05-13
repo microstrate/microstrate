@@ -1,0 +1,237 @@
+---
+title: "Account Management"
+description: "How you can manage your account, including signup, user management and closing an account"
+icon: "circle-user"
+---
+
+# Microstrate Cloud: Account Management User Guide
+
+## Creating Your Account
+
+Getting started with Microstrate Cloud is straightforward and only takes a few minutes. Follow these steps to create your account:
+
+### Registration Process
+
+1. Visit [https://app.microstrate.io/en/signup](https://app.microstrate.io/en/signup)
+2. Complete the registration form with the following details:
+   - Account name - This is the name users will use to log into your account. It must be unique (case sensitive) as the same email address can be used to access multiple accounts
+   - Email address - This will be the root email address of the account. This can be changed later, but it can only be used as the root email on one account
+   - Password (must contain at least 8 characters including uppercase, lowercase, number, and a special character)
+   - Country
+   - First and Last name
+3. Accept the [Terms of Service](https://microstrate.io/privacy-policy) and [Privacy Policy](https://microstrate.io/en/terms-and-conditions)
+
+### Email Verification
+
+After submitting the registration form, you'll need to verify your email address. You will receive an email with 2 options in it for verification:
+
+- **Option 1: Login Code**
+  - Check your email for a message from Microstrate "Confirm Your Email Address"
+  - Locate the 6-digit verification code
+  - Enter this code on the verification screen
+  
+- **Option 2: Magic Link**
+  - Check your email for a message from Microstrate "Confirm Your Email Address"
+  - Click the "Confirm your email" link in the email
+  - You'll be automatically redirected to a success page where you can then log into your new account
+
+> **Note:** If you don't receive a verification email within 5 minutes, check your spam folder or click "Resend email" on the verification screen. If your email address isn't confirmed within 48 hours, the account will be removed automatically and need to be set up again.
+
+![Registion Email](/images/account-registration-email.png)
+
+## Selecting a Plan
+
+Once your account it confirmed, you will need to select a plan. Microstrate offers several plans to match your specific needs:
+
+1. Review the [available options](/essentials/plans-and-pricing):
+   - **Starter**: Perfect for solo builders, side projects, and experimentation
+   - **Pro**: For teams and power users running live business-critical workflows
+   - **Business**: For fast-scaling teams processing high volumes of data, events, and logic
+   - **Enterprise**: For large organizations with compliance, security, and infrastructure needs
+2. Select your preferred plan by clicking "Choose Plan"
+3. Complete the billing information if required
+4. Click "Confirm Subscription"
+
+Your plan can be changed at any time through the **Account Management -> Billing and plans** section of your account.
+
+## Selecting Account Regions
+
+Microstrate's multi-cloud mesh architecture allows you to deploy your resources across different geographic regions for optimal performance and compliance.
+
+On account creation, you will be asked to select the number of servers that make up your mesh, and their geographic locations.
+
+After the initial setup, you can modify your mesh regions:
+
+1. Navigate to **Account Management → Mesh**
+2. The available regions available with the [Microstrate Cloud](/cloud/mesh) (Hetzner/OVHCloud) include:
+   - EU
+   - US
+   - Australia (Sydney)
+3. Select the desired region for each mesh node
+5. Click "Save Changes"
+
+> **Note:** Initially supported regions are EU, Australia, and US. For other regions or to use private infrastructure or Hyperscaler clouds, please contact us.
+
+## User Management
+
+### Adding Users to Your Account
+
+1. Navigate to **Account Management -> Users**
+2. Click the "Invite" button
+3. Enter the new user's email address
+4. Select the appropriate role (see role descriptions below)
+5. Complete their first and last names
+6. Click "Invite"
+
+The new user will receive an email invitation with instructions to join your Microstrate account. The user can be found under the "Invited" tab of user management until they have accepted the invitation.
+
+![user invited email](/images/user-invited-email.png)
+
+### Role Descriptions
+
+Microstrate provides four predefined roles to help you manage access levels:
+
+**Root**
+- Full account management capabilities
+- Can close the account
+- Can add/remove users and modify their roles
+- Complete access to all Microstrate services
+- Can manage billing and subscription details
+- Can create and manage all resources
+
+**Admin**
+- Full account management capabilities 
+- No ability to close the account
+- Can add/remove users and modify their roles
+- Complete access to all Microstrate services
+- Can manage billing and subscription details
+- Can create and manage all resources
+
+**Billing**
+- View and manage billing information
+- Update payment methods
+- Access invoices and billing history
+- Modify subscription plans
+- Cannot access technical resources or add users
+
+**Developer**
+- Create and manage applications and services
+- Deploy and configure resources
+- Access monitoring and logs for their resources
+- Cannot modify account settings or billing information
+- Cannot add or remove users
+
+**Monitor**
+- View-only access to monitoring dashboards and logs
+- Cannot create or modify resources
+- Cannot access account settings or billing information
+
+To update a users role:
+1. Navigate to **Account Management -> Users**
+2. Find the user you want to update and click on their email address
+3. Click the Role from the dropdown
+4. Confirm the change with the "Update role" button
+
+### Suspending a User
+
+If you need to temporarily restrict a user's access:
+
+1. Navigate to **Account Management -> Users**
+2. Find the user you want to suspend and click on their email address
+3. Click the "Suspend" button in the dialog box
+
+Suspended users will not be able to log in until their account is reactivated by an Admin. You can view a list of suspended users under the "Suspended" tab in user management
+
+### Logging Out a User from All Sessions
+
+To force a user to log out from all active sessions:
+
+1. Navigate to **Account Management -> Users**
+2. Find the user you want to log out of all sessions and click on their email address
+3. Click the "Logout" button in the dialog box
+
+This is useful if you suspect unauthorized access or need to enforce immediate session termination.
+
+Users can also view all their sessions in their [user settings](/essentials/user-settings) and choose to terminate them rather than having an Admin perform the action.
+
+### Deleting a User
+
+To permanently remove a user from your account:
+
+1. Navigate to **Account Management -> Users**
+2. Find the user you want to delete and click on their email address
+3. Click the "Delete" button in the dialog box
+5. Confirm you want to delete the user
+
+> **Warning:** This action is permanent and cannot be undone. All the user's personal settings will be deleted, but their created resources will remain in the account.
+
+### Issuing and Viewing Recovery Codes
+
+Recovery codes provide a backup method for account access when [two-factor authentication](/essentials/security) is enabled.
+
+**To issue recovery codes:**
+
+1. Navigate to **Account Management -> Users**
+2. Find the user you want to issue recovery codes for and click on their email address
+3. click on the "issue new recovery codes" button
+4. Confirm that you would like to generate new codes in the dialog box by clicking "I Am Sure"
+5. The recovery codes will be displayed and they can be downloaded, printed and copied using the buttons. Ensure you store them safely
+
+When recovery codes are viewed, the user will be notified via email so they can take action to secure their account if they believe this was unauthorized. For more information on security your account, see our [security guide](/essentials/security)
+
+**To view existing recovery codes for Admins:**
+
+1. Navigate to **Account Management -> Users**
+2. Find the user whose recovery codes you need to view and click on their email address
+3. Click the "View recovery codes" button
+
+**To view your own recovery codes**
+
+1. Navigate to user settings by clicking your profile icon in the bottom left and selecting "Settings"
+2. Select "Password and authentication"
+3. Scroll down to recovery codes and click "View"
+
+## Completing Your Account Details
+
+### Renaming Your Account
+
+Your account name is used to log into your account, and also appears in various places including billing statements and team invitations. 
+
+**NOTE:** When updating your account name, users will no longer be able to log in using the old account name. An email will be sent to all users in your account to notify them of the change.
+
+To update it:
+
+1. Navigate to **Account Management -> Account**
+2. Find the "Account Name" field
+3. Enter your preferred name
+4. Click the "Rename Account" button
+
+### Updating Additional Account Information
+
+Complete your account profile with additional details:
+
+1. Navigate to **Account Management -> Account**
+2. Update the following fields as needed:
+   - Root Email - changing this will change the root login to use the new email address, freeing the old root email to be used for another account
+   - Company/Entity name
+   - Address
+   - Website
+   - Phone Number
+   - Country
+3. Click "Save"
+
+## Closing/Deleting Your Account
+
+If you need to close your Microstrate account:
+
+1. Navigate to **Account Management -> Account**
+2. In the top right, click on the "Close Account" button
+3. Confirm that you would like to delete your account by clicking "I Am Sure"
+
+> **Important Warning:** Closing your account will:
+> - Permanently delete all your resources and data
+> - Cancel your subscription and billing
+> - Remove all users and their access
+> - Make your account name available for others to use
+> 
+> This action cannot be undone. If you have active workloads, consider downloading any important data before proceeding.

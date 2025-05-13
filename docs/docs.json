@@ -17,15 +17,23 @@
           {
             "group": "Get Started",
             "pages": [
-              "introduction",
+              "overview",
               "quickstart",
               "development"
             ]
           },
           {
+            "group": "Hub Workflows & Automation",
+            "pages": [
+              "hub/introduction",
+              "hub/hub-description"
+            ]
+          },
+          {
             "group": "Essentials",
             "pages": [
-              "essentials/hub",
+              "essentials/accounts",
+              "essentials/security",
               "essentials/plans-and-pricing",
               "essentials/compute-credits",
               "essentials/code",
