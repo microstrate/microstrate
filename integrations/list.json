@@ -22,5 +22,13 @@
 		"image": "openai/openai.png",
 		"folder": "openai",
 		"examples": "openai/examples.json"
+	},
+	{
+		"name": "Github",
+		"note": "Generate and analyze text with powerful language models.",
+		"schema": "github/schema.json",
+		"image": "github/image.png",
+		"folder": "github",
+		"examples": "github/examples.json"
 	}
 ]
