@@ -1,34 +1,32 @@
 [
 	{
 		"name": "Slack",
-		"note": "Manage messages, users, and channels in Slack programmatically.",
-		"schema": "slack/slack.json",
-		"image": "slack/slack.png",
-		"folder": "slack",
-		"examples": "slack/examples.json"
+		"note": "Manage messages,users,and channels in Slack programmatically.",
+		"folder": "slack"
 	},
 	{
 		"name": "Sendgrid",
 		"note": "Track and filter email events for better delivery insights.",
-		"schema": "sendgrid/sendgrid.json",
-		"image": "sendgrid/sendgrid.png",
-		"folder": "sendgrid",
-		"examples": "sendgrid/examples.json"
+		"folder": "sendgrid"
 	},
 	{
 		"name": "Open AI",
 		"note": "Generate and analyze text with powerful language models.",
-		"schema": "openai/openai.json",
-		"image": "openai/openai.png",
-		"folder": "openai",
-		"examples": "openai/examples.json"
+		"folder": "openai"
 	},
 	{
 		"name": "Github",
-		"note": "Generate and analyze text with powerful language models.",
-		"schema": "github/schema.json",
-		"image": "github/image.png",
-		"folder": "github",
-		"examples": "github/examples.json"
+		"note": "Interact with GitHub repositories,issues,and pull requests.",
+		"folder": "github"
+	},
+	{
+		"name": "Google Maps",
+		"note": "API Specification for Google Maps Platform",
+		"folder": "google-maps"
+	},
+	{
+		"name": "Cloudstream API",
+		"note": "Comprehensive API for Cloudstream Mordor services",
+		"folder": "cloudstream"
 	}
 ]
