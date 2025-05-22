@@ -29,6 +29,22 @@
       }
     },
     "schemas": {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          }
+        }
+      },
+      "Success": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        }
+      },
       "NumReplicas": {
         "type": "integer",
         "description": "Number of replicas to keep for the object store in clustered bstream. Defaults to 1, maximum is 5.",
@@ -2816,10 +2832,10 @@
                   "$ref": "#/components/schemas/ErrorResponse"
                 },
                 "examples": {
-                   "InvalidSubject": {
+                  "InvalidSubject": {
                     "value": {
                       "error": "bellerophon: API error: code=500 err_code=10052 description=invalid subject"
-                   }
+                    }
                   },
                   "StreamNameInUse": {
                     "value": {
