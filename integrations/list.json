@@ -28,5 +28,10 @@
 		"name": "Cloudstream API",
 		"note": "Comprehensive API for Cloudstream Mordor services",
 		"folder": "cloudstream"
+	},
+	{
+		"name": "Airparser API",
+		"note": "Document parsing service that extracts  data from documents using AI",
+		"folder": "airparser"
 	}
 ]

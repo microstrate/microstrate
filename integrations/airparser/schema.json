@@ -1,0 +1,965 @@
+{
+  "name": "Airparser API",
+  "description": "Airparser is a document parsing service that extracts structured data from various document formats using AI. This API allows you to upload documents, manage inboxes, configure extraction schemas, and retrieve parsed data.",
+  "nodes": [
+    {
+      "id": "get_inboxes",
+      "operationId": "listInboxes",
+      "name": "List Inboxes",
+      "description": "List inboxes",
+      "schema": {
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Airparser-API/listInboxes/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/inboxes"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Airparser-API/listInboxes/output-401.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "example": "Unauthorized"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "delete_inboxes__inbox_id_",
+      "operationId": "deleteInbox",
+      "name": "Delete Inbox",
+      "description": "Delete an inbox",
+      "schema": {
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Airparser-API/deleteInbox/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/inboxes/{inbox_id}"
+            },
+            "method": {
+              "type": "string",
+              "const": "delete"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "inbox_id"
+              ],
+              "properties": {
+                "inbox_id": {
+                  "type": "string",
+                  "description": "The ID of the inbox to delete"
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Airparser-API/deleteInbox/output-401.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "example": "Unauthorized"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "post_inboxes__inbox_id__upload",
+      "operationId": "uploadDocument",
+      "name": "Upload Document",
+      "description": "Upload a document",
+      "schema": {
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Airparser-API/uploadDocument/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/inboxes/{inbox_id}/upload"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "inbox_id"
+              ],
+              "properties": {
+                "inbox_id": {
+                  "type": "string",
+                  "description": "The ID of the inbox to upload the document to"
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "multipart/form-data"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "The document file to upload"
+                  },
+                  "meta": {
+                    "type": "string",
+                    "description": "Optional JSON string containing metadata that will be included in the parsed JSON as the __meta__ field",
+                    "example": "{\"foo\": \"bar\", \"my_id\": 42}"
+                  }
+                },
+                "required": [
+                  "file"
+                ]
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Airparser-API/uploadDocument/output-200.schema.json",
+            "type": "object",
+            "properties": {
+              "document_id": {
+                "type": "string",
+                "description": "The ID of the uploaded document"
+              }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Airparser-API/uploadDocument/output-401.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "example": "Unauthorized"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "get_inboxes__inbox_id__docs",
+      "operationId": "listDocuments",
+      "name": "List Documents",
+      "description": "List documents",
+      "schema": {
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Airparser-API/listDocuments/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/inboxes/{inbox_id}/docs"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {
+                "page": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "description": "Page number for pagination"
+                },
+                "from": {
+                  "type": "string",
+                  "format": "date",
+                  "description": "Filter documents from this date (YYYY-MM-DD format)"
+                },
+                "to": {
+                  "type": "string",
+                  "format": "date",
+                  "description": "Filter documents to this date (YYYY-MM-DD format)"
+                },
+                "q": {
+                  "type": "string",
+                  "description": "Search query to filter documents"
+                },
+                "statuses": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "importing",
+                      "parsed",
+                      "fail",
+                      "new",
+                      "quota",
+                      "parsing",
+                      "exception"
+                    ]
+                  },
+                  "description": "Filter by document processing statuses"
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "inbox_id"
+              ],
+              "properties": {
+                "inbox_id": {
+                  "type": "string",
+                  "description": "The ID of the inbox"
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Airparser-API/listDocuments/output-200.schema.json",
+            "type": "object",
+            "properties": {
+              "documents": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "Unique identifier for the document"
+                    },
+                    "filename": {
+                      "type": "string",
+                      "description": "Original filename of the uploaded document"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "importing",
+                        "parsed",
+                        "fail",
+                        "new",
+                        "quota",
+                        "parsing",
+                        "exception"
+                      ],
+                      "description": "Current processing status of the document"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Upload timestamp"
+                    },
+                    "processed_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "format": "date-time",
+                      "description": "Processing completion timestamp"
+                    }
+                  }
+                }
+              },
+              "pagination": {
+                "type": "object",
+                "properties": {
+                  "current_page": {
+                    "type": "integer",
+                    "description": "Current page number"
+                  },
+                  "total_pages": {
+                    "type": "integer",
+                    "description": "Total number of pages"
+                  },
+                  "total_items": {
+                    "type": "integer",
+                    "description": "Total number of items"
+                  },
+                  "per_page": {
+                    "type": "integer",
+                    "description": "Items per page"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Airparser-API/listDocuments/output-401.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "example": "Unauthorized"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "get_docs__document_id__extended",
+      "operationId": "getDocument",
+      "name": "Get Document",
+      "description": "Get a document",
+      "schema": {
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Airparser-API/getDocument/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/docs/{document_id}/extended"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "document_id"
+              ],
+              "properties": {
+                "document_id": {
+                  "type": "string",
+                  "description": "The ID of the document to retrieve"
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Airparser-API/getDocument/output-200.schema.json",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "Document ID"
+              },
+              "extracted_data": {
+                "type": "object",
+                "description": "The extracted structured data based on the extraction schema",
+                "additionalProperties": true
+              },
+              "__meta__": {
+                "type": "object",
+                "description": "Optional metadata that was provided during upload",
+                "additionalProperties": true
+              }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Airparser-API/getDocument/output-401.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "example": "Unauthorized"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "post_inboxes__inbox_id__schema",
+      "operationId": "updateExtractionSchema",
+      "name": "Update Extraction Schema",
+      "description": "Create/edit an extraction schema",
+      "schema": {
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Airparser-API/updateExtractionSchema/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/inboxes/{inbox_id}/schema"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "inbox_id"
+              ],
+              "properties": {
+                "inbox_id": {
+                  "type": "string",
+                  "description": "The ID of the inbox"
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "fields": {
+                    "type": "array",
+                    "items": {
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "scalar"
+                              ]
+                            },
+                            "data": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "pattern": "^[a-z0-9_]{1,100}$",
+                                  "description": "Field name (lowercase letters, numbers, underscores only)"
+                                },
+                                "description": {
+                                  "type": "string",
+                                  "maxLength": 3000,
+                                  "description": "Field description"
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "string",
+                                    "integer",
+                                    "decimal",
+                                    "boolean"
+                                  ],
+                                  "description": "Data type for the field"
+                                },
+                                "default_value": {
+                                  "type": "string",
+                                  "maxLength": 400,
+                                  "description": "Default value if field is not found"
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "description",
+                                "type"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "data"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "list"
+                              ]
+                            },
+                            "data": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "pattern": "^[a-z0-9_]{1,100}$",
+                                  "description": "Field name (lowercase letters, numbers, underscores only)"
+                                },
+                                "description": {
+                                  "type": "string",
+                                  "maxLength": 3000,
+                                  "description": "Field description"
+                                },
+                                "attributes": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "name": {
+                                        "type": "string",
+                                        "pattern": "^[a-z0-9_]{1,100}$",
+                                        "description": "Attribute name (lowercase letters, numbers, underscores only)"
+                                      },
+                                      "description": {
+                                        "type": "string",
+                                        "maxLength": 3000,
+                                        "description": "Attribute description"
+                                      },
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "string",
+                                          "integer",
+                                          "decimal",
+                                          "boolean"
+                                        ],
+                                        "description": "Data type for the attribute"
+                                      },
+                                      "default_value": {
+                                        "type": "string",
+                                        "maxLength": 400,
+                                        "description": "Default value if attribute is not found"
+                                      }
+                                    },
+                                    "required": [
+                                      "name",
+                                      "description",
+                                      "type"
+                                    ]
+                                  }
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "description",
+                                "attributes"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "data"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "object"
+                              ]
+                            },
+                            "data": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "pattern": "^[a-z0-9_]{1,100}$",
+                                  "description": "Field name (lowercase letters, numbers, underscores only)"
+                                },
+                                "description": {
+                                  "type": "string",
+                                  "maxLength": 3000,
+                                  "description": "Field description"
+                                },
+                                "attributes": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "name": {
+                                        "type": "string",
+                                        "pattern": "^[a-z0-9_]{1,100}$",
+                                        "description": "Attribute name (lowercase letters, numbers, underscores only)"
+                                      },
+                                      "description": {
+                                        "type": "string",
+                                        "maxLength": 3000,
+                                        "description": "Attribute description"
+                                      },
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "string",
+                                          "integer",
+                                          "decimal",
+                                          "boolean"
+                                        ],
+                                        "description": "Data type for the attribute"
+                                      },
+                                      "default_value": {
+                                        "type": "string",
+                                        "maxLength": 400,
+                                        "description": "Default value if attribute is not found"
+                                      }
+                                    },
+                                    "required": [
+                                      "name",
+                                      "description",
+                                      "type"
+                                    ]
+                                  }
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "description",
+                                "attributes"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "data"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "enum"
+                              ]
+                            },
+                            "data": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "pattern": "^[a-z0-9_]{1,100}$",
+                                  "description": "Field name (lowercase letters, numbers, underscores only)"
+                                },
+                                "description": {
+                                  "type": "string",
+                                  "maxLength": 3000,
+                                  "description": "Field description"
+                                },
+                                "values": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 100
+                                  },
+                                  "uniqueItems": true,
+                                  "description": "Array of possible enum values"
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "description",
+                                "values"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "data"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "fields"
+                ]
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Airparser-API/updateExtractionSchema/output-401.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "example": "Unauthorized"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "post_inboxes__inbox_id__schema-clone",
+      "operationId": "cloneExtractionSchema",
+      "name": "Clone Extraction Schema",
+      "description": "Clone an extraction schema between inboxes",
+      "schema": {
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Airparser-API/cloneExtractionSchema/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/inboxes/{inbox_id}/schema-clone"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "inbox_id"
+              ],
+              "properties": {
+                "inbox_id": {
+                  "type": "string",
+                  "description": "The source inbox ID from which the extraction schema will be cloned"
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "destination_inbox_id": {
+                    "type": "string",
+                    "description": "The target inbox ID where the extraction schema will be copied"
+                  }
+                },
+                "required": [
+                  "destination_inbox_id"
+                ]
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Airparser-API/cloneExtractionSchema/output-401.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "example": "Unauthorized"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "references": {
+    "baseUrl": {
+      "type": "string",
+      "enum": [
+        "https://api.airparser.com"
+      ]
+    },
+    "queryDesc": "Query parameters sent with the request",
+    "paramDesc": "URL parameters sent with the request",
+    "headerDesc": "HTTP headers sent when making the request",
+    "dataDesc": "Data sent with the request",
+    "schema": "https://json-schema.org/draft/2020-12/schema"
+  }
+}
