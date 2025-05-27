@@ -1,0 +1,258 @@
+{
+    "get_Files": {
+      "Basic Example": {
+        "url": "/Files",
+        "method": "get",
+        "query": {
+          "pagesize": "<integer>",
+          "page": "<integer>",
+          "sort": "Name"
+        },
+        "headers": {
+          "xero-tenant-id": "YOUR_XERO_TENANT_ID"
+        },
+        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+      }
+    },
+    "post_Files": {
+      "Basic Example": {
+        "url": "/Files",
+        "method": "post",
+        "headers": {
+          "Idempotency-Key": "KEY_VALUE",
+          "xero-tenant-id": "YOUR_XERO_TENANT_ID"
+        },
+        "data": {
+          "body": "<byte>",
+          "name": "",
+          "filename": "",
+          "mimeType": ""
+        },
+        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+      }
+    },
+    "get_Files__FileId_": {
+      "Basic Example": {
+        "url": "/Files/{FileId}",
+        "method": "get",
+        "path": {
+          "FileId": "<string>"
+        },
+        "headers": {
+          "xero-tenant-id": "YOUR_XERO_TENANT_ID"
+        },
+        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+      }
+    },
+    "delete_Files__FileId_": {
+      "Basic Example": {
+        "url": "/Files/{FileId}",
+        "method": "delete",
+        "path": {
+          "FileId": "<string>"
+        },
+        "headers": {
+          "xero-tenant-id": "YOUR_XERO_TENANT_ID"
+        },
+        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+      }
+    },
+    "put_Files__FileId_": {
+      "Basic Example": {
+        "url": "/Files/{FileId}",
+        "method": "put",
+        "headers": {
+          "Idempotency-Key": "KEY_VALUE",
+          "xero-tenant-id": "YOUR_XERO_TENANT_ID"
+        },
+        "path": {
+          "FileId": "<string>"
+        },
+        "data": "{ \"FolderId\": \"bf924975-7097-46f2-a143-1ecfbab3c8c3\" }",
+        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+      }
+    },
+    "post_Files__FolderId_": {
+      "Basic Example": {
+        "url": "/Files/{FolderId}",
+        "method": "post",
+        "headers": {
+          "Idempotency-Key": "KEY_VALUE",
+          "xero-tenant-id": "YOUR_XERO_TENANT_ID"
+        },
+        "path": {
+          "FolderId": "<string>"
+        },
+        "data": {
+          "body": "<byte>",
+          "name": "",
+          "filename": "",
+          "mimeType": ""
+        },
+        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+      }
+    },
+    "get_Files__FileId__Content": {
+      "Basic Example": {
+        "url": "/Files/{FileId}/Content",
+        "method": "get",
+        "path": {
+          "FileId": "<string>"
+        },
+        "headers": {
+          "xero-tenant-id": "YOUR_XERO_TENANT_ID"
+        },
+        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+      }
+    },
+    "get_Files__FileId__Associations": {
+      "Basic Example": {
+        "url": "/Files/{FileId}/Associations",
+        "method": "get",
+        "path": {
+          "FileId": "<string>"
+        },
+        "headers": {
+          "xero-tenant-id": "YOUR_XERO_TENANT_ID"
+        },
+        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+      }
+    },
+    "post_Files__FileId__Associations": {
+      "Basic Example": {
+        "url": "/Files/{FileId}/Associations",
+        "method": "post",
+        "headers": {
+          "Idempotency-Key": "KEY_VALUE",
+          "xero-tenant-id": "YOUR_XERO_TENANT_ID"
+        },
+        "path": {
+          "FileId": "<string>"
+        },
+        "data": "{ \"ObjectId\": \"1270bf7c-5d18-473a-9231-1e36c4bd33ed\", \"ObjectGroup\": \"Contact\", \"ObjectType\": \"Business\" }",
+        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+      }
+    },
+    "delete_Files__FileId__Associations__ObjectId_": {
+      "Basic Example": {
+        "url": "/Files/{FileId}/Associations/{ObjectId}",
+        "method": "delete",
+        "path": {
+          "FileId": "<string>",
+          "ObjectId": "<string>"
+        },
+        "headers": {
+          "xero-tenant-id": "YOUR_XERO_TENANT_ID"
+        },
+        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+      }
+    },
+    "get_Associations__ObjectId_": {
+      "Basic Example": {
+        "url": "/Associations/{ObjectId}",
+        "method": "get",
+        "path": {
+          "ObjectId": "<string>"
+        },
+        "query": {
+          "pagesize": "<integer>",
+          "page": "<integer>",
+          "sort": "Name",
+          "direction": "ASC"
+        },
+        "headers": {
+          "xero-tenant-id": "YOUR_XERO_TENANT_ID"
+        },
+        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+      }
+    },
+    "get_Associations_Count": {
+      "Basic Example": {
+        "url": "/Associations/Count",
+        "method": "get",
+        "query": {
+          "ObjectIds": "<array>"
+        },
+        "headers": {
+          "xero-tenant-id": "YOUR_XERO_TENANT_ID"
+        },
+        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+      }
+    },
+    "get_Folders": {
+      "Basic Example": {
+        "url": "/Folders",
+        "method": "get",
+        "query": {
+          "sort": "Name"
+        },
+        "headers": {
+          "xero-tenant-id": "YOUR_XERO_TENANT_ID"
+        },
+        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+      }
+    },
+    "post_Folders": {
+      "Basic Example": {
+        "url": "/Folders",
+        "method": "post",
+        "headers": {
+          "Idempotency-Key": "KEY_VALUE",
+          "xero-tenant-id": "YOUR_XERO_TENANT_ID"
+        },
+        "data": "{ \"Name\": \"My Docs\" }",
+        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+      }
+    },
+    "get_Folders__FolderId_": {
+      "Basic Example": {
+        "url": "/Folders/{FolderId}",
+        "method": "get",
+        "path": {
+          "FolderId": "<string>"
+        },
+        "headers": {
+          "xero-tenant-id": "YOUR_XERO_TENANT_ID"
+        },
+        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+      }
+    },
+    "delete_Folders__FolderId_": {
+      "Basic Example": {
+        "url": "/Folders/{FolderId}",
+        "method": "delete",
+        "path": {
+          "FolderId": "<string>"
+        },
+        "headers": {
+          "xero-tenant-id": "YOUR_XERO_TENANT_ID"
+        },
+        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+      }
+    },
+    "put_Folders__FolderId_": {
+      "Basic Example": {
+        "url": "/Folders/{FolderId}",
+        "method": "put",
+        "headers": {
+          "Idempotency-Key": "KEY_VALUE",
+          "xero-tenant-id": "YOUR_XERO_TENANT_ID"
+        },
+        "path": {
+          "FolderId": "<string>"
+        },
+        "data": "{ \"Name\": \"Your Docs\" }",
+        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+      }
+    },
+    "get_Inbox": {
+      "Basic Example": {
+        "url": "/Inbox",
+        "method": "get",
+        "headers": {
+          "xero-tenant-id": "YOUR_XERO_TENANT_ID"
+        },
+        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+      }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "get_Connections": {
+      "Basic Example": {
+        "url": "/Connections",
+        "method": "get",
+        "query": {
+          "authEventId": "00000000-0000-0000-0000-000000000000"
+        },
+        "baseUrl": "https://api.xero.com"
+      }
+    },
+    "delete_Connections__id_": {
+      "Basic Example": {
+        "url": "/Connections/{id}",
+        "method": "delete",
+        "path": {
+          "id": "<string>"
+        },
+        "baseUrl": "https://api.xero.com"
+      }
+    }
+}

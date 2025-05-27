@@ -1,0 +1,165 @@
+{
+    "get_FeedConnections": {
+      "Basic Example": {
+        "url": "/FeedConnections",
+        "method": "get",
+        "query": {
+          "page": "<integer>",
+          "pageSize": "<integer>"
+        },
+        "headers": {
+          "Xero-Tenant-Id": "<string>"
+        },
+        "baseUrl": "https://api.xero.com/bankfeeds.xro/1.0"
+      }
+    },
+    "post_FeedConnections": {
+      "Basic Example": {
+        "url": "/FeedConnections",
+        "method": "post",
+        "headers": {
+          "Idempotency-Key": "KEY_VALUE",
+          "Xero-Tenant-Id": "<string>"
+        },
+        "data": {
+          "items": [
+            {
+              "accountToken": "foobar71760",
+              "accountNumber": "123458637",
+              "accountName": "SDK Bank 90861",
+              "accountType": "BANK",
+              "currency": "GBP"
+            }
+          ]
+        },
+        "baseUrl": "https://api.xero.com/bankfeeds.xro/1.0"
+      }
+    },
+    "get_FeedConnections__id_": {
+      "Basic Example": {
+        "url": "/FeedConnections/{id}",
+        "method": "get",
+        "path": {
+          "id": "<string>"
+        },
+        "headers": {
+          "Xero-Tenant-Id": "<string>"
+        },
+        "baseUrl": "https://api.xero.com/bankfeeds.xro/1.0"
+      }
+    },
+    "post_FeedConnections_DeleteRequests": {
+      "Basic Example": {
+        "url": "/FeedConnections/DeleteRequests",
+        "method": "post",
+        "headers": {
+          "Idempotency-Key": "KEY_VALUE",
+          "Xero-Tenant-Id": "<string>"
+        },
+        "data": {
+          "items": [
+            {
+              "id": "b4cc693b-24d9-42ec-a6d4-2943d253ff63"
+            }
+          ]
+        },
+        "baseUrl": "https://api.xero.com/bankfeeds.xro/1.0"
+      }
+    },
+    "get_Statements": {
+      "Basic Example": {
+        "url": "/Statements",
+        "method": "get",
+        "query": {
+          "page": "<integer>",
+          "pageSize": "<integer>"
+        },
+        "headers": {
+          "Xero-Application-Id": "00000000-0000-0000-0000-0000000010000",
+          "Xero-User-Id": "00000000-0000-0000-0000-0000030000000",
+          "Xero-Tenant-Id": "<string>"
+        },
+        "baseUrl": "https://api.xero.com/bankfeeds.xro/1.0"
+      }
+    },
+    "post_Statements": {
+      "Basic Example": {
+        "url": "/Statements",
+        "method": "post",
+        "headers": {
+          "Idempotency-Key": "KEY_VALUE",
+          "Xero-Tenant-Id": "<string>"
+        },
+        "data": {
+          "items": [
+            {
+              "feedConnectionId": "6a4b9ff5-3a5f-4321-936b-4796163550f6",
+              "startDate": "2019-08-11",
+              "endDate": "2019-08-11",
+              "startBalance": {
+                "amount": "100",
+                "creditDebitIndicator": "CREDIT"
+              },
+              "endBalance": {
+                "amount": "150",
+                "creditDebitIndicator": "CREDIT"
+              },
+              "statementLines": [
+                {
+                  "postedDate": "2019-08-11",
+                  "description": "My new line",
+                  "amount": "50",
+                  "creditDebitIndicator": "CREDIT",
+                  "transactionId": "123446422",
+                  "payeeName": "StarLord90315",
+                  "reference": "Foobar95578",
+                  "chequeNumber": "12379009",
+                  "transactionType": "Refund"
+                }
+              ]
+            },
+            {
+              "feedConnectionId": "2ebe6393-f3bb-48ab-9a0e-b04fa8585a70",
+              "startDate": "2019-08-11",
+              "endDate": "2019-08-11",
+              "startBalance": {
+                "amount": "100",
+                "creditDebitIndicator": "CREDIT"
+              },
+              "endBalance": {
+                "amount": "150",
+                "creditDebitIndicator": "CREDIT"
+              },
+              "statementLines": [
+                {
+                  "postedDate": "2019-08-11",
+                  "description": "My new line",
+                  "amount": "50",
+                  "creditDebitIndicator": "CREDIT",
+                  "transactionId": "123449402",
+                  "payeeName": "StarLord56705",
+                  "reference": "Foobar67355",
+                  "chequeNumber": "12379350",
+                  "transactionType": "Currency Conversion Fee"
+                }
+              ]
+            }
+          ]
+        },
+        "baseUrl": "https://api.xero.com/bankfeeds.xro/1.0"
+      }
+    },
+    "get_Statements__statementId_": {
+      "Basic Example": {
+        "url": "/Statements/{statementId}",
+        "method": "get",
+        "path": {
+          "statementId": "<string>"
+        },
+        "headers": {
+          "Xero-Tenant-Id": "<string>"
+        },
+        "baseUrl": "https://api.xero.com/bankfeeds.xro/1.0"
+      }
+    }
+}

@@ -1,0 +1,2448 @@
+{
+  "name": "Xero Files API",
+  "description": "These endpoints are specific to Xero Files API",
+  "nodes": [
+    {
+      "id": "get_Files",
+      "operationId": "getFiles",
+      "name": "Get Files",
+      "description": "Retrieves files",
+      "schema": {
+        "tags": [
+          "Files"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Xero-Files-API/get_Files/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/Files"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {
+                "pagesize": {
+                  "type": "integer",
+                  "maximum": 100,
+                  "example": 50,
+                  "description": "pass an optional page size value"
+                },
+                "page": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "example": 2,
+                  "description": "number of records to skip for pagination"
+                },
+                "sort": {
+                  "type": "string",
+                  "enum": [
+                    "Name",
+                    "Size",
+                    "CreatedDateUTC"
+                  ],
+                  "example": "CreatedDateUTC DESC",
+                  "description": "values to sort by"
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "required": [
+                "xero-tenant-id"
+              ],
+              "properties": {
+                "xero-tenant-id": {
+                  "type": "string",
+                  "description": "Xero identifier for Tenant"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Xero-Files-API/get_Files/output-200.schema.json",
+            "type": "object",
+            "properties": {
+              "TotalCount": {
+                "type": "integer",
+                "example": 2
+              },
+              "Page": {
+                "type": "integer",
+                "example": 1
+              },
+              "PerPage": {
+                "type": "integer",
+                "example": 50
+              },
+              "Items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "name",
+                    "manufacturer",
+                    "releaseDate"
+                  ],
+                  "properties": {
+                    "Name": {
+                      "description": "File Name",
+                      "type": "string",
+                      "example": "File2.jpg"
+                    },
+                    "MimeType": {
+                      "description": "MimeType of the file (image/png, image/jpeg, application/pdf, etc..)",
+                      "type": "string",
+                      "example": "image/jpeg"
+                    },
+                    "Size": {
+                      "description": "Numeric value in bytes",
+                      "type": "integer",
+                      "example": 3615
+                    },
+                    "CreatedDateUtc": {
+                      "description": "Created date in UTC",
+                      "type": "string",
+                      "example": "2020-12-03T19:04:58.6970000"
+                    },
+                    "UpdatedDateUtc": {
+                      "description": "Updated date in UTC",
+                      "type": "string",
+                      "example": "2020-12-03T19:04:58.6970000"
+                    },
+                    "User": {
+                      "required": [
+                        "Id"
+                      ],
+                      "properties": {
+                        "Id": {
+                          "description": "Xero identifier",
+                          "type": "string",
+                          "format": "uuid",
+                          "example": "4ff1e5cc-9835-40d5-bb18-09fdb118db9c"
+                        },
+                        "Name": {
+                          "description": "Key is Name, but returns Email address of user who created the file",
+                          "type": "string",
+                          "example": "john.smith@mail.com"
+                        },
+                        "FirstName": {
+                          "description": "First name of user",
+                          "type": "string",
+                          "example": "John"
+                        },
+                        "LastName": {
+                          "description": "Last name of user",
+                          "type": "string",
+                          "example": "Smith"
+                        },
+                        "FullName": {
+                          "description": "Last name of user",
+                          "type": "string",
+                          "example": "Smith"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "Id": {
+                      "description": "File object's UUID",
+                      "type": "string",
+                      "format": "uuid",
+                      "example": "d290f1ee-6c54-4b01-90e6-d701748f0851"
+                    },
+                    "FolderId": {
+                      "description": "Folder relation object's UUID",
+                      "type": "string",
+                      "format": "uuid",
+                      "example": "0f8ccf21-7267-4268-9167-a1e2c40c84c8"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "post_Files",
+      "operationId": "uploadFile",
+      "name": "Upload File",
+      "description": "Uploads a File to the inbox",
+      "schema": {
+        "tags": [
+          "Files"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Xero-Files-API/post_Files/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/Files"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "required": [
+                "xero-tenant-id"
+              ],
+              "properties": {
+                "Idempotency-Key": {
+                  "type": "string",
+                  "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
+                },
+                "xero-tenant-id": {
+                  "type": "string",
+                  "description": "Xero identifier for Tenant"
+                },
+                "Content-Type": {
+                  "type": "string",
+                  "const": "multipart/form-data"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "required": [
+                  "body",
+                  "name",
+                  "filename"
+                ],
+                "properties": {
+                  "body": {
+                    "type": "string",
+                    "format": "byte"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "exact name of the file you are uploading"
+                  },
+                  "filename": {
+                    "type": "string"
+                  },
+                  "mimeType": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Xero-Files-API/post_Files/output-201.schema.json",
+            "type": "object",
+            "required": [
+              "id",
+              "name",
+              "manufacturer",
+              "releaseDate"
+            ],
+            "properties": {
+              "Name": {
+                "description": "File Name",
+                "type": "string",
+                "example": "File2.jpg"
+              },
+              "MimeType": {
+                "description": "MimeType of the file (image/png, image/jpeg, application/pdf, etc..)",
+                "type": "string",
+                "example": "image/jpeg"
+              },
+              "Size": {
+                "description": "Numeric value in bytes",
+                "type": "integer",
+                "example": 3615
+              },
+              "CreatedDateUtc": {
+                "description": "Created date in UTC",
+                "type": "string",
+                "example": "2020-12-03T19:04:58.6970000"
+              },
+              "UpdatedDateUtc": {
+                "description": "Updated date in UTC",
+                "type": "string",
+                "example": "2020-12-03T19:04:58.6970000"
+              },
+              "User": {
+                "required": [
+                  "Id"
+                ],
+                "properties": {
+                  "Id": {
+                    "description": "Xero identifier",
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "4ff1e5cc-9835-40d5-bb18-09fdb118db9c"
+                  },
+                  "Name": {
+                    "description": "Key is Name, but returns Email address of user who created the file",
+                    "type": "string",
+                    "example": "john.smith@mail.com"
+                  },
+                  "FirstName": {
+                    "description": "First name of user",
+                    "type": "string",
+                    "example": "John"
+                  },
+                  "LastName": {
+                    "description": "Last name of user",
+                    "type": "string",
+                    "example": "Smith"
+                  },
+                  "FullName": {
+                    "description": "Last name of user",
+                    "type": "string",
+                    "example": "Smith"
+                  }
+                },
+                "type": "object"
+              },
+              "Id": {
+                "description": "File object's UUID",
+                "type": "string",
+                "format": "uuid",
+                "example": "d290f1ee-6c54-4b01-90e6-d701748f0851"
+              },
+              "FolderId": {
+                "description": "Folder relation object's UUID",
+                "type": "string",
+                "format": "uuid",
+                "example": "0f8ccf21-7267-4268-9167-a1e2c40c84c8"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "get_Files__FileId_",
+      "operationId": "getFile",
+      "name": "Get File",
+      "description": "Retrieves a file by a unique file ID",
+      "schema": {
+        "tags": [
+          "Files"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Xero-Files-API/get_Files__FileId_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/Files/{FileId}"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "FileId"
+              ],
+              "properties": {
+                "FileId": {
+                  "type": "string",
+                  "format": "uuid",
+                  "example": "4ff1e5cc-9835-40d5-bb18-09fdb118db9c",
+                  "description": "File id for single object"
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "required": [
+                "xero-tenant-id"
+              ],
+              "properties": {
+                "xero-tenant-id": {
+                  "type": "string",
+                  "description": "Xero identifier for Tenant"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Xero-Files-API/get_Files__FileId_/output-200.schema.json",
+            "type": "object",
+            "required": [
+              "id",
+              "name",
+              "manufacturer",
+              "releaseDate"
+            ],
+            "properties": {
+              "Name": {
+                "description": "File Name",
+                "type": "string",
+                "example": "File2.jpg"
+              },
+              "MimeType": {
+                "description": "MimeType of the file (image/png, image/jpeg, application/pdf, etc..)",
+                "type": "string",
+                "example": "image/jpeg"
+              },
+              "Size": {
+                "description": "Numeric value in bytes",
+                "type": "integer",
+                "example": 3615
+              },
+              "CreatedDateUtc": {
+                "description": "Created date in UTC",
+                "type": "string",
+                "example": "2020-12-03T19:04:58.6970000"
+              },
+              "UpdatedDateUtc": {
+                "description": "Updated date in UTC",
+                "type": "string",
+                "example": "2020-12-03T19:04:58.6970000"
+              },
+              "User": {
+                "required": [
+                  "Id"
+                ],
+                "properties": {
+                  "Id": {
+                    "description": "Xero identifier",
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "4ff1e5cc-9835-40d5-bb18-09fdb118db9c"
+                  },
+                  "Name": {
+                    "description": "Key is Name, but returns Email address of user who created the file",
+                    "type": "string",
+                    "example": "john.smith@mail.com"
+                  },
+                  "FirstName": {
+                    "description": "First name of user",
+                    "type": "string",
+                    "example": "John"
+                  },
+                  "LastName": {
+                    "description": "Last name of user",
+                    "type": "string",
+                    "example": "Smith"
+                  },
+                  "FullName": {
+                    "description": "Last name of user",
+                    "type": "string",
+                    "example": "Smith"
+                  }
+                },
+                "type": "object"
+              },
+              "Id": {
+                "description": "File object's UUID",
+                "type": "string",
+                "format": "uuid",
+                "example": "d290f1ee-6c54-4b01-90e6-d701748f0851"
+              },
+              "FolderId": {
+                "description": "Folder relation object's UUID",
+                "type": "string",
+                "format": "uuid",
+                "example": "0f8ccf21-7267-4268-9167-a1e2c40c84c8"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "delete_Files__FileId_",
+      "operationId": "deleteFile",
+      "name": "Delete File",
+      "description": "Deletes a specific file",
+      "schema": {
+        "tags": [
+          "Files"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Xero-Files-API/delete_Files__FileId_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/Files/{FileId}"
+            },
+            "method": {
+              "type": "string",
+              "const": "delete"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "FileId"
+              ],
+              "properties": {
+                "FileId": {
+                  "type": "string",
+                  "format": "uuid",
+                  "example": "4ff1e5cc-9835-40d5-bb18-09fdb118db9c",
+                  "description": "File id for single object"
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "required": [
+                "xero-tenant-id"
+              ],
+              "properties": {
+                "xero-tenant-id": {
+                  "type": "string",
+                  "description": "Xero identifier for Tenant"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "put_Files__FileId_",
+      "operationId": "updateFile",
+      "name": "Update File",
+      "description": "Update a file",
+      "schema": {
+        "tags": [
+          "Files"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Xero-Files-API/put_Files__FileId_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/Files/{FileId}"
+            },
+            "method": {
+              "type": "string",
+              "const": "put"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "FileId"
+              ],
+              "properties": {
+                "FileId": {
+                  "type": "string",
+                  "format": "uuid",
+                  "example": "4ff1e5cc-9835-40d5-bb18-09fdb118db9c",
+                  "description": "File id for single object"
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "required": [
+                "xero-tenant-id"
+              ],
+              "properties": {
+                "Idempotency-Key": {
+                  "type": "string",
+                  "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
+                },
+                "xero-tenant-id": {
+                  "type": "string",
+                  "description": "Xero identifier for Tenant"
+                },
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "name",
+                  "manufacturer",
+                  "releaseDate"
+                ],
+                "properties": {
+                  "Name": {
+                    "description": "File Name",
+                    "type": "string",
+                    "example": "File2.jpg"
+                  },
+                  "MimeType": {
+                    "description": "MimeType of the file (image/png, image/jpeg, application/pdf, etc..)",
+                    "type": "string",
+                    "example": "image/jpeg"
+                  },
+                  "Size": {
+                    "description": "Numeric value in bytes",
+                    "type": "integer",
+                    "example": 3615
+                  },
+                  "CreatedDateUtc": {
+                    "description": "Created date in UTC",
+                    "type": "string",
+                    "example": "2020-12-03T19:04:58.6970000"
+                  },
+                  "UpdatedDateUtc": {
+                    "description": "Updated date in UTC",
+                    "type": "string",
+                    "example": "2020-12-03T19:04:58.6970000"
+                  },
+                  "User": {
+                    "required": [
+                      "Id"
+                    ],
+                    "properties": {
+                      "Id": {
+                        "description": "Xero identifier",
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "4ff1e5cc-9835-40d5-bb18-09fdb118db9c"
+                      },
+                      "Name": {
+                        "description": "Key is Name, but returns Email address of user who created the file",
+                        "type": "string",
+                        "example": "john.smith@mail.com"
+                      },
+                      "FirstName": {
+                        "description": "First name of user",
+                        "type": "string",
+                        "example": "John"
+                      },
+                      "LastName": {
+                        "description": "Last name of user",
+                        "type": "string",
+                        "example": "Smith"
+                      },
+                      "FullName": {
+                        "description": "Last name of user",
+                        "type": "string",
+                        "example": "Smith"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "Id": {
+                    "description": "File object's UUID",
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "d290f1ee-6c54-4b01-90e6-d701748f0851"
+                  },
+                  "FolderId": {
+                    "description": "Folder relation object's UUID",
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "0f8ccf21-7267-4268-9167-a1e2c40c84c8"
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Xero-Files-API/put_Files__FileId_/output-200.schema.json",
+            "type": "object",
+            "required": [
+              "id",
+              "name",
+              "manufacturer",
+              "releaseDate"
+            ],
+            "properties": {
+              "Name": {
+                "description": "File Name",
+                "type": "string",
+                "example": "File2.jpg"
+              },
+              "MimeType": {
+                "description": "MimeType of the file (image/png, image/jpeg, application/pdf, etc..)",
+                "type": "string",
+                "example": "image/jpeg"
+              },
+              "Size": {
+                "description": "Numeric value in bytes",
+                "type": "integer",
+                "example": 3615
+              },
+              "CreatedDateUtc": {
+                "description": "Created date in UTC",
+                "type": "string",
+                "example": "2020-12-03T19:04:58.6970000"
+              },
+              "UpdatedDateUtc": {
+                "description": "Updated date in UTC",
+                "type": "string",
+                "example": "2020-12-03T19:04:58.6970000"
+              },
+              "User": {
+                "required": [
+                  "Id"
+                ],
+                "properties": {
+                  "Id": {
+                    "description": "Xero identifier",
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "4ff1e5cc-9835-40d5-bb18-09fdb118db9c"
+                  },
+                  "Name": {
+                    "description": "Key is Name, but returns Email address of user who created the file",
+                    "type": "string",
+                    "example": "john.smith@mail.com"
+                  },
+                  "FirstName": {
+                    "description": "First name of user",
+                    "type": "string",
+                    "example": "John"
+                  },
+                  "LastName": {
+                    "description": "Last name of user",
+                    "type": "string",
+                    "example": "Smith"
+                  },
+                  "FullName": {
+                    "description": "Last name of user",
+                    "type": "string",
+                    "example": "Smith"
+                  }
+                },
+                "type": "object"
+              },
+              "Id": {
+                "description": "File object's UUID",
+                "type": "string",
+                "format": "uuid",
+                "example": "d290f1ee-6c54-4b01-90e6-d701748f0851"
+              },
+              "FolderId": {
+                "description": "Folder relation object's UUID",
+                "type": "string",
+                "format": "uuid",
+                "example": "0f8ccf21-7267-4268-9167-a1e2c40c84c8"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "post_Files__FolderId_",
+      "operationId": "uploadFileToFolder",
+      "name": "Upload File To Folder",
+      "description": "Uploads a File to a specific folder",
+      "schema": {
+        "tags": [
+          "Files"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Xero-Files-API/post_Files__FolderId_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/Files/{FolderId}"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "FolderId"
+              ],
+              "properties": {
+                "FolderId": {
+                  "type": "string",
+                  "format": "uuid",
+                  "example": "4ff1e5cc-9835-40d5-bb18-09fdb118db9c",
+                  "description": "pass required folder id to save file to specific folder"
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "required": [
+                "xero-tenant-id"
+              ],
+              "properties": {
+                "Idempotency-Key": {
+                  "type": "string",
+                  "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
+                },
+                "xero-tenant-id": {
+                  "type": "string",
+                  "description": "Xero identifier for Tenant"
+                },
+                "Content-Type": {
+                  "type": "string",
+                  "const": "multipart/form-data"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "required": [
+                  "body",
+                  "name",
+                  "filename"
+                ],
+                "properties": {
+                  "body": {
+                    "type": "string",
+                    "format": "byte"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "exact name of the file you are uploading"
+                  },
+                  "filename": {
+                    "type": "string"
+                  },
+                  "mimeType": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Xero-Files-API/post_Files__FolderId_/output-201.schema.json",
+            "type": "object",
+            "required": [
+              "id",
+              "name",
+              "manufacturer",
+              "releaseDate"
+            ],
+            "properties": {
+              "Name": {
+                "description": "File Name",
+                "type": "string",
+                "example": "File2.jpg"
+              },
+              "MimeType": {
+                "description": "MimeType of the file (image/png, image/jpeg, application/pdf, etc..)",
+                "type": "string",
+                "example": "image/jpeg"
+              },
+              "Size": {
+                "description": "Numeric value in bytes",
+                "type": "integer",
+                "example": 3615
+              },
+              "CreatedDateUtc": {
+                "description": "Created date in UTC",
+                "type": "string",
+                "example": "2020-12-03T19:04:58.6970000"
+              },
+              "UpdatedDateUtc": {
+                "description": "Updated date in UTC",
+                "type": "string",
+                "example": "2020-12-03T19:04:58.6970000"
+              },
+              "User": {
+                "required": [
+                  "Id"
+                ],
+                "properties": {
+                  "Id": {
+                    "description": "Xero identifier",
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "4ff1e5cc-9835-40d5-bb18-09fdb118db9c"
+                  },
+                  "Name": {
+                    "description": "Key is Name, but returns Email address of user who created the file",
+                    "type": "string",
+                    "example": "john.smith@mail.com"
+                  },
+                  "FirstName": {
+                    "description": "First name of user",
+                    "type": "string",
+                    "example": "John"
+                  },
+                  "LastName": {
+                    "description": "Last name of user",
+                    "type": "string",
+                    "example": "Smith"
+                  },
+                  "FullName": {
+                    "description": "Last name of user",
+                    "type": "string",
+                    "example": "Smith"
+                  }
+                },
+                "type": "object"
+              },
+              "Id": {
+                "description": "File object's UUID",
+                "type": "string",
+                "format": "uuid",
+                "example": "d290f1ee-6c54-4b01-90e6-d701748f0851"
+              },
+              "FolderId": {
+                "description": "Folder relation object's UUID",
+                "type": "string",
+                "format": "uuid",
+                "example": "0f8ccf21-7267-4268-9167-a1e2c40c84c8"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "get_Files__FileId__Content",
+      "operationId": "getFileContent",
+      "name": "Get File Content",
+      "description": "Retrieves the content of a specific file",
+      "schema": {
+        "tags": [
+          "Files"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Xero-Files-API/get_Files__FileId__Content/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/Files/{FileId}/Content"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "FileId"
+              ],
+              "properties": {
+                "FileId": {
+                  "type": "string",
+                  "format": "uuid",
+                  "example": "4ff1e5cc-9835-40d5-bb18-09fdb118db9c",
+                  "description": "File id for single object"
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "required": [
+                "xero-tenant-id"
+              ],
+              "properties": {
+                "xero-tenant-id": {
+                  "type": "string",
+                  "description": "Xero identifier for Tenant"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "get_Files__FileId__Associations",
+      "operationId": "getFileAssociations",
+      "name": "Get File Associations",
+      "description": "Retrieves a specific file associations",
+      "schema": {
+        "tags": [
+          "Files"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Xero-Files-API/get_Files__FileId__Associations/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/Files/{FileId}/Associations"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "FileId"
+              ],
+              "properties": {
+                "FileId": {
+                  "type": "string",
+                  "format": "uuid",
+                  "example": "4ff1e5cc-9835-40d5-bb18-09fdb118db9c",
+                  "description": "File id for single object"
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "required": [
+                "xero-tenant-id"
+              ],
+              "properties": {
+                "xero-tenant-id": {
+                  "type": "string",
+                  "description": "Xero identifier for Tenant"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_Files__FileId__Associations",
+      "operationId": "createFileAssociation",
+      "name": "Create File Association",
+      "description": "Creates a new file association",
+      "schema": {
+        "tags": [
+          "Files"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Xero-Files-API/post_Files__FileId__Associations/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/Files/{FileId}/Associations"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "FileId"
+              ],
+              "properties": {
+                "FileId": {
+                  "type": "string",
+                  "format": "uuid",
+                  "example": "4ff1e5cc-9835-40d5-bb18-09fdb118db9c",
+                  "description": "File id for single object"
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "required": [
+                "xero-tenant-id"
+              ],
+              "properties": {
+                "Idempotency-Key": {
+                  "type": "string",
+                  "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
+                },
+                "xero-tenant-id": {
+                  "type": "string",
+                  "description": "Xero identifier for Tenant"
+                },
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "SendWithObject": {
+                    "description": "Boolean flag to determines whether the file is sent with the document it is attached to on client facing communications. Note- The SendWithObject element is only returned when using /Associations/{ObjectId} endpoint.",
+                    "type": "boolean",
+                    "example": true
+                  },
+                  "Name": {
+                    "description": "The name of the associated file. Note- The Name element is only returned when using /Associations/{ObjectId} endpoint.",
+                    "type": "string",
+                    "example": "Test.pdf"
+                  },
+                  "Size": {
+                    "description": "The size of the associated file in bytes. Note- The Size element is only returned when using /Associations/{ObjectId} endpoint.",
+                    "type": "integer",
+                    "example": 12357
+                  },
+                  "FileId": {
+                    "description": "The unique identifier of the file",
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "ObjectId": {
+                    "description": "The identifier of the object that the file is being associated with (e.g. InvoiceID, BankTransactionID, ContactID)",
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "ObjectGroup": {
+                    "description": "The Object Group that the object is in. These roughly correlate to the endpoints that can be used to retrieve the object via the core accounting API.",
+                    "type": "string",
+                    "enum": [
+                      "Account",
+                      "BankTransaction",
+                      "Contact",
+                      "CreditNote",
+                      "Invoice",
+                      "Item",
+                      "ManualJournal",
+                      "Overpayment",
+                      "Payment",
+                      "Prepayment",
+                      "Quote",
+                      "Receipt"
+                    ]
+                  },
+                  "ObjectType": {
+                    "description": "The Object Type",
+                    "type": "string",
+                    "enum": [
+                      "Unknown",
+                      "Accpay",
+                      "AccPayCredit",
+                      "AccPayPayment",
+                      "AccRec",
+                      "AccRecCredit",
+                      "AccRecPayment",
+                      "Adjustment",
+                      "ApCreditPayment",
+                      "ApOverPayment",
+                      "ApOverPaymentPayment",
+                      "ApOverPaymentSourcePayment",
+                      "ApPrepayment",
+                      "ApPrepaymentPayment",
+                      "ApPrepaymentSourcePayment",
+                      "ArCreditPayment",
+                      "ArOverPayment",
+                      "ArOverpaymentPayment",
+                      "ArOverpaymentSourcePayment",
+                      "ArPrepayment",
+                      "ArPrepaymentPayment",
+                      "ArPrepaymentSourcePayment",
+                      "CashPaid",
+                      "CashRec",
+                      "ExpPayment",
+                      "ManJournal",
+                      "PurchaseOrder",
+                      "Receipt",
+                      "Transfer",
+                      "Account",
+                      "Contact",
+                      "Business",
+                      "Employee",
+                      "Person",
+                      "User",
+                      "Org",
+                      "FixedAsset",
+                      "PayRun",
+                      "PriceListItem",
+                      "Bank",
+                      "Current",
+                      "Equity",
+                      "Expense",
+                      "Fixed",
+                      "Liability",
+                      "Prepayment",
+                      "Revenue",
+                      "Sales",
+                      "Overheads",
+                      "Depreciatn",
+                      "OtherIncome",
+                      "DirectCosts",
+                      "Currliab",
+                      "Termliab",
+                      "NonCurrent",
+                      "SalesQuote"
+                    ]
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Xero-Files-API/post_Files__FileId__Associations/output-201.schema.json",
+            "type": "object",
+            "properties": {
+              "SendWithObject": {
+                "description": "Boolean flag to determines whether the file is sent with the document it is attached to on client facing communications. Note- The SendWithObject element is only returned when using /Associations/{ObjectId} endpoint.",
+                "type": "boolean",
+                "example": true
+              },
+              "Name": {
+                "description": "The name of the associated file. Note- The Name element is only returned when using /Associations/{ObjectId} endpoint.",
+                "type": "string",
+                "example": "Test.pdf"
+              },
+              "Size": {
+                "description": "The size of the associated file in bytes. Note- The Size element is only returned when using /Associations/{ObjectId} endpoint.",
+                "type": "integer",
+                "example": 12357
+              },
+              "FileId": {
+                "description": "The unique identifier of the file",
+                "type": "string",
+                "format": "uuid"
+              },
+              "ObjectId": {
+                "description": "The identifier of the object that the file is being associated with (e.g. InvoiceID, BankTransactionID, ContactID)",
+                "type": "string",
+                "format": "uuid"
+              },
+              "ObjectGroup": {
+                "description": "The Object Group that the object is in. These roughly correlate to the endpoints that can be used to retrieve the object via the core accounting API.",
+                "type": "string",
+                "enum": [
+                  "Account",
+                  "BankTransaction",
+                  "Contact",
+                  "CreditNote",
+                  "Invoice",
+                  "Item",
+                  "ManualJournal",
+                  "Overpayment",
+                  "Payment",
+                  "Prepayment",
+                  "Quote",
+                  "Receipt"
+                ]
+              },
+              "ObjectType": {
+                "description": "The Object Type",
+                "type": "string",
+                "enum": [
+                  "Unknown",
+                  "Accpay",
+                  "AccPayCredit",
+                  "AccPayPayment",
+                  "AccRec",
+                  "AccRecCredit",
+                  "AccRecPayment",
+                  "Adjustment",
+                  "ApCreditPayment",
+                  "ApOverPayment",
+                  "ApOverPaymentPayment",
+                  "ApOverPaymentSourcePayment",
+                  "ApPrepayment",
+                  "ApPrepaymentPayment",
+                  "ApPrepaymentSourcePayment",
+                  "ArCreditPayment",
+                  "ArOverPayment",
+                  "ArOverpaymentPayment",
+                  "ArOverpaymentSourcePayment",
+                  "ArPrepayment",
+                  "ArPrepaymentPayment",
+                  "ArPrepaymentSourcePayment",
+                  "CashPaid",
+                  "CashRec",
+                  "ExpPayment",
+                  "ManJournal",
+                  "PurchaseOrder",
+                  "Receipt",
+                  "Transfer",
+                  "Account",
+                  "Contact",
+                  "Business",
+                  "Employee",
+                  "Person",
+                  "User",
+                  "Org",
+                  "FixedAsset",
+                  "PayRun",
+                  "PriceListItem",
+                  "Bank",
+                  "Current",
+                  "Equity",
+                  "Expense",
+                  "Fixed",
+                  "Liability",
+                  "Prepayment",
+                  "Revenue",
+                  "Sales",
+                  "Overheads",
+                  "Depreciatn",
+                  "OtherIncome",
+                  "DirectCosts",
+                  "Currliab",
+                  "Termliab",
+                  "NonCurrent",
+                  "SalesQuote"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "delete_Files__FileId__Associations__ObjectId_",
+      "operationId": "deleteFileAssociation",
+      "name": "Delete File Association",
+      "description": "Deletes an existing file association",
+      "schema": {
+        "tags": [
+          "Files"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Xero-Files-API/delete_Files__FileId__Associations__ObjectId_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/Files/{FileId}/Associations/{ObjectId}"
+            },
+            "method": {
+              "type": "string",
+              "const": "delete"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "FileId",
+                "ObjectId"
+              ],
+              "properties": {
+                "FileId": {
+                  "type": "string",
+                  "format": "uuid",
+                  "example": "4ff1e5cc-9835-40d5-bb18-09fdb118db9c",
+                  "description": "File id for single object"
+                },
+                "ObjectId": {
+                  "type": "string",
+                  "format": "uuid",
+                  "example": "4ff1e5cc-9835-40d5-bb18-09fdb118db9c",
+                  "description": "Object id for single object"
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "required": [
+                "xero-tenant-id"
+              ],
+              "properties": {
+                "xero-tenant-id": {
+                  "type": "string",
+                  "description": "Xero identifier for Tenant"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "get_Associations__ObjectId_",
+      "operationId": "getAssociationsByObject",
+      "name": "Get Associations By Object",
+      "description": "Retrieves an association object using a unique object ID",
+      "schema": {
+        "tags": [
+          "Files"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Xero-Files-API/get_Associations__ObjectId_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/Associations/{ObjectId}"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {
+                "pagesize": {
+                  "type": "integer",
+                  "maximum": 100,
+                  "example": 50,
+                  "description": "pass an optional page size value"
+                },
+                "page": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "example": 2,
+                  "description": "number of records to skip for pagination"
+                },
+                "sort": {
+                  "type": "string",
+                  "enum": [
+                    "Name",
+                    "CreatedDateUTC"
+                  ],
+                  "example": "Associations/{ObjectId}?sort=CreatedDateUtc",
+                  "description": "values to sort by"
+                },
+                "direction": {
+                  "type": "string",
+                  "enum": [
+                    "ASC",
+                    "DESC"
+                  ],
+                  "example": "Associations/{ObjectId}?sort=CreatedDateUtc&direction=DESC",
+                  "description": "direction to sort by"
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "ObjectId"
+              ],
+              "properties": {
+                "ObjectId": {
+                  "type": "string",
+                  "format": "uuid",
+                  "example": "4ff1e5cc-9835-40d5-bb18-09fdb118db9c",
+                  "description": "Object id for single object"
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "required": [
+                "xero-tenant-id"
+              ],
+              "properties": {
+                "xero-tenant-id": {
+                  "type": "string",
+                  "description": "Xero identifier for Tenant"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "get_Associations_Count",
+      "operationId": "getAssociationsCount",
+      "name": "Get Associations Count",
+      "description": "Retrieves a count of associations for a list of objects.",
+      "schema": {
+        "tags": [
+          "Files"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Xero-Files-API/get_Associations_Count/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/Associations/Count"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "required": [
+                "ObjectIds"
+              ],
+              "properties": {
+                "ObjectIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "1270bf7c-5d18-473a-9231-1e36c4bd33ed"
+                  },
+                  "description": "A comma-separated list of object ids"
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "required": [
+                "xero-tenant-id"
+              ],
+              "properties": {
+                "xero-tenant-id": {
+                  "type": "string",
+                  "description": "Xero identifier for Tenant"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "get_Folders",
+      "operationId": "getFolders",
+      "name": "Get Folders",
+      "description": "Retrieves folders",
+      "schema": {
+        "tags": [
+          "Files"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Xero-Files-API/get_Folders/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/Folders"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {
+                "sort": {
+                  "type": "string",
+                  "enum": [
+                    "Name",
+                    "Size",
+                    "CreatedDateUTC"
+                  ],
+                  "example": "CreatedDateUTC DESC",
+                  "description": "values to sort by"
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "required": [
+                "xero-tenant-id"
+              ],
+              "properties": {
+                "xero-tenant-id": {
+                  "type": "string",
+                  "description": "Xero identifier for Tenant"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_Folders",
+      "operationId": "createFolder",
+      "name": "Create Folder",
+      "description": "Creates a new folder",
+      "schema": {
+        "tags": [
+          "Files"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Xero-Files-API/post_Folders/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/Folders"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "required": [
+                "xero-tenant-id"
+              ],
+              "properties": {
+                "Idempotency-Key": {
+                  "type": "string",
+                  "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
+                },
+                "xero-tenant-id": {
+                  "type": "string",
+                  "description": "Xero identifier for Tenant"
+                },
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "Name": {
+                    "description": "The name of the folder",
+                    "type": "string",
+                    "example": "assets"
+                  },
+                  "FileCount": {
+                    "description": "The number of files in the folder",
+                    "type": "integer",
+                    "example": 5
+                  },
+                  "Email": {
+                    "description": "The email address used to email files to the inbox. Only the inbox will have this element.",
+                    "type": "string",
+                    "example": "foo@bar.com"
+                  },
+                  "IsInbox": {
+                    "description": "to indicate if the folder is the Inbox. The Inbox cannot be renamed or deleted.",
+                    "type": "boolean",
+                    "example": true
+                  },
+                  "Id": {
+                    "description": "Xero unique identifier for a folder  Files",
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "4ff1e5cc-9835-40d5-bb18-09fdb118db9c"
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Xero-Files-API/post_Folders/output-200.schema.json",
+            "type": "any",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "Name": {
+                "description": "The name of the folder",
+                "type": "string",
+                "example": "assets"
+              },
+              "FileCount": {
+                "description": "The number of files in the folder",
+                "type": "integer",
+                "example": 5
+              },
+              "Email": {
+                "description": "The email address used to email files to the inbox. Only the inbox will have this element.",
+                "type": "string",
+                "example": "foo@bar.com"
+              },
+              "IsInbox": {
+                "description": "to indicate if the folder is the Inbox. The Inbox cannot be renamed or deleted.",
+                "type": "boolean",
+                "example": true
+              },
+              "Id": {
+                "description": "Xero unique identifier for a folder  Files",
+                "type": "string",
+                "format": "uuid",
+                "example": "4ff1e5cc-9835-40d5-bb18-09fdb118db9c"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "get_Folders__FolderId_",
+      "operationId": "getFolder",
+      "name": "Get Folder",
+      "description": "Retrieves specific folder by using a unique folder ID",
+      "schema": {
+        "tags": [
+          "Files"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Xero-Files-API/get_Folders__FolderId_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/Folders/{FolderId}"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "FolderId"
+              ],
+              "properties": {
+                "FolderId": {
+                  "type": "string",
+                  "format": "uuid",
+                  "example": "4ff1e5cc-9835-40d5-bb18-09fdb118db9c",
+                  "description": "Folder id for single object"
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "required": [
+                "xero-tenant-id"
+              ],
+              "properties": {
+                "xero-tenant-id": {
+                  "type": "string",
+                  "description": "Xero identifier for Tenant"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Xero-Files-API/get_Folders__FolderId_/output-200.schema.json",
+            "type": "any",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "Name": {
+                "description": "The name of the folder",
+                "type": "string",
+                "example": "assets"
+              },
+              "FileCount": {
+                "description": "The number of files in the folder",
+                "type": "integer",
+                "example": 5
+              },
+              "Email": {
+                "description": "The email address used to email files to the inbox. Only the inbox will have this element.",
+                "type": "string",
+                "example": "foo@bar.com"
+              },
+              "IsInbox": {
+                "description": "to indicate if the folder is the Inbox. The Inbox cannot be renamed or deleted.",
+                "type": "boolean",
+                "example": true
+              },
+              "Id": {
+                "description": "Xero unique identifier for a folder  Files",
+                "type": "string",
+                "format": "uuid",
+                "example": "4ff1e5cc-9835-40d5-bb18-09fdb118db9c"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "delete_Folders__FolderId_",
+      "operationId": "deleteFolder",
+      "name": "Delete Folder",
+      "description": "Deletes a folder",
+      "schema": {
+        "tags": [
+          "Files"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Xero-Files-API/delete_Folders__FolderId_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/Folders/{FolderId}"
+            },
+            "method": {
+              "type": "string",
+              "const": "delete"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "FolderId"
+              ],
+              "properties": {
+                "FolderId": {
+                  "type": "string",
+                  "format": "uuid",
+                  "example": "4ff1e5cc-9835-40d5-bb18-09fdb118db9c",
+                  "description": "Folder id for single object"
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "required": [
+                "xero-tenant-id"
+              ],
+              "properties": {
+                "xero-tenant-id": {
+                  "type": "string",
+                  "description": "Xero identifier for Tenant"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "put_Folders__FolderId_",
+      "operationId": "updateFolder",
+      "name": "Update Folder",
+      "description": "Updates an existing folder",
+      "schema": {
+        "tags": [
+          "Files"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Xero-Files-API/put_Folders__FolderId_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/Folders/{FolderId}"
+            },
+            "method": {
+              "type": "string",
+              "const": "put"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "FolderId"
+              ],
+              "properties": {
+                "FolderId": {
+                  "type": "string",
+                  "format": "uuid",
+                  "example": "4ff1e5cc-9835-40d5-bb18-09fdb118db9c",
+                  "description": "Folder id for single object"
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "required": [
+                "xero-tenant-id"
+              ],
+              "properties": {
+                "Idempotency-Key": {
+                  "type": "string",
+                  "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
+                },
+                "xero-tenant-id": {
+                  "type": "string",
+                  "description": "Xero identifier for Tenant"
+                },
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "Name": {
+                    "description": "The name of the folder",
+                    "type": "string",
+                    "example": "assets"
+                  },
+                  "FileCount": {
+                    "description": "The number of files in the folder",
+                    "type": "integer",
+                    "example": 5
+                  },
+                  "Email": {
+                    "description": "The email address used to email files to the inbox. Only the inbox will have this element.",
+                    "type": "string",
+                    "example": "foo@bar.com"
+                  },
+                  "IsInbox": {
+                    "description": "to indicate if the folder is the Inbox. The Inbox cannot be renamed or deleted.",
+                    "type": "boolean",
+                    "example": true
+                  },
+                  "Id": {
+                    "description": "Xero unique identifier for a folder  Files",
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "4ff1e5cc-9835-40d5-bb18-09fdb118db9c"
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Xero-Files-API/put_Folders__FolderId_/output-200.schema.json",
+            "type": "any",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "Name": {
+                "description": "The name of the folder",
+                "type": "string",
+                "example": "assets"
+              },
+              "FileCount": {
+                "description": "The number of files in the folder",
+                "type": "integer",
+                "example": 5
+              },
+              "Email": {
+                "description": "The email address used to email files to the inbox. Only the inbox will have this element.",
+                "type": "string",
+                "example": "foo@bar.com"
+              },
+              "IsInbox": {
+                "description": "to indicate if the folder is the Inbox. The Inbox cannot be renamed or deleted.",
+                "type": "boolean",
+                "example": true
+              },
+              "Id": {
+                "description": "Xero unique identifier for a folder  Files",
+                "type": "string",
+                "format": "uuid",
+                "example": "4ff1e5cc-9835-40d5-bb18-09fdb118db9c"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "get_Inbox",
+      "operationId": "getInbox",
+      "name": "Get Inbox",
+      "description": "Retrieves inbox folder",
+      "schema": {
+        "tags": [
+          "Files"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Xero-Files-API/get_Inbox/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/Inbox"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "required": [
+                "xero-tenant-id"
+              ],
+              "properties": {
+                "xero-tenant-id": {
+                  "type": "string",
+                  "description": "Xero identifier for Tenant"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Xero-Files-API/get_Inbox/output-200.schema.json",
+            "type": "any",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "Name": {
+                "description": "The name of the folder",
+                "type": "string",
+                "example": "assets"
+              },
+              "FileCount": {
+                "description": "The number of files in the folder",
+                "type": "integer",
+                "example": 5
+              },
+              "Email": {
+                "description": "The email address used to email files to the inbox. Only the inbox will have this element.",
+                "type": "string",
+                "example": "foo@bar.com"
+              },
+              "IsInbox": {
+                "description": "to indicate if the folder is the Inbox. The Inbox cannot be renamed or deleted.",
+                "type": "boolean",
+                "example": true
+              },
+              "Id": {
+                "description": "Xero unique identifier for a folder  Files",
+                "type": "string",
+                "format": "uuid",
+                "example": "4ff1e5cc-9835-40d5-bb18-09fdb118db9c"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "references": {
+    "baseUrl": {
+      "type": "string",
+      "enum": [
+        "https://api.xero.com/files.xro/1.0/"
+      ]
+    },
+    "queryDesc": "Query parameters sent with the request",
+    "paramDesc": "URL parameters sent with the request",
+    "headerDesc": "HTTP headers sent when making the request",
+    "dataDesc": "Data sent with the request",
+    "schema": "https://json-schema.org/draft/2020-12/schema"
+  }
+}

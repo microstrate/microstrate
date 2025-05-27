@@ -1,0 +1,148 @@
+{
+  "name": "Xero OAuth 2 Identity Service API",
+  "description": "These endpoints are related to managing authentication tokens and identity for Xero API",
+  "nodes": [
+    {
+      "id": "get_Connections",
+      "operationId": "getConnections",
+      "name": "Get Connections",
+      "description": "Retrieves the connections for this user",
+      "schema": {
+        "tags": [
+          "identity"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Xero-OAuth-2-Identity-Service-API/get_Connections/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/Connections"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {
+                "authEventId": {
+                  "type": "string",
+                  "format": "uuid",
+                  "description": "Filter by authEventId"
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "delete_Connections__id_",
+      "operationId": "deleteConnection",
+      "name": "Delete Connection",
+      "description": "Deletes a connection for this user (i.e. disconnect a tenant)",
+      "schema": {
+        "tags": [
+          "identity"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Xero-OAuth-2-Identity-Service-API/delete_Connections__id_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/Connections/{id}"
+            },
+            "method": {
+              "type": "string",
+              "const": "delete"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "format": "uuid",
+                  "description": "Unique identifier for retrieving single object"
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    }
+  ],
+  "references": {
+    "baseUrl": {
+      "type": "string",
+      "enum": [
+        "https://api.xero.com"
+      ]
+    },
+    "queryDesc": "Query parameters sent with the request",
+    "paramDesc": "URL parameters sent with the request",
+    "headerDesc": "HTTP headers sent when making the request",
+    "dataDesc": "Data sent with the request",
+    "schema": "https://json-schema.org/draft/2020-12/schema"
+  }
+}

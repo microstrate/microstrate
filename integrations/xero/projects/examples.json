@@ -1,0 +1,250 @@
+{
+    "get_Projects": {
+      "Basic Example": {
+        "url": "/Projects",
+        "method": "get",
+        "query": {
+          "projectIds": "<array>",
+          "contactID": "<string>",
+          "states": "<string>",
+          "page": 1,
+          "pageSize": 50
+        },
+        "headers": {
+          "Xero-Tenant-Id": "<string>"
+        },
+        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+      }
+    },
+    "post_Projects": {
+      "Basic Example": {
+        "url": "/Projects",
+        "method": "post",
+        "headers": {
+          "Idempotency-Key": "KEY_VALUE",
+          "Xero-Tenant-Id": "<string>"
+        },
+        "data": "{ \"contactId\": \"00000000-0000-0000-000-000000000000\", \"name\": \"New Kitchen\", \"deadlineUtc\": \"2019-12-10T12:59:59Z\", \"estimateAmount\": \"99.99\" }",
+        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+      }
+    },
+    "get_Projects__projectId_": {
+      "Basic Example": {
+        "url": "/Projects/{projectId}",
+        "method": "get",
+        "path": {
+          "projectId": "<string>"
+        },
+        "headers": {
+          "Xero-Tenant-Id": "<string>"
+        },
+        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+      }
+    },
+    "patch_Projects__projectId_": {
+      "Basic Example": {
+        "url": "/Projects/{projectId}",
+        "method": "patch",
+        "headers": {
+          "Idempotency-Key": "KEY_VALUE",
+          "Xero-Tenant-Id": "<string>"
+        },
+        "path": {
+          "projectId": "<string>"
+        },
+        "data": "{ \"status\": \"INPROGRESS\" }",
+        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+      }
+    },
+    "put_Projects__projectId_": {
+      "Basic Example": {
+        "url": "/Projects/{projectId}",
+        "method": "put",
+        "headers": {
+          "Idempotency-Key": "KEY_VALUE",
+          "Xero-Tenant-Id": "<string>"
+        },
+        "path": {
+          "projectId": "<string>"
+        },
+        "data": "{ \"name\": \"New Kitchen\", \"deadlineUtc\": \"2017-04-23T18:25:43.511Z\", \"estimateAmount\": 99.99 }",
+        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+      }
+    },
+    "get_ProjectsUsers": {
+      "Basic Example": {
+        "url": "/ProjectsUsers",
+        "method": "get",
+        "query": {
+          "page": 1,
+          "pageSize": 50
+        },
+        "headers": {
+          "Xero-Tenant-Id": "<string>"
+        },
+        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+      }
+    },
+    "get_Projects__projectId__Tasks": {
+      "Basic Example": {
+        "url": "/Projects/{projectId}/Tasks",
+        "method": "get",
+        "path": {
+          "projectId": "<string>"
+        },
+        "query": {
+          "page": "<integer>",
+          "pageSize": "<integer>",
+          "taskIds": "<string>",
+          "chargeType": "TIME"
+        },
+        "headers": {
+          "Xero-Tenant-Id": "<string>"
+        },
+        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+      }
+    },
+    "post_Projects__projectId__Tasks": {
+      "Basic Example": {
+        "url": "/Projects/{projectId}/Tasks",
+        "method": "post",
+        "headers": {
+          "Idempotency-Key": "KEY_VALUE",
+          "Xero-Tenant-Id": "<string>"
+        },
+        "path": {
+          "projectId": "<string>"
+        },
+        "data": "{ \"status\": \"INPROGRESS\" }",
+        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+      }
+    },
+    "get_Projects__projectId__Tasks__taskId_": {
+      "Basic Example": {
+        "url": "/Projects/{projectId}/Tasks/{taskId}",
+        "method": "get",
+        "path": {
+          "projectId": "<string>",
+          "taskId": "<string>"
+        },
+        "headers": {
+          "Xero-Tenant-Id": "<string>"
+        },
+        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+      }
+    },
+    "delete_Projects__projectId__Tasks__taskId_": {
+      "Basic Example": {
+        "url": "/Projects/{projectId}/Tasks/{taskId}",
+        "method": "delete",
+        "path": {
+          "projectId": "<string>",
+          "taskId": "<string>"
+        },
+        "headers": {
+          "Xero-Tenant-Id": "<string>"
+        },
+        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+      }
+    },
+    "put_Projects__projectId__Tasks__taskId_": {
+      "Basic Example": {
+        "url": "/Projects/{projectId}/Tasks/{taskId}",
+        "method": "put",
+        "headers": {
+          "Idempotency-Key": "KEY_VALUE",
+          "Xero-Tenant-Id": "<string>"
+        },
+        "path": {
+          "projectId": "<string>",
+          "taskId": "<string>"
+        },
+        "data": "",
+        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+      }
+    },
+    "get_Projects__projectId__Time": {
+      "Basic Example": {
+        "url": "/Projects/{projectId}/Time",
+        "method": "get",
+        "path": {
+          "projectId": "<string>"
+        },
+        "query": {
+          "userId": "<string>",
+          "taskId": "<string>",
+          "invoiceId": "<string>",
+          "contactId": "<string>",
+          "page": "<integer>",
+          "pageSize": "<integer>",
+          "states": "<array>",
+          "isChargeable": "<boolean>",
+          "dateAfterUtc": "<string>",
+          "dateBeforeUtc": "<string>"
+        },
+        "headers": {
+          "Xero-Tenant-Id": "<string>"
+        },
+        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+      }
+    },
+    "post_Projects__projectId__Time": {
+      "Basic Example": {
+        "url": "/Projects/{projectId}/Time",
+        "method": "post",
+        "headers": {
+          "Idempotency-Key": "KEY_VALUE",
+          "Xero-Tenant-Id": "<string>"
+        },
+        "path": {
+          "projectId": "<string>"
+        },
+        "data": "{ \"userId\": \"00000000-0000-0000-0000-000000000000\", \"taskId\": \"00000000-0000-0000-0000-000000000000\", \"dateUtc\": \"2020-02-26T15:00:00Z\", \"duration\":30, \"description\": \"My description\" }",
+        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+      }
+    },
+    "get_Projects__projectId__Time__timeEntryId_": {
+      "Basic Example": {
+        "url": "/Projects/{projectId}/Time/{timeEntryId}",
+        "method": "get",
+        "path": {
+          "projectId": "<string>",
+          "timeEntryId": "<string>"
+        },
+        "headers": {
+          "Xero-Tenant-Id": "<string>"
+        },
+        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+      }
+    },
+    "delete_Projects__projectId__Time__timeEntryId_": {
+      "Basic Example": {
+        "url": "/Projects/{projectId}/Time/{timeEntryId}",
+        "method": "delete",
+        "path": {
+          "projectId": "<string>",
+          "timeEntryId": "<string>"
+        },
+        "headers": {
+          "Xero-Tenant-Id": "<string>"
+        },
+        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+      }
+    },
+    "put_Projects__projectId__Time__timeEntryId_": {
+      "Basic Example": {
+        "url": "/Projects/{projectId}/Time/{timeEntryId}",
+        "method": "put",
+        "headers": {
+          "Idempotency-Key": "KEY_VALUE",
+          "Xero-Tenant-Id": "<string>"
+        },
+        "path": {
+          "projectId": "<string>",
+          "timeEntryId": "<string>"
+        },
+        "data": "{ \"userId\": \"00000000-0000-0000-0000-000000000000\", \"taskId\": \"00000000-0000-0000-0000-000000000000\", \"dateUtc\": \"2020-02-27T15:00:00Z\", \"duration\":45, \"description\": \"My UPDATED description\" }",
+        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+      }
+    }
+}

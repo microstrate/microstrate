@@ -1,0 +1,1625 @@
+{
+  "name": "Xero Assets API",
+  "description": "The Assets API exposes fixed asset related functions of the Xero Accounting application and can be used for a variety of purposes such as creating assets, retrieving asset valuations etc.",
+  "nodes": [
+    {
+      "id": "get_Assets",
+      "operationId": "getAssets",
+      "name": "Get Assets",
+      "description": "searches fixed asset",
+      "schema": {
+        "tags": [
+          "Asset"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Xero-Assets-API/get_Assets/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/Assets"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "required": [
+                "status"
+              ],
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "description": "Required when retrieving a collection of assets. See Asset Status Codes",
+                  "example": "DRAFT",
+                  "enum": [
+                    "DRAFT",
+                    "REGISTERED",
+                    "DISPOSED"
+                  ]
+                },
+                "page": {
+                  "type": "integer",
+                  "example": 1,
+                  "description": "Results are paged. This specifies which page of the results to return. The default page is 1."
+                },
+                "pageSize": {
+                  "type": "integer",
+                  "example": 5,
+                  "description": "The number of records returned per page. By default the number of records returned is 10."
+                },
+                "orderBy": {
+                  "type": "string",
+                  "enum": [
+                    "AssetType",
+                    "AssetName",
+                    "AssetNumber",
+                    "PurchaseDate",
+                    "PurchasePrice",
+                    "DisposalDate",
+                    "DisposalPrice"
+                  ],
+                  "example": "AssetName",
+                  "description": "Requests can be ordered by AssetType, AssetName, AssetNumber, PurchaseDate and PurchasePrice. If the asset status is DISPOSED it also allows DisposalDate and DisposalPrice."
+                },
+                "sortDirection": {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ],
+                  "example": "ASC",
+                  "description": "ASC or DESC"
+                },
+                "filterBy": {
+                  "type": "string",
+                  "example": "Company Car",
+                  "description": "A string that can be used to filter the list to only return assets containing the text. Checks it against the AssetName, AssetNumber, Description and AssetTypeName fields."
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "required": [
+                "xero-tenant-id"
+              ],
+              "properties": {
+                "xero-tenant-id": {
+                  "type": "string",
+                  "description": "Xero identifier for Tenant"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Xero-Assets-API/get_Assets/output-200.schema.json",
+            "type": "object",
+            "properties": {
+              "pagination": {
+                "properties": {
+                  "page": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "example": 10
+                  },
+                  "pageCount": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "itemCount": {
+                    "type": "integer",
+                    "example": 2
+                  }
+                }
+              },
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "assetName"
+                  ],
+                  "properties": {
+                    "assetId": {
+                      "type": "string",
+                      "format": "uuid",
+                      "description": "The Xero-generated Id for the asset",
+                      "example": "3b5b3a38-5649-495f-87a1-14a4e5918634"
+                    },
+                    "assetName": {
+                      "type": "string",
+                      "description": "The name of the asset",
+                      "example": "Awesome Truck 3"
+                    },
+                    "assetTypeId": {
+                      "type": "string",
+                      "format": "uuid",
+                      "description": "The Xero-generated Id for the asset type",
+                      "example": "3b5b3a38-5649-495f-87a1-14a4e5918634"
+                    },
+                    "assetNumber": {
+                      "type": "string",
+                      "description": "Must be unique.",
+                      "example": "FA-0013"
+                    },
+                    "purchaseDate": {
+                      "type": "string",
+                      "format": "date",
+                      "description": "The date the asset was purchased YYYY-MM-DD",
+                      "example": "2015-07-01T00:00:00"
+                    },
+                    "purchasePrice": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The purchase price of the asset",
+                      "example": "1000.0000"
+                    },
+                    "disposalDate": {
+                      "type": "string",
+                      "format": "date",
+                      "description": "The date the asset was disposed",
+                      "example": "2020-07-01T00:00:00"
+                    },
+                    "disposalPrice": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The price the asset was disposed at",
+                      "example": "1.0000"
+                    },
+                    "assetStatus": {
+                      "type": "string",
+                      "description": "See Asset Status Codes.",
+                      "example": "Draft",
+                      "enum": [
+                        "Draft",
+                        "Registered",
+                        "Disposed"
+                      ]
+                    },
+                    "warrantyExpiryDate": {
+                      "type": "string",
+                      "description": "The date the asset’s warranty expires (if needed) YYYY-MM-DD",
+                      "example": "ca4c6b39-4f4f-43e8-98da-5e1f350a6694"
+                    },
+                    "serialNumber": {
+                      "type": "string",
+                      "description": "The asset's serial number",
+                      "example": "ca4c6b39-4f4f-43e8-98da-5e1f350a6694"
+                    },
+                    "bookDepreciationSetting": {
+                      "required": [
+                        "name"
+                      ],
+                      "properties": {
+                        "depreciationMethod": {
+                          "type": "string",
+                          "enum": [
+                            "NoDepreciation",
+                            "StraightLine",
+                            "DiminishingValue100",
+                            "DiminishingValue150",
+                            "DiminishingValue200",
+                            "FullDepreciation"
+                          ],
+                          "example": "StraightLine",
+                          "description": "The method of depreciation applied to this asset. See Depreciation Methods"
+                        },
+                        "averagingMethod": {
+                          "type": "string",
+                          "enum": [
+                            "FullMonth",
+                            "ActualDays"
+                          ],
+                          "example": "ActualDays",
+                          "description": "The method of averaging applied to this asset. See Averaging Methods"
+                        },
+                        "depreciationRate": {
+                          "type": "number",
+                          "format": "double",
+                          "example": 0.05,
+                          "description": "The rate of depreciation (e.g. 0.05)"
+                        },
+                        "effectiveLifeYears": {
+                          "type": "integer",
+                          "example": 5,
+                          "description": "Effective life of the asset in years (e.g. 5)"
+                        },
+                        "depreciationCalculationMethod": {
+                          "type": "string",
+                          "enum": [
+                            "Rate",
+                            "Life",
+                            "None"
+                          ],
+                          "example": "None",
+                          "description": "See Depreciation Calculation Methods"
+                        },
+                        "depreciableObjectId": {
+                          "type": "string",
+                          "format": "uuid",
+                          "example": "68f17094-af97-4f1b-b36b-013b45b6ad3c",
+                          "description": "Unique Xero identifier for the depreciable object"
+                        },
+                        "depreciableObjectType": {
+                          "type": "string",
+                          "example": "Asset",
+                          "description": "The type of asset object"
+                        },
+                        "bookEffectiveDateOfChangeId": {
+                          "type": "string",
+                          "format": "uuid",
+                          "example": "68f17094-af97-4f1b-b36b-013b45b6ad3c",
+                          "description": "Unique Xero identifier for the effective date change"
+                        }
+                      }
+                    },
+                    "bookDepreciationDetail": {
+                      "required": [
+                        "name"
+                      ],
+                      "properties": {
+                        "currentCapitalGain": {
+                          "type": "number",
+                          "format": "double",
+                          "example": 5.25,
+                          "description": "When an asset is disposed, this will be the sell price minus the purchase price if a profit was made."
+                        },
+                        "currentGainLoss": {
+                          "type": "number",
+                          "format": "double",
+                          "example": 10.5,
+                          "description": "When an asset is disposed, this will be the lowest one of sell price or purchase price, minus the current book value."
+                        },
+                        "depreciationStartDate": {
+                          "type": "string",
+                          "format": "date",
+                          "example": "2015-07-01T00:00:00",
+                          "description": "YYYY-MM-DD"
+                        },
+                        "costLimit": {
+                          "type": "number",
+                          "format": "double",
+                          "example": 9000,
+                          "description": "The value of the asset you want to depreciate, if this is less than the cost of the asset."
+                        },
+                        "residualValue": {
+                          "type": "number",
+                          "format": "double",
+                          "example": 10000,
+                          "description": "The value of the asset remaining when you've fully depreciated it."
+                        },
+                        "priorAccumDepreciationAmount": {
+                          "type": "number",
+                          "format": "double",
+                          "example": 0.45,
+                          "description": "All depreciation prior to the current financial year."
+                        },
+                        "currentAccumDepreciationAmount": {
+                          "type": "number",
+                          "format": "double",
+                          "example": 5,
+                          "description": "All depreciation occurring in the current financial year."
+                        }
+                      }
+                    },
+                    "canRollback": {
+                      "type": "boolean",
+                      "description": "Boolean to indicate whether depreciation can be rolled back for this asset individually. This is true if it doesn't have 'legacy' journal entries and if there is no lock period that would prevent this asset from rolling back.",
+                      "example": true
+                    },
+                    "accountingBookValue": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The accounting value of the asset",
+                      "example": 0
+                    },
+                    "isDeleteEnabledForDate": {
+                      "type": "boolean",
+                      "description": "Boolean to indicate whether delete is enabled",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "post_Assets",
+      "operationId": "createAsset",
+      "name": "Create Asset",
+      "description": "adds a fixed asset",
+      "schema": {
+        "tags": [
+          "Asset"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Xero-Assets-API/post_Assets/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/Assets"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "required": [
+                "xero-tenant-id"
+              ],
+              "properties": {
+                "Idempotency-Key": {
+                  "type": "string",
+                  "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
+                },
+                "xero-tenant-id": {
+                  "type": "string",
+                  "description": "Xero identifier for Tenant"
+                },
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "Fixed asset you are creating",
+              "properties": {
+                "type": "object",
+                "required": [
+                  "assetName"
+                ],
+                "properties": {
+                  "assetId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "The Xero-generated Id for the asset",
+                    "example": "3b5b3a38-5649-495f-87a1-14a4e5918634"
+                  },
+                  "assetName": {
+                    "type": "string",
+                    "description": "The name of the asset",
+                    "example": "Awesome Truck 3"
+                  },
+                  "assetTypeId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "The Xero-generated Id for the asset type",
+                    "example": "3b5b3a38-5649-495f-87a1-14a4e5918634"
+                  },
+                  "assetNumber": {
+                    "type": "string",
+                    "description": "Must be unique.",
+                    "example": "FA-0013"
+                  },
+                  "purchaseDate": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "The date the asset was purchased YYYY-MM-DD",
+                    "example": "2015-07-01T00:00:00"
+                  },
+                  "purchasePrice": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "The purchase price of the asset",
+                    "example": "1000.0000"
+                  },
+                  "disposalDate": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "The date the asset was disposed",
+                    "example": "2020-07-01T00:00:00"
+                  },
+                  "disposalPrice": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "The price the asset was disposed at",
+                    "example": "1.0000"
+                  },
+                  "assetStatus": {
+                    "type": "string",
+                    "description": "See Asset Status Codes.",
+                    "example": "Draft",
+                    "enum": [
+                      "Draft",
+                      "Registered",
+                      "Disposed"
+                    ]
+                  },
+                  "warrantyExpiryDate": {
+                    "type": "string",
+                    "description": "The date the asset’s warranty expires (if needed) YYYY-MM-DD",
+                    "example": "ca4c6b39-4f4f-43e8-98da-5e1f350a6694"
+                  },
+                  "serialNumber": {
+                    "type": "string",
+                    "description": "The asset's serial number",
+                    "example": "ca4c6b39-4f4f-43e8-98da-5e1f350a6694"
+                  },
+                  "bookDepreciationSetting": {
+                    "required": [
+                      "name"
+                    ],
+                    "properties": {
+                      "depreciationMethod": {
+                        "type": "string",
+                        "enum": [
+                          "NoDepreciation",
+                          "StraightLine",
+                          "DiminishingValue100",
+                          "DiminishingValue150",
+                          "DiminishingValue200",
+                          "FullDepreciation"
+                        ],
+                        "example": "StraightLine",
+                        "description": "The method of depreciation applied to this asset. See Depreciation Methods"
+                      },
+                      "averagingMethod": {
+                        "type": "string",
+                        "enum": [
+                          "FullMonth",
+                          "ActualDays"
+                        ],
+                        "example": "ActualDays",
+                        "description": "The method of averaging applied to this asset. See Averaging Methods"
+                      },
+                      "depreciationRate": {
+                        "type": "number",
+                        "format": "double",
+                        "example": 0.05,
+                        "description": "The rate of depreciation (e.g. 0.05)"
+                      },
+                      "effectiveLifeYears": {
+                        "type": "integer",
+                        "example": 5,
+                        "description": "Effective life of the asset in years (e.g. 5)"
+                      },
+                      "depreciationCalculationMethod": {
+                        "type": "string",
+                        "enum": [
+                          "Rate",
+                          "Life",
+                          "None"
+                        ],
+                        "example": "None",
+                        "description": "See Depreciation Calculation Methods"
+                      },
+                      "depreciableObjectId": {
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "68f17094-af97-4f1b-b36b-013b45b6ad3c",
+                        "description": "Unique Xero identifier for the depreciable object"
+                      },
+                      "depreciableObjectType": {
+                        "type": "string",
+                        "example": "Asset",
+                        "description": "The type of asset object"
+                      },
+                      "bookEffectiveDateOfChangeId": {
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "68f17094-af97-4f1b-b36b-013b45b6ad3c",
+                        "description": "Unique Xero identifier for the effective date change"
+                      }
+                    }
+                  },
+                  "bookDepreciationDetail": {
+                    "required": [
+                      "name"
+                    ],
+                    "properties": {
+                      "currentCapitalGain": {
+                        "type": "number",
+                        "format": "double",
+                        "example": 5.25,
+                        "description": "When an asset is disposed, this will be the sell price minus the purchase price if a profit was made."
+                      },
+                      "currentGainLoss": {
+                        "type": "number",
+                        "format": "double",
+                        "example": 10.5,
+                        "description": "When an asset is disposed, this will be the lowest one of sell price or purchase price, minus the current book value."
+                      },
+                      "depreciationStartDate": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2015-07-01T00:00:00",
+                        "description": "YYYY-MM-DD"
+                      },
+                      "costLimit": {
+                        "type": "number",
+                        "format": "double",
+                        "example": 9000,
+                        "description": "The value of the asset you want to depreciate, if this is less than the cost of the asset."
+                      },
+                      "residualValue": {
+                        "type": "number",
+                        "format": "double",
+                        "example": 10000,
+                        "description": "The value of the asset remaining when you've fully depreciated it."
+                      },
+                      "priorAccumDepreciationAmount": {
+                        "type": "number",
+                        "format": "double",
+                        "example": 0.45,
+                        "description": "All depreciation prior to the current financial year."
+                      },
+                      "currentAccumDepreciationAmount": {
+                        "type": "number",
+                        "format": "double",
+                        "example": 5,
+                        "description": "All depreciation occurring in the current financial year."
+                      }
+                    }
+                  },
+                  "canRollback": {
+                    "type": "boolean",
+                    "description": "Boolean to indicate whether depreciation can be rolled back for this asset individually. This is true if it doesn't have 'legacy' journal entries and if there is no lock period that would prevent this asset from rolling back.",
+                    "example": true
+                  },
+                  "accountingBookValue": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "The accounting value of the asset",
+                    "example": 0
+                  },
+                  "isDeleteEnabledForDate": {
+                    "type": "boolean",
+                    "description": "Boolean to indicate whether delete is enabled",
+                    "example": true
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Xero-Assets-API/post_Assets/output-200.schema.json",
+            "type": "object",
+            "required": [
+              "assetName"
+            ],
+            "properties": {
+              "assetId": {
+                "type": "string",
+                "format": "uuid",
+                "description": "The Xero-generated Id for the asset",
+                "example": "3b5b3a38-5649-495f-87a1-14a4e5918634"
+              },
+              "assetName": {
+                "type": "string",
+                "description": "The name of the asset",
+                "example": "Awesome Truck 3"
+              },
+              "assetTypeId": {
+                "type": "string",
+                "format": "uuid",
+                "description": "The Xero-generated Id for the asset type",
+                "example": "3b5b3a38-5649-495f-87a1-14a4e5918634"
+              },
+              "assetNumber": {
+                "type": "string",
+                "description": "Must be unique.",
+                "example": "FA-0013"
+              },
+              "purchaseDate": {
+                "type": "string",
+                "format": "date",
+                "description": "The date the asset was purchased YYYY-MM-DD",
+                "example": "2015-07-01T00:00:00"
+              },
+              "purchasePrice": {
+                "type": "number",
+                "format": "double",
+                "description": "The purchase price of the asset",
+                "example": "1000.0000"
+              },
+              "disposalDate": {
+                "type": "string",
+                "format": "date",
+                "description": "The date the asset was disposed",
+                "example": "2020-07-01T00:00:00"
+              },
+              "disposalPrice": {
+                "type": "number",
+                "format": "double",
+                "description": "The price the asset was disposed at",
+                "example": "1.0000"
+              },
+              "assetStatus": {
+                "type": "string",
+                "description": "See Asset Status Codes.",
+                "example": "Draft",
+                "enum": [
+                  "Draft",
+                  "Registered",
+                  "Disposed"
+                ]
+              },
+              "warrantyExpiryDate": {
+                "type": "string",
+                "description": "The date the asset’s warranty expires (if needed) YYYY-MM-DD",
+                "example": "ca4c6b39-4f4f-43e8-98da-5e1f350a6694"
+              },
+              "serialNumber": {
+                "type": "string",
+                "description": "The asset's serial number",
+                "example": "ca4c6b39-4f4f-43e8-98da-5e1f350a6694"
+              },
+              "bookDepreciationSetting": {
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "depreciationMethod": {
+                    "type": "string",
+                    "enum": [
+                      "NoDepreciation",
+                      "StraightLine",
+                      "DiminishingValue100",
+                      "DiminishingValue150",
+                      "DiminishingValue200",
+                      "FullDepreciation"
+                    ],
+                    "example": "StraightLine",
+                    "description": "The method of depreciation applied to this asset. See Depreciation Methods"
+                  },
+                  "averagingMethod": {
+                    "type": "string",
+                    "enum": [
+                      "FullMonth",
+                      "ActualDays"
+                    ],
+                    "example": "ActualDays",
+                    "description": "The method of averaging applied to this asset. See Averaging Methods"
+                  },
+                  "depreciationRate": {
+                    "type": "number",
+                    "format": "double",
+                    "example": 0.05,
+                    "description": "The rate of depreciation (e.g. 0.05)"
+                  },
+                  "effectiveLifeYears": {
+                    "type": "integer",
+                    "example": 5,
+                    "description": "Effective life of the asset in years (e.g. 5)"
+                  },
+                  "depreciationCalculationMethod": {
+                    "type": "string",
+                    "enum": [
+                      "Rate",
+                      "Life",
+                      "None"
+                    ],
+                    "example": "None",
+                    "description": "See Depreciation Calculation Methods"
+                  },
+                  "depreciableObjectId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "68f17094-af97-4f1b-b36b-013b45b6ad3c",
+                    "description": "Unique Xero identifier for the depreciable object"
+                  },
+                  "depreciableObjectType": {
+                    "type": "string",
+                    "example": "Asset",
+                    "description": "The type of asset object"
+                  },
+                  "bookEffectiveDateOfChangeId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "68f17094-af97-4f1b-b36b-013b45b6ad3c",
+                    "description": "Unique Xero identifier for the effective date change"
+                  }
+                }
+              },
+              "bookDepreciationDetail": {
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "currentCapitalGain": {
+                    "type": "number",
+                    "format": "double",
+                    "example": 5.25,
+                    "description": "When an asset is disposed, this will be the sell price minus the purchase price if a profit was made."
+                  },
+                  "currentGainLoss": {
+                    "type": "number",
+                    "format": "double",
+                    "example": 10.5,
+                    "description": "When an asset is disposed, this will be the lowest one of sell price or purchase price, minus the current book value."
+                  },
+                  "depreciationStartDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2015-07-01T00:00:00",
+                    "description": "YYYY-MM-DD"
+                  },
+                  "costLimit": {
+                    "type": "number",
+                    "format": "double",
+                    "example": 9000,
+                    "description": "The value of the asset you want to depreciate, if this is less than the cost of the asset."
+                  },
+                  "residualValue": {
+                    "type": "number",
+                    "format": "double",
+                    "example": 10000,
+                    "description": "The value of the asset remaining when you've fully depreciated it."
+                  },
+                  "priorAccumDepreciationAmount": {
+                    "type": "number",
+                    "format": "double",
+                    "example": 0.45,
+                    "description": "All depreciation prior to the current financial year."
+                  },
+                  "currentAccumDepreciationAmount": {
+                    "type": "number",
+                    "format": "double",
+                    "example": 5,
+                    "description": "All depreciation occurring in the current financial year."
+                  }
+                }
+              },
+              "canRollback": {
+                "type": "boolean",
+                "description": "Boolean to indicate whether depreciation can be rolled back for this asset individually. This is true if it doesn't have 'legacy' journal entries and if there is no lock period that would prevent this asset from rolling back.",
+                "example": true
+              },
+              "accountingBookValue": {
+                "type": "number",
+                "format": "double",
+                "description": "The accounting value of the asset",
+                "example": 0
+              },
+              "isDeleteEnabledForDate": {
+                "type": "boolean",
+                "description": "Boolean to indicate whether delete is enabled",
+                "example": true
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "get_Assets__id_",
+      "operationId": "getAssetById",
+      "name": "Get Asset By Id",
+      "description": "Retrieves fixed asset by id",
+      "schema": {
+        "tags": [
+          "Asset"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Xero-Assets-API/get_Assets__id_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/Assets/{id}"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "format": "uuid",
+                  "example": "00000000-0000-0000-0000-000000000000",
+                  "description": "fixed asset id for single object"
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "required": [
+                "xero-tenant-id"
+              ],
+              "properties": {
+                "xero-tenant-id": {
+                  "type": "string",
+                  "description": "Xero identifier for Tenant"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Xero-Assets-API/get_Assets__id_/output-200.schema.json",
+            "type": "object",
+            "required": [
+              "assetName"
+            ],
+            "properties": {
+              "assetId": {
+                "type": "string",
+                "format": "uuid",
+                "description": "The Xero-generated Id for the asset",
+                "example": "3b5b3a38-5649-495f-87a1-14a4e5918634"
+              },
+              "assetName": {
+                "type": "string",
+                "description": "The name of the asset",
+                "example": "Awesome Truck 3"
+              },
+              "assetTypeId": {
+                "type": "string",
+                "format": "uuid",
+                "description": "The Xero-generated Id for the asset type",
+                "example": "3b5b3a38-5649-495f-87a1-14a4e5918634"
+              },
+              "assetNumber": {
+                "type": "string",
+                "description": "Must be unique.",
+                "example": "FA-0013"
+              },
+              "purchaseDate": {
+                "type": "string",
+                "format": "date",
+                "description": "The date the asset was purchased YYYY-MM-DD",
+                "example": "2015-07-01T00:00:00"
+              },
+              "purchasePrice": {
+                "type": "number",
+                "format": "double",
+                "description": "The purchase price of the asset",
+                "example": "1000.0000"
+              },
+              "disposalDate": {
+                "type": "string",
+                "format": "date",
+                "description": "The date the asset was disposed",
+                "example": "2020-07-01T00:00:00"
+              },
+              "disposalPrice": {
+                "type": "number",
+                "format": "double",
+                "description": "The price the asset was disposed at",
+                "example": "1.0000"
+              },
+              "assetStatus": {
+                "type": "string",
+                "description": "See Asset Status Codes.",
+                "example": "Draft",
+                "enum": [
+                  "Draft",
+                  "Registered",
+                  "Disposed"
+                ]
+              },
+              "warrantyExpiryDate": {
+                "type": "string",
+                "description": "The date the asset’s warranty expires (if needed) YYYY-MM-DD",
+                "example": "ca4c6b39-4f4f-43e8-98da-5e1f350a6694"
+              },
+              "serialNumber": {
+                "type": "string",
+                "description": "The asset's serial number",
+                "example": "ca4c6b39-4f4f-43e8-98da-5e1f350a6694"
+              },
+              "bookDepreciationSetting": {
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "depreciationMethod": {
+                    "type": "string",
+                    "enum": [
+                      "NoDepreciation",
+                      "StraightLine",
+                      "DiminishingValue100",
+                      "DiminishingValue150",
+                      "DiminishingValue200",
+                      "FullDepreciation"
+                    ],
+                    "example": "StraightLine",
+                    "description": "The method of depreciation applied to this asset. See Depreciation Methods"
+                  },
+                  "averagingMethod": {
+                    "type": "string",
+                    "enum": [
+                      "FullMonth",
+                      "ActualDays"
+                    ],
+                    "example": "ActualDays",
+                    "description": "The method of averaging applied to this asset. See Averaging Methods"
+                  },
+                  "depreciationRate": {
+                    "type": "number",
+                    "format": "double",
+                    "example": 0.05,
+                    "description": "The rate of depreciation (e.g. 0.05)"
+                  },
+                  "effectiveLifeYears": {
+                    "type": "integer",
+                    "example": 5,
+                    "description": "Effective life of the asset in years (e.g. 5)"
+                  },
+                  "depreciationCalculationMethod": {
+                    "type": "string",
+                    "enum": [
+                      "Rate",
+                      "Life",
+                      "None"
+                    ],
+                    "example": "None",
+                    "description": "See Depreciation Calculation Methods"
+                  },
+                  "depreciableObjectId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "68f17094-af97-4f1b-b36b-013b45b6ad3c",
+                    "description": "Unique Xero identifier for the depreciable object"
+                  },
+                  "depreciableObjectType": {
+                    "type": "string",
+                    "example": "Asset",
+                    "description": "The type of asset object"
+                  },
+                  "bookEffectiveDateOfChangeId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "68f17094-af97-4f1b-b36b-013b45b6ad3c",
+                    "description": "Unique Xero identifier for the effective date change"
+                  }
+                }
+              },
+              "bookDepreciationDetail": {
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "currentCapitalGain": {
+                    "type": "number",
+                    "format": "double",
+                    "example": 5.25,
+                    "description": "When an asset is disposed, this will be the sell price minus the purchase price if a profit was made."
+                  },
+                  "currentGainLoss": {
+                    "type": "number",
+                    "format": "double",
+                    "example": 10.5,
+                    "description": "When an asset is disposed, this will be the lowest one of sell price or purchase price, minus the current book value."
+                  },
+                  "depreciationStartDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2015-07-01T00:00:00",
+                    "description": "YYYY-MM-DD"
+                  },
+                  "costLimit": {
+                    "type": "number",
+                    "format": "double",
+                    "example": 9000,
+                    "description": "The value of the asset you want to depreciate, if this is less than the cost of the asset."
+                  },
+                  "residualValue": {
+                    "type": "number",
+                    "format": "double",
+                    "example": 10000,
+                    "description": "The value of the asset remaining when you've fully depreciated it."
+                  },
+                  "priorAccumDepreciationAmount": {
+                    "type": "number",
+                    "format": "double",
+                    "example": 0.45,
+                    "description": "All depreciation prior to the current financial year."
+                  },
+                  "currentAccumDepreciationAmount": {
+                    "type": "number",
+                    "format": "double",
+                    "example": 5,
+                    "description": "All depreciation occurring in the current financial year."
+                  }
+                }
+              },
+              "canRollback": {
+                "type": "boolean",
+                "description": "Boolean to indicate whether depreciation can be rolled back for this asset individually. This is true if it doesn't have 'legacy' journal entries and if there is no lock period that would prevent this asset from rolling back.",
+                "example": true
+              },
+              "accountingBookValue": {
+                "type": "number",
+                "format": "double",
+                "description": "The accounting value of the asset",
+                "example": 0
+              },
+              "isDeleteEnabledForDate": {
+                "type": "boolean",
+                "description": "Boolean to indicate whether delete is enabled",
+                "example": true
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "get_AssetTypes",
+      "operationId": "getAssetTypes",
+      "name": "Get Asset Types",
+      "description": "searches fixed asset types",
+      "schema": {
+        "tags": [
+          "Asset"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Xero-Assets-API/get_AssetTypes/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/AssetTypes"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "required": [
+                "xero-tenant-id"
+              ],
+              "properties": {
+                "xero-tenant-id": {
+                  "type": "string",
+                  "description": "Xero identifier for Tenant"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_AssetTypes",
+      "operationId": "createAssetType",
+      "name": "Create Asset Type",
+      "description": "adds a fixed asset type",
+      "schema": {
+        "tags": [
+          "Asset"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Xero-Assets-API/post_AssetTypes/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/AssetTypes"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "required": [
+                "xero-tenant-id"
+              ],
+              "properties": {
+                "Idempotency-Key": {
+                  "type": "string",
+                  "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
+                },
+                "xero-tenant-id": {
+                  "type": "string",
+                  "description": "Xero identifier for Tenant"
+                },
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "Asset type to add",
+              "properties": {
+                "type": "object",
+                "required": [
+                  "assetTypeName",
+                  "bookDepreciationSetting"
+                ],
+                "properties": {
+                  "assetTypeId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "5da209c5-5e19-4a43-b925-71b776c49ced",
+                    "description": "Xero generated unique identifier for asset types"
+                  },
+                  "assetTypeName": {
+                    "type": "string",
+                    "example": "Computer Equipment",
+                    "description": "The name of the asset type"
+                  },
+                  "fixedAssetAccountId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "24e260f1-bfc4-4766-ad7f-8a8ce01de879",
+                    "description": "The asset account for fixed assets of this type"
+                  },
+                  "depreciationExpenseAccountId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "b23fc79b-d66b-44b0-a240-e138e086fcbc",
+                    "description": "The expense account for the depreciation of fixed assets of this type"
+                  },
+                  "accumulatedDepreciationAccountId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "ca4c6b39-4f4f-43e8-98da-5e1f350a6694",
+                    "description": "The account for accumulated depreciation of fixed assets of this type"
+                  },
+                  "bookDepreciationSetting": {
+                    "required": [
+                      "name"
+                    ],
+                    "properties": {
+                      "depreciationMethod": {
+                        "type": "string",
+                        "enum": [
+                          "NoDepreciation",
+                          "StraightLine",
+                          "DiminishingValue100",
+                          "DiminishingValue150",
+                          "DiminishingValue200",
+                          "FullDepreciation"
+                        ],
+                        "example": "StraightLine",
+                        "description": "The method of depreciation applied to this asset. See Depreciation Methods"
+                      },
+                      "averagingMethod": {
+                        "type": "string",
+                        "enum": [
+                          "FullMonth",
+                          "ActualDays"
+                        ],
+                        "example": "ActualDays",
+                        "description": "The method of averaging applied to this asset. See Averaging Methods"
+                      },
+                      "depreciationRate": {
+                        "type": "number",
+                        "format": "double",
+                        "example": 0.05,
+                        "description": "The rate of depreciation (e.g. 0.05)"
+                      },
+                      "effectiveLifeYears": {
+                        "type": "integer",
+                        "example": 5,
+                        "description": "Effective life of the asset in years (e.g. 5)"
+                      },
+                      "depreciationCalculationMethod": {
+                        "type": "string",
+                        "enum": [
+                          "Rate",
+                          "Life",
+                          "None"
+                        ],
+                        "example": "None",
+                        "description": "See Depreciation Calculation Methods"
+                      },
+                      "depreciableObjectId": {
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "68f17094-af97-4f1b-b36b-013b45b6ad3c",
+                        "description": "Unique Xero identifier for the depreciable object"
+                      },
+                      "depreciableObjectType": {
+                        "type": "string",
+                        "example": "Asset",
+                        "description": "The type of asset object"
+                      },
+                      "bookEffectiveDateOfChangeId": {
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "68f17094-af97-4f1b-b36b-013b45b6ad3c",
+                        "description": "Unique Xero identifier for the effective date change"
+                      }
+                    }
+                  },
+                  "locks": {
+                    "type": "integer",
+                    "example": 33,
+                    "description": "All asset types that have accumulated depreciation for any assets that use them are deemed ‘locked’ and cannot be removed."
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Xero-Assets-API/post_AssetTypes/output-200.schema.json",
+            "type": "object",
+            "required": [
+              "assetTypeName",
+              "bookDepreciationSetting"
+            ],
+            "properties": {
+              "assetTypeId": {
+                "type": "string",
+                "format": "uuid",
+                "example": "5da209c5-5e19-4a43-b925-71b776c49ced",
+                "description": "Xero generated unique identifier for asset types"
+              },
+              "assetTypeName": {
+                "type": "string",
+                "example": "Computer Equipment",
+                "description": "The name of the asset type"
+              },
+              "fixedAssetAccountId": {
+                "type": "string",
+                "format": "uuid",
+                "example": "24e260f1-bfc4-4766-ad7f-8a8ce01de879",
+                "description": "The asset account for fixed assets of this type"
+              },
+              "depreciationExpenseAccountId": {
+                "type": "string",
+                "format": "uuid",
+                "example": "b23fc79b-d66b-44b0-a240-e138e086fcbc",
+                "description": "The expense account for the depreciation of fixed assets of this type"
+              },
+              "accumulatedDepreciationAccountId": {
+                "type": "string",
+                "format": "uuid",
+                "example": "ca4c6b39-4f4f-43e8-98da-5e1f350a6694",
+                "description": "The account for accumulated depreciation of fixed assets of this type"
+              },
+              "bookDepreciationSetting": {
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "depreciationMethod": {
+                    "type": "string",
+                    "enum": [
+                      "NoDepreciation",
+                      "StraightLine",
+                      "DiminishingValue100",
+                      "DiminishingValue150",
+                      "DiminishingValue200",
+                      "FullDepreciation"
+                    ],
+                    "example": "StraightLine",
+                    "description": "The method of depreciation applied to this asset. See Depreciation Methods"
+                  },
+                  "averagingMethod": {
+                    "type": "string",
+                    "enum": [
+                      "FullMonth",
+                      "ActualDays"
+                    ],
+                    "example": "ActualDays",
+                    "description": "The method of averaging applied to this asset. See Averaging Methods"
+                  },
+                  "depreciationRate": {
+                    "type": "number",
+                    "format": "double",
+                    "example": 0.05,
+                    "description": "The rate of depreciation (e.g. 0.05)"
+                  },
+                  "effectiveLifeYears": {
+                    "type": "integer",
+                    "example": 5,
+                    "description": "Effective life of the asset in years (e.g. 5)"
+                  },
+                  "depreciationCalculationMethod": {
+                    "type": "string",
+                    "enum": [
+                      "Rate",
+                      "Life",
+                      "None"
+                    ],
+                    "example": "None",
+                    "description": "See Depreciation Calculation Methods"
+                  },
+                  "depreciableObjectId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "68f17094-af97-4f1b-b36b-013b45b6ad3c",
+                    "description": "Unique Xero identifier for the depreciable object"
+                  },
+                  "depreciableObjectType": {
+                    "type": "string",
+                    "example": "Asset",
+                    "description": "The type of asset object"
+                  },
+                  "bookEffectiveDateOfChangeId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "68f17094-af97-4f1b-b36b-013b45b6ad3c",
+                    "description": "Unique Xero identifier for the effective date change"
+                  }
+                }
+              },
+              "locks": {
+                "type": "integer",
+                "example": 33,
+                "description": "All asset types that have accumulated depreciation for any assets that use them are deemed ‘locked’ and cannot be removed."
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "get_Settings",
+      "operationId": "getAssetSettings",
+      "name": "Get Asset Settings",
+      "description": "searches fixed asset settings",
+      "schema": {
+        "tags": [
+          "Asset"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Xero-Assets-API/get_Settings/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/Settings"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "required": [
+                "xero-tenant-id"
+              ],
+              "properties": {
+                "xero-tenant-id": {
+                  "type": "string",
+                  "description": "Xero identifier for Tenant"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseUrl": "$ref:baseUrl"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Xero-Assets-API/get_Settings/output-200.schema.json",
+            "type": "object",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "assetNumberPrefix": {
+                "type": "string",
+                "example": "FA-",
+                "description": "The prefix used for fixed asset numbers (“FA-” by default)"
+              },
+              "assetNumberSequence": {
+                "type": "string",
+                "example": "0022",
+                "description": "The next available sequence number"
+              },
+              "assetStartDate": {
+                "type": "string",
+                "format": "date",
+                "example": "2015-07-31T00:00:00",
+                "description": "The date depreciation calculations started on registered fixed assets in Xero"
+              },
+              "lastDepreciationDate": {
+                "type": "string",
+                "format": "date",
+                "example": "2015-07-01T00:00:00",
+                "description": "The last depreciation date"
+              },
+              "defaultGainOnDisposalAccountId": {
+                "type": "string",
+                "format": "uuid",
+                "example": "346ddb97-739a-4274-b43b-66aa3218d17c",
+                "description": "Default account that gains are posted to"
+              },
+              "defaultLossOnDisposalAccountId": {
+                "type": "string",
+                "format": "uuid",
+                "example": "1b798541-24e2-4855-9309-c023a0b576f3",
+                "description": "Default account that losses are posted to"
+              },
+              "defaultCapitalGainOnDisposalAccountId": {
+                "type": "string",
+                "format": "uuid",
+                "example": "6d6a0bdb-e118-45d8-a023-2ad617ec1cb7",
+                "description": "Default account that capital gains are posted to"
+              },
+              "optInForTax": {
+                "type": "boolean",
+                "description": "opt in for tax calculation",
+                "example": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "references": {
+    "baseUrl": {
+      "type": "string",
+      "enum": [
+        "https://api.xero.com/assets.xro/1.0"
+      ]
+    },
+    "queryDesc": "Query parameters sent with the request",
+    "paramDesc": "URL parameters sent with the request",
+    "headerDesc": "HTTP headers sent when making the request",
+    "dataDesc": "Data sent with the request",
+    "schema": "https://json-schema.org/draft/2020-12/schema"
+  }
+}
