@@ -11,7 +11,7 @@
           "where": "Status==&quot;ACTIVE&quot; AND Type==&quot;BANK&quot;",
           "order": "Name ASC"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_Accounts": {
@@ -23,7 +23,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"Code\":\"123456\", \"Name\":\"Foobar\", \"Type\":\"EXPENSE\", \"Description\":\"Hello World\" }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Accounts__AccountID_": {
@@ -36,7 +36,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_Accounts__AccountID_": {
@@ -51,7 +51,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{   \"Accounts\":[   {   \"Code\":\"123456\", \"Name\":\"BarFoo\", \"AccountID\":\"99ce6032-0678-4aa0-8148-240c75fee33a\", \"Type\":\"EXPENSE\", \"Description\":\"GoodBye World\", \"TaxType\":\"INPUT\", \"EnablePaymentsToAccount\":false, \"ShowInExpenseClaims\":false, \"Class\":\"EXPENSE\", \"ReportingCode\":\"EXP\", \"ReportingCodeName\":\"Expense\", \"UpdatedDateUTC\":\"2019-02-21T16:29:47.96-08:00\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "delete_Accounts__AccountID_": {
@@ -64,7 +64,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Accounts__AccountID__Attachments": {
@@ -77,7 +77,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Accounts__AccountID__Attachments__AttachmentID_": {
@@ -92,7 +92,7 @@
           "contentType": "image/jpg",
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Accounts__AccountID__Attachments__FileName_": {
@@ -107,7 +107,7 @@
           "contentType": "image/jpg",
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_Accounts__AccountID__Attachments__FileName_": {
@@ -123,7 +123,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "<byte>",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_Accounts__AccountID__Attachments__FileName_": {
@@ -139,7 +139,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "<byte>",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_BatchPayments": {
@@ -154,7 +154,7 @@
           "where": "Status==\"AUTHORISED\"",
           "order": "Date ASC"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_BatchPayments": {
@@ -166,7 +166,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{   \"BatchPaymentID\": \"9bf296e9-0748-4d29-a3dc-24dde1098030\", \"Status\":\"DELETED\" }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_BatchPayments": {
@@ -181,7 +181,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"BatchPayments\": [ { \"Account\": { \"AccountID\": \"00000000-0000-0000-0000-000000000000\" }, \"Reference\": \"ref\", \"Date\": \"2018-08-01\", \"Payments\": [ { \"Account\": { \"Code\": \"001\" }, \"Date\": \"2019-12-31\", \"Amount\": 500, \"Invoice\": { \"InvoiceID\": \"00000000-0000-0000-0000-000000000000\", \"LineItems\": [], \"Contact\": {}, \"Type\": \"ACCPAY\" } } ] } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_BatchPayments__BatchPaymentID_": {
@@ -194,7 +194,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_BatchPayments__BatchPaymentID_": {
@@ -209,7 +209,7 @@
           "BatchPaymentID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{   \"Status\":\"DELETED\" }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_BatchPayments__BatchPaymentID__History": {
@@ -222,7 +222,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_BatchPayments__BatchPaymentID__History": {
@@ -237,7 +237,7 @@
           "BatchPaymentID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{   \"HistoryRecords\": [   {   \"Details\": \"Hello World\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_BankTransactions": {
@@ -255,7 +255,7 @@
           "unitdp": 4,
           "pageSize": 100
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_BankTransactions": {
@@ -271,7 +271,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"BankTransactions\": [ { \"Type\": \"SPEND\", \"Contact\": { \"ContactID\": \"00000000-0000-0000-0000-000000000000\" }, \"Lineitems\": [ { \"Description\": \"Foobar\", \"Quantity\": 1, \"UnitAmount\": 20, \"AccountCode\": \"400\" } ], \"BankAccount\": { \"Code\": \"088\" } } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_BankTransactions": {
@@ -287,7 +287,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ bankTransactions: [{ type: BankTransaction.TypeEnum.SPEND, contact: { contactID: \"00000000-0000-0000-0000-000000000000\" }, lineItems: [{ description: \"Foobar\", quantity: 1.0, unitAmount: 20.0, accountCode: \"000\" } ], bankAccount: { code: \"000\" }}]}",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_BankTransactions__BankTransactionID_": {
@@ -303,7 +303,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_BankTransactions__BankTransactionID_": {
@@ -321,7 +321,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"BankTransactions\": [ { \"Type\": \"SPEND\", \"Contact\": { \"ContactID\": \"00000000-0000-0000-0000-000000000000\", \"ContactStatus\": \"ACTIVE\", \"Name\": \"Buzz Lightyear\", \"FirstName\": \"Buzz\", \"LastName\": \"Lightyear\", \"EmailAddress\": \"buzz.Lightyear@email.com\", \"ContactPersons\": [], \"BankAccountDetails\": \"\", \"Addresses\": [ { \"AddressType\": \"STREET\", \"City\": \"\", \"Region\": \"\", \"PostalCode\": \"\", \"Country\": \"\" }, { \"AddressType\": \"POBOX\", \"AddressLine1\": \"\", \"AddressLine2\": \"\", \"AddressLine3\": \"\", \"AddressLine4\": \"\", \"City\": \"Palo Alto\", \"Region\": \"CA\", \"PostalCode\": \"94020\", \"Country\": \"United States\" } ], \"Phones\": [ { \"PhoneType\": \"DEFAULT\", \"PhoneNumber\": \"847-1294\", \"PhoneAreaCode\": \"(626)\", \"PhoneCountryCode\": \"\" }, { \"PhoneType\": \"DDI\", \"PhoneNumber\": \"\", \"PhoneAreaCode\": \"\", \"PhoneCountryCode\": \"\" }, { \"PhoneType\": \"FAX\", \"PhoneNumber\": \"\", \"PhoneAreaCode\": \"\", \"PhoneCountryCode\": \"\" }, { \"PhoneType\": \"MOBILE\", \"PhoneNumber\": \"\", \"PhoneAreaCode\": \"\", \"PhoneCountryCode\": \"\" } ], \"UpdatedDateUTC\": \"2017-08-21T13:49:04.227-07:00\", \"ContactGroups\": [] }, \"Lineitems\": [], \"BankAccount\": { \"Code\": \"088\", \"Name\": \"Business Wells Fargo\", \"AccountID\": \"00000000-0000-0000-0000-000000000000\" }, \"IsReconciled\": false, \"Date\": \"2019-02-25\", \"Reference\": \"You just updated\", \"CurrencyCode\": \"USD\", \"CurrencyRate\": 1, \"Status\": \"AUTHORISED\", \"LineAmountTypes\": \"Inclusive\", \"TotalTax\": 1.74, \"BankTransactionID\": \"00000000-0000-0000-0000-000000000000\", \"UpdatedDateUTC\": \"2019-02-26T12:39:27.813-08:00\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_BankTransactions__BankTransactionID__Attachments": {
@@ -334,7 +334,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_BankTransactions__BankTransactionID__Attachments__AttachmentID_": {
@@ -349,7 +349,7 @@
           "contentType": "image/jpg",
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_BankTransactions__BankTransactionID__Attachments__FileName_": {
@@ -364,7 +364,7 @@
           "contentType": "image/jpg",
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_BankTransactions__BankTransactionID__Attachments__FileName_": {
@@ -380,7 +380,7 @@
           "FileName": "xero-dev.jpg"
         },
         "data": "<byte>",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_BankTransactions__BankTransactionID__Attachments__FileName_": {
@@ -396,7 +396,7 @@
           "FileName": "xero-dev.jpg"
         },
         "data": "<byte>",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_BankTransactions__BankTransactionID__History": {
@@ -409,7 +409,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_BankTransactions__BankTransactionID__History": {
@@ -424,7 +424,7 @@
           "BankTransactionID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{   \"HistoryRecords\": [   {   \"Details\": \"Hello World\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_BankTransfers": {
@@ -439,7 +439,7 @@
           "where": "HasAttachments==true",
           "order": "Amount ASC"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_BankTransfers": {
@@ -451,7 +451,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"BankTransfers\": [ { \"FromBankAccount\": { \"Code\": \"090\", \"Name\": \"My Savings\", \"AccountID\": \"00000000-0000-0000-0000-000000000000\", \"Type\": \"BANK\", \"BankAccountNumber\": \"123455\", \"Status\": \"ACTIVE\", \"BankAccountType\": \"BANK\", \"CurrencyCode\": \"USD\", \"TaxType\": \"NONE\", \"EnablePaymentsToAccount\": false, \"ShowInExpenseClaims\": false, \"Class\": \"ASSET\", \"ReportingCode\": \"ASS\", \"ReportingCodeName\": \"Assets\", \"HasAttachments\": false, \"UpdatedDateUTC\": \"2016-10-17T13:45:33.993-07:00\" }, \"ToBankAccount\": { \"Code\": \"088\", \"Name\": \"Business Wells Fargo\", \"AccountID\": \"00000000-0000-0000-0000-000000000000\", \"Type\": \"BANK\", \"BankAccountNumber\": \"123455\", \"Status\": \"ACTIVE\", \"BankAccountType\": \"BANK\", \"CurrencyCode\": \"USD\", \"TaxType\": \"NONE\", \"EnablePaymentsToAccount\": false, \"ShowInExpenseClaims\": false, \"Class\": \"ASSET\", \"ReportingCode\": \"ASS\", \"ReportingCodeName\": \"Assets\", \"HasAttachments\": false, \"UpdatedDateUTC\": \"2016-06-03T08:31:14.517-07:00\" }, \"Amount\": \"50.00\", \"FromIsReconciled\": true, \"ToIsReconciled\": true, \"Reference\": \"Sub 098801\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_BankTransfers__BankTransferID_": {
@@ -464,7 +464,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_BankTransfers__BankTransferID__Attachments": {
@@ -477,7 +477,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_BankTransfers__BankTransferID__Attachments__AttachmentID_": {
@@ -492,7 +492,7 @@
           "contentType": "image/jpg",
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_BankTransfers__BankTransferID__Attachments__FileName_": {
@@ -507,7 +507,7 @@
           "contentType": "image/jpg",
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_BankTransfers__BankTransferID__Attachments__FileName_": {
@@ -523,7 +523,7 @@
           "FileName": "xero-dev.jpg"
         },
         "data": "<byte>",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_BankTransfers__BankTransferID__Attachments__FileName_": {
@@ -539,7 +539,7 @@
           "FileName": "xero-dev.jpg"
         },
         "data": "<byte>",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_BankTransfers__BankTransferID__History": {
@@ -552,7 +552,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_BankTransfers__BankTransferID__History": {
@@ -567,7 +567,7 @@
           "BankTransferID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{   \"HistoryRecords\": [   {   \"Details\": \"Hello World\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_BrandingThemes": {
@@ -577,7 +577,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_BrandingThemes__BrandingThemeID_": {
@@ -590,7 +590,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_BrandingThemes__BrandingThemeID__PaymentServices": {
@@ -603,7 +603,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_BrandingThemes__BrandingThemeID__PaymentServices": {
@@ -618,7 +618,7 @@
           "BrandingThemeID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{ \"PaymentServices\": [ { \"PaymentServiceID\": \"54b3b4f6-0443-4fba-bcd1-61ec0c35ca55\", \"PaymentServiceName\": \"PayUpNow\", \"PaymentServiceUrl\": \"https://www.payupnow.com/\", \"PaymentServiceType\": \"Custom\", \"PayNowText\": \"Time To Pay\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Budgets": {
@@ -633,7 +633,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Budgets__BudgetID_": {
@@ -650,7 +650,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Contacts": {
@@ -671,7 +671,7 @@
           "searchTerm": "Joe Bloggs",
           "pageSize": 100
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_Contacts": {
@@ -686,7 +686,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"Contacts\": [ { \"Name\": \"Bruce Banner\", \"EmailAddress\": \"hulk@avengers.com\", \"Phones\": [ { \"PhoneType\": \"MOBILE\", \"PhoneNumber\": \"555-1212\", \"PhoneAreaCode\": \"415\" } ], \"PaymentTerms\": { \"Bills\": { \"Day\": 15, \"Type\": \"OFCURRENTMONTH\" }, \"Sales\": { \"Day\": 10, \"Type\": \"DAYSAFTERBILLMONTH\" } } } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_Contacts": {
@@ -701,7 +701,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"Contacts\": [ { \"ContactID\": \"3ff6d40c-af9a-40a3-89ce-3c1556a25591\", \"ContactStatus\": \"ACTIVE\", \"Name\": \"Foo9987\", \"EmailAddress\": \"sid32476@blah.com\", \"BankAccountDetails\": \"\", \"Addresses\": [ { \"AddressType\": \"STREET\", \"City\": \"\", \"Region\": \"\", \"PostalCode\": \"\", \"Country\": \"\" }, { \"AddressType\": \"POBOX\", \"City\": \"\", \"Region\": \"\", \"PostalCode\": \"\", \"Country\": \"\" } ], \"Phones\": [ { \"PhoneType\": \"DEFAULT\", \"PhoneNumber\": \"\", \"PhoneAreaCode\": \"\", \"PhoneCountryCode\": \"\" }, { \"PhoneType\": \"DDI\", \"PhoneNumber\": \"\", \"PhoneAreaCode\": \"\", \"PhoneCountryCode\": \"\" }, { \"PhoneType\": \"FAX\", \"PhoneNumber\": \"\", \"PhoneAreaCode\": \"\", \"PhoneCountryCode\": \"\" }, { \"PhoneType\": \"MOBILE\", \"PhoneNumber\": \"555-1212\", \"PhoneAreaCode\": \"415\", \"PhoneCountryCode\": \"\" } ], \"UpdatedDateUTC\": \"/Date(1551399321043+0000)/\", \"ContactGroups\": [], \"IsSupplier\": false, \"IsCustomer\": false, \"SalesTrackingCategories\": [], \"PurchasesTrackingCategories\": [], \"PaymentTerms\": { \"Bills\": { \"Day\": 15, \"Type\": \"OFCURRENTMONTH\" }, \"Sales\": { \"Day\": 10, \"Type\": \"DAYSAFTERBILLMONTH\" } }, \"ContactPersons\": [] } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Contacts__ContactNumber_": {
@@ -714,7 +714,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Contacts__ContactID_": {
@@ -727,7 +727,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_Contacts__ContactID_": {
@@ -742,7 +742,7 @@
           "ContactID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{ \"Contacts\": [{ \"ContactID\": \"00000000-0000-0000-0000-000000000000\", \"Name\": \"Thanos\" }]}",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Contacts__ContactID__Attachments": {
@@ -755,7 +755,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Contacts__ContactID__Attachments__AttachmentID_": {
@@ -770,7 +770,7 @@
           "contentType": "image/jpg",
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Contacts__ContactID__Attachments__FileName_": {
@@ -785,7 +785,7 @@
           "contentType": "image/jpg",
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_Contacts__ContactID__Attachments__FileName_": {
@@ -801,7 +801,7 @@
           "FileName": "xero-dev.jpg"
         },
         "data": "<byte>",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_Contacts__ContactID__Attachments__FileName_": {
@@ -817,7 +817,7 @@
           "FileName": "xero-dev.jpg"
         },
         "data": "<byte>",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Contacts__ContactID__CISSettings": {
@@ -830,7 +830,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Contacts__ContactID__History": {
@@ -843,7 +843,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_Contacts__ContactID__History": {
@@ -858,7 +858,7 @@
           "ContactID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{   \"HistoryRecords\": [   {   \"Details\": \"Hello World\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_ContactGroups": {
@@ -872,7 +872,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_ContactGroups": {
@@ -884,7 +884,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"ContactGroups\": [{ \"Name\": \"VIPs\" }]}",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_ContactGroups__ContactGroupID_": {
@@ -897,7 +897,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_ContactGroups__ContactGroupID_": {
@@ -912,7 +912,7 @@
           "ContactGroupID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{   \"ContactGroups\":[   {   \"Name\":\"Suppliers\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "delete_ContactGroups__ContactGroupID__Contacts": {
@@ -925,7 +925,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_ContactGroups__ContactGroupID__Contacts": {
@@ -940,7 +940,7 @@
           "ContactGroupID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{ \"Contacts\": [ { \"ContactID\": \"a3675fc4-f8dd-4f03-ba5b-f1870566bcd7\" }, { \"ContactID\": \"4e1753b9-018a-4775-b6aa-1bc7871cfee3\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "delete_ContactGroups__ContactGroupID__Contacts__ContactID_": {
@@ -954,7 +954,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_CreditNotes": {
@@ -972,7 +972,7 @@
           "unitdp": 4,
           "pageSize": 100
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_CreditNotes": {
@@ -988,7 +988,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{   \"CreditNotes\":[   {   \"Type\":\"ACCPAYCREDIT\", \"Contact\":{   \"ContactID\":\"430fa14a-f945-44d3-9f97-5df5e28441b8\" }, \"Date\":\"2019-01-05\", \"Status\":\"AUTHORISED\", \"Reference\": \"HelloWorld\", \"LineItems\":[   {   \"Description\":\"Foobar\", \"Quantity\":2.0, \"UnitAmount\":20.0, \"AccountCode\":\"400\" } ] } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_CreditNotes": {
@@ -1004,7 +1004,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{   \"CreditNotes\":[   {   \"Type\":\"ACCPAYCREDIT\", \"Contact\":{   \"ContactID\":\"430fa14a-f945-44d3-9f97-5df5e28441b8\" }, \"Date\":\"2019-01-05\", \"LineItems\":[   {   \"Description\":\"Foobar\", \"Quantity\":2.0, \"UnitAmount\":20.0, \"AccountCode\":\"400\" } ] } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_CreditNotes__CreditNoteID_": {
@@ -1020,7 +1020,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_CreditNotes__CreditNoteID_": {
@@ -1038,7 +1038,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"CreditNotes\": [ { \"Type\": \"ACCPAYCREDIT\", \"Contact\": { \"ContactID\": \"430fa14a-f945-44d3-9f97-5df5e28441b8\" }, \"Date\": \"2019-01-05\", \"Status\": \"AUTHORISED\", \"Reference\": \"HelloWorld\", \"SentToContact\": true, \"LineItems\": [ { \"Description\": \"Foobar\", \"Quantity\": 2, \"UnitAmount\": 20, \"AccountCode\": \"400\" } ] } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_CreditNotes__CreditNoteID__Attachments": {
@@ -1051,7 +1051,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_CreditNotes__CreditNoteID__Attachments__AttachmentID_": {
@@ -1066,7 +1066,7 @@
           "contentType": "image/jpg",
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_CreditNotes__CreditNoteID__Attachments__FileName_": {
@@ -1081,7 +1081,7 @@
           "contentType": "image/jpg",
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_CreditNotes__CreditNoteID__Attachments__FileName_": {
@@ -1097,7 +1097,7 @@
           "FileName": "xero-dev.jpg"
         },
         "data": "<byte>",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_CreditNotes__CreditNoteID__Attachments__FileName_": {
@@ -1116,7 +1116,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "<byte>",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_CreditNotes__CreditNoteID__pdf": {
@@ -1129,7 +1129,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_CreditNotes__CreditNoteID__Allocations": {
@@ -1147,7 +1147,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"Allocations\": [ { \"Invoice\": { \"LineItems\": [], \"InvoiceID\": \"c45720a1-ade3-4a38-a064-d15489be6841\" }, \"Amount\": 1, \"Date\": \"2019-03-05\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "delete_CreditNotes__CreditNoteID__Allocations__AllocationID_": {
@@ -1161,7 +1161,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_CreditNotes__CreditNoteID__History": {
@@ -1174,7 +1174,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_CreditNotes__CreditNoteID__History": {
@@ -1189,7 +1189,7 @@
           "CreditNoteID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{   \"HistoryRecords\": [   {   \"Details\": \"Hello World\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Currencies": {
@@ -1203,7 +1203,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_Currencies": {
@@ -1215,7 +1215,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"Code\": \"USD\", \"Description\": \"United States Dollar\" }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Employees": {
@@ -1230,7 +1230,7 @@
           "where": "Status==\"ACTIVE\"",
           "order": "LastName ASC"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_Employees": {
@@ -1245,7 +1245,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"Employees\": [ { \"FirstName\": \"Nick\", \"LastName\": \"Fury\", \"ExternalLink\": { \"Url\": \"http://twitter.com/#!/search/Nick+Fury\" } } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_Employees": {
@@ -1260,7 +1260,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"Employees\": [ { \"FirstName\": \"Nick\", \"LastName\": \"Fury\", \"ExternalLink\": { \"Url\": \"http://twitter.com/#!/search/Nick+Fury\" } } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Employees__EmployeeID_": {
@@ -1273,7 +1273,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_ExpenseClaims": {
@@ -1288,7 +1288,7 @@
           "where": "Status==\"SUBMITTED\"",
           "order": "Status ASC"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_ExpenseClaims": {
@@ -1300,7 +1300,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"ExpenseClaims\": [ { \"Status\": \"SUBMITTED\", \"User\": { \"UserID\": \"d1164823-0ac1-41ad-987b-b4e30fe0b273\" }, \"Receipts\": [ { \"Lineitems\": [], \"ReceiptID\": \"dc1c7f6d-0a4c-402f-acac-551d62ce5816\" } ] } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_ExpenseClaims__ExpenseClaimID_": {
@@ -1313,7 +1313,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_ExpenseClaims__ExpenseClaimID_": {
@@ -1328,7 +1328,7 @@
           "ExpenseClaimID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{ \"ExpenseClaims\": [ { \"Status\": \"SUBMITTED\", \"User\": { \"UserID\": \"d1164823-0ac1-41ad-987b-b4e30fe0b273\" }, \"Receipts\": [ { \"Lineitems\": [], \"ReceiptID\": \"dc1c7f6d-0a4c-402f-acac-551d62ce5816\" } ] } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_ExpenseClaims__ExpenseClaimID__History": {
@@ -1341,7 +1341,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_ExpenseClaims__ExpenseClaimID__History": {
@@ -1356,7 +1356,7 @@
           "ExpenseClaimID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{   \"HistoryRecords\": [   {   \"Details\": \"Hello World\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Invoices": {
@@ -1382,7 +1382,7 @@
           "pageSize": 100,
           "searchTerm": "SearchTerm=REF12"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_Invoices": {
@@ -1398,7 +1398,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"Invoices\": [ { \"Type\": \"ACCREC\", \"Contact\": { \"ContactID\": \"430fa14a-f945-44d3-9f97-5df5e28441b8\" }, \"LineItems\": [ { \"Description\": \"Acme Tires\", \"Quantity\": 2, \"UnitAmount\": 20, \"AccountCode\": \"200\", \"TaxType\": \"NONE\", \"LineAmount\": 40 } ], \"Date\": \"2019-03-11\", \"DueDate\": \"2018-12-10\", \"Reference\": \"Website Design\", \"Status\": \"AUTHORISED\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_Invoices": {
@@ -1414,7 +1414,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"Invoices\": [ { \"Type\": \"ACCREC\", \"Contact\": { \"ContactID\": \"430fa14a-f945-44d3-9f97-5df5e28441b8\" }, \"LineItems\": [ { \"Description\": \"Acme Tires\", \"Quantity\": 2, \"UnitAmount\": 20, \"AccountCode\": \"200\", \"TaxType\": \"NONE\", \"LineAmount\": 40 } ], \"Date\": \"2019-03-11\", \"DueDate\": \"2018-12-10\", \"Reference\": \"Website Design\", \"Status\": \"AUTHORISED\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Invoices__InvoiceID_": {
@@ -1430,7 +1430,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_Invoices__InvoiceID_": {
@@ -1448,7 +1448,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"Invoices\": [{ Reference: \"May the force be with you\", \"InvoiceID\": \"00000000-0000-0000-0000-000000000000\", \"LineItems\": [], \"Contact\": {}, \"Type\": \"ACCPAY\" }]}",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Invoices__InvoiceID__pdf": {
@@ -1461,7 +1461,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Invoices__InvoiceID__Attachments": {
@@ -1474,7 +1474,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Invoices__InvoiceID__Attachments__AttachmentID_": {
@@ -1489,7 +1489,7 @@
           "contentType": "image/jpg",
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Invoices__InvoiceID__Attachments__FileName_": {
@@ -1504,7 +1504,7 @@
           "contentType": "image/jpg",
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_Invoices__InvoiceID__Attachments__FileName_": {
@@ -1520,7 +1520,7 @@
           "FileName": "xero-dev.jpg"
         },
         "data": "<byte>",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_Invoices__InvoiceID__Attachments__FileName_": {
@@ -1539,7 +1539,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "<byte>",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Invoices__InvoiceID__OnlineInvoice": {
@@ -1552,7 +1552,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_Invoices__InvoiceID__Email": {
@@ -1567,7 +1567,7 @@
           "InvoiceID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{}",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Invoices__InvoiceID__History": {
@@ -1580,7 +1580,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_Invoices__InvoiceID__History": {
@@ -1595,7 +1595,7 @@
           "InvoiceID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{   \"HistoryRecords\": [   {   \"Details\": \"Hello World\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_InvoiceReminders_Settings": {
@@ -1605,7 +1605,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Items": {
@@ -1621,7 +1621,7 @@
           "order": "Code ASC",
           "unitdp": 4
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_Items": {
@@ -1637,7 +1637,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"Items\": [ { \"Code\": \"ItemCode123\", \"Name\": \"ItemName XYZ\", \"Description\": \"Item Description ABC\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_Items": {
@@ -1653,7 +1653,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"Items\": [ { \"Code\": \"code123\", \"Name\": \"Item Name XYZ\", \"Description\": \"Foobar\", \"InventoryAssetAccountCode\": \"140\", \"PurchaseDetails\": { \"COGSAccountCode\": \"500\" } } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Items__ItemID_": {
@@ -1669,7 +1669,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_Items__ItemID_": {
@@ -1687,7 +1687,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"Items\": [ { \"Code\": \"ItemCode123\", \"Description\": \"Description 123\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "delete_Items__ItemID_": {
@@ -1700,7 +1700,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Items__ItemID__History": {
@@ -1713,7 +1713,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_Items__ItemID__History": {
@@ -1728,7 +1728,7 @@
           "ItemID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{   \"HistoryRecords\": [   {   \"Details\": \"Hello World\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Journals": {
@@ -1743,7 +1743,7 @@
           "offset": 10,
           "paymentsOnly": true
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Journals__JournalID_": {
@@ -1756,7 +1756,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Journals__JournalNumber_": {
@@ -1769,7 +1769,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_LinkedTransactions": {
@@ -1787,7 +1787,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_LinkedTransactions": {
@@ -1799,7 +1799,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"LinkedTransactions\": [ { \"SourceTransactionID\": \"a848644a-f20f-4630-98c3-386bd7505631\", \"SourceLineItemID\": \"b0df260d-3cc8-4ced-9bd6-41924f624ed3\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_LinkedTransactions__LinkedTransactionID_": {
@@ -1812,7 +1812,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_LinkedTransactions__LinkedTransactionID_": {
@@ -1827,7 +1827,7 @@
           "LinkedTransactionID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{ \"LinkedTransactions\": [ { \"SourceTransactionID\": \"00000000-0000-0000-0000-000000000000\", \"SourceLineItemID\": \"00000000-0000-0000-0000-000000000000\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "delete_LinkedTransactions__LinkedTransactionID_": {
@@ -1840,7 +1840,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_ManualJournals": {
@@ -1857,7 +1857,7 @@
           "page": 1,
           "pageSize": 100
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_ManualJournals": {
@@ -1872,7 +1872,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"ManualJournals\": [ { \"Narration\": \"Journal Desc\", \"JournalLines\": [ { \"LineAmount\": 100, \"AccountCode\": \"400\", \"Description\": \"Money Movement\" }, { \"LineAmount\": -100, \"AccountCode\": \"400\", \"Description\": \"Prepayment of things\", \"Tracking\": [ { \"Name\": \"North\", \"Option\": \"Region\" } ] } ], \"Date\": \"2019-03-14\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_ManualJournals": {
@@ -1887,7 +1887,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"ManualJournals\": [ { \"Narration\": \"Journal Desc\", \"JournalLines\": [ { \"LineAmount\": 100, \"AccountCode\": \"400\", \"Description\": \"Money Movement\" }, { \"LineAmount\": -100, \"AccountCode\": \"400\", \"Description\": \"Prepayment of things\", \"Tracking\": [ { \"Name\": \"North\", \"Option\": \"Region\" } ] } ], \"Date\": \"2019-03-14\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_ManualJournals__ManualJournalID_": {
@@ -1900,7 +1900,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_ManualJournals__ManualJournalID_": {
@@ -1915,7 +1915,7 @@
           "ManualJournalID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{ \"ManualJournals\": [ { \"Narration\": \"Hello Xero\", \"ManualJournalID\": \"00000000-0000-0000-0000-000000000000\", \"JournalLines\": [] } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_ManualJournals__ManualJournalID__Attachments": {
@@ -1928,7 +1928,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_ManualJournals__ManualJournalID__Attachments__AttachmentID_": {
@@ -1943,7 +1943,7 @@
           "contentType": "image/jpg",
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_ManualJournals__ManualJournalID__Attachments__FileName_": {
@@ -1958,7 +1958,7 @@
           "contentType": "image/jpg",
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_ManualJournals__ManualJournalID__Attachments__FileName_": {
@@ -1974,7 +1974,7 @@
           "FileName": "xero-dev.jpg"
         },
         "data": "<byte>",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_ManualJournals__ManualJournalID__Attachments__FileName_": {
@@ -1990,7 +1990,7 @@
           "FileName": "xero-dev.jpg"
         },
         "data": "<byte>",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_ManualJournals__ManualJournalID__History": {
@@ -2003,7 +2003,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_ManualJournals__ManualJournalID__History": {
@@ -2018,7 +2018,7 @@
           "ManualJournalID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{   \"HistoryRecords\": [   {   \"Details\": \"Hello World\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Organisation": {
@@ -2028,7 +2028,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Organisation_Actions": {
@@ -2038,7 +2038,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Organisation__OrganisationID__CISSettings": {
@@ -2051,7 +2051,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Overpayments": {
@@ -2069,7 +2069,7 @@
           "unitdp": 4,
           "pageSize": 100
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Overpayments__OverpaymentID_": {
@@ -2082,7 +2082,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_Overpayments__OverpaymentID__Allocations": {
@@ -2100,7 +2100,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"Allocations\": [ { \"Invoice\": { \"InvoiceID\": \"00000000-0000-0000-0000-000000000000\", \"LineItems\": [], \"Contact\": {}, \"Type\": \"ACCPAY\" }, \"Amount\": 10.00, \"Date\": \"2019-03-12\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "delete_Overpayments__OverpaymentID__Allocations__AllocationID_": {
@@ -2114,7 +2114,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Overpayments__OverpaymentID__History": {
@@ -2127,7 +2127,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_Overpayments__OverpaymentID__History": {
@@ -2142,7 +2142,7 @@
           "OverpaymentID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{   \"HistoryRecords\": [   {   \"Details\": \"Hello World\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Payments": {
@@ -2159,7 +2159,7 @@
           "page": 1,
           "pageSize": 100
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_Payments": {
@@ -2171,7 +2171,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"Payments\": [ { \"Invoice\": { \"LineItems\": [], \"InvoiceID\": \"00000000-0000-0000-0000-000000000000\" }, \"Account\": { \"Code\": \"970\" }, \"Date\": \"2019-03-12\", \"Amount\": 1 } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_Payments": {
@@ -2186,7 +2186,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"Payments\": [ { \"Invoice\": { \"LineItems\": [], \"InvoiceID\": \"00000000-0000-0000-0000-000000000000\" }, \"Account\": { \"Code\": \"970\" }, \"Date\": \"2019-03-12\", \"Amount\": 1 } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Payments__PaymentID_": {
@@ -2199,7 +2199,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_Payments__PaymentID_": {
@@ -2214,7 +2214,7 @@
           "PaymentID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{   \"Payments\":[   {   \"Status\":\"DELETED\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Payments__PaymentID__History": {
@@ -2227,7 +2227,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_Payments__PaymentID__History": {
@@ -2242,7 +2242,7 @@
           "PaymentID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{   \"HistoryRecords\": [   {   \"Details\": \"Hello World\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_PaymentServices": {
@@ -2252,7 +2252,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_PaymentServices": {
@@ -2264,7 +2264,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"PaymentServices\": [ { \"PaymentServiceName\": \"PayUpNow\", \"PaymentServiceUrl\": \"https://www.payupnow.com/\", \"PayNowText\": \"Time To Pay\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Prepayments": {
@@ -2282,7 +2282,7 @@
           "unitdp": 4,
           "pageSize": 100
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Prepayments__PrepaymentID_": {
@@ -2295,7 +2295,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_Prepayments__PrepaymentID__Allocations": {
@@ -2313,7 +2313,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"Allocations\": [ { \"Invoice\": { \"LineItems\": [], \"InvoiceID\": \"00000000-0000-0000-0000-000000000000\" }, \"Amount\": 1, \"Date\": \"2019-01-10\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "delete_Prepayments__PrepaymentID__Allocations__AllocationID_": {
@@ -2327,7 +2327,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Prepayments__PrepaymentID__History": {
@@ -2340,7 +2340,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_Prepayments__PrepaymentID__History": {
@@ -2355,7 +2355,7 @@
           "PrepaymentID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{   \"HistoryRecords\": [   {   \"Details\": \"Hello World\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_PurchaseOrders": {
@@ -2374,7 +2374,7 @@
           "page": 1,
           "pageSize": 100
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_PurchaseOrders": {
@@ -2389,7 +2389,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"PurchaseOrders\": [ { \"Contact\": { \"ContactID\": \"00000000-0000-0000-0000-000000000000\" }, \"LineItems\": [ { \"Description\": \"Foobar\", \"Quantity\": 1, \"UnitAmount\": 20, \"AccountCode\": \"710\" } ], \"Date\": \"2019-03-13\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_PurchaseOrders": {
@@ -2404,7 +2404,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"PurchaseOrders\": [ { \"Contact\": { \"ContactID\": \"00000000-0000-0000-0000-000000000000\" }, \"LineItems\": [ { \"Description\": \"Foobar\", \"Quantity\": 1, \"UnitAmount\": 20, \"AccountCode\": \"710\" } ], \"Date\": \"2019-03-13\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_PurchaseOrders__PurchaseOrderID__pdf": {
@@ -2417,7 +2417,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_PurchaseOrders__PurchaseOrderID_": {
@@ -2430,7 +2430,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_PurchaseOrders__PurchaseOrderID_": {
@@ -2445,7 +2445,7 @@
           "PurchaseOrderID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{ \"PurchaseOrders\": [ { \"AttentionTo\": \"Peter Parker\", \"LineItems\": [], \"Contact\": {} } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_PurchaseOrders__PurchaseOrderNumber_": {
@@ -2458,7 +2458,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_PurchaseOrders__PurchaseOrderID__History": {
@@ -2471,7 +2471,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_PurchaseOrders__PurchaseOrderID__History": {
@@ -2486,7 +2486,7 @@
           "PurchaseOrderID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{   \"HistoryRecords\": [   {   \"Details\": \"Hello World\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_PurchaseOrders__PurchaseOrderID__Attachments": {
@@ -2499,7 +2499,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_PurchaseOrders__PurchaseOrderID__Attachments__AttachmentID_": {
@@ -2514,7 +2514,7 @@
           "contentType": "image/jpg",
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_PurchaseOrders__PurchaseOrderID__Attachments__FileName_": {
@@ -2529,7 +2529,7 @@
           "contentType": "image/jpg",
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_PurchaseOrders__PurchaseOrderID__Attachments__FileName_": {
@@ -2545,7 +2545,7 @@
           "FileName": "xero-dev.jpg"
         },
         "data": "<byte>",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_PurchaseOrders__PurchaseOrderID__Attachments__FileName_": {
@@ -2561,7 +2561,7 @@
           "FileName": "xero-dev.jpg"
         },
         "data": "<byte>",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Quotes": {
@@ -2583,7 +2583,7 @@
           "order": "Status ASC",
           "QuoteNumber": "QU-0001"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_Quotes": {
@@ -2598,7 +2598,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"Quotes\": [ { \"Contact\": { \"ContactID\": \"00000000-0000-0000-0000-000000000000\" }, \"LineItems\": [ { \"Description\": \"Foobar\", \"Quantity\": 1, \"UnitAmount\": 20, \"AccountCode\": \"12775\" } ], \"Date\": \"2020-02-01\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_Quotes": {
@@ -2613,7 +2613,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"Quotes\": [ { \"Contact\": { \"ContactID\": \"00000000-0000-0000-0000-000000000000\" }, \"LineItems\": [ { \"Description\": \"Foobar\", \"Quantity\": 1, \"UnitAmount\": 20, \"AccountCode\": \"12775\" } ], \"Date\": \"2020-02-01\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Quotes__QuoteID_": {
@@ -2626,7 +2626,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_Quotes__QuoteID_": {
@@ -2641,7 +2641,7 @@
           "QuoteID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{ \"Quotes\": [ { \"Reference\": \"I am an update\", \"Contact\": { \"ContactID\": \"00000000-0000-0000-0000-000000000000\" }, \"Date\": \"2020-02-01\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Quotes__QuoteID__History": {
@@ -2654,7 +2654,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_Quotes__QuoteID__History": {
@@ -2669,7 +2669,7 @@
           "QuoteID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{   \"HistoryRecords\": [   {   \"Details\": \"Hello World\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Quotes__QuoteID__pdf": {
@@ -2682,7 +2682,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Quotes__QuoteID__Attachments": {
@@ -2695,7 +2695,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Quotes__QuoteID__Attachments__AttachmentID_": {
@@ -2710,7 +2710,7 @@
           "contentType": "image/jpg",
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Quotes__QuoteID__Attachments__FileName_": {
@@ -2725,7 +2725,7 @@
           "contentType": "image/jpg",
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_Quotes__QuoteID__Attachments__FileName_": {
@@ -2741,7 +2741,7 @@
           "FileName": "xero-dev.jpg"
         },
         "data": "<byte>",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_Quotes__QuoteID__Attachments__FileName_": {
@@ -2757,7 +2757,7 @@
           "FileName": "xero-dev.jpg"
         },
         "data": "<byte>",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Receipts": {
@@ -2773,7 +2773,7 @@
           "order": "ReceiptNumber ASC",
           "unitdp": 4
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_Receipts": {
@@ -2788,7 +2788,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"Receipts\": [ { \"Contact\": { \"ContactID\": \"00000000-0000-0000-0000-000000000000\" }, \"Lineitems\": [ { \"Description\": \"Foobar\", \"Quantity\": 2, \"UnitAmount\": 20, \"AccountCode\": \"400\", \"TaxType\": \"NONE\", \"LineAmount\": 40 } ], \"User\": { \"UserID\": \"00000000-0000-0000-0000-000000000000\" }, \"LineAmountTypes\": \"NoTax\", \"Status\": \"DRAFT\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Receipts__ReceiptID_": {
@@ -2804,7 +2804,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_Receipts__ReceiptID_": {
@@ -2822,7 +2822,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"Receipts\": [ { \"Lineitems\": [], \"User\": { \"UserID\": \"00000000-0000-0000-0000-000000000000\" }, \"Reference\": \"Foobar\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Receipts__ReceiptID__Attachments": {
@@ -2835,7 +2835,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Receipts__ReceiptID__Attachments__AttachmentID_": {
@@ -2850,7 +2850,7 @@
           "contentType": "image/jpg",
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Receipts__ReceiptID__Attachments__FileName_": {
@@ -2865,7 +2865,7 @@
           "contentType": "image/jpg",
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_Receipts__ReceiptID__Attachments__FileName_": {
@@ -2881,7 +2881,7 @@
           "FileName": "xero-dev.jpg"
         },
         "data": "<byte>",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_Receipts__ReceiptID__Attachments__FileName_": {
@@ -2897,7 +2897,7 @@
           "FileName": "xero-dev.jpg"
         },
         "data": "<byte>",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Receipts__ReceiptID__History": {
@@ -2910,7 +2910,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_Receipts__ReceiptID__History": {
@@ -2925,7 +2925,7 @@
           "ReceiptID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{   \"HistoryRecords\": [   {   \"Details\": \"Hello World\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_RepeatingInvoices": {
@@ -2939,7 +2939,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_RepeatingInvoices": {
@@ -2954,7 +2954,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"RepeatingInvoices\": [ { \"Schedule\": { \"Period\": 1, \"Unit\": \"MONTHLY\", \"DueDate\": 10, \"DueDateType\": \"OFFOLLOWINGMONTH\", \"StartDate\": \"\\/Date(1555286400000+0000)\\/\" }, \"Type\": \"ACCREC\", \"Reference\": \"[Week]\", \"ApprovedForSending\": false, \"SendCopy\": false, \"MarkAsSent\": false, \"IncludePDF\": false, \"Contact\": { \"ContactID\": \"430fa14a-f945-44d3-9f97-5df5e28441b8\", \"Name\": \"Liam Gallagher\" }, \"Status\": \"AUTHORISED\", \"LineAmountTypes\": \"Exclusive\", \"LineItems\": [ { \"Description\": \"Guitars Fender Strat\", \"UnitAmount\": 5000.00, \"TaxType\": \"OUTPUT2\", \"TaxAmount\": 750.00, \"LineAmount\": 5000.00, \"AccountCode\": \"200\", \"Tracking\": [], \"Quantity\": 1.0000, \"LineItemID\": \"13a8353c-d2af-4d5b-920c-438449f08900\", \"DiscountEnteredAsPercent\": true } ], \"CurrencyCode\": \"NZD\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_RepeatingInvoices": {
@@ -2969,7 +2969,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"RepeatingInvoices\": [ { \"Schedule\": { \"Period\": 1, \"Unit\": \"MONTHLY\", \"DueDate\": 10, \"DueDateType\": \"OFFOLLOWINGMONTH\", \"StartDate\": \"\\/Date(1555286400000+0000)\\/\" }, \"Type\": \"ACCREC\", \"Reference\": \"[Week]\", \"ApprovedForSending\": false, \"SendCopy\": false, \"MarkAsSent\": false, \"IncludePDF\": false, \"Contact\": { \"ContactID\": \"430fa14a-f945-44d3-9f97-5df5e28441b8\", \"Name\": \"Liam Gallagher\" }, \"Status\": \"AUTHORISED\", \"LineAmountTypes\": \"Exclusive\", \"LineItems\": [ { \"Description\": \"Guitars Fender Strat\", \"UnitAmount\": 5000.00, \"TaxType\": \"OUTPUT2\", \"TaxAmount\": 750.00, \"LineAmount\": 5000.00, \"AccountCode\": \"200\", \"Tracking\": [], \"Quantity\": 1.0000, \"LineItemID\": \"13a8353c-d2af-4d5b-920c-438449f08900\", \"DiscountEnteredAsPercent\": true } ], \"CurrencyCode\": \"NZD\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_RepeatingInvoices__RepeatingInvoiceID_": {
@@ -2982,7 +2982,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_RepeatingInvoices__RepeatingInvoiceID_": {
@@ -2997,7 +2997,7 @@
           "RepeatingInvoiceID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{ \"Schedule\": { \"Period\": 1, \"Unit\": \"MONTHLY\", \"DueDate\": 10, \"DueDateType\": \"OFFOLLOWINGMONTH\", \"StartDate\": \"\\/Date(1555286400000+0000)\\/\", \"EndDate\": \"\\/Date(1569801600000+0000)\\/\", \"NextScheduledDate\": \"\\/Date(1555286400000+0000)\\/\" }, \"RepeatingInvoiceID\": \"428c0d75-909f-4b04-8403-a48dc27283b0\", \"Type\": \"ACCREC\", \"Reference\": \"[Week]\", \"HasAttachments\": true, \"ApprovedForSending\": false, \"SendCopy\": false, \"MarkAsSent\": false, \"IncludePDF\": false, \"ID\": \"428c0d75-909f-4b04-8403-a48dc27283b0\", \"Contact\": { \"ContactID\": \"430fa14a-f945-44d3-9f97-5df5e28441b8\", \"Name\": \"Liam Gallagher\", \"Addresses\": [], \"Phones\": [], \"ContactGroups\": [], \"ContactPersons\": [], \"HasValidationErrors\": false }, \"Status\": \"DELETED\", \"LineAmountTypes\": \"Exclusive\", \"LineItems\": [ { \"Description\": \"Guitars Fender Strat\", \"UnitAmount\": 5000.00, \"TaxType\": \"OUTPUT2\", \"TaxAmount\": 750.00, \"LineAmount\": 5000.00, \"AccountCode\": \"200\", \"Tracking\": [], \"Quantity\": 1.0000, \"LineItemID\": \"13a8353c-d2af-4d5b-920c-438449f08900\", \"DiscountEnteredAsPercent\": true } ], \"SubTotal\": 5000.00, \"TotalTax\": 750.00, \"Total\": 5750.00, \"CurrencyCode\": \"NZD\" }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_RepeatingInvoices__RepeatingInvoiceID__Attachments": {
@@ -3010,7 +3010,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_RepeatingInvoices__RepeatingInvoiceID__Attachments__AttachmentID_": {
@@ -3025,7 +3025,7 @@
           "contentType": "image/jpg",
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_RepeatingInvoices__RepeatingInvoiceID__Attachments__FileName_": {
@@ -3040,7 +3040,7 @@
           "contentType": "image/jpg",
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_RepeatingInvoices__RepeatingInvoiceID__Attachments__FileName_": {
@@ -3056,7 +3056,7 @@
           "FileName": "xero-dev.jpg"
         },
         "data": "<byte>",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_RepeatingInvoices__RepeatingInvoiceID__Attachments__FileName_": {
@@ -3072,7 +3072,7 @@
           "FileName": "xero-dev.jpg"
         },
         "data": "<byte>",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_RepeatingInvoices__RepeatingInvoiceID__History": {
@@ -3085,7 +3085,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_RepeatingInvoices__RepeatingInvoiceID__History": {
@@ -3100,7 +3100,7 @@
           "RepeatingInvoiceID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{   \"HistoryRecords\": [   {   \"Details\": \"Hello World\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Reports_TenNinetyNine": {
@@ -3113,7 +3113,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Reports_AgedPayablesByContact": {
@@ -3129,7 +3129,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Reports_AgedReceivablesByContact": {
@@ -3145,7 +3145,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Reports_BalanceSheet": {
@@ -3164,7 +3164,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Reports_BankSummary": {
@@ -3178,7 +3178,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Reports__ReportID_": {
@@ -3191,7 +3191,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Reports_BudgetSummary": {
@@ -3206,7 +3206,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Reports_ExecutiveSummary": {
@@ -3219,7 +3219,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Reports": {
@@ -3229,7 +3229,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Reports_ProfitAndLoss": {
@@ -3251,7 +3251,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Reports_TrialBalance": {
@@ -3265,7 +3265,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_Setup": {
@@ -3277,7 +3277,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"ConversionDate\": {}, \"ConversionBalances\": [], \"Accounts\": [ { \"Code\": \"200\", \"Name\": \"Sales\", \"Type\": \"SALES\", \"ReportingCode\": \"REV.TRA.GOO\" }, { \"Code\": \"400\", \"Name\": \"Advertising\", \"Type\": \"OVERHEADS\", \"ReportingCode\": \"EXP\" }, { \"Code\": \"610\", \"Name\": \"Accounts Receivable\", \"Type\": \"CURRENT\", \"SystemAccount\": \"DEBTORS\", \"ReportingCode\": \"ASS.CUR.REC.TRA\" }, { \"Code\": \"800\", \"Name\": \"Accounts Payable\", \"Type\": \"CURRLIAB\", \"SystemAccount\": \"CREDITORS\", \"ReportingCode\": \"LIA.CUR.PAY\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_TaxRates": {
@@ -3291,7 +3291,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_TaxRates": {
@@ -3303,7 +3303,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"TaxRates\": [ { \"Name\": \"State Tax NY\", \"TaxComponents\": [ { \"Name\": \"State Tax\", \"Rate\": 2.25 } ], \"Status\": \"DELETED\", \"ReportTaxType\": \"INPUT\" } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_TaxRates": {
@@ -3315,7 +3315,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"TaxRates\": [ { \"Name\": \"CA State Tax\", \"TaxComponents\": [ { \"Name\": \"State Tax\", \"Rate\": 2.25 } ] } ] }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_TaxRates__TaxType_": {
@@ -3328,7 +3328,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_TrackingCategories": {
@@ -3343,7 +3343,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_TrackingCategories": {
@@ -3355,7 +3355,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ name: \"FooBar\" }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_TrackingCategories__TrackingCategoryID_": {
@@ -3368,7 +3368,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_TrackingCategories__TrackingCategoryID_": {
@@ -3383,7 +3383,7 @@
           "TrackingCategoryID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{ \"Name\": \"Avengers\" }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "delete_TrackingCategories__TrackingCategoryID_": {
@@ -3396,7 +3396,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "put_TrackingCategories__TrackingCategoryID__Options": {
@@ -3411,7 +3411,7 @@
           "TrackingCategoryID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{ name: \" Bar\" }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "post_TrackingCategories__TrackingCategoryID__Options__TrackingOptionID_": {
@@ -3427,7 +3427,7 @@
           "TrackingOptionID": "00000000-0000-0000-0000-000000000000"
         },
         "data": "{ name: \"Vision\" }",
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "delete_TrackingCategories__TrackingCategoryID__Options__TrackingOptionID_": {
@@ -3441,7 +3441,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Users": {
@@ -3456,7 +3456,7 @@
           "where": "IsSubscriber==true",
           "order": "LastName ASC"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     },
     "get_Users__UserID_": {
@@ -3469,7 +3469,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/api.xro/2.0"
+        "baseURL": "https://api.xero.com/api.xro/2.0"
       }
     }
-}
+  }

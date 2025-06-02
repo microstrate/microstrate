@@ -10,7 +10,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "post_Employees": {
@@ -22,7 +22,7 @@
           "Xero-Tenant-Id": "<string>"
         },
         "data": "{ \"title\":\"Mr\", \"firstName\":\"Mike\", \"lastName\":\"Fancy\", \"dateOfBirth\":\"1999-01-01T00:00:00\", \"gender\":\"M\", \"email\":\"mike@starkindustries.com\", \"isOffPayrollWorker\": false, \"address\": { \"addressLine1\": \"171 Midsummer\", \"city\": \"Milton Keyness\", \"postCode\": \"MK9 1EB\" } }",
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_Employees__EmployeeID_": {
@@ -35,7 +35,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "put_Employees__EmployeeID_": {
@@ -50,7 +50,7 @@
           "EmployeeID": "<string>"
         },
         "data": "{ \"title\": \"Mr.\", \"firstName\": \"TestDataUK\", \"lastName\": \"Tester\", \"dateOfBirth\": \"1992-11-22T00:00:00\", \"gender\": \"M\", \"email\": \"tester@gmail.com\", \"phoneNumber\": \"0400123456\", \"isOffPayrollWorker\": false, \"address\": { \"addressLine1\": \"171 Midsummer\", \"city\": \"Milton Keyness\", \"postCode\": \"MK9 1EB\" } }",
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "post_Employees__EmployeeID__Employment": {
@@ -65,7 +65,7 @@
           "EmployeeID": "<string>"
         },
         "data": "{ \"PayrollCalendarID\": \"216d80e6-af55-47b1-b718-9457c3f5d2fe\", \"StartDate\": \"2020-04-01\", \"NICategories\": [ { \"NICategory\": \"A\", \"StartDate\": \"2020-05-01\" } ], \"EmployeeNumber\": \"123ABC\" }",
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_Employees__EmployeeID__Tax": {
@@ -78,7 +78,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_Employees__EmployeeID__ukopeningbalances": {
@@ -91,7 +91,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "post_Employees__EmployeeID__ukopeningbalances": {
@@ -106,7 +106,7 @@
           "EmployeeID": "<string>"
         },
         "data": "{ \"statutoryAdoptionPay\": 10, \"statutoryMaternityPay\": 10, \"statutoryPaternityPay\": 10, \"statutorySharedParentalPay\": 10, \"statutorySickPay\": 10, \"priorEmployeeNumber\": 10 }",
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "put_Employees__EmployeeID__ukopeningbalances": {
@@ -121,7 +121,7 @@
           "EmployeeID": "<string>"
         },
         "data": "{ \"statutoryAdoptionPay\": 20, \"statutoryMaternityPay\": 20, \"statutoryPaternityPay\": 20, \"statutorySharedParentalPay\": 20, \"statutorySickPay\": 20, \"priorEmployeeNumber\": 20 }",
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_Employees__EmployeeID__Leave": {
@@ -134,7 +134,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "post_Employees__EmployeeID__Leave": {
@@ -149,7 +149,7 @@
           "EmployeeID": "<string>"
         },
         "data": "{ \"leaveTypeID\": \"1d2778ee-86ea-45c0-bbf8-1045485f6b3f\", \"description\": \"Creating a Description\", \"startDate\": \"2020-03-24\", \"endDate\": \"2020-03-26\" }",
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_Employees__EmployeeID__Leave__LeaveID_": {
@@ -163,7 +163,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "delete_Employees__EmployeeID__Leave__LeaveID_": {
@@ -177,7 +177,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "put_Employees__EmployeeID__Leave__LeaveID_": {
@@ -193,7 +193,7 @@
           "LeaveID": "<string>"
         },
         "data": "{ \"leaveTypeID\": \"ed08dffe-788e-4b24-9630-f0fa2f4d164c\", \"description\": \"Creating a Description\", \"startDate\": \"2020-04-24\", \"endDate\": \"2020-04-26\", \"periods\": [ { \"periodStartDate\": \"2020-04-20\", \"periodEndDate\": \"2020-04-26\", \"numberOfUnits\": 1, \"periodStatus\": \"Approved\" } ] }",
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_Employees__EmployeeID__LeaveBalances": {
@@ -206,7 +206,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_Employees__EmployeeID__StatutoryLeaveBalance": {
@@ -223,7 +223,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_StatutoryLeaves_Summary__EmployeeID_": {
@@ -239,7 +239,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "post_StatutoryLeaves_Sick": {
@@ -251,7 +251,7 @@
           "Xero-Tenant-Id": "<string>"
         },
         "data": "{ \"employeeID\": \"aad6b292-7b94-408b-93f6-e489867e3fb0\", \"leaveTypeID\": \"aab78802-e9d3-4bbd-bc87-df858054988f\", \"startDate\": \"2020-04-21\", \"endDate\": \"2020-04-24\", \"workPattern\": [ \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\" ], \"isPregnancyRelated\": false, \"sufficientNotice\": true }",
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_StatutoryLeaves_Sick__StatutorySickLeaveID_": {
@@ -264,7 +264,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_Employees__EmployeeID__LeavePeriods": {
@@ -281,7 +281,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_Employees__EmployeeID__LeaveTypes": {
@@ -294,7 +294,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "post_Employees__EmployeeID__LeaveTypes": {
@@ -309,7 +309,7 @@
           "EmployeeID": "<string>"
         },
         "data": "{ \"leaveTypeID\": \"4918f233-bd31-43f9-9633-bcc6de1178f2\", \"scheduleOfAccrual\": \"BeginningOfCalendarYear\", \"hoursAccruedAnnually\": 10 }",
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_Employees__EmployeeID__PaymentMethods": {
@@ -322,7 +322,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "post_Employees__EmployeeID__PaymentMethods": {
@@ -337,7 +337,7 @@
           "EmployeeID": "<string>"
         },
         "data": "{ \"paymentMethod\": \"Electronically\", \"bankAccounts\": [ { \"accountName\": \"Sid BofA\", \"accountNumber\": \"24987654\", \"sortCode\": \"287654\" } ] }",
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_Employees__EmployeeID__PayTemplates": {
@@ -350,7 +350,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "post_Employees__EmployeeID__PayTemplates_earnings": {
@@ -372,7 +372,7 @@
           "earningsRateID": "123e4567-e89b-12d3-a456-426614174000",
           "name": ""
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "delete_Employees__EmployeeID__PayTemplates_earnings__PayTemplateEarningID_": {
@@ -386,7 +386,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "put_Employees__EmployeeID__PayTemplates_earnings__PayTemplateEarningID_": {
@@ -402,7 +402,7 @@
           "PayTemplateEarningID": "<string>"
         },
         "data": "{ \"ratePerUnit\": 30, \"numberOfUnits\": 4, \"earningsRateID\": \"87f5b43a-cf51-4b74-92de-94c819e82d27\" }",
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "post_Employees__EmployeeID__paytemplateearnings": {
@@ -417,7 +417,7 @@
           "EmployeeID": "<string>"
         },
         "data": "[ { \"ratePerUnit\":20.0, \"numberOfUnits\":8.0, \"earningsRateID\":\"87f5b43a-cf51-4b74-92de-94c819e82d27\" }, { \"ratePerUnit\":20.0, \"numberOfUnits\":8.0, \"earningsRateID\":\"973365f3-66b2-4c33-8ae6-14b75f78f68b\" } ]",
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_Benefits": {
@@ -430,7 +430,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "post_Benefits": {
@@ -442,7 +442,7 @@
           "Xero-Tenant-Id": "<string>"
         },
         "data": "{ \"name\": \"My Big Bennie\", \"category\": \"StakeholderPension\", \"liabilityAccountId\": \"e0faa299-ca0d-4b0a-9e32-0dfabdf9179a\", \"expenseAccountId\": \"4b03500d-32fd-4616-8d70-e1e56e0519c6\", \"standardAmount\": 50, \"percentage\": 25, \"calculationType\": \"PercentageOfGross\" }",
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_Benefits__id_": {
@@ -455,7 +455,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_Deductions": {
@@ -468,7 +468,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "post_Deductions": {
@@ -480,7 +480,7 @@
           "Xero-Tenant-Id": "<string>"
         },
         "data": "{ \"deductionName\": \"My new deduction\", \"deductionCategory\": \"SalarySacrifice\", \"liabilityAccountId\": \"e0faa299-ca0d-4b0a-9e32-0dfabdf9179a\", \"calculationType\": \"FixedAmount\" }",
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_Deductions__deductionId_": {
@@ -493,7 +493,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_EarningsOrders": {
@@ -506,7 +506,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_EarningsOrders__id_": {
@@ -519,7 +519,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_EarningsRates": {
@@ -532,7 +532,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "post_EarningsRates": {
@@ -544,7 +544,7 @@
           "Xero-Tenant-Id": "<string>"
         },
         "data": "{ \"name\": \"My Earnings Rate\", \"earningsType\": \"RegularEarnings\", \"rateType\": \"RatePerUnit\", \"typeOfUnits\": \"hours\", \"expenseAccountID\": \"4b03500d-32fd-4616-8d70-e1e56e0519c6\" }",
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_EarningsRates__EarningsRateID_": {
@@ -557,7 +557,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_LeaveTypes": {
@@ -571,7 +571,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "post_LeaveTypes": {
@@ -583,7 +583,7 @@
           "Xero-Tenant-Id": "<string>"
         },
         "data": "{ \"name\": \"My opebvwbfxf Leave\", \"isPaidLeave\": false, \"showOnPayslip\": true }",
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_LeaveTypes__LeaveTypeID_": {
@@ -596,7 +596,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_Reimbursements": {
@@ -609,7 +609,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "post_Reimbursements": {
@@ -621,7 +621,7 @@
           "Xero-Tenant-Id": "<string>"
         },
         "data": "{ \"name\": \"My new Reimburse\", \"accountID\": \"9ee28149-32a9-4661-8eab-a28738696983\" }",
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_Reimbursements__ReimbursementID_": {
@@ -634,7 +634,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_Timesheets": {
@@ -652,7 +652,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "post_Timesheets": {
@@ -664,7 +664,7 @@
           "Xero-Tenant-Id": "<string>"
         },
         "data": "{ \"payrollCalendarID\": \"216d80e6-af55-47b1-b718-9457c3f5d2fe\", \"employeeID\": \"aad6b292-7b94-408b-93f6-e489867e3fb0\", \"startDate\": \"2020-04-13\", \"endDate\": \"2020-04-19\", \"timesheetLines\": [ { \"date\": \"2020-04-13\", \"earningsRateID\": \"87f5b43a-cf51-4b74-92de-94c819e82d27\", \"numberOfUnits\": 8 }, { \"date\": \"2020-04-15\", \"earningsRateID\": \"87f5b43a-cf51-4b74-92de-94c819e82d27\", \"numberOfUnits\": 6 } ] }",
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_Timesheets__TimesheetID_": {
@@ -677,7 +677,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "delete_Timesheets__TimesheetID_": {
@@ -690,7 +690,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "post_Timesheets__TimesheetID__Lines": {
@@ -705,7 +705,7 @@
           "TimesheetID": "<string>"
         },
         "data": "{ \"date\": \"2020-04-14\", \"earningsRateID\": \"87f5b43a-cf51-4b74-92de-94c819e82d27\", \"numberOfUnits\": 1 }",
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "post_Timesheets__TimesheetID__Approve": {
@@ -719,7 +719,7 @@
         "path": {
           "TimesheetID": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "post_Timesheets__TimesheetID__RevertToDraft": {
@@ -733,7 +733,7 @@
         "path": {
           "TimesheetID": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "delete_Timesheets__TimesheetID__Lines__TimesheetLineID_": {
@@ -747,7 +747,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "put_Timesheets__TimesheetID__Lines__TimesheetLineID_": {
@@ -763,7 +763,7 @@
           "TimesheetLineID": "<string>"
         },
         "data": "{ \"date\": \"2020-04-14\", \"earningsRateID\": \"87f5b43a-cf51-4b74-92de-94c819e82d27\", \"numberOfUnits\": 2 }",
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_PayRunCalendars": {
@@ -776,7 +776,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "post_PayRunCalendars": {
@@ -788,7 +788,7 @@
           "Xero-Tenant-Id": "<string>"
         },
         "data": "{ \"name\": \"My Weekly Cal\", \"calendarType\": \"Weekly\", \"periodStartDate\": \"2020-05-01\", \"paymentDate\": \"2020-05-15\" }",
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_PayRunCalendars__PayRunCalendarID_": {
@@ -801,7 +801,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_Employees__EmployeeID__SalaryAndWages": {
@@ -817,7 +817,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "post_Employees__EmployeeID__SalaryAndWages": {
@@ -832,7 +832,7 @@
           "EmployeeID": "<string>"
         },
         "data": "{ \"earningsRateID\": \"87f5b43a-cf51-4b74-92de-94c819e82d27\", \"numberOfUnitsPerWeek\": 2, \"ratePerUnit\": 10, \"numberOfUnitsPerDay\": 2, \"effectiveFrom\": \"2020-05-01\", \"annualSalary\": 100, \"status\": \"ACTIVE\", \"paymentType\": \"Salary\" }",
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_Employees__EmployeeID__SalaryAndWages__SalaryAndWagesID_": {
@@ -846,7 +846,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "delete_Employees__EmployeeID__SalaryAndWages__SalaryAndWagesID_": {
@@ -860,7 +860,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "put_Employees__EmployeeID__SalaryAndWages__SalaryAndWagesID_": {
@@ -876,7 +876,7 @@
           "SalaryAndWagesID": "<string>"
         },
         "data": "{ \"earningsRateID\": \"87f5b43a-cf51-4b74-92de-94c819e82d27\", \"numberOfUnitsPerWeek\": 3, \"ratePerUnit\": 11, \"effectiveFrom\": \"2020-05-15\", \"annualSalary\": 101, \"status\": \"ACTIVE\", \"paymentType\": \"Salary\" }",
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_PayRuns": {
@@ -890,7 +890,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_PayRuns__PayRunID_": {
@@ -903,7 +903,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "put_PayRuns__PayRunID_": {
@@ -918,7 +918,7 @@
           "PayRunID": "<string>"
         },
         "data": "{ \"paymentDate\": \"2020-05-01\" }",
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_Payslips": {
@@ -932,7 +932,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_Payslips__PayslipID_": {
@@ -945,7 +945,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_Settings": {
@@ -955,7 +955,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     },
     "get_Settings_trackingCategories": {
@@ -965,7 +965,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/payroll.xro/2.0"
+        "baseURL": "https://api.xero.com/payroll.xro/2.0"
       }
     }
-}
+  }

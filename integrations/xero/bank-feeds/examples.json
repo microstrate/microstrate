@@ -10,7 +10,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/bankfeeds.xro/1.0"
+        "baseURL": "https://api.xero.com/bankfeeds.xro/1.0"
       }
     },
     "post_FeedConnections": {
@@ -32,7 +32,7 @@
             }
           ]
         },
-        "baseUrl": "https://api.xero.com/bankfeeds.xro/1.0"
+        "baseURL": "https://api.xero.com/bankfeeds.xro/1.0"
       }
     },
     "get_FeedConnections__id_": {
@@ -45,7 +45,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/bankfeeds.xro/1.0"
+        "baseURL": "https://api.xero.com/bankfeeds.xro/1.0"
       }
     },
     "post_FeedConnections_DeleteRequests": {
@@ -63,7 +63,7 @@
             }
           ]
         },
-        "baseUrl": "https://api.xero.com/bankfeeds.xro/1.0"
+        "baseURL": "https://api.xero.com/bankfeeds.xro/1.0"
       }
     },
     "get_Statements": {
@@ -79,7 +79,7 @@
           "Xero-User-Id": "00000000-0000-0000-0000-0000030000000",
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/bankfeeds.xro/1.0"
+        "baseURL": "https://api.xero.com/bankfeeds.xro/1.0"
       }
     },
     "post_Statements": {
@@ -146,7 +146,7 @@
             }
           ]
         },
-        "baseUrl": "https://api.xero.com/bankfeeds.xro/1.0"
+        "baseURL": "https://api.xero.com/bankfeeds.xro/1.0"
       }
     },
     "get_Statements__statementId_": {
@@ -159,7 +159,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/bankfeeds.xro/1.0"
+        "baseURL": "https://api.xero.com/bankfeeds.xro/1.0"
       }
     }
-}
+  }

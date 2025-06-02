@@ -109,7 +109,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -624,7 +624,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -908,7 +908,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -1182,7 +1182,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -1364,7 +1364,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -1542,7 +1542,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -1610,7 +1610,7 @@
     }
   ],
   "references": {
-    "baseUrl": {
+    "baseURL": {
       "type": "string",
       "enum": [
         "https://api.xero.com/assets.xro/1.0"

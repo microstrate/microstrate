@@ -6,7 +6,7 @@
         "query": {
           "authEventId": "00000000-0000-0000-0000-000000000000"
         },
-        "baseUrl": "https://api.xero.com"
+        "baseURL": "https://api.xero.com"
       }
     },
     "delete_Connections__id_": {
@@ -16,7 +16,7 @@
         "path": {
           "id": "<string>"
         },
-        "baseUrl": "https://api.xero.com"
+        "baseURL": "https://api.xero.com"
       }
     }
-}
+  }

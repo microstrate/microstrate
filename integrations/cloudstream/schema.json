@@ -8,9 +8,12 @@
       "name": "Attachment Upsert",
       "description": "ATTACHMENT - upsert",
       "schema": {
+        "tags": [
+          "attachment"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/attachmentUpsert/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_attachment/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -76,7 +79,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -92,9 +95,12 @@
       "name": "Answer Upsert Multi",
       "description": "ANSWER - upsert multi",
       "schema": {
+        "tags": [
+          "question"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/answerUpsertMulti/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_question_upsert-multi_answer/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -212,7 +218,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -228,9 +234,12 @@
       "name": "2 Fa Setup User Mfa",
       "description": "2FA - setup User MFA",
       "schema": {
+        "tags": [
+          "authenticate"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/2faSetupUserMfa/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_authenticate_create_setup-2fa/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -305,7 +314,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -321,9 +330,12 @@
       "name": "Code Create One Time Email",
       "description": "CODE - create one time (email)",
       "schema": {
+        "tags": [
+          "authenticate"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/codeCreateOneTimeEmail/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_authenticate_create_one-time-code/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -380,7 +392,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -396,9 +408,12 @@
       "name": "Config Get Global",
       "description": "CONFIG - get (global)",
       "schema": {
+        "tags": [
+          "authenticate"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/configGetGlobal/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_authenticate_get_config/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -455,7 +470,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -471,9 +486,12 @@
       "name": "Config Refresh Saml Idp",
       "description": "CONFIG - refresh SAML IDP",
       "schema": {
+        "tags": [
+          "authenticate"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/configRefreshSamlIdp/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_authenticate_Saml2_refreshidp/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -547,7 +565,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -563,9 +581,12 @@
       "name": "Config Unset",
       "description": "CONFIG - unset",
       "schema": {
+        "tags": [
+          "authenticate"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/configUnset/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_authenticate_unset/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -637,7 +658,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -653,9 +674,12 @@
       "name": "Config Upsert Global",
       "description": "CONFIG - upsert (global)",
       "schema": {
+        "tags": [
+          "authenticate"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/configUpsertGlobal/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_authenticate_upsert_config/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -774,7 +798,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -790,9 +814,12 @@
       "name": "Credential Add",
       "description": "CREDENTIAL - add",
       "schema": {
+        "tags": [
+          "authenticate"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/credentialAdd/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_authenticate_add_credential/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -862,7 +889,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -878,9 +905,12 @@
       "name": "Credential Authorise 2 Fa Token",
       "description": "CREDENTIAL - authorise (2fa token)",
       "schema": {
+        "tags": [
+          "authenticate"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/credentialAuthorise2faToken/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_authenticate_authorise_2fa/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -946,7 +976,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -962,9 +992,12 @@
       "name": "Credential Authorise 3rd Party Auth",
       "description": "CREDENTIAL - authorise (3rd party auth)",
       "schema": {
+        "tags": [
+          "authenticate"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/credentialAuthorise3rdPartyAuth/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_authenticate_authorise_3rd-party/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -1034,7 +1067,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -1050,9 +1083,12 @@
       "name": "Credential Authorise Basic Auth",
       "description": "CREDENTIAL - authorise (basic auth)",
       "schema": {
+        "tags": [
+          "authenticate"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/credentialAuthoriseBasicAuth/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_authenticate_authorise_basic/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -1118,7 +1154,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -1134,9 +1170,12 @@
       "name": "Credential Authorise One Time Code",
       "description": "CREDENTIAL - authorise (one time code)",
       "schema": {
+        "tags": [
+          "authenticate"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/credentialAuthoriseOneTimeCode/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_authenticate_authorise_one-time-code/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -1202,7 +1241,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -1218,9 +1257,12 @@
       "name": "Credential Authorise One Time Token",
       "description": "CREDENTIAL - authorise (one time token)",
       "schema": {
+        "tags": [
+          "authenticate"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/credentialAuthoriseOneTimeToken/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_authenticate_authorise_one-time-token/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -1286,7 +1328,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -1302,9 +1344,12 @@
       "name": "Credential Create 3rd Party",
       "description": "CREDENTIAL - create (3rd party)",
       "schema": {
+        "tags": [
+          "authenticate"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/credentialCreate3rdParty/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_authenticate_create_credential/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -1370,7 +1415,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -1386,9 +1431,12 @@
       "name": "Credential Create Password",
       "description": "CREDENTIAL - create password",
       "schema": {
+        "tags": [
+          "authenticate"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/credentialCreatePassword/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_authenticate_create_password/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -1458,7 +1506,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -1474,9 +1522,12 @@
       "name": "Credential Reset Password Email",
       "description": "CREDENTIAL - reset password (email)",
       "schema": {
+        "tags": [
+          "authenticate"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/credentialResetPasswordEmail/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_authenticate_reset_password/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -1546,7 +1597,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -1562,9 +1613,12 @@
       "name": "Credential Upsert My Password",
       "description": "CREDENTIAL - upsert (my password)",
       "schema": {
+        "tags": [
+          "authenticate"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/credentialUpsertMyPassword/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_authenticate_upsert_credential/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -1634,7 +1688,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -1650,9 +1704,12 @@
       "name": "Data Fill Empty User Topic",
       "description": "DATA - fill empty user topic",
       "schema": {
+        "tags": [
+          "authenticate"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/dataFillEmptyUserTopic/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_authenticate_data/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -1714,7 +1771,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -1730,9 +1787,12 @@
       "name": "Report Tokens By Period",
       "description": "REPORT - tokens by period",
       "schema": {
+        "tags": [
+          "authenticate"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/reportTokensByPeriod/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_authenticate_report/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -1798,7 +1858,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -1814,9 +1874,12 @@
       "name": "Saml Assertion",
       "description": "SAML - assertion",
       "schema": {
+        "tags": [
+          "authenticate"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/samlAssertion/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_authenticate_Saml2_Acs/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -1865,7 +1928,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -1881,9 +1944,12 @@
       "name": "Saml Generate Login Auth Request Redirect",
       "description": "SAML - generate login auth request (Redirect)",
       "schema": {
+        "tags": [
+          "authenticate"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/samlGenerateLoginAuthRequestRedirect/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_authenticate_Saml2_authn/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -1949,7 +2015,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -1965,9 +2031,12 @@
       "name": "Token Create 2 Fa Code Sms",
       "description": "TOKEN - create 2fa code (sms)",
       "schema": {
+        "tags": [
+          "authenticate"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/tokenCreate2faCodeSms/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_authenticate_create_2fa-code/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -2033,7 +2102,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -2049,9 +2118,12 @@
       "name": "Token Create New Password Email",
       "description": "TOKEN - create new password (email)",
       "schema": {
+        "tags": [
+          "authenticate"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/tokenCreateNewPasswordEmail/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_authenticate_create_new-password-token/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -2108,7 +2180,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -2124,9 +2196,12 @@
       "name": "Token Create One Time Email",
       "description": "TOKEN - create one time (email)",
       "schema": {
+        "tags": [
+          "authenticate"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/tokenCreateOneTimeEmail/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_authenticate_create_one-time-token/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -2183,7 +2258,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -2199,9 +2274,12 @@
       "name": "Token Create Public",
       "description": "TOKEN - create public",
       "schema": {
+        "tags": [
+          "authenticate"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/tokenCreatePublic/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_authenticate_create_public-token/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -2258,7 +2336,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -2274,9 +2352,12 @@
       "name": "Token Create Reset Password Email",
       "description": "TOKEN - create reset password (email)",
       "schema": {
+        "tags": [
+          "authenticate"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/tokenCreateResetPasswordEmail/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_authenticate_create_reset-password-token/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -2333,7 +2414,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -2349,9 +2430,12 @@
       "name": "Token Refresh",
       "description": "TOKEN - refresh",
       "schema": {
+        "tags": [
+          "authenticate"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/tokenRefresh/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_authenticate_refresh_token/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -2417,7 +2501,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -2433,9 +2517,12 @@
       "name": "Token Swap",
       "description": "TOKEN - swap",
       "schema": {
+        "tags": [
+          "authenticate"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/tokenSwap/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_authenticate_swap_token/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -2501,7 +2588,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -2517,9 +2604,12 @@
       "name": "Token Invalidate",
       "description": "TOKEN - invalidate",
       "schema": {
+        "tags": [
+          "authenticate"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/tokenInvalidate/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_authenticate_validate_token/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -2581,7 +2671,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -2597,9 +2687,12 @@
       "name": "Create",
       "description": "create",
       "schema": {
+        "tags": [
+          "backbone"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/create/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_backbone_events/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -2711,7 +2804,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -2727,9 +2820,12 @@
       "name": "Get Index",
       "description": "get-index",
       "schema": {
+        "tags": [
+          "backbone"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/getIndex/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_backbone_action/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -2829,7 +2925,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -2845,9 +2941,12 @@
       "name": "Config Rules List",
       "description": "CONFIG - rules list",
       "schema": {
+        "tags": [
+          "rule"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/configRulesList/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_backbone_submit/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -2921,7 +3020,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -2937,9 +3036,12 @@
       "name": "Mock Create Development Event",
       "description": "MOCK - create development event",
       "schema": {
+        "tags": [
+          "backbone"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/mockCreateDevelopmentEvent/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_backbone_mock/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -3131,7 +3233,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -3147,9 +3249,12 @@
       "name": "Mock Search Development Index",
       "description": "MOCK - search development index",
       "schema": {
+        "tags": [
+          "backbone"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/mockSearchDevelopmentIndex/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_backbone_mock-search/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -3211,7 +3316,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -3227,9 +3332,12 @@
       "name": "Get History",
       "description": "GET - history",
       "schema": {
+        "tags": [
+          "backbone"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/getHistory/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_backbone_history/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -3316,7 +3424,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -3332,9 +3440,12 @@
       "name": "Event Unset",
       "description": "EVENT - unset",
       "schema": {
+        "tags": [
+          "backbone"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/eventUnset/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_backbone_upsert/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -3395,7 +3506,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -3411,9 +3522,12 @@
       "name": "Log Get Logs From Trackingid Copy",
       "description": "LOG - Get logs from trackingId Copy",
       "schema": {
+        "tags": [
+          "collation"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/logGetLogsFromTrackingidCopy/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_collation_command/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -3479,7 +3593,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -3495,9 +3609,12 @@
       "name": "Config Publish",
       "description": "CONFIG - publish",
       "schema": {
+        "tags": [
+          "form"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/configPublish/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_form_config_publish/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -3554,7 +3671,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -3570,9 +3687,12 @@
       "name": "Webhook",
       "description": "Webhook",
       "schema": {
+        "tags": [
+          "collation"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/webhook/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_collation_webhook/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -3803,7 +3923,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -3819,9 +3939,12 @@
       "name": "Config Get",
       "description": "CONFIG - get",
       "schema": {
+        "tags": [
+          "contract"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/configGet/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_contract_config/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -3895,7 +4018,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -3911,9 +4034,12 @@
       "name": "Contract Get",
       "description": "CONTRACT - get",
       "schema": {
+        "tags": [
+          "contract"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/contractGet/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_contract/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -3975,7 +4101,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -3991,9 +4117,12 @@
       "name": "Status Get Draft",
       "description": "STATUS - get (draft)",
       "schema": {
+        "tags": [
+          "contract"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/statusGetDraft/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_contract_status_config_get/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -4046,7 +4175,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -4062,9 +4191,12 @@
       "name": "Status Publish",
       "description": "STATUS - publish",
       "schema": {
+        "tags": [
+          "contract"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/statusPublish/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_contract_status_config_publish/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -4121,7 +4253,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -4137,9 +4269,12 @@
       "name": "Status Config Upsert",
       "description": "STATUS-CONFIG - upsert",
       "schema": {
+        "tags": [
+          "contract"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/statusConfigUpsert/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_contract_status_config_upsert/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -4218,7 +4353,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -4234,9 +4369,12 @@
       "name": "Create Contract From Answer Update Config",
       "description": "Create contract from answer update config",
       "schema": {
+        "tags": [
+          "contract"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/createContractFromAnswerUpdateConfig/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_integrations_submit-external-config/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -4790,7 +4928,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -4806,9 +4944,12 @@
       "name": "Answer Update Event",
       "description": "Answer update event",
       "schema": {
+        "tags": [
+          "contract"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/answerUpdateEvent/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_integrations_submit-external/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -4902,7 +5043,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -4918,9 +5059,12 @@
       "name": "Cron Upsert Backbone",
       "description": "CRON - upsert (backbone)",
       "schema": {
+        "tags": [
+          "cron"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/cronUpsertBackbone/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_cron/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -4977,7 +5121,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -4993,9 +5137,12 @@
       "name": "Upload",
       "description": "upload",
       "schema": {
+        "tags": [
+          "datamapper"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/upload/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_datamapper_upload/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -5078,7 +5225,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -5094,9 +5241,12 @@
       "name": "Select",
       "description": "select",
       "schema": {
+        "tags": [
+          "datamapper"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/select/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_datamapper_select/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -5162,7 +5312,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -5178,9 +5328,12 @@
       "name": "Trigger Hooks",
       "description": "TRIGGER - hooks",
       "schema": {
+        "tags": [
+          "document"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/triggerHooks/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_document_trigger/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -5264,7 +5417,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -5280,9 +5433,12 @@
       "name": "Hook Upsert",
       "description": "HOOK - upsert",
       "schema": {
+        "tags": [
+          "document"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/hookUpsert/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_document_template_hook/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -5339,7 +5495,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -5355,9 +5511,12 @@
       "name": "Tag Upsert",
       "description": "TAG - upsert",
       "schema": {
+        "tags": [
+          "document"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/tagUpsert/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_document_template_tag/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -5414,7 +5573,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -5430,9 +5589,12 @@
       "name": "Template Publish",
       "description": "TEMPLATE - publish",
       "schema": {
+        "tags": [
+          "document"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/templatePublish/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_document_template/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -5507,7 +5669,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -5523,9 +5685,12 @@
       "name": "Document List",
       "description": "DOCUMENT - list",
       "schema": {
+        "tags": [
+          "document"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/documentList/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_document/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -5595,7 +5760,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -5611,9 +5776,12 @@
       "name": "Folder Upsert",
       "description": "FOLDER - upsert",
       "schema": {
+        "tags": [
+          "document"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/folderUpsert/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_document_folder/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -5670,7 +5838,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -5686,9 +5854,12 @@
       "name": "Form Get",
       "description": "FORM - get",
       "schema": {
+        "tags": [
+          "form"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/formGet/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_form_get/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -5745,7 +5916,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -5761,9 +5932,12 @@
       "name": "Form Navigate",
       "description": "FORM - navigate",
       "schema": {
+        "tags": [
+          "form"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/formNavigate/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_form_navigation/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -5841,7 +6015,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -5857,9 +6031,12 @@
       "name": "Form Get Answers",
       "description": "FORM - get answers",
       "schema": {
+        "tags": [
+          "form"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/formGetAnswers/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_form_get-answers/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -5916,7 +6093,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -5932,9 +6109,12 @@
       "name": "Form List Forms By Config",
       "description": "FORM - list (forms by config)",
       "schema": {
+        "tags": [
+          "form"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/formListFormsByConfig/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_form_list/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -6000,7 +6180,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -6016,9 +6196,12 @@
       "name": "Form List With Display Preferences Forms By Config",
       "description": "FORM - list with display preferences (forms by config)",
       "schema": {
+        "tags": [
+          "form"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/formListWithDisplayPreferencesFormsByConfig/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_form_list_display/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -6092,7 +6275,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -6108,9 +6291,12 @@
       "name": "Form List Children",
       "description": "FORM - list children",
       "schema": {
+        "tags": [
+          "form"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/formListChildren/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_form_list_children/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -6167,7 +6353,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -6183,9 +6369,12 @@
       "name": "Form List By User Topic",
       "description": "FORM - list by user topic",
       "schema": {
+        "tags": [
+          "form"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/formListByUserTopic/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_form_list_user/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -6242,7 +6431,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -6258,9 +6447,12 @@
       "name": "Form Project Copy",
       "description": "FORM - project Copy",
       "schema": {
+        "tags": [
+          "question"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/formProjectCopy/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_form_project/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -6313,7 +6505,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -6329,9 +6521,12 @@
       "name": "Form Project Localinvoke",
       "description": "FORM - project - localinvoke",
       "schema": {
+        "tags": [
+          "form"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/formProjectLocalinvoke/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_lambda_invoke_form-project-form/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -6388,7 +6583,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -6404,9 +6599,12 @@
       "name": "Form Clone",
       "description": "FORM - clone",
       "schema": {
+        "tags": [
+          "form"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/formClone/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_form_clone/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -6494,7 +6692,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -6510,9 +6708,12 @@
       "name": "Form Upsert",
       "description": "FORM - upsert",
       "schema": {
+        "tags": [
+          "form"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/formUpsert/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_form_upsert/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -6578,7 +6779,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -6594,9 +6795,12 @@
       "name": "Config List All Published",
       "description": "CONFIG - list all (published)",
       "schema": {
+        "tags": [
+          "form"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/configListAllPublished/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_form_config_list/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -6649,7 +6853,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -6665,9 +6869,12 @@
       "name": "Form Info",
       "description": "FORM - info",
       "schema": {
+        "tags": [
+          "form"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/formInfo/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_form_info/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -6720,7 +6927,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -6736,9 +6943,12 @@
       "name": "Form Unset Does Not Work",
       "description": "FORM - unset (DOES NOT WORK)",
       "schema": {
+        "tags": [
+          "form"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/formUnsetDoesNotWork/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_form_unset/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -6810,7 +7020,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -6826,9 +7036,12 @@
       "name": "Config Migrate Rules To Aggregator",
       "description": "CONFIG - migrate rules to aggregator",
       "schema": {
+        "tags": [
+          "form"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/configMigrateRulesToAggregator/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_form_config_get/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -6885,7 +7098,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -6901,9 +7114,12 @@
       "name": "Config Build Cache",
       "description": "CONFIG - build cache",
       "schema": {
+        "tags": [
+          "form"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/configBuildCache/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_form_config_cache/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -6964,7 +7180,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -6980,9 +7196,12 @@
       "name": "Config Get Cache",
       "description": "CONFIG - get cache",
       "schema": {
+        "tags": [
+          "form"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/configGetCache/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_form_config_get-cache/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -7052,7 +7271,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -7068,9 +7287,12 @@
       "name": "Config Upsert And Publish Config",
       "description": "CONFIG - upsert and publish config",
       "schema": {
+        "tags": [
+          "form"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/configUpsertAndPublishConfig/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_form_config_upsert/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -7136,7 +7358,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -7152,9 +7374,12 @@
       "name": "Subscription Project",
       "description": "SUBSCRIPTION - project",
       "schema": {
+        "tags": [
+          "payment"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/subscriptionProject/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_payment_project/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -7224,7 +7449,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -7240,9 +7465,12 @@
       "name": "Form Create",
       "description": "FORM - create",
       "schema": {
+        "tags": [
+          "form"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/formCreate/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_form_create/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -7338,7 +7566,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -7354,9 +7582,12 @@
       "name": "Config Unset Rules From A Collection",
       "description": "CONFIG - unset rules from a collection",
       "schema": {
+        "tags": [
+          "rule"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/configUnsetRulesFromACollection/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_generic/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -7428,7 +7659,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -7444,9 +7675,12 @@
       "name": "Billing Token Get",
       "description": "BILLING TOKEN - get",
       "schema": {
+        "tags": [
+          "payment"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/billingTokenGet/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_payment_get/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -7503,7 +7737,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -7519,9 +7753,12 @@
       "name": "Billing Token Upsert",
       "description": "BILLING TOKEN - upsert",
       "schema": {
+        "tags": [
+          "payment"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/billingTokenUpsert/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_payment_billing_token_upsert/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -7595,7 +7832,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -7611,9 +7848,12 @@
       "name": "Billing Token List By Customer",
       "description": "BILLING TOKEN - list (by customer)",
       "schema": {
+        "tags": [
+          "payment"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/billingTokenListByCustomer/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_payment_list/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -7675,7 +7915,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -7691,9 +7931,12 @@
       "name": "Instalment Unset",
       "description": "INSTALMENT - unset",
       "schema": {
+        "tags": [
+          "payment"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/instalmentUnset/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_payment_unset/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -7765,7 +8008,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -7781,9 +8024,12 @@
       "name": "Instalment Upsert",
       "description": "INSTALMENT - upsert",
       "schema": {
+        "tags": [
+          "payment"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/instalmentUpsert/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_payment_instalment_upsert/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -7908,7 +8154,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -7924,9 +8170,12 @@
       "name": "Invoice Manually Void",
       "description": "INVOICE - manually VOID",
       "schema": {
+        "tags": [
+          "payment"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/invoiceManuallyVoid/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_payment_invoice_upsert/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -8004,7 +8253,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -8020,9 +8269,12 @@
       "name": "Invoice Validate",
       "description": "INVOICE - validate",
       "schema": {
+        "tags": [
+          "payment"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/invoiceValidate/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_payment_invoice_validate/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -8079,7 +8331,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -8095,9 +8347,12 @@
       "name": "Subscription Cancel",
       "description": "SUBSCRIPTION - cancel",
       "schema": {
+        "tags": [
+          "payment"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/subscriptionCancel/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_payment_subscription_cancel/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -8167,7 +8422,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -8183,9 +8438,12 @@
       "name": "Subscription Upsert",
       "description": "SUBSCRIPTION - upsert",
       "schema": {
+        "tags": [
+          "payment"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/subscriptionUpsert/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_payment_subscription_upsert/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -8250,7 +8508,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -8266,9 +8524,12 @@
       "name": "Subscription Billing Token Upsert",
       "description": "SUBSCRIPTION BILLING TOKEN - upsert",
       "schema": {
+        "tags": [
+          "payment"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/subscriptionBillingTokenUpsert/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_payment_subscription_billing_token_upsert/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -8334,7 +8595,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -8350,9 +8611,12 @@
       "name": "Subscription Config Publish Draft Only",
       "description": "SUBSCRIPTION CONFIG - publish (draft only)",
       "schema": {
+        "tags": [
+          "payment"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/subscriptionConfigPublishDraftOnly/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_payment_publish/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -8409,7 +8673,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -8425,9 +8689,12 @@
       "name": "Subscription Config Upsert Draft Only",
       "description": "SUBSCRIPTION CONFIG - upsert (draft only)",
       "schema": {
+        "tags": [
+          "payment"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/subscriptionConfigUpsertDraftOnly/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_payment_subscription_config_upsert/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -8746,7 +9013,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -8762,9 +9029,12 @@
       "name": "Transaction Execute Gateway Call",
       "description": "TRANSACTION - execute (gateway call)",
       "schema": {
+        "tags": [
+          "payment"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/transactionExecuteGatewayCall/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_payment_transaction_upsert/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -8825,7 +9095,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -8841,9 +9111,12 @@
       "name": "Permission Create",
       "description": "PERMISSION - create",
       "schema": {
+        "tags": [
+          "permission"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/permissionCreate/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_permission_create_permission/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -8905,7 +9178,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -8921,9 +9194,12 @@
       "name": "Permission Get",
       "description": "PERMISSION - get",
       "schema": {
+        "tags": [
+          "permission"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/permissionGet/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_permission_get_permission/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -8980,7 +9256,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -8996,9 +9272,12 @@
       "name": "Permission List",
       "description": "PERMISSION - list",
       "schema": {
+        "tags": [
+          "permission"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/permissionList/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_permission_list_permission/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -9051,7 +9330,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -9067,9 +9346,12 @@
       "name": "Permission List Details",
       "description": "PERMISSION - list details",
       "schema": {
+        "tags": [
+          "permission"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/permissionListDetails/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_permission_list_permission_detail/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -9122,7 +9404,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -9138,9 +9420,12 @@
       "name": "Permission Upsert",
       "description": "PERMISSION - upsert",
       "schema": {
+        "tags": [
+          "permission"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/permissionUpsert/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_permission_upsert_permission/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -9206,7 +9491,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -9222,9 +9507,12 @@
       "name": "Role Create",
       "description": "ROLE - create",
       "schema": {
+        "tags": [
+          "permission"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/roleCreate/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_permission_create_role/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -9296,7 +9584,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -9312,9 +9600,12 @@
       "name": "Role Get",
       "description": "ROLE - get",
       "schema": {
+        "tags": [
+          "permission"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/roleGet/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_permission_get_role/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -9371,7 +9662,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -9387,9 +9678,12 @@
       "name": "Role List",
       "description": "ROLE - list",
       "schema": {
+        "tags": [
+          "permission"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/roleList/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_permission_list_role/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -9457,7 +9751,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -9473,9 +9767,12 @@
       "name": "Role Upsert",
       "description": "ROLE - upsert",
       "schema": {
+        "tags": [
+          "permission"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/roleUpsert/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_permission_upsert_role/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -9553,7 +9850,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -9569,9 +9866,12 @@
       "name": "Get Platform Definition",
       "description": "Get platform definition",
       "schema": {
+        "tags": [
+          "platform"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/getPlatformDefinition/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_platform_get/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -9628,7 +9928,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -9644,9 +9944,12 @@
       "name": "Get Platform Definition At Offset",
       "description": "Get platform definition at offset",
       "schema": {
+        "tags": [
+          "platform"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/getPlatformDefinitionAtOffset/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_platform_history/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -9703,7 +10006,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -9719,9 +10022,12 @@
       "name": "Update Platform",
       "description": "Update platform",
       "schema": {
+        "tags": [
+          "platform"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/updatePlatform/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_platform_upsert/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -9932,7 +10238,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -9948,9 +10254,12 @@
       "name": "Create Product",
       "description": "create product",
       "schema": {
+        "tags": [
+          "product"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/createProduct/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_product_upsert/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -10012,7 +10321,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -10028,9 +10337,12 @@
       "name": "Get Product At Offset",
       "description": "Get product at offset",
       "schema": {
+        "tags": [
+          "render"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/getProductAtOffset/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_product_get/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -10096,7 +10408,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -10112,9 +10424,12 @@
       "name": "List All Products",
       "description": "List all products",
       "schema": {
+        "tags": [
+          "product"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/listAllProducts/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_product_list/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -10176,7 +10491,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -10192,9 +10507,12 @@
       "name": "Get History",
       "description": "Get history",
       "schema": {
+        "tags": [
+          "product"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/getHistory/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_product_history/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -10251,7 +10569,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -10267,9 +10585,12 @@
       "name": "Profile Create",
       "description": "PROFILE - Create",
       "schema": {
+        "tags": [
+          "profile"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/profileCreate/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_profilev3_create/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -10343,7 +10664,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -10359,9 +10680,12 @@
       "name": "Profile Get",
       "description": "PROFILE - get",
       "schema": {
+        "tags": [
+          "profile"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/profileGet/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_profilev3_get/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -10410,7 +10734,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -10426,9 +10750,12 @@
       "name": "Profile Get Session",
       "description": "PROFILE - get session",
       "schema": {
+        "tags": [
+          "profile"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/profileGetSession/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_profilev3_get_profile-session/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -10464,7 +10791,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -10480,9 +10807,12 @@
       "name": "Profile List Draft",
       "description": "PROFILE - list draft",
       "schema": {
+        "tags": [
+          "profile"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/profileListDraft/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_profilev3_list/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -10544,7 +10874,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -10560,9 +10890,12 @@
       "name": "Profile Publish",
       "description": "PROFILE - publish",
       "schema": {
+        "tags": [
+          "profile"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/profilePublish/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_profilev3_publish/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -10619,7 +10952,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -10635,9 +10968,12 @@
       "name": "Profile Update",
       "description": "PROFILE - update",
       "schema": {
+        "tags": [
+          "profile"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/profileUpdate/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_profilev3_update/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -10703,7 +11039,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -10719,9 +11055,12 @@
       "name": "Profile Config Update User Profile Display Prefs",
       "description": "PROFILE CONFIG - update user profile display prefs",
       "schema": {
+        "tags": [
+          "profile"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/profileConfigUpdateUserProfileDisplayPrefs/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_profilev3_update_config/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -11018,7 +11357,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -11034,9 +11373,12 @@
       "name": "Profile User Get From Aggregator",
       "description": "PROFILE USER - get from aggregator",
       "schema": {
+        "tags": [
+          "profile"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/profileUserGetFromAggregator/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_profilev3_get-aggregate/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -11089,7 +11431,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -11105,9 +11447,12 @@
       "name": "Profile User Latest Profile",
       "description": "PROFILE USER - latest profile",
       "schema": {
+        "tags": [
+          "profile"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/profileUserLatestProfile/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_profilev3_get-latest-user-profile/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -11169,7 +11514,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -11185,9 +11530,12 @@
       "name": "Profile User Get By Email",
       "description": "PROFILE USER - GET by email",
       "schema": {
+        "tags": [
+          "profile"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/profileUserGetByEmail/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_profilev3_search/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -11249,7 +11597,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -11265,9 +11613,12 @@
       "name": "Profile User Switch Profile",
       "description": "PROFILE USER - switch profile",
       "schema": {
+        "tags": [
+          "profile"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/profileUserSwitchProfile/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_profilev3_switchRole/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -11358,7 +11709,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -11374,9 +11725,12 @@
       "name": "Answer Clone By Topic Prefix",
       "description": "ANSWER - clone (by topic prefix)",
       "schema": {
+        "tags": [
+          "question"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/answerCloneByTopicPrefix/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_question_clone/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -11442,7 +11796,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -11458,9 +11812,12 @@
       "name": "Answer Get",
       "description": "ANSWER - get",
       "schema": {
+        "tags": [
+          "question"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/answerGet/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_question_get_answer/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -11526,7 +11883,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -11542,9 +11899,12 @@
       "name": "Answer Testkv",
       "description": "ANSWER - testkv",
       "schema": {
+        "tags": [
+          "question"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/answerTestkv/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_question_test_kv/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -11614,7 +11974,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -11630,9 +11990,12 @@
       "name": "Answer List By Topic Prefix",
       "description": "ANSWER - list (by topic prefix)",
       "schema": {
+        "tags": [
+          "question"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/answerListByTopicPrefix/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_question_list_answer/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -11694,7 +12057,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -11710,9 +12073,12 @@
       "name": "Answer Upsert",
       "description": "ANSWER - upsert",
       "schema": {
+        "tags": [
+          "question"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/answerUpsert/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_question_upsert_answer/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -11778,7 +12144,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -11794,9 +12160,12 @@
       "name": "Question Fix All Question Only Use Once Per Environment",
       "description": "QUESTION - fix-all-question - ONLY USE ONCE PER ENVIRONMENT",
       "schema": {
+        "tags": [
+          "question"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/questionFixAllQuestionOnlyUseOncePerEnvironment/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_question_fix-all_question/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -11859,7 +12228,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -11875,9 +12244,12 @@
       "name": "Question Get Draft",
       "description": "QUESTION - get (draft)",
       "schema": {
+        "tags": [
+          "question"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/questionGetDraft/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_question_get_question/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -11934,7 +12306,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -11950,9 +12322,12 @@
       "name": "Question List Published",
       "description": "QUESTION - list (published)",
       "schema": {
+        "tags": [
+          "question"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/questionListPublished/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_question_list_question/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -12244,7 +12619,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -12260,9 +12635,12 @@
       "name": "Question Publish",
       "description": "QUESTION - publish",
       "schema": {
+        "tags": [
+          "question"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/questionPublish/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_question_publish_question/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -12319,7 +12697,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -12335,9 +12713,12 @@
       "name": "Question Publish Multi",
       "description": "QUESTION - publish multi",
       "schema": {
+        "tags": [
+          "question"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/questionPublishMulti/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_question_publish-multi_question/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -12400,7 +12781,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -12416,9 +12797,12 @@
       "name": "Question Upsert Delete Draft",
       "description": "QUESTION - upsert delete (draft)",
       "schema": {
+        "tags": [
+          "question"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/questionUpsertDeleteDraft/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_question_upsert_question/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -12553,7 +12937,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -12569,9 +12953,12 @@
       "name": "Question Upsert Multi Draft",
       "description": "QUESTION - upsert multi (draft)",
       "schema": {
+        "tags": [
+          "question"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/questionUpsertMultiDraft/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_question_upsert-multi_question/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -16949,7 +17336,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -16965,9 +17352,12 @@
       "name": "Question List All",
       "description": "QUESTION - list (all)",
       "schema": {
+        "tags": [
+          "question"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/questionListAll/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_question_list-topics_question/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -17028,7 +17418,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -17044,9 +17434,12 @@
       "name": "Node Upsert Draft",
       "description": "NODE - upsert (draft)",
       "schema": {
+        "tags": [
+          "render"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/nodeUpsertDraft/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_render_upsert_node/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -17120,7 +17513,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -17136,9 +17529,12 @@
       "name": "Multi Upsert Release",
       "description": "multi-upsert-release",
       "schema": {
+        "tags": [
+          "release"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/multiUpsertRelease/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_configrelease/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -17339,7 +17735,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -17355,9 +17751,12 @@
       "name": "Navigation Event",
       "description": "NAVIGATION event",
       "schema": {
+        "tags": [
+          "render"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/navigationEvent/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_render_create/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -17423,7 +17822,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -17439,9 +17838,12 @@
       "name": "Navigation Latest For Form",
       "description": "NAVIGATION latest for form",
       "schema": {
+        "tags": [
+          "render"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/navigationLatestForForm/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_render_get/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -17498,7 +17900,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -17514,9 +17916,12 @@
       "name": "Navigation List Events For Form",
       "description": "NAVIGATION list events for form",
       "schema": {
+        "tags": [
+          "render"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/navigationListEventsForForm/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_render_get_events/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -17573,7 +17978,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -17589,9 +17994,12 @@
       "name": "Composer Get",
       "description": "COMPOSER - get",
       "schema": {
+        "tags": [
+          "render"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/composerGet/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_render_get_composer/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -17648,7 +18056,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -17664,9 +18072,12 @@
       "name": "Composer List",
       "description": "COMPOSER - list",
       "schema": {
+        "tags": [
+          "render"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/composerList/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_render_list_composer/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -17719,7 +18130,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -17735,9 +18146,12 @@
       "name": "Composer Publish",
       "description": "COMPOSER - publish",
       "schema": {
+        "tags": [
+          "render"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/composerPublish/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_render_composer/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -17928,7 +18342,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -17944,9 +18358,12 @@
       "name": "Composer Unset",
       "description": "COMPOSER - unset",
       "schema": {
+        "tags": [
+          "render"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/composerUnset/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_render_unset/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -18018,7 +18435,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -18034,9 +18451,12 @@
       "name": "Config Get",
       "description": "CONFIG - get",
       "schema": {
+        "tags": [
+          "render"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/configGet/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_render_get_config/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -18093,7 +18513,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -18109,9 +18529,12 @@
       "name": "Config Upsert",
       "description": "CONFIG - upsert",
       "schema": {
+        "tags": [
+          "render"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/configUpsert/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_render_config_upsert/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -18203,7 +18626,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -18219,9 +18642,12 @@
       "name": "Node Convert To Node Draft",
       "description": "NODE - convert to node (draft)",
       "schema": {
+        "tags": [
+          "render"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/nodeConvertToNodeDraft/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_render_covert_to-node/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -19450,7 +19876,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -19466,9 +19892,12 @@
       "name": "Node Get Draft",
       "description": "NODE - get (draft)",
       "schema": {
+        "tags": [
+          "render"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/nodeGetDraft/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_render_get_node/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -19525,7 +19954,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -19541,9 +19970,12 @@
       "name": "Node List By Root Draft",
       "description": "NODE - list by root (draft)",
       "schema": {
+        "tags": [
+          "render"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/nodeListByRootDraft/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_render_list_node/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -19605,7 +20037,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -19615,7 +20047,7 @@
         "output": [
           {
             "$schema": "$ref:schema",
-            "$id": "https://datahub.com/integration/Cloudstream-API/nodeListByRootDraft/output-200.schema.json",
+            "$id": "https://datahub.com/integration/Cloudstream-API/post_render_list_node/output-200.schema.json",
             "type": "object",
             "properties": {
               "body": {
@@ -20255,9 +20687,12 @@
       "name": "Node Publish",
       "description": "NODE - publish",
       "schema": {
+        "tags": [
+          "render"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/nodePublish/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_render_publish_node/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -20314,7 +20749,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -20330,9 +20765,12 @@
       "name": "Node Publish Recursive",
       "description": "NODE - publish recursive",
       "schema": {
+        "tags": [
+          "render"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/nodePublishRecursive/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_render_publish_recursive/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -20389,7 +20827,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -20405,9 +20843,12 @@
       "name": "Node Upsert And Publish Multi",
       "description": "NODE - upsert and publish multi",
       "schema": {
+        "tags": [
+          "render"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/nodeUpsertAndPublishMulti/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_render_multi-upsert_node/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -20804,7 +21245,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -20820,9 +21261,12 @@
       "name": "Set Rules Multi",
       "description": "Set Rules Multi",
       "schema": {
+        "tags": [
+          "rule"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/setRulesMulti/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_rule_config/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -20875,7 +21319,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -20891,9 +21335,12 @@
       "name": "Run Ruleset Via Pegasus",
       "description": "Run Ruleset via Pegasus",
       "schema": {
+        "tags": [
+          "rule"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/runRulesetViaPegasus/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_rule_action/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -20976,108 +21423,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
-          },
-          "required": [
-            "url",
-            "method"
-          ]
-        },
-        "output": []
-      }
-    },
-    {
-      "id": "post_rule_run",
-      "operationId": "deprecatedLocalBalrogRunRules",
-      "name": "Deprecated Local Balrog Run Rules",
-      "description": "[DEPRECATED] [LOCAL] Balrog run rules",
-      "schema": {
-        "input": {
-          "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/deprecatedLocalBalrogRunRules/input.schema.json",
-          "type": "object",
-          "properties": {
-            "url": {
-              "type": "string",
-              "const": "/rule/run"
-            },
-            "method": {
-              "type": "string",
-              "const": "post"
-            },
-            "query": {
-              "type": "object",
-              "description": "$ref:queryDesc",
-              "properties": {}
-            },
-            "params": {
-              "type": "object",
-              "description": "$ref:paramDesc",
-              "properties": {}
-            },
-            "headers": {
-              "type": "object",
-              "description": "$ref:headerDesc",
-              "properties": {
-                "Content-Type": {
-                  "type": "string",
-                  "const": "application/json"
-                }
-              }
-            },
-            "data": {
-              "description": "$ref:dataDesc",
-              "properties": {
-                "type": "object",
-                "properties": {
-                  "body": {
-                    "type": "object",
-                    "properties": {
-                      "facts": {
-                        "type": "object",
-                        "properties": {
-                          "DEMO_GOODS_VALUE.value": {
-                            "type": "number",
-                            "example": 200
-                          },
-                          "PACK_CARRIER.value": {
-                            "type": "string",
-                            "example": "Aramex"
-                          },
-                          "PACK_GOODS.value": {
-                            "type": "string",
-                            "example": "Beauty Products"
-                          },
-                          "PACK_TRIP_TYPE.value": {
-                            "type": "string",
-                            "example": "Domestic"
-                          }
-                        }
-                      }
-                    }
-                  },
-                  "command": {
-                    "type": "string",
-                    "example": "run-collection-rules"
-                  },
-                  "subject": {
-                    "type": "string",
-                    "example": "$RULE/COLLECTION"
-                  },
-                  "topic": {
-                    "type": "string",
-                    "example": "DEMO_PACKAGE"
-                  }
-                }
-              }
-            },
-            "timeout": {
-              "type": "integer",
-              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
-              "minimum": 0,
-              "default": 0
-            },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -21093,9 +21439,12 @@
       "name": "Deprecated Run Ruleset Via Balrog",
       "description": "[DEPRECATED] Run Ruleset via Balrog",
       "schema": {
+        "tags": [
+          "rule"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/deprecatedRunRulesetViaBalrog/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_rule_balrog-run/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -21178,7 +21527,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -21188,7 +21537,7 @@
         "output": [
           {
             "$schema": "$ref:schema",
-            "$id": "https://datahub.com/integration/Cloudstream-API/deprecatedRunRulesetViaBalrog/output-200.schema.json",
+            "$id": "https://datahub.com/integration/Cloudstream-API/post_rule_balrog-run/output-200.schema.json",
             "type": "object",
             "properties": {
               "PACK_TRIP_TYPE_MODIFER.value": {
@@ -21249,14 +21598,121 @@
       }
     },
     {
+      "id": "post_rule_run",
+      "operationId": "deprecatedLocalBalrogRunRules",
+      "name": "Deprecated Local Balrog Run Rules",
+      "description": "[DEPRECATED] [LOCAL] Balrog run rules",
+      "schema": {
+        "tags": [
+          "rule"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_rule_run/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/rule/run"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "body": {
+                    "type": "object",
+                    "properties": {
+                      "facts": {
+                        "type": "object",
+                        "properties": {
+                          "DEMO_GOODS_VALUE.value": {
+                            "type": "number",
+                            "example": 200
+                          },
+                          "PACK_CARRIER.value": {
+                            "type": "string",
+                            "example": "Aramex"
+                          },
+                          "PACK_GOODS.value": {
+                            "type": "string",
+                            "example": "Beauty Products"
+                          },
+                          "PACK_TRIP_TYPE.value": {
+                            "type": "string",
+                            "example": "Domestic"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "command": {
+                    "type": "string",
+                    "example": "run-collection-rules"
+                  },
+                  "subject": {
+                    "type": "string",
+                    "example": "$RULE/COLLECTION"
+                  },
+                  "topic": {
+                    "type": "string",
+                    "example": "DEMO_PACKAGE"
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
       "id": "post_team_create",
       "operationId": "teamCreate",
       "name": "Team Create",
       "description": "TEAM - create",
       "schema": {
+        "tags": [
+          "team"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/teamCreate/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_team_create/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -21552,7 +22008,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -21568,9 +22024,12 @@
       "name": "Team Get",
       "description": "TEAM - get",
       "schema": {
+        "tags": [
+          "team"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/teamGet/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_team_get/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -21627,7 +22086,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -21643,9 +22102,12 @@
       "name": "Team List All Dp",
       "description": "TEAM - list all (DP)",
       "schema": {
+        "tags": [
+          "team"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/teamListAllDp/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_team_list/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -21698,7 +22160,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -21714,9 +22176,12 @@
       "name": "Team List By Search",
       "description": "TEAM - list by search",
       "schema": {
+        "tags": [
+          "team"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/teamListBySearch/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_team_list_search/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -21782,7 +22247,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -21798,9 +22263,12 @@
       "name": "Team Topics List",
       "description": "TEAM - topics list",
       "schema": {
+        "tags": [
+          "team"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/teamTopicsList/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_team_list_topics/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -21862,7 +22330,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -21878,9 +22346,12 @@
       "name": "Team Update",
       "description": "TEAM - update",
       "schema": {
+        "tags": [
+          "team"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/teamUpdate/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_team_update/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -22020,7 +22491,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -22036,9 +22507,12 @@
       "name": "Command Index Users",
       "description": "COMMAND - index users",
       "schema": {
+        "tags": [
+          "user"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/commandIndexUsers/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_userv3_command/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -22087,7 +22561,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -22103,9 +22577,12 @@
       "name": "Config Get",
       "description": "CONFIG - get",
       "schema": {
+        "tags": [
+          "user"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/configGet/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_userv3_get/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -22167,7 +22644,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -22183,9 +22660,12 @@
       "name": "Config List",
       "description": "CONFIG - list",
       "schema": {
+        "tags": [
+          "user"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/configList/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_userv3_list/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -22238,7 +22718,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -22254,9 +22734,12 @@
       "name": "Config Update",
       "description": "CONFIG - update",
       "schema": {
+        "tags": [
+          "user"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/configUpdate/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_userv3_update_config/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -22380,7 +22863,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -22396,9 +22879,12 @@
       "name": "User Create",
       "description": "USER - create",
       "schema": {
+        "tags": [
+          "user"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/userCreate/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_userv3_create/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -22464,7 +22950,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -22474,7 +22960,7 @@
         "output": [
           {
             "$schema": "$ref:schema",
-            "$id": "https://datahub.com/integration/Cloudstream-API/userCreate/output-200.schema.json",
+            "$id": "https://datahub.com/integration/Cloudstream-API/post_userv3_create/output-200.schema.json",
             "type": "object",
             "properties": {
               "body": {
@@ -22538,9 +23024,12 @@
       "name": "User Identify",
       "description": "USER - identify",
       "schema": {
+        "tags": [
+          "user"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/userIdentify/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_userv3_identify/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -22602,7 +23091,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -22618,9 +23107,12 @@
       "name": "User List By Search Term",
       "description": "USER - list (by search term)",
       "schema": {
+        "tags": [
+          "user"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/userListBySearchTerm/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_userv3_list_search/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -22682,7 +23174,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -22698,9 +23190,12 @@
       "name": "User Update",
       "description": "USER - update",
       "schema": {
+        "tags": [
+          "user"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/userUpdate/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_userv3_update/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -22766,7 +23261,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -22782,9 +23277,12 @@
       "name": "User Lookup By Email Exact",
       "description": "USER - lookup by email exact",
       "schema": {
+        "tags": [
+          "user"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/userLookupByEmailExact/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_userv3_lookup/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -22842,7 +23340,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -22858,9 +23356,12 @@
       "name": "User Search By Email",
       "description": "USER - search by email",
       "schema": {
+        "tags": [
+          "user"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Cloudstream-API/userSearchByEmail/input.schema.json",
+          "$id": "https://datahub.com/integration/Cloudstream-API/post_userv3_search/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -22926,7 +23427,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -22938,7 +23439,7 @@
     }
   ],
   "references": {
-    "baseUrl": {
+    "baseURL": {
       "type": "string",
       "enum": [
         "https://api.cloudstream.evari.tech/apiv2"

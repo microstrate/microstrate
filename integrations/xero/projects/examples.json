@@ -13,7 +13,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+        "baseURL": "https://api.xero.com/projects.xro/2.0"
       }
     },
     "post_Projects": {
@@ -25,7 +25,7 @@
           "Xero-Tenant-Id": "<string>"
         },
         "data": "{ \"contactId\": \"00000000-0000-0000-000-000000000000\", \"name\": \"New Kitchen\", \"deadlineUtc\": \"2019-12-10T12:59:59Z\", \"estimateAmount\": \"99.99\" }",
-        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+        "baseURL": "https://api.xero.com/projects.xro/2.0"
       }
     },
     "get_Projects__projectId_": {
@@ -38,7 +38,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+        "baseURL": "https://api.xero.com/projects.xro/2.0"
       }
     },
     "patch_Projects__projectId_": {
@@ -53,7 +53,7 @@
           "projectId": "<string>"
         },
         "data": "{ \"status\": \"INPROGRESS\" }",
-        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+        "baseURL": "https://api.xero.com/projects.xro/2.0"
       }
     },
     "put_Projects__projectId_": {
@@ -68,7 +68,7 @@
           "projectId": "<string>"
         },
         "data": "{ \"name\": \"New Kitchen\", \"deadlineUtc\": \"2017-04-23T18:25:43.511Z\", \"estimateAmount\": 99.99 }",
-        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+        "baseURL": "https://api.xero.com/projects.xro/2.0"
       }
     },
     "get_ProjectsUsers": {
@@ -82,7 +82,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+        "baseURL": "https://api.xero.com/projects.xro/2.0"
       }
     },
     "get_Projects__projectId__Tasks": {
@@ -101,7 +101,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+        "baseURL": "https://api.xero.com/projects.xro/2.0"
       }
     },
     "post_Projects__projectId__Tasks": {
@@ -116,7 +116,7 @@
           "projectId": "<string>"
         },
         "data": "{ \"status\": \"INPROGRESS\" }",
-        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+        "baseURL": "https://api.xero.com/projects.xro/2.0"
       }
     },
     "get_Projects__projectId__Tasks__taskId_": {
@@ -130,7 +130,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+        "baseURL": "https://api.xero.com/projects.xro/2.0"
       }
     },
     "delete_Projects__projectId__Tasks__taskId_": {
@@ -144,7 +144,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+        "baseURL": "https://api.xero.com/projects.xro/2.0"
       }
     },
     "put_Projects__projectId__Tasks__taskId_": {
@@ -160,7 +160,7 @@
           "taskId": "<string>"
         },
         "data": "",
-        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+        "baseURL": "https://api.xero.com/projects.xro/2.0"
       }
     },
     "get_Projects__projectId__Time": {
@@ -185,7 +185,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+        "baseURL": "https://api.xero.com/projects.xro/2.0"
       }
     },
     "post_Projects__projectId__Time": {
@@ -200,7 +200,7 @@
           "projectId": "<string>"
         },
         "data": "{ \"userId\": \"00000000-0000-0000-0000-000000000000\", \"taskId\": \"00000000-0000-0000-0000-000000000000\", \"dateUtc\": \"2020-02-26T15:00:00Z\", \"duration\":30, \"description\": \"My description\" }",
-        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+        "baseURL": "https://api.xero.com/projects.xro/2.0"
       }
     },
     "get_Projects__projectId__Time__timeEntryId_": {
@@ -214,7 +214,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+        "baseURL": "https://api.xero.com/projects.xro/2.0"
       }
     },
     "delete_Projects__projectId__Time__timeEntryId_": {
@@ -228,7 +228,7 @@
         "headers": {
           "Xero-Tenant-Id": "<string>"
         },
-        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+        "baseURL": "https://api.xero.com/projects.xro/2.0"
       }
     },
     "put_Projects__projectId__Time__timeEntryId_": {
@@ -244,7 +244,7 @@
           "timeEntryId": "<string>"
         },
         "data": "{ \"userId\": \"00000000-0000-0000-0000-000000000000\", \"taskId\": \"00000000-0000-0000-0000-000000000000\", \"dateUtc\": \"2020-02-27T15:00:00Z\", \"duration\":45, \"description\": \"My UPDATED description\" }",
-        "baseUrl": "https://api.xero.com/projects.xro/2.0"
+        "baseURL": "https://api.xero.com/projects.xro/2.0"
       }
     }
-}
+  }

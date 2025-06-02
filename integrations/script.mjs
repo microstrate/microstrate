@@ -45,7 +45,6 @@ async function main() {
       }
     }
     if (entry.isGroup) {
-      console.log("entry is group")
       continue;
     }
 
@@ -75,6 +74,7 @@ async function main() {
       id: node.id,
       name: node.name,
       description: node.description,
+      tags: node.schema.tags,
       method: node.schema?.input?.properties?.method?.const || "undefined",
     }));
 

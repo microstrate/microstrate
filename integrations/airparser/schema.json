@@ -8,9 +8,12 @@
       "name": "List Inboxes",
       "description": "List inboxes",
       "schema": {
+        "tags": [
+          "Inboxes"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Airparser-API/listInboxes/input.schema.json",
+          "$id": "https://datahub.com/integration/Airparser-API/get_inboxes/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -46,7 +49,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -56,7 +59,7 @@
         "output": [
           {
             "$schema": "$ref:schema",
-            "$id": "https://datahub.com/integration/Airparser-API/listInboxes/output-401.schema.json",
+            "$id": "https://datahub.com/integration/Airparser-API/get_inboxes/output-401.schema.json",
             "type": "object",
             "properties": {
               "error": {
@@ -74,9 +77,12 @@
       "name": "Delete Inbox",
       "description": "Delete an inbox",
       "schema": {
+        "tags": [
+          "Inboxes"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Airparser-API/deleteInbox/input.schema.json",
+          "$id": "https://datahub.com/integration/Airparser-API/delete_inboxes__inbox_id_/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -120,7 +126,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -130,7 +136,7 @@
         "output": [
           {
             "$schema": "$ref:schema",
-            "$id": "https://datahub.com/integration/Airparser-API/deleteInbox/output-401.schema.json",
+            "$id": "https://datahub.com/integration/Airparser-API/delete_inboxes__inbox_id_/output-401.schema.json",
             "type": "object",
             "properties": {
               "error": {
@@ -148,9 +154,12 @@
       "name": "Upload Document",
       "description": "Upload a document",
       "schema": {
+        "tags": [
+          "Documents"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Airparser-API/uploadDocument/input.schema.json",
+          "$id": "https://datahub.com/integration/Airparser-API/post_inboxes__inbox_id__upload/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -216,7 +225,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -226,7 +235,7 @@
         "output": [
           {
             "$schema": "$ref:schema",
-            "$id": "https://datahub.com/integration/Airparser-API/uploadDocument/output-200.schema.json",
+            "$id": "https://datahub.com/integration/Airparser-API/post_inboxes__inbox_id__upload/output-200.schema.json",
             "type": "object",
             "properties": {
               "document_id": {
@@ -237,7 +246,7 @@
           },
           {
             "$schema": "$ref:schema",
-            "$id": "https://datahub.com/integration/Airparser-API/uploadDocument/output-401.schema.json",
+            "$id": "https://datahub.com/integration/Airparser-API/post_inboxes__inbox_id__upload/output-401.schema.json",
             "type": "object",
             "properties": {
               "error": {
@@ -255,9 +264,12 @@
       "name": "List Documents",
       "description": "List documents",
       "schema": {
+        "tags": [
+          "Documents"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Airparser-API/listDocuments/input.schema.json",
+          "$id": "https://datahub.com/integration/Airparser-API/get_inboxes__inbox_id__docs/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -337,7 +349,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -347,7 +359,7 @@
         "output": [
           {
             "$schema": "$ref:schema",
-            "$id": "https://datahub.com/integration/Airparser-API/listDocuments/output-200.schema.json",
+            "$id": "https://datahub.com/integration/Airparser-API/get_inboxes__inbox_id__docs/output-200.schema.json",
             "type": "object",
             "properties": {
               "documents": {
@@ -417,7 +429,7 @@
           },
           {
             "$schema": "$ref:schema",
-            "$id": "https://datahub.com/integration/Airparser-API/listDocuments/output-401.schema.json",
+            "$id": "https://datahub.com/integration/Airparser-API/get_inboxes__inbox_id__docs/output-401.schema.json",
             "type": "object",
             "properties": {
               "error": {
@@ -435,9 +447,12 @@
       "name": "Get Document",
       "description": "Get a document",
       "schema": {
+        "tags": [
+          "Documents"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Airparser-API/getDocument/input.schema.json",
+          "$id": "https://datahub.com/integration/Airparser-API/get_docs__document_id__extended/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -481,7 +496,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -491,7 +506,7 @@
         "output": [
           {
             "$schema": "$ref:schema",
-            "$id": "https://datahub.com/integration/Airparser-API/getDocument/output-200.schema.json",
+            "$id": "https://datahub.com/integration/Airparser-API/get_docs__document_id__extended/output-200.schema.json",
             "type": "object",
             "properties": {
               "id": {
@@ -512,7 +527,7 @@
           },
           {
             "$schema": "$ref:schema",
-            "$id": "https://datahub.com/integration/Airparser-API/getDocument/output-401.schema.json",
+            "$id": "https://datahub.com/integration/Airparser-API/get_docs__document_id__extended/output-401.schema.json",
             "type": "object",
             "properties": {
               "error": {
@@ -530,9 +545,12 @@
       "name": "Update Extraction Schema",
       "description": "Create/edit an extraction schema",
       "schema": {
+        "tags": [
+          "Extraction Schema"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Airparser-API/updateExtractionSchema/input.schema.json",
+          "$id": "https://datahub.com/integration/Airparser-API/post_inboxes__inbox_id__schema/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -836,7 +854,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -846,7 +864,7 @@
         "output": [
           {
             "$schema": "$ref:schema",
-            "$id": "https://datahub.com/integration/Airparser-API/updateExtractionSchema/output-401.schema.json",
+            "$id": "https://datahub.com/integration/Airparser-API/post_inboxes__inbox_id__schema/output-401.schema.json",
             "type": "object",
             "properties": {
               "error": {
@@ -864,9 +882,12 @@
       "name": "Clone Extraction Schema",
       "description": "Clone an extraction schema between inboxes",
       "schema": {
+        "tags": [
+          "Extraction Schema"
+        ],
         "input": {
           "$schema": "$ref:schema",
-          "$id": "https://datahub.com/integration/Airparser-API/cloneExtractionSchema/input.schema.json",
+          "$id": "https://datahub.com/integration/Airparser-API/post_inboxes__inbox_id__schema-clone/input.schema.json",
           "type": "object",
           "properties": {
             "url": {
@@ -926,7 +947,7 @@
               "minimum": 0,
               "default": 0
             },
-            "baseUrl": "$ref:baseUrl"
+            "baseURL": "$ref:baseURL"
           },
           "required": [
             "url",
@@ -936,7 +957,7 @@
         "output": [
           {
             "$schema": "$ref:schema",
-            "$id": "https://datahub.com/integration/Airparser-API/cloneExtractionSchema/output-401.schema.json",
+            "$id": "https://datahub.com/integration/Airparser-API/post_inboxes__inbox_id__schema-clone/output-401.schema.json",
             "type": "object",
             "properties": {
               "error": {
@@ -950,7 +971,7 @@
     }
   ],
   "references": {
-    "baseUrl": {
+    "baseURL": {
       "type": "string",
       "enum": [
         "https://api.airparser.com"

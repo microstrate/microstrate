@@ -11,7 +11,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+        "baseURL": "https://api.xero.com/files.xro/1.0/"
       }
     },
     "post_Files": {
@@ -28,7 +28,7 @@
           "filename": "",
           "mimeType": ""
         },
-        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+        "baseURL": "https://api.xero.com/files.xro/1.0/"
       }
     },
     "get_Files__FileId_": {
@@ -41,7 +41,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+        "baseURL": "https://api.xero.com/files.xro/1.0/"
       }
     },
     "delete_Files__FileId_": {
@@ -54,7 +54,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+        "baseURL": "https://api.xero.com/files.xro/1.0/"
       }
     },
     "put_Files__FileId_": {
@@ -69,7 +69,7 @@
           "FileId": "<string>"
         },
         "data": "{ \"FolderId\": \"bf924975-7097-46f2-a143-1ecfbab3c8c3\" }",
-        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+        "baseURL": "https://api.xero.com/files.xro/1.0/"
       }
     },
     "post_Files__FolderId_": {
@@ -89,7 +89,7 @@
           "filename": "",
           "mimeType": ""
         },
-        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+        "baseURL": "https://api.xero.com/files.xro/1.0/"
       }
     },
     "get_Files__FileId__Content": {
@@ -102,7 +102,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+        "baseURL": "https://api.xero.com/files.xro/1.0/"
       }
     },
     "get_Files__FileId__Associations": {
@@ -115,7 +115,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+        "baseURL": "https://api.xero.com/files.xro/1.0/"
       }
     },
     "post_Files__FileId__Associations": {
@@ -130,7 +130,7 @@
           "FileId": "<string>"
         },
         "data": "{ \"ObjectId\": \"1270bf7c-5d18-473a-9231-1e36c4bd33ed\", \"ObjectGroup\": \"Contact\", \"ObjectType\": \"Business\" }",
-        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+        "baseURL": "https://api.xero.com/files.xro/1.0/"
       }
     },
     "delete_Files__FileId__Associations__ObjectId_": {
@@ -144,7 +144,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+        "baseURL": "https://api.xero.com/files.xro/1.0/"
       }
     },
     "get_Associations__ObjectId_": {
@@ -163,7 +163,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+        "baseURL": "https://api.xero.com/files.xro/1.0/"
       }
     },
     "get_Associations_Count": {
@@ -176,7 +176,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+        "baseURL": "https://api.xero.com/files.xro/1.0/"
       }
     },
     "get_Folders": {
@@ -189,7 +189,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+        "baseURL": "https://api.xero.com/files.xro/1.0/"
       }
     },
     "post_Folders": {
@@ -201,7 +201,7 @@
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
         "data": "{ \"Name\": \"My Docs\" }",
-        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+        "baseURL": "https://api.xero.com/files.xro/1.0/"
       }
     },
     "get_Folders__FolderId_": {
@@ -214,7 +214,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+        "baseURL": "https://api.xero.com/files.xro/1.0/"
       }
     },
     "delete_Folders__FolderId_": {
@@ -227,7 +227,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+        "baseURL": "https://api.xero.com/files.xro/1.0/"
       }
     },
     "put_Folders__FolderId_": {
@@ -242,7 +242,7 @@
           "FolderId": "<string>"
         },
         "data": "{ \"Name\": \"Your Docs\" }",
-        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+        "baseURL": "https://api.xero.com/files.xro/1.0/"
       }
     },
     "get_Inbox": {
@@ -252,7 +252,7 @@
         "headers": {
           "xero-tenant-id": "YOUR_XERO_TENANT_ID"
         },
-        "baseUrl": "https://api.xero.com/files.xro/1.0/"
+        "baseURL": "https://api.xero.com/files.xro/1.0/"
       }
     }
-}
+  }

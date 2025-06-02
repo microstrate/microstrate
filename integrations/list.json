@@ -1,85 +1,93 @@
 [
-	{
-		"name": "Slack",
-		"note": "Manage messages,users,and channels in Slack programmatically.",
-		"folder": "slack"
-	},
-	{
-		"name": "Sendgrid",
-		"note": "Track and filter email events for better delivery insights.",
-		"folder": "sendgrid"
-	},
-	{
-		"name": "Open AI",
-		"note": "Generate and analyze text with powerful language models.",
-		"folder": "openai"
-	},
-	{
-		"name": "Github",
-		"note": "Interact with GitHub repositories,issues,and pull requests.",
-		"folder": "github"
-	},
-	{
-		"name": "Google Maps",
-		"note": "API Specification for Google Maps Platform",
-		"folder": "google-maps"
-	},
-	{
-		"name": "Cloudstream API",
-		"note": "Comprehensive API for Cloudstream Mordor services",
-		"folder": "cloudstream"
-	},
-	{
-		"name": "Airparser API",
-		"note": "Document parsing service that extracts  data from documents using AI",
-		"folder": "airparser"
-	},
-	{
-		"name": "Xero APIs",
-		"note": "Xero APIs",
-		"folder":"xero",
-		"isGroup": true
-	},
-	{
-		"group" : "xero",
-		"name": "Xero Accounting",
-		"note": "Xero Accounting API",
-		"folder": "accounting"
-	},
-	{
-		"group" : "xero",
-		"name": "Xero Assets",
-		"note": "Xero Assets API",
-		"folder": "assets"
-	},
-	{
-		"group" : "xero",
-		"name": "Xero Bank Feeds",
-		"note": "Xero Bank Feeds API",
-		"folder": "bank-feeds"
-	},
-	{
-		"group" : "xero",
-		"name": "Xero Files",
-		"note": "Xero Files API",
-		"folder": "files"
-	},
-	{
-		"group" : "xero",
-		"name": "Xero Identity",
-		"note": "Xero Identity API",
-		"folder": "identity"
-	},
-	{
-		"group" : "xero",
-		"name": "Xero Payroll UK",
-		"note": "Xero Payroll UK API",
-		"folder": "payroll-uk"
-	},
-	{
-		"group" : "xero",
-		"name": "Xero Projects",
-		"note": "Xero Projects API",
-		"folder": "projects"
-	}
+  {
+    "name": "Slack",
+    "note": "Manage messages,users,and channels in Slack programmatically.",
+    "folder": "slack",
+    "categories":[ "communication"]
+  },
+  {
+    "name": "Sendgrid",
+    "note": "Track and filter email events for better delivery insights.",
+    "folder": "sendgrid",
+    "categories":[ "communication"]
+  },
+  {
+    "name": "Open AI",
+    "note": "Generate and analyze text with powerful language models.",
+    "folder": "openai",
+    "categories": ["ai-ml"]
+  },
+  {
+    "name": "Github",
+    "note": "Interact with GitHub repositories,issues,and pull requests.",
+    "folder": "github",
+    "categories": ["developer-tools"]
+  },
+  {
+    "name": "Google Maps",
+    "note": "API Specification for Google Maps Platform",
+    "folder": "google-maps",
+    "categories": ["google","geolocation"]
+  },
+  {
+    "name": "Cloudstream API",
+    "note": "Comprehensive API for Cloudstream Mordor services",
+    "folder": "cloudstream",
+    "categories": ["evari","media-streaming"]
+  },
+  {
+    "name": "Airparser API",
+    "note": "Document parsing service that extracts  data from documents using AI",
+    "folder": "airparser",
+    "categories": ["document","ai-ml"]
+  },
+  {
+    "name": "Xero APIs",
+    "note": "Xero APIs",
+    "folder": "xero",
+    "isGroup": true,
+    "categories": ["accounting"]
+  },
+  {
+    "group": "xero",
+    "name": "Xero Accounting",
+    "note": "Xero Accounting API",
+    "folder": "accounting"
+  },
+  {
+    "group": "xero",
+    "name": "Xero Assets",
+    "note": "Xero Assets API",
+    "folder": "assets"
+  },
+  {
+    "group": "xero",
+    "name": "Xero Bank Feeds",
+    "note": "Xero Bank Feeds API",
+    "folder": "bank-feeds"
+  },
+  {
+    "group": "xero",
+    "name": "Xero Files",
+    "note": "Xero Files API",
+    "folder": "files"
+  },
+  {
+    "group": "xero",
+    "name": "Xero Identity",
+    "note": "Xero Identity API",
+    "folder": "identity"
+  },
+  {
+    "group": "xero",
+    "name": "Xero Payroll UK",
+    "note": "Xero Payroll UK API",
+    "folder": "payroll-uk"
+  },
+  {
+    "group": "xero",
+    "name": "Xero Projects",
+    "note": "Xero Projects API",
+    "folder": "projects"
+  }
 ]
