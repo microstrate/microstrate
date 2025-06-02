@@ -1,4 +1,10 @@
 [
+   {
+    "folder": "asana",
+    "name": "Asana",
+    "note": "Task and project management - Asana API",
+    "categories" : ["project-management"]
+  },
   {
     "name": "Slack",
     "note": "Manage messages,users,and channels in Slack programmatically.",
@@ -89,5 +95,17 @@
     "name": "Xero Projects",
     "note": "Xero Projects API",
     "folder": "projects"
+  },
+  {
+    "folder": "twilio",
+    "name": "Twilio",
+    "note": "Customer APIs with AI and data for SMS, Voice, Email",
+    "categories" : ["communication","messaging", "voice","email","sms"]
+  },
+  {
+    "folder": "zoom",
+    "name": "Zoom",
+    "note": "Video meetings and webinars - Zoom API",
+    "categories" : ["video", "video-conferencing"]
   }
 ]

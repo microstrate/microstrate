@@ -1,0 +1,3385 @@
+{
+    "get_2010-04-01_Accounts_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts.json",
+        "method": "get",
+        "query": {
+          "FriendlyName": "friendly_name",
+          "Status": "active",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts.json",
+        "method": "post",
+        "data": {
+          "FriendlyName": "friendly_name"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{Sid}.json",
+        "method": "get",
+        "path": {
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{Sid}.json",
+        "method": "post",
+        "path": {
+          "Sid": "<string>"
+        },
+        "data": {
+          "FriendlyName": "friendly_name",
+          "Status": "active"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Addresses_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Addresses.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "CustomerName": "customer_name",
+          "FriendlyName": "friendly_name",
+          "EmergencyEnabled": "<boolean>",
+          "IsoCountry": "US",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Addresses_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Addresses.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "data": {
+          "City": "city",
+          "CustomerName": "customer_name",
+          "FriendlyName": "friendly_name",
+          "IsoCountry": "US",
+          "PostalCode": "postal_code",
+          "Region": "region",
+          "Street": "street"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Addresses__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Addresses/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Addresses__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Addresses/{Sid}.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "data": {
+          "City": "city",
+          "CustomerName": "customer_name",
+          "FriendlyName": "friendly_name",
+          "PostalCode": "postal_code",
+          "Region": "region",
+          "Street": "street"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__Addresses__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Addresses/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Applications_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Applications.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "FriendlyName": "friendly_name",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Applications_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Applications.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "data": {
+          "FriendlyName": "friendly_name",
+          "MessageStatusCallback": "https://example.com",
+          "SmsFallbackMethod": "GET",
+          "SmsFallbackUrl": "https://example.com",
+          "SmsMethod": "GET",
+          "SmsStatusCallback": "https://example.com",
+          "SmsUrl": "https://example.com",
+          "StatusCallback": "https://example.com",
+          "StatusCallbackMethod": "GET",
+          "VoiceCallerIdLookup": true,
+          "VoiceFallbackMethod": "GET",
+          "VoiceFallbackUrl": "https://example.com",
+          "VoiceMethod": "GET",
+          "VoiceUrl": "https://example.com",
+          "PublicApplicationConnectEnabled": true
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Applications__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Applications/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Applications__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Applications/{Sid}.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "data": {
+          "FriendlyName": "friendly_name",
+          "MessageStatusCallback": "https://example.com",
+          "SmsFallbackMethod": "GET",
+          "SmsFallbackUrl": "https://example.com",
+          "SmsMethod": "GET",
+          "SmsStatusCallback": "https://example.com",
+          "SmsUrl": "https://example.com",
+          "StatusCallback": "https://example.com",
+          "StatusCallbackMethod": "GET",
+          "VoiceCallerIdLookup": true,
+          "VoiceFallbackMethod": "GET",
+          "VoiceFallbackUrl": "https://example.com",
+          "VoiceMethod": "GET",
+          "VoiceUrl": "https://example.com",
+          "PublicApplicationConnectEnabled": true
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__Applications__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Applications/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__AuthorizedConnectApps__ConnectAppSid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/AuthorizedConnectApps/{ConnectAppSid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "ConnectAppSid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__AuthorizedConnectApps_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/AuthorizedConnectApps.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__AvailablePhoneNumbers_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__AvailablePhoneNumbers__CountryCode__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "CountryCode": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__AvailablePhoneNumbers__CountryCode__Local_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/Local.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "CountryCode": "<string>"
+        },
+        "query": {
+          "AreaCode": "<integer>",
+          "Contains": "<string>",
+          "SmsEnabled": "<boolean>",
+          "MmsEnabled": "<boolean>",
+          "VoiceEnabled": "<boolean>",
+          "ExcludeAllAddressRequired": "<boolean>",
+          "ExcludeLocalAddressRequired": "<boolean>",
+          "ExcludeForeignAddressRequired": "<boolean>",
+          "Beta": "true",
+          "NearNumber": "<string>",
+          "NearLatLong": "<string>",
+          "Distance": "<integer>",
+          "InPostalCode": "<string>",
+          "InRegion": "<string>",
+          "InRateCenter": "<string>",
+          "InLata": "<string>",
+          "InLocality": "<string>",
+          "FaxEnabled": "<boolean>",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__AvailablePhoneNumbers__CountryCode__MachineToMachine_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/MachineToMachine.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "CountryCode": "<string>"
+        },
+        "query": {
+          "AreaCode": "<integer>",
+          "Contains": "<string>",
+          "SmsEnabled": "<boolean>",
+          "MmsEnabled": "<boolean>",
+          "VoiceEnabled": "<boolean>",
+          "ExcludeAllAddressRequired": "<boolean>",
+          "ExcludeLocalAddressRequired": "<boolean>",
+          "ExcludeForeignAddressRequired": "<boolean>",
+          "Beta": "true",
+          "NearNumber": "<string>",
+          "NearLatLong": "<string>",
+          "Distance": "<integer>",
+          "InPostalCode": "<string>",
+          "InRegion": "<string>",
+          "InRateCenter": "<string>",
+          "InLata": "<string>",
+          "InLocality": "<string>",
+          "FaxEnabled": "<boolean>",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__AvailablePhoneNumbers__CountryCode__Mobile_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/Mobile.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "CountryCode": "<string>"
+        },
+        "query": {
+          "AreaCode": "<integer>",
+          "Contains": "<string>",
+          "SmsEnabled": "<boolean>",
+          "MmsEnabled": "<boolean>",
+          "VoiceEnabled": "<boolean>",
+          "ExcludeAllAddressRequired": "<boolean>",
+          "ExcludeLocalAddressRequired": "<boolean>",
+          "ExcludeForeignAddressRequired": "<boolean>",
+          "Beta": "true",
+          "NearNumber": "<string>",
+          "NearLatLong": "<string>",
+          "Distance": "<integer>",
+          "InPostalCode": "<string>",
+          "InRegion": "<string>",
+          "InRateCenter": "<string>",
+          "InLata": "<string>",
+          "InLocality": "<string>",
+          "FaxEnabled": "<boolean>",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__AvailablePhoneNumbers__CountryCode__National_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/National.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "CountryCode": "<string>"
+        },
+        "query": {
+          "AreaCode": "<integer>",
+          "Contains": "<string>",
+          "SmsEnabled": "<boolean>",
+          "MmsEnabled": "<boolean>",
+          "VoiceEnabled": "<boolean>",
+          "ExcludeAllAddressRequired": "<boolean>",
+          "ExcludeLocalAddressRequired": "<boolean>",
+          "ExcludeForeignAddressRequired": "<boolean>",
+          "Beta": "true",
+          "NearNumber": "<string>",
+          "NearLatLong": "<string>",
+          "Distance": "<integer>",
+          "InPostalCode": "<string>",
+          "InRegion": "<string>",
+          "InRateCenter": "<string>",
+          "InLata": "<string>",
+          "InLocality": "<string>",
+          "FaxEnabled": "<boolean>",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__AvailablePhoneNumbers__CountryCode__SharedCost_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/SharedCost.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "CountryCode": "<string>"
+        },
+        "query": {
+          "AreaCode": "<integer>",
+          "Contains": "<string>",
+          "SmsEnabled": "<boolean>",
+          "MmsEnabled": "<boolean>",
+          "VoiceEnabled": "<boolean>",
+          "ExcludeAllAddressRequired": "<boolean>",
+          "ExcludeLocalAddressRequired": "<boolean>",
+          "ExcludeForeignAddressRequired": "<boolean>",
+          "Beta": "true",
+          "NearNumber": "<string>",
+          "NearLatLong": "<string>",
+          "Distance": "<integer>",
+          "InPostalCode": "<string>",
+          "InRegion": "<string>",
+          "InRateCenter": "<string>",
+          "InLata": "<string>",
+          "InLocality": "<string>",
+          "FaxEnabled": "<boolean>",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__AvailablePhoneNumbers__CountryCode__TollFree_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/TollFree.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "CountryCode": "<string>"
+        },
+        "query": {
+          "AreaCode": "<integer>",
+          "Contains": "<string>",
+          "SmsEnabled": "<boolean>",
+          "MmsEnabled": "<boolean>",
+          "VoiceEnabled": "<boolean>",
+          "ExcludeAllAddressRequired": "<boolean>",
+          "ExcludeLocalAddressRequired": "<boolean>",
+          "ExcludeForeignAddressRequired": "<boolean>",
+          "Beta": "true",
+          "NearNumber": "<string>",
+          "NearLatLong": "<string>",
+          "Distance": "<integer>",
+          "InPostalCode": "<string>",
+          "InRegion": "<string>",
+          "InRateCenter": "<string>",
+          "InLata": "<string>",
+          "InLocality": "<string>",
+          "FaxEnabled": "<boolean>",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__AvailablePhoneNumbers__CountryCode__Voip_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/Voip.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "CountryCode": "<string>"
+        },
+        "query": {
+          "AreaCode": "<integer>",
+          "Contains": "<string>",
+          "SmsEnabled": "<boolean>",
+          "MmsEnabled": "<boolean>",
+          "VoiceEnabled": "<boolean>",
+          "ExcludeAllAddressRequired": "<boolean>",
+          "ExcludeLocalAddressRequired": "<boolean>",
+          "ExcludeForeignAddressRequired": "<boolean>",
+          "Beta": "true",
+          "NearNumber": "<string>",
+          "NearLatLong": "<string>",
+          "Distance": "<integer>",
+          "InPostalCode": "<string>",
+          "InRegion": "<string>",
+          "InRateCenter": "<string>",
+          "InLata": "<string>",
+          "InLocality": "<string>",
+          "FaxEnabled": "<boolean>",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Balance_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Balance.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Calls_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Calls.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "To": "+123456789",
+          "From": "+987654321",
+          "ParentCallSid": "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "Status": "completed",
+          "StartTime": "2008-01-02",
+          "StartTime<": "2008-01-02",
+          "StartTime>": "2008-01-02",
+          "EndTime": "2009-01-02",
+          "EndTime<": "2009-01-02",
+          "EndTime>": "2009-01-02",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Calls_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Calls.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "data": {
+          "ApplicationSid": "APaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "FallbackMethod": "GET",
+          "FallbackUrl": "https://example.com",
+          "From": "+987654321",
+          "IfMachine": "if_machine",
+          "MachineDetection": "enable",
+          "MachineDetectionTimeout": 15,
+          "Method": "GET",
+          "Record": "true",
+          "RecordingTrack": "both",
+          "Trim": "do-not-trim",
+          "SendDigits": "send_digits",
+          "StatusCallback": "https://example.com",
+          "StatusCallbackMethod": "GET",
+          "Timeout": 1,
+          "To": "+123456789",
+          "Url": "https://example.com",
+          "CallerId": "Caller",
+          "MachineDetectionSpeechThreshold": 3000,
+          "MachineDetectionSpeechEndThreshold": 3000,
+          "MachineDetectionSilenceTimeout": 3000,
+          "AsyncAmd": "true",
+          "AsyncAmdStatusCallback": "http://statuscallback.com",
+          "AsyncAmdStatusCallbackMethod": "POST",
+          "MachineDetectionEngine": "Lumenvox",
+          "MachineDetectionMinWordLength": 100,
+          "MachineDetectionMaxWordLength": 5000,
+          "MachineDetectionWordsSilence": 50,
+          "MachineDetectionMaxNumOfWords": 5,
+          "MachineDetectionSilenceThreshold": 256,
+          "Byoc": "BYaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "CallReason": "Reason for the call (Beta)",
+          "TimeLimit": 3600,
+          "CallToken": "call-token-string",
+          "Transcribe": "true",
+          "TranscriptionConfiguration": "JVaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Calls__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Calls/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Calls__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Calls/{Sid}.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "data": {
+          "FallbackMethod": "GET",
+          "FallbackUrl": "https://example.com",
+          "Method": "GET",
+          "Status": "completed",
+          "StatusCallback": "https://example.com",
+          "StatusCallbackUrl": "https://example.com",
+          "StatusCallbackMethod": "GET",
+          "Url": "https://example.com"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__Calls__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Calls/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Calls__CallSid__Events_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Events.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "CallSid": "<string>"
+        },
+        "query": {
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Calls__CallSid__Notifications__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Notifications/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "CallSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Calls__CallSid__Notifications_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Notifications.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "CallSid": "<string>"
+        },
+        "query": {
+          "Log": 1,
+          "MessageDate": "2008-01-02",
+          "MessageDate<": "<string>",
+          "MessageDate>": "<string>",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Calls__CallSid__Recordings_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Recordings.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "CallSid": "<string>"
+        },
+        "query": {
+          "DateCreated": "2008-01-02",
+          "DateCreated<": "2008-01-01",
+          "DateCreated>": "2008-01-03",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Calls__CallSid__Recordings_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Recordings.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "CallSid": "<string>"
+        },
+        "data": {
+          "RecordingStatusCallbackEvent": [
+            "in-progress completed failed"
+          ],
+          "RecordingStatusCallback": "https://example.com",
+          "RecordingStatusCallbackMethod": "GET",
+          "Trim": "do-not-trim",
+          "RecordingChannels": "dual",
+          "RecordingTrack": "both",
+          "PlayBeep": true,
+          "Transcribe": true,
+          "TranscriptionConfiguration": "JVaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Calls__CallSid__Recordings__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Recordings/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "CallSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Calls__CallSid__Recordings__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Recordings/{Sid}.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "CallSid": "<string>",
+          "Sid": "<string>"
+        },
+        "data": {
+          "Status": "paused",
+          "PauseBehavior": "skip",
+          "PlayBeep": true
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__Calls__CallSid__Recordings__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Recordings/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "CallSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Conferences__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Conferences/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Conferences__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Conferences/{Sid}.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "data": {
+          "Status": "completed"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Conferences_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Conferences.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "DateCreated": "2008-01-03",
+          "DateCreated<": "2008-01-01",
+          "DateCreated>": "2008-01-02",
+          "DateUpdated": "2018-11-13",
+          "DateUpdated<": "2018-11-11",
+          "DateUpdated>": "2018-11-12",
+          "FriendlyName": "friendly_name",
+          "Status": "init",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Conferences__ConferenceSid__Recordings_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Recordings.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "ConferenceSid": "<string>"
+        },
+        "query": {
+          "DateCreated": "2008-01-02",
+          "DateCreated<": "2008-01-01",
+          "DateCreated>": "2008-01-03",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Conferences__ConferenceSid__Recordings__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Recordings/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "ConferenceSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Conferences__ConferenceSid__Recordings__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Recordings/{Sid}.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "ConferenceSid": "<string>",
+          "Sid": "<string>"
+        },
+        "data": {
+          "Status": "paused",
+          "PauseBehavior": "skip",
+          "PlayBeep": true
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__Conferences__ConferenceSid__Recordings__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Recordings/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "ConferenceSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__ConnectApps__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/ConnectApps/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__ConnectApps__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/ConnectApps/{Sid}.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "data": {
+          "AuthorizeRedirectUrl": "https://example.com",
+          "CompanyName": "company_name",
+          "DeauthorizeCallbackMethod": "GET",
+          "DeauthorizeCallbackUrl": "https://example.com",
+          "Description": "description",
+          "FriendlyName": "friendly_name",
+          "HomepageUrl": "https://example.com",
+          "Permissions": [
+            "get-all"
+          ]
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__ConnectApps__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/ConnectApps/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__ConnectApps_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/ConnectApps.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Addresses__AddressSid__DependentPhoneNumbers_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Addresses/{AddressSid}/DependentPhoneNumbers.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "AddressSid": "<string>"
+        },
+        "query": {
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__IncomingPhoneNumbers__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__IncomingPhoneNumbers__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{Sid}.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "data": {
+          "AccountSid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "AddressSid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "ApiVersion": "api_version",
+          "EmergencyStatus": "Inactive",
+          "EmergencyAddressSid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "FriendlyName": "friendly_name",
+          "IdentitySid": "RIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "SmsApplicationSid": "APaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "SmsFallbackMethod": "GET",
+          "SmsFallbackUrl": "https://example.com",
+          "SmsMethod": "GET",
+          "SmsUrl": "https://example.com",
+          "StatusCallback": "https://example.com",
+          "StatusCallbackMethod": "GET",
+          "VoiceApplicationSid": "APaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "VoiceCallerIdLookup": "true",
+          "VoiceFallbackMethod": "GET",
+          "VoiceFallbackUrl": "https://example.com",
+          "VoiceMethod": "GET",
+          "VoiceUrl": "https://example.com",
+          "VoiceReceiveMode": "voice",
+          "BundleSid": "BUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__IncomingPhoneNumbers__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__IncomingPhoneNumbers_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "Beta": "true",
+          "FriendlyName": "friendly_name",
+          "PhoneNumber": "+19876543210",
+          "Origin": "<string>",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__IncomingPhoneNumbers_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "data": {
+          "AddressSid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "ApiVersion": "api_version",
+          "AreaCode": "area_code",
+          "EmergencyStatus": "Active",
+          "EmergencyAddressSid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "IdentitySid": "RIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "FriendlyName": "friendly_name",
+          "PhoneNumber": "+18089255327",
+          "SmsApplicationSid": "APaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "SmsFallbackMethod": "GET",
+          "SmsFallbackUrl": "https://example.com",
+          "SmsMethod": "GET",
+          "SmsUrl": "https://example.com",
+          "StatusCallback": "https://example.com",
+          "StatusCallbackMethod": "GET",
+          "VoiceApplicationSid": "APaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "VoiceCallerIdLookup": "true",
+          "VoiceFallbackMethod": "GET",
+          "VoiceFallbackUrl": "https://example.com",
+          "VoiceMethod": "GET",
+          "VoiceUrl": "https://example.com",
+          "BundleSid": "BUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__IncomingPhoneNumbers__ResourceSid__AssignedAddOns__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "ResourceSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__IncomingPhoneNumbers__ResourceSid__AssignedAddOns__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "ResourceSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__IncomingPhoneNumbers__ResourceSid__AssignedAddOns_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "ResourceSid": "<string>"
+        },
+        "query": {
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__IncomingPhoneNumbers__ResourceSid__AssignedAddOns_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "ResourceSid": "<string>"
+        },
+        "data": {
+          "InstalledAddOnSid": "XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__IncomingPhoneNumbers__ResourceSid__AssignedAddOns__AssignedAddOnSid__Extensions__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns/{AssignedAddOnSid}/Extensions/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "ResourceSid": "<string>",
+          "AssignedAddOnSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__IncomingPhoneNumbers__ResourceSid__AssignedAddOns__AssignedAddOnSid__Extensions_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns/{AssignedAddOnSid}/Extensions.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "ResourceSid": "<string>",
+          "AssignedAddOnSid": "<string>"
+        },
+        "query": {
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__IncomingPhoneNumbers_Local_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/Local.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "Beta": "true",
+          "FriendlyName": "friendly_name",
+          "PhoneNumber": "+19876543210",
+          "Origin": "<string>",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__IncomingPhoneNumbers_Local_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/Local.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "data": {
+          "AddressSid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "ApiVersion": "api_version",
+          "EmergencyStatus": "Active",
+          "EmergencyAddressSid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "IdentitySid": "RIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "FriendlyName": "friendly_name",
+          "PhoneNumber": "+18089255327",
+          "SmsApplicationSid": "APaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "SmsFallbackMethod": "GET",
+          "SmsFallbackUrl": "https://example.com",
+          "SmsMethod": "GET",
+          "SmsUrl": "https://example.com",
+          "StatusCallback": "https://example.com",
+          "StatusCallbackMethod": "GET",
+          "VoiceApplicationSid": "APaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "VoiceCallerIdLookup": "true",
+          "VoiceFallbackMethod": "GET",
+          "VoiceFallbackUrl": "https://example.com",
+          "VoiceMethod": "GET",
+          "VoiceUrl": "https://example.com",
+          "BundleSid": "BUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__IncomingPhoneNumbers_Mobile_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/Mobile.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "Beta": "true",
+          "FriendlyName": "friendly_name",
+          "PhoneNumber": "+19876543210",
+          "Origin": "<string>",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__IncomingPhoneNumbers_Mobile_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/Mobile.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "data": {
+          "AddressSid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "ApiVersion": "api_version",
+          "EmergencyStatus": "Active",
+          "EmergencyAddressSid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "IdentitySid": "RIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "FriendlyName": "friendly_name",
+          "PhoneNumber": "+18089255327",
+          "SmsApplicationSid": "APaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "SmsFallbackMethod": "GET",
+          "SmsFallbackUrl": "https://example.com",
+          "SmsMethod": "GET",
+          "SmsUrl": "https://example.com",
+          "StatusCallback": "https://example.com",
+          "StatusCallbackMethod": "GET",
+          "VoiceApplicationSid": "APaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "VoiceCallerIdLookup": "true",
+          "VoiceFallbackMethod": "GET",
+          "VoiceFallbackUrl": "https://example.com",
+          "VoiceMethod": "GET",
+          "VoiceUrl": "https://example.com",
+          "BundleSid": "BUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__IncomingPhoneNumbers_TollFree_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/TollFree.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "Beta": "true",
+          "FriendlyName": "friendly_name",
+          "PhoneNumber": "+19876543210",
+          "Origin": "<string>",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__IncomingPhoneNumbers_TollFree_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/TollFree.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "data": {
+          "AddressSid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "ApiVersion": "api_version",
+          "EmergencyStatus": "Active",
+          "EmergencyAddressSid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "IdentitySid": "RIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "FriendlyName": "friendly_name",
+          "PhoneNumber": "+18089255327",
+          "SmsApplicationSid": "APaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "SmsFallbackMethod": "GET",
+          "SmsFallbackUrl": "https://example.com",
+          "SmsMethod": "GET",
+          "SmsUrl": "https://example.com",
+          "StatusCallback": "https://example.com",
+          "StatusCallbackMethod": "GET",
+          "VoiceApplicationSid": "APaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "VoiceCallerIdLookup": "true",
+          "VoiceFallbackMethod": "GET",
+          "VoiceFallbackUrl": "https://example.com",
+          "VoiceMethod": "GET",
+          "VoiceUrl": "https://example.com",
+          "BundleSid": "BUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Keys__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Keys/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Keys__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Keys/{Sid}.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "data": {
+          "FriendlyName": "foo"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__Keys__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Keys/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Keys_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Keys.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Keys_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Keys.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "data": {
+          "FriendlyName": "foo"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Messages__MessageSid__Media__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Messages/{MessageSid}/Media/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "MessageSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__Messages__MessageSid__Media__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Messages/{MessageSid}/Media/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "MessageSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Messages__MessageSid__Media_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Messages/{MessageSid}/Media.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "MessageSid": "<string>"
+        },
+        "query": {
+          "DateCreated": "2008-01-02",
+          "DateCreated<": "2008-01-01",
+          "DateCreated>": "2008-01-03",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Queues__QueueSid__Members__CallSid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Queues/{QueueSid}/Members/{CallSid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "QueueSid": "<string>",
+          "CallSid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Queues__QueueSid__Members__CallSid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Queues/{QueueSid}/Members/{CallSid}.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "QueueSid": "<string>",
+          "CallSid": "<string>"
+        },
+        "data": {
+          "Method": "GET",
+          "Url": "https://example.com"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Queues__QueueSid__Members_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Queues/{QueueSid}/Members.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "QueueSid": "<string>"
+        },
+        "query": {
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Messages_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Messages.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "To": "+123456789",
+          "From": "+987654321",
+          "DateSent": "2008-01-02",
+          "DateSent<": "2008-01-02",
+          "DateSent>": "2008-01-02",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Messages_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Messages.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "data": {
+          "ApplicationSid": "APaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "Body": "Hello! 👍",
+          "From": "+14155552345",
+          "MediaUrl": [
+            "https://c1.staticflickr.com/3/2899/14341091933_1e92e62d12_b.jpg"
+          ],
+          "PersistentAction": [
+            "mailto:test@example.com"
+          ],
+          "StatusCallback": "https://example.com",
+          "To": "+14155552345",
+          "Tags": "{\"campaign_name\": \"Spring Sale 2022\",\"message_type\": \"cart_abandoned\"}"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Messages__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Messages/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Messages__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Messages/{Sid}.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "data": {
+          "Body": ""
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__Messages__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Messages/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Messages__MessageSid__Feedback_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Messages/{MessageSid}/Feedback.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "MessageSid": "<string>"
+        },
+        "data": {
+          "Outcome": "confirmed"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__SigningKeys_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SigningKeys.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__SigningKeys_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SigningKeys.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "data": {
+          "FriendlyName": "foo"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Notifications__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Notifications/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Notifications_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Notifications.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "Log": 1,
+          "MessageDate": "2008-01-02",
+          "MessageDate<": "<string>",
+          "MessageDate>": "<string>",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__OutgoingCallerIds__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/OutgoingCallerIds/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__OutgoingCallerIds__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/OutgoingCallerIds/{Sid}.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "data": {
+          "FriendlyName": "friendly_name"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__OutgoingCallerIds__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/OutgoingCallerIds/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__OutgoingCallerIds_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/OutgoingCallerIds.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "PhoneNumber": "<string>",
+          "FriendlyName": "<string>",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__OutgoingCallerIds_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/OutgoingCallerIds.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "data": {
+          "CallDelay": 100,
+          "Extension": "extension",
+          "FriendlyName": "friendly_name",
+          "PhoneNumber": "+18001234567",
+          "StatusCallback": "http://www.example.com",
+          "StatusCallbackMethod": "GET"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Conferences__ConferenceSid__Participants__CallSid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "ConferenceSid": "<string>",
+          "CallSid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Conferences__ConferenceSid__Participants__CallSid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "ConferenceSid": "<string>",
+          "CallSid": "<string>"
+        },
+        "data": {
+          "Muted": "true"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__Conferences__ConferenceSid__Participants__CallSid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "ConferenceSid": "<string>",
+          "CallSid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Conferences__ConferenceSid__Participants_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "ConferenceSid": "<string>"
+        },
+        "query": {
+          "Muted": "true",
+          "Hold": "true",
+          "Coaching": "<boolean>",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Conferences__ConferenceSid__Participants_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "ConferenceSid": "<string>"
+        },
+        "data": {
+          "From": "+17736774757",
+          "To": "+14157663747",
+          "Label": "customer",
+          "EarlyMedia": true,
+          "Beep": "onEnter",
+          "Muted": false,
+          "StatusCallback": "https://myapp.com/events",
+          "StatusCallbackMethod": "POST",
+          "StatusCallbackEvent": "ringing",
+          "Record": true,
+          "Trim": "do-not-trim",
+          "TimeLimit": 3600,
+          "CallToken": "call-token-string",
+          "MachineDetection": "enable",
+          "MachineDetectionTimeout": 15,
+          "MachineDetectionSpeechThreshold": 3000,
+          "MachineDetectionSpeechEndThreshold": 3000,
+          "MachineDetectionSilenceTimeout": 3000,
+          "AmdStatusCallback": "http://statuscallback.com",
+          "AmdStatusCallbackMethod": "POST",
+          "MachineDetectionEngine": "Lumenvox",
+          "MachineDetectionMinWordLength": 100,
+          "MachineDetectionMaxWordLength": 5000,
+          "MachineDetectionWordsSilence": 50,
+          "MachineDetectionMaxNumOfWords": 5,
+          "MachineDetectionSilenceThreshold": 256
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Calls__CallSid__Payments_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Payments.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "CallSid": "<string>"
+        },
+        "data": {
+          "ChargeAmount": "12.00",
+          "Currency": "USD",
+          "Description": "api testing",
+          "IdempotencyKey": "abcd",
+          "Input": "dtmf",
+          "Parameter": "{'name':'foobar'}",
+          "PaymentConnector": "stripe_connector",
+          "PaymentMethod": "credit-card",
+          "PostalCode": true,
+          "SecurityCode": true,
+          "StatusCallback": "https://myapp.com/payments",
+          "ValidCardTypes": "visa amex"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Calls__CallSid__Payments__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Payments/{Sid}.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "CallSid": "<string>",
+          "Sid": "<string>"
+        },
+        "data": {
+          "Capture": "payment-card-number",
+          "IdempotencyKey": "abcd",
+          "StatusCallback": "https://myapp.com/payments"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Queues__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Queues/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Queues__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Queues/{Sid}.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "data": {
+          "FriendlyName": "friendly_name",
+          "MaxSize": 1
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__Queues__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Queues/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Queues_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Queues.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Queues_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Queues.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "data": {
+          "FriendlyName": "friendly_name",
+          "MaxSize": 1
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Calls__CallSid__Transcriptions_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Transcriptions.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "CallSid": "<string>"
+        },
+        "data": {},
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Calls__CallSid__Transcriptions__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Transcriptions/{Sid}.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "CallSid": "<string>",
+          "Sid": "<string>"
+        },
+        "data": {
+          "Status": "stopped"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Recordings__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Recordings/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "query": {
+          "IncludeSoftDeleted": true
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__Recordings__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Recordings/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Recordings_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Recordings.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "DateCreated": "2008-01-02",
+          "DateCreated<": "2008-01-01",
+          "DateCreated>": "2008-01-03",
+          "CallSid": "<string>",
+          "ConferenceSid": "<string>",
+          "IncludeSoftDeleted": true,
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Recordings__ReferenceSid__AddOnResults__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "ReferenceSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__Recordings__ReferenceSid__AddOnResults__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "ReferenceSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Recordings__ReferenceSid__AddOnResults_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "ReferenceSid": "<string>"
+        },
+        "query": {
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Recordings__ReferenceSid__AddOnResults__AddOnResultSid__Payloads__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{AddOnResultSid}/Payloads/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "ReferenceSid": "<string>",
+          "AddOnResultSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__Recordings__ReferenceSid__AddOnResults__AddOnResultSid__Payloads__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{AddOnResultSid}/Payloads/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "ReferenceSid": "<string>",
+          "AddOnResultSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Recordings__ReferenceSid__AddOnResults__AddOnResultSid__Payloads_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{AddOnResultSid}/Payloads.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "ReferenceSid": "<string>",
+          "AddOnResultSid": "<string>"
+        },
+        "query": {
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Recordings__ReferenceSid__AddOnResults__AddOnResultSid__Payloads__PayloadSid__Data_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{AddOnResultSid}/Payloads/{PayloadSid}/Data.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "ReferenceSid": "<string>",
+          "AddOnResultSid": "<string>",
+          "PayloadSid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Recordings__RecordingSid__Transcriptions__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Recordings/{RecordingSid}/Transcriptions/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "RecordingSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__Recordings__RecordingSid__Transcriptions__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Recordings/{RecordingSid}/Transcriptions/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "RecordingSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Recordings__RecordingSid__Transcriptions_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Recordings/{RecordingSid}/Transcriptions.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "RecordingSid": "<string>"
+        },
+        "query": {
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__SMS_ShortCodes__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SMS/ShortCodes/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__SMS_ShortCodes__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SMS/ShortCodes/{Sid}.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "data": {
+          "ApiVersion": "api_version",
+          "FriendlyName": "friendly_name",
+          "SmsFallbackMethod": "GET",
+          "SmsFallbackUrl": "https://example.com",
+          "SmsMethod": "GET",
+          "SmsUrl": "https://example.com"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__SMS_ShortCodes_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SMS/ShortCodes.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "FriendlyName": "friendly_name",
+          "ShortCode": "short_code",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__SigningKeys__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SigningKeys/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__SigningKeys__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SigningKeys/{Sid}.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "data": {
+          "FriendlyName": "foo"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__SigningKeys__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SigningKeys/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__Auth_Calls_CredentialListMappings_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls/CredentialListMappings.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "DomainSid": "<string>"
+        },
+        "query": {
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__Auth_Calls_CredentialListMappings_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls/CredentialListMappings.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "DomainSid": "<string>"
+        },
+        "data": {
+          "CredentialListSid": "CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__Auth_Calls_CredentialListMappings__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls/CredentialListMappings/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "DomainSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__Auth_Calls_CredentialListMappings__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls/CredentialListMappings/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "DomainSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__Auth_Calls_IpAccessControlListMappings_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls/IpAccessControlListMappings.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "DomainSid": "<string>"
+        },
+        "query": {
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__Auth_Calls_IpAccessControlListMappings_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls/IpAccessControlListMappings.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "DomainSid": "<string>"
+        },
+        "data": {
+          "IpAccessControlListSid": "ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__Auth_Calls_IpAccessControlListMappings__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls/IpAccessControlListMappings/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "DomainSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__Auth_Calls_IpAccessControlListMappings__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls/IpAccessControlListMappings/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "DomainSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__Auth_Registrations_CredentialListMappings_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Registrations/CredentialListMappings.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "DomainSid": "<string>"
+        },
+        "query": {
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__Auth_Registrations_CredentialListMappings_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Registrations/CredentialListMappings.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "DomainSid": "<string>"
+        },
+        "data": {
+          "CredentialListSid": "CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__Auth_Registrations_CredentialListMappings__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Registrations/CredentialListMappings/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "DomainSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__Auth_Registrations_CredentialListMappings__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Registrations/CredentialListMappings/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "DomainSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__SIP_CredentialLists__CredentialListSid__Credentials_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}/Credentials.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "CredentialListSid": "<string>"
+        },
+        "query": {
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__SIP_CredentialLists__CredentialListSid__Credentials_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}/Credentials.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "CredentialListSid": "<string>"
+        },
+        "data": {
+          "Password": "password",
+          "Username": "username"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__SIP_CredentialLists__CredentialListSid__Credentials__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}/Credentials/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "CredentialListSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__SIP_CredentialLists__CredentialListSid__Credentials__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}/Credentials/{Sid}.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "CredentialListSid": "<string>",
+          "Sid": "<string>"
+        },
+        "data": {
+          "Password": "password"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__SIP_CredentialLists__CredentialListSid__Credentials__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}/Credentials/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "CredentialListSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__SIP_CredentialLists_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__SIP_CredentialLists_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "data": {
+          "FriendlyName": "friendly_name"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__SIP_CredentialLists__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__SIP_CredentialLists__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists/{Sid}.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "data": {
+          "FriendlyName": "friendly_name"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__SIP_CredentialLists__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__CredentialListMappings_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/CredentialListMappings.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "DomainSid": "<string>"
+        },
+        "query": {
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__CredentialListMappings_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/CredentialListMappings.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "DomainSid": "<string>"
+        },
+        "data": {
+          "CredentialListSid": "CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__CredentialListMappings__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/CredentialListMappings/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "DomainSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__CredentialListMappings__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/CredentialListMappings/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "DomainSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__SIP_Domains_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/Domains.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__SIP_Domains_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/Domains.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "data": {
+          "DomainName": "dunder-mifflin-scranton.sip.twilio.com",
+          "FriendlyName": "Scranton Office",
+          "VoiceFallbackMethod": "POST",
+          "VoiceFallbackUrl": "",
+          "VoiceMethod": "POST",
+          "VoiceStatusCallbackMethod": "POST",
+          "VoiceStatusCallbackUrl": "",
+          "VoiceUrl": "https://dundermifflin.example.com/twilio/app.php",
+          "SipRegistration": true,
+          "EmergencyCallingEnabled": true,
+          "Secure": true,
+          "ByocTrunkSid": "BYaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "EmergencyCallerSid": "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__SIP_Domains__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__SIP_Domains__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{Sid}.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "data": {
+          "DomainName": "dunder-mifflin-scranton.sip.twilio.com",
+          "FriendlyName": "Scranton Office",
+          "VoiceFallbackMethod": "POST",
+          "VoiceFallbackUrl": "",
+          "VoiceMethod": "POST",
+          "VoiceStatusCallbackMethod": "POST",
+          "VoiceStatusCallbackUrl": "",
+          "VoiceUrl": "https://dundermifflin.example.com/twilio/app.php",
+          "SipRegistration": true,
+          "EmergencyCallingEnabled": true,
+          "Secure": true,
+          "ByocTrunkSid": "BYaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "EmergencyCallerSid": "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__SIP_Domains__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__SIP_IpAccessControlLists_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__SIP_IpAccessControlLists_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "data": {
+          "FriendlyName": "friendly_name"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__SIP_IpAccessControlLists__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__SIP_IpAccessControlLists__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{Sid}.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "data": {
+          "FriendlyName": "friendly_name"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__SIP_IpAccessControlLists__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__IpAccessControlListMappings__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/IpAccessControlListMappings/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "DomainSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__IpAccessControlListMappings__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/IpAccessControlListMappings/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "DomainSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__IpAccessControlListMappings_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/IpAccessControlListMappings.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "DomainSid": "<string>"
+        },
+        "query": {
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__IpAccessControlListMappings_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/IpAccessControlListMappings.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "DomainSid": "<string>"
+        },
+        "data": {
+          "IpAccessControlListSid": "ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__SIP_IpAccessControlLists__IpAccessControlListSid__IpAddresses_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "IpAccessControlListSid": "<string>"
+        },
+        "query": {
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__SIP_IpAccessControlLists__IpAccessControlListSid__IpAddresses_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "IpAccessControlListSid": "<string>"
+        },
+        "data": {
+          "FriendlyName": "friendly_name",
+          "IpAddress": "192.168.1.1",
+          "CidrPrefixLength": 32
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__SIP_IpAccessControlLists__IpAccessControlListSid__IpAddresses__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "IpAccessControlListSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__SIP_IpAccessControlLists__IpAccessControlListSid__IpAddresses__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses/{Sid}.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "IpAccessControlListSid": "<string>",
+          "Sid": "<string>"
+        },
+        "data": {
+          "FriendlyName": "friendly_name",
+          "IpAddress": "192.168.1.1",
+          "CidrPrefixLength": 32
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__SIP_IpAccessControlLists__IpAccessControlListSid__IpAddresses__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "IpAccessControlListSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Calls__CallSid__Siprec_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Siprec.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "CallSid": "<string>"
+        },
+        "data": {},
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Calls__CallSid__Siprec__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Siprec/{Sid}.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "CallSid": "<string>",
+          "Sid": "<string>"
+        },
+        "data": {
+          "Status": "stopped"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Calls__CallSid__Streams_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Streams.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "CallSid": "<string>"
+        },
+        "data": {
+          "Url": "myUrl"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Calls__CallSid__Streams__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Streams/{Sid}.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "CallSid": "<string>",
+          "Sid": "<string>"
+        },
+        "data": {
+          "Status": "stopped"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Tokens_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Tokens.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "data": {
+          "Ttl": 1
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Transcriptions__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Transcriptions/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__Transcriptions__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Transcriptions/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Transcriptions_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Transcriptions.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Usage_Records_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Usage/Records.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "Category": "calleridlookups",
+          "StartDate": "2008-01-02",
+          "EndDate": "2008-01-02",
+          "IncludeSubaccounts": "<boolean>",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Usage_Records_AllTime_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Usage/Records/AllTime.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "Category": "a2p-10dlc-registrationfees-brandregistration",
+          "StartDate": "<string>",
+          "EndDate": "<string>",
+          "IncludeSubaccounts": "<boolean>",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Usage_Records_Daily_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Usage/Records/Daily.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "Category": "a2p-10dlc-registrationfees-brandregistration",
+          "StartDate": "<string>",
+          "EndDate": "<string>",
+          "IncludeSubaccounts": "<boolean>",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Usage_Records_LastMonth_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Usage/Records/LastMonth.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "Category": "a2p-10dlc-registrationfees-brandregistration",
+          "StartDate": "<string>",
+          "EndDate": "<string>",
+          "IncludeSubaccounts": "<boolean>",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Usage_Records_Monthly_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Usage/Records/Monthly.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "Category": "a2p-10dlc-registrationfees-brandregistration",
+          "StartDate": "<string>",
+          "EndDate": "<string>",
+          "IncludeSubaccounts": "<boolean>",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Usage_Records_ThisMonth_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Usage/Records/ThisMonth.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "Category": "a2p-10dlc-registrationfees-brandregistration",
+          "StartDate": "<string>",
+          "EndDate": "<string>",
+          "IncludeSubaccounts": "<boolean>",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Usage_Records_Today_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Usage/Records/Today.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "Category": "a2p-10dlc-registrationfees-brandregistration",
+          "StartDate": "<string>",
+          "EndDate": "<string>",
+          "IncludeSubaccounts": "<boolean>",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Usage_Records_Yearly_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Usage/Records/Yearly.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "Category": "a2p-10dlc-registrationfees-brandregistration",
+          "StartDate": "<string>",
+          "EndDate": "<string>",
+          "IncludeSubaccounts": "<boolean>",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Usage_Records_Yesterday_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Usage/Records/Yesterday.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "Category": "a2p-10dlc-registrationfees-brandregistration",
+          "StartDate": "<string>",
+          "EndDate": "<string>",
+          "IncludeSubaccounts": "<boolean>",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Usage_Triggers__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Usage/Triggers/{Sid}.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Usage_Triggers__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Usage/Triggers/{Sid}.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "data": {
+          "CallbackMethod": "GET",
+          "CallbackUrl": "https://example.com",
+          "FriendlyName": "friendly_name"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__Usage_Triggers__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Usage/Triggers/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "get_2010-04-01_Accounts__AccountSid__Usage_Triggers_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Usage/Triggers.json",
+        "method": "get",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "query": {
+          "Recurring": "daily",
+          "TriggerBy": "count",
+          "UsageCategory": "calleridlookups",
+          "PageSize": "<integer>",
+          "Page": "<integer>",
+          "PageToken": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Usage_Triggers_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Usage/Triggers.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>"
+        },
+        "data": {
+          "CallbackMethod": "GET",
+          "CallbackUrl": "https://example.com",
+          "FriendlyName": "friendly_name",
+          "Recurring": "daily",
+          "TriggerBy": "count",
+          "TriggerValue": "trigger_value",
+          "UsageCategory": "calleridlookups"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Calls__CallSid__UserDefinedMessages_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/UserDefinedMessages.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "CallSid": "<string>"
+        },
+        "data": {
+          "Content": "{\"key\":\"value\"}",
+          "IdempotencyKey": "1"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "post_2010-04-01_Accounts__AccountSid__Calls__CallSid__UserDefinedMessageSubscriptions_json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/UserDefinedMessageSubscriptions.json",
+        "method": "post",
+        "path": {
+          "AccountSid": "<string>",
+          "CallSid": "<string>"
+        },
+        "data": {
+          "Callback": "http://www.example.com",
+          "Method": "POST",
+          "IdempotencyKey": "1"
+        },
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    },
+    "delete_2010-04-01_Accounts__AccountSid__Calls__CallSid__UserDefinedMessageSubscriptions__Sid__json": {
+      "Basic Example": {
+        "url": "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/UserDefinedMessageSubscriptions/{Sid}.json",
+        "method": "delete",
+        "path": {
+          "AccountSid": "<string>",
+          "CallSid": "<string>",
+          "Sid": "<string>"
+        },
+        "baseURL": "https://api.twilio.com"
+      }
+    }
+  }
