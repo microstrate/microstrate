@@ -1,10 +1,11 @@
-import { mkdir, copyFile, readdir, readFile, writeFile } from "fs/promises";
+import { rm, mkdir, copyFile, readdir, readFile, writeFile } from "fs/promises";
 import path from "path";
 
 const INTEGRATIONS_DIR = "deployment/integrations";
 const LIST_FILE = "list.json"
 async function main() {
   // 1. Create deployment/integrations/
+  await rm(INTEGRATIONS_DIR, { recursive: true, force: true });
   await mkdir(INTEGRATIONS_DIR, { recursive: true });
 
   // 2. Copy list.json to deployment/integrations/
@@ -13,9 +14,12 @@ async function main() {
   // 3. Read current directory contents
   const entriesFile =  await readFile(LIST_FILE, "utf-8");
   const entries = JSON.parse(entriesFile);
-
+  const args = process.argv.slice(2);
 
   for (const entry of entries) {
+    if(args.length && !args.includes(entry.folder)){
+       continue
+    }
    
     const folderName = entry.folder;
     const folderPath = entry.group
