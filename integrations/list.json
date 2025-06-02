@@ -1,111 +1,219 @@
 [
-   {
-    "folder": "asana",
-    "name": "Asana",
-    "note": "Task and project management - Asana API",
-    "categories" : ["project-management"]
-  },
-  {
-    "name": "Slack",
-    "note": "Manage messages,users,and channels in Slack programmatically.",
-    "folder": "slack",
-    "categories":[ "communication"]
-  },
-  {
-    "name": "Sendgrid",
-    "note": "Track and filter email events for better delivery insights.",
-    "folder": "sendgrid",
-    "categories":[ "communication"]
-  },
-  {
-    "name": "Open AI",
-    "note": "Generate and analyze text with powerful language models.",
-    "folder": "openai",
-    "categories": ["ai-ml"]
-  },
-  {
-    "name": "Github",
-    "note": "Interact with GitHub repositories,issues,and pull requests.",
-    "folder": "github",
-    "categories": ["developer-tools"]
-  },
-  {
-    "name": "Google Maps",
-    "note": "API Specification for Google Maps Platform",
-    "folder": "google-maps",
-    "categories": ["google","geolocation"]
-  },
-  {
-    "name": "Cloudstream API",
-    "note": "Comprehensive API for Cloudstream Mordor services",
-    "folder": "cloudstream",
-    "categories": ["evari","media-streaming"]
-  },
-  {
-    "name": "Airparser API",
-    "note": "Document parsing service that extracts  data from documents using AI",
-    "folder": "airparser",
-    "categories": ["document","ai-ml"]
-  },
-  {
-    "name": "Xero APIs",
-    "note": "Xero APIs",
-    "folder": "xero",
-    "isGroup": true,
-    "categories": ["accounting"]
-  },
-  {
-    "group": "xero",
-    "name": "Xero Accounting",
-    "note": "Xero Accounting API",
-    "folder": "accounting"
-  },
-  {
-    "group": "xero",
-    "name": "Xero Assets",
-    "note": "Xero Assets API",
-    "folder": "assets"
-  },
-  {
-    "group": "xero",
-    "name": "Xero Bank Feeds",
-    "note": "Xero Bank Feeds API",
-    "folder": "bank-feeds"
-  },
-  {
-    "group": "xero",
-    "name": "Xero Files",
-    "note": "Xero Files API",
-    "folder": "files"
-  },
-  {
-    "group": "xero",
-    "name": "Xero Identity",
-    "note": "Xero Identity API",
-    "folder": "identity"
-  },
-  {
-    "group": "xero",
-    "name": "Xero Payroll UK",
-    "note": "Xero Payroll UK API",
-    "folder": "payroll-uk"
-  },
-  {
-    "group": "xero",
-    "name": "Xero Projects",
-    "note": "Xero Projects API",
-    "folder": "projects"
-  },
-  {
-    "folder": "twilio",
-    "name": "Twilio",
-    "note": "Customer APIs with AI and data for SMS, Voice, Email",
-    "categories" : ["communication","messaging", "voice","email","sms"]
-  },
-  {
-    "folder": "zoom",
-    "name": "Zoom",
-    "note": "Video meetings and webinars - Zoom API",
-    "categories" : ["video", "video-conferencing"]
-  }
+    {
+        "folder": "asana",
+        "name": "Asana",
+        "note": "Task and project management - Asana API",
+        "categories": [
+            "project-management"
+        ]
+    },
+    {
+        "name": "Slack",
+        "note": "Manage messages,users,and channels in Slack programmatically.",
+        "folder": "slack",
+        "categories": [
+            "communication"
+        ]
+    },
+    {
+        "name": "Sendgrid",
+        "note": "Track and filter email events for better delivery insights.",
+        "folder": "sendgrid",
+        "categories": [
+            "communication"
+        ]
+    },
+    {
+        "name": "Open AI",
+        "note": "Generate and analyze text with powerful language models.",
+        "folder": "openai",
+        "categories": [
+            "ai-ml"
+        ]
+    },
+    {
+        "name": "Github",
+        "note": "Interact with GitHub repositories,issues,and pull requests.",
+        "folder": "github",
+        "categories": [
+            "developer-tools"
+        ]
+    },
+    {
+        "name": "Google Maps",
+        "note": "API Specification for Google Maps Platform",
+        "folder": "google-maps",
+        "categories": [
+            "google",
+            "geolocation"
+        ]
+    },
+    {
+        "name": "Cloudstream API",
+        "note": "Comprehensive API for Cloudstream Mordor services",
+        "folder": "cloudstream",
+        "categories": [
+            "evari",
+            "media-streaming"
+        ]
+    },
+    {
+        "name": "Airparser API",
+        "note": "Document parsing service that extracts  data from documents using AI",
+        "folder": "airparser",
+        "categories": [
+            "document",
+            "ai-ml"
+        ]
+    },
+    {
+        "name": "Xero APIs",
+        "note": "Xero APIs",
+        "folder": "xero",
+        "isGroup": true
+    },
+    {
+        "group": "xero",
+        "name": "Xero Accounting",
+        "note": "Xero Accounting API",
+        "folder": "accounting",
+        "categories": [
+            "accounting"
+        ]
+    },
+    {
+        "group": "xero",
+        "name": "Xero Assets",
+        "note": "Xero Assets API",
+        "folder": "assets",
+        "categories": [
+            "accounting"
+        ]
+    },
+    {
+        "group": "xero",
+        "name": "Xero Bank Feeds",
+        "note": "Xero Bank Feeds API",
+        "folder": "bank-feeds",
+        "categories": [
+            "accounting"
+        ]
+    },
+    {
+        "group": "xero",
+        "name": "Xero Files",
+        "note": "Xero Files API",
+        "folder": "files",
+        "categories": [
+            "accounting"
+        ]
+    },
+    {
+        "group": "xero",
+        "name": "Xero Identity",
+        "note": "Xero Identity API",
+        "folder": "identity",
+        "categories": [
+            "accounting"
+        ]
+    },
+    {
+        "group": "xero",
+        "name": "Xero Payroll UK",
+        "note": "Xero Payroll UK API",
+        "folder": "payroll-uk",
+        "categories": [
+            "accounting"
+        ]
+    },
+    {
+        "group": "xero",
+        "name": "Xero Projects",
+        "note": "Xero Projects API",
+        "folder": "projects",
+        "categories": [
+            "accounting"
+        ]
+    },
+    {
+        "folder": "twilio",
+        "name": "Twilio",
+        "note": "Customer APIs with AI and data for SMS, Voice, Email",
+        "categories": [
+            "communication",
+            "messaging",
+            "voice",
+            "email",
+            "sms"
+        ]
+    },
+    {
+        "folder": "zoom",
+        "name": "Zoom",
+        "note": "Video meetings and webinars - Zoom API",
+        "categories": [
+            "video",
+            "video-conferencing"
+        ]
+    },
+    {
+        "name": "Docusign",
+        "note": "Docusign APIs",
+        "folder": "docusign",
+        "isGroup": true
+    },
+    {
+        "group": "docusign",
+        "folder": "admin",
+        "name": "Docusign Admin",
+        "note": "Manage organizations, accounts and users",
+        "categories": [
+            "document"
+        ]
+    },
+    {
+        "group": "docusign",
+        "folder": "agreements",
+        "name": "Docusign Agreemnets",
+        "note": "API for retrieving agreements",
+        "categories": [
+            "document"
+        ]
+    },
+    {
+        "group": "docusign",
+        "folder": "click",
+        "name": "Docusign Click",
+        "note": "Capture consent to standard agreement terms with a single click",
+        "categories": [
+            "document"
+        ]
+    },
+    {
+        "group": "docusign",
+        "folder": "connected-fields",
+        "name": "Docusign Connected Fields",
+        "note": "Connected Fields API",
+        "categories": [
+            "document"
+        ]
+    },
+    {
+        "group": "docusign",
+        "folder": "maestro",
+        "name": "Docusign Maestro",
+        "note": "API for triggering and managing automated workflows",
+        "categories": [
+            "document"
+        ]
+    },
+    {
+        "group": "docusign",
+        "folder": "monitor",
+        "name": "Docusign Monitor",
+        "note": "API for an integrator to access the features of DocuSign Monitor",
+        "categories": [
+            "document"
+        ]
+    }
 ]
