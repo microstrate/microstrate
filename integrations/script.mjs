@@ -17,7 +17,7 @@ async function main() {
   const args = process.argv.slice(2);
 
   for (const entry of entries) {
-    if(args.length && !args.includes(entry.folder)){
+    if(args.length && !args.includes(entry.folder) && !args.includes(entry.group)){
        continue
     }
    
