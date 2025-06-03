@@ -1,0 +1,23 @@
+{
+  "post_v2_customer_partner-referrals": {
+    "Basic Example": {
+      "url": "/v2/customer/partner-referrals",
+      "method": "post",
+      "data": {},
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "get_v2_customer_partner-referrals__partner_referral_id_": {
+    "Basic Example": {
+      "url": "/v2/customer/partner-referrals/{partner_referral_id}",
+      "method": "get",
+      "path": {
+        "partner_referral_id": "<string>"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  }
+}

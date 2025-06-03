@@ -1,0 +1,91 @@
+{
+  "post_v1_payments_payouts": {
+    "Basic Example": {
+      "url": "/v1/payments/payouts",
+      "method": "post",
+      "headers": {
+        "PayPal-Request-Id": "<string>"
+      },
+      "data": {
+        "sender_batch_header": {
+          "sender_batch_id": "Payouts_2018_100007",
+          "email_subject": "You have a payout!",
+          "email_message": "You have received a payout! Thanks for using our service!"
+        },
+        "items": [
+          {
+            "recipient_type": "EMAIL",
+            "amount": {
+              "value": "9.87",
+              "currency": "USD"
+            },
+            "note": "Thanks for your patronage!",
+            "sender_item_id": "201403140001",
+            "receiver": "receiver@example.com",
+            "alternate_notification_method": {
+              "phone": {
+                "country_code": "91",
+                "national_number": "9999988888"
+              }
+            },
+            "notification_language": "fr-FR"
+          },
+          {
+            "recipient_type": "PHONE",
+            "amount": {
+              "value": "112.34",
+              "currency": "USD"
+            },
+            "note": "Thanks for your support!",
+            "sender_item_id": "201403140002",
+            "receiver": "91-734-234-1234"
+          },
+          {
+            "recipient_type": "PAYPAL_ID",
+            "amount": {
+              "value": "5.32",
+              "currency": "USD"
+            },
+            "note": "Thanks for your patronage!",
+            "sender_item_id": "201403140003",
+            "receiver": "G83JXTJ5EHCQ2"
+          }
+        ]
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "get_v1_payments_payouts__id_": {
+    "Basic Example": {
+      "url": "/v1/payments/payouts/{id}",
+      "method": "get",
+      "path": {
+        "id": "<string>"
+      },
+      "query": {
+        "fields": "<string>",
+        "page": 1,
+        "page_size": "<integer>",
+        "total_required": "<boolean>"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "get_v1_payments_payouts-item__payout_item_id_": {
+    "Basic Example": {
+      "url": "/v1/payments/payouts-item/{payout_item_id}",
+      "method": "get",
+      "path": {
+        "payout_item_id": "<string>"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v1_payments_payouts-item__payout_item_id__cancel": {
+    "Basic Example": {
+      "url": "/v1/payments/payouts-item/{payout_item_id}/cancel",
+      "method": "post",
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  }
+}

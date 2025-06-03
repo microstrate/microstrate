@@ -1,0 +1,60 @@
+{
+  "get_v1_catalogs_products": {
+    "Basic Example": {
+      "url": "/v1/catalogs/products",
+      "method": "get",
+      "query": {
+        "page_size": 10,
+        "page": 1,
+        "total_required": "<boolean>"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v1_catalogs_products": {
+    "Basic Example": {
+      "url": "/v1/catalogs/products",
+      "method": "post",
+      "headers": {
+        "Prefer": "return=minimal",
+        "PayPal-Request-Id": "<string>"
+      },
+      "data": {
+        "name": "Video Streaming Service",
+        "description": "Video streaming service",
+        "type": "SERVICE",
+        "category": "SOFTWARE",
+        "image_url": "https://example.com/streaming.jpg",
+        "home_url": "https://example.com/home"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "get_v1_catalogs_products__product_id_": {
+    "Basic Example": {
+      "url": "/v1/catalogs/products/{product_id}",
+      "method": "get",
+      "path": {
+        "product_id": "<string>"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "patch_v1_catalogs_products__product_id_": {
+    "Basic Example": {
+      "url": "/v1/catalogs/products/{product_id}",
+      "method": "patch",
+      "data": [
+        {
+          "op": "replace",
+          "path": "/description",
+          "value": "Premium video streaming service"
+        }
+      ],
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  }
+}

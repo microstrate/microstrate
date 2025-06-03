@@ -1,0 +1,80 @@
+{
+  "post_v1_shipping_trackers-batch": {
+    "Basic Example": {
+      "url": "/v1/shipping/trackers-batch",
+      "method": "post",
+      "data": {
+        "trackers": [
+          {
+            "transaction_id": "<string matching ^[a-zA-Z0-9]*$>",
+            "status": "CANCELLED",
+            "tracking_number": "x",
+            "tracking_number_type": "CARRIER_PROVIDED",
+            "shipment_date": "string (ppaas_date_notime_v2)",
+            "carrier": "2EBOX",
+            "carrier_name_other": "x",
+            "postage_payment_id": "x",
+            "notify_buyer": "<boolean>",
+            "quantity": 1,
+            "tracking_number_validated": "<boolean>",
+            "last_updated_time": "string (ppaas_date_time_v3)",
+            "shipment_direction": "FORWARD",
+            "shipment_uploader": "MERCHANT",
+            "account_id": "<string matching ^[2-9A-HJ-NP-Z]{13}$>",
+            "tracking_url": "https://example.com",
+            "links": [
+              "<value>"
+            ]
+          }
+        ],
+        "links": [
+          "<value>"
+        ]
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "get_v1_shipping_trackers": {
+    "Basic Example": {
+      "url": "/v1/shipping/trackers",
+      "method": "get",
+      "query": {
+        "transaction_id": "<string>",
+        "tracking_number": "<string>",
+        "account_id": "<string>"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v1_shipping_trackers": {
+    "Basic Example": {
+      "url": "/v1/shipping/trackers",
+      "method": "post",
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "get_v1_shipping_trackers__id_": {
+    "Basic Example": {
+      "url": "/v1/shipping/trackers/{id}",
+      "method": "get",
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "put_v1_shipping_trackers__id_": {
+    "Basic Example": {
+      "url": "/v1/shipping/trackers/{id}",
+      "method": "put",
+      "path": {
+        "id": "<string>"
+      },
+      "data": "<value>",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  }
+}

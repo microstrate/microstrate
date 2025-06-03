@@ -1,0 +1,3190 @@
+{
+  "name": "Agreements API",
+  "description": "API for retrieving agreements",
+  "nodes": [
+    {
+      "id": "get_agreements",
+      "operationId": "GetAgreementsList",
+      "name": "Get Agreements List",
+      "description": "Retrieve a list of agreements",
+      "schema": {
+        "tags": [
+          "Agreements"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Agreements-API/get_agreements/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/agreements"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {
+                "limit": {
+                  "type": "integer",
+                  "description": "The maximum number of items that can be returned in a single page.",
+                  "format": "int32",
+                  "examples": [
+                    10
+                  ],
+                  "minimum": 1
+                },
+                "ctoken": {
+                  "type": "string",
+                  "description": "An opaque token that helps retrieve the a page of data.",
+                  "examples": [
+                    "abc123"
+                  ]
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Agreements-API/get_agreements/output-200.schema.json",
+            "type": "object",
+            "properties": {
+              "data": {
+                "description": "A list of agreements",
+                "type": "array",
+                "items": {
+                  "description": "The Agreement component represents a comprehensive overview of a contractual document, detailing its unique identifiers, key properties, parties involved, \nand specific provisions. It includes general information such as the title, type, status, and important dates like effective and expiration dates. \nThe component also incorporates various provisions—legal, financial, lifecycle, and custom—along with metadata, external references, and related documents \nto offer a full representation of the structure and context of an agreement.\n",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "The unique identifier of the resource",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "pattern": "^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$",
+                      "default": "00000000-0000-0000-0000-000000000000"
+                    },
+                    "title": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "Title of the agreement document, summarizing its purpose."
+                    },
+                    "file_name": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "The file name of the agreement."
+                    },
+                    "type": {
+                      "description": "The type of agreement.",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "examples": [
+                        "Master Service Agreement"
+                      ]
+                    },
+                    "category": {
+                      "description": "Server-defined category based on the agreement type.",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "examples": [
+                        "BusinessServices"
+                      ]
+                    },
+                    "summary": {
+                      "description": "A detailed summary of the agreement's key provisions and scope.",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "maxLength": 135000,
+                      "examples": [
+                        "This Master Service Agreement between Alpha Corp and Beta Ltd. defines the terms for services provided by Alpha Corp, including project scope, payment terms, and dispute resolution."
+                      ]
+                    },
+                    "status": {
+                      "description": "Current status of the agreement (e.g., PENDING, COMPLETE, INACTIVE)",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "parties": {
+                      "description": "A list of parties involved in the agreement.",
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "description": "A party is a person, group, or organization that is involved in a contract and has legally binding obligations and responsibilities. They also seek to benefit from the agreement.\n",
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "description": "Unique identifier for the party, mapped to the party entity reference."
+                          },
+                          "name_in_agreement": {
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "description": "Name of the party as it appears in the agreement."
+                          },
+                          "preferred_name": {
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "description": "Formal name of the party."
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ]
+                      }
+                    },
+                    "provisions": {
+                      "description": "\"The conditions or rules written in a legal agreement. The set of possible provisions is determined by the agreement type. \nThis set of provisions can change dynamically.\"\n",
+                      "allOf": [
+                        {
+                          "description": "The GeneralProvisions component defines the fundamental terms and key dates of the agreement, including when it starts, when it has been executed, when it expires, and the overall duration. \nThese provisions set the basic framework for the agreement, establishing its timeline and primary milestones.\n",
+                          "type": "object",
+                          "properties": {
+                            "effective_date": {
+                              "description": "The date when the terms of the agreement start to apply and become legally binding.",
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "format": "date",
+                              "examples": [
+                                "2025-01-01T00:00:00+02:00"
+                              ],
+                              "example": "2025-01-01T00:00:00+02:00"
+                            },
+                            "expiration_date": {
+                              "description": "The date when the agreement ends and is no longer valid or enforceable.",
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "format": "date",
+                              "examples": [
+                                "2025-12-31T23:59:00+02:00"
+                              ],
+                              "example": "2025-12-31T23:59:00+02:00"
+                            },
+                            "execution_date": {
+                              "description": "The date when the agreement is signed by all parties, making it officially binding. This is not necessarily the same as the effective date.",
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "format": "date",
+                              "examples": [
+                                "2024-12-16T09:13:22+02:00"
+                              ],
+                              "example": "2024-12-16T09:13:22+02:00"
+                            },
+                            "term_length": {
+                              "description": "Overall duration of the agreement.",
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "pattern": "^P(-?[0-9]+Y)?(-?[0-9]+M)?(-?[0-9]+(\\.[0-9]+)?W)?(-?[0-9]+(\\.[0-9]+)?D)?(T-?[0-9]+(\\.[0-9]+)?(H(-?[0-9]+(\\.[0-9]+)?M)?(-?[0-9]+(\\.[0-9]+)?S)?|M(-?[0-9]+(\\.[0-9]+)?S)?|S))?$",
+                              "minLength": 3,
+                              "maxLength": 128,
+                              "examples": [
+                                "P30D"
+                              ],
+                              "example": "P1Y"
+                            }
+                          }
+                        },
+                        {
+                          "description": "The LegalProvisions component encompasses clauses and terms that define the legal rights, responsibilities, and protections of the parties involved in an agreement. \nThis includes standard legal aspects such as confidentiality, governing law, jurisdiction, and other regulatory or compliance-related provisions.\n",
+                          "allOf": [
+                            {
+                              "description": "Assignment specifies the rules and conditions regarding the transfer of rights or obligations under the agreement. This includes the type of assignment allowed, \nhow changes in control of the assigning party are handled, and conditions for the termination of assignment rights, providing clarity on when and how rights can be transferred or reassigned.\n",
+                              "type": "object",
+                              "properties": {
+                                "assignment_type": {
+                                  "description": "The type of assignment rights in the agreement (e.g., transferability)",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "assignment_change_of_control": {
+                                  "description": "Provisions related to changes in control of the assigning party",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "assignment_termination_rights": {
+                                  "description": "Provisions for the termination of assignment rights",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "confidentiality_obligation_period": {
+                                  "description": "A subset of ISO 8601 duration. Fractional or negative values are not supported.",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ],
+                                  "pattern": "^P(-?[0-9]+Y)?(-?[0-9]+M)?(-?[0-9]+(\\.[0-9]+)?W)?(-?[0-9]+(\\.[0-9]+)?D)?(T-?[0-9]+(\\.[0-9]+)?(H(-?[0-9]+(\\.[0-9]+)?M)?(-?[0-9]+(\\.[0-9]+)?S)?|M(-?[0-9]+(\\.[0-9]+)?S)?|S))?$",
+                                  "minLength": 3,
+                                  "maxLength": 128,
+                                  "examples": [
+                                    "P30D"
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "governing_law": {
+                                  "description": "The governing law clause identifies the substantive law that will govern the rights and obligations of the parties to the agreement.",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "jurisdiction": {
+                                  "description": "A jurisdiction clause expressly sets out which courts or tribunals have the power to hear a dispute which arises under the agreement.",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "nda_type": {
+                                  "description": "Type of non-disclosure agreement (e.g., unilateral, bilateral).",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "description": "'Financial Provisions outlines the financial terms and conditions of the agreement, including the annual and total value of the agreement, liability limits, and payment-related details such as terms, \npotential late fees, and price adjustment caps. These provisions govern the monetary aspects of the agreement, defining how payments are managed, and establishing financial limits and obligations.'\n",
+                          "allOf": [
+                            {
+                              "description": "The AnnualAgreementValue component captures the financial details of the agreement, including the annualized value and currency code. \nIt provides a clear overview of the agreement's annualized financial worth, aiding in financial planning and assessment.\n",
+                              "type": "object",
+                              "properties": {
+                                "annual_agreement_value": {
+                                  "type": [
+                                    "number",
+                                    "null"
+                                  ],
+                                  "format": "double",
+                                  "description": "Total annual value of the agreement."
+                                },
+                                "annual_agreement_value_currency_code": {
+                                  "description": "'ISO 4217 codes. From https://en.wikipedia.org/wiki/ISO_4217\nhttps://www.currency-iso.org/en/home/tables/table-a1.html'\n",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ],
+                                  "enum": [
+                                    "AED",
+                                    "AFN",
+                                    "ALL",
+                                    "AMD",
+                                    "ANG",
+                                    "AOA",
+                                    "ARS",
+                                    "AUD",
+                                    "AWG",
+                                    "AZN",
+                                    "BAM",
+                                    "BBD",
+                                    "BDT",
+                                    "BGN",
+                                    "BHD",
+                                    "BIF",
+                                    "BMD",
+                                    "BND",
+                                    "BOB",
+                                    "BOV",
+                                    "BRL",
+                                    "BSD",
+                                    "BTN",
+                                    "BWP",
+                                    "BYN",
+                                    "BZD",
+                                    "CAD",
+                                    "CDF",
+                                    "CHE",
+                                    "CHF",
+                                    "CHW",
+                                    "CLF",
+                                    "CLP",
+                                    "CNY",
+                                    "COP",
+                                    "COU",
+                                    "CRC",
+                                    "CUC",
+                                    "CUP",
+                                    "CVE",
+                                    "CZK",
+                                    "DJF",
+                                    "DKK",
+                                    "DOP",
+                                    "DZD",
+                                    "EGP",
+                                    "ERN",
+                                    "ETB",
+                                    "EUR",
+                                    "FJD",
+                                    "FKP",
+                                    "GBP",
+                                    "GEL",
+                                    "GHS",
+                                    "GIP",
+                                    "GMD",
+                                    "GNF",
+                                    "GTQ",
+                                    "GYD",
+                                    "HKD",
+                                    "HNL",
+                                    "HRK",
+                                    "HTG",
+                                    "HUF",
+                                    "IDR",
+                                    "ILS",
+                                    "INR",
+                                    "IQD",
+                                    "IRR",
+                                    "ISK",
+                                    "JMD",
+                                    "JOD",
+                                    "JPY",
+                                    "KES",
+                                    "KGS",
+                                    "KHR",
+                                    "KMF",
+                                    "KPW",
+                                    "KRW",
+                                    "KWD",
+                                    "KYD",
+                                    "KZT",
+                                    "LAK",
+                                    "LBP",
+                                    "LKR",
+                                    "LRD",
+                                    "LSL",
+                                    "LYD",
+                                    "MAD",
+                                    "MDL",
+                                    "MGA",
+                                    "MKD",
+                                    "MMK",
+                                    "MNT",
+                                    "MOP",
+                                    "MRU",
+                                    "MUR",
+                                    "MVR",
+                                    "MWK",
+                                    "MXN",
+                                    "MXV",
+                                    "MYR",
+                                    "MZN",
+                                    "NAD",
+                                    "NGN",
+                                    "NIO",
+                                    "NOK",
+                                    "NPR",
+                                    "NZD",
+                                    "OMR",
+                                    "PAB",
+                                    "PEN",
+                                    "PGK",
+                                    "PHP",
+                                    "PKR",
+                                    "PLN",
+                                    "PYG",
+                                    "QAR",
+                                    "RON",
+                                    "RSD",
+                                    "RUB",
+                                    "RWF",
+                                    "SAR",
+                                    "SBD",
+                                    "SCR",
+                                    "SDG",
+                                    "SEK",
+                                    "SGD",
+                                    "SHP",
+                                    "SLL",
+                                    "SOS",
+                                    "SRD",
+                                    "SSP",
+                                    "STN",
+                                    "SVC",
+                                    "SYP",
+                                    "SZL",
+                                    "THB",
+                                    "TJS",
+                                    "TMT",
+                                    "TND",
+                                    "TOP",
+                                    "TRY",
+                                    "TTD",
+                                    "TWD",
+                                    "TZS",
+                                    "UAH",
+                                    "UGX",
+                                    "USD",
+                                    "USN",
+                                    "UYI",
+                                    "UYU",
+                                    "UZS",
+                                    "VEF",
+                                    "VND",
+                                    "VUV",
+                                    "WST",
+                                    "XAF",
+                                    "XAG",
+                                    "XAU",
+                                    "XBA",
+                                    "XBB",
+                                    "XBC",
+                                    "XBD",
+                                    "XCD",
+                                    "XDR",
+                                    "XOF",
+                                    "XPD",
+                                    "XPF",
+                                    "XPT",
+                                    "XSU",
+                                    "XTS",
+                                    "XUA",
+                                    "XXX",
+                                    "YER",
+                                    "ZAR",
+                                    "ZMW",
+                                    "ZWL"
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "description": "The TotalAgreementValue captures the financial details of an agreement expressed as its total value and unit of currency.  \nIt provides a clear overview of the agreement's total financial worth, aiding in financial planning and assessment.\n",
+                              "type": "object",
+                              "properties": {
+                                "total_agreement_value": {
+                                  "type": [
+                                    "number",
+                                    "null"
+                                  ],
+                                  "format": "double",
+                                  "description": "Total value of the agreement."
+                                },
+                                "total_agreement_value_currency_code": {
+                                  "description": "'ISO 4217 codes. From https://en.wikipedia.org/wiki/ISO_4217\nhttps://www.currency-iso.org/en/home/tables/table-a1.html'\n",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ],
+                                  "enum": [
+                                    "AED",
+                                    "AFN",
+                                    "ALL",
+                                    "AMD",
+                                    "ANG",
+                                    "AOA",
+                                    "ARS",
+                                    "AUD",
+                                    "AWG",
+                                    "AZN",
+                                    "BAM",
+                                    "BBD",
+                                    "BDT",
+                                    "BGN",
+                                    "BHD",
+                                    "BIF",
+                                    "BMD",
+                                    "BND",
+                                    "BOB",
+                                    "BOV",
+                                    "BRL",
+                                    "BSD",
+                                    "BTN",
+                                    "BWP",
+                                    "BYN",
+                                    "BZD",
+                                    "CAD",
+                                    "CDF",
+                                    "CHE",
+                                    "CHF",
+                                    "CHW",
+                                    "CLF",
+                                    "CLP",
+                                    "CNY",
+                                    "COP",
+                                    "COU",
+                                    "CRC",
+                                    "CUC",
+                                    "CUP",
+                                    "CVE",
+                                    "CZK",
+                                    "DJF",
+                                    "DKK",
+                                    "DOP",
+                                    "DZD",
+                                    "EGP",
+                                    "ERN",
+                                    "ETB",
+                                    "EUR",
+                                    "FJD",
+                                    "FKP",
+                                    "GBP",
+                                    "GEL",
+                                    "GHS",
+                                    "GIP",
+                                    "GMD",
+                                    "GNF",
+                                    "GTQ",
+                                    "GYD",
+                                    "HKD",
+                                    "HNL",
+                                    "HRK",
+                                    "HTG",
+                                    "HUF",
+                                    "IDR",
+                                    "ILS",
+                                    "INR",
+                                    "IQD",
+                                    "IRR",
+                                    "ISK",
+                                    "JMD",
+                                    "JOD",
+                                    "JPY",
+                                    "KES",
+                                    "KGS",
+                                    "KHR",
+                                    "KMF",
+                                    "KPW",
+                                    "KRW",
+                                    "KWD",
+                                    "KYD",
+                                    "KZT",
+                                    "LAK",
+                                    "LBP",
+                                    "LKR",
+                                    "LRD",
+                                    "LSL",
+                                    "LYD",
+                                    "MAD",
+                                    "MDL",
+                                    "MGA",
+                                    "MKD",
+                                    "MMK",
+                                    "MNT",
+                                    "MOP",
+                                    "MRU",
+                                    "MUR",
+                                    "MVR",
+                                    "MWK",
+                                    "MXN",
+                                    "MXV",
+                                    "MYR",
+                                    "MZN",
+                                    "NAD",
+                                    "NGN",
+                                    "NIO",
+                                    "NOK",
+                                    "NPR",
+                                    "NZD",
+                                    "OMR",
+                                    "PAB",
+                                    "PEN",
+                                    "PGK",
+                                    "PHP",
+                                    "PKR",
+                                    "PLN",
+                                    "PYG",
+                                    "QAR",
+                                    "RON",
+                                    "RSD",
+                                    "RUB",
+                                    "RWF",
+                                    "SAR",
+                                    "SBD",
+                                    "SCR",
+                                    "SDG",
+                                    "SEK",
+                                    "SGD",
+                                    "SHP",
+                                    "SLL",
+                                    "SOS",
+                                    "SRD",
+                                    "SSP",
+                                    "STN",
+                                    "SVC",
+                                    "SYP",
+                                    "SZL",
+                                    "THB",
+                                    "TJS",
+                                    "TMT",
+                                    "TND",
+                                    "TOP",
+                                    "TRY",
+                                    "TTD",
+                                    "TWD",
+                                    "TZS",
+                                    "UAH",
+                                    "UGX",
+                                    "USD",
+                                    "USN",
+                                    "UYI",
+                                    "UYU",
+                                    "UZS",
+                                    "VEF",
+                                    "VND",
+                                    "VUV",
+                                    "WST",
+                                    "XAF",
+                                    "XAG",
+                                    "XAU",
+                                    "XBA",
+                                    "XBB",
+                                    "XBC",
+                                    "XBD",
+                                    "XCD",
+                                    "XDR",
+                                    "XOF",
+                                    "XPD",
+                                    "XPF",
+                                    "XPT",
+                                    "XSU",
+                                    "XTS",
+                                    "XUA",
+                                    "XXX",
+                                    "YER",
+                                    "ZAR",
+                                    "ZMW",
+                                    "ZWL"
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "properties": {
+                                "payment_terms_due_date": {
+                                  "type": "string",
+                                  "description": "Terms specifying the payment due date, based on a defined number of days or other conditions.",
+                                  "enum": [
+                                    "UNDER_SEVEN_DAYS",
+                                    "SEVEN_DAYS",
+                                    "FIFTEEN_DAYS",
+                                    "THIRTY_DAYS",
+                                    "FORTY_FIVE_DAYS",
+                                    "SIXTY_DAYS",
+                                    "NINETY_DAYS",
+                                    "OVER_NINETY_DAYS",
+                                    "ON_RECEIPT",
+                                    "OTHER",
+                                    "SILENT"
+                                  ],
+                                  "default": "OTHER"
+                                }
+                              }
+                            },
+                            {
+                              "description": "The LatePaymentFee component defines the conditions under which fees can be charged for late payments, including whether such fees are allowed and the percentage rate applied. \nThis component helps outline the financial penalties for overdue payments, encouraging timely compliance with payment terms.\n",
+                              "type": "object",
+                              "properties": {
+                                "can_charge_late_payment_fees": {
+                                  "type": [
+                                    "boolean",
+                                    "null"
+                                  ],
+                                  "description": "Indicates if late payment fees can be charged."
+                                },
+                                "late_payment_fee_percent": {
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ],
+                                  "minimum": 0,
+                                  "maximum": 100,
+                                  "description": "Percentage fee charged on late payments."
+                                }
+                              }
+                            },
+                            {
+                              "description": "The LiabilityCap component specifies the maximum financial liability that a party can incur under the agreement, including the cap amount, the applicable currency, \nany multiplier used to calculate the cap, and the duration for which the cap is effective. This serves to limit the financial exposure and risk for the parties involved.\n",
+                              "type": "object",
+                              "properties": {
+                                "liability_cap_fixed_amount": {
+                                  "description": "Maximum liability cap in the agreement",
+                                  "type": [
+                                    "number",
+                                    "null"
+                                  ],
+                                  "format": "double"
+                                },
+                                "liability_cap_currency_code": {
+                                  "description": "'ISO 4217 codes. From https://en.wikipedia.org/wiki/ISO_4217\nhttps://www.currency-iso.org/en/home/tables/table-a1.html'\n",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ],
+                                  "enum": [
+                                    "AED",
+                                    "AFN",
+                                    "ALL",
+                                    "AMD",
+                                    "ANG",
+                                    "AOA",
+                                    "ARS",
+                                    "AUD",
+                                    "AWG",
+                                    "AZN",
+                                    "BAM",
+                                    "BBD",
+                                    "BDT",
+                                    "BGN",
+                                    "BHD",
+                                    "BIF",
+                                    "BMD",
+                                    "BND",
+                                    "BOB",
+                                    "BOV",
+                                    "BRL",
+                                    "BSD",
+                                    "BTN",
+                                    "BWP",
+                                    "BYN",
+                                    "BZD",
+                                    "CAD",
+                                    "CDF",
+                                    "CHE",
+                                    "CHF",
+                                    "CHW",
+                                    "CLF",
+                                    "CLP",
+                                    "CNY",
+                                    "COP",
+                                    "COU",
+                                    "CRC",
+                                    "CUC",
+                                    "CUP",
+                                    "CVE",
+                                    "CZK",
+                                    "DJF",
+                                    "DKK",
+                                    "DOP",
+                                    "DZD",
+                                    "EGP",
+                                    "ERN",
+                                    "ETB",
+                                    "EUR",
+                                    "FJD",
+                                    "FKP",
+                                    "GBP",
+                                    "GEL",
+                                    "GHS",
+                                    "GIP",
+                                    "GMD",
+                                    "GNF",
+                                    "GTQ",
+                                    "GYD",
+                                    "HKD",
+                                    "HNL",
+                                    "HRK",
+                                    "HTG",
+                                    "HUF",
+                                    "IDR",
+                                    "ILS",
+                                    "INR",
+                                    "IQD",
+                                    "IRR",
+                                    "ISK",
+                                    "JMD",
+                                    "JOD",
+                                    "JPY",
+                                    "KES",
+                                    "KGS",
+                                    "KHR",
+                                    "KMF",
+                                    "KPW",
+                                    "KRW",
+                                    "KWD",
+                                    "KYD",
+                                    "KZT",
+                                    "LAK",
+                                    "LBP",
+                                    "LKR",
+                                    "LRD",
+                                    "LSL",
+                                    "LYD",
+                                    "MAD",
+                                    "MDL",
+                                    "MGA",
+                                    "MKD",
+                                    "MMK",
+                                    "MNT",
+                                    "MOP",
+                                    "MRU",
+                                    "MUR",
+                                    "MVR",
+                                    "MWK",
+                                    "MXN",
+                                    "MXV",
+                                    "MYR",
+                                    "MZN",
+                                    "NAD",
+                                    "NGN",
+                                    "NIO",
+                                    "NOK",
+                                    "NPR",
+                                    "NZD",
+                                    "OMR",
+                                    "PAB",
+                                    "PEN",
+                                    "PGK",
+                                    "PHP",
+                                    "PKR",
+                                    "PLN",
+                                    "PYG",
+                                    "QAR",
+                                    "RON",
+                                    "RSD",
+                                    "RUB",
+                                    "RWF",
+                                    "SAR",
+                                    "SBD",
+                                    "SCR",
+                                    "SDG",
+                                    "SEK",
+                                    "SGD",
+                                    "SHP",
+                                    "SLL",
+                                    "SOS",
+                                    "SRD",
+                                    "SSP",
+                                    "STN",
+                                    "SVC",
+                                    "SYP",
+                                    "SZL",
+                                    "THB",
+                                    "TJS",
+                                    "TMT",
+                                    "TND",
+                                    "TOP",
+                                    "TRY",
+                                    "TTD",
+                                    "TWD",
+                                    "TZS",
+                                    "UAH",
+                                    "UGX",
+                                    "USD",
+                                    "USN",
+                                    "UYI",
+                                    "UYU",
+                                    "UZS",
+                                    "VEF",
+                                    "VND",
+                                    "VUV",
+                                    "WST",
+                                    "XAF",
+                                    "XAG",
+                                    "XAU",
+                                    "XBA",
+                                    "XBB",
+                                    "XBC",
+                                    "XBD",
+                                    "XCD",
+                                    "XDR",
+                                    "XOF",
+                                    "XPD",
+                                    "XPF",
+                                    "XPT",
+                                    "XSU",
+                                    "XTS",
+                                    "XUA",
+                                    "XXX",
+                                    "YER",
+                                    "ZAR",
+                                    "ZMW",
+                                    "ZWL"
+                                  ]
+                                },
+                                "liability_cap_multiplier": {
+                                  "description": "Multiplier applied to calculate the liability cap",
+                                  "type": [
+                                    "number",
+                                    "null"
+                                  ],
+                                  "format": "double"
+                                },
+                                "liability_cap_duration": {
+                                  "description": "Duration for the liability cap",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ],
+                                  "pattern": "^P(-?[0-9]+Y)?(-?[0-9]+M)?(-?[0-9]+(\\.[0-9]+)?W)?(-?[0-9]+(\\.[0-9]+)?D)?(T-?[0-9]+(\\.[0-9]+)?(H(-?[0-9]+(\\.[0-9]+)?M)?(-?[0-9]+(\\.[0-9]+)?S)?|M(-?[0-9]+(\\.[0-9]+)?S)?|S))?$",
+                                  "minLength": 3,
+                                  "maxLength": 128,
+                                  "examples": [
+                                    "P30D"
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "price_cap_percent_increase": {
+                                  "description": "Maximum allowed percentage increase in prices, limited between 0 and 100.",
+                                  "type": [
+                                    "number",
+                                    "null"
+                                  ],
+                                  "format": "float",
+                                  "minimum": 0,
+                                  "maximum": 100
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "description": "'The LifecycleProvisions component outlines the terms and conditions related to the duration and management of an agreement, including how the agreement can be renewed, extended, or terminated. \nThese provisions govern the different phases of the agreement's lifecycle, detailing how it progresses, concludes, or continues.'\n",
+                          "allOf": [
+                            {
+                              "description": "The Renewal component defines the terms and conditions for extending the duration of the agreement, including the type of renewal, notice period, and the length of the renewal term. \nIt covers aspects such as whether the renewal is automatic or requires action, the timeframe for giving notice, and the responsibilities and additional information regarding the renewal process.\n",
+                              "type": "object",
+                              "properties": {
+                                "renewal_type": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ],
+                                  "description": "Specifies the type of renewal (e.g., automatic, manual)."
+                                },
+                                "renewal_notice_period": {
+                                  "description": "The period of time that a party is required to provide to indicate their intention to renew an agreement.",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ],
+                                  "pattern": "^P(-?[0-9]+Y)?(-?[0-9]+M)?(-?[0-9]+(\\.[0-9]+)?W)?(-?[0-9]+(\\.[0-9]+)?D)?(T-?[0-9]+(\\.[0-9]+)?(H(-?[0-9]+(\\.[0-9]+)?M)?(-?[0-9]+(\\.[0-9]+)?S)?|M(-?[0-9]+(\\.[0-9]+)?S)?|S))?$",
+                                  "minLength": 3,
+                                  "maxLength": 128,
+                                  "examples": [
+                                    "P30D"
+                                  ],
+                                  "example": "P90D"
+                                },
+                                "renewal_notice_date": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ],
+                                  "format": "date-time",
+                                  "description": "Calculated field based on renewal notice period. (agreement expiration date - renewal notice period duration)",
+                                  "examples": [
+                                    "2024-08-01T00:00:00+02:00"
+                                  ]
+                                },
+                                "auto_renewal_term_length": {
+                                  "description": "The duration of the auto-renewal period.",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ],
+                                  "pattern": "^P(-?[0-9]+Y)?(-?[0-9]+M)?(-?[0-9]+(\\.[0-9]+)?W)?(-?[0-9]+(\\.[0-9]+)?D)?(T-?[0-9]+(\\.[0-9]+)?(H(-?[0-9]+(\\.[0-9]+)?M)?(-?[0-9]+(\\.[0-9]+)?S)?|M(-?[0-9]+(\\.[0-9]+)?S)?|S))?$",
+                                  "minLength": 3,
+                                  "maxLength": 128,
+                                  "examples": [
+                                    "P30D"
+                                  ],
+                                  "example": "P1Y"
+                                },
+                                "renewal_extension_period": {
+                                  "description": "The period an agreement has been extended after it has been renewed.",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ],
+                                  "pattern": "^P(-?[0-9]+Y)?(-?[0-9]+M)?(-?[0-9]+(\\.[0-9]+)?W)?(-?[0-9]+(\\.[0-9]+)?D)?(T-?[0-9]+(\\.[0-9]+)?(H(-?[0-9]+(\\.[0-9]+)?M)?(-?[0-9]+(\\.[0-9]+)?S)?|M(-?[0-9]+(\\.[0-9]+)?S)?|S))?$",
+                                  "minLength": 3,
+                                  "maxLength": 128,
+                                  "examples": [
+                                    "P30D"
+                                  ],
+                                  "example": "P1Y"
+                                },
+                                "renewal_process_owner": {
+                                  "description": "User ID of the person responsible for managing the renewal process.",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ],
+                                  "maxLength": 100
+                                },
+                                "renewal_additional_info": {
+                                  "description": "Additional information related to the renewal process.",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ],
+                                  "maxLength": 400
+                                }
+                              }
+                            },
+                            {
+                              "description": "The Termination component outlines the conditions and timeframes under which an agreement can be ended, including specific durations for termination due to non-performance or for cause. \nThis helps define the process and notice periods required for legally ending the agreement.\n",
+                              "type": "object",
+                              "properties": {
+                                "termination_period_for_cause": {
+                                  "description": "The specific duration that a party has to give notice before terminating the agreement due to a significant breach or violation of terms. \nThis period allows the other party to address the cause or prepare for termination.\n",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ],
+                                  "pattern": "^P(-?[0-9]+Y)?(-?[0-9]+M)?(-?[0-9]+(\\.[0-9]+)?W)?(-?[0-9]+(\\.[0-9]+)?D)?(T-?[0-9]+(\\.[0-9]+)?(H(-?[0-9]+(\\.[0-9]+)?M)?(-?[0-9]+(\\.[0-9]+)?S)?|M(-?[0-9]+(\\.[0-9]+)?S)?|S))?$",
+                                  "minLength": 3,
+                                  "maxLength": 128,
+                                  "examples": [
+                                    "P6M"
+                                  ]
+                                },
+                                "termination_period_for_convenience": {
+                                  "description": "Specifies the required notice period that a party must provide before terminating the agreement for convenience, without cause, under the terms outlined in the contract.",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ],
+                                  "pattern": "^P(-?[0-9]+Y)?(-?[0-9]+M)?(-?[0-9]+(\\.[0-9]+)?W)?(-?[0-9]+(\\.[0-9]+)?D)?(T-?[0-9]+(\\.[0-9]+)?(H(-?[0-9]+(\\.[0-9]+)?M)?(-?[0-9]+(\\.[0-9]+)?S)?|M(-?[0-9]+(\\.[0-9]+)?S)?|S))?$",
+                                  "minLength": 3,
+                                  "maxLength": 128,
+                                  "examples": [
+                                    "P6M"
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "additional_user_defined_data": {
+                      "description": "A generic map/dict. The key is a string, and the value can be of any type, including strings, booleans, numbers, arrays, or objects",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "oneOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "boolean"
+                          },
+                          {
+                            "type": "object",
+                            "additionalProperties": true
+                          },
+                          {
+                            "type": "array",
+                            "items": {}
+                          }
+                        ]
+                      }
+                    },
+                    "additional_custom_clm_data": {
+                      "description": "A generic map/dict. The key is a string, and the value can be of any type, including strings, booleans, numbers, arrays, or objects",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "oneOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "boolean"
+                          },
+                          {
+                            "type": "object",
+                            "additionalProperties": true
+                          },
+                          {
+                            "type": "array",
+                            "items": {}
+                          }
+                        ]
+                      }
+                    },
+                    "additional_custom_esign_data": {
+                      "description": "A generic map/dict. The key is a string, and the value can be of any type, including strings, booleans, numbers, arrays, or objects",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "oneOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "boolean"
+                          },
+                          {
+                            "type": "object",
+                            "additionalProperties": true
+                          },
+                          {
+                            "type": "array",
+                            "items": {}
+                          }
+                        ]
+                      }
+                    },
+                    "related_agreement_documents": {
+                      "type": "object",
+                      "properties": {
+                        "parent_agreement_document_id": {
+                          "description": "The unique identifier of the resource",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "pattern": "^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$",
+                          "default": "00000000-0000-0000-0000-000000000000"
+                        }
+                      }
+                    },
+                    "languages": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "description": "List of languages applicable to the agreement, identified using BCP-47 language codes.",
+                      "items": {
+                        "description": "BCP47 language code",
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "pattern": "/^([a-z]{2}([a-z]?(-[a-z]{3}){0,3}|[a-z]{2,6})?(-[A-Z][a-z]{3})?(-([A-Z]{2}|[0-9]{3}))?|i-mingo)$/",
+                        "examples": [
+                          "en-US"
+                        ]
+                      }
+                    },
+                    "source_name": {
+                      "description": "The name of the source system who creates this entity, e.g. eSign, CLM, or Salesforce.",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "maxLength": 128,
+                      "examples": [
+                        "Docusign eSign"
+                      ]
+                    },
+                    "source_id": {
+                      "description": "The ID of the entity in the source system that this entity is associated with. For example, it could be an ID of the envelope in eSign.",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "maxLength": 128,
+                      "examples": [
+                        "8ade6915-d04b-40d6-bb6f-9c6ba6aa1bb5"
+                      ]
+                    },
+                    "source_account_id": {
+                      "description": "The Account ID of the source system who creates this entity, e.g. eSign Account ID",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "minLength": 1,
+                      "maxLength": 128,
+                      "examples": [
+                        "faee2c10-cae6-4d90-ba66-6d6d117d92c5"
+                      ]
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "created_at": {
+                          "description": "Timestamp when the agreement document was created.",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "format": "date-time"
+                        },
+                        "created_by": {
+                          "description": "User ID of the person who created the agreement document.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "modified_at": {
+                          "description": "Timestamp when the agreement document was last modified.",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "format": "date-time"
+                        },
+                        "modified_by": {
+                          "description": "User ID of the person who last modified the agreement document.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "request_id": {
+                          "description": "Unique identifier for the request, useful for tracking and debugging.",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "format": "uuid",
+                          "examples": [
+                            "3f7c9e4b-851c-4f9b-89e7-123456789abc"
+                          ]
+                        },
+                        "response_timestamp": {
+                          "description": "The timestamp indicating when the response was generated.",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "format": "date-time",
+                          "examples": [
+                            "2024-10-17T14:30:00Z"
+                          ]
+                        },
+                        "response_duration_ms": {
+                          "description": "The duration of time, in milliseconds, that the server took to process and respond \nto the request. This is measured from the time the server received the request \nuntil the time the response was sent.\n",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
+                          "format": "int32",
+                          "examples": [
+                            150
+                          ],
+                          "minimum": 0
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                }
+              },
+              "metadata": {
+                "type": "object",
+                "description": "Control information and metadata for the response.",
+                "properties": {
+                  "page_limit": {
+                    "description": "The maximum number of items that can be returned in a single page.",
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "format": "int32",
+                    "examples": [
+                      10
+                    ],
+                    "minimum": 1
+                  },
+                  "page_token_current": {
+                    "description": "The continuation token used to retrieve a page in a paginated response.",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "examples": [
+                      "abc123"
+                    ]
+                  },
+                  "page_token_next": {
+                    "description": "The continuation token used to retrieve a page in a paginated response.",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "examples": [
+                      "abc123"
+                    ]
+                  },
+                  "page_token_prev": {
+                    "description": "The continuation token used to retrieve a page in a paginated response.",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "examples": [
+                      "abc123"
+                    ]
+                  },
+                  "total_items": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "The total number of items available in the dataset. This field is optional and \nmay not be included in every response due to performance considerations.\n",
+                    "examples": [
+                      250
+                    ],
+                    "minimum": 0
+                  },
+                  "request_id": {
+                    "description": "Unique identifier for the request, useful for tracking and debugging.",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "format": "uuid",
+                    "examples": [
+                      "3f7c9e4b-851c-4f9b-89e7-123456789abc"
+                    ]
+                  },
+                  "response_timestamp": {
+                    "description": "The timestamp indicating when the response was generated.",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "format": "date-time",
+                    "examples": [
+                      "2024-10-17T14:30:00Z"
+                    ]
+                  },
+                  "response_duration_ms": {
+                    "description": "The duration of time, in milliseconds, that the server took to process and respond \nto the request. This is measured from the time the server received the request \nuntil the time the response was sent.\n",
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "format": "int32",
+                    "examples": [
+                      150
+                    ],
+                    "minimum": 0
+                  }
+                },
+                "required": [
+                  "response_timestamp",
+                  "response_duration_ms"
+                ]
+              },
+              "_links": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "description": "Hypermedia controls (HATEOAS) for navigating between pages in a paginated collection of results.\nLinks for the current page, next page, and previous page, with optional first and last page links.\n",
+                "properties": {
+                  "self": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "description": "A URL that references a specific page in the pagination process. This is typically used for navigation \nbetween paginated results.\n",
+                    "properties": {
+                      "href": {
+                        "type": "string",
+                        "format": "uri",
+                        "description": "The URL for the referenced page.",
+                        "examples": [
+                          "/agreements?limit=10&ctoken=abc123"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "href"
+                    ]
+                  },
+                  "next": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "description": "A URL that references a specific page in the pagination process. This is typically used for navigation \nbetween paginated results.\n",
+                    "properties": {
+                      "href": {
+                        "type": "string",
+                        "format": "uri",
+                        "description": "The URL for the referenced page.",
+                        "examples": [
+                          "/agreements?limit=10&ctoken=abc123"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "href"
+                    ]
+                  },
+                  "prev": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "description": "A URL that references a specific page in the pagination process. This is typically used for navigation \nbetween paginated results.\n",
+                    "properties": {
+                      "href": {
+                        "type": "string",
+                        "format": "uri",
+                        "description": "The URL for the referenced page.",
+                        "examples": [
+                          "/agreements?limit=10&ctoken=abc123"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "href"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Agreements-API/get_agreements/output-400.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "description": "A message describing the error.",
+                "examples": [
+                  "An unexpected error occurred on the server."
+                ]
+              },
+              "code": {
+                "type": "integer",
+                "description": "HTTP status code for the error.",
+                "examples": [
+                  500
+                ]
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The timestamp when the error occurred.",
+                "examples": [
+                  "2023-01-01T12:00:00Z"
+                ]
+              }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Agreements-API/get_agreements/output-401.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "description": "A message describing the error.",
+                "examples": [
+                  "An unexpected error occurred on the server."
+                ]
+              },
+              "code": {
+                "type": "integer",
+                "description": "HTTP status code for the error.",
+                "examples": [
+                  500
+                ]
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The timestamp when the error occurred.",
+                "examples": [
+                  "2023-01-01T12:00:00Z"
+                ]
+              }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Agreements-API/get_agreements/output-403.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "description": "A message describing the error.",
+                "examples": [
+                  "An unexpected error occurred on the server."
+                ]
+              },
+              "code": {
+                "type": "integer",
+                "description": "HTTP status code for the error.",
+                "examples": [
+                  500
+                ]
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The timestamp when the error occurred.",
+                "examples": [
+                  "2023-01-01T12:00:00Z"
+                ]
+              }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Agreements-API/get_agreements/output-404.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "description": "A message describing the error.",
+                "examples": [
+                  "An unexpected error occurred on the server."
+                ]
+              },
+              "code": {
+                "type": "integer",
+                "description": "HTTP status code for the error.",
+                "examples": [
+                  500
+                ]
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The timestamp when the error occurred.",
+                "examples": [
+                  "2023-01-01T12:00:00Z"
+                ]
+              }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Agreements-API/get_agreements/output-500.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "description": "A message describing the error.",
+                "examples": [
+                  "An unexpected error occurred on the server."
+                ]
+              },
+              "code": {
+                "type": "integer",
+                "description": "HTTP status code for the error.",
+                "examples": [
+                  500
+                ]
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The timestamp when the error occurred.",
+                "examples": [
+                  "2023-01-01T12:00:00Z"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "get_agreements__agreementId_",
+      "operationId": "GetAgreement",
+      "name": "Get Agreement",
+      "description": "Retrieve detailed information about a specific agreement",
+      "schema": {
+        "tags": [
+          "Agreements"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Agreements-API/get_agreements__agreementId_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/agreements/{agreementId}"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "agreementId"
+              ],
+              "properties": {
+                "agreementId": {
+                  "type": "string",
+                  "pattern": "^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$",
+                  "default": "00000000-0000-0000-0000-000000000000"
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Agreements-API/get_agreements__agreementId_/output-200.schema.json",
+            "type": "object",
+            "description": "The Agreement component represents a comprehensive overview of a contractual document, detailing its unique identifiers, key properties, parties involved, \nand specific provisions. It includes general information such as the title, type, status, and important dates like effective and expiration dates. \nThe component also incorporates various provisions—legal, financial, lifecycle, and custom—along with metadata, external references, and related documents \nto offer a full representation of the structure and context of an agreement.\n",
+            "properties": {
+              "id": {
+                "description": "The unique identifier of the resource",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$",
+                "default": "00000000-0000-0000-0000-000000000000"
+              },
+              "title": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "Title of the agreement document, summarizing its purpose."
+              },
+              "file_name": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "The file name of the agreement."
+              },
+              "type": {
+                "description": "The type of agreement.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "Master Service Agreement"
+                ]
+              },
+              "category": {
+                "description": "Server-defined category based on the agreement type.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "BusinessServices"
+                ]
+              },
+              "summary": {
+                "description": "A detailed summary of the agreement's key provisions and scope.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 135000,
+                "examples": [
+                  "This Master Service Agreement between Alpha Corp and Beta Ltd. defines the terms for services provided by Alpha Corp, including project scope, payment terms, and dispute resolution."
+                ]
+              },
+              "status": {
+                "description": "Current status of the agreement (e.g., PENDING, COMPLETE, INACTIVE)",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "parties": {
+                "description": "A list of parties involved in the agreement.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "description": "A party is a person, group, or organization that is involved in a contract and has legally binding obligations and responsibilities. They also seek to benefit from the agreement.\n",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "Unique identifier for the party, mapped to the party entity reference."
+                    },
+                    "name_in_agreement": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "Name of the party as it appears in the agreement."
+                    },
+                    "preferred_name": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "Formal name of the party."
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                }
+              },
+              "provisions": {
+                "description": "\"The conditions or rules written in a legal agreement. The set of possible provisions is determined by the agreement type. \nThis set of provisions can change dynamically.\"\n",
+                "allOf": [
+                  {
+                    "description": "The GeneralProvisions component defines the fundamental terms and key dates of the agreement, including when it starts, when it has been executed, when it expires, and the overall duration. \nThese provisions set the basic framework for the agreement, establishing its timeline and primary milestones.\n",
+                    "type": "object",
+                    "properties": {
+                      "effective_date": {
+                        "description": "The date when the terms of the agreement start to apply and become legally binding.",
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "format": "date",
+                        "examples": [
+                          "2025-01-01T00:00:00+02:00"
+                        ],
+                        "example": "2025-01-01T00:00:00+02:00"
+                      },
+                      "expiration_date": {
+                        "description": "The date when the agreement ends and is no longer valid or enforceable.",
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "format": "date",
+                        "examples": [
+                          "2025-12-31T23:59:00+02:00"
+                        ],
+                        "example": "2025-12-31T23:59:00+02:00"
+                      },
+                      "execution_date": {
+                        "description": "The date when the agreement is signed by all parties, making it officially binding. This is not necessarily the same as the effective date.",
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "format": "date",
+                        "examples": [
+                          "2024-12-16T09:13:22+02:00"
+                        ],
+                        "example": "2024-12-16T09:13:22+02:00"
+                      },
+                      "term_length": {
+                        "description": "Overall duration of the agreement.",
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "pattern": "^P(-?[0-9]+Y)?(-?[0-9]+M)?(-?[0-9]+(\\.[0-9]+)?W)?(-?[0-9]+(\\.[0-9]+)?D)?(T-?[0-9]+(\\.[0-9]+)?(H(-?[0-9]+(\\.[0-9]+)?M)?(-?[0-9]+(\\.[0-9]+)?S)?|M(-?[0-9]+(\\.[0-9]+)?S)?|S))?$",
+                        "minLength": 3,
+                        "maxLength": 128,
+                        "examples": [
+                          "P30D"
+                        ],
+                        "example": "P1Y"
+                      }
+                    }
+                  },
+                  {
+                    "description": "The LegalProvisions component encompasses clauses and terms that define the legal rights, responsibilities, and protections of the parties involved in an agreement. \nThis includes standard legal aspects such as confidentiality, governing law, jurisdiction, and other regulatory or compliance-related provisions.\n",
+                    "allOf": [
+                      {
+                        "description": "Assignment specifies the rules and conditions regarding the transfer of rights or obligations under the agreement. This includes the type of assignment allowed, \nhow changes in control of the assigning party are handled, and conditions for the termination of assignment rights, providing clarity on when and how rights can be transferred or reassigned.\n",
+                        "type": "object",
+                        "properties": {
+                          "assignment_type": {
+                            "description": "The type of assignment rights in the agreement (e.g., transferability)",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "assignment_change_of_control": {
+                            "description": "Provisions related to changes in control of the assigning party",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "assignment_termination_rights": {
+                            "description": "Provisions for the termination of assignment rights",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "confidentiality_obligation_period": {
+                            "description": "A subset of ISO 8601 duration. Fractional or negative values are not supported.",
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "pattern": "^P(-?[0-9]+Y)?(-?[0-9]+M)?(-?[0-9]+(\\.[0-9]+)?W)?(-?[0-9]+(\\.[0-9]+)?D)?(T-?[0-9]+(\\.[0-9]+)?(H(-?[0-9]+(\\.[0-9]+)?M)?(-?[0-9]+(\\.[0-9]+)?S)?|M(-?[0-9]+(\\.[0-9]+)?S)?|S))?$",
+                            "minLength": 3,
+                            "maxLength": 128,
+                            "examples": [
+                              "P30D"
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "governing_law": {
+                            "description": "The governing law clause identifies the substantive law that will govern the rights and obligations of the parties to the agreement.",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "jurisdiction": {
+                            "description": "A jurisdiction clause expressly sets out which courts or tribunals have the power to hear a dispute which arises under the agreement.",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "nda_type": {
+                            "description": "Type of non-disclosure agreement (e.g., unilateral, bilateral).",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "description": "'Financial Provisions outlines the financial terms and conditions of the agreement, including the annual and total value of the agreement, liability limits, and payment-related details such as terms, \npotential late fees, and price adjustment caps. These provisions govern the monetary aspects of the agreement, defining how payments are managed, and establishing financial limits and obligations.'\n",
+                    "allOf": [
+                      {
+                        "description": "The AnnualAgreementValue component captures the financial details of the agreement, including the annualized value and currency code. \nIt provides a clear overview of the agreement's annualized financial worth, aiding in financial planning and assessment.\n",
+                        "type": "object",
+                        "properties": {
+                          "annual_agreement_value": {
+                            "type": [
+                              "number",
+                              "null"
+                            ],
+                            "format": "double",
+                            "description": "Total annual value of the agreement."
+                          },
+                          "annual_agreement_value_currency_code": {
+                            "description": "'ISO 4217 codes. From https://en.wikipedia.org/wiki/ISO_4217\nhttps://www.currency-iso.org/en/home/tables/table-a1.html'\n",
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "enum": [
+                              "AED",
+                              "AFN",
+                              "ALL",
+                              "AMD",
+                              "ANG",
+                              "AOA",
+                              "ARS",
+                              "AUD",
+                              "AWG",
+                              "AZN",
+                              "BAM",
+                              "BBD",
+                              "BDT",
+                              "BGN",
+                              "BHD",
+                              "BIF",
+                              "BMD",
+                              "BND",
+                              "BOB",
+                              "BOV",
+                              "BRL",
+                              "BSD",
+                              "BTN",
+                              "BWP",
+                              "BYN",
+                              "BZD",
+                              "CAD",
+                              "CDF",
+                              "CHE",
+                              "CHF",
+                              "CHW",
+                              "CLF",
+                              "CLP",
+                              "CNY",
+                              "COP",
+                              "COU",
+                              "CRC",
+                              "CUC",
+                              "CUP",
+                              "CVE",
+                              "CZK",
+                              "DJF",
+                              "DKK",
+                              "DOP",
+                              "DZD",
+                              "EGP",
+                              "ERN",
+                              "ETB",
+                              "EUR",
+                              "FJD",
+                              "FKP",
+                              "GBP",
+                              "GEL",
+                              "GHS",
+                              "GIP",
+                              "GMD",
+                              "GNF",
+                              "GTQ",
+                              "GYD",
+                              "HKD",
+                              "HNL",
+                              "HRK",
+                              "HTG",
+                              "HUF",
+                              "IDR",
+                              "ILS",
+                              "INR",
+                              "IQD",
+                              "IRR",
+                              "ISK",
+                              "JMD",
+                              "JOD",
+                              "JPY",
+                              "KES",
+                              "KGS",
+                              "KHR",
+                              "KMF",
+                              "KPW",
+                              "KRW",
+                              "KWD",
+                              "KYD",
+                              "KZT",
+                              "LAK",
+                              "LBP",
+                              "LKR",
+                              "LRD",
+                              "LSL",
+                              "LYD",
+                              "MAD",
+                              "MDL",
+                              "MGA",
+                              "MKD",
+                              "MMK",
+                              "MNT",
+                              "MOP",
+                              "MRU",
+                              "MUR",
+                              "MVR",
+                              "MWK",
+                              "MXN",
+                              "MXV",
+                              "MYR",
+                              "MZN",
+                              "NAD",
+                              "NGN",
+                              "NIO",
+                              "NOK",
+                              "NPR",
+                              "NZD",
+                              "OMR",
+                              "PAB",
+                              "PEN",
+                              "PGK",
+                              "PHP",
+                              "PKR",
+                              "PLN",
+                              "PYG",
+                              "QAR",
+                              "RON",
+                              "RSD",
+                              "RUB",
+                              "RWF",
+                              "SAR",
+                              "SBD",
+                              "SCR",
+                              "SDG",
+                              "SEK",
+                              "SGD",
+                              "SHP",
+                              "SLL",
+                              "SOS",
+                              "SRD",
+                              "SSP",
+                              "STN",
+                              "SVC",
+                              "SYP",
+                              "SZL",
+                              "THB",
+                              "TJS",
+                              "TMT",
+                              "TND",
+                              "TOP",
+                              "TRY",
+                              "TTD",
+                              "TWD",
+                              "TZS",
+                              "UAH",
+                              "UGX",
+                              "USD",
+                              "USN",
+                              "UYI",
+                              "UYU",
+                              "UZS",
+                              "VEF",
+                              "VND",
+                              "VUV",
+                              "WST",
+                              "XAF",
+                              "XAG",
+                              "XAU",
+                              "XBA",
+                              "XBB",
+                              "XBC",
+                              "XBD",
+                              "XCD",
+                              "XDR",
+                              "XOF",
+                              "XPD",
+                              "XPF",
+                              "XPT",
+                              "XSU",
+                              "XTS",
+                              "XUA",
+                              "XXX",
+                              "YER",
+                              "ZAR",
+                              "ZMW",
+                              "ZWL"
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "description": "The TotalAgreementValue captures the financial details of an agreement expressed as its total value and unit of currency.  \nIt provides a clear overview of the agreement's total financial worth, aiding in financial planning and assessment.\n",
+                        "type": "object",
+                        "properties": {
+                          "total_agreement_value": {
+                            "type": [
+                              "number",
+                              "null"
+                            ],
+                            "format": "double",
+                            "description": "Total value of the agreement."
+                          },
+                          "total_agreement_value_currency_code": {
+                            "description": "'ISO 4217 codes. From https://en.wikipedia.org/wiki/ISO_4217\nhttps://www.currency-iso.org/en/home/tables/table-a1.html'\n",
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "enum": [
+                              "AED",
+                              "AFN",
+                              "ALL",
+                              "AMD",
+                              "ANG",
+                              "AOA",
+                              "ARS",
+                              "AUD",
+                              "AWG",
+                              "AZN",
+                              "BAM",
+                              "BBD",
+                              "BDT",
+                              "BGN",
+                              "BHD",
+                              "BIF",
+                              "BMD",
+                              "BND",
+                              "BOB",
+                              "BOV",
+                              "BRL",
+                              "BSD",
+                              "BTN",
+                              "BWP",
+                              "BYN",
+                              "BZD",
+                              "CAD",
+                              "CDF",
+                              "CHE",
+                              "CHF",
+                              "CHW",
+                              "CLF",
+                              "CLP",
+                              "CNY",
+                              "COP",
+                              "COU",
+                              "CRC",
+                              "CUC",
+                              "CUP",
+                              "CVE",
+                              "CZK",
+                              "DJF",
+                              "DKK",
+                              "DOP",
+                              "DZD",
+                              "EGP",
+                              "ERN",
+                              "ETB",
+                              "EUR",
+                              "FJD",
+                              "FKP",
+                              "GBP",
+                              "GEL",
+                              "GHS",
+                              "GIP",
+                              "GMD",
+                              "GNF",
+                              "GTQ",
+                              "GYD",
+                              "HKD",
+                              "HNL",
+                              "HRK",
+                              "HTG",
+                              "HUF",
+                              "IDR",
+                              "ILS",
+                              "INR",
+                              "IQD",
+                              "IRR",
+                              "ISK",
+                              "JMD",
+                              "JOD",
+                              "JPY",
+                              "KES",
+                              "KGS",
+                              "KHR",
+                              "KMF",
+                              "KPW",
+                              "KRW",
+                              "KWD",
+                              "KYD",
+                              "KZT",
+                              "LAK",
+                              "LBP",
+                              "LKR",
+                              "LRD",
+                              "LSL",
+                              "LYD",
+                              "MAD",
+                              "MDL",
+                              "MGA",
+                              "MKD",
+                              "MMK",
+                              "MNT",
+                              "MOP",
+                              "MRU",
+                              "MUR",
+                              "MVR",
+                              "MWK",
+                              "MXN",
+                              "MXV",
+                              "MYR",
+                              "MZN",
+                              "NAD",
+                              "NGN",
+                              "NIO",
+                              "NOK",
+                              "NPR",
+                              "NZD",
+                              "OMR",
+                              "PAB",
+                              "PEN",
+                              "PGK",
+                              "PHP",
+                              "PKR",
+                              "PLN",
+                              "PYG",
+                              "QAR",
+                              "RON",
+                              "RSD",
+                              "RUB",
+                              "RWF",
+                              "SAR",
+                              "SBD",
+                              "SCR",
+                              "SDG",
+                              "SEK",
+                              "SGD",
+                              "SHP",
+                              "SLL",
+                              "SOS",
+                              "SRD",
+                              "SSP",
+                              "STN",
+                              "SVC",
+                              "SYP",
+                              "SZL",
+                              "THB",
+                              "TJS",
+                              "TMT",
+                              "TND",
+                              "TOP",
+                              "TRY",
+                              "TTD",
+                              "TWD",
+                              "TZS",
+                              "UAH",
+                              "UGX",
+                              "USD",
+                              "USN",
+                              "UYI",
+                              "UYU",
+                              "UZS",
+                              "VEF",
+                              "VND",
+                              "VUV",
+                              "WST",
+                              "XAF",
+                              "XAG",
+                              "XAU",
+                              "XBA",
+                              "XBB",
+                              "XBC",
+                              "XBD",
+                              "XCD",
+                              "XDR",
+                              "XOF",
+                              "XPD",
+                              "XPF",
+                              "XPT",
+                              "XSU",
+                              "XTS",
+                              "XUA",
+                              "XXX",
+                              "YER",
+                              "ZAR",
+                              "ZMW",
+                              "ZWL"
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "payment_terms_due_date": {
+                            "type": "string",
+                            "description": "Terms specifying the payment due date, based on a defined number of days or other conditions.",
+                            "enum": [
+                              "UNDER_SEVEN_DAYS",
+                              "SEVEN_DAYS",
+                              "FIFTEEN_DAYS",
+                              "THIRTY_DAYS",
+                              "FORTY_FIVE_DAYS",
+                              "SIXTY_DAYS",
+                              "NINETY_DAYS",
+                              "OVER_NINETY_DAYS",
+                              "ON_RECEIPT",
+                              "OTHER",
+                              "SILENT"
+                            ],
+                            "default": "OTHER"
+                          }
+                        }
+                      },
+                      {
+                        "description": "The LatePaymentFee component defines the conditions under which fees can be charged for late payments, including whether such fees are allowed and the percentage rate applied. \nThis component helps outline the financial penalties for overdue payments, encouraging timely compliance with payment terms.\n",
+                        "type": "object",
+                        "properties": {
+                          "can_charge_late_payment_fees": {
+                            "type": [
+                              "boolean",
+                              "null"
+                            ],
+                            "description": "Indicates if late payment fees can be charged."
+                          },
+                          "late_payment_fee_percent": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0,
+                            "maximum": 100,
+                            "description": "Percentage fee charged on late payments."
+                          }
+                        }
+                      },
+                      {
+                        "description": "The LiabilityCap component specifies the maximum financial liability that a party can incur under the agreement, including the cap amount, the applicable currency, \nany multiplier used to calculate the cap, and the duration for which the cap is effective. This serves to limit the financial exposure and risk for the parties involved.\n",
+                        "type": "object",
+                        "properties": {
+                          "liability_cap_fixed_amount": {
+                            "description": "Maximum liability cap in the agreement",
+                            "type": [
+                              "number",
+                              "null"
+                            ],
+                            "format": "double"
+                          },
+                          "liability_cap_currency_code": {
+                            "description": "'ISO 4217 codes. From https://en.wikipedia.org/wiki/ISO_4217\nhttps://www.currency-iso.org/en/home/tables/table-a1.html'\n",
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "enum": [
+                              "AED",
+                              "AFN",
+                              "ALL",
+                              "AMD",
+                              "ANG",
+                              "AOA",
+                              "ARS",
+                              "AUD",
+                              "AWG",
+                              "AZN",
+                              "BAM",
+                              "BBD",
+                              "BDT",
+                              "BGN",
+                              "BHD",
+                              "BIF",
+                              "BMD",
+                              "BND",
+                              "BOB",
+                              "BOV",
+                              "BRL",
+                              "BSD",
+                              "BTN",
+                              "BWP",
+                              "BYN",
+                              "BZD",
+                              "CAD",
+                              "CDF",
+                              "CHE",
+                              "CHF",
+                              "CHW",
+                              "CLF",
+                              "CLP",
+                              "CNY",
+                              "COP",
+                              "COU",
+                              "CRC",
+                              "CUC",
+                              "CUP",
+                              "CVE",
+                              "CZK",
+                              "DJF",
+                              "DKK",
+                              "DOP",
+                              "DZD",
+                              "EGP",
+                              "ERN",
+                              "ETB",
+                              "EUR",
+                              "FJD",
+                              "FKP",
+                              "GBP",
+                              "GEL",
+                              "GHS",
+                              "GIP",
+                              "GMD",
+                              "GNF",
+                              "GTQ",
+                              "GYD",
+                              "HKD",
+                              "HNL",
+                              "HRK",
+                              "HTG",
+                              "HUF",
+                              "IDR",
+                              "ILS",
+                              "INR",
+                              "IQD",
+                              "IRR",
+                              "ISK",
+                              "JMD",
+                              "JOD",
+                              "JPY",
+                              "KES",
+                              "KGS",
+                              "KHR",
+                              "KMF",
+                              "KPW",
+                              "KRW",
+                              "KWD",
+                              "KYD",
+                              "KZT",
+                              "LAK",
+                              "LBP",
+                              "LKR",
+                              "LRD",
+                              "LSL",
+                              "LYD",
+                              "MAD",
+                              "MDL",
+                              "MGA",
+                              "MKD",
+                              "MMK",
+                              "MNT",
+                              "MOP",
+                              "MRU",
+                              "MUR",
+                              "MVR",
+                              "MWK",
+                              "MXN",
+                              "MXV",
+                              "MYR",
+                              "MZN",
+                              "NAD",
+                              "NGN",
+                              "NIO",
+                              "NOK",
+                              "NPR",
+                              "NZD",
+                              "OMR",
+                              "PAB",
+                              "PEN",
+                              "PGK",
+                              "PHP",
+                              "PKR",
+                              "PLN",
+                              "PYG",
+                              "QAR",
+                              "RON",
+                              "RSD",
+                              "RUB",
+                              "RWF",
+                              "SAR",
+                              "SBD",
+                              "SCR",
+                              "SDG",
+                              "SEK",
+                              "SGD",
+                              "SHP",
+                              "SLL",
+                              "SOS",
+                              "SRD",
+                              "SSP",
+                              "STN",
+                              "SVC",
+                              "SYP",
+                              "SZL",
+                              "THB",
+                              "TJS",
+                              "TMT",
+                              "TND",
+                              "TOP",
+                              "TRY",
+                              "TTD",
+                              "TWD",
+                              "TZS",
+                              "UAH",
+                              "UGX",
+                              "USD",
+                              "USN",
+                              "UYI",
+                              "UYU",
+                              "UZS",
+                              "VEF",
+                              "VND",
+                              "VUV",
+                              "WST",
+                              "XAF",
+                              "XAG",
+                              "XAU",
+                              "XBA",
+                              "XBB",
+                              "XBC",
+                              "XBD",
+                              "XCD",
+                              "XDR",
+                              "XOF",
+                              "XPD",
+                              "XPF",
+                              "XPT",
+                              "XSU",
+                              "XTS",
+                              "XUA",
+                              "XXX",
+                              "YER",
+                              "ZAR",
+                              "ZMW",
+                              "ZWL"
+                            ]
+                          },
+                          "liability_cap_multiplier": {
+                            "description": "Multiplier applied to calculate the liability cap",
+                            "type": [
+                              "number",
+                              "null"
+                            ],
+                            "format": "double"
+                          },
+                          "liability_cap_duration": {
+                            "description": "Duration for the liability cap",
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "pattern": "^P(-?[0-9]+Y)?(-?[0-9]+M)?(-?[0-9]+(\\.[0-9]+)?W)?(-?[0-9]+(\\.[0-9]+)?D)?(T-?[0-9]+(\\.[0-9]+)?(H(-?[0-9]+(\\.[0-9]+)?M)?(-?[0-9]+(\\.[0-9]+)?S)?|M(-?[0-9]+(\\.[0-9]+)?S)?|S))?$",
+                            "minLength": 3,
+                            "maxLength": 128,
+                            "examples": [
+                              "P30D"
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "price_cap_percent_increase": {
+                            "description": "Maximum allowed percentage increase in prices, limited between 0 and 100.",
+                            "type": [
+                              "number",
+                              "null"
+                            ],
+                            "format": "float",
+                            "minimum": 0,
+                            "maximum": 100
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "description": "'The LifecycleProvisions component outlines the terms and conditions related to the duration and management of an agreement, including how the agreement can be renewed, extended, or terminated. \nThese provisions govern the different phases of the agreement's lifecycle, detailing how it progresses, concludes, or continues.'\n",
+                    "allOf": [
+                      {
+                        "description": "The Renewal component defines the terms and conditions for extending the duration of the agreement, including the type of renewal, notice period, and the length of the renewal term. \nIt covers aspects such as whether the renewal is automatic or requires action, the timeframe for giving notice, and the responsibilities and additional information regarding the renewal process.\n",
+                        "type": "object",
+                        "properties": {
+                          "renewal_type": {
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "description": "Specifies the type of renewal (e.g., automatic, manual)."
+                          },
+                          "renewal_notice_period": {
+                            "description": "The period of time that a party is required to provide to indicate their intention to renew an agreement.",
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "pattern": "^P(-?[0-9]+Y)?(-?[0-9]+M)?(-?[0-9]+(\\.[0-9]+)?W)?(-?[0-9]+(\\.[0-9]+)?D)?(T-?[0-9]+(\\.[0-9]+)?(H(-?[0-9]+(\\.[0-9]+)?M)?(-?[0-9]+(\\.[0-9]+)?S)?|M(-?[0-9]+(\\.[0-9]+)?S)?|S))?$",
+                            "minLength": 3,
+                            "maxLength": 128,
+                            "examples": [
+                              "P30D"
+                            ],
+                            "example": "P90D"
+                          },
+                          "renewal_notice_date": {
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "format": "date-time",
+                            "description": "Calculated field based on renewal notice period. (agreement expiration date - renewal notice period duration)",
+                            "examples": [
+                              "2024-08-01T00:00:00+02:00"
+                            ]
+                          },
+                          "auto_renewal_term_length": {
+                            "description": "The duration of the auto-renewal period.",
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "pattern": "^P(-?[0-9]+Y)?(-?[0-9]+M)?(-?[0-9]+(\\.[0-9]+)?W)?(-?[0-9]+(\\.[0-9]+)?D)?(T-?[0-9]+(\\.[0-9]+)?(H(-?[0-9]+(\\.[0-9]+)?M)?(-?[0-9]+(\\.[0-9]+)?S)?|M(-?[0-9]+(\\.[0-9]+)?S)?|S))?$",
+                            "minLength": 3,
+                            "maxLength": 128,
+                            "examples": [
+                              "P30D"
+                            ],
+                            "example": "P1Y"
+                          },
+                          "renewal_extension_period": {
+                            "description": "The period an agreement has been extended after it has been renewed.",
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "pattern": "^P(-?[0-9]+Y)?(-?[0-9]+M)?(-?[0-9]+(\\.[0-9]+)?W)?(-?[0-9]+(\\.[0-9]+)?D)?(T-?[0-9]+(\\.[0-9]+)?(H(-?[0-9]+(\\.[0-9]+)?M)?(-?[0-9]+(\\.[0-9]+)?S)?|M(-?[0-9]+(\\.[0-9]+)?S)?|S))?$",
+                            "minLength": 3,
+                            "maxLength": 128,
+                            "examples": [
+                              "P30D"
+                            ],
+                            "example": "P1Y"
+                          },
+                          "renewal_process_owner": {
+                            "description": "User ID of the person responsible for managing the renewal process.",
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "maxLength": 100
+                          },
+                          "renewal_additional_info": {
+                            "description": "Additional information related to the renewal process.",
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "maxLength": 400
+                          }
+                        }
+                      },
+                      {
+                        "description": "The Termination component outlines the conditions and timeframes under which an agreement can be ended, including specific durations for termination due to non-performance or for cause. \nThis helps define the process and notice periods required for legally ending the agreement.\n",
+                        "type": "object",
+                        "properties": {
+                          "termination_period_for_cause": {
+                            "description": "The specific duration that a party has to give notice before terminating the agreement due to a significant breach or violation of terms. \nThis period allows the other party to address the cause or prepare for termination.\n",
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "pattern": "^P(-?[0-9]+Y)?(-?[0-9]+M)?(-?[0-9]+(\\.[0-9]+)?W)?(-?[0-9]+(\\.[0-9]+)?D)?(T-?[0-9]+(\\.[0-9]+)?(H(-?[0-9]+(\\.[0-9]+)?M)?(-?[0-9]+(\\.[0-9]+)?S)?|M(-?[0-9]+(\\.[0-9]+)?S)?|S))?$",
+                            "minLength": 3,
+                            "maxLength": 128,
+                            "examples": [
+                              "P6M"
+                            ]
+                          },
+                          "termination_period_for_convenience": {
+                            "description": "Specifies the required notice period that a party must provide before terminating the agreement for convenience, without cause, under the terms outlined in the contract.",
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "pattern": "^P(-?[0-9]+Y)?(-?[0-9]+M)?(-?[0-9]+(\\.[0-9]+)?W)?(-?[0-9]+(\\.[0-9]+)?D)?(T-?[0-9]+(\\.[0-9]+)?(H(-?[0-9]+(\\.[0-9]+)?M)?(-?[0-9]+(\\.[0-9]+)?S)?|M(-?[0-9]+(\\.[0-9]+)?S)?|S))?$",
+                            "minLength": 3,
+                            "maxLength": 128,
+                            "examples": [
+                              "P6M"
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              "additional_user_defined_data": {
+                "description": "A generic map/dict. The key is a string, and the value can be of any type, including strings, booleans, numbers, arrays, or objects",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "additionalProperties": {
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "boolean"
+                    },
+                    {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    {
+                      "type": "array",
+                      "items": {}
+                    }
+                  ]
+                }
+              },
+              "additional_custom_clm_data": {
+                "description": "A generic map/dict. The key is a string, and the value can be of any type, including strings, booleans, numbers, arrays, or objects",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "additionalProperties": {
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "boolean"
+                    },
+                    {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    {
+                      "type": "array",
+                      "items": {}
+                    }
+                  ]
+                }
+              },
+              "additional_custom_esign_data": {
+                "description": "A generic map/dict. The key is a string, and the value can be of any type, including strings, booleans, numbers, arrays, or objects",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "additionalProperties": {
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "boolean"
+                    },
+                    {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    {
+                      "type": "array",
+                      "items": {}
+                    }
+                  ]
+                }
+              },
+              "related_agreement_documents": {
+                "type": "object",
+                "properties": {
+                  "parent_agreement_document_id": {
+                    "description": "The unique identifier of the resource",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "pattern": "^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$",
+                    "default": "00000000-0000-0000-0000-000000000000"
+                  }
+                }
+              },
+              "languages": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "description": "List of languages applicable to the agreement, identified using BCP-47 language codes.",
+                "items": {
+                  "description": "BCP47 language code",
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "/^([a-z]{2}([a-z]?(-[a-z]{3}){0,3}|[a-z]{2,6})?(-[A-Z][a-z]{3})?(-([A-Z]{2}|[0-9]{3}))?|i-mingo)$/",
+                  "examples": [
+                    "en-US"
+                  ]
+                }
+              },
+              "source_name": {
+                "description": "The name of the source system who creates this entity, e.g. eSign, CLM, or Salesforce.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 128,
+                "examples": [
+                  "Docusign eSign"
+                ]
+              },
+              "source_id": {
+                "description": "The ID of the entity in the source system that this entity is associated with. For example, it could be an ID of the envelope in eSign.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 128,
+                "examples": [
+                  "8ade6915-d04b-40d6-bb6f-9c6ba6aa1bb5"
+                ]
+              },
+              "source_account_id": {
+                "description": "The Account ID of the source system who creates this entity, e.g. eSign Account ID",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1,
+                "maxLength": 128,
+                "examples": [
+                  "faee2c10-cae6-4d90-ba66-6d6d117d92c5"
+                ]
+              },
+              "metadata": {
+                "type": "object",
+                "properties": {
+                  "created_at": {
+                    "description": "Timestamp when the agreement document was created.",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "format": "date-time"
+                  },
+                  "created_by": {
+                    "description": "User ID of the person who created the agreement document.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "modified_at": {
+                    "description": "Timestamp when the agreement document was last modified.",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "format": "date-time"
+                  },
+                  "modified_by": {
+                    "description": "User ID of the person who last modified the agreement document.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "request_id": {
+                    "description": "Unique identifier for the request, useful for tracking and debugging.",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "format": "uuid",
+                    "examples": [
+                      "3f7c9e4b-851c-4f9b-89e7-123456789abc"
+                    ]
+                  },
+                  "response_timestamp": {
+                    "description": "The timestamp indicating when the response was generated.",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "format": "date-time",
+                    "examples": [
+                      "2024-10-17T14:30:00Z"
+                    ]
+                  },
+                  "response_duration_ms": {
+                    "description": "The duration of time, in milliseconds, that the server took to process and respond \nto the request. This is measured from the time the server received the request \nuntil the time the response was sent.\n",
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "format": "int32",
+                    "examples": [
+                      150
+                    ],
+                    "minimum": 0
+                  }
+                }
+              }
+            },
+            "required": [
+              "id"
+            ]
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Agreements-API/get_agreements__agreementId_/output-400.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "description": "A message describing the error.",
+                "examples": [
+                  "An unexpected error occurred on the server."
+                ]
+              },
+              "code": {
+                "type": "integer",
+                "description": "HTTP status code for the error.",
+                "examples": [
+                  500
+                ]
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The timestamp when the error occurred.",
+                "examples": [
+                  "2023-01-01T12:00:00Z"
+                ]
+              }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Agreements-API/get_agreements__agreementId_/output-401.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "description": "A message describing the error.",
+                "examples": [
+                  "An unexpected error occurred on the server."
+                ]
+              },
+              "code": {
+                "type": "integer",
+                "description": "HTTP status code for the error.",
+                "examples": [
+                  500
+                ]
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The timestamp when the error occurred.",
+                "examples": [
+                  "2023-01-01T12:00:00Z"
+                ]
+              }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Agreements-API/get_agreements__agreementId_/output-403.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "description": "A message describing the error.",
+                "examples": [
+                  "An unexpected error occurred on the server."
+                ]
+              },
+              "code": {
+                "type": "integer",
+                "description": "HTTP status code for the error.",
+                "examples": [
+                  500
+                ]
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The timestamp when the error occurred.",
+                "examples": [
+                  "2023-01-01T12:00:00Z"
+                ]
+              }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Agreements-API/get_agreements__agreementId_/output-404.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "description": "A message describing the error.",
+                "examples": [
+                  "An unexpected error occurred on the server."
+                ]
+              },
+              "code": {
+                "type": "integer",
+                "description": "HTTP status code for the error.",
+                "examples": [
+                  500
+                ]
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The timestamp when the error occurred.",
+                "examples": [
+                  "2023-01-01T12:00:00Z"
+                ]
+              }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Agreements-API/get_agreements__agreementId_/output-500.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "description": "A message describing the error.",
+                "examples": [
+                  "An unexpected error occurred on the server."
+                ]
+              },
+              "code": {
+                "type": "integer",
+                "description": "HTTP status code for the error.",
+                "examples": [
+                  500
+                ]
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The timestamp when the error occurred.",
+                "examples": [
+                  "2023-01-01T12:00:00Z"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "references": {
+    "baseURL": {
+      "type": "string",
+      "enum": [
+        "https://api.docusign.com/v1/accounts/{accountId}"
+      ]
+    },
+    "queryDesc": "Query parameters sent with the request",
+    "paramDesc": "URL parameters sent with the request",
+    "headerDesc": "HTTP headers sent when making the request",
+    "dataDesc": "Data sent with the request",
+    "schema": "https://json-schema.org/draft/2020-12/schema"
+  }
+}

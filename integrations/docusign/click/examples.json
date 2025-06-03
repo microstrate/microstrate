@@ -1,0 +1,475 @@
+{
+    "get_service_information": {
+      "Basic Example": {
+        "url": "/service_information",
+        "method": "get",
+        "baseURL": "https://www.demo.docusign.net/clickapi"
+      }
+    },
+    "get_v1_accounts__accountId__clickwraps": {
+      "Basic Example": {
+        "url": "/v1/accounts/{accountId}/clickwraps",
+        "method": "get",
+        "path": {
+          "accountId": "<string>"
+        },
+        "query": {
+          "from_date": "<string>",
+          "ownerUserId": "<string>",
+          "page_number": "<string>",
+          "shared": "<string>",
+          "status": "<string>",
+          "to_date": "<string>"
+        },
+        "baseURL": "https://www.demo.docusign.net/clickapi"
+      }
+    },
+    "post_v1_accounts__accountId__clickwraps": {
+      "Basic Example": {
+        "url": "/v1/accounts/{accountId}/clickwraps",
+        "method": "post",
+        "path": {
+          "accountId": "<string>"
+        },
+        "data": {
+          "clickwrapName": "",
+          "displaySettings": {
+            "actionButtonAlignment": "",
+            "allowClientOnly": "<boolean>",
+            "allowedHosts": [
+              ""
+            ],
+            "brandId": "",
+            "consentButtonText": "",
+            "consentText": "",
+            "declineButtonText": "",
+            "displayName": "",
+            "documentDisplay": "",
+            "downloadable": "<boolean>",
+            "format": "",
+            "hasDeclineButton": "<boolean>",
+            "hostOrigin": "",
+            "mustRead": "<boolean>",
+            "mustView": "<boolean>",
+            "recordDeclineResponses": "<boolean>",
+            "requireAccept": "<boolean>",
+            "sendToEmail": "<boolean>"
+          },
+          "documents": [
+            {
+              "documentBase64": "",
+              "documentHtml": "",
+              "documentName": "",
+              "fileExtension": "",
+              "order": 0
+            }
+          ],
+          "fieldsToNull": "",
+          "isMajorVersion": "<boolean>",
+          "isShared": "<boolean>",
+          "name": "",
+          "requireReacceptance": "<boolean>",
+          "scheduledDate": {},
+          "scheduledReacceptance": {
+            "recurrenceInterval": 0,
+            "recurrenceIntervalType": "",
+            "startDateTime": {}
+          },
+          "status": {},
+          "transferFromUserId": "",
+          "transferToUserId": ""
+        },
+        "baseURL": "https://www.demo.docusign.net/clickapi"
+      }
+    },
+    "delete_v1_accounts__accountId__clickwraps": {
+      "Basic Example": {
+        "url": "/v1/accounts/{accountId}/clickwraps",
+        "method": "delete",
+        "path": {
+          "accountId": "<string>"
+        },
+        "query": {
+          "clickwrapIds": "<string>"
+        },
+        "baseURL": "https://www.demo.docusign.net/clickapi"
+      }
+    },
+    "get_v1_accounts__accountId__clickwraps__clickwrapId_": {
+      "Basic Example": {
+        "url": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}",
+        "method": "get",
+        "path": {
+          "accountId": "<string>",
+          "clickwrapId": "<string>"
+        },
+        "baseURL": "https://www.demo.docusign.net/clickapi"
+      }
+    },
+    "delete_v1_accounts__accountId__clickwraps__clickwrapId_": {
+      "Basic Example": {
+        "url": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}",
+        "method": "delete",
+        "path": {
+          "accountId": "<string>",
+          "clickwrapId": "<string>"
+        },
+        "query": {
+          "versions": "<string>"
+        },
+        "baseURL": "https://www.demo.docusign.net/clickapi"
+      }
+    },
+    "put_v1_accounts__accountId__clickwraps__clickwrapId_": {
+      "Basic Example": {
+        "url": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}",
+        "method": "put",
+        "path": {
+          "accountId": "<string>",
+          "clickwrapId": "<string>"
+        },
+        "data": {
+          "transferFromUserId": "",
+          "transferToUserId": ""
+        },
+        "baseURL": "https://www.demo.docusign.net/clickapi"
+      }
+    },
+    "post_v1_accounts__accountId__clickwraps__clickwrapId__agreements": {
+      "Basic Example": {
+        "url": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}/agreements",
+        "method": "post",
+        "path": {
+          "accountId": "<string>",
+          "clickwrapId": "<string>"
+        },
+        "data": {
+          "clientUserId": "",
+          "hostOrigin": "",
+          "metadata": ""
+        },
+        "baseURL": "https://www.demo.docusign.net/clickapi"
+      }
+    },
+    "get_v1_accounts__accountId__clickwraps__clickwrapId__agreements__agreementId_": {
+      "Basic Example": {
+        "url": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}/agreements/{agreementId}",
+        "method": "get",
+        "path": {
+          "accountId": "<string>",
+          "agreementId": "<string>",
+          "clickwrapId": "<string>"
+        },
+        "baseURL": "https://www.demo.docusign.net/clickapi"
+      }
+    },
+    "get_v1_accounts__accountId__clickwraps__clickwrapId__agreements__agreementId__download": {
+      "Basic Example": {
+        "url": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}/agreements/{agreementId}/download",
+        "method": "get",
+        "path": {
+          "accountId": "<string>",
+          "agreementId": "<string>",
+          "clickwrapId": "<string>"
+        },
+        "baseURL": "https://www.demo.docusign.net/clickapi"
+      }
+    },
+    "get_v1_accounts__accountId__clickwraps__clickwrapId__users": {
+      "Basic Example": {
+        "url": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}/users",
+        "method": "get",
+        "path": {
+          "accountId": "<string>",
+          "clickwrapId": "<string>"
+        },
+        "query": {
+          "client_user_id": "<string>",
+          "from_date": "<string>",
+          "page_number": "<string>",
+          "status": "<string>",
+          "to_date": "<string>"
+        },
+        "baseURL": "https://www.demo.docusign.net/clickapi"
+      }
+    },
+    "post_v1_accounts__accountId__clickwraps__clickwrapId__versions": {
+      "Basic Example": {
+        "url": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}/versions",
+        "method": "post",
+        "path": {
+          "accountId": "<string>",
+          "clickwrapId": "<string>"
+        },
+        "data": {
+          "clickwrapName": "",
+          "displaySettings": {
+            "actionButtonAlignment": "",
+            "allowClientOnly": "<boolean>",
+            "allowedHosts": [
+              ""
+            ],
+            "brandId": "",
+            "consentButtonText": "",
+            "consentText": "",
+            "declineButtonText": "",
+            "displayName": "",
+            "documentDisplay": "",
+            "downloadable": "<boolean>",
+            "format": "",
+            "hasDeclineButton": "<boolean>",
+            "hostOrigin": "",
+            "mustRead": "<boolean>",
+            "mustView": "<boolean>",
+            "recordDeclineResponses": "<boolean>",
+            "requireAccept": "<boolean>",
+            "sendToEmail": "<boolean>"
+          },
+          "documents": [
+            {
+              "documentBase64": "",
+              "documentHtml": "",
+              "documentName": "",
+              "fileExtension": "",
+              "order": 0
+            }
+          ],
+          "fieldsToNull": "",
+          "isMajorVersion": "<boolean>",
+          "isShared": "<boolean>",
+          "name": "",
+          "requireReacceptance": "<boolean>",
+          "scheduledDate": {},
+          "scheduledReacceptance": {
+            "recurrenceInterval": 0,
+            "recurrenceIntervalType": "",
+            "startDateTime": {}
+          },
+          "status": {},
+          "transferFromUserId": "",
+          "transferToUserId": ""
+        },
+        "baseURL": "https://www.demo.docusign.net/clickapi"
+      }
+    },
+    "delete_v1_accounts__accountId__clickwraps__clickwrapId__versions": {
+      "Basic Example": {
+        "url": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}/versions",
+        "method": "delete",
+        "path": {
+          "accountId": "<string>",
+          "clickwrapId": "<string>"
+        },
+        "query": {
+          "clickwrapVersionIds": "<string>"
+        },
+        "baseURL": "https://www.demo.docusign.net/clickapi"
+      }
+    },
+    "get_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionId_": {
+      "Basic Example": {
+        "url": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}/versions/{versionId}",
+        "method": "get",
+        "path": {
+          "accountId": "<string>",
+          "clickwrapId": "<string>",
+          "versionId": "<string>"
+        },
+        "baseURL": "https://www.demo.docusign.net/clickapi"
+      }
+    },
+    "delete_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionId_": {
+      "Basic Example": {
+        "url": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}/versions/{versionId}",
+        "method": "delete",
+        "path": {
+          "accountId": "<string>",
+          "clickwrapId": "<string>",
+          "versionId": "<string>"
+        },
+        "baseURL": "https://www.demo.docusign.net/clickapi"
+      }
+    },
+    "put_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionId_": {
+      "Basic Example": {
+        "url": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}/versions/{versionId}",
+        "method": "put",
+        "path": {
+          "accountId": "<string>",
+          "clickwrapId": "<string>",
+          "versionId": "<string>"
+        },
+        "data": {
+          "clickwrapName": "",
+          "displaySettings": {
+            "actionButtonAlignment": "",
+            "allowClientOnly": "<boolean>",
+            "allowedHosts": [
+              ""
+            ],
+            "brandId": "",
+            "consentButtonText": "",
+            "consentText": "",
+            "declineButtonText": "",
+            "displayName": "",
+            "documentDisplay": "",
+            "downloadable": "<boolean>",
+            "format": "",
+            "hasDeclineButton": "<boolean>",
+            "hostOrigin": "",
+            "mustRead": "<boolean>",
+            "mustView": "<boolean>",
+            "recordDeclineResponses": "<boolean>",
+            "requireAccept": "<boolean>",
+            "sendToEmail": "<boolean>"
+          },
+          "documents": [
+            {
+              "documentBase64": "",
+              "documentHtml": "",
+              "documentName": "",
+              "fileExtension": "",
+              "order": 0
+            }
+          ],
+          "fieldsToNull": "",
+          "isMajorVersion": "<boolean>",
+          "isShared": "<boolean>",
+          "name": "",
+          "requireReacceptance": "<boolean>",
+          "scheduledDate": {},
+          "scheduledReacceptance": {
+            "recurrenceInterval": 0,
+            "recurrenceIntervalType": "",
+            "startDateTime": {}
+          },
+          "status": {},
+          "transferFromUserId": "",
+          "transferToUserId": ""
+        },
+        "baseURL": "https://www.demo.docusign.net/clickapi"
+      }
+    },
+    "get_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionId__users": {
+      "Basic Example": {
+        "url": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}/versions/{versionId}/users",
+        "method": "get",
+        "path": {
+          "accountId": "<string>",
+          "clickwrapId": "<string>",
+          "versionId": "<string>"
+        },
+        "query": {
+          "client_user_id": "<string>",
+          "from_date": "<string>",
+          "page_number": "<string>",
+          "status": "<string>",
+          "to_date": "<string>"
+        },
+        "baseURL": "https://www.demo.docusign.net/clickapi"
+      }
+    },
+    "get_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionNumber_": {
+      "Basic Example": {
+        "url": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}/versions/{versionNumber}",
+        "method": "get",
+        "path": {
+          "accountId": "<string>",
+          "clickwrapId": "<string>",
+          "versionNumber": "<string>"
+        },
+        "baseURL": "https://www.demo.docusign.net/clickapi"
+      }
+    },
+    "delete_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionNumber_": {
+      "Basic Example": {
+        "url": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}/versions/{versionNumber}",
+        "method": "delete",
+        "path": {
+          "accountId": "<string>",
+          "clickwrapId": "<string>",
+          "versionNumber": "<string>"
+        },
+        "baseURL": "https://www.demo.docusign.net/clickapi"
+      }
+    },
+    "put_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionNumber_": {
+      "Basic Example": {
+        "url": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}/versions/{versionNumber}",
+        "method": "put",
+        "path": {
+          "accountId": "<string>",
+          "clickwrapId": "<string>",
+          "versionNumber": "<string>"
+        },
+        "data": {
+          "clickwrapName": "",
+          "displaySettings": {
+            "actionButtonAlignment": "",
+            "allowClientOnly": "<boolean>",
+            "allowedHosts": [
+              ""
+            ],
+            "brandId": "",
+            "consentButtonText": "",
+            "consentText": "",
+            "declineButtonText": "",
+            "displayName": "",
+            "documentDisplay": "",
+            "downloadable": "<boolean>",
+            "format": "",
+            "hasDeclineButton": "<boolean>",
+            "hostOrigin": "",
+            "mustRead": "<boolean>",
+            "mustView": "<boolean>",
+            "recordDeclineResponses": "<boolean>",
+            "requireAccept": "<boolean>",
+            "sendToEmail": "<boolean>"
+          },
+          "documents": [
+            {
+              "documentBase64": "",
+              "documentHtml": "",
+              "documentName": "",
+              "fileExtension": "",
+              "order": 0
+            }
+          ],
+          "fieldsToNull": "",
+          "isMajorVersion": "<boolean>",
+          "isShared": "<boolean>",
+          "name": "",
+          "requireReacceptance": "<boolean>",
+          "scheduledDate": {},
+          "scheduledReacceptance": {
+            "recurrenceInterval": 0,
+            "recurrenceIntervalType": "",
+            "startDateTime": {}
+          },
+          "status": {},
+          "transferFromUserId": "",
+          "transferToUserId": ""
+        },
+        "baseURL": "https://www.demo.docusign.net/clickapi"
+      }
+    },
+    "get_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionNumber__users": {
+      "Basic Example": {
+        "url": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}/versions/{versionNumber}/users",
+        "method": "get",
+        "path": {
+          "accountId": "<string>",
+          "clickwrapId": "<string>",
+          "versionNumber": "<string>"
+        },
+        "query": {
+          "client_user_id": "<string>",
+          "from_date": "<string>",
+          "page_number": "<string>",
+          "status": "<string>",
+          "to_date": "<string>"
+        },
+        "baseURL": "https://www.demo.docusign.net/clickapi"
+      }
+    }
+}

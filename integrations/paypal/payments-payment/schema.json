@@ -1,0 +1,776 @@
+{
+  "name": "Payments",
+  "description": "Call the Payments API to authorize payments, capture authorized payments, refund payments that have already been captured, and show payment information. Use the Payments API in conjunction with the <a href=\"/docs/api/orders/v2/\">Orders API</a>. For more information, see the <a href=\"/docs/checkout/\">PayPal Checkout Overview</a>.",
+  "nodes": [
+    {
+      "id": "get_v2_payments_authorizations__authorization_id_",
+      "operationId": "authorizations.get",
+      "name": "Authorizations Get",
+      "description": "Show details for authorized payment",
+      "schema": {
+        "tags": [
+          "authorizations"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Payments/get_v2_payments_authorizations__authorization_id_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v2/payments/authorizations/{authorization_id}"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "authorization_id"
+              ],
+              "properties": {
+                "authorization_id": {
+                  "type": "string",
+                  "description": "The PayPal-generated ID for the authorized payment to void."
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Payments/get_v2_payments_authorizations__authorization_id_/output-401.schema.json",
+            "type": "object",
+            "title": "Unauthorized Error",
+            "description": "Authentication failed due to missing Authorization header, or invalid authentication credentials.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "enum": [
+                  "AUTHENTICATION_FAILURE"
+                ]
+              },
+              "message": {
+                "type": "string",
+                "enum": [
+                  "Authentication failed due to missing authorization header, or invalid authentication credentials."
+                ]
+              },
+              "details": {
+                "type": "array",
+                "items": {
+                  "title": "Error Details",
+                  "type": "object",
+                  "description": "The error details. Required for client-side `4XX` errors.",
+                  "properties": {
+                    "field": {
+                      "type": "string",
+                      "description": "The field that caused the error. If this field is in the body, set this value to the field's JSON pointer value. Required for client-side errors."
+                    },
+                    "value": {
+                      "type": "string",
+                      "description": "The value of the field that caused the error."
+                    },
+                    "location": {
+                      "type": "string",
+                      "description": "The location of the field that caused the error. Value is `body`, `path`, or `query`.",
+                      "enum": [
+                        "body",
+                        "path",
+                        "query"
+                      ],
+                      "default": "body"
+                    },
+                    "issue": {
+                      "type": "string",
+                      "description": "The unique, fine-grained application-level error code."
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "The human-readable description for an issue. The description can change over the lifetime of an API, so clients must not depend on this value."
+                    }
+                  },
+                  "required": [
+                    "issue"
+                  ]
+                }
+              },
+              "debug_id": {
+                "type": "string",
+                "description": "The PayPal internal ID. Used for correlation purposes."
+              },
+              "links": {
+                "description": "An array of request-related [HATEOAS links](https://en.wikipedia.org/wiki/HATEOAS).",
+                "type": "array",
+                "minItems": 0,
+                "maxItems": 10000,
+                "items": {
+                  "title": "Link Description",
+                  "description": "The request-related [HATEOAS link](/api/rest/responses/#hateoas-links) information.",
+                  "type": "object",
+                  "required": [
+                    "href",
+                    "rel"
+                  ],
+                  "properties": {
+                    "href": {
+                      "description": "The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call.",
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 20000,
+                      "pattern": "^.*$"
+                    },
+                    "rel": {
+                      "description": "The [link relation type](https://tools.ietf.org/html/rfc5988#section-4), which serves as an ID for a link that unambiguously describes the semantics of the link. See [Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml).",
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 100,
+                      "pattern": "^.*$"
+                    },
+                    "method": {
+                      "description": "The HTTP method required to make the related call.",
+                      "type": "string",
+                      "minLength": 3,
+                      "maxLength": 6,
+                      "pattern": "^[A-Z]*$",
+                      "enum": [
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "PATCH"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "post_v2_payments_authorizations__authorization_id__capture",
+      "operationId": "authorizations.capture",
+      "name": "Authorizations Capture",
+      "description": "Capture authorized payment",
+      "schema": {
+        "tags": [
+          "authorizations"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Payments/post_v2_payments_authorizations__authorization_id__capture/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v2/payments/authorizations/{authorization_id}/capture"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "PayPal-Request-Id": {
+                  "type": "string",
+                  "description": "The server stores keys for 45 days."
+                },
+                "Prefer": {
+                  "type": "string",
+                  "default": "return=minimal",
+                  "description": "The preferred server response upon successful completion of the request. Value is:<ul><li><code>return=minimal</code>. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the <code>id</code>, <code>status</code> and HATEOAS links.</li><li><code>return=representation</code>. The server returns a complete resource representation, including the current state of the resource.</li></ul>"
+                },
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "title": "Capture Request",
+                "type": "object",
+                "description": "Captures either a portion or the full authorized amount of an authorized payment.",
+                "allOf": [
+                  {
+                    "type": "object",
+                    "title": "Capture Identifier",
+                    "description": "The capture identification-related fields. Includes the invoice ID, custom ID, note to payer, and soft descriptor.",
+                    "properties": {
+                      "invoice_id": {
+                        "description": "The API caller-provided external invoice number for this order. Appears in both the payer's transaction history and the emails that the payer receives.",
+                        "type": "string",
+                        "maxLength": 127,
+                        "minLength": 1,
+                        "pattern": "^.{1,127}$"
+                      },
+                      "note_to_payer": {
+                        "type": "string",
+                        "description": "An informational note about this settlement. Appears in both the payer's transaction history and the emails that the payer receives.",
+                        "maxLength": 255,
+                        "minLength": 1,
+                        "pattern": "^.{1,255}$"
+                      }
+                    }
+                  },
+                  {
+                    "properties": {
+                      "amount": {
+                        "0": "c",
+                        "1": "y",
+                        "2": "c",
+                        "3": "l",
+                        "4": "e",
+                        "description": "The amount to capture. To capture a portion of the full authorized amount, specify an amount. If amount is not specified, the full authorized amount is captured. The amount must be a positive number and in the same currency as the authorization against which the payment is being captured."
+                      },
+                      "invoice_id": {
+                        "description": "The API caller-provided external invoice number for this order. Appears in both the payer's transaction history and the emails that the payer receives.",
+                        "type": "string",
+                        "maxLength": 127
+                      },
+                      "final_capture": {
+                        "description": "Indicates whether you can make additional captures against the authorized payment. Set to `true` if you do not intend to capture additional payments against the authorization. Set to `false` if you intend to capture additional payments against the authorization.",
+                        "type": "boolean",
+                        "default": false
+                      },
+                      "payment_instruction": {
+                        "type": "object",
+                        "title": "Payment Instruction",
+                        "description": "Any additional payment instructions to be consider during payment processing. This processing instruction is applicable for Capturing an order or Authorizing an Order.",
+                        "properties": {
+                          "platform_fees": {
+                            "type": "array",
+                            "description": "An array of various fees, commissions, tips, or donations. This field is only applicable to merchants that been enabled for PayPal Commerce Platform for Marketplaces and Platforms capability.",
+                            "minItems": 0,
+                            "maxItems": 1,
+                            "items": {
+                              "type": "object",
+                              "title": "Platform Fee",
+                              "description": "The platform or partner fee, commission, or brokerage fee that is associated with the transaction. Not a separate or isolated transaction leg from the external perspective. The platform fee is limited in scope and is always associated with the original payment for the purchase unit.",
+                              "properties": {
+                                "amount": {
+                                  "0": "c",
+                                  "1": "y",
+                                  "2": "c",
+                                  "3": "l",
+                                  "4": "e",
+                                  "description": "The fee for this transaction."
+                                },
+                                "payee": {
+                                  "0": "c",
+                                  "1": "y",
+                                  "2": "c",
+                                  "3": "l",
+                                  "4": "e",
+                                  "description": "The recipient of the fee for this transaction. If you omit this value, the default is the API caller."
+                                }
+                              },
+                              "required": [
+                                "amount"
+                              ]
+                            }
+                          },
+                          "disbursement_mode": {
+                            "description": "The funds that are held on behalf of the merchant.",
+                            "type": "string",
+                            "title": "Disbursement Mode",
+                            "default": "INSTANT",
+                            "minLength": 1,
+                            "maxLength": 16,
+                            "pattern": "^[A-Z_]+$",
+                            "enum": [
+                              "INSTANT",
+                              "DELAYED"
+                            ]
+                          },
+                          "payee_pricing_tier_id": {
+                            "type": "string",
+                            "description": "This field is only enabled for selected merchants/partners to use and provides the ability to trigger a specific pricing rate/plan for a payment transaction. The list of eligible 'payee_pricing_tier_id' would be provided to you by your Account Manager. Specifying values other than the one provided to you by your account manager would result in an error.",
+                            "minLength": 1,
+                            "maxLength": 20,
+                            "pattern": "^.*$"
+                          },
+                          "payee_receivable_fx_rate_id": {
+                            "type": "string",
+                            "description": "FX identifier generated returned by PayPal to be used for payment processing in order to honor FX rate (for eligible integrations) to be used when amount is settled/received into the payee account.",
+                            "maxLength": 4000,
+                            "minLength": 1,
+                            "pattern": "^.*$"
+                          }
+                        }
+                      },
+                      "note_to_payer": {
+                        "description": "An informational note about this settlement. Appears in both the payer's transaction history and the emails that the payer receives.",
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "soft_descriptor": {
+                        "description": "The payment descriptor on the payer's account statement.",
+                        "type": "string",
+                        "maxLength": 22
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v2_payments_authorizations__authorization_id__reauthorize",
+      "operationId": "authorizations.reauthorize",
+      "name": "Authorizations Reauthorize",
+      "description": "Reauthorize authorized payment",
+      "schema": {
+        "tags": [
+          "authorizations"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Payments/post_v2_payments_authorizations__authorization_id__reauthorize/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v2/payments/authorizations/{authorization_id}/reauthorize"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "title": "Reauthorize Request",
+                "type": "object",
+                "description": "Reauthorizes an authorized PayPal account payment, by ID. To ensure that funds are still available, reauthorize a payment after its initial three-day honor period expires. You can reauthorize a payment only once from days four to 29.<br/><br/>If 30 days have transpired since the date of the original authorization, you must create an authorized payment instead of reauthorizing the original authorized payment.<br/><br/>A reauthorized payment itself has a new honor period of three days.<br/><br/>You can reauthorize an authorized payment once. The allowed amount depends on context and geography, for example in US it is up to 115% of the original authorized amount, not to exceed an increase of $75 USD.<br/><br/>Supports only the `amount` request parameter.<blockquote><strong>Note:</strong> This request is currently not supported for Partner use cases.</blockquote>",
+                "properties": {
+                  "amount": {
+                    "0": "c",
+                    "1": "y",
+                    "2": "c",
+                    "3": "l",
+                    "4": "e",
+                    "description": "The amount to reauthorize for an authorized payment."
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v2_payments_authorizations__authorization_id__void",
+      "operationId": "authorizations.void",
+      "name": "Authorizations Void",
+      "description": "Void authorized payment",
+      "schema": {
+        "tags": [
+          "authorizations"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Payments/post_v2_payments_authorizations__authorization_id__void/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v2/payments/authorizations/{authorization_id}/void"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "PayPal-Auth-Assertion": {
+                  "type": "string",
+                  "description": "An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see [PayPal-Auth-Assertion](/docs/api/reference/api-requests/#paypal-auth-assertion).<blockquote><strong>Note:</strong>For three party transactions in which a partner is managing the API calls on behalf of a merchant, the partner must identify the merchant using either a PayPal-Auth-Assertion header or an access token with target_subject.</blockquote>"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "get_v2_payments_captures__capture_id_",
+      "operationId": "captures.get",
+      "name": "Captures Get",
+      "description": "Show captured payment details",
+      "schema": {
+        "tags": [
+          "captures"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Payments/get_v2_payments_captures__capture_id_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v2/payments/captures/{capture_id}"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "capture_id"
+              ],
+              "properties": {
+                "capture_id": {
+                  "type": "string",
+                  "description": "The PayPal-generated ID for the captured payment to refund."
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v2_payments_captures__capture_id__refund",
+      "operationId": "captures.refund",
+      "name": "Captures Refund",
+      "description": "Refund captured payment",
+      "schema": {
+        "tags": [
+          "captures"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Payments/post_v2_payments_captures__capture_id__refund/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v2/payments/captures/{capture_id}/refund"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "title": "Refund Request",
+                "type": "object",
+                "description": "Refunds a captured payment, by ID. For a full refund, include an empty request body. For a partial refund, include an <code>amount</code> object in the request body.",
+                "properties": {
+                  "amount": {
+                    "0": "c",
+                    "1": "y",
+                    "2": "c",
+                    "3": "l",
+                    "4": "e",
+                    "description": "The amount to refund. To refund a portion of the captured amount, specify an amount. If amount is not specified, an amount equal to <code>captured amount - previous refunds</code> is refunded. The amount must be a positive number and in the same currency as the one in which the payment was captured."
+                  },
+                  "custom_id": {
+                    "type": "string",
+                    "description": "The API caller-provided external ID. Used to reconcile API caller-initiated transactions with PayPal transactions. Appears in transaction and settlement reports. The pattern is defined by an external party and supports Unicode.",
+                    "minLength": 1,
+                    "maxLength": 127,
+                    "pattern": "^.*$"
+                  },
+                  "invoice_id": {
+                    "type": "string",
+                    "description": "The API caller-provided external invoice ID for this order. The pattern is defined by an external party and supports Unicode.",
+                    "minLength": 1,
+                    "maxLength": 127,
+                    "pattern": "^.*$"
+                  },
+                  "note_to_payer": {
+                    "type": "string",
+                    "description": "The reason for the refund. Appears in both the payer's transaction history and the emails that the payer receives. The pattern is defined by an external party and supports Unicode.",
+                    "minLength": 1,
+                    "maxLength": 255,
+                    "pattern": "^.*$"
+                  },
+                  "payment_instruction": {
+                    "description": "Any additional payments instructions during refund payment processing. This object is only applicable to merchants that have been enabled for PayPal Commerce Platform for Marketplaces and Platforms capability. Please speak to your account manager if you want to use this capability.",
+                    "type": "object",
+                    "title": "Payment Instruction",
+                    "properties": {
+                      "platform_fees": {
+                        "type": "array",
+                        "description": "Specifies the amount that the API caller will contribute to the refund being processed. The amount needs to be lower than platform_fees amount originally captured or the amount that is remaining if multiple refunds have been processed. This field is only applicable to merchants that have been enabled for PayPal Commerce Platform for Marketplaces and Platforms capability. Please speak to your account manager if you want to use this capability.",
+                        "minItems": 0,
+                        "maxItems": 1,
+                        "items": {
+                          "0": "c",
+                          "1": "y",
+                          "2": "c",
+                          "3": "l",
+                          "4": "e"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "get_v2_payments_refunds__refund_id_",
+      "operationId": "refunds.get",
+      "name": "Refunds Get",
+      "description": "Show refund details",
+      "schema": {
+        "tags": [
+          "refunds"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Payments/get_v2_payments_refunds__refund_id_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v2/payments/refunds/{refund_id}"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "refund_id"
+              ],
+              "properties": {
+                "refund_id": {
+                  "type": "string",
+                  "description": "The PayPal-generated ID for the refund for which to show details."
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    }
+  ],
+  "references": {
+    "baseURL": {
+      "type": "string",
+      "enum": [
+        "https://api-m.sandbox.paypal.com",
+        "https://api-m.paypal.com"
+      ]
+    },
+    "queryDesc": "Query parameters sent with the request",
+    "paramDesc": "URL parameters sent with the request",
+    "headerDesc": "HTTP headers sent when making the request",
+    "dataDesc": "Data sent with the request",
+    "schema": "https://json-schema.org/draft/2020-12/schema"
+  }
+}

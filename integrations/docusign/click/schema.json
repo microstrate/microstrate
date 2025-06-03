@@ -1,0 +1,4442 @@
+{
+  "name": "DocuSign Click API",
+  "description": "DocuSign Click lets you capture consent to standard agreement terms with a single click: terms and conditions, terms of service, terms of use, privacy policies, and more. The Click API lets you include this customizable clickwrap solution in your DocuSign integrations.",
+  "nodes": [
+    {
+      "id": "get_service_information",
+      "operationId": "ServiceInformation_GetServiceInformation",
+      "name": "Service Information Get Service Information",
+      "description": "Gets the current version and other information about the Click API.",
+      "schema": {
+        "tags": [
+          "ClickWraps"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/DocuSign-Click-API/get_service_information/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/service_information"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/get_service_information/output-200.schema.json",
+            "type": "object",
+            "properties": {
+              "buildBranch": {
+                "description": "",
+                "type": "string"
+              },
+              "buildBranchDeployedDateTime": {
+                "description": "",
+                "type": "string"
+              },
+              "buildSHA": {
+                "description": "",
+                "type": "string"
+              },
+              "buildVersion": {
+                "description": "The internal build version information.",
+                "type": "string"
+              },
+              "linkedSites": {
+                "description": "An array of URLs (strings) of related sites.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "serviceVersions": {
+                "description": "An array of `serviceVersion` objects.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "version": {
+                      "description": "The human-readable semver version string.",
+                      "type": "string"
+                    },
+                    "versionUrl": {
+                      "description": "The URL where this version of the API can be found.",
+                      "type": "string"
+                    }
+                  },
+                  "description": ""
+                }
+              }
+            },
+            "description": ""
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/get_service_information/output-400.schema.json",
+            "type": "object",
+            "properties": {
+              "errorCode": {
+                "description": "The error code.",
+                "type": "string"
+              },
+              "message": {
+                "description": "The error message.",
+                "type": "string"
+              }
+            },
+            "description": "Error details."
+          }
+        ]
+      }
+    },
+    {
+      "id": "get_v1_accounts__accountId__clickwraps",
+      "operationId": "Clickwraps_GetClickwraps",
+      "name": "Clickwraps Get Clickwraps",
+      "description": "Gets all the clickwraps for an account.",
+      "schema": {
+        "tags": [
+          "ClickWraps"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/DocuSign-Click-API/get_v1_accounts__accountId__clickwraps/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/accounts/{accountId}/clickwraps"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {
+                "from_date": {
+                  "type": "string",
+                  "description": "Optional. The earliest date to return agreements from."
+                },
+                "ownerUserId": {
+                  "type": "string",
+                  "description": "Optional. The user ID of the owner."
+                },
+                "page_number": {
+                  "type": "string",
+                  "description": "Optional. The page number to return.\n"
+                },
+                "shared": {
+                  "type": "string",
+                  "description": ""
+                },
+                "status": {
+                  "type": "string",
+                  "description": "Optional. The status of the clickwraps to filter by. One of:\n\n- `active`\n- `inactive`\n\n"
+                },
+                "to_date": {
+                  "type": "string",
+                  "description": "Optional. The latest date to return agreements from."
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "accountId"
+              ],
+              "properties": {
+                "accountId": {
+                  "type": "string",
+                  "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n"
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/get_v1_accounts__accountId__clickwraps/output-200.schema.json",
+            "type": "object",
+            "properties": {
+              "clickwraps": {
+                "description": "An array of `clickwrapVersionSummaryResponse` objects.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "accountId": {
+                      "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n",
+                      "type": "string"
+                    },
+                    "clickwrapId": {
+                      "description": "The ID of the clickwrap.",
+                      "type": "string"
+                    },
+                    "clickwrapName": {
+                      "description": "The name of the clickwrap.",
+                      "type": "string"
+                    },
+                    "clickwrapVersionId": {
+                      "description": "The unique version ID, a GUID, of this clickwrap version.",
+                      "type": "string"
+                    },
+                    "createdTime": {
+                      "description": "The time that the clickwrap was created.",
+                      "type": "object"
+                    },
+                    "lastModified": {
+                      "description": "The time that the clickwrap was last modified.",
+                      "type": "object"
+                    },
+                    "lastModifiedBy": {
+                      "description": "The user ID of the last user who modified this clickwrap.",
+                      "type": "string"
+                    },
+                    "ownerUserId": {
+                      "description": "The user ID of the owner of this clickwrap.",
+                      "type": "string"
+                    },
+                    "requireReacceptance": {
+                      "description": "When **true**, requires signers who have previously agreed to this\nclickwrap to sign again. The version number is incremented.",
+                      "type": "boolean"
+                    },
+                    "scheduledDate": {
+                      "description": "The time and date when this clickwrap is activated.",
+                      "type": "object"
+                    },
+                    "scheduledReacceptance": {
+                      "type": "object",
+                      "properties": {
+                        "recurrenceInterval": {
+                          "format": "int32",
+                          "description": "The time between recurrences specified in `recurrenceIntervalType` units.\n\nThe minimum and maximum values depend on `recurrenceIntervalType`:\n\n- `days`: 1 - 365\n- `weeks`: 1 - 52\n- `months`: 1 - 12\n- `years`: 1",
+                          "type": "integer"
+                        },
+                        "recurrenceIntervalType": {
+                          "description": "The units of the `recurrenceInterval`. Must be one of:\n\n- `days`\n- `weeks`\n- `month`\n- `years`\n",
+                          "type": "string"
+                        },
+                        "startDateTime": {
+                          "description": "The date when the recurrence interval starts.",
+                          "type": "object"
+                        }
+                      },
+                      "description": "Specifies the interval between reacceptances in days, weeks, months, or years."
+                    },
+                    "status": {
+                      "description": "Clickwrap status. Possible values:\n\n- `active`\n- `inactive`\n- `deleted`",
+                      "type": "string"
+                    },
+                    "versionId": {
+                      "description": "The ID of the version.",
+                      "type": "string"
+                    },
+                    "versionNumber": {
+                      "description": "Version of the clickwrap.",
+                      "type": "string"
+                    }
+                  },
+                  "description": ""
+                }
+              },
+              "minimumPagesRemaining": {
+                "format": "int32",
+                "description": "Number of pages remaining in the response.",
+                "type": "integer"
+              },
+              "page": {
+                "format": "int32",
+                "description": "The number of the current page.",
+                "type": "integer"
+              },
+              "pageSize": {
+                "format": "int32",
+                "description": "The number of items per page.",
+                "type": "integer"
+              }
+            },
+            "description": ""
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/get_v1_accounts__accountId__clickwraps/output-400.schema.json",
+            "type": "object",
+            "properties": {
+              "errorCode": {
+                "description": "The error code.",
+                "type": "string"
+              },
+              "message": {
+                "description": "The error message.",
+                "type": "string"
+              }
+            },
+            "description": "Error details."
+          }
+        ]
+      }
+    },
+    {
+      "id": "post_v1_accounts__accountId__clickwraps",
+      "operationId": "Clickwraps_PostClickwrap",
+      "name": "Clickwraps Post Clickwrap",
+      "description": "Creates a clickwrap for an account.",
+      "schema": {
+        "tags": [
+          "ClickWraps"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/DocuSign-Click-API/post_v1_accounts__accountId__clickwraps/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/accounts/{accountId}/clickwraps"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "accountId"
+              ],
+              "properties": {
+                "accountId": {
+                  "type": "string",
+                  "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n"
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/post_v1_accounts__accountId__clickwraps/output-201.schema.json",
+            "type": "object",
+            "properties": {
+              "accountId": {
+                "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n",
+                "type": "string"
+              },
+              "clickwrapId": {
+                "description": "The ID of the clickwrap.",
+                "type": "string"
+              },
+              "clickwrapName": {
+                "description": "The name of the clickwrap.",
+                "type": "string"
+              },
+              "clickwrapVersionId": {
+                "description": "The unique version ID, a GUID, of this clickwrap version.",
+                "type": "string"
+              },
+              "createdTime": {
+                "description": "The time that the clickwrap was created.",
+                "type": "object"
+              },
+              "lastModified": {
+                "description": "The time that the clickwrap was last modified.",
+                "type": "object"
+              },
+              "lastModifiedBy": {
+                "description": "The user ID of the last user who modified this clickwrap.",
+                "type": "string"
+              },
+              "ownerUserId": {
+                "description": "The user ID of the owner of this clickwrap.",
+                "type": "string"
+              },
+              "requireReacceptance": {
+                "description": "When **true**, requires signers who have previously agreed to this\nclickwrap to sign again. The version number is incremented.",
+                "type": "boolean"
+              },
+              "scheduledDate": {
+                "description": "The time and date when this clickwrap is activated.",
+                "type": "object"
+              },
+              "scheduledReacceptance": {
+                "type": "object",
+                "properties": {
+                  "recurrenceInterval": {
+                    "format": "int32",
+                    "description": "The time between recurrences specified in `recurrenceIntervalType` units.\n\nThe minimum and maximum values depend on `recurrenceIntervalType`:\n\n- `days`: 1 - 365\n- `weeks`: 1 - 52\n- `months`: 1 - 12\n- `years`: 1",
+                    "type": "integer"
+                  },
+                  "recurrenceIntervalType": {
+                    "description": "The units of the `recurrenceInterval`. Must be one of:\n\n- `days`\n- `weeks`\n- `month`\n- `years`\n",
+                    "type": "string"
+                  },
+                  "startDateTime": {
+                    "description": "The date when the recurrence interval starts.",
+                    "type": "object"
+                  }
+                },
+                "description": "Specifies the interval between reacceptances in days, weeks, months, or years."
+              },
+              "status": {
+                "description": "Clickwrap status. Possible values:\n\n- `active`\n- `inactive`\n- `deleted`",
+                "type": "string"
+              },
+              "versionId": {
+                "description": "The ID of the version.",
+                "type": "string"
+              },
+              "versionNumber": {
+                "description": "Version of the clickwrap.",
+                "type": "string"
+              }
+            },
+            "description": ""
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/post_v1_accounts__accountId__clickwraps/output-400.schema.json",
+            "type": "object",
+            "properties": {
+              "errorCode": {
+                "description": "The error code.",
+                "type": "string"
+              },
+              "message": {
+                "description": "The error message.",
+                "type": "string"
+              }
+            },
+            "description": "Error details."
+          }
+        ]
+      }
+    },
+    {
+      "id": "delete_v1_accounts__accountId__clickwraps",
+      "operationId": "Clickwraps_DeleteClickwraps",
+      "name": "Clickwraps Delete Clickwraps",
+      "description": "Deletes clickwraps for an account.",
+      "schema": {
+        "tags": [
+          "ClickWraps"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/DocuSign-Click-API/delete_v1_accounts__accountId__clickwraps/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/accounts/{accountId}/clickwraps"
+            },
+            "method": {
+              "type": "string",
+              "const": "delete"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {
+                "clickwrapIds": {
+                  "type": "string",
+                  "description": "A comma-separated list of clickwrap IDs to delete."
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "accountId"
+              ],
+              "properties": {
+                "accountId": {
+                  "type": "string",
+                  "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n"
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/delete_v1_accounts__accountId__clickwraps/output-200.schema.json",
+            "type": "object",
+            "properties": {
+              "clickwraps": {
+                "description": "",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "clickwrapId": {
+                      "description": "The ID of the clickwrap.",
+                      "type": "string"
+                    },
+                    "clickwrapName": {
+                      "description": "The name of the clickwrap.",
+                      "type": "string"
+                    },
+                    "deletionMessage": {
+                      "description": "A message describing the result of deletion request. One of:\n\n- `alreadyDeleted`: Clickwrap is already deleted.\n- `deletionSuccess`: Successfully deleted the clickwrap.\n- `deletionFailure`: Failed to delete the clickwrap.\n- `cannotDelete`: Active clickwrap version cannot be deleted.",
+                      "type": "string"
+                    },
+                    "deletionSuccess": {
+                      "description": "**True** if the clickwrap was deleted successfully. **False** otherwise.",
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "description": "Clickwrap status. Possible values:\n\n- `active`\n- `inactive`\n- `deleted`",
+                      "type": "string"
+                    }
+                  },
+                  "description": ""
+                }
+              }
+            },
+            "description": ""
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/delete_v1_accounts__accountId__clickwraps/output-400.schema.json",
+            "type": "object",
+            "properties": {
+              "errorCode": {
+                "description": "The error code.",
+                "type": "string"
+              },
+              "message": {
+                "description": "The error message.",
+                "type": "string"
+              }
+            },
+            "description": "Error details."
+          }
+        ]
+      }
+    },
+    {
+      "id": "get_v1_accounts__accountId__clickwraps__clickwrapId_",
+      "operationId": "Clickwraps_GetClickwrap",
+      "name": "Clickwraps Get Clickwrap",
+      "description": "Gets a  single clickwrap object.",
+      "schema": {
+        "tags": [
+          "ClickWraps"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/DocuSign-Click-API/get_v1_accounts__accountId__clickwraps__clickwrapId_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "accountId",
+                "clickwrapId"
+              ],
+              "properties": {
+                "accountId": {
+                  "type": "string",
+                  "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n"
+                },
+                "clickwrapId": {
+                  "type": "string",
+                  "description": "The ID of the clickwrap."
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/get_v1_accounts__accountId__clickwraps__clickwrapId_/output-200.schema.json",
+            "type": "object",
+            "properties": {
+              "accountId": {
+                "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n",
+                "type": "string"
+              },
+              "clickwrapId": {
+                "description": "The ID of the clickwrap.",
+                "type": "string"
+              },
+              "clickwrapName": {
+                "description": "The name of the clickwrap.",
+                "type": "string"
+              },
+              "clickwrapVersionId": {
+                "description": "The unique version ID, a GUID, of this clickwrap version.",
+                "type": "string"
+              },
+              "createdTime": {
+                "description": "The time that the clickwrap was created.",
+                "type": "object"
+              },
+              "displaySettings": {
+                "type": "object",
+                "properties": {
+                  "actionButtonAlignment": {
+                    "description": "Position of the Accept button in the agreement. One of \n\n- `right`\n- `left`\n",
+                    "type": "string"
+                  },
+                  "allowClientOnly": {
+                    "description": "When **true**, this agreement can be be used in client-only integrations",
+                    "type": "boolean"
+                  },
+                  "allowedHosts": {
+                    "description": "Hosts that can host the clickwrap.\n\nIt is an error if the clickwrap didn't come from one of these hosts.\n",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "brandId": {
+                    "description": "The signing brand ID.",
+                    "type": "string"
+                  },
+                  "consentButtonText": {
+                    "description": "Text on the agree button.",
+                    "type": "string"
+                  },
+                  "consentText": {
+                    "description": "The text on agree button.",
+                    "type": "string"
+                  },
+                  "declineButtonText": {
+                    "description": "The text on the decline button.",
+                    "type": "string"
+                  },
+                  "displayName": {
+                    "description": "The display name of the user agreement.",
+                    "type": "string"
+                  },
+                  "documentDisplay": {
+                    "description": "Display type: link or document",
+                    "type": "string"
+                  },
+                  "downloadable": {
+                    "description": "**True** if the agreement is downloadable.",
+                    "type": "boolean"
+                  },
+                  "format": {
+                    "description": "Display format: inline or modal.",
+                    "type": "string"
+                  },
+                  "hasDeclineButton": {
+                    "description": "**True** if the agreement has a decline checkbox.",
+                    "type": "boolean"
+                  },
+                  "hostOrigin": {
+                    "description": "The host origin.\n",
+                    "type": "string"
+                  },
+                  "mustRead": {
+                    "description": "**True** if the user needs to scroll to the end of the document.\n",
+                    "type": "boolean"
+                  },
+                  "mustView": {
+                    "description": "**True** if the user must view the document.\n",
+                    "type": "boolean"
+                  },
+                  "recordDeclineResponses": {
+                    "description": "When **true**, this agreement records decline actions.",
+                    "type": "boolean"
+                  },
+                  "requireAccept": {
+                    "description": "**True** if accept is required.\n",
+                    "type": "boolean"
+                  },
+                  "sendToEmail": {
+                    "description": "**True** if send to email is applicable.\n",
+                    "type": "boolean"
+                  }
+                },
+                "description": "Display settings for a clickwrap."
+              },
+              "documents": {
+                "description": "An array of documents.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "documentBase64": {
+                      "description": "The base64-encoded contents of the document.",
+                      "type": "string"
+                    },
+                    "documentHtml": {
+                      "description": "The HTML representation of the document.",
+                      "type": "string"
+                    },
+                    "documentName": {
+                      "description": "The name of the document.",
+                      "type": "string"
+                    },
+                    "fileExtension": {
+                      "description": "The file extension of the document.",
+                      "type": "string"
+                    },
+                    "order": {
+                      "format": "int32",
+                      "description": "The order of document layout.",
+                      "type": "integer"
+                    }
+                  },
+                  "description": "Information about a document."
+                }
+              },
+              "lastModified": {
+                "description": "The time that the clickwrap was last modified.",
+                "type": "object"
+              },
+              "lastModifiedBy": {
+                "description": "The user ID of the last user who modified this clickwrap.",
+                "type": "string"
+              },
+              "ownerUserId": {
+                "description": "The user ID of the owner of this clickwrap.",
+                "type": "string"
+              },
+              "requireReacceptance": {
+                "description": "When **true**, requires signers who have previously agreed to this\nclickwrap to sign again. The version number is incremented.",
+                "type": "boolean"
+              },
+              "scheduledDate": {
+                "description": "The time and date when this clickwrap is activated.",
+                "type": "object"
+              },
+              "scheduledReacceptance": {
+                "type": "object",
+                "properties": {
+                  "recurrenceInterval": {
+                    "format": "int32",
+                    "description": "The time between recurrences specified in `recurrenceIntervalType` units.\n\nThe minimum and maximum values depend on `recurrenceIntervalType`:\n\n- `days`: 1 - 365\n- `weeks`: 1 - 52\n- `months`: 1 - 12\n- `years`: 1",
+                    "type": "integer"
+                  },
+                  "recurrenceIntervalType": {
+                    "description": "The units of the `recurrenceInterval`. Must be one of:\n\n- `days`\n- `weeks`\n- `month`\n- `years`\n",
+                    "type": "string"
+                  },
+                  "startDateTime": {
+                    "description": "The date when the recurrence interval starts.",
+                    "type": "object"
+                  }
+                },
+                "description": "Specifies the interval between reacceptances in days, weeks, months, or years."
+              },
+              "status": {
+                "description": "Clickwrap status. Possible values:\n\n- `active`\n- `inactive`\n- `deleted`",
+                "type": "string"
+              },
+              "versionId": {
+                "description": "The ID of the version.",
+                "type": "string"
+              },
+              "versionNumber": {
+                "description": "Version of the clickwrap.",
+                "type": "string"
+              }
+            },
+            "description": ""
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/get_v1_accounts__accountId__clickwraps__clickwrapId_/output-400.schema.json",
+            "type": "object",
+            "properties": {
+              "errorCode": {
+                "description": "The error code.",
+                "type": "string"
+              },
+              "message": {
+                "description": "The error message.",
+                "type": "string"
+              }
+            },
+            "description": "Error details."
+          }
+        ]
+      }
+    },
+    {
+      "id": "delete_v1_accounts__accountId__clickwraps__clickwrapId_",
+      "operationId": "Clickwraps_DeleteClickwrap",
+      "name": "Clickwraps Delete Clickwrap",
+      "description": "Deletes a clickwrap and all of its versions.",
+      "schema": {
+        "tags": [
+          "ClickWraps"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/DocuSign-Click-API/delete_v1_accounts__accountId__clickwraps__clickwrapId_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}"
+            },
+            "method": {
+              "type": "string",
+              "const": "delete"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {
+                "versions": {
+                  "type": "string",
+                  "description": "A comma-separated list of versions to delete."
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "accountId",
+                "clickwrapId"
+              ],
+              "properties": {
+                "accountId": {
+                  "type": "string",
+                  "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n"
+                },
+                "clickwrapId": {
+                  "type": "string",
+                  "description": "The ID of the clickwrap."
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/delete_v1_accounts__accountId__clickwraps__clickwrapId_/output-200.schema.json",
+            "type": "object",
+            "properties": {
+              "clickwrapId": {
+                "description": "The ID of the clickwrap.",
+                "type": "string"
+              },
+              "clickwrapName": {
+                "description": "The name of the clickwrap.",
+                "type": "string"
+              },
+              "versions": {
+                "description": "An array delete responses.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "clickwrapVersionId": {
+                      "description": "The unique version ID, a GUID, of this clickwrap version.",
+                      "type": "string"
+                    },
+                    "createdTime": {
+                      "description": "The time that the clickwrap was created.",
+                      "type": "object"
+                    },
+                    "deletionMessage": {
+                      "description": "A message describing the result of deletion request. One of:\n\n- `alreadyDeleted`: Clickwrap is already deleted.\n- `deletionSuccess`: Successfully deleted the clickwrap.\n- `deletionFailure`: Failed to delete the clickwrap.\n- `cannotDelete`: Active clickwrap version cannot be deleted.",
+                      "type": "string"
+                    },
+                    "deletionSuccess": {
+                      "description": "**True** if the clickwrap was deleted successfully. **False** otherwise.",
+                      "type": "boolean"
+                    },
+                    "lastModified": {
+                      "description": "The time that the clickwrap was last modified.",
+                      "type": "object"
+                    },
+                    "lastModifiedBy": {
+                      "description": "The user ID of the last user who modified this clickwrap.",
+                      "type": "string"
+                    },
+                    "ownerUserId": {
+                      "description": "The user ID of the owner of this clickwrap.",
+                      "type": "string"
+                    },
+                    "requireReacceptance": {
+                      "description": "When **true**, requires signers who have previously agreed to this\nclickwrap to sign again. The version number is incremented.",
+                      "type": "boolean"
+                    },
+                    "scheduledDate": {
+                      "description": "The time and date when this clickwrap is activated.",
+                      "type": "object"
+                    },
+                    "scheduledReacceptance": {
+                      "type": "object",
+                      "properties": {
+                        "recurrenceInterval": {
+                          "format": "int32",
+                          "description": "The time between recurrences specified in `recurrenceIntervalType` units.\n\nThe minimum and maximum values depend on `recurrenceIntervalType`:\n\n- `days`: 1 - 365\n- `weeks`: 1 - 52\n- `months`: 1 - 12\n- `years`: 1",
+                          "type": "integer"
+                        },
+                        "recurrenceIntervalType": {
+                          "description": "The units of the `recurrenceInterval`. Must be one of:\n\n- `days`\n- `weeks`\n- `month`\n- `years`\n",
+                          "type": "string"
+                        },
+                        "startDateTime": {
+                          "description": "The date when the recurrence interval starts.",
+                          "type": "object"
+                        }
+                      },
+                      "description": "Specifies the interval between reacceptances in days, weeks, months, or years."
+                    },
+                    "status": {
+                      "description": "Clickwrap status. Possible values:\n\n- `active`\n- `inactive`\n- `deleted`",
+                      "type": "string"
+                    },
+                    "versionId": {
+                      "description": "The ID of the version.",
+                      "type": "string"
+                    },
+                    "versionNumber": {
+                      "description": "Version of the clickwrap.",
+                      "type": "string"
+                    }
+                  },
+                  "description": ""
+                }
+              }
+            },
+            "description": ""
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/delete_v1_accounts__accountId__clickwraps__clickwrapId_/output-400.schema.json",
+            "type": "object",
+            "properties": {
+              "errorCode": {
+                "description": "The error code.",
+                "type": "string"
+              },
+              "message": {
+                "description": "The error message.",
+                "type": "string"
+              }
+            },
+            "description": "Error details."
+          }
+        ]
+      }
+    },
+    {
+      "id": "put_v1_accounts__accountId__clickwraps__clickwrapId_",
+      "operationId": "Clickwraps_PutClickwrap",
+      "name": "Clickwraps Put Clickwrap",
+      "description": "Updates the user ID of a clickwrap.",
+      "schema": {
+        "tags": [
+          "ClickWraps"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/DocuSign-Click-API/put_v1_accounts__accountId__clickwraps__clickwrapId_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}"
+            },
+            "method": {
+              "type": "string",
+              "const": "put"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "accountId",
+                "clickwrapId"
+              ],
+              "properties": {
+                "accountId": {
+                  "type": "string",
+                  "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n"
+                },
+                "clickwrapId": {
+                  "type": "string",
+                  "description": "The ID of the clickwrap."
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/put_v1_accounts__accountId__clickwraps__clickwrapId_/output-200.schema.json",
+            "type": "object",
+            "properties": {
+              "accountId": {
+                "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n",
+                "type": "string"
+              },
+              "clickwrapId": {
+                "description": "The ID of the clickwrap.",
+                "type": "string"
+              },
+              "clickwrapName": {
+                "description": "The name of the clickwrap.",
+                "type": "string"
+              },
+              "clickwrapVersionId": {
+                "description": "The unique version ID, a GUID, of this clickwrap version.",
+                "type": "string"
+              },
+              "createdTime": {
+                "description": "The time that the clickwrap was created.",
+                "type": "object"
+              },
+              "lastModified": {
+                "description": "The time that the clickwrap was last modified.",
+                "type": "object"
+              },
+              "lastModifiedBy": {
+                "description": "The user ID of the last user who modified this clickwrap.",
+                "type": "string"
+              },
+              "ownerUserId": {
+                "description": "The user ID of the owner of this clickwrap.",
+                "type": "string"
+              },
+              "requireReacceptance": {
+                "description": "When **true**, requires signers who have previously agreed to this\nclickwrap to sign again. The version number is incremented.",
+                "type": "boolean"
+              },
+              "scheduledDate": {
+                "description": "The time and date when this clickwrap is activated.",
+                "type": "object"
+              },
+              "scheduledReacceptance": {
+                "type": "object",
+                "properties": {
+                  "recurrenceInterval": {
+                    "format": "int32",
+                    "description": "The time between recurrences specified in `recurrenceIntervalType` units.\n\nThe minimum and maximum values depend on `recurrenceIntervalType`:\n\n- `days`: 1 - 365\n- `weeks`: 1 - 52\n- `months`: 1 - 12\n- `years`: 1",
+                    "type": "integer"
+                  },
+                  "recurrenceIntervalType": {
+                    "description": "The units of the `recurrenceInterval`. Must be one of:\n\n- `days`\n- `weeks`\n- `month`\n- `years`\n",
+                    "type": "string"
+                  },
+                  "startDateTime": {
+                    "description": "The date when the recurrence interval starts.",
+                    "type": "object"
+                  }
+                },
+                "description": "Specifies the interval between reacceptances in days, weeks, months, or years."
+              },
+              "status": {
+                "description": "Clickwrap status. Possible values:\n\n- `active`\n- `inactive`\n- `deleted`",
+                "type": "string"
+              },
+              "versionId": {
+                "description": "The ID of the version.",
+                "type": "string"
+              },
+              "versionNumber": {
+                "description": "Version of the clickwrap.",
+                "type": "string"
+              }
+            },
+            "description": ""
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/put_v1_accounts__accountId__clickwraps__clickwrapId_/output-400.schema.json",
+            "type": "object",
+            "properties": {
+              "errorCode": {
+                "description": "The error code.",
+                "type": "string"
+              },
+              "message": {
+                "description": "The error message.",
+                "type": "string"
+              }
+            },
+            "description": "Error details."
+          }
+        ]
+      }
+    },
+    {
+      "id": "post_v1_accounts__accountId__clickwraps__clickwrapId__agreements",
+      "operationId": "UserAgreements_PostHasAgreed",
+      "name": "User Agreements Post Has Agreed",
+      "description": "Checks if a user has agreed to a clickwrap.",
+      "schema": {
+        "tags": [
+          "ClickWraps"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/DocuSign-Click-API/post_v1_accounts__accountId__clickwraps__clickwrapId__agreements/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}/agreements"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "accountId",
+                "clickwrapId"
+              ],
+              "properties": {
+                "accountId": {
+                  "type": "string",
+                  "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n"
+                },
+                "clickwrapId": {
+                  "type": "string",
+                  "description": "The ID of the clickwrap."
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/post_v1_accounts__accountId__clickwraps__clickwrapId__agreements/output-201.schema.json",
+            "type": "object",
+            "properties": {
+              "accountId": {
+                "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n",
+                "type": "string"
+              },
+              "agreedOn": {
+                "description": "Date that the client last completed the agreement.\n\nThis property is null if `agreementUrl` is not null and `status` is not  `agreed`.",
+                "type": "object"
+              },
+              "agreementId": {
+                "description": "The agreement ID.",
+                "type": "string"
+              },
+              "agreementUrl": {
+                "description": "When not null, an agreement is required for user specified by  `clientUserId`.\n\nWhen missing the user specified by `clientUserId`\nhas already agreed and does not require a new acceptance.\n\nUse this URL to render the agreement in a web page.\n\n<!--\nor redirected to when providing redirect_url as a query paramter.\n-->\n",
+                "type": "string"
+              },
+              "clickwrapId": {
+                "description": "The ID of the clickwrap.",
+                "type": "string"
+              },
+              "clientUserId": {
+                "description": "The user ID of the client.",
+                "type": "string"
+              },
+              "consumerDisclosureHtml": {
+                "description": "The customer-branded HTML with the Electronic Record and Signature Disclosure information",
+                "type": "string"
+              },
+              "createdOn": {
+                "description": "The date when the clickwrap was created. May be null.",
+                "type": "object"
+              },
+              "declinedOn": {
+                "description": "The date when the user declined the most recent required agreement.\n\nThis property is valid only when `status` is `declined`. Otherwise it is null.",
+                "type": "object"
+              },
+              "documents": {
+                "description": "An array of documents.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "documentBase64": {
+                      "description": "The base64-encoded contents of the document.",
+                      "type": "string"
+                    },
+                    "documentHtml": {
+                      "description": "The HTML representation of the document.",
+                      "type": "string"
+                    },
+                    "documentName": {
+                      "description": "The name of the document.",
+                      "type": "string"
+                    },
+                    "fileExtension": {
+                      "description": "The file extension of the document.",
+                      "type": "string"
+                    },
+                    "order": {
+                      "format": "int32",
+                      "description": "The order of document layout.",
+                      "type": "integer"
+                    }
+                  },
+                  "description": "Information about a document."
+                }
+              },
+              "metadata": {
+                "description": "A customer-defined string you can use in requests. This string will appear in the corresponding response.",
+                "type": "string"
+              },
+              "settings": {
+                "type": "object",
+                "properties": {
+                  "actionButtonAlignment": {
+                    "description": "Position of the Accept button in the agreement. One of \n\n- `right`\n- `left`\n",
+                    "type": "string"
+                  },
+                  "allowClientOnly": {
+                    "description": "When **true**, this agreement can be be used in client-only integrations",
+                    "type": "boolean"
+                  },
+                  "allowedHosts": {
+                    "description": "Hosts that can host the clickwrap.\n\nIt is an error if the clickwrap didn't come from one of these hosts.\n",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "brandId": {
+                    "description": "The signing brand ID.",
+                    "type": "string"
+                  },
+                  "consentButtonText": {
+                    "description": "Text on the agree button.",
+                    "type": "string"
+                  },
+                  "consentText": {
+                    "description": "The text on agree button.",
+                    "type": "string"
+                  },
+                  "declineButtonText": {
+                    "description": "The text on the decline button.",
+                    "type": "string"
+                  },
+                  "displayName": {
+                    "description": "The display name of the user agreement.",
+                    "type": "string"
+                  },
+                  "documentDisplay": {
+                    "description": "Display type: link or document",
+                    "type": "string"
+                  },
+                  "downloadable": {
+                    "description": "**True** if the agreement is downloadable.",
+                    "type": "boolean"
+                  },
+                  "format": {
+                    "description": "Display format: inline or modal.",
+                    "type": "string"
+                  },
+                  "hasDeclineButton": {
+                    "description": "**True** if the agreement has a decline checkbox.",
+                    "type": "boolean"
+                  },
+                  "hostOrigin": {
+                    "description": "The host origin.\n",
+                    "type": "string"
+                  },
+                  "mustRead": {
+                    "description": "**True** if the user needs to scroll to the end of the document.\n",
+                    "type": "boolean"
+                  },
+                  "mustView": {
+                    "description": "**True** if the user must view the document.\n",
+                    "type": "boolean"
+                  },
+                  "recordDeclineResponses": {
+                    "description": "When **true**, this agreement records decline actions.",
+                    "type": "boolean"
+                  },
+                  "requireAccept": {
+                    "description": "**True** if accept is required.\n",
+                    "type": "boolean"
+                  },
+                  "sendToEmail": {
+                    "description": "**True** if send to email is applicable.\n",
+                    "type": "boolean"
+                  }
+                },
+                "description": "The display settings for this agreement."
+              },
+              "status": {
+                "description": "User agreement status. One of:\n\n- `created`\n- `agreed`\n- `declined`",
+                "type": "string"
+              },
+              "version": {
+                "description": "The human-readable semver version string.",
+                "type": "string"
+              },
+              "versionId": {
+                "description": "The ID of the version.",
+                "type": "string"
+              },
+              "versionNumber": {
+                "format": "int32",
+                "description": "Version of the clickwrap.",
+                "type": "integer"
+              }
+            },
+            "description": ""
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/post_v1_accounts__accountId__clickwraps__clickwrapId__agreements/output-400.schema.json",
+            "type": "object",
+            "properties": {
+              "errorCode": {
+                "description": "The error code.",
+                "type": "string"
+              },
+              "message": {
+                "description": "The error message.",
+                "type": "string"
+              }
+            },
+            "description": "Error details."
+          }
+        ]
+      }
+    },
+    {
+      "id": "get_v1_accounts__accountId__clickwraps__clickwrapId__agreements__agreementId_",
+      "operationId": "UserAgreements_GetAgreement",
+      "name": "User Agreements Get Agreement",
+      "description": "Gets a specific agreement for a specified clickwrap.",
+      "schema": {
+        "tags": [
+          "ClickWraps"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/DocuSign-Click-API/get_v1_accounts__accountId__clickwraps__clickwrapId__agreements__agreementId_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}/agreements/{agreementId}"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "accountId",
+                "agreementId",
+                "clickwrapId"
+              ],
+              "properties": {
+                "accountId": {
+                  "type": "string",
+                  "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n"
+                },
+                "agreementId": {
+                  "type": "string",
+                  "description": "The agreement ID."
+                },
+                "clickwrapId": {
+                  "type": "string",
+                  "description": "The ID of the clickwrap."
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/get_v1_accounts__accountId__clickwraps__clickwrapId__agreements__agreementId_/output-200.schema.json",
+            "type": "object",
+            "properties": {
+              "accountId": {
+                "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n",
+                "type": "string"
+              },
+              "agreedOn": {
+                "description": "Date that the client last completed the agreement.\n\nThis property is null if `agreementUrl` is not null and `status` is not  `agreed`.",
+                "type": "object"
+              },
+              "agreementId": {
+                "description": "The agreement ID.",
+                "type": "string"
+              },
+              "agreementUrl": {
+                "description": "When not null, an agreement is required for user specified by  `clientUserId`.\n\nWhen missing the user specified by `clientUserId`\nhas already agreed and does not require a new acceptance.\n\nUse this URL to render the agreement in a web page.\n\n<!--\nor redirected to when providing redirect_url as a query paramter.\n-->\n",
+                "type": "string"
+              },
+              "clickwrapId": {
+                "description": "The ID of the clickwrap.",
+                "type": "string"
+              },
+              "clientUserId": {
+                "description": "The user ID of the client.",
+                "type": "string"
+              },
+              "consumerDisclosureHtml": {
+                "description": "The customer-branded HTML with the Electronic Record and Signature Disclosure information",
+                "type": "string"
+              },
+              "createdOn": {
+                "description": "The date when the clickwrap was created. May be null.",
+                "type": "object"
+              },
+              "declinedOn": {
+                "description": "The date when the user declined the most recent required agreement.\n\nThis property is valid only when `status` is `declined`. Otherwise it is null.",
+                "type": "object"
+              },
+              "documents": {
+                "description": "An array of documents.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "documentBase64": {
+                      "description": "The base64-encoded contents of the document.",
+                      "type": "string"
+                    },
+                    "documentHtml": {
+                      "description": "The HTML representation of the document.",
+                      "type": "string"
+                    },
+                    "documentName": {
+                      "description": "The name of the document.",
+                      "type": "string"
+                    },
+                    "fileExtension": {
+                      "description": "The file extension of the document.",
+                      "type": "string"
+                    },
+                    "order": {
+                      "format": "int32",
+                      "description": "The order of document layout.",
+                      "type": "integer"
+                    }
+                  },
+                  "description": "Information about a document."
+                }
+              },
+              "metadata": {
+                "description": "A customer-defined string you can use in requests. This string will appear in the corresponding response.",
+                "type": "string"
+              },
+              "settings": {
+                "type": "object",
+                "properties": {
+                  "actionButtonAlignment": {
+                    "description": "Position of the Accept button in the agreement. One of \n\n- `right`\n- `left`\n",
+                    "type": "string"
+                  },
+                  "allowClientOnly": {
+                    "description": "When **true**, this agreement can be be used in client-only integrations",
+                    "type": "boolean"
+                  },
+                  "allowedHosts": {
+                    "description": "Hosts that can host the clickwrap.\n\nIt is an error if the clickwrap didn't come from one of these hosts.\n",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "brandId": {
+                    "description": "The signing brand ID.",
+                    "type": "string"
+                  },
+                  "consentButtonText": {
+                    "description": "Text on the agree button.",
+                    "type": "string"
+                  },
+                  "consentText": {
+                    "description": "The text on agree button.",
+                    "type": "string"
+                  },
+                  "declineButtonText": {
+                    "description": "The text on the decline button.",
+                    "type": "string"
+                  },
+                  "displayName": {
+                    "description": "The display name of the user agreement.",
+                    "type": "string"
+                  },
+                  "documentDisplay": {
+                    "description": "Display type: link or document",
+                    "type": "string"
+                  },
+                  "downloadable": {
+                    "description": "**True** if the agreement is downloadable.",
+                    "type": "boolean"
+                  },
+                  "format": {
+                    "description": "Display format: inline or modal.",
+                    "type": "string"
+                  },
+                  "hasDeclineButton": {
+                    "description": "**True** if the agreement has a decline checkbox.",
+                    "type": "boolean"
+                  },
+                  "hostOrigin": {
+                    "description": "The host origin.\n",
+                    "type": "string"
+                  },
+                  "mustRead": {
+                    "description": "**True** if the user needs to scroll to the end of the document.\n",
+                    "type": "boolean"
+                  },
+                  "mustView": {
+                    "description": "**True** if the user must view the document.\n",
+                    "type": "boolean"
+                  },
+                  "recordDeclineResponses": {
+                    "description": "When **true**, this agreement records decline actions.",
+                    "type": "boolean"
+                  },
+                  "requireAccept": {
+                    "description": "**True** if accept is required.\n",
+                    "type": "boolean"
+                  },
+                  "sendToEmail": {
+                    "description": "**True** if send to email is applicable.\n",
+                    "type": "boolean"
+                  }
+                },
+                "description": "The display settings for this agreement."
+              },
+              "status": {
+                "description": "User agreement status. One of:\n\n- `created`\n- `agreed`\n- `declined`",
+                "type": "string"
+              },
+              "version": {
+                "description": "The human-readable semver version string.",
+                "type": "string"
+              },
+              "versionId": {
+                "description": "The ID of the version.",
+                "type": "string"
+              },
+              "versionNumber": {
+                "format": "int32",
+                "description": "Version of the clickwrap.",
+                "type": "integer"
+              }
+            },
+            "description": ""
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/get_v1_accounts__accountId__clickwraps__clickwrapId__agreements__agreementId_/output-400.schema.json",
+            "type": "object",
+            "properties": {
+              "errorCode": {
+                "description": "The error code.",
+                "type": "string"
+              },
+              "message": {
+                "description": "The error message.",
+                "type": "string"
+              }
+            },
+            "description": "Error details."
+          }
+        ]
+      }
+    },
+    {
+      "id": "get_v1_accounts__accountId__clickwraps__clickwrapId__agreements__agreementId__download",
+      "operationId": "UserAgreements_GetAgreementPdf",
+      "name": "User Agreements Get Agreement Pdf",
+      "description": "Gets the completed user agreement PDF.",
+      "schema": {
+        "tags": [
+          "ClickWraps"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/DocuSign-Click-API/get_v1_accounts__accountId__clickwraps__clickwrapId__agreements__agreementId__download/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}/agreements/{agreementId}/download"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "accountId",
+                "agreementId",
+                "clickwrapId"
+              ],
+              "properties": {
+                "accountId": {
+                  "type": "string",
+                  "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n"
+                },
+                "agreementId": {
+                  "type": "string",
+                  "description": "The agreement ID."
+                },
+                "clickwrapId": {
+                  "type": "string",
+                  "description": "The ID of the clickwrap."
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/get_v1_accounts__accountId__clickwraps__clickwrapId__agreements__agreementId__download/output-400.schema.json",
+            "type": "object",
+            "properties": {
+              "errorCode": {
+                "description": "The error code.",
+                "type": "string"
+              },
+              "message": {
+                "description": "The error message.",
+                "type": "string"
+              }
+            },
+            "description": "Error details."
+          }
+        ]
+      }
+    },
+    {
+      "id": "get_v1_accounts__accountId__clickwraps__clickwrapId__users",
+      "operationId": "UserAgreements_GetClickwrapAgreements",
+      "name": "User Agreements Get Clickwrap Agreements",
+      "description": "Get user agreements",
+      "schema": {
+        "tags": [
+          "ClickWraps"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/DocuSign-Click-API/get_v1_accounts__accountId__clickwraps__clickwrapId__users/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}/users"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {
+                "client_user_id": {
+                  "type": "string",
+                  "description": "The client ID.\n"
+                },
+                "from_date": {
+                  "type": "string",
+                  "description": "Optional. The earliest date to return agreements from."
+                },
+                "page_number": {
+                  "type": "string",
+                  "description": "Optional. The page number to return.\n"
+                },
+                "status": {
+                  "type": "string",
+                  "description": "Optional. The status of the clickwraps to return."
+                },
+                "to_date": {
+                  "type": "string",
+                  "description": "Optional. The latest date to return agreements from."
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "accountId",
+                "clickwrapId"
+              ],
+              "properties": {
+                "accountId": {
+                  "type": "string",
+                  "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n"
+                },
+                "clickwrapId": {
+                  "type": "string",
+                  "description": "The ID of the clickwrap."
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/get_v1_accounts__accountId__clickwraps__clickwrapId__users/output-200.schema.json",
+            "type": "object",
+            "properties": {
+              "beginCreatedOn": {
+                "description": "User agreements from this datetime.",
+                "type": "object"
+              },
+              "minimumPagesRemaining": {
+                "format": "int32",
+                "description": "Number of pages remaining in the response.",
+                "type": "integer"
+              },
+              "page": {
+                "format": "int32",
+                "description": "The number of the current page.",
+                "type": "integer"
+              },
+              "pageSize": {
+                "format": "int32",
+                "description": "The number of items per page.",
+                "type": "integer"
+              },
+              "userAgreements": {
+                "description": "An array of user agreements.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "accountId": {
+                      "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n",
+                      "type": "string"
+                    },
+                    "agreedOn": {
+                      "description": "Date that the client last completed the agreement.\n\nThis property is null if `agreementUrl` is not null and `status` is not  `agreed`.",
+                      "type": "object"
+                    },
+                    "agreementId": {
+                      "description": "The agreement ID.",
+                      "type": "string"
+                    },
+                    "agreementUrl": {
+                      "description": "When not null, an agreement is required for user specified by  `clientUserId`.\n\nWhen missing the user specified by `clientUserId`\nhas already agreed and does not require a new acceptance.\n\nUse this URL to render the agreement in a web page.\n\n<!--\nor redirected to when providing redirect_url as a query paramter.\n-->\n",
+                      "type": "string"
+                    },
+                    "clickwrapId": {
+                      "description": "The ID of the clickwrap.",
+                      "type": "string"
+                    },
+                    "clientUserId": {
+                      "description": "The user ID of the client.",
+                      "type": "string"
+                    },
+                    "consumerDisclosureHtml": {
+                      "description": "The customer-branded HTML with the Electronic Record and Signature Disclosure information",
+                      "type": "string"
+                    },
+                    "createdOn": {
+                      "description": "The date when the clickwrap was created. May be null.",
+                      "type": "object"
+                    },
+                    "declinedOn": {
+                      "description": "The date when the user declined the most recent required agreement.\n\nThis property is valid only when `status` is `declined`. Otherwise it is null.",
+                      "type": "object"
+                    },
+                    "documents": {
+                      "description": "An array of documents.",
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "documentBase64": {
+                            "description": "The base64-encoded contents of the document.",
+                            "type": "string"
+                          },
+                          "documentHtml": {
+                            "description": "The HTML representation of the document.",
+                            "type": "string"
+                          },
+                          "documentName": {
+                            "description": "The name of the document.",
+                            "type": "string"
+                          },
+                          "fileExtension": {
+                            "description": "The file extension of the document.",
+                            "type": "string"
+                          },
+                          "order": {
+                            "format": "int32",
+                            "description": "The order of document layout.",
+                            "type": "integer"
+                          }
+                        },
+                        "description": "Information about a document."
+                      }
+                    },
+                    "metadata": {
+                      "description": "A customer-defined string you can use in requests. This string will appear in the corresponding response.",
+                      "type": "string"
+                    },
+                    "settings": {
+                      "type": "object",
+                      "properties": {
+                        "actionButtonAlignment": {
+                          "description": "Position of the Accept button in the agreement. One of \n\n- `right`\n- `left`\n",
+                          "type": "string"
+                        },
+                        "allowClientOnly": {
+                          "description": "When **true**, this agreement can be be used in client-only integrations",
+                          "type": "boolean"
+                        },
+                        "allowedHosts": {
+                          "description": "Hosts that can host the clickwrap.\n\nIt is an error if the clickwrap didn't come from one of these hosts.\n",
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "brandId": {
+                          "description": "The signing brand ID.",
+                          "type": "string"
+                        },
+                        "consentButtonText": {
+                          "description": "Text on the agree button.",
+                          "type": "string"
+                        },
+                        "consentText": {
+                          "description": "The text on agree button.",
+                          "type": "string"
+                        },
+                        "declineButtonText": {
+                          "description": "The text on the decline button.",
+                          "type": "string"
+                        },
+                        "displayName": {
+                          "description": "The display name of the user agreement.",
+                          "type": "string"
+                        },
+                        "documentDisplay": {
+                          "description": "Display type: link or document",
+                          "type": "string"
+                        },
+                        "downloadable": {
+                          "description": "**True** if the agreement is downloadable.",
+                          "type": "boolean"
+                        },
+                        "format": {
+                          "description": "Display format: inline or modal.",
+                          "type": "string"
+                        },
+                        "hasDeclineButton": {
+                          "description": "**True** if the agreement has a decline checkbox.",
+                          "type": "boolean"
+                        },
+                        "hostOrigin": {
+                          "description": "The host origin.\n",
+                          "type": "string"
+                        },
+                        "mustRead": {
+                          "description": "**True** if the user needs to scroll to the end of the document.\n",
+                          "type": "boolean"
+                        },
+                        "mustView": {
+                          "description": "**True** if the user must view the document.\n",
+                          "type": "boolean"
+                        },
+                        "recordDeclineResponses": {
+                          "description": "When **true**, this agreement records decline actions.",
+                          "type": "boolean"
+                        },
+                        "requireAccept": {
+                          "description": "**True** if accept is required.\n",
+                          "type": "boolean"
+                        },
+                        "sendToEmail": {
+                          "description": "**True** if send to email is applicable.\n",
+                          "type": "boolean"
+                        }
+                      },
+                      "description": "The display settings for this agreement."
+                    },
+                    "status": {
+                      "description": "User agreement status. One of:\n\n- `created`\n- `agreed`\n- `declined`",
+                      "type": "string"
+                    },
+                    "version": {
+                      "description": "The human-readable semver version string.",
+                      "type": "string"
+                    },
+                    "versionId": {
+                      "description": "The ID of the version.",
+                      "type": "string"
+                    },
+                    "versionNumber": {
+                      "format": "int32",
+                      "description": "Version of the clickwrap.",
+                      "type": "integer"
+                    }
+                  },
+                  "description": ""
+                }
+              }
+            },
+            "description": ""
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/get_v1_accounts__accountId__clickwraps__clickwrapId__users/output-400.schema.json",
+            "type": "object",
+            "properties": {
+              "errorCode": {
+                "description": "The error code.",
+                "type": "string"
+              },
+              "message": {
+                "description": "The error message.",
+                "type": "string"
+              }
+            },
+            "description": "Error details."
+          }
+        ]
+      }
+    },
+    {
+      "id": "post_v1_accounts__accountId__clickwraps__clickwrapId__versions",
+      "operationId": "ClickwrapVersions_PostClickwrapVersion",
+      "name": "Clickwrap Versions Post Clickwrap Version",
+      "description": "Creates a new clickwrap version.",
+      "schema": {
+        "tags": [
+          "ClickWraps"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/DocuSign-Click-API/post_v1_accounts__accountId__clickwraps__clickwrapId__versions/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}/versions"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "accountId",
+                "clickwrapId"
+              ],
+              "properties": {
+                "accountId": {
+                  "type": "string",
+                  "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n"
+                },
+                "clickwrapId": {
+                  "type": "string",
+                  "description": "The ID of the clickwrap."
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/post_v1_accounts__accountId__clickwraps__clickwrapId__versions/output-201.schema.json",
+            "type": "object",
+            "properties": {
+              "accountId": {
+                "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n",
+                "type": "string"
+              },
+              "clickwrapId": {
+                "description": "The ID of the clickwrap.",
+                "type": "string"
+              },
+              "clickwrapName": {
+                "description": "The name of the clickwrap.",
+                "type": "string"
+              },
+              "clickwrapVersionId": {
+                "description": "The unique version ID, a GUID, of this clickwrap version.",
+                "type": "string"
+              },
+              "createdTime": {
+                "description": "The time that the clickwrap was created.",
+                "type": "object"
+              },
+              "lastModified": {
+                "description": "The time that the clickwrap was last modified.",
+                "type": "object"
+              },
+              "lastModifiedBy": {
+                "description": "The user ID of the last user who modified this clickwrap.",
+                "type": "string"
+              },
+              "ownerUserId": {
+                "description": "The user ID of the owner of this clickwrap.",
+                "type": "string"
+              },
+              "requireReacceptance": {
+                "description": "When **true**, requires signers who have previously agreed to this\nclickwrap to sign again. The version number is incremented.",
+                "type": "boolean"
+              },
+              "scheduledDate": {
+                "description": "The time and date when this clickwrap is activated.",
+                "type": "object"
+              },
+              "scheduledReacceptance": {
+                "type": "object",
+                "properties": {
+                  "recurrenceInterval": {
+                    "format": "int32",
+                    "description": "The time between recurrences specified in `recurrenceIntervalType` units.\n\nThe minimum and maximum values depend on `recurrenceIntervalType`:\n\n- `days`: 1 - 365\n- `weeks`: 1 - 52\n- `months`: 1 - 12\n- `years`: 1",
+                    "type": "integer"
+                  },
+                  "recurrenceIntervalType": {
+                    "description": "The units of the `recurrenceInterval`. Must be one of:\n\n- `days`\n- `weeks`\n- `month`\n- `years`\n",
+                    "type": "string"
+                  },
+                  "startDateTime": {
+                    "description": "The date when the recurrence interval starts.",
+                    "type": "object"
+                  }
+                },
+                "description": "Specifies the interval between reacceptances in days, weeks, months, or years."
+              },
+              "status": {
+                "description": "Clickwrap status. Possible values:\n\n- `active`\n- `inactive`\n- `deleted`",
+                "type": "string"
+              },
+              "versionId": {
+                "description": "The ID of the version.",
+                "type": "string"
+              },
+              "versionNumber": {
+                "description": "Version of the clickwrap.",
+                "type": "string"
+              }
+            },
+            "description": ""
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/post_v1_accounts__accountId__clickwraps__clickwrapId__versions/output-400.schema.json",
+            "type": "object",
+            "properties": {
+              "errorCode": {
+                "description": "The error code.",
+                "type": "string"
+              },
+              "message": {
+                "description": "The error message.",
+                "type": "string"
+              }
+            },
+            "description": "Error details."
+          }
+        ]
+      }
+    },
+    {
+      "id": "delete_v1_accounts__accountId__clickwraps__clickwrapId__versions",
+      "operationId": "ClickwrapVersions_DeleteClickwrapVersions",
+      "name": "Clickwrap Versions Delete Clickwrap Versions",
+      "description": "Deletes the versions of a clickwrap.",
+      "schema": {
+        "tags": [
+          "ClickWraps"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/DocuSign-Click-API/delete_v1_accounts__accountId__clickwraps__clickwrapId__versions/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}/versions"
+            },
+            "method": {
+              "type": "string",
+              "const": "delete"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {
+                "clickwrapVersionIds": {
+                  "type": "string",
+                  "description": "A comma-separated list of clickwrap version IDs to delete."
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "accountId",
+                "clickwrapId"
+              ],
+              "properties": {
+                "accountId": {
+                  "type": "string",
+                  "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n"
+                },
+                "clickwrapId": {
+                  "type": "string",
+                  "description": "The ID of the clickwrap."
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/delete_v1_accounts__accountId__clickwraps__clickwrapId__versions/output-200.schema.json",
+            "type": "object",
+            "properties": {
+              "clickwrapId": {
+                "description": "The ID of the clickwrap.",
+                "type": "string"
+              },
+              "clickwrapName": {
+                "description": "The name of the clickwrap.",
+                "type": "string"
+              },
+              "versions": {
+                "description": "An array delete responses.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "clickwrapVersionId": {
+                      "description": "The unique version ID, a GUID, of this clickwrap version.",
+                      "type": "string"
+                    },
+                    "createdTime": {
+                      "description": "The time that the clickwrap was created.",
+                      "type": "object"
+                    },
+                    "deletionMessage": {
+                      "description": "A message describing the result of deletion request. One of:\n\n- `alreadyDeleted`: Clickwrap is already deleted.\n- `deletionSuccess`: Successfully deleted the clickwrap.\n- `deletionFailure`: Failed to delete the clickwrap.\n- `cannotDelete`: Active clickwrap version cannot be deleted.",
+                      "type": "string"
+                    },
+                    "deletionSuccess": {
+                      "description": "**True** if the clickwrap was deleted successfully. **False** otherwise.",
+                      "type": "boolean"
+                    },
+                    "lastModified": {
+                      "description": "The time that the clickwrap was last modified.",
+                      "type": "object"
+                    },
+                    "lastModifiedBy": {
+                      "description": "The user ID of the last user who modified this clickwrap.",
+                      "type": "string"
+                    },
+                    "ownerUserId": {
+                      "description": "The user ID of the owner of this clickwrap.",
+                      "type": "string"
+                    },
+                    "requireReacceptance": {
+                      "description": "When **true**, requires signers who have previously agreed to this\nclickwrap to sign again. The version number is incremented.",
+                      "type": "boolean"
+                    },
+                    "scheduledDate": {
+                      "description": "The time and date when this clickwrap is activated.",
+                      "type": "object"
+                    },
+                    "scheduledReacceptance": {
+                      "type": "object",
+                      "properties": {
+                        "recurrenceInterval": {
+                          "format": "int32",
+                          "description": "The time between recurrences specified in `recurrenceIntervalType` units.\n\nThe minimum and maximum values depend on `recurrenceIntervalType`:\n\n- `days`: 1 - 365\n- `weeks`: 1 - 52\n- `months`: 1 - 12\n- `years`: 1",
+                          "type": "integer"
+                        },
+                        "recurrenceIntervalType": {
+                          "description": "The units of the `recurrenceInterval`. Must be one of:\n\n- `days`\n- `weeks`\n- `month`\n- `years`\n",
+                          "type": "string"
+                        },
+                        "startDateTime": {
+                          "description": "The date when the recurrence interval starts.",
+                          "type": "object"
+                        }
+                      },
+                      "description": "Specifies the interval between reacceptances in days, weeks, months, or years."
+                    },
+                    "status": {
+                      "description": "Clickwrap status. Possible values:\n\n- `active`\n- `inactive`\n- `deleted`",
+                      "type": "string"
+                    },
+                    "versionId": {
+                      "description": "The ID of the version.",
+                      "type": "string"
+                    },
+                    "versionNumber": {
+                      "description": "Version of the clickwrap.",
+                      "type": "string"
+                    }
+                  },
+                  "description": ""
+                }
+              }
+            },
+            "description": ""
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/delete_v1_accounts__accountId__clickwraps__clickwrapId__versions/output-400.schema.json",
+            "type": "object",
+            "properties": {
+              "errorCode": {
+                "description": "The error code.",
+                "type": "string"
+              },
+              "message": {
+                "description": "The error message.",
+                "type": "string"
+              }
+            },
+            "description": "Error details."
+          }
+        ]
+      }
+    },
+    {
+      "id": "get_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionId_",
+      "operationId": "ClickwrapVersions_GetClickwrapVersion",
+      "name": "Clickwrap Versions Get Clickwrap Version",
+      "description": "Gets a specific version from a clickwrap.",
+      "schema": {
+        "tags": [
+          "ClickWraps"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/DocuSign-Click-API/get_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionId_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}/versions/{versionId}"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "accountId",
+                "clickwrapId",
+                "versionId"
+              ],
+              "properties": {
+                "accountId": {
+                  "type": "string",
+                  "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n"
+                },
+                "clickwrapId": {
+                  "type": "string",
+                  "description": "The ID of the clickwrap."
+                },
+                "versionId": {
+                  "type": "string",
+                  "description": "The ID of the version."
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/get_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionId_/output-200.schema.json",
+            "type": "object",
+            "properties": {
+              "accountId": {
+                "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n",
+                "type": "string"
+              },
+              "clickwrapId": {
+                "description": "The ID of the clickwrap.",
+                "type": "string"
+              },
+              "clickwrapName": {
+                "description": "The name of the clickwrap.",
+                "type": "string"
+              },
+              "clickwrapVersionId": {
+                "description": "The unique version ID, a GUID, of this clickwrap version.",
+                "type": "string"
+              },
+              "createdTime": {
+                "description": "The time that the clickwrap was created.",
+                "type": "object"
+              },
+              "displaySettings": {
+                "type": "object",
+                "properties": {
+                  "actionButtonAlignment": {
+                    "description": "Position of the Accept button in the agreement. One of \n\n- `right`\n- `left`\n",
+                    "type": "string"
+                  },
+                  "allowClientOnly": {
+                    "description": "When **true**, this agreement can be be used in client-only integrations",
+                    "type": "boolean"
+                  },
+                  "allowedHosts": {
+                    "description": "Hosts that can host the clickwrap.\n\nIt is an error if the clickwrap didn't come from one of these hosts.\n",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "brandId": {
+                    "description": "The signing brand ID.",
+                    "type": "string"
+                  },
+                  "consentButtonText": {
+                    "description": "Text on the agree button.",
+                    "type": "string"
+                  },
+                  "consentText": {
+                    "description": "The text on agree button.",
+                    "type": "string"
+                  },
+                  "declineButtonText": {
+                    "description": "The text on the decline button.",
+                    "type": "string"
+                  },
+                  "displayName": {
+                    "description": "The display name of the user agreement.",
+                    "type": "string"
+                  },
+                  "documentDisplay": {
+                    "description": "Display type: link or document",
+                    "type": "string"
+                  },
+                  "downloadable": {
+                    "description": "**True** if the agreement is downloadable.",
+                    "type": "boolean"
+                  },
+                  "format": {
+                    "description": "Display format: inline or modal.",
+                    "type": "string"
+                  },
+                  "hasDeclineButton": {
+                    "description": "**True** if the agreement has a decline checkbox.",
+                    "type": "boolean"
+                  },
+                  "hostOrigin": {
+                    "description": "The host origin.\n",
+                    "type": "string"
+                  },
+                  "mustRead": {
+                    "description": "**True** if the user needs to scroll to the end of the document.\n",
+                    "type": "boolean"
+                  },
+                  "mustView": {
+                    "description": "**True** if the user must view the document.\n",
+                    "type": "boolean"
+                  },
+                  "recordDeclineResponses": {
+                    "description": "When **true**, this agreement records decline actions.",
+                    "type": "boolean"
+                  },
+                  "requireAccept": {
+                    "description": "**True** if accept is required.\n",
+                    "type": "boolean"
+                  },
+                  "sendToEmail": {
+                    "description": "**True** if send to email is applicable.\n",
+                    "type": "boolean"
+                  }
+                },
+                "description": "Display settings for a clickwrap."
+              },
+              "documents": {
+                "description": "An array of documents.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "documentBase64": {
+                      "description": "The base64-encoded contents of the document.",
+                      "type": "string"
+                    },
+                    "documentHtml": {
+                      "description": "The HTML representation of the document.",
+                      "type": "string"
+                    },
+                    "documentName": {
+                      "description": "The name of the document.",
+                      "type": "string"
+                    },
+                    "fileExtension": {
+                      "description": "The file extension of the document.",
+                      "type": "string"
+                    },
+                    "order": {
+                      "format": "int32",
+                      "description": "The order of document layout.",
+                      "type": "integer"
+                    }
+                  },
+                  "description": "Information about a document."
+                }
+              },
+              "lastModified": {
+                "description": "The time that the clickwrap was last modified.",
+                "type": "object"
+              },
+              "lastModifiedBy": {
+                "description": "The user ID of the last user who modified this clickwrap.",
+                "type": "string"
+              },
+              "ownerUserId": {
+                "description": "The user ID of the owner of this clickwrap.",
+                "type": "string"
+              },
+              "requireReacceptance": {
+                "description": "When **true**, requires signers who have previously agreed to this\nclickwrap to sign again. The version number is incremented.",
+                "type": "boolean"
+              },
+              "scheduledDate": {
+                "description": "The time and date when this clickwrap is activated.",
+                "type": "object"
+              },
+              "scheduledReacceptance": {
+                "type": "object",
+                "properties": {
+                  "recurrenceInterval": {
+                    "format": "int32",
+                    "description": "The time between recurrences specified in `recurrenceIntervalType` units.\n\nThe minimum and maximum values depend on `recurrenceIntervalType`:\n\n- `days`: 1 - 365\n- `weeks`: 1 - 52\n- `months`: 1 - 12\n- `years`: 1",
+                    "type": "integer"
+                  },
+                  "recurrenceIntervalType": {
+                    "description": "The units of the `recurrenceInterval`. Must be one of:\n\n- `days`\n- `weeks`\n- `month`\n- `years`\n",
+                    "type": "string"
+                  },
+                  "startDateTime": {
+                    "description": "The date when the recurrence interval starts.",
+                    "type": "object"
+                  }
+                },
+                "description": "Specifies the interval between reacceptances in days, weeks, months, or years."
+              },
+              "status": {
+                "description": "Clickwrap status. Possible values:\n\n- `active`\n- `inactive`\n- `deleted`",
+                "type": "string"
+              },
+              "versionId": {
+                "description": "The ID of the version.",
+                "type": "string"
+              },
+              "versionNumber": {
+                "description": "Version of the clickwrap.",
+                "type": "string"
+              }
+            },
+            "description": ""
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/get_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionId_/output-400.schema.json",
+            "type": "object",
+            "properties": {
+              "errorCode": {
+                "description": "The error code.",
+                "type": "string"
+              },
+              "message": {
+                "description": "The error message.",
+                "type": "string"
+              }
+            },
+            "description": "Error details."
+          }
+        ]
+      }
+    },
+    {
+      "id": "delete_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionId_",
+      "operationId": "ClickwrapVersions_DeleteClickwrapVersion",
+      "name": "Clickwrap Versions Delete Clickwrap Version",
+      "description": "Deletes a specific version of a clickwrap.",
+      "schema": {
+        "tags": [
+          "ClickWraps"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/DocuSign-Click-API/delete_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionId_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}/versions/{versionId}"
+            },
+            "method": {
+              "type": "string",
+              "const": "delete"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "accountId",
+                "clickwrapId",
+                "versionId"
+              ],
+              "properties": {
+                "accountId": {
+                  "type": "string",
+                  "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n"
+                },
+                "clickwrapId": {
+                  "type": "string",
+                  "description": "The ID of the clickwrap."
+                },
+                "versionId": {
+                  "type": "string",
+                  "description": "The ID of the version."
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/delete_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionId_/output-200.schema.json",
+            "type": "object",
+            "properties": {
+              "clickwrapVersionId": {
+                "description": "The unique version ID, a GUID, of this clickwrap version.",
+                "type": "string"
+              },
+              "createdTime": {
+                "description": "The time that the clickwrap was created.",
+                "type": "object"
+              },
+              "deletionMessage": {
+                "description": "A message describing the result of deletion request. One of:\n\n- `alreadyDeleted`: Clickwrap is already deleted.\n- `deletionSuccess`: Successfully deleted the clickwrap.\n- `deletionFailure`: Failed to delete the clickwrap.\n- `cannotDelete`: Active clickwrap version cannot be deleted.",
+                "type": "string"
+              },
+              "deletionSuccess": {
+                "description": "**True** if the clickwrap was deleted successfully. **False** otherwise.",
+                "type": "boolean"
+              },
+              "lastModified": {
+                "description": "The time that the clickwrap was last modified.",
+                "type": "object"
+              },
+              "lastModifiedBy": {
+                "description": "The user ID of the last user who modified this clickwrap.",
+                "type": "string"
+              },
+              "ownerUserId": {
+                "description": "The user ID of the owner of this clickwrap.",
+                "type": "string"
+              },
+              "requireReacceptance": {
+                "description": "When **true**, requires signers who have previously agreed to this\nclickwrap to sign again. The version number is incremented.",
+                "type": "boolean"
+              },
+              "scheduledDate": {
+                "description": "The time and date when this clickwrap is activated.",
+                "type": "object"
+              },
+              "scheduledReacceptance": {
+                "type": "object",
+                "properties": {
+                  "recurrenceInterval": {
+                    "format": "int32",
+                    "description": "The time between recurrences specified in `recurrenceIntervalType` units.\n\nThe minimum and maximum values depend on `recurrenceIntervalType`:\n\n- `days`: 1 - 365\n- `weeks`: 1 - 52\n- `months`: 1 - 12\n- `years`: 1",
+                    "type": "integer"
+                  },
+                  "recurrenceIntervalType": {
+                    "description": "The units of the `recurrenceInterval`. Must be one of:\n\n- `days`\n- `weeks`\n- `month`\n- `years`\n",
+                    "type": "string"
+                  },
+                  "startDateTime": {
+                    "description": "The date when the recurrence interval starts.",
+                    "type": "object"
+                  }
+                },
+                "description": "Specifies the interval between reacceptances in days, weeks, months, or years."
+              },
+              "status": {
+                "description": "Clickwrap status. Possible values:\n\n- `active`\n- `inactive`\n- `deleted`",
+                "type": "string"
+              },
+              "versionId": {
+                "description": "The ID of the version.",
+                "type": "string"
+              },
+              "versionNumber": {
+                "description": "Version of the clickwrap.",
+                "type": "string"
+              }
+            },
+            "description": ""
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/delete_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionId_/output-400.schema.json",
+            "type": "object",
+            "properties": {
+              "errorCode": {
+                "description": "The error code.",
+                "type": "string"
+              },
+              "message": {
+                "description": "The error message.",
+                "type": "string"
+              }
+            },
+            "description": "Error details."
+          }
+        ]
+      }
+    },
+    {
+      "id": "put_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionId_",
+      "operationId": "ClickwrapVersions_PutClickwrapVersion",
+      "name": "Clickwrap Versions Put Clickwrap Version",
+      "description": "Updates a specific version of a clickwrap.",
+      "schema": {
+        "tags": [
+          "ClickWraps"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/DocuSign-Click-API/put_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionId_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}/versions/{versionId}"
+            },
+            "method": {
+              "type": "string",
+              "const": "put"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "accountId",
+                "clickwrapId",
+                "versionId"
+              ],
+              "properties": {
+                "accountId": {
+                  "type": "string",
+                  "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n"
+                },
+                "clickwrapId": {
+                  "type": "string",
+                  "description": "The ID of the clickwrap."
+                },
+                "versionId": {
+                  "type": "string",
+                  "description": "The ID of the version."
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/put_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionId_/output-200.schema.json",
+            "type": "object",
+            "properties": {
+              "accountId": {
+                "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n",
+                "type": "string"
+              },
+              "clickwrapId": {
+                "description": "The ID of the clickwrap.",
+                "type": "string"
+              },
+              "clickwrapName": {
+                "description": "The name of the clickwrap.",
+                "type": "string"
+              },
+              "clickwrapVersionId": {
+                "description": "The unique version ID, a GUID, of this clickwrap version.",
+                "type": "string"
+              },
+              "createdTime": {
+                "description": "The time that the clickwrap was created.",
+                "type": "object"
+              },
+              "lastModified": {
+                "description": "The time that the clickwrap was last modified.",
+                "type": "object"
+              },
+              "lastModifiedBy": {
+                "description": "The user ID of the last user who modified this clickwrap.",
+                "type": "string"
+              },
+              "ownerUserId": {
+                "description": "The user ID of the owner of this clickwrap.",
+                "type": "string"
+              },
+              "requireReacceptance": {
+                "description": "When **true**, requires signers who have previously agreed to this\nclickwrap to sign again. The version number is incremented.",
+                "type": "boolean"
+              },
+              "scheduledDate": {
+                "description": "The time and date when this clickwrap is activated.",
+                "type": "object"
+              },
+              "scheduledReacceptance": {
+                "type": "object",
+                "properties": {
+                  "recurrenceInterval": {
+                    "format": "int32",
+                    "description": "The time between recurrences specified in `recurrenceIntervalType` units.\n\nThe minimum and maximum values depend on `recurrenceIntervalType`:\n\n- `days`: 1 - 365\n- `weeks`: 1 - 52\n- `months`: 1 - 12\n- `years`: 1",
+                    "type": "integer"
+                  },
+                  "recurrenceIntervalType": {
+                    "description": "The units of the `recurrenceInterval`. Must be one of:\n\n- `days`\n- `weeks`\n- `month`\n- `years`\n",
+                    "type": "string"
+                  },
+                  "startDateTime": {
+                    "description": "The date when the recurrence interval starts.",
+                    "type": "object"
+                  }
+                },
+                "description": "Specifies the interval between reacceptances in days, weeks, months, or years."
+              },
+              "status": {
+                "description": "Clickwrap status. Possible values:\n\n- `active`\n- `inactive`\n- `deleted`",
+                "type": "string"
+              },
+              "versionId": {
+                "description": "The ID of the version.",
+                "type": "string"
+              },
+              "versionNumber": {
+                "description": "Version of the clickwrap.",
+                "type": "string"
+              }
+            },
+            "description": ""
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/put_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionId_/output-400.schema.json",
+            "type": "object",
+            "properties": {
+              "errorCode": {
+                "description": "The error code.",
+                "type": "string"
+              },
+              "message": {
+                "description": "The error message.",
+                "type": "string"
+              }
+            },
+            "description": "Error details."
+          }
+        ]
+      }
+    },
+    {
+      "id": "get_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionId__users",
+      "operationId": "UserAgreements_GetClickwrapVersionAgreements",
+      "name": "User Agreements Get Clickwrap Version Agreements",
+      "description": "Gets the agreement responses for a clickwrap version.",
+      "schema": {
+        "tags": [
+          "ClickWraps"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/DocuSign-Click-API/get_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionId__users/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}/versions/{versionId}/users"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {
+                "client_user_id": {
+                  "type": "string",
+                  "description": ""
+                },
+                "from_date": {
+                  "type": "string",
+                  "description": "Optional. The earliest date to return agreements from."
+                },
+                "page_number": {
+                  "type": "string",
+                  "description": "Optional. The page number to return.\n"
+                },
+                "status": {
+                  "type": "string",
+                  "description": "Clickwrap status. Possible values:\n\n- `active`\n- `inactive`\n- `deleted`"
+                },
+                "to_date": {
+                  "type": "string",
+                  "description": "Optional. The latest date to return agreements from."
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "accountId",
+                "clickwrapId",
+                "versionId"
+              ],
+              "properties": {
+                "accountId": {
+                  "type": "string",
+                  "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n"
+                },
+                "clickwrapId": {
+                  "type": "string",
+                  "description": "The ID of the clickwrap."
+                },
+                "versionId": {
+                  "type": "string",
+                  "description": "The ID of the version."
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/get_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionId__users/output-200.schema.json",
+            "type": "object",
+            "properties": {
+              "beginCreatedOn": {
+                "description": "User agreements from this datetime.",
+                "type": "object"
+              },
+              "minimumPagesRemaining": {
+                "format": "int32",
+                "description": "Number of pages remaining in the response.",
+                "type": "integer"
+              },
+              "page": {
+                "format": "int32",
+                "description": "The number of the current page.",
+                "type": "integer"
+              },
+              "pageSize": {
+                "format": "int32",
+                "description": "The number of items per page.",
+                "type": "integer"
+              },
+              "userAgreements": {
+                "description": "An array of user agreements.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "accountId": {
+                      "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n",
+                      "type": "string"
+                    },
+                    "agreedOn": {
+                      "description": "Date that the client last completed the agreement.\n\nThis property is null if `agreementUrl` is not null and `status` is not  `agreed`.",
+                      "type": "object"
+                    },
+                    "agreementId": {
+                      "description": "The agreement ID.",
+                      "type": "string"
+                    },
+                    "agreementUrl": {
+                      "description": "When not null, an agreement is required for user specified by  `clientUserId`.\n\nWhen missing the user specified by `clientUserId`\nhas already agreed and does not require a new acceptance.\n\nUse this URL to render the agreement in a web page.\n\n<!--\nor redirected to when providing redirect_url as a query paramter.\n-->\n",
+                      "type": "string"
+                    },
+                    "clickwrapId": {
+                      "description": "The ID of the clickwrap.",
+                      "type": "string"
+                    },
+                    "clientUserId": {
+                      "description": "The user ID of the client.",
+                      "type": "string"
+                    },
+                    "consumerDisclosureHtml": {
+                      "description": "The customer-branded HTML with the Electronic Record and Signature Disclosure information",
+                      "type": "string"
+                    },
+                    "createdOn": {
+                      "description": "The date when the clickwrap was created. May be null.",
+                      "type": "object"
+                    },
+                    "declinedOn": {
+                      "description": "The date when the user declined the most recent required agreement.\n\nThis property is valid only when `status` is `declined`. Otherwise it is null.",
+                      "type": "object"
+                    },
+                    "documents": {
+                      "description": "An array of documents.",
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "documentBase64": {
+                            "description": "The base64-encoded contents of the document.",
+                            "type": "string"
+                          },
+                          "documentHtml": {
+                            "description": "The HTML representation of the document.",
+                            "type": "string"
+                          },
+                          "documentName": {
+                            "description": "The name of the document.",
+                            "type": "string"
+                          },
+                          "fileExtension": {
+                            "description": "The file extension of the document.",
+                            "type": "string"
+                          },
+                          "order": {
+                            "format": "int32",
+                            "description": "The order of document layout.",
+                            "type": "integer"
+                          }
+                        },
+                        "description": "Information about a document."
+                      }
+                    },
+                    "metadata": {
+                      "description": "A customer-defined string you can use in requests. This string will appear in the corresponding response.",
+                      "type": "string"
+                    },
+                    "settings": {
+                      "type": "object",
+                      "properties": {
+                        "actionButtonAlignment": {
+                          "description": "Position of the Accept button in the agreement. One of \n\n- `right`\n- `left`\n",
+                          "type": "string"
+                        },
+                        "allowClientOnly": {
+                          "description": "When **true**, this agreement can be be used in client-only integrations",
+                          "type": "boolean"
+                        },
+                        "allowedHosts": {
+                          "description": "Hosts that can host the clickwrap.\n\nIt is an error if the clickwrap didn't come from one of these hosts.\n",
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "brandId": {
+                          "description": "The signing brand ID.",
+                          "type": "string"
+                        },
+                        "consentButtonText": {
+                          "description": "Text on the agree button.",
+                          "type": "string"
+                        },
+                        "consentText": {
+                          "description": "The text on agree button.",
+                          "type": "string"
+                        },
+                        "declineButtonText": {
+                          "description": "The text on the decline button.",
+                          "type": "string"
+                        },
+                        "displayName": {
+                          "description": "The display name of the user agreement.",
+                          "type": "string"
+                        },
+                        "documentDisplay": {
+                          "description": "Display type: link or document",
+                          "type": "string"
+                        },
+                        "downloadable": {
+                          "description": "**True** if the agreement is downloadable.",
+                          "type": "boolean"
+                        },
+                        "format": {
+                          "description": "Display format: inline or modal.",
+                          "type": "string"
+                        },
+                        "hasDeclineButton": {
+                          "description": "**True** if the agreement has a decline checkbox.",
+                          "type": "boolean"
+                        },
+                        "hostOrigin": {
+                          "description": "The host origin.\n",
+                          "type": "string"
+                        },
+                        "mustRead": {
+                          "description": "**True** if the user needs to scroll to the end of the document.\n",
+                          "type": "boolean"
+                        },
+                        "mustView": {
+                          "description": "**True** if the user must view the document.\n",
+                          "type": "boolean"
+                        },
+                        "recordDeclineResponses": {
+                          "description": "When **true**, this agreement records decline actions.",
+                          "type": "boolean"
+                        },
+                        "requireAccept": {
+                          "description": "**True** if accept is required.\n",
+                          "type": "boolean"
+                        },
+                        "sendToEmail": {
+                          "description": "**True** if send to email is applicable.\n",
+                          "type": "boolean"
+                        }
+                      },
+                      "description": "The display settings for this agreement."
+                    },
+                    "status": {
+                      "description": "User agreement status. One of:\n\n- `created`\n- `agreed`\n- `declined`",
+                      "type": "string"
+                    },
+                    "version": {
+                      "description": "The human-readable semver version string.",
+                      "type": "string"
+                    },
+                    "versionId": {
+                      "description": "The ID of the version.",
+                      "type": "string"
+                    },
+                    "versionNumber": {
+                      "format": "int32",
+                      "description": "Version of the clickwrap.",
+                      "type": "integer"
+                    }
+                  },
+                  "description": ""
+                }
+              }
+            },
+            "description": ""
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/get_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionId__users/output-400.schema.json",
+            "type": "object",
+            "properties": {
+              "errorCode": {
+                "description": "The error code.",
+                "type": "string"
+              },
+              "message": {
+                "description": "The error message.",
+                "type": "string"
+              }
+            },
+            "description": "Error details."
+          }
+        ]
+      }
+    },
+    {
+      "id": "get_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionNumber_",
+      "operationId": "ClickwrapVersions_GetClickwrapVersionByNumber",
+      "name": "Clickwrap Versions Get Clickwrap Version By Number",
+      "description": "Gets a clickwrap version by specifying its version number.",
+      "schema": {
+        "tags": [
+          "ClickWraps"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/DocuSign-Click-API/get_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionNumber_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}/versions/{versionNumber}"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "accountId",
+                "clickwrapId",
+                "versionNumber"
+              ],
+              "properties": {
+                "accountId": {
+                  "type": "string",
+                  "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n"
+                },
+                "clickwrapId": {
+                  "type": "string",
+                  "description": "The ID of the clickwrap."
+                },
+                "versionNumber": {
+                  "type": "string",
+                  "description": "Version of the clickwrap."
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/get_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionNumber_/output-200.schema.json",
+            "type": "object",
+            "properties": {
+              "accountId": {
+                "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n",
+                "type": "string"
+              },
+              "clickwrapId": {
+                "description": "The ID of the clickwrap.",
+                "type": "string"
+              },
+              "clickwrapName": {
+                "description": "The name of the clickwrap.",
+                "type": "string"
+              },
+              "clickwrapVersionId": {
+                "description": "The unique version ID, a GUID, of this clickwrap version.",
+                "type": "string"
+              },
+              "createdTime": {
+                "description": "The time that the clickwrap was created.",
+                "type": "object"
+              },
+              "displaySettings": {
+                "type": "object",
+                "properties": {
+                  "actionButtonAlignment": {
+                    "description": "Position of the Accept button in the agreement. One of \n\n- `right`\n- `left`\n",
+                    "type": "string"
+                  },
+                  "allowClientOnly": {
+                    "description": "When **true**, this agreement can be be used in client-only integrations",
+                    "type": "boolean"
+                  },
+                  "allowedHosts": {
+                    "description": "Hosts that can host the clickwrap.\n\nIt is an error if the clickwrap didn't come from one of these hosts.\n",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "brandId": {
+                    "description": "The signing brand ID.",
+                    "type": "string"
+                  },
+                  "consentButtonText": {
+                    "description": "Text on the agree button.",
+                    "type": "string"
+                  },
+                  "consentText": {
+                    "description": "The text on agree button.",
+                    "type": "string"
+                  },
+                  "declineButtonText": {
+                    "description": "The text on the decline button.",
+                    "type": "string"
+                  },
+                  "displayName": {
+                    "description": "The display name of the user agreement.",
+                    "type": "string"
+                  },
+                  "documentDisplay": {
+                    "description": "Display type: link or document",
+                    "type": "string"
+                  },
+                  "downloadable": {
+                    "description": "**True** if the agreement is downloadable.",
+                    "type": "boolean"
+                  },
+                  "format": {
+                    "description": "Display format: inline or modal.",
+                    "type": "string"
+                  },
+                  "hasDeclineButton": {
+                    "description": "**True** if the agreement has a decline checkbox.",
+                    "type": "boolean"
+                  },
+                  "hostOrigin": {
+                    "description": "The host origin.\n",
+                    "type": "string"
+                  },
+                  "mustRead": {
+                    "description": "**True** if the user needs to scroll to the end of the document.\n",
+                    "type": "boolean"
+                  },
+                  "mustView": {
+                    "description": "**True** if the user must view the document.\n",
+                    "type": "boolean"
+                  },
+                  "recordDeclineResponses": {
+                    "description": "When **true**, this agreement records decline actions.",
+                    "type": "boolean"
+                  },
+                  "requireAccept": {
+                    "description": "**True** if accept is required.\n",
+                    "type": "boolean"
+                  },
+                  "sendToEmail": {
+                    "description": "**True** if send to email is applicable.\n",
+                    "type": "boolean"
+                  }
+                },
+                "description": "Display settings for a clickwrap."
+              },
+              "documents": {
+                "description": "An array of documents.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "documentBase64": {
+                      "description": "The base64-encoded contents of the document.",
+                      "type": "string"
+                    },
+                    "documentHtml": {
+                      "description": "The HTML representation of the document.",
+                      "type": "string"
+                    },
+                    "documentName": {
+                      "description": "The name of the document.",
+                      "type": "string"
+                    },
+                    "fileExtension": {
+                      "description": "The file extension of the document.",
+                      "type": "string"
+                    },
+                    "order": {
+                      "format": "int32",
+                      "description": "The order of document layout.",
+                      "type": "integer"
+                    }
+                  },
+                  "description": "Information about a document."
+                }
+              },
+              "lastModified": {
+                "description": "The time that the clickwrap was last modified.",
+                "type": "object"
+              },
+              "lastModifiedBy": {
+                "description": "The user ID of the last user who modified this clickwrap.",
+                "type": "string"
+              },
+              "ownerUserId": {
+                "description": "The user ID of the owner of this clickwrap.",
+                "type": "string"
+              },
+              "requireReacceptance": {
+                "description": "When **true**, requires signers who have previously agreed to this\nclickwrap to sign again. The version number is incremented.",
+                "type": "boolean"
+              },
+              "scheduledDate": {
+                "description": "The time and date when this clickwrap is activated.",
+                "type": "object"
+              },
+              "scheduledReacceptance": {
+                "type": "object",
+                "properties": {
+                  "recurrenceInterval": {
+                    "format": "int32",
+                    "description": "The time between recurrences specified in `recurrenceIntervalType` units.\n\nThe minimum and maximum values depend on `recurrenceIntervalType`:\n\n- `days`: 1 - 365\n- `weeks`: 1 - 52\n- `months`: 1 - 12\n- `years`: 1",
+                    "type": "integer"
+                  },
+                  "recurrenceIntervalType": {
+                    "description": "The units of the `recurrenceInterval`. Must be one of:\n\n- `days`\n- `weeks`\n- `month`\n- `years`\n",
+                    "type": "string"
+                  },
+                  "startDateTime": {
+                    "description": "The date when the recurrence interval starts.",
+                    "type": "object"
+                  }
+                },
+                "description": "Specifies the interval between reacceptances in days, weeks, months, or years."
+              },
+              "status": {
+                "description": "Clickwrap status. Possible values:\n\n- `active`\n- `inactive`\n- `deleted`",
+                "type": "string"
+              },
+              "versionId": {
+                "description": "The ID of the version.",
+                "type": "string"
+              },
+              "versionNumber": {
+                "description": "Version of the clickwrap.",
+                "type": "string"
+              }
+            },
+            "description": ""
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/get_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionNumber_/output-400.schema.json",
+            "type": "object",
+            "properties": {
+              "errorCode": {
+                "description": "The error code.",
+                "type": "string"
+              },
+              "message": {
+                "description": "The error message.",
+                "type": "string"
+              }
+            },
+            "description": "Error details."
+          }
+        ]
+      }
+    },
+    {
+      "id": "delete_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionNumber_",
+      "operationId": "ClickwrapVersions_DeleteClickwrapVersionByNumber",
+      "name": "Clickwrap Versions Delete Clickwrap Version By Number",
+      "description": "Deletes a clickwrap version from a clickwrap by specifying its version number.",
+      "schema": {
+        "tags": [
+          "ClickWraps"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/DocuSign-Click-API/delete_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionNumber_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}/versions/{versionNumber}"
+            },
+            "method": {
+              "type": "string",
+              "const": "delete"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "accountId",
+                "clickwrapId",
+                "versionNumber"
+              ],
+              "properties": {
+                "accountId": {
+                  "type": "string",
+                  "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n"
+                },
+                "clickwrapId": {
+                  "type": "string",
+                  "description": "The ID of the clickwrap."
+                },
+                "versionNumber": {
+                  "type": "string",
+                  "description": "Version of the clickwrap."
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/delete_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionNumber_/output-200.schema.json",
+            "type": "object",
+            "properties": {
+              "accountId": {
+                "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n",
+                "type": "string"
+              },
+              "clickwrapId": {
+                "description": "The ID of the clickwrap.",
+                "type": "string"
+              },
+              "clickwrapName": {
+                "description": "The name of the clickwrap.",
+                "type": "string"
+              },
+              "clickwrapVersionId": {
+                "description": "The unique version ID, a GUID, of this clickwrap version.",
+                "type": "string"
+              },
+              "createdTime": {
+                "description": "The time that the clickwrap was created.",
+                "type": "object"
+              },
+              "lastModified": {
+                "description": "The time that the clickwrap was last modified.",
+                "type": "object"
+              },
+              "lastModifiedBy": {
+                "description": "The user ID of the last user who modified this clickwrap.",
+                "type": "string"
+              },
+              "ownerUserId": {
+                "description": "The user ID of the owner of this clickwrap.",
+                "type": "string"
+              },
+              "requireReacceptance": {
+                "description": "When **true**, requires signers who have previously agreed to this\nclickwrap to sign again. The version number is incremented.",
+                "type": "boolean"
+              },
+              "scheduledDate": {
+                "description": "The time and date when this clickwrap is activated.",
+                "type": "object"
+              },
+              "scheduledReacceptance": {
+                "type": "object",
+                "properties": {
+                  "recurrenceInterval": {
+                    "format": "int32",
+                    "description": "The time between recurrences specified in `recurrenceIntervalType` units.\n\nThe minimum and maximum values depend on `recurrenceIntervalType`:\n\n- `days`: 1 - 365\n- `weeks`: 1 - 52\n- `months`: 1 - 12\n- `years`: 1",
+                    "type": "integer"
+                  },
+                  "recurrenceIntervalType": {
+                    "description": "The units of the `recurrenceInterval`. Must be one of:\n\n- `days`\n- `weeks`\n- `month`\n- `years`\n",
+                    "type": "string"
+                  },
+                  "startDateTime": {
+                    "description": "The date when the recurrence interval starts.",
+                    "type": "object"
+                  }
+                },
+                "description": "Specifies the interval between reacceptances in days, weeks, months, or years."
+              },
+              "status": {
+                "description": "Clickwrap status. Possible values:\n\n- `active`\n- `inactive`\n- `deleted`",
+                "type": "string"
+              },
+              "versionId": {
+                "description": "The ID of the version.",
+                "type": "string"
+              },
+              "versionNumber": {
+                "description": "Version of the clickwrap.",
+                "type": "string"
+              }
+            },
+            "description": ""
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/delete_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionNumber_/output-400.schema.json",
+            "type": "object",
+            "properties": {
+              "errorCode": {
+                "description": "The error code.",
+                "type": "string"
+              },
+              "message": {
+                "description": "The error message.",
+                "type": "string"
+              }
+            },
+            "description": "Error details."
+          }
+        ]
+      }
+    },
+    {
+      "id": "put_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionNumber_",
+      "operationId": "ClickwrapVersions_PutClickwrapVersionByNumber",
+      "name": "Clickwrap Versions Put Clickwrap Version By Number",
+      "description": "Updates a clickwrap version by specifying its version number.",
+      "schema": {
+        "tags": [
+          "ClickWraps"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/DocuSign-Click-API/put_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionNumber_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}/versions/{versionNumber}"
+            },
+            "method": {
+              "type": "string",
+              "const": "put"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "accountId",
+                "clickwrapId",
+                "versionNumber"
+              ],
+              "properties": {
+                "accountId": {
+                  "type": "string",
+                  "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n"
+                },
+                "clickwrapId": {
+                  "type": "string",
+                  "description": "The ID of the clickwrap."
+                },
+                "versionNumber": {
+                  "type": "string",
+                  "description": "Version of the clickwrap."
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/put_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionNumber_/output-200.schema.json",
+            "type": "object",
+            "properties": {
+              "accountId": {
+                "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n",
+                "type": "string"
+              },
+              "clickwrapId": {
+                "description": "The ID of the clickwrap.",
+                "type": "string"
+              },
+              "clickwrapName": {
+                "description": "The name of the clickwrap.",
+                "type": "string"
+              },
+              "clickwrapVersionId": {
+                "description": "The unique version ID, a GUID, of this clickwrap version.",
+                "type": "string"
+              },
+              "createdTime": {
+                "description": "The time that the clickwrap was created.",
+                "type": "object"
+              },
+              "lastModified": {
+                "description": "The time that the clickwrap was last modified.",
+                "type": "object"
+              },
+              "lastModifiedBy": {
+                "description": "The user ID of the last user who modified this clickwrap.",
+                "type": "string"
+              },
+              "ownerUserId": {
+                "description": "The user ID of the owner of this clickwrap.",
+                "type": "string"
+              },
+              "requireReacceptance": {
+                "description": "When **true**, requires signers who have previously agreed to this\nclickwrap to sign again. The version number is incremented.",
+                "type": "boolean"
+              },
+              "scheduledDate": {
+                "description": "The time and date when this clickwrap is activated.",
+                "type": "object"
+              },
+              "scheduledReacceptance": {
+                "type": "object",
+                "properties": {
+                  "recurrenceInterval": {
+                    "format": "int32",
+                    "description": "The time between recurrences specified in `recurrenceIntervalType` units.\n\nThe minimum and maximum values depend on `recurrenceIntervalType`:\n\n- `days`: 1 - 365\n- `weeks`: 1 - 52\n- `months`: 1 - 12\n- `years`: 1",
+                    "type": "integer"
+                  },
+                  "recurrenceIntervalType": {
+                    "description": "The units of the `recurrenceInterval`. Must be one of:\n\n- `days`\n- `weeks`\n- `month`\n- `years`\n",
+                    "type": "string"
+                  },
+                  "startDateTime": {
+                    "description": "The date when the recurrence interval starts.",
+                    "type": "object"
+                  }
+                },
+                "description": "Specifies the interval between reacceptances in days, weeks, months, or years."
+              },
+              "status": {
+                "description": "Clickwrap status. Possible values:\n\n- `active`\n- `inactive`\n- `deleted`",
+                "type": "string"
+              },
+              "versionId": {
+                "description": "The ID of the version.",
+                "type": "string"
+              },
+              "versionNumber": {
+                "description": "Version of the clickwrap.",
+                "type": "string"
+              }
+            },
+            "description": ""
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/put_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionNumber_/output-400.schema.json",
+            "type": "object",
+            "properties": {
+              "errorCode": {
+                "description": "The error code.",
+                "type": "string"
+              },
+              "message": {
+                "description": "The error message.",
+                "type": "string"
+              }
+            },
+            "description": "Error details."
+          }
+        ]
+      }
+    },
+    {
+      "id": "get_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionNumber__users",
+      "operationId": "UserAgreements_GetClickwrapVersionAgreementsByNumber",
+      "name": "User Agreements Get Clickwrap Version Agreements By Number",
+      "description": "Gets the agreement responses for a clickwrap version",
+      "schema": {
+        "tags": [
+          "ClickWraps"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/DocuSign-Click-API/get_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionNumber__users/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/accounts/{accountId}/clickwraps/{clickwrapId}/versions/{versionNumber}/users"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {
+                "client_user_id": {
+                  "type": "string",
+                  "description": "The client user ID."
+                },
+                "from_date": {
+                  "type": "string",
+                  "description": "Optional. The earliest date to return agreements from."
+                },
+                "page_number": {
+                  "type": "string",
+                  "description": "Optional. The page number to return.\n"
+                },
+                "status": {
+                  "type": "string",
+                  "description": "Clickwrap status. Possible values:\n\n- `active`\n- `inactive`\n- `deleted`"
+                },
+                "to_date": {
+                  "type": "string",
+                  "description": "Optional. The latest date to return agreements from."
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "accountId",
+                "clickwrapId",
+                "versionNumber"
+              ],
+              "properties": {
+                "accountId": {
+                  "type": "string",
+                  "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n"
+                },
+                "clickwrapId": {
+                  "type": "string",
+                  "description": "The ID of the clickwrap."
+                },
+                "versionNumber": {
+                  "type": "string",
+                  "description": "Version of the clickwrap."
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/get_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionNumber__users/output-200.schema.json",
+            "type": "object",
+            "properties": {
+              "beginCreatedOn": {
+                "description": "User agreements from this datetime.",
+                "type": "object"
+              },
+              "minimumPagesRemaining": {
+                "format": "int32",
+                "description": "Number of pages remaining in the response.",
+                "type": "integer"
+              },
+              "page": {
+                "format": "int32",
+                "description": "The number of the current page.",
+                "type": "integer"
+              },
+              "pageSize": {
+                "format": "int32",
+                "description": "The number of items per page.",
+                "type": "integer"
+              },
+              "userAgreements": {
+                "description": "An array of user agreements.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "accountId": {
+                      "description": "A GUID that identifies your account.\nThis value is automatically generated by\nDocuSign for any account you create. Copy the\nvalue from the **API Account ID** field in\nthe **API and Keys** page in\neSignature Settings.\n",
+                      "type": "string"
+                    },
+                    "agreedOn": {
+                      "description": "Date that the client last completed the agreement.\n\nThis property is null if `agreementUrl` is not null and `status` is not  `agreed`.",
+                      "type": "object"
+                    },
+                    "agreementId": {
+                      "description": "The agreement ID.",
+                      "type": "string"
+                    },
+                    "agreementUrl": {
+                      "description": "When not null, an agreement is required for user specified by  `clientUserId`.\n\nWhen missing the user specified by `clientUserId`\nhas already agreed and does not require a new acceptance.\n\nUse this URL to render the agreement in a web page.\n\n<!--\nor redirected to when providing redirect_url as a query paramter.\n-->\n",
+                      "type": "string"
+                    },
+                    "clickwrapId": {
+                      "description": "The ID of the clickwrap.",
+                      "type": "string"
+                    },
+                    "clientUserId": {
+                      "description": "The user ID of the client.",
+                      "type": "string"
+                    },
+                    "consumerDisclosureHtml": {
+                      "description": "The customer-branded HTML with the Electronic Record and Signature Disclosure information",
+                      "type": "string"
+                    },
+                    "createdOn": {
+                      "description": "The date when the clickwrap was created. May be null.",
+                      "type": "object"
+                    },
+                    "declinedOn": {
+                      "description": "The date when the user declined the most recent required agreement.\n\nThis property is valid only when `status` is `declined`. Otherwise it is null.",
+                      "type": "object"
+                    },
+                    "documents": {
+                      "description": "An array of documents.",
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "documentBase64": {
+                            "description": "The base64-encoded contents of the document.",
+                            "type": "string"
+                          },
+                          "documentHtml": {
+                            "description": "The HTML representation of the document.",
+                            "type": "string"
+                          },
+                          "documentName": {
+                            "description": "The name of the document.",
+                            "type": "string"
+                          },
+                          "fileExtension": {
+                            "description": "The file extension of the document.",
+                            "type": "string"
+                          },
+                          "order": {
+                            "format": "int32",
+                            "description": "The order of document layout.",
+                            "type": "integer"
+                          }
+                        },
+                        "description": "Information about a document."
+                      }
+                    },
+                    "metadata": {
+                      "description": "A customer-defined string you can use in requests. This string will appear in the corresponding response.",
+                      "type": "string"
+                    },
+                    "settings": {
+                      "type": "object",
+                      "properties": {
+                        "actionButtonAlignment": {
+                          "description": "Position of the Accept button in the agreement. One of \n\n- `right`\n- `left`\n",
+                          "type": "string"
+                        },
+                        "allowClientOnly": {
+                          "description": "When **true**, this agreement can be be used in client-only integrations",
+                          "type": "boolean"
+                        },
+                        "allowedHosts": {
+                          "description": "Hosts that can host the clickwrap.\n\nIt is an error if the clickwrap didn't come from one of these hosts.\n",
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "brandId": {
+                          "description": "The signing brand ID.",
+                          "type": "string"
+                        },
+                        "consentButtonText": {
+                          "description": "Text on the agree button.",
+                          "type": "string"
+                        },
+                        "consentText": {
+                          "description": "The text on agree button.",
+                          "type": "string"
+                        },
+                        "declineButtonText": {
+                          "description": "The text on the decline button.",
+                          "type": "string"
+                        },
+                        "displayName": {
+                          "description": "The display name of the user agreement.",
+                          "type": "string"
+                        },
+                        "documentDisplay": {
+                          "description": "Display type: link or document",
+                          "type": "string"
+                        },
+                        "downloadable": {
+                          "description": "**True** if the agreement is downloadable.",
+                          "type": "boolean"
+                        },
+                        "format": {
+                          "description": "Display format: inline or modal.",
+                          "type": "string"
+                        },
+                        "hasDeclineButton": {
+                          "description": "**True** if the agreement has a decline checkbox.",
+                          "type": "boolean"
+                        },
+                        "hostOrigin": {
+                          "description": "The host origin.\n",
+                          "type": "string"
+                        },
+                        "mustRead": {
+                          "description": "**True** if the user needs to scroll to the end of the document.\n",
+                          "type": "boolean"
+                        },
+                        "mustView": {
+                          "description": "**True** if the user must view the document.\n",
+                          "type": "boolean"
+                        },
+                        "recordDeclineResponses": {
+                          "description": "When **true**, this agreement records decline actions.",
+                          "type": "boolean"
+                        },
+                        "requireAccept": {
+                          "description": "**True** if accept is required.\n",
+                          "type": "boolean"
+                        },
+                        "sendToEmail": {
+                          "description": "**True** if send to email is applicable.\n",
+                          "type": "boolean"
+                        }
+                      },
+                      "description": "The display settings for this agreement."
+                    },
+                    "status": {
+                      "description": "User agreement status. One of:\n\n- `created`\n- `agreed`\n- `declined`",
+                      "type": "string"
+                    },
+                    "version": {
+                      "description": "The human-readable semver version string.",
+                      "type": "string"
+                    },
+                    "versionId": {
+                      "description": "The ID of the version.",
+                      "type": "string"
+                    },
+                    "versionNumber": {
+                      "format": "int32",
+                      "description": "Version of the clickwrap.",
+                      "type": "integer"
+                    }
+                  },
+                  "description": ""
+                }
+              }
+            },
+            "description": ""
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/DocuSign-Click-API/get_v1_accounts__accountId__clickwraps__clickwrapId__versions__versionNumber__users/output-400.schema.json",
+            "type": "object",
+            "properties": {
+              "errorCode": {
+                "description": "The error code.",
+                "type": "string"
+              },
+              "message": {
+                "description": "The error message.",
+                "type": "string"
+              }
+            },
+            "description": "Error details."
+          }
+        ]
+      }
+    }
+  ],
+  "references": {
+    "baseURL": {
+      "type": "string",
+      "enum": [
+        "https://www.demo.docusign.net/clickapi"
+      ]
+    },
+    "queryDesc": "Query parameters sent with the request",
+    "paramDesc": "URL parameters sent with the request",
+    "headerDesc": "HTTP headers sent when making the request",
+    "dataDesc": "Data sent with the request",
+    "schema": "https://json-schema.org/draft/2020-12/schema"
+  }
+}

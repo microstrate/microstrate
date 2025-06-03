@@ -1,219 +1,351 @@
 [
-    {
-        "folder": "asana",
-        "name": "Asana",
-        "note": "Task and project management - Asana API",
-        "categories": [
-            "project-management"
-        ]
-    },
-    {
-        "name": "Slack",
-        "note": "Manage messages,users,and channels in Slack programmatically.",
-        "folder": "slack",
-        "categories": [
-            "communication"
-        ]
-    },
-    {
-        "name": "Sendgrid",
-        "note": "Track and filter email events for better delivery insights.",
-        "folder": "sendgrid",
-        "categories": [
-            "communication"
-        ]
-    },
-    {
-        "name": "Open AI",
-        "note": "Generate and analyze text with powerful language models.",
-        "folder": "openai",
-        "categories": [
-            "ai-ml"
-        ]
-    },
-    {
-        "name": "Github",
-        "note": "Interact with GitHub repositories,issues,and pull requests.",
-        "folder": "github",
-        "categories": [
-            "developer-tools"
-        ]
-    },
-    {
-        "name": "Google Maps",
-        "note": "API Specification for Google Maps Platform",
-        "folder": "google-maps",
-        "categories": [
-            "google",
-            "geolocation"
-        ]
-    },
-    {
-        "name": "Cloudstream API",
-        "note": "Comprehensive API for Cloudstream Mordor services",
-        "folder": "cloudstream",
-        "categories": [
-            "evari",
-            "media-streaming"
-        ]
-    },
-    {
-        "name": "Airparser API",
-        "note": "Document parsing service that extracts  data from documents using AI",
-        "folder": "airparser",
-        "categories": [
-            "document",
-            "ai-ml"
-        ]
-    },
-    {
-        "name": "Xero APIs",
-        "note": "Xero APIs",
-        "folder": "xero",
-        "isGroup": true
-    },
-    {
-        "group": "xero",
-        "name": "Xero Accounting",
-        "note": "Xero Accounting API",
-        "folder": "accounting",
-        "categories": [
-            "accounting"
-        ]
-    },
-    {
-        "group": "xero",
-        "name": "Xero Assets",
-        "note": "Xero Assets API",
-        "folder": "assets",
-        "categories": [
-            "accounting"
-        ]
-    },
-    {
-        "group": "xero",
-        "name": "Xero Bank Feeds",
-        "note": "Xero Bank Feeds API",
-        "folder": "bank-feeds",
-        "categories": [
-            "accounting"
-        ]
-    },
-    {
-        "group": "xero",
-        "name": "Xero Files",
-        "note": "Xero Files API",
-        "folder": "files",
-        "categories": [
-            "accounting"
-        ]
-    },
-    {
-        "group": "xero",
-        "name": "Xero Identity",
-        "note": "Xero Identity API",
-        "folder": "identity",
-        "categories": [
-            "accounting"
-        ]
-    },
-    {
-        "group": "xero",
-        "name": "Xero Payroll UK",
-        "note": "Xero Payroll UK API",
-        "folder": "payroll-uk",
-        "categories": [
-            "accounting"
-        ]
-    },
-    {
-        "group": "xero",
-        "name": "Xero Projects",
-        "note": "Xero Projects API",
-        "folder": "projects",
-        "categories": [
-            "accounting"
-        ]
-    },
-    {
-        "folder": "twilio",
-        "name": "Twilio",
-        "note": "Customer APIs with AI and data for SMS, Voice, Email",
-        "categories": [
-            "communication",
-            "messaging",
-            "voice",
-            "email",
-            "sms"
-        ]
-    },
-    {
-        "folder": "zoom",
-        "name": "Zoom",
-        "note": "Video meetings and webinars - Zoom API",
-        "categories": [
-            "video",
-            "video-conferencing"
-        ]
-    },
-    {
-        "name": "Docusign",
-        "note": "Docusign APIs",
-        "folder": "docusign",
-        "isGroup": true
-    },
-    {
-        "group": "docusign",
-        "folder": "admin",
-        "name": "Docusign Admin",
-        "note": "Manage organizations, accounts and users",
-        "categories": [
-            "document"
-        ]
-    },
-    {
-        "group": "docusign",
-        "folder": "agreements",
-        "name": "Docusign Agreemnets",
-        "note": "API for retrieving agreements",
-        "categories": [
-            "document"
-        ]
-    },
-    {
-        "group": "docusign",
-        "folder": "click",
-        "name": "Docusign Click",
-        "note": "Capture consent to standard agreement terms with a single click",
-        "categories": [
-            "document"
-        ]
-    },
-    {
-        "group": "docusign",
-        "folder": "connected-fields",
-        "name": "Docusign Connected Fields",
-        "note": "Connected Fields API",
-        "categories": [
-            "document"
-        ]
-    },
-    {
-        "group": "docusign",
-        "folder": "maestro",
-        "name": "Docusign Maestro",
-        "note": "API for triggering and managing automated workflows",
-        "categories": [
-            "document"
-        ]
-    },
-    {
-        "group": "docusign",
-        "folder": "monitor",
-        "name": "Docusign Monitor",
-        "note": "API for an integrator to access the features of DocuSign Monitor",
-        "categories": [
-            "document"
-        ]
-    }
+  {
+    "folder": "asana",
+    "name": "Asana",
+    "note": "Task and project management - Asana API",
+    "categories": [
+      "project-management"
+    ]
+  },
+  {
+    "name": "Slack",
+    "note": "Manage messages,users,and channels in Slack programmatically.",
+    "folder": "slack",
+    "categories": [
+      "communication"
+    ]
+  },
+  {
+    "name": "Sendgrid",
+    "note": "Track and filter email events for better delivery insights.",
+    "folder": "sendgrid",
+    "categories": [
+      "communication"
+    ]
+  },
+  {
+    "name": "Open AI",
+    "note": "Generate and analyze text with powerful language models.",
+    "folder": "openai",
+    "categories": [
+      "ai-ml"
+    ]
+  },
+  {
+    "name": "Github",
+    "note": "Interact with GitHub repositories,issues,and pull requests.",
+    "folder": "github",
+    "categories": [
+      "developer-tools",
+      "git"
+    ]
+  },
+  {
+    "name": "Google Maps",
+    "note": "API Specification for Google Maps Platform",
+    "folder": "google-maps",
+    "categories": [
+      "google",
+      "geolocation"
+    ]
+  },
+  {
+    "name": "Cloudstream API",
+    "note": "Comprehensive API for Cloudstream Mordor services",
+    "folder": "cloudstream",
+    "categories": [
+      "evari",
+      "media-streaming"
+    ]
+  },
+  {
+    "name": "Airparser API",
+    "note": "Document parsing service that extracts  data from documents using AI",
+    "folder": "airparser",
+    "categories": [
+      "document",
+      "ai-ml"
+    ]
+  },
+  {
+    "name": "Xero APIs",
+    "note": "Xero APIs",
+    "folder": "xero",
+    "isGroup": true
+  },
+  {
+    "group": "xero",
+    "name": "Xero Accounting",
+    "note": "Xero Accounting API",
+    "folder": "accounting",
+    "categories": [
+      "accounting"
+    ]
+  },
+  {
+    "group": "xero",
+    "name": "Xero Assets",
+    "note": "Xero Assets API",
+    "folder": "assets",
+    "categories": [
+      "accounting"
+    ]
+  },
+  {
+    "group": "xero",
+    "name": "Xero Bank Feeds",
+    "note": "Xero Bank Feeds API",
+    "folder": "bank-feeds",
+    "categories": [
+      "accounting"
+    ]
+  },
+  {
+    "group": "xero",
+    "name": "Xero Files",
+    "note": "Xero Files API",
+    "folder": "files",
+    "categories": [
+      "accounting"
+    ]
+  },
+  {
+    "group": "xero",
+    "name": "Xero Identity",
+    "note": "Xero Identity API",
+    "folder": "identity",
+    "categories": [
+      "accounting"
+    ]
+  },
+  {
+    "group": "xero",
+    "name": "Xero Payroll UK",
+    "note": "Xero Payroll UK API",
+    "folder": "payroll-uk",
+    "categories": [
+      "accounting"
+    ]
+  },
+  {
+    "group": "xero",
+    "name": "Xero Projects",
+    "note": "Xero Projects API",
+    "folder": "projects",
+    "categories": [
+      "accounting"
+    ]
+  },
+  {
+    "folder": "twilio",
+    "name": "Twilio",
+    "note": "Customer APIs with AI and data for SMS, Voice, Email",
+    "categories": [
+      "communication",
+      "messaging",
+      "voice",
+      "email",
+      "sms"
+    ]
+  },
+  {
+    "folder": "zoom",
+    "name": "Zoom",
+    "note": "Video meetings and webinars - Zoom API",
+    "categories": [
+      "video",
+      "video-conferencing"
+    ]
+  },
+  {
+    "name": "Docusign",
+    "note": "Docusign APIs",
+    "folder": "docusign",
+    "isGroup": true
+  },
+  {
+    "group": "docusign",
+    "folder": "admin",
+    "name": "Docusign Admin",
+    "note": "Manage organizations, accounts and users",
+    "categories": [
+      "document"
+    ]
+  },
+  {
+    "group": "docusign",
+    "folder": "agreements",
+    "name": "Docusign Agreemnets",
+    "note": "API for retrieving agreements",
+    "categories": [
+      "document"
+    ]
+  },
+  {
+    "group": "docusign",
+    "folder": "click",
+    "name": "Docusign Click",
+    "note": "Capture consent to standard agreement terms with a single click",
+    "categories": [
+      "document"
+    ]
+  },
+  {
+    "group": "docusign",
+    "folder": "connected-fields",
+    "name": "Docusign Connected Fields",
+    "note": "Connected Fields API",
+    "categories": [
+      "document"
+    ]
+  },
+  {
+    "group": "docusign",
+    "folder": "maestro",
+    "name": "Docusign Maestro",
+    "note": "API for triggering and managing automated workflows",
+    "categories": [
+      "document"
+    ]
+  },
+  {
+    "group": "docusign",
+    "folder": "monitor",
+    "name": "Docusign Monitor",
+    "note": "API for an integrator to access the features of DocuSign Monitor",
+    "categories": [
+      "document"
+    ]
+  },
+  {
+    "folder": "stripe",
+    "name": "Stripe",
+    "note": "Payment infrastructure - Stripe API",
+    "categories": [
+      "payment"
+    ]
+  },
+  {
+    "folder": "gitlab",
+    "name": "Gitlab",
+    "note": "Repository with CI/CD capabilities - Gitlab API",
+    "categories": [
+      "developer-tools",
+      "git"
+    ]
+  },
+  {
+    "name": "PayPal",
+    "note": "PayPal APIs",
+    "folder": "paypal",
+    "isGroup": true
+  },
+  {
+    "group": "paypal",
+    "folder": "billing-subscriptions",
+    "name": "PayPal Billing Subscriptions",
+    "note": "Create subscriptions that process recurring PayPal payments",
+    "categories": [
+      "payment", "billing"
+    ]
+  },
+  {
+    "group": "paypal",
+    "folder": "catalogs-products",
+    "name": "PayPal Catalogs Products",
+    "note": "Create products, which are goods and services.",
+    "categories": [
+      "payment", "catalog"
+    ]
+  },
+  {
+    "group": "paypal",
+    "folder": "checkout-orders",
+    "name": "PayPal Checkout Orders",
+    "note": "Create, update, retrieve, authorize, and capture orders.",
+    "categories": [
+      "payment", "checkout"
+    ]
+  },
+  {
+    "group": "paypal",
+    "folder": "customer-disputes",
+    "name": "PayPal Customer Disputes",
+    "note": "Manage Customer Disputes",
+    "categories": [
+      "payment", "disputes"
+    ]
+  },
+  {
+    "group": "paypal",
+    "folder": "customer-partner-referrals",
+    "name": "PayPal Customer Partner Referrals",
+    "note": "Add PayPal seller accounts to PayPal Complete Payments Platform",
+    "categories": [
+      "payment", "referral"
+    ]
+  },
+  {
+    "group": "paypal",
+    "folder": "invoicing",
+    "name": "PayPal Invoicing",
+    "note": "Manage invoicing",
+    "categories": [
+      "payment", "invoicing"
+    ]
+  },
+  {
+    "group": "paypal",
+    "folder": "payment-experience-web-experience-profiles",
+    "name": "PayPal Payment Experience Profiles",
+    "note": "Create seamless payment experience profiles",
+    "categories": [
+      "payment"
+    ]
+  },
+  {
+    "group": "paypal",
+    "folder": "payments-payment",
+    "name": "PayPal Payment",
+    "note": "Authorize, capture authorized, refund and get information on payments.",
+    "categories": [
+      "payment"
+    ]
+  },
+  {
+    "group": "paypal",
+    "folder": "payments-payouts-batch",
+    "name": "PayPal Payouts Batch",
+    "note": "Make payments to multiple PayPal or Venmo recipients.",
+    "categories": [
+      "payment"
+    ]
+  },
+  {
+    "group": "paypal",
+    "folder": "reporting-transactions",
+    "name": "PayPal Reporting Transactions",
+    "note": "Get the history of transactions for a PayPal account",
+    "categories": [
+      "payment", "reporting"
+    ]
+  },
+  {
+    "group": "paypal",
+    "folder": "shipping-shipment-tracking",
+    "name": "PayPal Shipment Tracking",
+    "note": "Get shipment tracking information",
+    "categories": [
+      "payment"
+    ]
+  },
+  {
+    "group": "paypal",
+    "folder": "vault-payment-tokens",
+    "name": "PayPal Vault Payment Tokens",
+    "note": "Save payment methods for future transactions",
+    "categories": [
+      "payment"
+    ]
+  }
 ]

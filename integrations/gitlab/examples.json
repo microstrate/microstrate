@@ -1,0 +1,860 @@
+{
+  "get_groups__id__badges__badge_id_": {
+    "Basic Example": {
+      "url": "/groups/{id}/badges/{badge_id}",
+      "method": "get",
+      "path": {
+        "id": "<string>",
+        "badge_id": "<integer>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "delete_groups__id__badges__badge_id_": {
+    "Basic Example": {
+      "url": "/groups/{id}/badges/{badge_id}",
+      "method": "delete",
+      "path": {
+        "id": "<string>",
+        "badge_id": "<integer>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "put_groups__id__badges__badge_id_": {
+    "Basic Example": {
+      "url": "/groups/{id}/badges/{badge_id}",
+      "method": "put",
+      "path": {
+        "id": "<string>",
+        "badge_id": "<integer>"
+      },
+      "data": "<value>",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_groups__id__badges": {
+    "Basic Example": {
+      "url": "/groups/{id}/badges",
+      "method": "get",
+      "path": {
+        "id": "<string>"
+      },
+      "query": {
+        "page": 1,
+        "per_page": 20,
+        "name": "<string>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "post_groups__id__badges": {
+    "Basic Example": {
+      "url": "/groups/{id}/badges",
+      "method": "post",
+      "path": {
+        "id": "<string>"
+      },
+      "data": "<value>",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_groups__id__badges_render": {
+    "Basic Example": {
+      "url": "/groups/{id}/badges/render",
+      "method": "get",
+      "path": {
+        "id": "<string>"
+      },
+      "query": {
+        "link_url": "<string>",
+        "image_url": "<string>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "delete_groups__id__access_requests__user_id_": {
+    "Basic Example": {
+      "url": "/groups/{id}/access_requests/{user_id}",
+      "method": "delete",
+      "path": {
+        "id": "<string>",
+        "user_id": "<integer>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "put_groups__id__access_requests__user_id__approve": {
+    "Basic Example": {
+      "url": "/groups/{id}/access_requests/{user_id}/approve",
+      "method": "put",
+      "path": {
+        "id": "<string>",
+        "user_id": "<integer>"
+      },
+      "data": "<value>",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_groups__id__access_requests": {
+    "Basic Example": {
+      "url": "/groups/{id}/access_requests",
+      "method": "get",
+      "path": {
+        "id": "<string>"
+      },
+      "query": {
+        "page": 1,
+        "per_page": 20
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "post_groups__id__access_requests": {
+    "Basic Example": {
+      "url": "/groups/{id}/access_requests",
+      "method": "post",
+      "path": {
+        "id": "<string>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "delete_projects__id__repository_merged_branches": {
+    "Basic Example": {
+      "url": "/projects/{id}/repository/merged_branches",
+      "method": "delete",
+      "path": {
+        "id": "<string>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_projects__id__repository_branches__branch_": {
+    "Basic Example": {
+      "url": "/projects/{id}/repository/branches/{branch}",
+      "method": "get",
+      "path": {
+        "id": "<string>",
+        "branch": "<integer>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "delete_projects__id__repository_branches__branch_": {
+    "Basic Example": {
+      "url": "/projects/{id}/repository/branches/{branch}",
+      "method": "delete",
+      "path": {
+        "id": "<string>",
+        "branch": "<string>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_projects__id__repository_branches": {
+    "Basic Example": {
+      "url": "/projects/{id}/repository/branches",
+      "method": "get",
+      "path": {
+        "id": "<string>"
+      },
+      "query": {
+        "page": 1,
+        "per_page": 20,
+        "search": "<string>",
+        "regex": "<string>",
+        "sort": "name_asc",
+        "page_token": "<string>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "post_projects__id__repository_branches": {
+    "Basic Example": {
+      "url": "/projects/{id}/repository/branches",
+      "method": "post",
+      "path": {
+        "id": "<string>"
+      },
+      "query": {
+        "branch": "<string>",
+        "ref": "<string>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "put_projects__id__repository_branches__branch__unprotect": {
+    "Basic Example": {
+      "url": "/projects/{id}/repository/branches/{branch}/unprotect",
+      "method": "put",
+      "path": {
+        "id": "<string>",
+        "branch": "<string>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "put_projects__id__repository_branches__branch__protect": {
+    "Basic Example": {
+      "url": "/projects/{id}/repository/branches/{branch}/protect",
+      "method": "put",
+      "path": {
+        "id": "<string>",
+        "branch": "<string>"
+      },
+      "data": "<value>",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_projects__id__badges__badge_id_": {
+    "Basic Example": {
+      "url": "/projects/{id}/badges/{badge_id}",
+      "method": "get",
+      "path": {
+        "id": "<string>",
+        "badge_id": "<integer>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "delete_projects__id__badges__badge_id_": {
+    "Basic Example": {
+      "url": "/projects/{id}/badges/{badge_id}",
+      "method": "delete",
+      "path": {
+        "id": "<string>",
+        "badge_id": "<integer>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "put_projects__id__badges__badge_id_": {
+    "Basic Example": {
+      "url": "/projects/{id}/badges/{badge_id}",
+      "method": "put",
+      "path": {
+        "id": "<string>",
+        "badge_id": "<integer>"
+      },
+      "data": "<value>",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_projects__id__badges": {
+    "Basic Example": {
+      "url": "/projects/{id}/badges",
+      "method": "get",
+      "path": {
+        "id": "<string>"
+      },
+      "query": {
+        "page": 1,
+        "per_page": 20,
+        "name": "<string>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "post_projects__id__badges": {
+    "Basic Example": {
+      "url": "/projects/{id}/badges",
+      "method": "post",
+      "path": {
+        "id": "<string>"
+      },
+      "data": "<value>",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_projects__id__badges_render": {
+    "Basic Example": {
+      "url": "/projects/{id}/badges/render",
+      "method": "get",
+      "path": {
+        "id": "<string>"
+      },
+      "query": {
+        "link_url": "<string>",
+        "image_url": "<string>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "delete_projects__id__access_requests__user_id_": {
+    "Basic Example": {
+      "url": "/projects/{id}/access_requests/{user_id}",
+      "method": "delete",
+      "path": {
+        "id": "<string>",
+        "user_id": "<integer>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "put_projects__id__access_requests__user_id__approve": {
+    "Basic Example": {
+      "url": "/projects/{id}/access_requests/{user_id}/approve",
+      "method": "put",
+      "path": {
+        "id": "<string>",
+        "user_id": "<integer>"
+      },
+      "data": "<value>",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_projects__id__access_requests": {
+    "Basic Example": {
+      "url": "/projects/{id}/access_requests",
+      "method": "get",
+      "path": {
+        "id": "<string>"
+      },
+      "query": {
+        "page": 1,
+        "per_page": 20
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "post_projects__id__access_requests": {
+    "Basic Example": {
+      "url": "/projects/{id}/access_requests",
+      "method": "post",
+      "path": {
+        "id": "<string>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "delete_projects__id__alert_management_alerts__alert_iid__metric_images__metric_image_id_": {
+    "Basic Example": {
+      "url": "/projects/{id}/alert_management_alerts/{alert_iid}/metric_images/{metric_image_id}",
+      "method": "delete",
+      "path": {
+        "id": "<string>",
+        "alert_iid": "<integer>",
+        "metric_image_id": "<integer>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "put_projects__id__alert_management_alerts__alert_iid__metric_images__metric_image_id_": {
+    "Basic Example": {
+      "url": "/projects/{id}/alert_management_alerts/{alert_iid}/metric_images/{metric_image_id}",
+      "method": "put",
+      "path": {
+        "id": "<string>",
+        "alert_iid": "<integer>",
+        "metric_image_id": "<integer>"
+      },
+      "data": "<value>",
+      "headers": {
+        "Content-Type": "multipart/form-data"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_projects__id__alert_management_alerts__alert_iid__metric_images": {
+    "Basic Example": {
+      "url": "/projects/{id}/alert_management_alerts/{alert_iid}/metric_images",
+      "method": "get",
+      "path": {
+        "id": "<string>",
+        "alert_iid": "<integer>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "post_projects__id__alert_management_alerts__alert_iid__metric_images": {
+    "Basic Example": {
+      "url": "/projects/{id}/alert_management_alerts/{alert_iid}/metric_images",
+      "method": "post",
+      "path": {
+        "id": "<string>",
+        "alert_iid": "<integer>"
+      },
+      "data": "<value>",
+      "headers": {
+        "Content-Type": "multipart/form-data"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "post_projects__id__alert_management_alerts__alert_iid__metric_images_authorize": {
+    "Basic Example": {
+      "url": "/projects/{id}/alert_management_alerts/{alert_iid}/metric_images/authorize",
+      "method": "post",
+      "path": {
+        "id": "<string>",
+        "alert_iid": "<integer>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_admin_batched_background_migrations__id_": {
+    "Basic Example": {
+      "url": "/admin/batched_background_migrations/{id}",
+      "method": "get",
+      "query": {
+        "database": "main"
+      },
+      "path": {
+        "id": "<integer>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_admin_batched_background_migrations": {
+    "Basic Example": {
+      "url": "/admin/batched_background_migrations",
+      "method": "get",
+      "query": {
+        "database": "main"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "put_admin_batched_background_migrations__id__resume": {
+    "Basic Example": {
+      "url": "/admin/batched_background_migrations/{id}/resume",
+      "method": "put",
+      "path": {
+        "id": "<integer>"
+      },
+      "data": "<value>",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "put_admin_batched_background_migrations__id__pause": {
+    "Basic Example": {
+      "url": "/admin/batched_background_migrations/{id}/pause",
+      "method": "put",
+      "path": {
+        "id": "<integer>"
+      },
+      "data": "<value>",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_admin_ci_variables__key_": {
+    "Basic Example": {
+      "url": "/admin/ci/variables/{key}",
+      "method": "get",
+      "path": {
+        "key": "<string>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "delete_admin_ci_variables__key_": {
+    "Basic Example": {
+      "url": "/admin/ci/variables/{key}",
+      "method": "delete",
+      "path": {
+        "key": "<string>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "put_admin_ci_variables__key_": {
+    "Basic Example": {
+      "url": "/admin/ci/variables/{key}",
+      "method": "put",
+      "path": {
+        "key": "<string>"
+      },
+      "data": "<value>",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_admin_ci_variables": {
+    "Basic Example": {
+      "url": "/admin/ci/variables",
+      "method": "get",
+      "query": {
+        "page": 1,
+        "per_page": 20
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "post_admin_ci_variables": {
+    "Basic Example": {
+      "url": "/admin/ci/variables",
+      "method": "post",
+      "data": "<value>",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_admin_databases__database_name__dictionary_tables__table_name_": {
+    "Basic Example": {
+      "url": "/admin/databases/{database_name}/dictionary/tables/{table_name}",
+      "method": "get",
+      "path": {
+        "database_name": "main",
+        "table_name": "<string>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_admin_clusters__cluster_id_": {
+    "Basic Example": {
+      "url": "/admin/clusters/{cluster_id}",
+      "method": "get",
+      "path": {
+        "cluster_id": "<integer>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "delete_admin_clusters__cluster_id_": {
+    "Basic Example": {
+      "url": "/admin/clusters/{cluster_id}",
+      "method": "delete",
+      "path": {
+        "cluster_id": "<integer>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "put_admin_clusters__cluster_id_": {
+    "Basic Example": {
+      "url": "/admin/clusters/{cluster_id}",
+      "method": "put",
+      "path": {
+        "cluster_id": "<integer>"
+      },
+      "data": "<value>",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "post_admin_clusters_add": {
+    "Basic Example": {
+      "url": "/admin/clusters/add",
+      "method": "post",
+      "data": "<value>",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_admin_clusters": {
+    "Basic Example": {
+      "url": "/admin/clusters",
+      "method": "get",
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "post_admin_migrations__timestamp__mark": {
+    "Basic Example": {
+      "url": "/admin/migrations/{timestamp}/mark",
+      "method": "post",
+      "path": {
+        "timestamp": "<integer>"
+      },
+      "data": "<value>",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "delete_applications__id_": {
+    "Basic Example": {
+      "url": "/applications/{id}",
+      "method": "delete",
+      "path": {
+        "id": "<integer>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_applications": {
+    "Basic Example": {
+      "url": "/applications",
+      "method": "get",
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "post_applications": {
+    "Basic Example": {
+      "url": "/applications",
+      "method": "post",
+      "data": "<value>",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_avatar": {
+    "Basic Example": {
+      "url": "/avatar",
+      "method": "get",
+      "query": {
+        "email": "<string>",
+        "size": "<integer>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_broadcast_messages__id_": {
+    "Basic Example": {
+      "url": "/broadcast_messages/{id}",
+      "method": "get",
+      "path": {
+        "id": "<integer>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "delete_broadcast_messages__id_": {
+    "Basic Example": {
+      "url": "/broadcast_messages/{id}",
+      "method": "delete",
+      "path": {
+        "id": "<integer>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "put_broadcast_messages__id_": {
+    "Basic Example": {
+      "url": "/broadcast_messages/{id}",
+      "method": "put",
+      "path": {
+        "id": "<integer>"
+      },
+      "data": "<value>",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_broadcast_messages": {
+    "Basic Example": {
+      "url": "/broadcast_messages",
+      "method": "get",
+      "query": {
+        "page": 1,
+        "per_page": 20
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "post_broadcast_messages": {
+    "Basic Example": {
+      "url": "/broadcast_messages",
+      "method": "post",
+      "data": "<value>",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_bulk_imports__import_id__entities__entity_id_": {
+    "Basic Example": {
+      "url": "/bulk_imports/{import_id}/entities/{entity_id}",
+      "method": "get",
+      "path": {
+        "import_id": "<integer>",
+        "entity_id": "<integer>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_bulk_imports__import_id__entities": {
+    "Basic Example": {
+      "url": "/bulk_imports/{import_id}/entities",
+      "method": "get",
+      "path": {
+        "import_id": "<integer>"
+      },
+      "query": {
+        "status": "created",
+        "page": 1,
+        "per_page": 20
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_bulk_imports__import_id_": {
+    "Basic Example": {
+      "url": "/bulk_imports/{import_id}",
+      "method": "get",
+      "path": {
+        "import_id": "<integer>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_bulk_imports_entities": {
+    "Basic Example": {
+      "url": "/bulk_imports/entities",
+      "method": "get",
+      "query": {
+        "page": 1,
+        "per_page": 20,
+        "sort": "desc",
+        "status": "created"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_bulk_imports": {
+    "Basic Example": {
+      "url": "/bulk_imports",
+      "method": "get",
+      "query": {
+        "page": 1,
+        "per_page": 20,
+        "sort": "desc",
+        "status": "created"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "post_bulk_imports": {
+    "Basic Example": {
+      "url": "/bulk_imports",
+      "method": "post",
+      "data": "<value>",
+      "headers": {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_application_appearance": {
+    "Basic Example": {
+      "url": "/application/appearance",
+      "method": "get",
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "put_application_appearance": {
+    "Basic Example": {
+      "url": "/application/appearance",
+      "method": "put",
+      "data": "<value>",
+      "headers": {
+        "Content-Type": "multipart/form-data"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_application_plan_limits": {
+    "Basic Example": {
+      "url": "/application/plan_limits",
+      "method": "get",
+      "query": {
+        "plan_name": "default"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "put_application_plan_limits": {
+    "Basic Example": {
+      "url": "/application/plan_limits",
+      "method": "put",
+      "data": "<value>",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_metadata": {
+    "Basic Example": {
+      "url": "/metadata",
+      "method": "get",
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_version": {
+    "Basic Example": {
+      "url": "/version",
+      "method": "get",
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_projects__id__jobs": {
+    "Basic Example": {
+      "url": "/projects/{id}/jobs",
+      "method": "get",
+      "path": {
+        "id": "<integer>"
+      },
+      "query": {
+        "scope": "<array>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "get_projects__id__jobs__job_id_": {
+    "Basic Example": {
+      "url": "/projects/{id}/jobs/{job_id}",
+      "method": "get",
+      "path": {
+        "id": "<integer>",
+        "job_id": "<integer>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  },
+  "post_projects__id__jobs__job_id__play": {
+    "Basic Example": {
+      "url": "/projects/{id}/jobs/{job_id}/play",
+      "method": "post",
+      "path": {
+        "id": "<integer>",
+        "job_id": "<integer>"
+      },
+      "query": {
+        "job_variables_attributes": "<array>"
+      },
+      "baseURL": "https://www.gitlab.com/api/v4"
+    }
+  }
+}

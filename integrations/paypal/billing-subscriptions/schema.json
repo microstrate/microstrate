@@ -1,0 +1,2135 @@
+{
+  "name": "Subscriptions",
+  "description": "You can use billing plans and subscriptions to create subscriptions that process recurring PayPal payments for physical or digital goods, or services. A plan includes pricing and billing cycle information that defines the amount and frequency of charge for a subscription. You can also define a fixed plan, such as a $5 basic plan or a volume- or graduated-based plan with pricing tiers based on the quantity purchased. For more information, see <a href=\"/docs/subscriptions/\">Subscriptions Overview</a>.",
+  "nodes": [
+    {
+      "id": "get_v1_billing_plans",
+      "operationId": "plans.list",
+      "name": "Plans List",
+      "description": "List plans",
+      "schema": {
+        "tags": [
+          "plans"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Subscriptions/get_v1_billing_plans/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/billing/plans"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {
+                "product_id": {
+                  "type": "string",
+                  "minLength": 6,
+                  "maxLength": 50,
+                  "description": "Filters the response by a Product ID."
+                },
+                "plan_ids": {
+                  "type": "string",
+                  "minimum": 3,
+                  "maximum": 270,
+                  "description": "Filters the response by list of plan IDs. Filter supports upto 10 plan IDs."
+                },
+                "page_size": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 20,
+                  "default": 10,
+                  "description": "The number of items to return in the response."
+                },
+                "page": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 100000,
+                  "default": 1,
+                  "description": "A non-zero integer which is the start index of the entire list of items to return in the response. The combination of `page=1` and `page_size=20` returns the first 20 items. The combination of `page=2` and `page_size=20` returns the next 20 items."
+                },
+                "total_required": {
+                  "type": "boolean",
+                  "default": false,
+                  "description": "Indicates whether to show the total count in the response."
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Subscriptions/get_v1_billing_plans/output-200.schema.json",
+            "type": "object",
+            "title": "Plan Collection",
+            "description": "The list of plans with details.",
+            "properties": {
+              "plans": {
+                "type": "array",
+                "minItems": 0,
+                "maxItems": 32767,
+                "description": "An array of plans.",
+                "items": {
+                  "0": "c",
+                  "1": "y",
+                  "2": "c",
+                  "3": "l",
+                  "4": "e"
+                }
+              },
+              "total_items": {
+                "type": "integer",
+                "description": "The total number of items.",
+                "minimum": 0,
+                "maximum": 500000000
+              },
+              "total_pages": {
+                "type": "integer",
+                "description": "The total number of pages.",
+                "minimum": 0,
+                "maximum": 100000000
+              },
+              "links": {
+                "type": "array",
+                "description": "An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links).",
+                "readOnly": true,
+                "minItems": 1,
+                "maxItems": 10,
+                "items": {
+                  "0": "c",
+                  "1": "y",
+                  "2": "c",
+                  "3": "l",
+                  "4": "e",
+                  "readOnly": true
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "post_v1_billing_plans",
+      "operationId": "plans.create",
+      "name": "Plans Create",
+      "description": "Create plan",
+      "schema": {
+        "tags": [
+          "plans"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Subscriptions/post_v1_billing_plans/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/billing/plans"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Prefer": {
+                  "type": "string",
+                  "default": "return=minimal",
+                  "description": "The preferred server response upon successful completion of the request. Value is:<ul><li><code>return=minimal</code>. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the <code>id</code>, <code>status</code> and HATEOAS links.</li><li><code>return=representation</code>. The server returns a complete resource representation, including the current state of the resource.</li></ul>"
+                },
+                "PayPal-Request-Id": {
+                  "type": "string",
+                  "description": "The server stores keys for 72 hours."
+                },
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "title": "Create Plan Request",
+                "description": "The create plan request details.",
+                "type": "object",
+                "properties": {
+                  "product_id": {
+                    "type": "string",
+                    "description": "The ID of the product created through Catalog Products API.",
+                    "minLength": 6,
+                    "maxLength": 50
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The plan name.",
+                    "minLength": 1,
+                    "maxLength": 127
+                  },
+                  "status": {
+                    "type": "string",
+                    "description": "The initial state of the plan. Allowed input values are CREATED and ACTIVE.",
+                    "minLength": 1,
+                    "maxLength": 24,
+                    "pattern": "^[A-Z_]+$",
+                    "default": "ACTIVE",
+                    "enum": [
+                      "CREATED",
+                      "INACTIVE",
+                      "ACTIVE"
+                    ]
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "The detailed description of the plan.",
+                    "minLength": 1,
+                    "maxLength": 127
+                  },
+                  "billing_cycles": {
+                    "type": "array",
+                    "description": "An array of billing cycles for trial billing and regular billing. A plan can have at most two trial cycles and only one regular cycle.",
+                    "minItems": 1,
+                    "maxItems": 12,
+                    "items": {
+                      "0": "c",
+                      "1": "y",
+                      "2": "c",
+                      "3": "l",
+                      "4": "e"
+                    }
+                  },
+                  "payment_preferences": {
+                    "0": "c",
+                    "1": "y",
+                    "2": "c",
+                    "3": "l",
+                    "4": "e"
+                  },
+                  "taxes": {
+                    "0": "c",
+                    "1": "y",
+                    "2": "c",
+                    "3": "l",
+                    "4": "e"
+                  },
+                  "quantity_supported": {
+                    "type": "boolean",
+                    "description": "Indicates whether you can subscribe to this plan by providing a quantity for the goods or service.",
+                    "default": false
+                  }
+                },
+                "required": [
+                  "name",
+                  "billing_cycles",
+                  "payment_preferences",
+                  "product_id"
+                ]
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Subscriptions/post_v1_billing_plans/output-200.schema.json",
+            "type": "object",
+            "title": "Plan",
+            "description": "The plan details.",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "The unique PayPal-generated ID for the plan.",
+                "minLength": 3,
+                "maxLength": 50,
+                "readOnly": true
+              },
+              "product_id": {
+                "type": "string",
+                "description": "The ID for the product.",
+                "minLength": 6,
+                "maxLength": 50
+              },
+              "name": {
+                "type": "string",
+                "description": "The plan name.",
+                "minLength": 1,
+                "maxLength": 127
+              },
+              "status": {
+                "type": "string",
+                "description": "The plan status.",
+                "minLength": 1,
+                "maxLength": 24,
+                "pattern": "^[A-Z_]+$",
+                "enum": [
+                  "CREATED",
+                  "INACTIVE",
+                  "ACTIVE"
+                ]
+              },
+              "description": {
+                "type": "string",
+                "description": "The detailed description of the plan.",
+                "minLength": 1,
+                "maxLength": 127
+              },
+              "billing_cycles": {
+                "type": "array",
+                "description": "An array of billing cycles for trial billing and regular billing. A plan can have at most two trial cycles and only one regular cycle.",
+                "minItems": 1,
+                "maxItems": 12,
+                "items": {
+                  "title": "Billing Cycle",
+                  "description": "The billing cycle details.",
+                  "type": "object",
+                  "properties": {
+                    "pricing_scheme": {
+                      "description": "The pricing scheme details.",
+                      "title": "Pricing Scheme",
+                      "type": "object",
+                      "properties": {
+                        "version": {
+                          "type": "integer",
+                          "description": "The version of the pricing scheme.",
+                          "minimum": 0,
+                          "maximum": 999,
+                          "readOnly": true
+                        },
+                        "fixed_price": {
+                          "description": "The currency and amount for a financial transaction, such as a balance or payment due.",
+                          "type": "object",
+                          "title": "Money",
+                          "properties": {
+                            "currency_code": {
+                              "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                              "type": "string",
+                              "format": "ppaas_common_currency_code_v2",
+                              "minLength": 3,
+                              "maxLength": 3
+                            },
+                            "value": {
+                              "type": "string",
+                              "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/).",
+                              "maxLength": 32,
+                              "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                            }
+                          },
+                          "required": [
+                            "currency_code",
+                            "value"
+                          ]
+                        },
+                        "pricing_model": {
+                          "type": "string",
+                          "description": "The pricing model for tiered plan. The `tiers` parameter is required.",
+                          "minLength": 1,
+                          "maxLength": 24,
+                          "pattern": "^[A-Z_]+$",
+                          "enum": [
+                            "VOLUME",
+                            "TIERED"
+                          ]
+                        },
+                        "tiers": {
+                          "type": "array",
+                          "description": "An array of pricing tiers which are used for billing volume/tiered plans. pricing_model field has to be specified.",
+                          "minItems": 1,
+                          "maxItems": 32,
+                          "items": {
+                            "title": "Pricing Tier",
+                            "description": "The pricing tier details.",
+                            "type": "object",
+                            "properties": {
+                              "starting_quantity": {
+                                "type": "string",
+                                "description": "The starting quantity for the tier.",
+                                "pattern": "^([0-9]+|([0-9]+)?[.][0-9]+)$",
+                                "minLength": 1,
+                                "maxLength": 32
+                              },
+                              "ending_quantity": {
+                                "type": "string",
+                                "description": "The ending quantity for the tier. Optional for the last tier.",
+                                "pattern": "^([0-9]+|([0-9]+)?[.][0-9]+)$",
+                                "minLength": 1,
+                                "maxLength": 32
+                              },
+                              "amount": {
+                                "0": "c",
+                                "1": "y",
+                                "2": "c",
+                                "3": "l",
+                                "4": "e",
+                                "description": "The pricing amount for the tier."
+                              }
+                            },
+                            "required": [
+                              "starting_quantity",
+                              "amount"
+                            ]
+                          }
+                        },
+                        "create_time": {
+                          "description": "The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds are required while fractional seconds are optional.<blockquote><strong>Note:</strong> The regular expression provides guidance but does not reject all invalid dates.</blockquote>",
+                          "readOnly": true,
+                          "type": "string",
+                          "format": "ppaas_date_time_v3",
+                          "minLength": 20,
+                          "maxLength": 64,
+                          "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T,t]([0-1][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)([.][0-9]+)?([Zz]|[+-][0-9]{2}:[0-9]{2})$"
+                        },
+                        "update_time": {
+                          "0": "c",
+                          "1": "y",
+                          "2": "c",
+                          "3": "l",
+                          "4": "e",
+                          "description": "The date and time when this pricing scheme was last updated, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6).",
+                          "readOnly": true
+                        }
+                      }
+                    },
+                    "frequency": {
+                      "description": "The frequency of the billing cycle.",
+                      "title": "Billing Cycle Frequency",
+                      "type": "object",
+                      "properties": {
+                        "interval_unit": {
+                          "type": "string",
+                          "description": "The interval at which the subscription is charged or billed.",
+                          "minLength": 1,
+                          "maxLength": 24,
+                          "pattern": "^[A-Z_]+$",
+                          "enum": [
+                            "DAY",
+                            "WEEK",
+                            "MONTH",
+                            "YEAR"
+                          ]
+                        },
+                        "interval_count": {
+                          "type": "integer",
+                          "description": "The number of intervals after which a subscriber is billed. For example, if the `interval_unit` is `DAY` with an `interval_count` of  `2`, the subscription is billed once every two days. The following table lists the maximum allowed values for the `interval_count` for each `interval_unit`:<table><thead><tr><th><code>Interval unit</code></th><th>Maximum interval count</th></tr></thead><tbody><tr><td><code>DAY</code></td><td align=\"right\">365</td></tr><tr><td><code>WEEK</code></td><td align=\"right\">52</td></tr><tr><td><code>MONTH</code></td><td align=\"right\">12</td></tr><tr><td><code>YEAR</code></td><td align=\"right\">1</td></tr></tbody></table>",
+                          "minimum": 1,
+                          "maximum": 365,
+                          "default": 1
+                        }
+                      },
+                      "required": [
+                        "interval_unit"
+                      ]
+                    },
+                    "tenure_type": {
+                      "type": "string",
+                      "description": "The tenure type of the billing cycle. In case of a plan having trial cycle, only 2 trial cycles are allowed per plan.",
+                      "minLength": 1,
+                      "maxLength": 24,
+                      "pattern": "^[A-Z_]+$",
+                      "enum": [
+                        "REGULAR",
+                        "TRIAL"
+                      ]
+                    },
+                    "sequence": {
+                      "type": "integer",
+                      "description": "The order in which this cycle is to run among other billing cycles. For example, a trial billing cycle has a `sequence` of `1` while a regular billing cycle has a `sequence` of `2`, so that trial cycle runs before the regular cycle.",
+                      "minimum": 1,
+                      "maximum": 99
+                    },
+                    "total_cycles": {
+                      "type": "integer",
+                      "description": "The number of times this billing cycle gets executed. Trial billing cycles can only be executed a finite number of times (value between <code>1</code> and <code>999</code> for <code>total_cycles</code>). Regular billing cycles can be executed infinite times (value of <code>0</code> for <code>total_cycles</code>) or a finite number of times (value between <code>1</code> and <code>999</code> for <code>total_cycles</code>).",
+                      "minimum": 0,
+                      "maximum": 999,
+                      "default": 1
+                    }
+                  },
+                  "required": [
+                    "frequency",
+                    "tenure_type",
+                    "sequence"
+                  ]
+                }
+              },
+              "payment_preferences": {
+                "title": "Payment Preferences",
+                "description": "The payment preferences for a subscription.",
+                "type": "object",
+                "properties": {
+                  "auto_bill_outstanding": {
+                    "type": "boolean",
+                    "description": "Indicates whether to automatically bill the outstanding amount in the next billing cycle.",
+                    "default": true
+                  },
+                  "setup_fee": {
+                    "0": "c",
+                    "1": "y",
+                    "2": "c",
+                    "3": "l",
+                    "4": "e",
+                    "description": "The initial set-up fee for the service."
+                  },
+                  "setup_fee_failure_action": {
+                    "type": "string",
+                    "description": "The action to take on the subscription if the initial payment for the setup fails.",
+                    "minLength": 1,
+                    "maxLength": 24,
+                    "pattern": "^[A-Z_]+$",
+                    "default": "CANCEL",
+                    "enum": [
+                      "CONTINUE",
+                      "CANCEL"
+                    ]
+                  },
+                  "payment_failure_threshold": {
+                    "type": "integer",
+                    "description": "The maximum number of payment failures before a subscription is suspended. For example, if `payment_failure_threshold` is `2`, the subscription automatically updates to the `SUSPEND` state if two consecutive payments fail.",
+                    "minimum": 0,
+                    "maximum": 999,
+                    "default": 0
+                  }
+                }
+              },
+              "taxes": {
+                "title": "Taxes",
+                "description": "The tax details.",
+                "type": "object",
+                "properties": {
+                  "percentage": {
+                    "description": "The percentage, as a fixed-point, signed decimal number. For example, define a 19.99% interest rate as `19.99`.",
+                    "type": "string",
+                    "format": "ppaas_common_percentage_v2",
+                    "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                  },
+                  "inclusive": {
+                    "type": "boolean",
+                    "description": "Indicates whether the tax was already included in the billing amount.",
+                    "default": true
+                  }
+                },
+                "required": [
+                  "percentage"
+                ]
+              },
+              "quantity_supported": {
+                "type": "boolean",
+                "description": "Indicates whether you can subscribe to this plan by providing a quantity for the goods or service.",
+                "default": false
+              },
+              "create_time": {
+                "0": "c",
+                "1": "y",
+                "2": "c",
+                "3": "l",
+                "4": "e",
+                "description": "The date and time when the plan was created, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6).",
+                "readOnly": true
+              },
+              "update_time": {
+                "0": "c",
+                "1": "y",
+                "2": "c",
+                "3": "l",
+                "4": "e",
+                "description": "The date and time when the plan was last updated, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6).",
+                "readOnly": true
+              },
+              "links": {
+                "type": "array",
+                "description": "An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links).",
+                "readOnly": true,
+                "minItems": 1,
+                "maxItems": 10,
+                "items": {
+                  "type": "object",
+                  "title": "Link Description",
+                  "description": "The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information.",
+                  "required": [
+                    "href",
+                    "rel"
+                  ],
+                  "properties": {
+                    "href": {
+                      "type": "string",
+                      "description": "The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call."
+                    },
+                    "rel": {
+                      "type": "string",
+                      "description": "The [link relation type](https://tools.ietf.org/html/rfc5988#section-4), which serves as an ID for a link that unambiguously describes the semantics of the link. See [Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml)."
+                    },
+                    "method": {
+                      "type": "string",
+                      "description": "The HTTP method required to make the related call.",
+                      "enum": [
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "HEAD",
+                        "CONNECT",
+                        "OPTIONS",
+                        "PATCH"
+                      ]
+                    }
+                  },
+                  "readOnly": true
+                }
+              }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Subscriptions/post_v1_billing_plans/output-500.schema.json",
+            "type": "object",
+            "title": "Internal Server Error",
+            "description": "This is either a system or application error, and generally indicates that although the client appeared to provide a correct request, something unexpected has gone wrong on the server.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "enum": [
+                  "INTERNAL_SERVER_ERROR"
+                ]
+              },
+              "message": {
+                "type": "string",
+                "enum": [
+                  "An internal server error occurred."
+                ]
+              },
+              "debug_id": {
+                "type": "string",
+                "description": "The PayPal internal ID. Used for correlation purposes."
+              },
+              "links": {
+                "description": "An array of request-related [HATEOAS links](https://en.wikipedia.org/wiki/HATEOAS).",
+                "type": "array",
+                "minItems": 0,
+                "maxItems": 10000,
+                "items": {
+                  "0": "c",
+                  "1": "y",
+                  "2": "c",
+                  "3": "l",
+                  "4": "e"
+                }
+              }
+            },
+            "example": {
+              "name": "INTERNAL_SERVER_ERROR",
+              "message": "An internal server error occurred.",
+              "debug_id": "90957fca61718",
+              "links": [
+                {
+                  "href": "https://developer.paypal.com/api/orders/v2/#error-INTERNAL_SERVER_ERROR",
+                  "rel": "information_link"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "get_v1_billing_plans__id_",
+      "operationId": "plans.get",
+      "name": "Plans Get",
+      "description": "Show plan details",
+      "schema": {
+        "tags": [
+          "plans"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Subscriptions/get_v1_billing_plans__id_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/billing/plans/{id}"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "The ID of the subscription."
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "patch_v1_billing_plans__id_",
+      "operationId": "plans.patch",
+      "name": "Plans Patch",
+      "description": "Update plan",
+      "schema": {
+        "tags": [
+          "plans"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Subscriptions/patch_v1_billing_plans__id_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/billing/plans/{id}"
+            },
+            "method": {
+              "type": "string",
+              "const": "patch"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "array",
+                "title": "Patch Request",
+                "description": "An array of JSON patch objects to apply partial updates to resources.",
+                "items": {
+                  "type": "object",
+                  "title": "Patch",
+                  "description": "The JSON patch object to apply partial updates to resources.",
+                  "properties": {
+                    "op": {
+                      "type": "string",
+                      "description": "The operation.",
+                      "enum": [
+                        "add",
+                        "remove",
+                        "replace",
+                        "move",
+                        "copy",
+                        "test"
+                      ]
+                    },
+                    "path": {
+                      "type": "string",
+                      "description": "The <a href=\"https://tools.ietf.org/html/rfc6901\">JSON Pointer</a> to the target document location at which to complete the operation."
+                    },
+                    "value": {
+                      "title": "Patch Value",
+                      "description": "The value to apply. The <code>remove</code> operation does not require a value."
+                    },
+                    "from": {
+                      "type": "string",
+                      "description": "The <a href=\"https://tools.ietf.org/html/rfc6901\">JSON Pointer</a> to the target document location from which to move the value. Required for the <code>move</code> operation."
+                    }
+                  },
+                  "required": [
+                    "op"
+                  ]
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_billing_plans__id__activate",
+      "operationId": "plans.activate",
+      "name": "Plans Activate",
+      "description": "Activate plan",
+      "schema": {
+        "tags": [
+          "plans"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Subscriptions/post_v1_billing_plans__id__activate/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/billing/plans/{id}/activate"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_billing_plans__id__deactivate",
+      "operationId": "plans.deactivate",
+      "name": "Plans Deactivate",
+      "description": "Deactivate plan",
+      "schema": {
+        "tags": [
+          "plans"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Subscriptions/post_v1_billing_plans__id__deactivate/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/billing/plans/{id}/deactivate"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_billing_plans__id__update-pricing-schemes",
+      "operationId": "plans.update-pricing-schemes",
+      "name": "Plans Update Pricing Schemes",
+      "description": "Update pricing",
+      "schema": {
+        "tags": [
+          "plans"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Subscriptions/post_v1_billing_plans__id__update-pricing-schemes/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/billing/plans/{id}/update-pricing-schemes"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "title": "Update Pricing Scheme Request",
+                "description": "The update pricing scheme request details.",
+                "type": "object",
+                "properties": {
+                  "pricing_schemes": {
+                    "type": "array",
+                    "description": "An array of pricing schemes.",
+                    "minItems": 1,
+                    "maxItems": 99,
+                    "items": {
+                      "title": "Update Pricing Scheme",
+                      "description": "The update pricing scheme request details.",
+                      "type": "object",
+                      "properties": {
+                        "billing_cycle_sequence": {
+                          "type": "integer",
+                          "description": "The billing cycle sequence.",
+                          "minimum": 1,
+                          "maximum": 99
+                        },
+                        "pricing_scheme": {
+                          "0": "c",
+                          "1": "y",
+                          "2": "c",
+                          "3": "l",
+                          "4": "e"
+                        }
+                      },
+                      "required": [
+                        "billing_cycle_sequence",
+                        "pricing_scheme"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "pricing_schemes"
+                ]
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_billing_subscriptions",
+      "operationId": "subscriptions.create",
+      "name": "Subscriptions Create",
+      "description": "Create subscription",
+      "schema": {
+        "tags": [
+          "subscriptions"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Subscriptions/post_v1_billing_subscriptions/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/billing/subscriptions"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "title": "Create Subscription Request",
+                "description": "The create subscription request details.",
+                "type": "object",
+                "properties": {
+                  "plan_id": {
+                    "type": "string",
+                    "description": "The ID of the plan.",
+                    "minLength": 3,
+                    "maxLength": 50
+                  },
+                  "start_time": {
+                    "0": "c",
+                    "1": "y",
+                    "2": "c",
+                    "3": "l",
+                    "4": "e",
+                    "description": "The date and time when the subscription started, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6).",
+                    "default": "Current time"
+                  },
+                  "quantity": {
+                    "type": "string",
+                    "description": "The quantity of the product in the subscription.",
+                    "pattern": "^([0-9]+|([0-9]+)?[.][0-9]+)$",
+                    "minLength": 1,
+                    "maxLength": 32
+                  },
+                  "shipping_amount": {
+                    "0": "c",
+                    "1": "y",
+                    "2": "c",
+                    "3": "l",
+                    "4": "e",
+                    "description": "The shipping charges."
+                  },
+                  "subscriber": {
+                    "title": "Subscriber Request Information",
+                    "description": "The subscriber request information .",
+                    "type": "object",
+                    "allOf": [
+                      {
+                        "0": "c",
+                        "1": "y",
+                        "2": "c",
+                        "3": "l",
+                        "4": "e"
+                      },
+                      {
+                        "properties": {
+                          "shipping_address": {
+                            "0": "c",
+                            "1": "y",
+                            "2": "c",
+                            "3": "l",
+                            "4": "e"
+                          },
+                          "payment_source": {
+                            "type": "object",
+                            "title": "Payment Source",
+                            "description": "The payment source definition. To be eligible to create subscription using debit or credit card, you will need to sign up here (https://www.paypal.com/bizsignup/entry/product/ppcp). Please note, its available only for non-3DS cards and for merchants in US and AU regions.",
+                            "properties": {
+                              "card": {
+                                "type": "object",
+                                "title": "Card",
+                                "description": "The payment card to use to fund a payment. Can be a credit or debit card.",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "description": "The PayPal-generated ID for the card.",
+                                    "readOnly": true
+                                  },
+                                  "name": {
+                                    "type": "string",
+                                    "description": "The card holder's name as it appears on the card.",
+                                    "maxLength": 300
+                                  },
+                                  "number": {
+                                    "type": "string",
+                                    "description": "The primary account number (PAN) for the payment card.",
+                                    "minLength": 13,
+                                    "maxLength": 19
+                                  },
+                                  "expiry": {
+                                    "0": "c",
+                                    "1": "y",
+                                    "2": "c",
+                                    "3": "l",
+                                    "4": "e",
+                                    "description": "The card expiration year and month, in [Internet date format](https://tools.ietf.org/html/rfc3339#section-5.6)."
+                                  },
+                                  "security_code": {
+                                    "type": "string",
+                                    "description": "The three- or four-digit security code of the card. Also known as the CVV, CVC, CVN, CVE, or CID. This parameter cannot be present in the request when `payment_initiator=MERCHANT`.",
+                                    "pattern": "[0-9]{3,4}"
+                                  },
+                                  "last_digits": {
+                                    "type": "string",
+                                    "description": "The last digits of the payment card.",
+                                    "pattern": "[0-9]{2,}",
+                                    "readOnly": true
+                                  },
+                                  "card_type": {
+                                    "0": "c",
+                                    "1": "y",
+                                    "2": "c",
+                                    "3": "l",
+                                    "4": "e",
+                                    "description": "The card brand or network. Typically used in the response.",
+                                    "readOnly": true
+                                  },
+                                  "billing_address": {
+                                    "0": "c",
+                                    "1": "y",
+                                    "2": "c",
+                                    "3": "l",
+                                    "4": "e",
+                                    "description": "The billing address for this card. Supports only the `address_line_1`, `address_line_2`, `admin_area_1`, `admin_area_2`, `postal_code`, and `country_code` properties."
+                                  }
+                                },
+                                "required": [
+                                  "number",
+                                  "expiry"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "auto_renewal": {
+                    "type": "boolean",
+                    "description": "DEPRECATED. Indicates whether the subscription auto-renews after the billing cycles complete.",
+                    "default": false,
+                    "deprecated": true
+                  },
+                  "application_context": {
+                    "title": "Application Context",
+                    "description": "The application context, which customizes the payer experience during the subscription approval process with PayPal.",
+                    "type": "object",
+                    "properties": {
+                      "brand_name": {
+                        "type": "string",
+                        "description": "The label that overrides the business name in the PayPal account on the PayPal site.",
+                        "minLength": 1,
+                        "maxLength": 127
+                      },
+                      "locale": {
+                        "description": "The [language tag](https://tools.ietf.org/html/bcp47#section-2) for the language in which to localize the error-related strings, such as messages, issues, and suggested actions. The tag is made up of the [ISO 639-2 language code](https://www.loc.gov/standards/iso639-2/php/code_list.php), the optional [ISO-15924 script tag](https://www.unicode.org/iso15924/codelists.html), and the [ISO-3166 alpha-2 country code](/docs/integration/direct/rest/country-codes/).",
+                        "type": "string",
+                        "format": "ppaas_common_language_v3",
+                        "maxLength": 10,
+                        "minLength": 2,
+                        "pattern": "^[a-z]{2}(?:-[A-Z][a-z]{3})?(?:-(?:[A-Z]{2}))?$"
+                      },
+                      "shipping_preference": {
+                        "type": "string",
+                        "description": "The location from which the shipping address is derived.",
+                        "minLength": 1,
+                        "maxLength": 24,
+                        "pattern": "^[A-Z_]+$",
+                        "default": "GET_FROM_FILE",
+                        "enum": [
+                          "GET_FROM_FILE",
+                          "NO_SHIPPING",
+                          "SET_PROVIDED_ADDRESS"
+                        ]
+                      },
+                      "user_action": {
+                        "type": "string",
+                        "description": "Configures the label name to `Continue` or `Subscribe Now` for subscription consent experience.",
+                        "minLength": 1,
+                        "maxLength": 24,
+                        "pattern": "^[A-Z_]+$",
+                        "default": "SUBSCRIBE_NOW",
+                        "enum": [
+                          "CONTINUE",
+                          "SUBSCRIBE_NOW"
+                        ]
+                      },
+                      "payment_method": {
+                        "description": "The customer and merchant payment preferences.",
+                        "type": "object",
+                        "title": "Payment Method",
+                        "properties": {
+                          "payer_selected": {
+                            "type": "string",
+                            "description": "The customer-selected payment method on the merchant site.",
+                            "minLength": 1,
+                            "pattern": "^[0-9A-Z_]+$",
+                            "default": "PAYPAL"
+                          },
+                          "payee_preferred": {
+                            "type": "string",
+                            "description": "The merchant-preferred payment methods.",
+                            "minLength": 1,
+                            "maxLength": 255,
+                            "pattern": "^[0-9A-Z_]+$",
+                            "default": "UNRESTRICTED",
+                            "enum": [
+                              "UNRESTRICTED",
+                              "IMMEDIATE_PAYMENT_REQUIRED"
+                            ]
+                          },
+                          "standard_entry_class_code": {
+                            "type": "string",
+                            "description": "NACHA (the regulatory body governing the ACH network) requires that API callers (merchants, partners) obtain the consumer’s explicit authorization before initiating a transaction. To stay compliant, you’ll need to make sure that you retain a compliant authorization for each transaction that you originate to the ACH Network using this API. ACH transactions are categorized (using SEC codes) by how you capture authorization from the Receiver (the person whose bank account is being debited or credited). PayPal supports the following SEC codes.",
+                            "default": "WEB",
+                            "minLength": 3,
+                            "maxLength": 255,
+                            "enum": [
+                              "TEL",
+                              "WEB",
+                              "CCD",
+                              "PPD"
+                            ]
+                          }
+                        }
+                      },
+                      "return_url": {
+                        "type": "string",
+                        "format": "uri",
+                        "description": "The URL where the customer is redirected after the customer approves the payment.",
+                        "minLength": 10,
+                        "maxLength": 4000
+                      },
+                      "cancel_url": {
+                        "type": "string",
+                        "format": "uri",
+                        "description": "The URL where the customer is redirected after the customer cancels the payment.",
+                        "minLength": 10,
+                        "maxLength": 4000
+                      }
+                    },
+                    "required": [
+                      "return_url",
+                      "cancel_url"
+                    ]
+                  },
+                  "custom_id": {
+                    "type": "string",
+                    "description": "The custom id for the subscription. Can be invoice id.",
+                    "minLength": 1,
+                    "maxLength": 127,
+                    "pattern": "^[\\x20-\\x7E]+"
+                  },
+                  "plan": {
+                    "description": "An inline plan object to customise the subscription. You can override plan level default attributes by providing customised values for the subscription in this object.",
+                    "title": "Plan Override",
+                    "type": "object",
+                    "properties": {
+                      "billing_cycles": {
+                        "type": "array",
+                        "description": "An array of billing cycles for trial billing and regular billing. The subscription billing cycle definition has to adhere to the plan billing cycle definition.",
+                        "minItems": 1,
+                        "maxItems": 12,
+                        "items": {
+                          "title": "Billing Cycle Override",
+                          "description": "The billing cycle details to override at subscription level. The subscription billing cycle definition has to adhere to the plan billing cycle definition.",
+                          "type": "object",
+                          "properties": {
+                            "pricing_scheme": {
+                              "0": "c",
+                              "1": "y",
+                              "2": "c",
+                              "3": "l",
+                              "4": "e",
+                              "description": "The active pricing scheme for this billing cycle. A free trial billing cycle does not require a pricing scheme."
+                            },
+                            "sequence": {
+                              "type": "integer",
+                              "description": "The order in which this cycle is to run among other billing cycles. For example, a trial billing cycle has a `sequence` of `1` while a regular billing cycle has a `sequence` of `2`, so that trial cycle runs before the regular cycle.",
+                              "minimum": 1,
+                              "maximum": 99
+                            },
+                            "total_cycles": {
+                              "type": "integer",
+                              "description": "The number of times this billing cycle gets executed. Trial billing cycles can only be executed a finite number of times (value between <code>1</code> and <code>999</code> for <code>total_cycles</code>). Regular billing cycles can be executed infinite times (value of <code>0</code> for <code>total_cycles</code>) or a finite number of times (value between <code>1</code> and <code>999</code> for <code>total_cycles</code>).",
+                              "minimum": 0,
+                              "maximum": 999
+                            }
+                          },
+                          "required": [
+                            "sequence"
+                          ]
+                        }
+                      },
+                      "payment_preferences": {
+                        "title": "Payment Preferences Override",
+                        "description": "The payment preferences to override at subscription level.",
+                        "type": "object",
+                        "properties": {
+                          "auto_bill_outstanding": {
+                            "type": "boolean",
+                            "description": "Indicates whether to automatically bill the outstanding amount in the next billing cycle."
+                          },
+                          "setup_fee": {
+                            "0": "c",
+                            "1": "y",
+                            "2": "c",
+                            "3": "l",
+                            "4": "e",
+                            "description": "The initial set-up fee for the service."
+                          },
+                          "setup_fee_failure_action": {
+                            "type": "string",
+                            "description": "The action to take on the subscription if the initial payment for the setup fails.",
+                            "minLength": 1,
+                            "maxLength": 24,
+                            "pattern": "^[A-Z_]+$",
+                            "enum": [
+                              "CONTINUE",
+                              "CANCEL"
+                            ]
+                          },
+                          "payment_failure_threshold": {
+                            "type": "integer",
+                            "description": "The maximum number of payment failures before a subscription is suspended. For example, if `payment_failure_threshold` is `2`, the subscription automatically updates to the `SUSPEND` state if two consecutive payments fail.",
+                            "minimum": 0,
+                            "maximum": 999
+                          }
+                        }
+                      },
+                      "taxes": {
+                        "title": "Taxes Override",
+                        "description": "The tax details.",
+                        "type": "object",
+                        "properties": {
+                          "percentage": {
+                            "0": "c",
+                            "1": "y",
+                            "2": "c",
+                            "3": "l",
+                            "4": "e",
+                            "description": "The tax percentage on the billing amount."
+                          },
+                          "inclusive": {
+                            "type": "boolean",
+                            "description": "Indicates whether the tax was already included in the billing amount."
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "plan_id"
+                ]
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "get_v1_billing_subscriptions__id_",
+      "operationId": "subscriptions.get",
+      "name": "Subscriptions Get",
+      "description": "Show subscription details",
+      "schema": {
+        "tags": [
+          "subscriptions"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Subscriptions/get_v1_billing_subscriptions__id_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/billing/subscriptions/{id}"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {
+                "fields": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100,
+                  "description": "List of fields that are to be returned in the response. Possible value for fields are last_failed_payment and plan."
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "patch_v1_billing_subscriptions__id_",
+      "operationId": "subscriptions.patch",
+      "name": "Subscriptions Patch",
+      "description": "Update subscription",
+      "schema": {
+        "tags": [
+          "subscriptions"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Subscriptions/patch_v1_billing_subscriptions__id_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/billing/subscriptions/{id}"
+            },
+            "method": {
+              "type": "string",
+              "const": "patch"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_billing_subscriptions__id__revise",
+      "operationId": "subscriptions.revise",
+      "name": "Subscriptions Revise",
+      "description": "Revise plan or quantity of subscription",
+      "schema": {
+        "tags": [
+          "subscriptions"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Subscriptions/post_v1_billing_subscriptions__id__revise/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/billing/subscriptions/{id}/revise"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "0": "c",
+                "1": "y",
+                "2": "c",
+                "3": "l",
+                "4": "e"
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_billing_subscriptions__id__suspend",
+      "operationId": "subscriptions.suspend",
+      "name": "Subscriptions Suspend",
+      "description": "Suspend subscription",
+      "schema": {
+        "tags": [
+          "subscriptions"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Subscriptions/post_v1_billing_subscriptions__id__suspend/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/billing/subscriptions/{id}/suspend"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "title": "Suspend Subscription",
+                "description": "The suspend subscription request details.",
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "description": "The reason for suspenson of the subscription.",
+                    "minLength": 1,
+                    "maxLength": 128
+                  }
+                },
+                "required": [
+                  "reason"
+                ]
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_billing_subscriptions__id__cancel",
+      "operationId": "subscriptions.cancel",
+      "name": "Subscriptions Cancel",
+      "description": "Cancel subscription",
+      "schema": {
+        "tags": [
+          "subscriptions"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Subscriptions/post_v1_billing_subscriptions__id__cancel/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/billing/subscriptions/{id}/cancel"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "title": "Cancel Subscription Request",
+                "description": "The cancel subscription request details.",
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "description": "The reason for the cancellation of a subscription.",
+                    "minLength": 1,
+                    "maxLength": 128
+                  }
+                },
+                "required": [
+                  "reason"
+                ]
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_billing_subscriptions__id__activate",
+      "operationId": "subscriptions.activate",
+      "name": "Subscriptions Activate",
+      "description": "Activate subscription",
+      "schema": {
+        "tags": [
+          "subscriptions"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Subscriptions/post_v1_billing_subscriptions__id__activate/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/billing/subscriptions/{id}/activate"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "title": "Activate Subscription Request",
+                "description": "The activate subscription request details.",
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "description": "The reason for activation of a subscription. Required to reactivate the subscription.",
+                    "minLength": 1,
+                    "maxLength": 128
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_billing_subscriptions__id__capture",
+      "operationId": "subscriptions.capture",
+      "name": "Subscriptions Capture",
+      "description": "Capture authorized payment on subscription",
+      "schema": {
+        "tags": [
+          "subscriptions"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Subscriptions/post_v1_billing_subscriptions__id__capture/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/billing/subscriptions/{id}/capture"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "title": "Charge Amount from Subscriber",
+                "description": "The charge amount from the subscriber.",
+                "type": "object",
+                "properties": {
+                  "note": {
+                    "type": "string",
+                    "description": "The reason or note for the subscription charge.",
+                    "minLength": 1,
+                    "maxLength": 128
+                  },
+                  "capture_type": {
+                    "type": "string",
+                    "description": "The type of capture.",
+                    "minLength": 1,
+                    "maxLength": 24,
+                    "pattern": "^[A-Z_]+$",
+                    "enum": [
+                      "OUTSTANDING_BALANCE"
+                    ]
+                  },
+                  "amount": {
+                    "0": "c",
+                    "1": "y",
+                    "2": "c",
+                    "3": "l",
+                    "4": "e",
+                    "description": "The amount of the outstanding balance. This value cannot be greater than the current outstanding balance amount."
+                  }
+                },
+                "required": [
+                  "note",
+                  "capture_type",
+                  "amount"
+                ]
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "get_v1_billing_subscriptions__id__transactions",
+      "operationId": "subscriptions.transactions",
+      "name": "Subscriptions Transactions",
+      "description": "List transactions for subscription",
+      "schema": {
+        "tags": [
+          "subscriptions"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Subscriptions/get_v1_billing_subscriptions__id__transactions/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/billing/subscriptions/{id}/transactions"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "required": [
+                "start_time",
+                "end_time"
+              ],
+              "properties": {
+                "start_time": {
+                  "type": "string",
+                  "format": "ppaas_date_time_v3",
+                  "minLength": 20,
+                  "maxLength": 64,
+                  "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T,t]([0-1][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)([.][0-9]+)?([Zz]|[+-][0-9]{2}:[0-9]{2})$",
+                  "description": "The start time of the range of transactions to list."
+                },
+                "end_time": {
+                  "type": "string",
+                  "format": "ppaas_date_time_v3",
+                  "minLength": 20,
+                  "maxLength": 64,
+                  "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T,t]([0-1][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)([.][0-9]+)?([Zz]|[+-][0-9]{2}:[0-9]{2})$",
+                  "description": "The end time of the range of transactions to list."
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Subscriptions/get_v1_billing_subscriptions__id__transactions/output-200.schema.json",
+            "type": "object",
+            "title": "List Transactions",
+            "description": "The list transactions for a subscription request details.",
+            "properties": {
+              "transactions": {
+                "type": "array",
+                "description": "An array of transactions.",
+                "minItems": 0,
+                "maxItems": 32767,
+                "items": {
+                  "0": "c",
+                  "1": "y",
+                  "2": "c",
+                  "3": "l",
+                  "4": "e"
+                }
+              },
+              "total_items": {
+                "type": "integer",
+                "description": "The total number of items.",
+                "minimum": 0,
+                "maximum": 500000000
+              },
+              "total_pages": {
+                "type": "integer",
+                "description": "The total number of pages.",
+                "minimum": 0,
+                "maximum": 100000000
+              },
+              "links": {
+                "type": "array",
+                "description": "An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links).",
+                "readOnly": true,
+                "minItems": 1,
+                "maxItems": 10,
+                "items": {
+                  "0": "c",
+                  "1": "y",
+                  "2": "c",
+                  "3": "l",
+                  "4": "e",
+                  "readOnly": true
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "references": {
+    "baseURL": {
+      "type": "string",
+      "enum": [
+        "https://api-m.sandbox.paypal.com",
+        "https://api-m.paypal.com"
+      ]
+    },
+    "queryDesc": "Query parameters sent with the request",
+    "paramDesc": "URL parameters sent with the request",
+    "headerDesc": "HTTP headers sent when making the request",
+    "dataDesc": "Data sent with the request",
+    "schema": "https://json-schema.org/draft/2020-12/schema"
+  }
+}

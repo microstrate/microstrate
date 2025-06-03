@@ -1,0 +1,362 @@
+{
+  "get_v1_billing_plans": {
+    "Basic Example": {
+      "url": "/v1/billing/plans",
+      "method": "get",
+      "query": {
+        "product_id": "<string>",
+        "plan_ids": "<string>",
+        "page_size": 10,
+        "page": 1,
+        "total_required": "<boolean>"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v1_billing_plans": {
+    "Basic Example": {
+      "url": "/v1/billing/plans",
+      "method": "post",
+      "headers": {
+        "Prefer": "return=minimal",
+        "PayPal-Request-Id": "<string>"
+      },
+      "data": {
+        "product_id": "PROD-XXCD1234QWER65782",
+        "name": "Video Streaming Service Plan",
+        "description": "Video Streaming Service basic plan",
+        "status": "ACTIVE",
+        "billing_cycles": [
+          {
+            "frequency": {
+              "interval_unit": "MONTH",
+              "interval_count": 1
+            },
+            "tenure_type": "TRIAL",
+            "sequence": 1,
+            "total_cycles": 2,
+            "pricing_scheme": {
+              "fixed_price": {
+                "value": "3",
+                "currency_code": "USD"
+              }
+            }
+          },
+          {
+            "frequency": {
+              "interval_unit": "MONTH",
+              "interval_count": 1
+            },
+            "tenure_type": "TRIAL",
+            "sequence": 2,
+            "total_cycles": 3,
+            "pricing_scheme": {
+              "fixed_price": {
+                "value": "6",
+                "currency_code": "USD"
+              }
+            }
+          },
+          {
+            "frequency": {
+              "interval_unit": "MONTH",
+              "interval_count": 1
+            },
+            "tenure_type": "REGULAR",
+            "sequence": 3,
+            "total_cycles": 12,
+            "pricing_scheme": {
+              "fixed_price": {
+                "value": "10",
+                "currency_code": "USD"
+              }
+            }
+          }
+        ],
+        "payment_preferences": {
+          "auto_bill_outstanding": true,
+          "setup_fee": {
+            "value": "10",
+            "currency_code": "USD"
+          },
+          "setup_fee_failure_action": "CONTINUE",
+          "payment_failure_threshold": 3
+        },
+        "taxes": {
+          "percentage": "10",
+          "inclusive": false
+        }
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "get_v1_billing_plans__id_": {
+    "Basic Example": {
+      "url": "/v1/billing/plans/{id}",
+      "method": "get",
+      "path": {
+        "id": "<string>"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "patch_v1_billing_plans__id_": {
+    "Basic Example": {
+      "url": "/v1/billing/plans/{id}",
+      "method": "patch",
+      "data": [
+        {
+          "op": "add",
+          "path": "",
+          "value": "<value>",
+          "from": ""
+        }
+      ],
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v1_billing_plans__id__activate": {
+    "Basic Example": {
+      "url": "/v1/billing/plans/{id}/activate",
+      "method": "post",
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v1_billing_plans__id__deactivate": {
+    "Basic Example": {
+      "url": "/v1/billing/plans/{id}/deactivate",
+      "method": "post",
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v1_billing_plans__id__update-pricing-schemes": {
+    "Basic Example": {
+      "url": "/v1/billing/plans/{id}/update-pricing-schemes",
+      "method": "post",
+      "data": {
+        "pricing_schemes": [
+          {
+            "billing_cycle_sequence": 1,
+            "pricing_scheme": {
+              "fixed_price": {
+                "value": "50",
+                "currency_code": "USD"
+              }
+            }
+          },
+          {
+            "billing_cycle_sequence": 2,
+            "pricing_scheme": {
+              "fixed_price": {
+                "value": "100",
+                "currency_code": "USD"
+              },
+              "pricing_model": "VOLUME",
+              "tiers": [
+                {
+                  "starting_quantity": "1",
+                  "ending_quantity": "1000",
+                  "amount": {
+                    "value": "150",
+                    "currency_code": "USD"
+                  }
+                },
+                {
+                  "starting_quantity": "1001",
+                  "amount": {
+                    "value": "250",
+                    "currency_code": "USD"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v1_billing_subscriptions": {
+    "Basic Example": {
+      "url": "/v1/billing/subscriptions",
+      "method": "post",
+      "data": {
+        "plan_id": "P-5ML4271244454362WXNWU5NQ",
+        "start_time": "2018-11-01T00:00:00Z",
+        "quantity": "20",
+        "shipping_amount": {
+          "currency_code": "USD",
+          "value": "10.00"
+        },
+        "subscriber": {
+          "name": {
+            "given_name": "John",
+            "surname": "Doe"
+          },
+          "email_address": "customer@example.com",
+          "shipping_address": {
+            "name": {
+              "full_name": "John Doe"
+            },
+            "address": {
+              "address_line_1": "2211 N First Street",
+              "address_line_2": "Building 17",
+              "admin_area_2": "San Jose",
+              "admin_area_1": "CA",
+              "postal_code": "95131",
+              "country_code": "US"
+            }
+          }
+        },
+        "application_context": {
+          "brand_name": "walmart",
+          "locale": "en-US",
+          "shipping_preference": "SET_PROVIDED_ADDRESS",
+          "user_action": "SUBSCRIBE_NOW",
+          "payment_method": {
+            "payer_selected": "PAYPAL",
+            "payee_preferred": "IMMEDIATE_PAYMENT_REQUIRED"
+          },
+          "return_url": "https://example.com/returnUrl",
+          "cancel_url": "https://example.com/cancelUrl"
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "get_v1_billing_subscriptions__id_": {
+    "Basic Example": {
+      "url": "/v1/billing/subscriptions/{id}",
+      "method": "get",
+      "query": {
+        "fields": "<string>"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "patch_v1_billing_subscriptions__id_": {
+    "Basic Example": {
+      "url": "/v1/billing/subscriptions/{id}",
+      "method": "patch",
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v1_billing_subscriptions__id__revise": {
+    "Basic Example": {
+      "url": "/v1/billing/subscriptions/{id}/revise",
+      "method": "post",
+      "data": {
+        "plan_id": "P-5ML4271244454362WXNWU5NQ",
+        "shipping_amount": {
+          "currency_code": "USD",
+          "value": "10.00"
+        },
+        "shipping_address": {
+          "name": {
+            "full_name": "John Doe"
+          },
+          "address": {
+            "address_line_1": "2211 N First Street",
+            "address_line_2": "Building 17",
+            "admin_area_2": "San Jose",
+            "admin_area_1": "CA",
+            "postal_code": "95131",
+            "country_code": "US"
+          }
+        },
+        "application_context": {
+          "brand_name": "walmart",
+          "locale": "en-US",
+          "shipping_preference": "SET_PROVIDED_ADDRESS",
+          "payment_method": {
+            "payer_selected": "PAYPAL",
+            "payee_preferred": "IMMEDIATE_PAYMENT_REQUIRED"
+          },
+          "return_url": "https://example.com/returnUrl",
+          "cancel_url": "https://example.com/cancelUrl"
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v1_billing_subscriptions__id__suspend": {
+    "Basic Example": {
+      "url": "/v1/billing/subscriptions/{id}/suspend",
+      "method": "post",
+      "data": {
+        "reason": "Item out of stock"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v1_billing_subscriptions__id__cancel": {
+    "Basic Example": {
+      "url": "/v1/billing/subscriptions/{id}/cancel",
+      "method": "post",
+      "data": {
+        "reason": "Not satisfied with the service"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v1_billing_subscriptions__id__activate": {
+    "Basic Example": {
+      "url": "/v1/billing/subscriptions/{id}/activate",
+      "method": "post",
+      "data": {
+        "reason": "Reactivating the subscription"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v1_billing_subscriptions__id__capture": {
+    "Basic Example": {
+      "url": "/v1/billing/subscriptions/{id}/capture",
+      "method": "post",
+      "data": {
+        "note": "Charging as the balance reached the limit",
+        "capture_type": "OUTSTANDING_BALANCE",
+        "amount": {
+          "currency_code": "USD",
+          "value": "100"
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "get_v1_billing_subscriptions__id__transactions": {
+    "Basic Example": {
+      "url": "/v1/billing/subscriptions/{id}/transactions",
+      "method": "get",
+      "query": {
+        "start_time": "<string>",
+        "end_time": "<string>"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "get_v2_payments_authorizations__authorization_id_": {
+    "Basic Example": {
+      "url": "/v2/payments/authorizations/{authorization_id}",
+      "method": "get",
+      "path": {
+        "authorization_id": "<string>"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v2_payments_authorizations__authorization_id__capture": {
+    "Basic Example": {
+      "url": "/v2/payments/authorizations/{authorization_id}/capture",
+      "method": "post",
+      "headers": {
+        "PayPal-Request-Id": "<string>",
+        "Prefer": "return=minimal"
+      },
+      "data": {
+        "amount": {
+          "value": "10.99",
+          "currency_code": "USD"
+        },
+        "invoice_id": "INVOICE-123",
+        "final_capture": true,
+        "note_to_payer": "If the ordered color is not available, we will substitute with a different color free of charge.",
+        "soft_descriptor": "Bob's Custom Sweaters"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v2_payments_authorizations__authorization_id__reauthorize": {
+    "Basic Example": {
+      "url": "/v2/payments/authorizations/{authorization_id}/reauthorize",
+      "method": "post",
+      "data": {
+        "amount": {
+          "value": "10.99",
+          "currency_code": "USD"
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v2_payments_authorizations__authorization_id__void": {
+    "Basic Example": {
+      "url": "/v2/payments/authorizations/{authorization_id}/void",
+      "method": "post",
+      "headers": {
+        "PayPal-Auth-Assertion": "<string>"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "get_v2_payments_captures__capture_id_": {
+    "Basic Example": {
+      "url": "/v2/payments/captures/{capture_id}",
+      "method": "get",
+      "path": {
+        "capture_id": "<string>"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v2_payments_captures__capture_id__refund": {
+    "Basic Example": {
+      "url": "/v2/payments/captures/{capture_id}/refund",
+      "method": "post",
+      "data": {
+        "amount": {
+          "value": "10.00",
+          "currency_code": "USD"
+        },
+        "invoice_id": "INVOICE-123",
+        "note_to_payer": "DefectiveProduct",
+        "payment_instruction": {
+          "platform_fees": [
+            {
+              "amount": {
+                "currency_code": "USD",
+                "value": "1.00"
+              }
+            }
+          ]
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "get_v2_payments_refunds__refund_id_": {
+    "Basic Example": {
+      "url": "/v2/payments/refunds/{refund_id}",
+      "method": "get",
+      "path": {
+        "refund_id": "<string>"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  }
+}

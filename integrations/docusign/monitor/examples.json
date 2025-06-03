@@ -1,0 +1,17 @@
+{
+    "get_api_v_version__datasets__dataSetName__stream": {
+      "Basic Example": {
+        "url": "/api/v{version}/datasets/{dataSetName}/stream",
+        "method": "get",
+        "path": {
+          "dataSetName": "<string>",
+          "version": "<string>"
+        },
+        "query": {
+          "cursor": "<string>",
+          "limit": "<integer>"
+        },
+        "baseURL": "https://lens-d.docusign.net"
+      }
+    }
+}

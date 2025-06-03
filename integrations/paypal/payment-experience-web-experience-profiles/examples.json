@@ -1,0 +1,65 @@
+{
+  "get_v1_payment-experience_web-profiles": {
+    "Basic Example": {
+      "url": "/v1/payment-experience/web-profiles",
+      "method": "get",
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v1_payment-experience_web-profiles": {
+    "Basic Example": {
+      "url": "/v1/payment-experience/web-profiles",
+      "method": "post",
+      "headers": {
+        "PayPal-Request-Id": "<string>"
+      },
+      "data": "<value>",
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "get_v1_payment-experience_web-profiles__id_": {
+    "Basic Example": {
+      "url": "/v1/payment-experience/web-profiles/{id}",
+      "method": "get",
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "delete_v1_payment-experience_web-profiles__id_": {
+    "Basic Example": {
+      "url": "/v1/payment-experience/web-profiles/{id}",
+      "method": "delete",
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "patch_v1_payment-experience_web-profiles__id_": {
+    "Basic Example": {
+      "url": "/v1/payment-experience/web-profiles/{id}",
+      "method": "patch",
+      "data": [
+        {
+          "op": "add",
+          "path": "/presentation/brand_name",
+          "value": "new_brand_name"
+        },
+        {
+          "op": "remove",
+          "path": "/flow_config/landing_page_type"
+        }
+      ],
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "put_v1_payment-experience_web-profiles__id_": {
+    "Basic Example": {
+      "url": "/v1/payment-experience/web-profiles/{id}",
+      "method": "put",
+      "path": {
+        "id": "<string>"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  }
+}

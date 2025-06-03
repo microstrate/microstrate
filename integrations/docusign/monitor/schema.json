@@ -1,0 +1,119 @@
+{
+  "name": "Monitor API",
+  "description": "An API for an integrator to access the features of DocuSign Monitor",
+  "nodes": [
+    {
+      "id": "get_api_v_version__datasets__dataSetName__stream",
+      "operationId": "Api_Version_DatasetsByDataSetNameStreamGet",
+      "name": "Api Version Datasets By Data Set Name Stream Get",
+      "description": "Gets customer event data for an organization.",
+      "schema": {
+        "tags": [
+          "DataSet"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Monitor-API/get_api_v_version__datasets__dataSetName__stream/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/api/v{version}/datasets/{dataSetName}/stream"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {
+                "cursor": {
+                  "type": "string",
+                  "description": "Specifies a pointer into the dataset where your query will begin. You can either provide an ISO DateTime or a string cursor (from the `endCursor` value in the response). If no value is provided, the query begins from seven days ago.\n\nFor example, to fetch event data beginning from January 1, 2022, set this value to `2022-01-01T00:00:00Z`. The response will include data about events starting from that date in chronological order. The response also includes an `endCursor` property. To fetch the next page of event data, call this endpoint again with `cursor` set to the previous `endCursor` value.\n"
+                },
+                "limit": {
+                  "type": "integer",
+                  "description": "The maximum number of records to return. The default value is 1000."
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "dataSetName",
+                "version"
+              ],
+              "properties": {
+                "dataSetName": {
+                  "type": "string",
+                  "description": "Must be `monitor`."
+                },
+                "version": {
+                  "type": "string",
+                  "description": "Must be `2`.\n"
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Monitor-API/get_api_v_version__datasets__dataSetName__stream/output-200.schema.json",
+            "type": "object",
+            "properties": {
+              "endCursor": {
+                "type": "string",
+                "description": ""
+              },
+              "data": {
+                "uniqueItems": false,
+                "type": "array",
+                "items": {
+                  "type": "object"
+                },
+                "description": ""
+              }
+            },
+            "description": ""
+          }
+        ]
+      }
+    }
+  ],
+  "references": {
+    "baseURL": {
+      "type": "string",
+      "enum": [
+        "https://lens-d.docusign.net"
+      ]
+    },
+    "queryDesc": "Query parameters sent with the request",
+    "paramDesc": "URL parameters sent with the request",
+    "headerDesc": "HTTP headers sent when making the request",
+    "dataDesc": "Data sent with the request",
+    "schema": "https://json-schema.org/draft/2020-12/schema"
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "get_v1_customer_disputes": {
+    "Basic Example": {
+      "url": "/v1/customer/disputes",
+      "method": "get",
+      "query": {
+        "start_time": "Current date and time",
+        "disputed_transaction_id": "<string>",
+        "page_size": 10,
+        "next_page_token": "The first page of data",
+        "dispute_state": "<string>",
+        "update_time_before": "<string>",
+        "update_time_after": "<string>"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "get_v1_customer_disputes__id_": {
+    "Basic Example": {
+      "url": "/v1/customer/disputes/{id}",
+      "method": "get",
+      "path": {
+        "id": "<string>"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "patch_v1_customer_disputes__id_": {
+    "Basic Example": {
+      "url": "/v1/customer/disputes/{id}",
+      "method": "patch",
+      "data": [
+        {
+          "op": "add",
+          "path": "",
+          "value": "<value>",
+          "from": ""
+        }
+      ],
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v1_customer_disputes__id__provide-evidence": {
+    "Basic Example": {
+      "url": "/v1/customer/disputes/{id}/provide-evidence",
+      "method": "post",
+      "data": {
+        "evidence-file": "<binary>"
+      },
+      "headers": {
+        "Content-Type": "multipart/form-data"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v1_customer_disputes__id__appeal": {
+    "Basic Example": {
+      "url": "/v1/customer/disputes/{id}/appeal",
+      "method": "post",
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v1_customer_disputes__id__accept-claim": {
+    "Basic Example": {
+      "url": "/v1/customer/disputes/{id}/accept-claim",
+      "method": "post",
+      "data": {
+        "accept-claim-document": "<binary>"
+      },
+      "headers": {
+        "Content-Type": "multipart/form-data"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v1_customer_disputes__id__adjudicate": {
+    "Basic Example": {
+      "url": "/v1/customer/disputes/{id}/adjudicate",
+      "method": "post",
+      "data": {
+        "adjudication_outcome": "BUYER_FAVOR"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v1_customer_disputes__id__require-evidence": {
+    "Basic Example": {
+      "url": "/v1/customer/disputes/{id}/require-evidence",
+      "method": "post",
+      "data": {
+        "note": "Escalating to PayPal claim for resolution."
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v1_customer_disputes__id__escalate": {
+    "Basic Example": {
+      "url": "/v1/customer/disputes/{id}/escalate",
+      "method": "post",
+      "data": {
+        "action": "BUYER_EVIDENCE"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v1_customer_disputes__id__send-message": {
+    "Basic Example": {
+      "url": "/v1/customer/disputes/{id}/send-message",
+      "method": "post",
+      "data": {
+        "message_document": "<binary>"
+      },
+      "headers": {
+        "Content-Type": "multipart/form-data"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v1_customer_disputes__id__make-offer": {
+    "Basic Example": {
+      "url": "/v1/customer/disputes/{id}/make-offer",
+      "method": "post",
+      "data": {
+        "note": "Offer refund with replacement item.",
+        "offer_amount": {
+          "currency_code": "USD",
+          "value": "23"
+        },
+        "offer_type": "REFUND_WITH_REPLACEMENT"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v1_customer_disputes__id__accept-offer": {
+    "Basic Example": {
+      "url": "/v1/customer/disputes/{id}/accept-offer",
+      "method": "post",
+      "data": {
+        "note": "I am ok with the refund offered."
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v1_customer_disputes__id__deny-offer": {
+    "Basic Example": {
+      "url": "/v1/customer/disputes/{id}/deny-offer",
+      "method": "post",
+      "data": {
+        "note": "refund offer is very low."
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v1_customer_disputes__id__acknowledge-return-item": {
+    "Basic Example": {
+      "url": "/v1/customer/disputes/{id}/acknowledge-return-item",
+      "method": "post",
+      "data": {
+        "acknowledgement_document": "<binary>"
+      },
+      "headers": {
+        "Content-Type": "multipart/form-data"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v1_customer_disputes__id__provide-supporting-info": {
+    "Basic Example": {
+      "url": "/v1/customer/disputes/{id}/provide-supporting-info",
+      "method": "post",
+      "data": {
+        "supporting document": "<binary>"
+      },
+      "headers": {
+        "Content-Type": "multipart/form-data"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  }
+}

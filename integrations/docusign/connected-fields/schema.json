@@ -1,0 +1,128 @@
+{
+  "name": "Connected Fields API",
+  "description": "Connected Fields API",
+  "nodes": [
+    {
+      "id": "get_accounts__accountId__connected-fields_tab-groups",
+      "operationId": "ConnectedFieldsApi_GetTabGroups",
+      "name": "Connected Fields Api Get Tab Groups",
+      "description": "Returns all tabs associated with the given account",
+      "schema": {
+        "tags": [
+          "TabInfo"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Connected-Fields-API/get_accounts__accountId__connected-fields_tab-groups/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/accounts/{accountId}/connected-fields/tab-groups"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {
+                "appId": {
+                  "type": "string"
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "accountId"
+              ],
+              "properties": {
+                "accountId": {
+                  "type": "string"
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Connected-Fields-API/get_accounts__accountId__connected-fields_tab-groups/output-400.schema.json",
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "message": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Connected-Fields-API/get_accounts__accountId__connected-fields_tab-groups/output-401.schema.json",
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "message": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      }
+    }
+  ],
+  "references": {
+    "baseURL": {
+      "type": "string",
+      "enum": [
+        "https://api-d.docusign.com/v1"
+      ]
+    },
+    "queryDesc": "Query parameters sent with the request",
+    "paramDesc": "URL parameters sent with the request",
+    "headerDesc": "HTTP headers sent when making the request",
+    "dataDesc": "Data sent with the request",
+    "schema": "https://json-schema.org/draft/2020-12/schema"
+  }
+}

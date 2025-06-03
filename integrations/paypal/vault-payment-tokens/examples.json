@@ -1,0 +1,90 @@
+{
+  "get_v3_vault_payment-tokens": {
+    "Basic Example": {
+      "url": "/v3/vault/payment-tokens",
+      "method": "get",
+      "query": {
+        "customer_id": "<string>",
+        "page_size": 5,
+        "page": 1,
+        "total_required": "<boolean>"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v3_vault_payment-tokens": {
+    "Basic Example": {
+      "url": "/v3/vault/payment-tokens",
+      "method": "post",
+      "headers": {
+        "PayPal-Request-Id": "<string>"
+      },
+      "data": {
+        "payment_source": {
+          "token": {
+            "id": "5C991763VB2781612",
+            "type": "BILLING_AGREEMENT"
+          }
+        }
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "get_v3_vault_payment-tokens__id_": {
+    "Basic Example": {
+      "url": "/v3/vault/payment-tokens/{id}",
+      "method": "get",
+      "path": {
+        "id": "<string>"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "delete_v3_vault_payment-tokens__id_": {
+    "Basic Example": {
+      "url": "/v3/vault/payment-tokens/{id}",
+      "method": "delete",
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v3_vault_setup-tokens": {
+    "Basic Example": {
+      "url": "/v3/vault/setup-tokens",
+      "method": "post",
+      "data": {
+        "payment_source": {
+          "card": {
+            "number": "4111111111111111",
+            "expiry": "2027-02",
+            "name": "John Doe",
+            "billing_address": {
+              "address_line_1": "2211 N First Street",
+              "address_line_2": "17.3.160",
+              "admin_area_1": "CA",
+              "admin_area_2": "San Jose",
+              "postal_code": "95131",
+              "country_code": "US"
+            },
+            "experience_context": {
+              "brand_name": "YourBrandName",
+              "locale": "en-US",
+              "return_url": "https://example.com/returnUrl",
+              "cancel_url": "https://example.com/cancelUrl"
+            }
+          }
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "get_v3_vault_setup-tokens__id_": {
+    "Basic Example": {
+      "url": "/v3/vault/setup-tokens/{id}",
+      "method": "get",
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "get_v1_reporting_transactions": {
+    "Basic Example": {
+      "url": "/v1/reporting/transactions",
+      "method": "get",
+      "query": {
+        "transaction_id": "<string>",
+        "transaction_type": "<string>",
+        "transaction_status": "<string>",
+        "transaction_amount": "<string>",
+        "transaction_currency": "<string>",
+        "start_date": "<string>",
+        "end_date": "<string>",
+        "payment_instrument_type": "<string>",
+        "store_id": "<string>",
+        "terminal_id": "<string>",
+        "fields": "transaction_info",
+        "balance_affecting_records_only": "Y",
+        "page_size": 100,
+        "page": 1
+      },
+      "baseURL": "https://api-m.paypal.com/v1/reporting"
+    }
+  },
+  "get_v1_reporting_balances": {
+    "Basic Example": {
+      "url": "/v1/reporting/balances",
+      "method": "get",
+      "query": {
+        "as_of_time": "<string>",
+        "currency_code": "<string>"
+      },
+      "baseURL": "https://api-m.paypal.com/v1/reporting"
+    }
+  }
+}

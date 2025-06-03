@@ -1,0 +1,606 @@
+{
+  "name": "Payment Experience Web Profiles",
+  "description": "Use the Payment Experience API to create seamless payment experience profiles. For information about how to create a PayPal payment with a web experience profile, see <a href=\"/docs/integration/direct/payment-experience/\">Web experience profiles</a>.",
+  "nodes": [
+    {
+      "id": "get_v1_payment-experience_web-profiles",
+      "operationId": "web-profile.get-list",
+      "name": "Web Profile Get List",
+      "description": "List web experience profiles",
+      "schema": {
+        "tags": [
+          "web-profiles"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Payment-Experience-Web-Profiles/get_v1_payment-experience_web-profiles/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/payment-experience/web-profiles"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_payment-experience_web-profiles",
+      "operationId": "web-profile.create",
+      "name": "Web Profile Create",
+      "description": "Create web experience profile",
+      "schema": {
+        "tags": [
+          "web-profiles"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Payment-Experience-Web-Profiles/post_v1_payment-experience_web-profiles/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/payment-experience/web-profiles"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "required": [
+                "PayPal-Request-Id"
+              ],
+              "properties": {
+                "PayPal-Request-Id": {
+                  "type": "string",
+                  "description": "The server stores keys for three hours."
+                },
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "0": "c",
+                "1": "y",
+                "2": "c",
+                "3": "l",
+                "4": "e"
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Payment-Experience-Web-Profiles/post_v1_payment-experience_web-profiles/output-200.schema.json",
+            "type": "object",
+            "description": "A payment web experience profile.",
+            "title": "Web Profile",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "readOnly": true,
+                "minLength": 22,
+                "maxLength": 22,
+                "description": "The ID of the web experience profile."
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 50,
+                "description": "The web experience profile name. Must be unique for a set of profiles for a merchant."
+              },
+              "temporary": {
+                "type": "boolean",
+                "description": "Indicates whether the profile persists for three hours or permanently. To persist the profile permanently, set to `false`. To persist the profile for three hours, set to `true`."
+              },
+              "flow_config": {
+                "type": "object",
+                "title": "Flow Configuration",
+                "description": "The flow configuration parameters.",
+                "properties": {
+                  "landing_page_type": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255,
+                    "description": "The type of landing page to display on the PayPal site for user checkout. To use the non-PayPal account landing page, set to `Billing`. To use the PayPal account login landing page, set to `Login`.",
+                    "enum": [
+                      "login",
+                      "billing"
+                    ]
+                  },
+                  "bank_txn_pending_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "minLength": 1,
+                    "maxLength": 127,
+                    "description": "The merchant site URL to display after a bank transfer payment. In Germany, valid only for the Giropay payment method or bank transfer payment method."
+                  },
+                  "user_action": {
+                    "type": "string",
+                    "description": "Presents either the **Continue** or **Pay Now** checkout flow to the customer.<br/><br/>Default is **Continue**, or `user_action=continue`. When you do not know the final payment amount, accept this default flow, which redirects the customer to the PayPal payment page with the **Continue** button. When the customer clicks **Continue**, the customer can change the payment amount.<br/><br/> When you know the final payment amount, set `user_action=commit` to choose the **Pay Now** flow, which redirects the customer to the PayPal payment page with the **Pay Now** button. When the customer clicks **Pay Now**, the payment is processed immediately.",
+                    "minLength": 1,
+                    "maxLength": 255,
+                    "enum": [
+                      "COMMIT"
+                    ]
+                  },
+                  "return_uri_http_method": {
+                    "type": "string",
+                    "description": "The HTTP method to use to redirect the customer to a return URL. Value is `GET` or `POST`.",
+                    "minLength": 1,
+                    "maxLength": 255,
+                    "enum": [
+                      "GET",
+                      "POST"
+                    ]
+                  }
+                }
+              },
+              "input_fields": {
+                "type": "object",
+                "title": "Input Field Customization",
+                "description": "The input field customization parameters.",
+                "properties": {
+                  "no_shipping": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 2,
+                    "description": "Indicates whether PayPal displays shipping address fields on the experience pages. Value is:<ul><li><code>0</code>. Displays the shipping address on the PayPal pages.</li><li><code>1</code>. Redacts shipping address fields from the PayPal pages. For digital goods, this field is required and must be <code>1</code>.</li><li><code>2</code>. Gets the shipping address from the customer's account profile.</li></ul>"
+                  },
+                  "address_override": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Indicates whether to display the shipping address that is passed to this call rather than the one on file for this buyer on the PayPal experience pages. Value is:<ul><li><code>0</code>. Displays the shipping address on file.</li><li><code>1</code>. Displays the shipping address specified in this call. the customer cannot edit this shipping address.</li></ul>"
+                  }
+                }
+              },
+              "presentation": {
+                "type": "object",
+                "title": "Style and Presentation",
+                "description": "The style and presentation parameters.",
+                "properties": {
+                  "brand_name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 127,
+                    "description": "A label that overrides the business name in the PayPal account on the PayPal pages. Character length and limitations: 127 single-byte alphanumeric characters."
+                  },
+                  "logo_image": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 127,
+                    "description": "A URL to the logo image. A valid media type is `.gif`, `.jpg`, or `.png`. The image's maximum width is 190 pixels and maximum height is 60 pixels. PayPal crops images that are larger. PayPal places your logo image at the top of the cart review area. PayPal recommends that you store the image on a secure (HTTPS) server. Otherwise, web browsers display a message that checkout pages contain non-secure items. Character length and limitations: 127 single-byte alphanumeric characters."
+                  },
+                  "locale_code": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 5,
+                    "description": "The locale of pages that the PayPal payment experience displays. A valid value is `AU`, `AT`, `BE`, `BR`, `CA`, `CH`, `CN`, `DE`, `ES`, `GB`, `FR`, `IT`, `NL`, `PL`, `PT`, `RU`, or `US`. A 5-character code is also valid for languages in these countries: `da_DK`, `he_IL`, `id_ID`, `ja_JP`, `no_NO`, `pt_BR`, `ru_RU`, `sv_SE`, `th_TH`, `zh_CN`, `zh_HK`, or `zh_TW`."
+                  }
+                }
+              }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Payment-Experience-Web-Profiles/post_v1_payment-experience_web-profiles/output-500.schema.json",
+            "type": "object",
+            "title": "Error",
+            "description": "The error information.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The human-readable, unique name of the error.",
+                "readOnly": true
+              },
+              "debug_id": {
+                "type": "string",
+                "description": "The PayPal internal ID. Used for correlation purposes.",
+                "readOnly": true
+              },
+              "message": {
+                "type": "string",
+                "description": "The message that describes the error.",
+                "readOnly": true
+              },
+              "information_link": {
+                "type": "string",
+                "description": "The URI to detailed information related to this error for the developer.",
+                "readOnly": true
+              },
+              "details": {
+                "type": "array",
+                "description": "An array of additional details for the error.",
+                "readOnly": true,
+                "items": {
+                  "type": "object",
+                  "title": "Error Details",
+                  "description": "The error details. Required for client-side `4XX` errors.",
+                  "properties": {
+                    "field": {
+                      "type": "string",
+                      "description": "The name of the field that caused the error."
+                    },
+                    "issue": {
+                      "type": "string",
+                      "description": "The reason for the error."
+                    }
+                  },
+                  "required": [
+                    "field",
+                    "issue"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "name",
+              "message",
+              "information_link"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "get_v1_payment-experience_web-profiles__id_",
+      "operationId": "web-profile.get",
+      "name": "Web Profile Get",
+      "description": "Show web experience profile details by ID",
+      "schema": {
+        "tags": [
+          "web-profiles"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Payment-Experience-Web-Profiles/get_v1_payment-experience_web-profiles__id_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/payment-experience/web-profiles/{id}"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "delete_v1_payment-experience_web-profiles__id_",
+      "operationId": "web-profile.delete",
+      "name": "Web Profile Delete",
+      "description": "Delete web experience profile",
+      "schema": {
+        "tags": [
+          "web-profiles"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Payment-Experience-Web-Profiles/delete_v1_payment-experience_web-profiles__id_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/payment-experience/web-profiles/{id}"
+            },
+            "method": {
+              "type": "string",
+              "const": "delete"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "patch_v1_payment-experience_web-profiles__id_",
+      "operationId": "web-profile.partial-update",
+      "name": "Web Profile Partial Update",
+      "description": "Partially update web experience profile",
+      "schema": {
+        "tags": [
+          "web-profiles"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Payment-Experience-Web-Profiles/patch_v1_payment-experience_web-profiles__id_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/payment-experience/web-profiles/{id}"
+            },
+            "method": {
+              "type": "string",
+              "const": "patch"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "array",
+                "title": "Patch Request",
+                "description": "An array of JSON patch objects to apply partial updates to resources.",
+                "items": {
+                  "type": "object",
+                  "title": "Patch",
+                  "description": "The JSON patch object to apply partial updates to resources.",
+                  "properties": {
+                    "op": {
+                      "type": "string",
+                      "description": "The operation.",
+                      "enum": [
+                        "add",
+                        "remove",
+                        "replace",
+                        "move",
+                        "copy",
+                        "test"
+                      ]
+                    },
+                    "path": {
+                      "type": "string",
+                      "description": "The <a href=\"https://tools.ietf.org/html/rfc6901\">JSON Pointer</a> to the target document location at which to complete the operation."
+                    },
+                    "value": {
+                      "title": "Patch Value",
+                      "description": "The value to apply. The <code>remove</code> operation does not require a value."
+                    },
+                    "from": {
+                      "type": "string",
+                      "description": "The <a href=\"https://tools.ietf.org/html/rfc6901\">JSON Pointer</a> to the target document location from which to move the value. Required for the <code>move</code> operation."
+                    }
+                  },
+                  "required": [
+                    "op"
+                  ]
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "put_v1_payment-experience_web-profiles__id_",
+      "operationId": "web-profile.update",
+      "name": "Web Profile Update",
+      "description": "Update web experience profile",
+      "schema": {
+        "tags": [
+          "web-profiles"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Payment-Experience-Web-Profiles/put_v1_payment-experience_web-profiles__id_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/payment-experience/web-profiles/{id}"
+            },
+            "method": {
+              "type": "string",
+              "const": "put"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "The ID of the profile to delete."
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    }
+  ],
+  "references": {
+    "baseURL": {
+      "type": "string",
+      "enum": [
+        "https://api-m.sandbox.paypal.com",
+        "https://api-m.paypal.com"
+      ]
+    },
+    "queryDesc": "Query parameters sent with the request",
+    "paramDesc": "URL parameters sent with the request",
+    "headerDesc": "HTTP headers sent when making the request",
+    "dataDesc": "Data sent with the request",
+    "schema": "https://json-schema.org/draft/2020-12/schema"
+  }
+}

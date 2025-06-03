@@ -1,0 +1,843 @@
+{
+  "name": "Maestro API",
+  "description": "API for triggering and managing automated workflows",
+  "nodes": [
+    {
+      "id": "get_workflows",
+      "operationId": "GetWorkflowsList",
+      "name": "Get Workflows List",
+      "description": "Retrieve a list of available Maestro workflows",
+      "schema": {
+        "tags": [
+          "Workflows"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Maestro-API/get_workflows/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/workflows"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Maestro-API/get_workflows/output-200.schema.json",
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "description": "A list of workflows",
+                "properties": {
+                  "workflows": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "description": "A unique ID for this workflow",
+                          "type": "string",
+                          "pattern": "^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$",
+                          "default": "00000000-0000-0000-0000-000000000000",
+                          "examples": [
+                            "adf8c455-de2f-4119-b183-d952d649e87c"
+                          ]
+                        },
+                        "name": {
+                          "description": "A user-provided name for this workflow",
+                          "type": "string"
+                        },
+                        "account_id": {
+                          "description": "A unique ID for the account associated with the workflow",
+                          "type": "string",
+                          "pattern": "^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$",
+                          "default": "00000000-0000-0000-0000-000000000000",
+                          "examples": [
+                            "adf8c455-de2f-4119-b183-d952d649e87c"
+                          ]
+                        },
+                        "status": {
+                          "description": "Indicates the readiness and deployment status of a workflow",
+                          "type": "string"
+                        },
+                        "metadata": {
+                          "type": "object",
+                          "properties": {
+                            "created_at": {
+                              "description": "Timestamp when the agreement document was created.",
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "created_by": {
+                              "description": "User ID of the person who created the agreement document.",
+                              "type": "string"
+                            },
+                            "modified_at": {
+                              "description": "Timestamp when the agreement document was last modified.",
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "modified_by": {
+                              "description": "User ID of the person who last modified the agreement document.",
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "response_metadata": {
+                "description": "Additional server-side metadata for a given response",
+                "type": "object",
+                "properties": {
+                  "response_timestamp": {
+                    "description": "The timestamp indicating when the response was generated.",
+                    "type": "string",
+                    "format": "date-time",
+                    "examples": [
+                      "2024-10-17T14:30:00Z"
+                    ]
+                  },
+                  "response_duration_ms": {
+                    "description": "The duration of time, in milliseconds, that the server took to process and respond \nto the request. This is measured from the time the server received the request \nuntil the time the response was sent.\n",
+                    "type": "integer",
+                    "format": "int32",
+                    "examples": [
+                      150
+                    ],
+                    "minimum": 0
+                  },
+                  "request_id": {
+                    "description": "Unique identifier for the request, useful for tracking and debugging.",
+                    "type": "string",
+                    "format": "uuid",
+                    "examples": [
+                      "3f7c9e4b-851c-4f9b-89e7-123456789abc"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Maestro-API/get_workflows/output-400.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "description": "A message describing the error.",
+                "examples": [
+                  "An unexpected error occurred on the server."
+                ]
+              },
+              "code": {
+                "type": "integer",
+                "description": "HTTP status code for the error.",
+                "examples": [
+                  500
+                ]
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The timestamp when the error occurred.",
+                "examples": [
+                  "2023-01-01T12:00:00Z"
+                ]
+              }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Maestro-API/get_workflows/output-401.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "description": "A message describing the error.",
+                "examples": [
+                  "An unexpected error occurred on the server."
+                ]
+              },
+              "code": {
+                "type": "integer",
+                "description": "HTTP status code for the error.",
+                "examples": [
+                  500
+                ]
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The timestamp when the error occurred.",
+                "examples": [
+                  "2023-01-01T12:00:00Z"
+                ]
+              }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Maestro-API/get_workflows/output-403.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "description": "A message describing the error.",
+                "examples": [
+                  "An unexpected error occurred on the server."
+                ]
+              },
+              "code": {
+                "type": "integer",
+                "description": "HTTP status code for the error.",
+                "examples": [
+                  500
+                ]
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The timestamp when the error occurred.",
+                "examples": [
+                  "2023-01-01T12:00:00Z"
+                ]
+              }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Maestro-API/get_workflows/output-404.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "description": "A message describing the error.",
+                "examples": [
+                  "An unexpected error occurred on the server."
+                ]
+              },
+              "code": {
+                "type": "integer",
+                "description": "HTTP status code for the error.",
+                "examples": [
+                  500
+                ]
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The timestamp when the error occurred.",
+                "examples": [
+                  "2023-01-01T12:00:00Z"
+                ]
+              }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Maestro-API/get_workflows/output-500.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "description": "A message describing the error.",
+                "examples": [
+                  "An unexpected error occurred on the server."
+                ]
+              },
+              "code": {
+                "type": "integer",
+                "description": "HTTP status code for the error.",
+                "examples": [
+                  500
+                ]
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The timestamp when the error occurred.",
+                "examples": [
+                  "2023-01-01T12:00:00Z"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "get_workflows__workflowId__trigger-requirements",
+      "operationId": "GetWorkflowTriggerRequirements",
+      "name": "Get Workflow Trigger Requirements",
+      "description": "Retrieve trigger requirements for a specific Maestro workflow",
+      "schema": {
+        "tags": [
+          "Workflows"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Maestro-API/get_workflows__workflowId__trigger-requirements/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/workflows/{workflowId}/trigger-requirements"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "workflowId"
+              ],
+              "properties": {
+                "workflowId": {
+                  "type": "string",
+                  "pattern": "^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$",
+                  "default": "00000000-0000-0000-0000-000000000000",
+                  "examples": [
+                    "adf8c455-de2f-4119-b183-d952d649e87c"
+                  ],
+                  "example": "094db5ad-1b5d-4c20-82a9-1c987431b7d8"
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Maestro-API/get_workflows__workflowId__trigger-requirements/output-400.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "description": "A message describing the error.",
+                "examples": [
+                  "An unexpected error occurred on the server."
+                ]
+              },
+              "code": {
+                "type": "integer",
+                "description": "HTTP status code for the error.",
+                "examples": [
+                  500
+                ]
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The timestamp when the error occurred.",
+                "examples": [
+                  "2023-01-01T12:00:00Z"
+                ]
+              }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Maestro-API/get_workflows__workflowId__trigger-requirements/output-401.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "description": "A message describing the error.",
+                "examples": [
+                  "An unexpected error occurred on the server."
+                ]
+              },
+              "code": {
+                "type": "integer",
+                "description": "HTTP status code for the error.",
+                "examples": [
+                  500
+                ]
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The timestamp when the error occurred.",
+                "examples": [
+                  "2023-01-01T12:00:00Z"
+                ]
+              }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Maestro-API/get_workflows__workflowId__trigger-requirements/output-403.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "description": "A message describing the error.",
+                "examples": [
+                  "An unexpected error occurred on the server."
+                ]
+              },
+              "code": {
+                "type": "integer",
+                "description": "HTTP status code for the error.",
+                "examples": [
+                  500
+                ]
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The timestamp when the error occurred.",
+                "examples": [
+                  "2023-01-01T12:00:00Z"
+                ]
+              }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Maestro-API/get_workflows__workflowId__trigger-requirements/output-404.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "description": "A message describing the error.",
+                "examples": [
+                  "An unexpected error occurred on the server."
+                ]
+              },
+              "code": {
+                "type": "integer",
+                "description": "HTTP status code for the error.",
+                "examples": [
+                  500
+                ]
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The timestamp when the error occurred.",
+                "examples": [
+                  "2023-01-01T12:00:00Z"
+                ]
+              }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Maestro-API/get_workflows__workflowId__trigger-requirements/output-500.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "description": "A message describing the error.",
+                "examples": [
+                  "An unexpected error occurred on the server."
+                ]
+              },
+              "code": {
+                "type": "integer",
+                "description": "HTTP status code for the error.",
+                "examples": [
+                  500
+                ]
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The timestamp when the error occurred.",
+                "examples": [
+                  "2023-01-01T12:00:00Z"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "post_workflows__workflowId__actions_trigger",
+      "operationId": "TriggerWorkflow",
+      "name": "Trigger Workflow",
+      "description": "Trigger a new instance of a Maestro workflow",
+      "schema": {
+        "tags": [
+          "Workflows"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Maestro-API/post_workflows__workflowId__actions_trigger/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/workflows/{workflowId}/actions/trigger"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "workflowId"
+              ],
+              "properties": {
+                "workflowId": {
+                  "type": "string",
+                  "pattern": "^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$",
+                  "default": "00000000-0000-0000-0000-000000000000",
+                  "examples": [
+                    "adf8c455-de2f-4119-b183-d952d649e87c"
+                  ],
+                  "example": "094db5ad-1b5d-4c20-82a9-1c987431b7d8"
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "description": "The input information needed to trigger a new instance of a Maestro workflow.\nThis request body contains the metadata to describe the instance being created,\nalong with the input data required to trigger the workflow. \n\n- `instance_name` provides a user-defined name for the workflow instance.\n- `trigger_inputs` contains the key-value pairs corresponding to the inputs required by the workflow, as described in the `trigger_input_schema` from the workflow definition.\n",
+                "type": "object",
+                "properties": {
+                  "instance_name": {
+                    "type": "string",
+                    "description": "A descriptive name for the specific instance of the workflow being triggered. \nThis is typically used for identification and tracking purposes.\nExample: \"User Registration Workflow Instance\"\n",
+                    "examples": [
+                      "Sample Workflow Run"
+                    ]
+                  },
+                  "trigger_inputs": {
+                    "type": "object",
+                    "description": "Key-value pairs representing the input data required to trigger the workflow.\nThe keys correspond to the `field_name` values defined in the `trigger_input_schema` of the workflow definition.\nThe values should match the specified `field_data_type` (e.g., string, number, boolean).\nExample: {\"name\": \"John Doe\", \"email\": \"johndoe@example.com\"}\n",
+                    "additionalProperties": {
+                      "description": "A key-value pair where the key is the `field_name` defined in the `trigger_input_schema` of the workflow definition, \nand the value is the actual input data. Supported types include string, number, boolean, object, or array.\n",
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "description": "String input, e.g., names, emails, etc.",
+                          "examples": [
+                            "John Doe"
+                          ]
+                        },
+                        {
+                          "type": "number",
+                          "description": "Numeric input, e.g., ages, IDs, etc.",
+                          "examples": [
+                            30
+                          ]
+                        },
+                        {
+                          "type": "boolean",
+                          "description": "Boolean input for true/false values.",
+                          "examples": [
+                            true
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "description": "Nested object input, if a complex structure is required.",
+                          "additionalProperties": true,
+                          "examples": [
+                            {
+                              "address": {
+                                "street": "123 Main St",
+                                "city": "Metropolis"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "array",
+                          "description": "An array of values if the input expects multiple items.",
+                          "items": {},
+                          "examples": [
+                            [
+                              "item1",
+                              "item2",
+                              "item3"
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "instance_name",
+                  "trigger_inputs"
+                ],
+                "examples": [
+                  {
+                    "instance_name": "My Instance",
+                    "trigger_inputs": {
+                      "name": "Jon Doe",
+                      "email": "jdoe@example.com"
+                    }
+                  }
+                ]
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Maestro-API/post_workflows__workflowId__actions_trigger/output-400.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "description": "A message describing the error.",
+                "examples": [
+                  "An unexpected error occurred on the server."
+                ]
+              },
+              "code": {
+                "type": "integer",
+                "description": "HTTP status code for the error.",
+                "examples": [
+                  500
+                ]
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The timestamp when the error occurred.",
+                "examples": [
+                  "2023-01-01T12:00:00Z"
+                ]
+              }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Maestro-API/post_workflows__workflowId__actions_trigger/output-401.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "description": "A message describing the error.",
+                "examples": [
+                  "An unexpected error occurred on the server."
+                ]
+              },
+              "code": {
+                "type": "integer",
+                "description": "HTTP status code for the error.",
+                "examples": [
+                  500
+                ]
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The timestamp when the error occurred.",
+                "examples": [
+                  "2023-01-01T12:00:00Z"
+                ]
+              }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Maestro-API/post_workflows__workflowId__actions_trigger/output-403.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "description": "A message describing the error.",
+                "examples": [
+                  "An unexpected error occurred on the server."
+                ]
+              },
+              "code": {
+                "type": "integer",
+                "description": "HTTP status code for the error.",
+                "examples": [
+                  500
+                ]
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The timestamp when the error occurred.",
+                "examples": [
+                  "2023-01-01T12:00:00Z"
+                ]
+              }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Maestro-API/post_workflows__workflowId__actions_trigger/output-404.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "description": "A message describing the error.",
+                "examples": [
+                  "An unexpected error occurred on the server."
+                ]
+              },
+              "code": {
+                "type": "integer",
+                "description": "HTTP status code for the error.",
+                "examples": [
+                  500
+                ]
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The timestamp when the error occurred.",
+                "examples": [
+                  "2023-01-01T12:00:00Z"
+                ]
+              }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Maestro-API/post_workflows__workflowId__actions_trigger/output-500.schema.json",
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "description": "A message describing the error.",
+                "examples": [
+                  "An unexpected error occurred on the server."
+                ]
+              },
+              "code": {
+                "type": "integer",
+                "description": "HTTP status code for the error.",
+                "examples": [
+                  500
+                ]
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The timestamp when the error occurred.",
+                "examples": [
+                  "2023-01-01T12:00:00Z"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "references": {
+    "baseURL": {
+      "type": "string",
+      "enum": [
+        "https://api.docusign.com/v1/accounts/{accountId}",
+        "https://api.dev.docusign.com/v1/accounts/{accountId}",
+        "https://api-s.docusign.com//v1/accounts/{accountId}",
+        "https://api-d.docusign.com/v1/accounts/{accountId}"
+      ]
+    },
+    "queryDesc": "Query parameters sent with the request",
+    "paramDesc": "URL parameters sent with the request",
+    "headerDesc": "HTTP headers sent when making the request",
+    "dataDesc": "Data sent with the request",
+    "schema": "https://json-schema.org/draft/2020-12/schema"
+  }
+}

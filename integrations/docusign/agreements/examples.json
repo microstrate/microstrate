@@ -1,0 +1,23 @@
+{
+    "get_agreements": {
+      "Basic Example": {
+        "url": "/agreements",
+        "method": "get",
+        "query": {
+          "limit": 10,
+          "ctoken": "abc123"
+        },
+        "baseURL": "https://api.docusign.com/v1/accounts/{accountId}"
+      }
+    },
+    "get_agreements__agreementId_": {
+      "Basic Example": {
+        "url": "/agreements/{agreementId}",
+        "method": "get",
+        "path": {
+          "agreementId": "00000000-0000-0000-0000-000000000000"
+        },
+        "baseURL": "https://api.docusign.com/v1/accounts/{accountId}"
+      }
+    }
+}

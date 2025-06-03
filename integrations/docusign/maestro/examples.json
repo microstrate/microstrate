@@ -1,0 +1,39 @@
+{
+    "get_workflows": {
+      "Basic Example": {
+        "url": "/workflows",
+        "method": "get",
+        "baseURL": "https://api.docusign.com/v1/accounts/{accountId}"
+      }
+    },
+    "get_workflows__workflowId__trigger-requirements": {
+      "Basic Example": {
+        "url": "/workflows/{workflowId}/trigger-requirements",
+        "method": "get",
+        "path": {
+          "workflowId": "00000000-0000-0000-0000-000000000000"
+        },
+        "baseURL": "https://api.docusign.com/v1/accounts/{accountId}"
+      }
+    },
+    "post_workflows__workflowId__actions_trigger": {
+      "Basic Example": {
+        "url": "/workflows/{workflowId}/actions/trigger",
+        "method": "post",
+        "path": {
+          "workflowId": "00000000-0000-0000-0000-000000000000"
+        },
+        "data": {
+          "instance_name": "My Instance",
+          "trigger_inputs": {
+            "name": "Jon Doe",
+            "email": "jdoe@example.com"
+          }
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "baseURL": "https://api.docusign.com/v1/accounts/{accountId}"
+      }
+    }
+}

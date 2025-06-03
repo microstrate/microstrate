@@ -1,0 +1,168 @@
+{
+  "post_v2_checkout_orders": {
+    "Basic Example": {
+      "url": "/v2/checkout/orders",
+      "method": "post",
+      "headers": {
+        "PayPal-Request-Id": "<string>",
+        "PayPal-Partner-Attribution-Id": "<string>",
+        "PayPal-Client-Metadata-Id": "<string>",
+        "Prefer": "return=minimal"
+      },
+      "data": {
+        "intent": "CAPTURE",
+        "purchase_units": [
+          {
+            "reference_id": "d9f80740-38f0-11e8-b467-0ed5f89f718b",
+            "amount": {
+              "currency_code": "USD",
+              "value": "100.00"
+            }
+          }
+        ],
+        "payment_source": {
+          "paypal": {
+            "experience_context": {
+              "payment_method_preference": "IMMEDIATE_PAYMENT_REQUIRED",
+              "payment_method_selected": "PAYPAL",
+              "brand_name": "EXAMPLE INC",
+              "locale": "en-US",
+              "landing_page": "LOGIN",
+              "user_action": "PAY_NOW",
+              "return_url": "https://example.com/returnUrl",
+              "cancel_url": "https://example.com/cancelUrl"
+            }
+          }
+        }
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "get_v2_checkout_orders__id_": {
+    "Basic Example": {
+      "url": "/v2/checkout/orders/{id}",
+      "method": "get",
+      "path": {
+        "id": "<string>"
+      },
+      "query": {
+        "fields": "<string>"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "patch_v2_checkout_orders__id_": {
+    "Basic Example": {
+      "url": "/v2/checkout/orders/{id}",
+      "method": "patch",
+      "data": [
+        {
+          "op": "add",
+          "path": "",
+          "value": "<value>",
+          "from": ""
+        }
+      ],
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v2_checkout_orders__id__confirm-payment-source": {
+    "Basic Example": {
+      "url": "/v2/checkout/orders/{id}/confirm-payment-source",
+      "method": "post",
+      "data": {
+        "payment_source": {
+          "paypal": {
+            "name": {
+              "given_name": "John",
+              "surname": "Doe"
+            },
+            "email_address": "customer@example.com",
+            "experience_context": {
+              "payment_method_preference": "IMMEDIATE_PAYMENT_REQUIRED",
+              "payment_method_selected": "PAYPAL",
+              "brand_name": "EXAMPLE INC",
+              "locale": "en-US",
+              "landing_page": "LOGIN",
+              "shipping_preference": "SET_PROVIDED_ADDRESS",
+              "user_action": "PAY_NOW",
+              "return_url": "https://example.com/returnUrl",
+              "cancel_url": "https://example.com/cancelUrl"
+            }
+          }
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v2_checkout_orders__id__authorize": {
+    "Basic Example": {
+      "url": "/v2/checkout/orders/{id}/authorize",
+      "method": "post",
+      "headers": {
+        "PayPal-Auth-Assertion": "<string>"
+      },
+      "data": {
+        "payment_source": "<value>"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v2_checkout_orders__id__capture": {
+    "Basic Example": {
+      "url": "/v2/checkout/orders/{id}/capture",
+      "method": "post",
+      "data": {
+        "payment_source": "<value>"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "post_v2_checkout_orders__id__track": {
+    "Basic Example": {
+      "url": "/v2/checkout/orders/{id}/track",
+      "method": "post",
+      "data": {},
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  },
+  "patch_v2_checkout_orders__id__trackers__tracker_id_": {
+    "Basic Example": {
+      "url": "/v2/checkout/orders/{id}/trackers/{tracker_id}",
+      "method": "patch",
+      "path": {
+        "tracker_id": "<string>"
+      },
+      "data": [
+        {
+          "op": "replace",
+          "path": "/purchase_units/@reference_id=='PUHF'/shipping/address",
+          "value": {
+            "address_line_1": "2211 N First Street",
+            "address_line_2": "Building 17",
+            "admin_area_2": "San Jose",
+            "admin_area_1": "CA",
+            "postal_code": "95131",
+            "country_code": "US"
+          }
+        }
+      ],
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api-m.sandbox.paypal.com"
+    }
+  }
+}
