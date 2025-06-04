@@ -162,16 +162,18 @@
       }
     },
     "/hub/collections/{collection_type}/{collection_topic}": {
-      "get": {
-        "tags": [
-          "Collections"
-        ],
-        "summary": "Get a collection",
-        "description": "Retrieves a specific collection by subject",
-        "operationId": "getCollection",
-        "x-resource-type": "service",
-        "x-resource": "microstrate.hub.get.collection",
-        "parameters": [
+      "parameters": [
+          {
+            "name": "collection_type",
+            "in": "query",
+            "description": "List only 'node' or only 'workflow' collections. If this parameter is omitted, both will be listed",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum" : ["node", "workflow"]
+            },
+            "example": "node"
+          },
           {
             "name": "collection_topic",
             "in": "path",
@@ -182,7 +184,16 @@
             },
             "example": "1234567890"
           }
+      ],
+      "get": {
+        "tags": [
+          "Collections"
         ],
+        "summary": "Get a collection",
+        "description": "Retrieves a specific collection by subject",
+        "operationId": "getCollection",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.hub.get.collection",
         "responses": {
           "200": {
             "description": "Collection retrieved successfully",
@@ -230,18 +241,6 @@
         "operationId": "updateFlowOrNodeCollection",
         "x-resource-type": "service",
         "x-resource": "microstrate.hub.patch.collection",
-        "parameters": [
-          {
-            "name": "collection_topic",
-            "in": "path",
-            "description": "The topic is a hash of the name that was used when a collection was created",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "example": "1234567890"
-          }
-        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -312,16 +311,6 @@
         "x-resource-type": "service",
         "x-resource": "microstrate.hub.delete.collection",
         "parameters": [
-          {
-            "name": "collection_topic",
-            "in": "path",
-            "description": "The topic is a hash of the name that was used when a collection was created",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "example": "1234567890"
-          },
           {
             "name": "move_resources_to_collection",
             "in": "query",
@@ -527,7 +516,7 @@
         "tags": [
           "Nodes"
         ],
-        "summary": "List node templtes",
+        "summary": "List node templates",
         "description": "Retrieves a list of node templates, optionally filtered by collection and type",
         "operationId": "listNodeTemplates",
         "x-resource-type": "service",
@@ -592,15 +581,6 @@
       }
     },
     "/hub/nodes/{collection_topic}/{node_topic}": {
-      "get": {
-        "tags": [
-          "Nodes"
-        ],
-        "summary": "Get a node",
-        "description": "Retrieves a specific node by subject",
-        "operationId": "getNode",
-        "x-resource-type": "service",
-        "x-resource": "microstrate.hub.get.node",
         "parameters": [
           {
             "name": "collection_topic",
@@ -623,6 +603,15 @@
             "example": "98765432"
           }
         ],
+      "get": {
+        "tags": [
+          "Nodes"
+        ],
+        "summary": "Get a node",
+        "description": "Retrieves a specific node by subject",
+        "operationId": "getNode",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.hub.get.node",
         "responses": {
           "200": {
             "description": "Node retrieved successfully",
@@ -677,28 +666,6 @@
         "operationId": "updateNode",
         "x-resource-type": "service",
         "x-resource": "microstrate.hub.patch.node",
-        "parameters": [
-          {
-            "name": "collection_topic",
-            "in": "path",
-            "description": "Collection topic",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "example": "1234567890"
-          },
-          {
-            "name": "node_topic",
-            "in": "path",
-            "description": "Node topic - hash of the names the node was created with",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "example": "98765432"
-          }
-        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -787,28 +754,6 @@
         "operationId": "deleteNode",
         "x-resource-type": "service",
         "x-resource": "microstrate.hub.delete.node",
-        "parameters": [
-          {
-            "name": "collection_topic",
-            "in": "path",
-            "description": "Collection topic",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "example": "1234567890"
-          },
-          {
-            "name": "node_topic",
-            "in": "path",
-            "description": "Node topic - hash of the names the node was created with",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "example": "98765432"
-          }
-        ],
         "responses": {
           "200": {
             "description": "Node deleted successfully",
@@ -1279,16 +1224,7 @@
       }
     },
     "/hub/workflows/{collection_topic}/{flow_topic}": {
-      "get": {
-        "tags": [
-          "Workflows"
-        ],
-        "summary": "Get a workflow",
-        "description": "Retrieves a specific workflow by subject",
-        "operationId": "getWorkflow",
-        "x-resource-type": "service",
-        "x-resource": "microstrate.hub.get.workflow",
-        "parameters": [
+       "parameters": [
           {
             "name": "collection_topic",
             "in": "path",
@@ -1310,6 +1246,15 @@
             "example": "21312322"
           }
         ],
+      "get": {
+        "tags": [
+          "Workflows"
+        ],
+        "summary": "Get a workflow",
+        "description": "Retrieves a specific workflow by subject",
+        "operationId": "getWorkflow",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.hub.get.workflow",
         "responses": {
           "200": {
             "description": "Workflow retrieved successfully",
@@ -1388,28 +1333,6 @@
         "operationId": "updateWorkflow",
         "x-resource-type": "service",
         "x-resource": "microstrate.hub.patch.workflow",
-        "parameters": [
-          {
-            "name": "collection_topic",
-            "in": "path",
-            "description": "Collection topic",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "example": "234234234"
-          },
-          {
-            "name": "flow_topic",
-            "in": "path",
-            "description": "Flow topic - hash of the names the node was created with",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "example": "21312322"
-          }
-        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -1553,39 +1476,6 @@
         "operationId": "deleteWorkflow",
         "x-resource-type": "service",
         "x-resource": "microstrate.hub.delete.workflow",
-        "parameters": [
-          {
-            "name": "collection_topic",
-            "in": "path",
-            "description": "Collection topic",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "example": "234234234"
-          },
-          {
-            "name": "flow_topic",
-            "in": "path",
-            "description": "Flow topic - hash of the names the node was created with",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "example": "21312322"
-          },
-          {
-            "name": "keep_draft",
-            "in": "query",
-            "description": "Should the draft version of the flow be kept? If not specified, both versions will be deleted.",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "enum": ["true", "false"]
-            },
-            "example": "true"
-          }
-        ],
         "responses": {
           "200": {
             "description": "Workflow deleted successfully",
@@ -1620,7 +1510,7 @@
         }
       }
     },
-    "/hub/workflows/run": {
+    "/hub/workflows/{collection_topic}/{flow_topic}/run": {
       "post": {
         "tags": [
           "Workflows"
@@ -1894,12 +1784,12 @@
                 "enum": [
                   "function",
                   "flow",
-                  "rule",
+                  "condition",
                   "map",
                   "eval",
                   "integration"
                 ],
-                "description": "Type of the node"
+                "description": "## Node Types\n\n### 1. `function`\n**Definition**:  \nA **Hydra function node** used to provide a *subject* or perform a custom computation. It encapsulates reusable logic defined within the Hydra platform.\n\n### 2. `flow`\n**Definition**:  \nA node that **invokes another flow**, either **synchronously** or **asynchronously**, enabling flow modularization and reuse.\n\n### 3. `condition`\n**Definition**:  \nA **branching node** that evaluates a condition to determine the **flow of execution**, similar to `if`/`else` logic in programming.\n\n### 4. `map`\n**Definition**:  \nA **data transformation node** used to **reshape or remap the payload**, allowing the flow to adapt the structure of data as it progresses.\n\n### 5. `eval`\n**Definition**:  \nExecutes **simple JavaScript code** to dynamically **evaluate expressions**, perform calculations, or manipulate data inline within the flow.\n\n### 6. `integration`\n**Definition**:  \nSimilar to a `function` node, but specifically tied to **predefined APIs**. It uses an HTTP-like interface and references **a known set of external services** managed by the platform."
               },
               "subject": {
                 "type": "string",
@@ -1994,7 +1884,7 @@
             "enum": [
               "function",
               "flow",
-              "rule",
+              "condition",
               "map",
               "eval",
               "integration"
