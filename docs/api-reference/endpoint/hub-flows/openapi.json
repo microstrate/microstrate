@@ -73,8 +73,8 @@
                 "examples": {
                   "NameRequired": {
                     "value": {
-                    "error": "a name is required"
-                  }
+                      "error": "a name is required"
+                    }
                   },
                   "InvalidType": {
                     "value": {
@@ -117,7 +117,10 @@
             "required": false,
             "schema": {
               "type": "string",
-              "enum" : ["node", "workflow"]
+              "enum": [
+                "node",
+                "workflow"
+              ]
             },
             "example": "node"
           }
@@ -128,15 +131,54 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetCollectionResponse"
+                  "type": "object",
+                  "required": [
+                    "results",
+                    "results_total"
+                  ],
+                  "properties": {
+                    "results": {
+                      "type": "object",
+                      "properties": {
+                        "results": {
+                          "type": "array",
+                          "description": "Array of results",
+                          "items": {
+                            "$ref": "#/components/schemas/GetCollectionResponse"
+                          }
+                        },
+                        "results_total": {
+                          "type": "integer",
+                          "description": "Number of results"
+                        }
+                      }
+                    }
+                  }
                 },
                 "example": {
-                    "name": "MyCollection",
-                    "collection_type": "node",
-                    "topic": "1234567890",
-                    "description": "Collection for storing node templates",
-                    "subject": "ms.hub.config.collection.node.1234567890",
-                    "modified": 1651395678
+                  "results_total": 2,
+                  "results": [
+                    {
+                      "collection_type": "node",
+                      "description": "test",
+                      "modified": 1746655609,
+                      "name": "Test",
+                      "sequence": 16,
+                      "subject": "ms.hub.config.collection.node.805092869",
+                      "topic": "805092869",
+                      "type": "created"
+                    },
+                    {
+                      "collection_type": "node",
+                      "description": "",
+                      "modified": 1747731829,
+                      "name": "Business Flow Nodes",
+                      "sequence": 31,
+                      "subject": "ms.hub.config.collection.node.1025086208",
+                      "topic": "1025086208",
+                      "type": "created"
+                    }
+                  ]
                 }
               }
             }
@@ -163,34 +205,37 @@
     },
     "/hub/collections/{collection_type}/{collection_topic}": {
       "parameters": [
-          {
-            "name": "collection_type",
-            "in": "query",
-            "description": "List only 'node' or only 'workflow' collections. If this parameter is omitted, both will be listed",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "enum" : ["node", "workflow"]
-            },
-            "example": "node"
+        {
+          "name": "collection_type",
+          "in": "query",
+          "description": "List only 'node' or only 'workflow' collections. If this parameter is omitted, both will be listed",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "node",
+              "workflow"
+            ]
           },
-          {
-            "name": "collection_topic",
-            "in": "path",
-            "description": "The topic is a hash of the name that was used when a collection was created",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "example": "1234567890"
-          }
+          "example": "node"
+        },
+        {
+          "name": "collection_topic",
+          "in": "path",
+          "description": "The topic is a hash of the name that was used when a collection was created",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "1234567890"
+        }
       ],
       "get": {
         "tags": [
           "Collections"
         ],
         "summary": "Get a collection",
-        "description": "Retrieves a specific collection by subject",
+        "description": "Retrieves a specific collection",
         "operationId": "getCollection",
         "x-resource-type": "service",
         "x-resource": "microstrate.hub.get.collection",
@@ -203,12 +248,14 @@
                   "$ref": "#/components/schemas/GetCollectionResponse"
                 },
                 "example": {
-                  "name": "MyCollection",
-                  "collection_type": "node",
-                  "topic": "1234567890",
-                  "description": "Collection for storing node templates",
-                  "subject": "ms.hub.config.collection.node.1234567890",
-                  "modified": 1651395678
+                  "collection_type": "workflow",
+                  "description": "",
+                  "modified": 1747956678,
+                  "name": "Business Flows",
+                  "sequence": 124,
+                  "subject": "ms.hub.config.collection.workflow.1508781670",
+                  "topic": "1508781670",
+                  "type": "created"
                 }
               }
             }
@@ -331,9 +378,8 @@
                   "$ref": "#/components/schemas/SuccessResponse"
                 },
                 "example": {
-                    "message": "success"
-                  }
-
+                  "message": "success"
+                }
               }
             }
           },
@@ -347,14 +393,14 @@
                 "examples": {
                   "InvalidSubject": {
                     "value": {
-                        "error": "invalid subject"
-                      }
+                      "error": "invalid subject"
+                    }
                   }
                 }
               }
             }
           },
-          "404":{
+          "404": {
             "description": "Resource not found",
             "content": {
               "application/json": {
@@ -364,13 +410,13 @@
                 "examples": {
                   "CollectionNotFount": {
                     "value": {
-                        "error": "collection not found"
-                      }
+                      "error": "collection not found"
+                    }
                   },
                   "NewResourceCollectionNotFount": {
                     "value": {
-                        "error": "the new resource collection is not found"
-                      }
+                      "error": "the new resource collection is not found"
+                    }
                   }
                 }
               }
@@ -543,24 +589,25 @@
                 },
                 "example": {
                   "results_total": 1,
-                  "results":[
-                  {
-                    "subject": "ms.hub.config.node.1234567890.98765432",
-                    "collection": "ms.hub.config.collection.node.1234567890",
-                    "data": {
-                      "id": "some-id",
-                      "name": "MyNode",
-                      "node_type": "function",
-                      "subject": "microstrate-function.some-function",
-                      "payload": {
-                        "param1": "value1",
-                        "param2": "value2"
-                      }
-                    },
-                    "type": "created",
-                    "modified": 1651395678
-                  }
-                ]}
+                  "results": [
+                    {
+                      "subject": "ms.hub.config.node.1234567890.98765432",
+                      "collection": "ms.hub.config.collection.node.1234567890",
+                      "data": {
+                        "id": "some-id",
+                        "name": "MyNode",
+                        "node_type": "function",
+                        "subject": "microstrate-function.some-function",
+                        "payload": {
+                          "param1": "value1",
+                          "param2": "value2"
+                        }
+                      },
+                      "type": "created",
+                      "modified": 1651395678
+                    }
+                  ]
+                }
               }
             }
           },
@@ -581,28 +628,28 @@
       }
     },
     "/hub/nodes/{collection_topic}/{node_topic}": {
-        "parameters": [
-          {
-            "name": "collection_topic",
-            "in": "path",
-            "description": "Collection topic",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "example": "1234567890"
+      "parameters": [
+        {
+          "name": "collection_topic",
+          "in": "path",
+          "description": "Collection topic",
+          "required": true,
+          "schema": {
+            "type": "string"
           },
-          {
-            "name": "node_topic",
-            "in": "path",
-            "description": "Node topic - hash of the names the node was created with",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "example": "98765432"
-          }
-        ],
+          "example": "1234567890"
+        },
+        {
+          "name": "node_topic",
+          "in": "path",
+          "description": "Node topic - hash of the names the node was created with",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "98765432"
+        }
+      ],
       "get": {
         "tags": [
           "Nodes"
@@ -648,8 +695,8 @@
                 "examples": {
                   "InvalidSubject": {
                     "value": {
-                        "error": "invalid subject"
-                      }
+                      "error": "invalid subject"
+                    }
                   }
                 }
               }
@@ -697,9 +744,8 @@
                   "$ref": "#/components/schemas/SuccessResponse"
                 },
                 "example": {
-                    "message": "success"
-                  }
-
+                  "message": "success"
+                }
               }
             }
           },
@@ -713,8 +759,8 @@
                 "examples": {
                   "SubjectRequired": {
                     "value": {
-                        "error": "a subject is required"
-                      }
+                      "error": "a subject is required"
+                    }
                   },
                   "FunctionNotFound": {
                     "value": {
@@ -741,7 +787,6 @@
                 }
               }
             }
-
           }
         }
       },
@@ -763,9 +808,8 @@
                   "$ref": "#/components/schemas/SuccessResponse"
                 },
                 "example": {
-                    "message": "success"
-                  }
-
+                  "message": "success"
+                }
               }
             }
           },
@@ -779,8 +823,8 @@
                 "examples": {
                   "InvalidSubject": {
                     "value": {
-                        "error": "invalid subject"
-                      }
+                      "error": "invalid subject"
+                    }
                   }
                 }
               }
@@ -1224,28 +1268,28 @@
       }
     },
     "/hub/workflows/{collection_topic}/{flow_topic}": {
-       "parameters": [
-          {
-            "name": "collection_topic",
-            "in": "path",
-            "description": "Collection topic",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "example": "234234234"
+      "parameters": [
+        {
+          "name": "collection_topic",
+          "in": "path",
+          "description": "Collection topic",
+          "required": true,
+          "schema": {
+            "type": "string"
           },
-          {
-            "name": "flow_topic",
-            "in": "path",
-            "description": "Flow topic - hash of the names the node was created with",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "example": "21312322"
-          }
-        ],
+          "example": "234234234"
+        },
+        {
+          "name": "flow_topic",
+          "in": "path",
+          "description": "Flow topic - hash of the names the node was created with",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "21312322"
+        }
+      ],
       "get": {
         "tags": [
           "Workflows"
@@ -1315,8 +1359,8 @@
                 "examples": {
                   "InvalidSubject": {
                     "value": {
-                        "error": "invalid subject"
-                      }
+                      "error": "invalid subject"
+                    }
                   }
                 }
               }
@@ -1485,8 +1529,8 @@
                   "$ref": "#/components/schemas/SuccessResponse"
                 },
                 "example": {
-                    "message": "success"
-                  }
+                  "message": "success"
+                }
               }
             }
           },
@@ -1500,8 +1544,8 @@
                 "examples": {
                   "InvalidSubject": {
                     "value": {
-                        "error": "invalid subject"
-                      }
+                      "error": "invalid subject"
+                    }
                   }
                 }
               }
@@ -1671,8 +1715,8 @@
                   "$ref": "#/components/schemas/SuccessResponse"
                 },
                 "example": {
-                    "message": "success"
-                  }
+                  "message": "success"
+                }
               }
             }
           },
@@ -1689,6 +1733,452 @@
                       "error": "a valid draft subject is required"
                     }
                   }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/integrations/oauth-config": {
+      "get": {
+        "summary": "List OAuth configurations",
+        "description": "Get list of all OAuth configurations",
+        "tags": [
+          "Oauth"
+        ],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.hub.get.integrations.oauth-config",
+        "responses": {
+          "200": {
+            "description": "List of OAuth configurations",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OauthConfigList"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/integrations/{integration_id}/oauth-config": {
+      "get": {
+        "summary": "Get OAuth configuration",
+        "description": "Get OAuth configuration for a specific integration",
+        "tags": [
+          "Oauth"
+        ],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.hub.get.integrations.{integration_id}.oauth-config",
+        "parameters": [
+          {
+            "name": "integration_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Integration identifier",
+            "example": "slack"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OAuth configuration",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OauthConfigBasicData"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/integrations/oauth-connections": {
+      "get": {
+        "summary": "List OAuth connections",
+        "description": "Get list of OAuth connections for the authenticated user",
+        "tags": [
+          "Oauth"
+        ],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.hub.get.integrations.oauth-connections",
+        "responses": {
+          "200": {
+            "description": "List of OAuth connections",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OauthConnectionsList"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/integrations/{integration_id}/oauth-token/{connection_id}": {
+      "get": {
+        "summary": "Get OAuth connection",
+        "description": "Get OAuth connection details for a specific integration and connection",
+        "tags": [
+          "Oauth"
+        ],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.hub.get.integrations.{integration_id}.oauth-token.{connection_id}",
+        "parameters": [
+          {
+            "name": "integration_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Integration identifier",
+            "example": "xero"
+          },
+          {
+            "name": "connection_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Connection identifier",
+            "example": "demo"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OAuth connection details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OauthConnection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/integrations/{integration_id}/oauth-connections/{connection_id}": {
+      "delete": {
+        "summary": "Delete OAuth connection",
+        "description": "Delete an OAuth connection for a specific integration",
+        "tags": [
+          "Oauth"
+        ],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.hub.delete.integrations.{integration_id}.oauth-connections.{connection_id}",
+        "parameters": [
+          {
+            "name": "integration_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Integration identifier",
+            "example": "xero"
+          },
+          {
+            "name": "connection_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Connection identifier",
+            "example": "demo"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Connection deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OauthConnection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/integrations/{integration_id}/oauth-login/{connection_id}": {
+      "get": {
+        "summary": "Initiate OAuth login",
+        "description": "Get OAuth authorization URL to initiate login flow",
+        "tags": [
+          "Oauth"
+        ],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.hub.get.integrations.{integration_id}.oauth-login.{connection_id}",
+        "parameters": [
+          {
+            "name": "integration_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Integration identifier",
+            "example": "slack"
+          },
+          {
+            "name": "connection_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Connection identifier",
+            "example": "team-workspace"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OAuth authorization URL",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OauthLoginResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/integrations/oauth-callback": {
+      "get": {
+        "summary": "OAuth callback",
+        "description": "Handle OAuth callback after user authorization",
+        "tags": [
+          "Oauth"
+        ],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.hub.get.integrations.oauth-callback",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "OAuth authorization code",
+            "example": "4/0AX4XfWgq1P2fJdK8V9L3m..."
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "OAuth state parameter",
+            "example": "abc123xyz789def456ghi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OAuth token received and saved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OauthConnection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/integrations/{integration_id}/oauth-refresh-token/{connection_id}": {
+      "get": {
+        "summary": "Refresh OAuth token",
+        "description": "Refresh an OAuth access token using the refresh token",
+        "tags": [
+          "Oauth"
+        ],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.hub.get.integrations.{integration_id}.oauth-refresh-token.{connection_id}",
+        "parameters": [
+          {
+            "name": "integration_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Integration identifier",
+            "example": "xero"
+          },
+          {
+            "name": "connection_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Connection identifier",
+            "example": "maria"
+          },
+          {
+            "name": "refresh_token",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Refresh token",
+            "example": "pSn5h..."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Token refreshed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OauthConnection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
                 }
               }
             }
@@ -1748,8 +2238,7 @@
             "description": "Description of the collection"
           },
           "modified": {
-            "type": "integer",
-            "description": "Timestamp of last modification"
+            "$ref": "#/components/schemas/Modified"
           }
         }
       },
@@ -1765,77 +2254,7 @@
             "description": "Subject of the collection this node belongs to"
           },
           "data": {
-            "type": "object",
-            "required": [
-              "name",
-              "payload"
-            ],
-            "properties": {
-              "name": {
-                "type": "string",
-                "description": "Name of the node"
-              },
-              "description": {
-                "type": "string",
-                "description": "Optional description of the node"
-              },
-              "node_type": {
-                "type": "string",
-                "enum": [
-                  "function",
-                  "flow",
-                  "condition",
-                  "map",
-                  "eval",
-                  "integration"
-                ],
-                "description": "## Node Types\n\n### 1. `function`\n**Definition**:  \nA **Hydra function node** used to provide a *subject* or perform a custom computation. It encapsulates reusable logic defined within the Hydra platform.\n\n### 2. `flow`\n**Definition**:  \nA node that **invokes another flow**, either **synchronously** or **asynchronously**, enabling flow modularization and reuse.\n\n### 3. `condition`\n**Definition**:  \nA **branching node** that evaluates a condition to determine the **flow of execution**, similar to `if`/`else` logic in programming.\n\n### 4. `map`\n**Definition**:  \nA **data transformation node** used to **reshape or remap the payload**, allowing the flow to adapt the structure of data as it progresses.\n\n### 5. `eval`\n**Definition**:  \nExecutes **simple JavaScript code** to dynamically **evaluate expressions**, perform calculations, or manipulate data inline within the flow.\n\n### 6. `integration`\n**Definition**:  \nSimilar to a `function` node, but specifically tied to **predefined APIs**. It uses an HTTP-like interface and references **a known set of external services** managed by the platform."
-              },
-              "subject": {
-                "type": "string",
-                "description": "Subject identifier for function or flow node types"
-              },
-              "payload": {
-                "type": "object",
-                "description": "Payload data for the node"
-              },
-              "response_map": {
-                "type": "object",
-                "description": "Optional mapping for response transformation"
-              },
-              "options": {
-                "type": "object",
-                "properties": {
-                  "flat_map": {
-                    "type": "boolean",
-                    "description": "Whether to flatten the response data"
-                  },
-                  "backoff_ms": {
-                    "type": "integer",
-                    "description": "Backoff time in milliseconds for retries"
-                  },
-                  "timeout": {
-                    "type": "integer",
-                    "description": "Timeout in milliseconds"
-                  },
-                  "attempts": {
-                    "type": "integer",
-                    "description": "Number of retry attempts"
-                  },
-                  "ignore_response_codes": {
-                    "type": "array",
-                    "items": {
-                      "type": "integer"
-                    },
-                    "description": "HTTP status codes to ignore"
-                  }
-                }
-              },
-              "await": {
-                "type": "boolean",
-                "description": "Whether to wait for completion"
-              }
-            }
+            "$ref": "#/components/schemas/NodeData"
           }
         }
       },
@@ -1859,8 +2278,7 @@
             "description": "Action type (created)"
           },
           "modified": {
-            "type": "integer",
-            "description": "Timestamp of last modification"
+            "$ref": "#/components/schemas/Modified"
           }
         }
       },
@@ -1889,7 +2307,7 @@
               "eval",
               "integration"
             ],
-            "description": "Type of the node"
+            "description": "## Node Types\n\n### 1. `function`\n**Definition**:  \nA **Hydra function node** used to provide a *subject* or perform a custom computation. It encapsulates reusable logic defined within the Hydra platform.\n\n### 2. `flow`\n**Definition**:  \nA node that **invokes another flow**, either **synchronously** or **asynchronously**, enabling flow modularization and reuse.\n\n### 3. `condition`\n**Definition**:  \nA **branching node** that evaluates a condition to determine the **flow of execution**, similar to `if`/`else` logic in programming.\n\n### 4. `map`\n**Definition**:  \nA **data transformation node** used to **reshape or remap the payload**, allowing the flow to adapt the structure of data as it progresses.\n\n### 5. `eval`\n**Definition**:  \nExecutes **simple JavaScript code** to dynamically **evaluate expressions**, perform calculations, or manipulate data inline within the flow.\n\n### 6. `integration`\n**Definition**:  \nSimilar to a `function` node, but specifically tied to **predefined APIs**. It uses an HTTP-like interface and references **a known set of external services** managed by the platform."
           },
           "subject": {
             "type": "string",
@@ -2058,8 +2476,7 @@
             "$ref": "#/components/schemas/WorkflowConfig"
           },
           "modified": {
-            "type": "integer",
-            "description": "Timestamp of last modification"
+            "$ref": "#/components/schemas/Modified"
           }
         }
       },
@@ -2153,10 +2570,6 @@
           "data"
         ],
         "properties": {
-          "subject": {
-            "type": "string",
-            "description": "Subject of the node to update"
-          },
           "data": {
             "$ref": "#/components/schemas/NodeData"
           },
@@ -2250,13 +2663,20 @@
             "$ref": "#/components/schemas/WorkflowConfig"
           },
           "modified": {
-            "type": "integer",
-            "description": "Timestamp of last modification"
+            "$ref": "#/components/schemas/Modified"
           }
         }
       },
       "GetCollectionResponse": {
         "type": "object",
+        "required": [
+          "name",
+          "topic",
+          "subject",
+          "sequence",
+          "type",
+          "modified"
+        ],
         "properties": {
           "name": {
             "type": "string",
@@ -2278,11 +2698,26 @@
             "type": "string",
             "description": "Subject identifier for the collection"
           },
-          "modified": {
+          "sequence": {
             "type": "integer",
-            "description": "Timestamp of last modification"
+            "description": "The sequence number of the last message for this collection on the stream"
+          },
+          "modified": {
+            "$ref": "#/components/schemas/Modified"
+          },
+          "type": {
+            "type": "string",
+            "description": "Last event type - created or updated",
+            "enum": [
+              "created",
+              "updated"
+            ]
           }
         }
+      },
+      "Modified": {
+        "type": "integer",
+        "description": "Timestamp of last modification"
       },
       "GetNodeResponse": {
         "type": "object",
@@ -2295,8 +2730,7 @@
             "$ref": "#/components/schemas/NodeData"
           },
           "modified": {
-            "type": "integer",
-            "description": "Timestamp of last modification"
+            "$ref": "#/components/schemas/Modified"
           }
         }
       },
@@ -2319,8 +2753,7 @@
             "$ref": "#/components/schemas/WorkflowConfig"
           },
           "modified": {
-            "type": "integer",
-            "description": "Timestamp of last modification"
+            "$ref": "#/components/schemas/Modified"
           }
         }
       },
@@ -2340,8 +2773,7 @@
                   "$ref": "#/components/schemas/NodeData"
                 },
                 "modified": {
-                  "type": "integer",
-                  "description": "Timestamp of last modification"
+                  "$ref": "#/components/schemas/Modified"
                 }
               }
             }
@@ -2376,8 +2808,7 @@
                   "$ref": "#/components/schemas/WorkflowConfig"
                 },
                 "modified": {
-                  "type": "integer",
-                  "description": "Timestamp of last modification"
+                  "$ref": "#/components/schemas/Modified"
                 }
               }
             }
@@ -2404,6 +2835,211 @@
             "type": "string",
             "description": "Error message"
           }
+        }
+      },
+      "IntegrationOauthConfig": {
+        "type": "object",
+        "required": [
+          "subject",
+          "integration_id",
+          "name",
+          "scopes"
+        ],
+        "properties": {
+          "subject": {
+            "type": "string",
+            "description": "Subject",
+            "example": "ms.integration.oauth.config.slack"
+          },
+          "integration_id": {
+            "type": "string",
+            "description": "Unique identifier for the integration",
+            "example": "slack"
+          },
+          "name": {
+            "type": "string",
+            "description": "Display name for the integration",
+            "example": "Slack API"
+          },
+          "scopes": {
+            "type": "string",
+            "description": "Comma-separated list of OAuth scopes",
+            "example": "channels:read,users:read"
+          }
+        },
+        "example": {
+          "subject": "ms.integration.oauth.config.slack",
+          "integration_id": "slack",
+          "name": "Slack API",
+          "scopes": "channels:read,users:read"
+        }
+      },
+      "OauthConfigBasicData": {
+        "type": "object",
+        "properties": {
+          "integration_id": {
+            "type": "string",
+            "example": "slack"
+          },
+          "name": {
+            "type": "string",
+            "example": "Slack API"
+          },
+          "scopes": {
+            "type": "string",
+            "example": "channels:read"
+          },
+          "subject": {
+            "type": "string",
+            "example": "ms.integration.oauth.config.slack"
+          }
+        },
+        "example": {
+          "integration_id": "slack",
+          "name": "Slack API",
+          "scopes": "channels:read",
+          "subject": "ms.integration.oauth.config.slack"
+        }
+      },
+      "OauthConfigList": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OauthConfigBasicData"
+            }
+          },
+          "results_total": {
+            "type": "integer",
+            "example": 2
+          }
+        },
+        "example": {
+          "results": [
+            {
+              "integration_id": "slack",
+              "name": "Slack API",
+              "scopes": "channels:read",
+              "subject": "ms.integration.oauth.config.slack"
+            },
+            {
+              "integration_id": "xero",
+              "name": "Xero API's",
+              "scopes": "email,openid,profile,assets,assets.read,files,files.read,projects,projects.read",
+              "subject": "ms.integration.oauth.config.xero"
+            }
+          ],
+          "results_total": 2
+        }
+      },
+      "OauthConnection": {
+        "type": "object",
+        "properties": {
+          "access_token": {
+            "type": "string",
+            "description": "OAuth access token",
+            "example": "eyJhbGciOiJSUzI1Ni..."
+          },
+          "token_type": {
+            "type": "string",
+            "description": "Token type (usually Bearer)",
+            "example": "Bearer"
+          },
+          "refresh_token": {
+            "type": "string",
+            "description": "OAuth refresh token",
+            "example": "ulpL_..."
+          },
+          "expiry": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Token expiration time",
+            "example": "2025-05-29T17:09:39.816102+01:00"
+          },
+          "expires_in": {
+            "type": "integer",
+            "description": "Token expires in seconds",
+            "example": 1800
+          },
+          "sequence": {
+            "type": "integer",
+            "description": "Message sequence number",
+            "example": 85
+          },
+          "subject": {
+            "type": "string",
+            "description": "Message subject",
+            "example": "ms.integration.oauth.AC75JGNMJHTRQNXCBDMIAJCJ57HAEWP2RGWXJCIFFGW2K64OKG267A2D.xero.demo"
+          },
+          "modified": {
+            "type": "integer",
+            "description": "Last modified timestamp",
+            "example": 1748533179
+          }
+        },
+        "example": {
+          "access_token": "eyJhbGciOiJSUzI1Ni...",
+          "expires_in": 1800,
+          "expiry": "2025-05-29T17:09:39.816102+01:00",
+          "modified": 1748533179,
+          "refresh_token": "ulpL_...",
+          "sequence": 85,
+          "subject": "ms.integration.oauth.AC75JGNMJHTRQNXCBDMIAJCJ57HAEWP2RGWXJCIFFGW2K64OKG267A2D.xero.demo",
+          "token_type": "Bearer"
+        }
+      },
+      "OauthConnectionsList": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OauthConnection"
+            }
+          },
+          "results_total": {
+            "type": "integer",
+            "example": 2
+          }
+        },
+        "example": {
+          "results": [
+            {
+              "access_token": "eyJhbGciOiJSUzI1Ni...",
+              "expires_in": 1800,
+              "expiry": "2025-05-29T17:09:39.816102+01:00",
+              "modified": 1748533179,
+              "refresh_token": "ulpL_...",
+              "sequence": 85,
+              "subject": "ms.integration.oauth.AC75JGNMJHTRQNXCBDMIAJCJ57HAEWP2RGWXJCIFFGW2K64OKG267A2D.xero.demo",
+              "token_type": "Bearer"
+            },
+            {
+              "access_token": "eyJhbGciOiJSUzI1NiIs...",
+              "expires_in": 1800,
+              "expiry": "2025-05-29T17:11:54.397804+01:00",
+              "modified": 1748533314,
+              "refresh_token": "pSn5h...",
+              "sequence": 86,
+              "subject": "ms.integration.oauth.AC75JGNMJHTRQNXCBDMIAJCJ57HAEWP2RGWXJCIFFGW2K64OKG267A2D.xero.maria",
+              "token_type": "Bearer"
+            }
+          ],
+          "results_total": 2
+        }
+      },
+      "OauthLoginResponse": {
+        "type": "object",
+        "properties": {
+          "oauth_url": {
+            "type": "string",
+            "description": "OAuth authorization URL to redirect user to",
+            "example": "https://slack.com/oauth/v2/authorize?client_id=123456789.987654321&scope=channels:read&state=abc123xyz&redirect_uri=https://api.example.com/hub/integrations/oauth-callback"
+          }
+        },
+        "example": {
+          "oauth_url": "https://slack.com/oauth/v2/authorize?client_id=123456789.987654321&scope=channels:read&state=abc123xyz&redirect_uri=https://api.example.com/hub/integrations/oauth-callback"
         }
       }
     },
@@ -2441,6 +3077,10 @@
     {
       "name": "Workflows",
       "description": "Operations related to workflows"
+    },
+    {
+      "name": "Oauth",
+      "description": "Oauth configurations and connections"
     }
   ]
 }
