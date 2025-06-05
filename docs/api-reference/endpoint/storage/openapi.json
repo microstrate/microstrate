@@ -1573,6 +1573,54 @@
         }
       }
     },
+    "/storage/kv/{bucket}/purge": {
+      "delete": {
+        "summary": "Purge key-value storage bucket",
+        "description": "Deletes all key-value pairs in the specified bucket",
+        "operationId": "purgeKVBucket",
+        "tags": [
+          "KV Buckets"
+        ],
+        "parameters": [
+          {
+            "name": "bucket",
+            "in": "path",
+            "required": true,
+            "description": "Name of the key-value bucket to purge",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Key-value bucket purged successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Key-value bucket purged successfully"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error404"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500"
+          }
+        }
+      }
+    },
     "/storage/kv/{bucket}/entries": {
       "parameters": [
         {
@@ -2512,6 +2560,54 @@
         }
       }
     },
+    "/storage/obj/{bucket}/purge": {
+      "delete": {
+        "summary": "Purge object storage bucket",
+        "description": "Deletes all objects in the specified bucket",
+        "operationId": "purgeObjectBucket",
+        "tags": [
+          "Object Store Buckets"
+        ],
+        "parameters": [
+          {
+            "name": "bucket",
+            "in": "path",
+            "required": true,
+            "description": "Name of the bucket to purge",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Bucket purged successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Bucket purged successfully"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error404"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500"
+          }
+        }
+      }
+    },
     "/storage/obj/{bucket}/entries": {
       "parameters": [
         {
@@ -3356,6 +3452,218 @@
           },
           "401": {
             "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Send message to stream",
+        "description": "Posts a new message to the specified stream",
+        "operationId": "sendStreamMessage",
+        "tags": [
+          "Streams"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "description": "Name of the stream",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "subject": {
+                    "type": "string",
+                    "description": "Message subject"
+                  },
+                  "data": {
+                    "type": "string",
+                    "description": "Message payload"
+                  },
+                  "headers": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "description": "Optional message headers"
+                  }
+                },
+                "required": [
+                  "data"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Message sent successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "sequence": {
+                      "type": "integer",
+                      "format": "int64",
+                      "description": "Sequence number of the message"
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "When the message was stored"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Stream not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/storage/streams/{stream}/purge": {
+      "delete": {
+        "summary": "Purge stream messages",
+        "description": "Purges messages from the specified stream based on the provided criteria",
+        "operationId": "purgeStream",
+        "tags": [
+          "Streams"
+        ],
+        "parameters": [
+          {
+            "name": "stream",
+            "in": "path",
+            "required": true,
+            "description": "Name of the stream to purge",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "stream"
+                ],
+                "properties": {
+                  "keep": {
+                    "type": "integer",
+                    "format": "int64",
+                    "minimum": 0,
+                    "description": "Number of messages to keep (purge all but the most recent N messages)"
+                  },
+                  "up_to_sequence": {
+                    "type": "integer",
+                    "format": "int64",
+                    "minimum": 0,
+                    "description": "Purge all messages up to and including this sequence number"
+                  },
+                  "subject": {
+                    "type": "string",
+                    "description": "Only purge messages with this subject (optional filter)"
+                  }
+                },
+                "example": {
+                  "stream": "my-stream",
+                  "keep": 100,
+                  "subject": "log.info"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Stream purged successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Stream purged successfully"
+                    },
+                    "purged_count": {
+                      "type": "integer",
+                      "description": "Number of messages that were purged"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Stream not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
             "content": {
               "application/json": {
                 "schema": {
