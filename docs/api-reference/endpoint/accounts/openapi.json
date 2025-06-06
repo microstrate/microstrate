@@ -814,6 +814,141 @@
     }
   ],
   "paths": {
+    "/accounts/oauth/login": {
+      "get": {
+        "summary": "Initiate OAuth login flow",
+        "description": "Generates OAuth URL for authentication with external providers (Auth0)",
+        "tags": [
+          "Authentication"
+        ],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.oauth-login",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "description": "Account identifier for the login request",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "connection",
+            "in": "query",
+            "required": false,
+            "description": "OAuth connection type (e.g., github, google)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OAuth URL generated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "oauth_url": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "URL to redirect user for OAuth authentication",
+                      "example": "https://domain.auth0.com/authorize?client_id=...&response_type=code&redirect_uri=...&state=..."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - missing required parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/oauth/callback": {
+      "get": {
+        "summary": "OAuth callback handler",
+        "description": "Handles OAuth callback from external authentication provider",
+        "tags": [
+          "Authentication"
+        ],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.get.oauth-callback",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "required": true,
+            "description": "Authorization code from OAuth provider",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "required": true,
+            "description": "State parameter to prevent CSRF attacks",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Authentication successful - typically redirects user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "Success response (implementation may vary based on authOrMFA function)"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters or authentication failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/accounts/info": {
       "get": {
         "summary": "Get account information",
@@ -2914,15 +3049,15 @@
       }
     },
     "/accounts/mesh-nodes": {
-      "post": {
-        "summary": "Create mesh nodes",
-        "description": "Creates new mesh nodes",
-        "operationId": "createMeshNodes",
+      "put": {
+        "summary": "Update mesh nodes",
+        "description": "Updates the number of mesh nodes and the available regions",
+        "operationId": "updateMeshNodes",
         "tags": [
           "Mesh Nodes"
         ],
         "x-resource-type": "service",
-        "x-resource": "microstrate.accounts.post.create-mesh-nodes",
+        "x-resource": "microstrate.accounts.put.update-mesh-nodes",
         "requestBody": {
           "required": true,
           "content": {
@@ -2930,24 +3065,27 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "mesh_nodes": {
+                  "num_nodes": {
+                    "type": "number",
+                    "description": "has to be an odd number - 1, 2 or 5"
+                  },
+                  "regions": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/MeshNodeCreate"
+                      "type": "string",
+                      "description": "Availability regions. The number of specified regions cannot exceed the number of regions"
                     }
                   }
                 },
                 "required": [
-                  "mesh_nodes"
+                  "num_nodes",
+                  "regions"
                 ]
               },
               "example": {
-                "mesh_nodes": [
-                  {
-                    "name": "Node 1",
-                    "provider": "aws",
-                    "region": "us-east-1"
-                  }
+                "num_nodes": 3,
+                "regions": [
+                  "eu"
                 ]
               }
             }
@@ -2979,167 +3117,6 @@
                       }
                     }
                   }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      },
-      "patch": {
-        "summary": "Update mesh nodes",
-        "description": "Updates existing mesh nodes",
-        "operationId": "updateMeshNodes",
-        "tags": [
-          "Mesh Nodes"
-        ],
-        "x-resource-type": "service",
-        "x-resource": "microstrate.accounts.patch.update-mesh-nodes",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "mesh_nodes": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/MeshNodeUpdate"
-                    }
-                  }
-                },
-                "required": [
-                  "mesh_nodes"
-                ]
-              },
-              "example": {
-                "mesh_nodes": [
-                  {
-                    "id": "node_123456",
-                    "name": "Updated Node 1",
-                    "provider": "aws",
-                    "region": "us-west-1"
-                  }
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Mesh nodes updated successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string"
-                    },
-                    "result": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "updated": {
-                            "$ref": "#/components/schemas/MeshNode"
-                          },
-                          "error": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete mesh nodes",
-        "description": "Deletes mesh nodes",
-        "operationId": "deleteMeshNodes",
-        "tags": [
-          "Mesh Nodes"
-        ],
-        "x-resource-type": "service",
-        "x-resource": "microstrate.accounts.delete.mesh-nodes",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "node_ids": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    },
-                    "description": "IDs of nodes to delete"
-                  }
-                },
-                "required": [
-                  "node_ids"
-                ]
-              },
-              "example": {
-                "node_ids": [
-                  "node_123456"
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Mesh nodes deleted successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SuccessResponse"
                 }
               }
             }
@@ -4256,6 +4233,57 @@
         }
       }
     },
+    "/accounts/resend-confirmation": {
+      "post": {
+        "summary": "Resend email confirmation",
+        "description": "Resends email confirmation link to user. Always returns success for security reasons.",
+        "tags": [
+          "Account Management"
+        ],
+        "security": [],
+        "x-resource-type": "service",
+        "x-resource": "microstrate.accounts.post.resend-confirmation",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "email"
+                ],
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "Email address to resend confirmation to",
+                    "example": "user@example.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Confirmation email sent (always returns success)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Please check your inbox. If a root account is associated with this email and remains unconfirmed, a reconfirmation message should have been sent."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/accounts/submit-contact-form": {
       "post": {
         "summary": "Submit contact form",
@@ -4539,7 +4567,7 @@
       }
     },
     "/accounts/payment/checkout-url": {
-      "get": {
+      "post": {
         "summary": "Get checkout URL",
         "description": "Generates a Stripe checkout URL for subscription",
         "operationId": "getCheckoutUrl",
@@ -4547,7 +4575,7 @@
           "Payment"
         ],
         "x-resource-type": "service",
-        "x-resource": "microstrate.accounts.get.payment.checkout-url",
+        "x-resource": "microstrate.accounts.post.payment.checkout-url",
         "requestBody": {
           "required": true,
           "content": {
