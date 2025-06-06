@@ -2020,6 +2020,16 @@
             },
             "description": "Connection identifier",
             "example": "team-workspace"
+          },
+          {
+            "name": "scopes",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "A list of comma-separated scopes - url-encoded",
+            "example": "write%2Cadmin.apps%3Aread"
           }
         ],
         "responses": {
