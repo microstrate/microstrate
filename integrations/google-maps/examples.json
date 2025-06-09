@@ -1,322 +1,322 @@
 {
-    "post_geolocation_v1_geolocate": {
-      "Basic Example": {
-        "url": "/geolocation/v1/geolocate",
-        "method": "post",
-        "data": {
-          "considerIp": "false",
-          "wifiAccessPoints": [
-            {
-              "macAddress": "84:d4:7e:09:a5:f1",
-              "signalStrength": -43,
-              "signalToNoiseRatio": 0
-            },
-            {
-              "macAddress": "44:48:c1:a6:f3:d0",
-              "signalStrength": -55,
-              "signalToNoiseRatio": 0
-            }
-          ]
-        },
-        "headers": {
-          "Content-Type": "application/json"
-        },
-        "baseURL": "https://www.googleapis.com"
-      }
-    },
-    "get_maps_api_directions_json": {
-      "Basic Example": {
-        "url": "/maps/api/directions/json",
-        "method": "get",
-        "query": {
-          "arrival_time": "<number>",
-          "departure_time": "<number>",
-          "alternatives": "<boolean>",
-          "avoid": "highways",
-          "destination": "Victoria, BC",
-          "origin": "Vancouver, BC",
-          "units": "metric",
-          "waypoints": "MA|Lexington,MA",
-          "language": "en",
-          "mode": "driving",
-          "region": "en",
-          "traffic_model": "pessimistic",
-          "transit_mode": "train|tram|subway",
-          "transit_routing_preference": "less_walking"
-        },
-        "baseURL": "https://www.googleapis.com"
-      }
-    },
-    "get_maps_api_elevation_json": {
-      "Basic Example": {
-        "url": "/maps/api/elevation/json",
-        "method": "get",
-        "query": {
-          "locations": [
-            "35,-100",
-            "40,-110"
-          ],
-          "path": [
-            "35,-110",
-            "33,-110",
-            "31,-110"
-          ],
-          "samples": 10
-        },
-        "baseURL": "https://www.googleapis.com"
-      }
-    },
-    "get_maps_api_geocode_json": {
-      "Basic Example": {
-        "url": "/maps/api/geocode/json",
-        "method": "get",
-        "query": {
-          "address": "1600 Amphitheatre+Parkway, Mountain View, CA",
-          "bounds": [
-            "35,-100",
-            "40,-110"
-          ],
-          "components": [
-            "street_number:1600",
-            "route:Amphitheatre+Parkway",
-            "locality:Mountain+View",
-            "administrative_area_level_1:CA",
-            "country:US"
-          ],
-          "latlng": "40,-110",
-          "location_type": "<array>",
-          "place_id": "ChIJN1t_tDeuEmsRUsoyG83frY4",
-          "result_type": "<array>",
-          "language": "en",
-          "region": "en"
-        },
-        "baseURL": "https://www.googleapis.com"
-      }
-    },
-    "get_maps_api_timezone_json": {
-      "Basic Example": {
-        "url": "/maps/api/timezone/json",
-        "method": "get",
-        "query": {
-          "language": "en",
-          "location": "39.6034810,-119.6822510",
-          "timestamp": 1331161200
-        },
-        "baseURL": "https://www.googleapis.com"
-      }
-    },
-    "get_v1_snaptoroads": {
-      "Basic Example": {
-        "url": "/v1/snaptoroads",
-        "method": "get",
-        "query": {
-          "path": [
-            "60.170880,24.942795",
-            "60.170879,24.942796",
-            "60.170877,24.942796"
-          ],
-          "interpolate": true
-        },
-        "baseURL": "https://www.googleapis.com"
-      }
-    },
-    "get_v1_nearestRoads": {
-      "Basic Example": {
-        "url": "/v1/nearestRoads",
-        "method": "get",
-        "query": {
-          "points": [
-            "60.170880,24.942795",
-            "60.170879,24.942796",
-            "60.170877,24.942796"
-          ]
-        },
-        "baseURL": "https://www.googleapis.com"
-      }
-    },
-    "get_maps_api_distancematrix_json": {
-      "Basic Example": {
-        "url": "/maps/api/distancematrix/json",
-        "method": "get",
-        "query": {
-          "arrival_time": "<number>",
-          "departure_time": "<number>",
-          "avoid": "highways",
-          "destinations": [
-            "San Francisco",
-            "Victoria BC"
-          ],
-          "origins": [
-            "Vancouver BC",
-            "Seattle"
-          ],
-          "units": "metric",
-          "language": "en",
-          "mode": "driving",
-          "region": "en",
-          "traffic_model": "pessimistic",
-          "transit_mode": "train|tram|subway",
-          "transit_routing_preference": "less_walking"
-        },
-        "baseURL": "https://www.googleapis.com"
-      }
-    },
-    "get_maps_api_place_details_json": {
-      "Basic Example": {
-        "url": "/maps/api/place/details/json",
-        "method": "get",
-        "query": {
-          "place_id": "ChIJN1t_tDeuEmsRUsoyG83frY4",
-          "fields": [
-            "formatted_address"
-          ],
-          "sessiontoken": "<string>",
-          "language": "en",
-          "region": "en",
-          "reviews_sort": "<string>",
-          "reviews_no_translations": "<boolean>"
-        },
-        "baseURL": "https://www.googleapis.com"
-      }
-    },
-    "get_maps_api_place_findplacefromtext_json": {
-      "Basic Example": {
-        "url": "/maps/api/place/findplacefromtext/json",
-        "method": "get",
-        "query": {
-          "fields": [
-            "formatted_address"
-          ],
-          "input": "Museum of Contemporary Art Australia",
-          "inputtype": "textquery",
-          "locationbias": "ipbias",
-          "language": "en"
-        },
-        "baseURL": "https://www.googleapis.com"
-      }
-    },
-    "get_maps_api_place_nearbysearch_json": {
-      "Basic Example": {
-        "url": "/maps/api/place/nearbysearch/json",
-        "method": "get",
-        "query": {
-          "keyword": "<string>",
-          "location": "40,-110",
-          "maxprice": 0,
-          "minprice": 0,
-          "name": "<string>",
-          "opennow": "<boolean>",
-          "pagetoken": "<string>",
-          "rankby": "prominence",
-          "radius": 1000,
-          "type": "<string>",
-          "language": "en"
-        },
-        "baseURL": "https://www.googleapis.com"
-      }
-    },
-    "get_maps_api_place_textsearch_json": {
-      "Basic Example": {
-        "url": "/maps/api/place/textsearch/json",
-        "method": "get",
-        "query": {
-          "location": "40,-110",
-          "maxprice": 0,
-          "minprice": 0,
-          "opennow": "<boolean>",
-          "pagetoken": "<string>",
-          "query": "restaurants in Sydney",
-          "radius": 1000,
-          "type": "<string>",
-          "language": "en",
-          "region": "en"
-        },
-        "baseURL": "https://www.googleapis.com"
-      }
-    },
-    "get_maps_api_place_photo": {
-      "Basic Example": {
-        "url": "/maps/api/place/photo",
-        "method": "get",
-        "query": {
-          "photo_reference": "<string>",
-          "maxheight": "<number>",
-          "maxwidth": "<number>"
-        },
-        "baseURL": "https://www.googleapis.com"
-      }
-    },
-    "get_maps_api_place_queryautocomplete_json": {
-      "Basic Example": {
-        "url": "/maps/api/place/queryautocomplete/json",
-        "method": "get",
-        "query": {
-          "input": "<string>",
-          "offset": 3,
-          "location": "40,-110",
-          "radius": 1000,
-          "language": "en"
-        },
-        "baseURL": "https://www.googleapis.com"
-      }
-    },
-    "get_maps_api_place_autocomplete_json": {
-      "Basic Example": {
-        "url": "/maps/api/place/autocomplete/json",
-        "method": "get",
-        "query": {
-          "input": "<string>",
-          "sessiontoken": "<string>",
-          "components": "country:us|country:pr",
-          "strictbounds": "<boolean>",
-          "offset": 3,
-          "origin": "40,-110",
-          "location": "40,-110",
-          "locationbias": "ipbias",
-          "locationrestriction": "circle:1000@37.781157,-122.398720",
-          "radius": 1000,
-          "types": "<string>",
-          "language": "en",
-          "region": "en"
-        },
-        "baseURL": "https://www.googleapis.com"
-      }
-    },
-    "get_maps_api_streetview": {
-      "Basic Example": {
-        "url": "/maps/api/streetview",
-        "method": "get",
-        "query": {
-          "fov": "<number>",
-          "heading": "<number>",
-          "location": "40,-110",
-          "pano": "<string>",
-          "pitch": "<number>",
-          "radius": "<number>",
-          "return_error_code": "<boolean>",
-          "signature": "<string>",
-          "size": "<string>",
-          "source": "default"
-        },
-        "baseURL": "https://www.googleapis.com"
-      }
-    },
-    "get_maps_api_streetview_metadata": {
-      "Basic Example": {
-        "url": "/maps/api/streetview/metadata",
-        "method": "get",
-        "query": {
-          "heading": "<number>",
-          "location": "40,-110",
-          "pano": "<string>",
-          "pitch": "<number>",
-          "radius": "<number>",
-          "return_error_code": "<boolean>",
-          "signature": "<string>",
-          "size": "<string>",
-          "source": "default"
-        },
-        "baseURL": "https://www.googleapis.com"
-      }
+  "post_geolocation_v1_geolocate": {
+    "Basic Example": {
+      "url": "/geolocation/v1/geolocate",
+      "method": "post",
+      "data": {
+        "considerIp": "false",
+        "wifiAccessPoints": [
+          {
+            "macAddress": "84:d4:7e:09:a5:f1",
+            "signalStrength": -43,
+            "signalToNoiseRatio": 0
+          },
+          {
+            "macAddress": "44:48:c1:a6:f3:d0",
+            "signalStrength": -55,
+            "signalToNoiseRatio": 0
+          }
+        ]
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://www.googleapis.com"
+    }
+  },
+  "get_maps_api_directions_json": {
+    "Basic Example": {
+      "url": "/maps/api/directions/json",
+      "method": "get",
+      "query": {
+        "arrival_time": "<number>",
+        "departure_time": "<number>",
+        "alternatives": "<boolean>",
+        "avoid": "highways",
+        "destination": "Victoria, BC",
+        "origin": "Vancouver, BC",
+        "units": "metric",
+        "waypoints": "MA|Lexington,MA",
+        "language": "en",
+        "mode": "driving",
+        "region": "en",
+        "traffic_model": "pessimistic",
+        "transit_mode": "train|tram|subway",
+        "transit_routing_preference": "less_walking"
+      },
+      "baseURL": "https://www.googleapis.com"
+    }
+  },
+  "get_maps_api_elevation_json": {
+    "Basic Example": {
+      "url": "/maps/api/elevation/json",
+      "method": "get",
+      "query": {
+        "locations": [
+          "35,-100",
+          "40,-110"
+        ],
+        "path": [
+          "35,-110",
+          "33,-110",
+          "31,-110"
+        ],
+        "samples": 10
+      },
+      "baseURL": "https://www.googleapis.com"
+    }
+  },
+  "get_maps_api_geocode_json": {
+    "Basic Example": {
+      "url": "/maps/api/geocode/json",
+      "method": "get",
+      "query": {
+        "address": "1600 Amphitheatre+Parkway, Mountain View, CA",
+        "bounds": [
+          "35,-100",
+          "40,-110"
+        ],
+        "components": [
+          "street_number:1600",
+          "route:Amphitheatre+Parkway",
+          "locality:Mountain+View",
+          "administrative_area_level_1:CA",
+          "country:US"
+        ],
+        "latlng": "40,-110",
+        "location_type": "<array>",
+        "place_id": "ChIJN1t_tDeuEmsRUsoyG83frY4",
+        "result_type": "<array>",
+        "language": "en",
+        "region": "en"
+      },
+      "baseURL": "https://www.googleapis.com"
+    }
+  },
+  "get_maps_api_timezone_json": {
+    "Basic Example": {
+      "url": "/maps/api/timezone/json",
+      "method": "get",
+      "query": {
+        "language": "en",
+        "location": "39.6034810,-119.6822510",
+        "timestamp": 1331161200
+      },
+      "baseURL": "https://www.googleapis.com"
+    }
+  },
+  "get_v1_snaptoroads": {
+    "Basic Example": {
+      "url": "/v1/snaptoroads",
+      "method": "get",
+      "query": {
+        "path": [
+          "60.170880,24.942795",
+          "60.170879,24.942796",
+          "60.170877,24.942796"
+        ],
+        "interpolate": true
+      },
+      "baseURL": "https://www.googleapis.com"
+    }
+  },
+  "get_v1_nearestRoads": {
+    "Basic Example": {
+      "url": "/v1/nearestRoads",
+      "method": "get",
+      "query": {
+        "points": [
+          "60.170880,24.942795",
+          "60.170879,24.942796",
+          "60.170877,24.942796"
+        ]
+      },
+      "baseURL": "https://www.googleapis.com"
+    }
+  },
+  "get_maps_api_distancematrix_json": {
+    "Basic Example": {
+      "url": "/maps/api/distancematrix/json",
+      "method": "get",
+      "query": {
+        "arrival_time": "<number>",
+        "departure_time": "<number>",
+        "avoid": "highways",
+        "destinations": [
+          "San Francisco",
+          "Victoria BC"
+        ],
+        "origins": [
+          "Vancouver BC",
+          "Seattle"
+        ],
+        "units": "metric",
+        "language": "en",
+        "mode": "driving",
+        "region": "en",
+        "traffic_model": "pessimistic",
+        "transit_mode": "train|tram|subway",
+        "transit_routing_preference": "less_walking"
+      },
+      "baseURL": "https://www.googleapis.com"
+    }
+  },
+  "get_maps_api_place_details_json": {
+    "Basic Example": {
+      "url": "/maps/api/place/details/json",
+      "method": "get",
+      "query": {
+        "place_id": "ChIJN1t_tDeuEmsRUsoyG83frY4",
+        "fields": [
+          "formatted_address"
+        ],
+        "sessiontoken": "<string>",
+        "language": "en",
+        "region": "en",
+        "reviews_sort": "<string>",
+        "reviews_no_translations": "<boolean>"
+      },
+      "baseURL": "https://www.googleapis.com"
+    }
+  },
+  "get_maps_api_place_findplacefromtext_json": {
+    "Basic Example": {
+      "url": "/maps/api/place/findplacefromtext/json",
+      "method": "get",
+      "query": {
+        "fields": [
+          "formatted_address"
+        ],
+        "input": "Museum of Contemporary Art Australia",
+        "inputtype": "textquery",
+        "locationbias": "ipbias",
+        "language": "en"
+      },
+      "baseURL": "https://www.googleapis.com"
+    }
+  },
+  "get_maps_api_place_nearbysearch_json": {
+    "Basic Example": {
+      "url": "/maps/api/place/nearbysearch/json",
+      "method": "get",
+      "query": {
+        "keyword": "<string>",
+        "location": "40,-110",
+        "maxprice": 0,
+        "minprice": 0,
+        "name": "<string>",
+        "opennow": "<boolean>",
+        "pagetoken": "<string>",
+        "rankby": "prominence",
+        "radius": 1000,
+        "type": "<string>",
+        "language": "en"
+      },
+      "baseURL": "https://www.googleapis.com"
+    }
+  },
+  "get_maps_api_place_textsearch_json": {
+    "Basic Example": {
+      "url": "/maps/api/place/textsearch/json",
+      "method": "get",
+      "query": {
+        "location": "40,-110",
+        "maxprice": 0,
+        "minprice": 0,
+        "opennow": "<boolean>",
+        "pagetoken": "<string>",
+        "query": "restaurants in Sydney",
+        "radius": 1000,
+        "type": "<string>",
+        "language": "en",
+        "region": "en"
+      },
+      "baseURL": "https://www.googleapis.com"
+    }
+  },
+  "get_maps_api_place_photo": {
+    "Basic Example": {
+      "url": "/maps/api/place/photo",
+      "method": "get",
+      "query": {
+        "photo_reference": "<string>",
+        "maxheight": "<number>",
+        "maxwidth": "<number>"
+      },
+      "baseURL": "https://www.googleapis.com"
+    }
+  },
+  "get_maps_api_place_queryautocomplete_json": {
+    "Basic Example": {
+      "url": "/maps/api/place/queryautocomplete/json",
+      "method": "get",
+      "query": {
+        "input": "<string>",
+        "offset": 3,
+        "location": "40,-110",
+        "radius": 1000,
+        "language": "en"
+      },
+      "baseURL": "https://www.googleapis.com"
+    }
+  },
+  "get_maps_api_place_autocomplete_json": {
+    "Basic Example": {
+      "url": "/maps/api/place/autocomplete/json",
+      "method": "get",
+      "query": {
+        "input": "<string>",
+        "sessiontoken": "<string>",
+        "components": "country:us|country:pr",
+        "strictbounds": "<boolean>",
+        "offset": 3,
+        "origin": "40,-110",
+        "location": "40,-110",
+        "locationbias": "ipbias",
+        "locationrestriction": "circle:1000@37.781157,-122.398720",
+        "radius": 1000,
+        "types": "<string>",
+        "language": "en",
+        "region": "en"
+      },
+      "baseURL": "https://www.googleapis.com"
+    }
+  },
+  "get_maps_api_streetview": {
+    "Basic Example": {
+      "url": "/maps/api/streetview",
+      "method": "get",
+      "query": {
+        "fov": "<number>",
+        "heading": "<number>",
+        "location": "40,-110",
+        "pano": "<string>",
+        "pitch": "<number>",
+        "radius": "<number>",
+        "return_error_code": "<boolean>",
+        "signature": "<string>",
+        "size": "<string>",
+        "source": "default"
+      },
+      "baseURL": "https://www.googleapis.com"
+    }
+  },
+  "get_maps_api_streetview_metadata": {
+    "Basic Example": {
+      "url": "/maps/api/streetview/metadata",
+      "method": "get",
+      "query": {
+        "heading": "<number>",
+        "location": "40,-110",
+        "pano": "<string>",
+        "pitch": "<number>",
+        "radius": "<number>",
+        "return_error_code": "<boolean>",
+        "signature": "<string>",
+        "size": "<string>",
+        "source": "default"
+      },
+      "baseURL": "https://www.googleapis.com"
     }
   }
+}

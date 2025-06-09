@@ -29,6 +29,9 @@
     "Basic Example": {
       "url": "/v1/customer/disputes/{id}",
       "method": "patch",
+      "path": {
+        "id": "<string>"
+      },
       "data": [
         {
           "op": "add",
@@ -47,6 +50,9 @@
     "Basic Example": {
       "url": "/v1/customer/disputes/{id}/provide-evidence",
       "method": "post",
+      "path": {
+        "id": "<string>"
+      },
       "data": {
         "evidence-file": "<binary>"
       },
@@ -60,6 +66,15 @@
     "Basic Example": {
       "url": "/v1/customer/disputes/{id}/appeal",
       "method": "post",
+      "path": {
+        "id": "<string>"
+      },
+      "data": {
+        "evidence-file": "<binary>"
+      },
+      "headers": {
+        "Content-Type": "multipart/form-data"
+      },
       "baseURL": "https://api-m.sandbox.paypal.com"
     }
   },
@@ -67,6 +82,9 @@
     "Basic Example": {
       "url": "/v1/customer/disputes/{id}/accept-claim",
       "method": "post",
+      "path": {
+        "id": "<string>"
+      },
       "data": {
         "accept-claim-document": "<binary>"
       },
@@ -80,6 +98,9 @@
     "Basic Example": {
       "url": "/v1/customer/disputes/{id}/adjudicate",
       "method": "post",
+      "path": {
+        "id": "<string>"
+      },
       "data": {
         "adjudication_outcome": "BUYER_FAVOR"
       },
@@ -93,6 +114,9 @@
     "Basic Example": {
       "url": "/v1/customer/disputes/{id}/require-evidence",
       "method": "post",
+      "path": {
+        "id": "<string>"
+      },
       "data": {
         "note": "Escalating to PayPal claim for resolution."
       },
@@ -106,6 +130,9 @@
     "Basic Example": {
       "url": "/v1/customer/disputes/{id}/escalate",
       "method": "post",
+      "path": {
+        "id": "<string>"
+      },
       "data": {
         "action": "BUYER_EVIDENCE"
       },
@@ -119,6 +146,9 @@
     "Basic Example": {
       "url": "/v1/customer/disputes/{id}/send-message",
       "method": "post",
+      "path": {
+        "id": "<string>"
+      },
       "data": {
         "message_document": "<binary>"
       },
@@ -132,6 +162,9 @@
     "Basic Example": {
       "url": "/v1/customer/disputes/{id}/make-offer",
       "method": "post",
+      "path": {
+        "id": "<string>"
+      },
       "data": {
         "note": "Offer refund with replacement item.",
         "offer_amount": {
@@ -150,6 +183,9 @@
     "Basic Example": {
       "url": "/v1/customer/disputes/{id}/accept-offer",
       "method": "post",
+      "path": {
+        "id": "<string>"
+      },
       "data": {
         "note": "I am ok with the refund offered."
       },
@@ -163,6 +199,9 @@
     "Basic Example": {
       "url": "/v1/customer/disputes/{id}/deny-offer",
       "method": "post",
+      "path": {
+        "id": "<string>"
+      },
       "data": {
         "note": "refund offer is very low."
       },
@@ -176,6 +215,9 @@
     "Basic Example": {
       "url": "/v1/customer/disputes/{id}/acknowledge-return-item",
       "method": "post",
+      "path": {
+        "id": "<string>"
+      },
       "data": {
         "acknowledgement_document": "<binary>"
       },
@@ -189,6 +231,9 @@
     "Basic Example": {
       "url": "/v1/customer/disputes/{id}/provide-supporting-info",
       "method": "post",
+      "path": {
+        "id": "<string>"
+      },
       "data": {
         "supporting document": "<binary>"
       },

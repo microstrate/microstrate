@@ -11,6 +11,7 @@
         "tags": [
           "Inboxes"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Airparser-API/get_inboxes/input.schema.json",
@@ -80,6 +81,7 @@
         "tags": [
           "Inboxes"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Airparser-API/delete_inboxes__inbox_id_/input.schema.json",
@@ -157,6 +159,7 @@
         "tags": [
           "Documents"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Airparser-API/post_inboxes__inbox_id__upload/input.schema.json",
@@ -267,6 +270,7 @@
         "tags": [
           "Documents"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Airparser-API/get_inboxes__inbox_id__docs/input.schema.json",
@@ -450,6 +454,7 @@
         "tags": [
           "Documents"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Airparser-API/get_docs__document_id__extended/input.schema.json",
@@ -548,6 +553,7 @@
         "tags": [
           "Extraction Schema"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Airparser-API/post_inboxes__inbox_id__schema/input.schema.json",
@@ -885,6 +891,7 @@
         "tags": [
           "Extraction Schema"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Airparser-API/post_inboxes__inbox_id__schema-clone/input.schema.json",
@@ -977,10 +984,23 @@
         "https://api.airparser.com"
       ]
     },
+    "security": [
+      {
+        "ApiKeyAuth": []
+      }
+    ],
     "queryDesc": "Query parameters sent with the request",
     "paramDesc": "URL parameters sent with the request",
     "headerDesc": "HTTP headers sent when making the request",
     "dataDesc": "Data sent with the request",
     "schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "securitySchemes": {
+    "ApiKeyAuth": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-API-Key",
+      "description": "API key for authentication. You can find your API key in your Airparser account settings."
+    }
   }
 }

@@ -11,6 +11,11 @@
         "tags": [
           "Mail Send"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_mail_send/input.schema.json",
@@ -312,6 +317,11 @@
         "tags": [
           "Cancel Scheduled Sends"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_mail_batch/input.schema.json",
@@ -573,6 +583,11 @@
         "tags": [
           "Cancel Scheduled Sends"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_user_scheduled_sends/input.schema.json",
@@ -816,6 +831,11 @@
         "tags": [
           "Cancel Scheduled Sends"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_user_scheduled_sends/input.schema.json",
@@ -1058,6 +1078,11 @@
       "schema": {
         "tags": [
           "Cancel Scheduled Sends"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -1327,6 +1352,11 @@
         "tags": [
           "Cancel Scheduled Sends"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_user_scheduled_sends__batch_id_/input.schema.json",
@@ -1576,6 +1606,11 @@
       "schema": {
         "tags": [
           "Cancel Scheduled Sends"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -1827,6 +1862,11 @@
         "tags": [
           "Cancel Scheduled Sends"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/patch_user_scheduled_sends__batch_id_/input.schema.json",
@@ -2077,6 +2117,11 @@
         "tags": [
           "API Keys"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_api_keys/input.schema.json",
@@ -2324,6 +2369,11 @@
       "schema": {
         "tags": [
           "API Keys"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -2607,6 +2657,11 @@
       "schema": {
         "tags": [
           "API Keys"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -2940,6 +2995,11 @@
         "tags": [
           "API Keys"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_api_keys__api_key_id_/input.schema.json",
@@ -3208,6 +3268,11 @@
       "schema": {
         "tags": [
           "API Keys"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -3498,6 +3563,11 @@
         "tags": [
           "API Keys"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/put_api_keys__api_key_id_/input.schema.json",
@@ -3767,6 +3837,11 @@
         "tags": [
           "API Key Permissions"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_scopes/input.schema.json",
@@ -3985,6 +4060,11 @@
       "schema": {
         "tags": [
           "Settings - Enforced TLS"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -4222,6 +4302,11 @@
         "tags": [
           "Settings - Enforced TLS"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/patch_user_settings_enforced_tls/input.schema.json",
@@ -4457,6 +4542,11 @@
       "schema": {
         "tags": [
           "IP Access Management"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -4729,6 +4819,11 @@
         "tags": [
           "IP Access Management"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_access_settings_whitelist/input.schema.json",
@@ -5000,6 +5095,11 @@
         "tags": [
           "IP Access Management"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_access_settings_whitelist/input.schema.json",
@@ -5221,6 +5321,11 @@
       "schema": {
         "tags": [
           "IP Access Management"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -5494,6 +5599,11 @@
         "tags": [
           "IP Access Management"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_access_settings_whitelist__rule_id_/input.schema.json",
@@ -5619,6 +5729,11 @@
       "schema": {
         "tags": [
           "IP Access Management"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -6562,6 +6677,11 @@
         "tags": [
           "Settings - Mail"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_mail_settings/input.schema.json",
@@ -6855,6 +6975,11 @@
         "tags": [
           "Settings - Mail"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_mail_settings_address_whitelist/input.schema.json",
@@ -7123,6 +7248,11 @@
       "schema": {
         "tags": [
           "Settings - Mail"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -7393,6 +7523,11 @@
         "tags": [
           "Settings - Mail"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_mail_settings_footer/input.schema.json",
@@ -7660,6 +7795,11 @@
       "schema": {
         "tags": [
           "Settings - Mail"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -7929,6 +8069,11 @@
         "tags": [
           "Settings - Mail"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_mail_settings_forward_spam/input.schema.json",
@@ -8191,6 +8336,11 @@
       "schema": {
         "tags": [
           "Settings - Mail"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -8455,6 +8605,11 @@
         "tags": [
           "Settings - Mail"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_mail_settings_template/input.schema.json",
@@ -8718,6 +8873,11 @@
         "tags": [
           "Settings - Mail"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/patch_mail_settings_template/input.schema.json",
@@ -8979,6 +9139,11 @@
       "schema": {
         "tags": [
           "Settings - Mail"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -9254,6 +9419,11 @@
         "tags": [
           "Settings - Mail"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/patch_mail_settings_bounce_purge/input.schema.json",
@@ -9528,6 +9698,11 @@
         "tags": [
           "Settings - Mail"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_mail_settings_forward_bounce/input.schema.json",
@@ -9793,6 +9968,11 @@
       "schema": {
         "tags": [
           "Settings - Mail"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -10060,6 +10240,11 @@
         "tags": [
           "Settings - Partner"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_partner_settings_new_relic/input.schema.json",
@@ -10147,6 +10332,11 @@
         "tags": [
           "Settings - Partner"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/patch_partner_settings_new_relic/input.schema.json",
@@ -10233,6 +10423,11 @@
       "schema": {
         "tags": [
           "Settings - Partner"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -10342,6 +10537,11 @@
       "schema": {
         "tags": [
           "Teammates"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -10491,6 +10691,11 @@
         "tags": [
           "Teammates"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_teammates/input.schema.json",
@@ -10598,6 +10803,11 @@
       "schema": {
         "tags": [
           "Teammates"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -10717,6 +10927,11 @@
         "tags": [
           "Teammates"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_scopes_requests/input.schema.json",
@@ -10782,6 +10997,11 @@
       "schema": {
         "tags": [
           "Teammates"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -10883,6 +11103,11 @@
       "schema": {
         "tags": [
           "Teammates"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -11028,6 +11253,11 @@
         "tags": [
           "Teammates"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_teammates__username_/input.schema.json",
@@ -11140,6 +11370,11 @@
       "schema": {
         "tags": [
           "Teammates"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -11329,6 +11564,11 @@
         "tags": [
           "Teammates"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/patch_scopes_requests__request_id__approve/input.schema.json",
@@ -11427,6 +11667,11 @@
         "tags": [
           "Teammates"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_scopes_requests__request_id_/input.schema.json",
@@ -11513,6 +11758,11 @@
       "schema": {
         "tags": [
           "Teammates"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -11606,6 +11856,11 @@
         "tags": [
           "Alerts"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_alerts/input.schema.json",
@@ -11670,6 +11925,11 @@
       "schema": {
         "tags": [
           "Alerts"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -11792,6 +12052,11 @@
         "tags": [
           "Alerts"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_alerts__alert_id_/input.schema.json",
@@ -11912,6 +12177,11 @@
         "tags": [
           "Alerts"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_alerts__alert_id_/input.schema.json",
@@ -11988,6 +12258,11 @@
       "schema": {
         "tags": [
           "Alerts"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -12105,6 +12380,11 @@
       "schema": {
         "tags": [
           "Users API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -12232,6 +12512,11 @@
       "schema": {
         "tags": [
           "Users API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -12406,6 +12691,11 @@
         "tags": [
           "Users API"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_user_account/input.schema.json",
@@ -12493,6 +12783,11 @@
         "tags": [
           "Users API"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_user_email/input.schema.json",
@@ -12571,6 +12866,11 @@
         "tags": [
           "Users API"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/put_user_email/input.schema.json",
@@ -12648,6 +12948,11 @@
       "schema": {
         "tags": [
           "Users API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -12731,6 +13036,11 @@
         "tags": [
           "Users API"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/put_user_username/input.schema.json",
@@ -12807,6 +13117,11 @@
       "schema": {
         "tags": [
           "Users API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -12915,6 +13230,11 @@
         "tags": [
           "Users API"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/put_user_password/input.schema.json",
@@ -12983,6 +13303,11 @@
       "schema": {
         "tags": [
           "Subusers API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -13099,6 +13424,11 @@
       "schema": {
         "tags": [
           "Subusers API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -13343,6 +13673,11 @@
         "tags": [
           "Subusers API"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_subusers__subuser_name_/input.schema.json",
@@ -13458,6 +13793,11 @@
       "schema": {
         "tags": [
           "Subusers API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -13665,6 +14005,11 @@
         "tags": [
           "Subusers API"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_subusers_reputations/input.schema.json",
@@ -13725,6 +14070,11 @@
       "schema": {
         "tags": [
           "Subusers API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -13850,6 +14200,11 @@
       "schema": {
         "tags": [
           "Subuser Monitor Settings"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -14032,6 +14387,11 @@
         "tags": [
           "Subuser Monitor Settings"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_subusers__subuser_name__monitor/input.schema.json",
@@ -14213,6 +14573,11 @@
         "tags": [
           "Subuser Monitor Settings"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_subusers__subuser_name__monitor/input.schema.json",
@@ -14374,6 +14739,11 @@
       "schema": {
         "tags": [
           "Subuser Monitor Settings"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -14555,6 +14925,11 @@
       "schema": {
         "tags": [
           "Subuser Statistics"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -14780,6 +15155,11 @@
         "tags": [
           "Subuser Statistics"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_subusers_stats_monthly/input.schema.json",
@@ -15000,6 +15380,11 @@
       "schema": {
         "tags": [
           "Subuser Statistics"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -15261,6 +15646,11 @@
         "tags": [
           "Subuser Statistics"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_subusers_stats/input.schema.json",
@@ -15518,6 +15908,11 @@
         "tags": [
           "Link branding"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_whitelabel_links/input.schema.json",
@@ -15584,6 +15979,11 @@
       "schema": {
         "tags": [
           "Link branding"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -15792,6 +16192,11 @@
         "tags": [
           "Link branding"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_whitelabel_links__id__validate/input.schema.json",
@@ -15971,6 +16376,11 @@
       "schema": {
         "tags": [
           "Link branding"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -16181,6 +16591,11 @@
       "schema": {
         "tags": [
           "Link branding"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -16397,6 +16812,11 @@
         "tags": [
           "Link branding"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_whitelabel_links__id_/input.schema.json",
@@ -16466,6 +16886,11 @@
       "schema": {
         "tags": [
           "Link branding"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -16682,6 +17107,11 @@
         "tags": [
           "Link branding"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_whitelabel_links_default/input.schema.json",
@@ -16894,6 +17324,11 @@
         "tags": [
           "Link branding"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_whitelabel_links_subuser/input.schema.json",
@@ -17104,6 +17539,11 @@
         "tags": [
           "Link branding"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_whitelabel_links_subuser/input.schema.json",
@@ -17169,6 +17609,11 @@
         "tags": [
           "IP Warmup"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_ips_warmup/input.schema.json",
@@ -17225,6 +17670,11 @@
       "schema": {
         "tags": [
           "IP Warmup"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -17306,6 +17756,11 @@
       "schema": {
         "tags": [
           "IP Warmup"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -17396,6 +17851,11 @@
         "tags": [
           "IP Warmup"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_ips_warmup__ip_address_/input.schema.json",
@@ -17485,6 +17945,11 @@
         "tags": [
           "Reverse DNS"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_whitelabel_ips/input.schema.json",
@@ -17559,6 +18024,11 @@
       "schema": {
         "tags": [
           "Reverse DNS"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -17746,6 +18216,11 @@
         "tags": [
           "Reverse DNS"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_whitelabel_ips__id__validate/input.schema.json",
@@ -17922,6 +18397,11 @@
       "schema": {
         "tags": [
           "Reverse DNS"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -18117,6 +18597,11 @@
         "tags": [
           "Reverse DNS"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_whitelabel_ips__id_/input.schema.json",
@@ -18186,6 +18671,11 @@
       "schema": {
         "tags": [
           "Email Address Validation"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -18373,6 +18863,11 @@
         "tags": [
           "Email CNAME records"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_whitelabel_dns_email/input.schema.json",
@@ -18449,6 +18944,11 @@
         "tags": [
           "IP Pools"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_ips_pools/input.schema.json",
@@ -18505,6 +19005,11 @@
       "schema": {
         "tags": [
           "IP Pools"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -18578,6 +19083,11 @@
       "schema": {
         "tags": [
           "IP Pools"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -18700,6 +19210,11 @@
         "tags": [
           "IP Pools"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_ips_pools__pool_name_/input.schema.json",
@@ -18808,6 +19323,11 @@
         "tags": [
           "IP Pools"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_ips_pools__pool_name_/input.schema.json",
@@ -18884,6 +19404,11 @@
       "schema": {
         "tags": [
           "IP Pools"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -18988,6 +19513,11 @@
         "tags": [
           "IP Pools"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_ips_pools__pool_name__ips__ip_/input.schema.json",
@@ -19070,6 +19600,11 @@
         "tags": [
           "IP Addresses"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_ips/input.schema.json",
@@ -19151,6 +19686,11 @@
       "schema": {
         "tags": [
           "IP Addresses"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -19299,6 +19839,11 @@
         "tags": [
           "IP Addresses"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_ips_remaining/input.schema.json",
@@ -19392,6 +19937,11 @@
         "tags": [
           "IP Addresses"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_ips_assigned/input.schema.json",
@@ -19448,6 +19998,11 @@
       "schema": {
         "tags": [
           "IP Addresses"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -19568,6 +20123,11 @@
         "tags": [
           "Domain Authentication"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_whitelabel_domains/input.schema.json",
@@ -19650,6 +20210,11 @@
       "schema": {
         "tags": [
           "Domain Authentication"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -19913,6 +20478,11 @@
       "schema": {
         "tags": [
           "Domain Authentication"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -20184,6 +20754,11 @@
         "tags": [
           "Domain Authentication"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_whitelabel_domains__domain_id_/input.schema.json",
@@ -20252,6 +20827,11 @@
       "schema": {
         "tags": [
           "Domain Authentication"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -20322,6 +20902,11 @@
         "tags": [
           "Domain Authentication"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_whitelabel_domains_default/input.schema.json",
@@ -20388,6 +20973,11 @@
       "schema": {
         "tags": [
           "Domain Authentication"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -20649,6 +21239,11 @@
       "schema": {
         "tags": [
           "Domain Authentication"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -20916,6 +21511,11 @@
         "tags": [
           "Domain Authentication"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_whitelabel_domains__id__validate/input.schema.json",
@@ -21094,6 +21694,11 @@
       "schema": {
         "tags": [
           "Domain Authentication"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -21351,6 +21956,11 @@
         "tags": [
           "Domain Authentication"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_whitelabel_domains_subuser/input.schema.json",
@@ -21412,6 +22022,11 @@
       "schema": {
         "tags": [
           "Domain Authentication"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -21669,6 +22284,11 @@
         "tags": [
           "Sender Verification"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_verified_senders_domains/input.schema.json",
@@ -21911,6 +22531,11 @@
         "tags": [
           "Sender Verification"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_verified_senders_steps_completed/input.schema.json",
@@ -22139,6 +22764,11 @@
       "schema": {
         "tags": [
           "Sender Verification"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -22434,6 +23064,11 @@
       "schema": {
         "tags": [
           "Sender Verification"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -22743,6 +23378,11 @@
         "tags": [
           "Sender Verification"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_verified_senders_verify__token_/input.schema.json",
@@ -22944,6 +23584,11 @@
         "tags": [
           "Sender Verification"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_verified_senders__id_/input.schema.json",
@@ -23124,6 +23769,11 @@
       "schema": {
         "tags": [
           "Sender Verification"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -23406,6 +24056,11 @@
         "tags": [
           "Sender Verification"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_verified_senders_resend__id_/input.schema.json",
@@ -23635,6 +24290,11 @@
         "tags": [
           "Designs API"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_designs__id_/input.schema.json",
@@ -23763,6 +24423,11 @@
         "tags": [
           "Designs API"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_designs__id_/input.schema.json",
@@ -23881,6 +24546,11 @@
       "schema": {
         "tags": [
           "Designs API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -24010,6 +24680,11 @@
         "tags": [
           "Designs API"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/patch_designs__id_/input.schema.json",
@@ -24137,6 +24812,11 @@
       "schema": {
         "tags": [
           "Designs API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -24393,6 +25073,11 @@
         "tags": [
           "Designs API"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_designs/input.schema.json",
@@ -24481,6 +25166,11 @@
       "schema": {
         "tags": [
           "Designs API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -24610,6 +25300,11 @@
         "tags": [
           "Designs API"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_designs_pre-builts__id_/input.schema.json",
@@ -24737,6 +25432,11 @@
       "schema": {
         "tags": [
           "Designs API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -24992,6 +25692,11 @@
       "schema": {
         "tags": [
           "Contacts"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -25308,6 +26013,11 @@
         "tags": [
           "Contacts"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_marketing_contacts/input.schema.json",
@@ -25558,6 +26268,11 @@
       "schema": {
         "tags": [
           "Contacts"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -25812,6 +26527,11 @@
         "tags": [
           "Contacts"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_marketing_contacts_count/input.schema.json",
@@ -26057,6 +26777,11 @@
       "schema": {
         "tags": [
           "Contacts"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -26404,6 +27129,11 @@
         "tags": [
           "Contacts"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_marketing_contacts_exports/input.schema.json",
@@ -26685,6 +27415,11 @@
         "tags": [
           "Contacts"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_marketing_contacts__id_/input.schema.json",
@@ -26954,6 +27689,11 @@
       "schema": {
         "tags": [
           "Contacts"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -27309,6 +28049,11 @@
         "tags": [
           "Contacts"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/put_marketing_contacts_imports/input.schema.json",
@@ -27579,6 +28324,11 @@
       "schema": {
         "tags": [
           "Contacts"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -27883,6 +28633,11 @@
       "schema": {
         "tags": [
           "Contacts"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -28487,6 +29242,11 @@
         "tags": [
           "Contacts"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_marketing_contacts_search_emails/input.schema.json",
@@ -28860,6 +29620,11 @@
         "tags": [
           "Segmenting Contacts V2 - Beta"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_marketing_segments_2_0/input.schema.json",
@@ -29095,6 +29860,11 @@
       "schema": {
         "tags": [
           "Segmenting Contacts V2 - Beta"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -29452,6 +30222,11 @@
       "schema": {
         "tags": [
           "Segmenting Contacts V2 - Beta"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -29822,6 +30597,11 @@
         "tags": [
           "Segmenting Contacts V2 - Beta"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_marketing_segments_2_0__segment_id_/input.schema.json",
@@ -29950,6 +30730,11 @@
       "schema": {
         "tags": [
           "Segmenting Contacts V2 - Beta"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -30315,6 +31100,11 @@
         "tags": [
           "Senders"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_marketing_senders/input.schema.json",
@@ -30531,6 +31321,11 @@
         "tags": [
           "Lists"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_marketing_lists/input.schema.json",
@@ -30662,6 +31457,11 @@
         "tags": [
           "Lists"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_marketing_lists/input.schema.json",
@@ -30783,6 +31583,11 @@
         "tags": [
           "Lists"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_marketing_lists__id__contacts_count/input.schema.json",
@@ -30861,6 +31666,11 @@
         "tags": [
           "Lists"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_marketing_lists__id_/input.schema.json",
@@ -30929,6 +31739,11 @@
       "schema": {
         "tags": [
           "Lists"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -31027,6 +31842,11 @@
       "schema": {
         "tags": [
           "Lists"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -31156,6 +31976,11 @@
         "tags": [
           "Lists"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_marketing_lists__id__contacts/input.schema.json",
@@ -31263,6 +32088,11 @@
       "schema": {
         "tags": [
           "Custom Fields"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -31431,6 +32261,11 @@
         "tags": [
           "Custom Fields"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_marketing_field_definitions/input.schema.json",
@@ -31523,6 +32358,11 @@
       "schema": {
         "tags": [
           "Custom Fields"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -31623,6 +32463,11 @@
       "schema": {
         "tags": [
           "Custom Fields"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -31759,6 +32604,11 @@
         "tags": [
           "segmenting contacts",
           "Segmenting Contacts"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -32055,6 +32905,11 @@
           "segmenting contacts",
           "Segmenting Contacts"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_marketing_segments/input.schema.json",
@@ -32273,6 +33128,11 @@
           "segmenting contacts",
           "Segmenting Contacts"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_marketing_segments__segment_id_/input.schema.json",
@@ -32485,6 +33345,11 @@
         "tags": [
           "segmenting contacts",
           "Segmenting Contacts"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -32739,6 +33604,11 @@
           "segmenting contacts",
           "Segmenting Contacts"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/patch_marketing_segments__segment_id_/input.schema.json",
@@ -32945,6 +33815,11 @@
       "schema": {
         "tags": [
           "Segmenting Contacts"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -33218,6 +34093,11 @@
         "tags": [
           "Single Sends"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_marketing_singlesends/input.schema.json",
@@ -33463,6 +34343,11 @@
         "tags": [
           "Single Sends"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_marketing_singlesends/input.schema.json",
@@ -33568,6 +34453,11 @@
       "schema": {
         "tags": [
           "Single Sends"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -33679,6 +34569,11 @@
       "schema": {
         "tags": [
           "Single Sends"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -33793,6 +34688,11 @@
         "tags": [
           "Single Sends"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_marketing_singlesends__id_/input.schema.json",
@@ -33906,6 +34806,11 @@
         "tags": [
           "Single Sends"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_marketing_singlesends__id_/input.schema.json",
@@ -34018,6 +34923,11 @@
       "schema": {
         "tags": [
           "Single Sends"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -34155,6 +35065,11 @@
       "schema": {
         "tags": [
           "Single Sends"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -34401,6 +35316,11 @@
         "tags": [
           "Single Sends"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_marketing_singlesends__id__schedule/input.schema.json",
@@ -34538,6 +35458,11 @@
         "tags": [
           "Single Sends"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/put_marketing_singlesends__id__schedule/input.schema.json",
@@ -34669,6 +35594,11 @@
         "tags": [
           "Single Sends"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_marketing_singlesends_categories/input.schema.json",
@@ -34766,6 +35696,11 @@
       "schema": {
         "tags": [
           "Send Test Email"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -34869,6 +35804,11 @@
       "schema": {
         "tags": [
           "Marketing Campaigns Stats"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -35105,6 +36045,11 @@
       "schema": {
         "tags": [
           "Marketing Campaigns Stats"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -35369,6 +36314,11 @@
         "tags": [
           "Marketing Campaigns Stats"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_marketing_stats_singlesends/input.schema.json",
@@ -35616,6 +36566,11 @@
       "schema": {
         "tags": [
           "Marketing Campaigns Stats"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -35888,6 +36843,11 @@
         "tags": [
           "Marketing Campaigns Stats"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_marketing_stats_automations__id__links/input.schema.json",
@@ -36136,6 +37096,11 @@
         "tags": [
           "Marketing Campaigns Stats"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_marketing_stats_singlesends__id__links/input.schema.json",
@@ -36349,6 +37314,11 @@
         "tags": [
           "Marketing Campaigns Stats"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_marketing_stats_singlesends_export/input.schema.json",
@@ -36414,6 +37384,11 @@
       "schema": {
         "tags": [
           "Marketing Campaigns Stats"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -36526,6 +37501,11 @@
       "schema": {
         "tags": [
           "Sender Identities API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -36738,6 +37718,11 @@
         "tags": [
           "Sender Identities API"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_senders/input.schema.json",
@@ -36821,6 +37806,11 @@
       "schema": {
         "tags": [
           "Sender Identities API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -36913,6 +37903,11 @@
       "schema": {
         "tags": [
           "Sender Identities API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -37032,6 +38027,11 @@
       "schema": {
         "tags": [
           "Sender Identities API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -37167,6 +38167,11 @@
         "tags": [
           "Sender Identities API"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_senders__sender_id__resend_verification/input.schema.json",
@@ -37286,6 +38291,11 @@
         "tags": [
           "Contacts API - Lists"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_contactdb_lists/input.schema.json",
@@ -37390,6 +38400,11 @@
       "schema": {
         "tags": [
           "Contacts API - Lists"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -37574,6 +38589,11 @@
         "tags": [
           "Contacts API - Lists"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_contactdb_lists/input.schema.json",
@@ -37726,6 +38746,11 @@
       "schema": {
         "tags": [
           "Contacts API - Lists"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -37967,6 +38992,11 @@
         "tags": [
           "Contacts API - Lists"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_contactdb_lists__list_id_/input.schema.json",
@@ -38177,6 +39207,11 @@
         "tags": [
           "Contacts API - Lists"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/patch_contactdb_lists__list_id_/input.schema.json",
@@ -38363,6 +39398,11 @@
       "schema": {
         "tags": [
           "Contacts API - Lists"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -38633,6 +39673,11 @@
         "tags": [
           "Contacts API - Lists"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_contactdb_lists__list_id__recipients/input.schema.json",
@@ -38838,6 +39883,11 @@
       "schema": {
         "tags": [
           "Contacts API - Lists"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -39049,6 +40099,11 @@
       "schema": {
         "tags": [
           "Contacts API - Lists"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -39274,6 +40329,11 @@
         "tags": [
           "Contacts API - Recipients"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_contactdb_recipients/input.schema.json",
@@ -39407,6 +40467,11 @@
       "schema": {
         "tags": [
           "Contacts API - Recipients"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -39643,6 +40708,11 @@
         "tags": [
           "Contacts API - Recipients"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_contactdb_recipients/input.schema.json",
@@ -39795,6 +40865,11 @@
       "schema": {
         "tags": [
           "Contacts API - Recipients"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -40031,6 +41106,11 @@
         "tags": [
           "Contacts API - Recipients"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_contactdb_status/input.schema.json",
@@ -40121,6 +41201,11 @@
       "schema": {
         "tags": [
           "Contacts API - Recipients"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -40367,6 +41452,11 @@
         "tags": [
           "Contacts API - Recipients"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_contactdb_recipients__recipient_id_/input.schema.json",
@@ -40572,6 +41662,11 @@
       "schema": {
         "tags": [
           "Contacts API - Recipients"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -40817,6 +41912,11 @@
         "tags": [
           "Contacts API - Recipients"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_contactdb_recipients_billable_count/input.schema.json",
@@ -40943,6 +42043,11 @@
         "tags": [
           "Contacts API - Recipients"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_contactdb_recipients_count/input.schema.json",
@@ -41068,6 +42173,11 @@
       "schema": {
         "tags": [
           "Contacts API - Recipients"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -41363,6 +42473,11 @@
         "tags": [
           "Contacts API - Recipients"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_contactdb_recipients_search/input.schema.json",
@@ -41489,6 +42604,11 @@
       "schema": {
         "tags": [
           "Contacts API - Custom Fields"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -41649,6 +42769,11 @@
         "tags": [
           "Contacts API - Custom Fields"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_contactdb_custom_fields/input.schema.json",
@@ -41756,6 +42881,11 @@
       "schema": {
         "tags": [
           "Contacts API - Custom Fields"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -41962,6 +43092,11 @@
       "schema": {
         "tags": [
           "Contacts API - Custom Fields"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -42214,6 +43349,11 @@
         "tags": [
           "Contacts API - Custom Fields"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_contactdb_reserved_fields/input.schema.json",
@@ -42342,6 +43482,11 @@
       "schema": {
         "tags": [
           "Contacts API - Segments"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -42551,6 +43696,11 @@
         "tags": [
           "Contacts API - Segments"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_contactdb_segments/input.schema.json",
@@ -42703,6 +43853,11 @@
       "schema": {
         "tags": [
           "Contacts API - Segments"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -43005,6 +44160,11 @@
         "tags": [
           "Contacts API - Segments"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_contactdb_segments__segment_id_/input.schema.json",
@@ -43214,6 +44374,11 @@
       "schema": {
         "tags": [
           "Contacts API - Segments"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -43467,6 +44632,11 @@
       "schema": {
         "tags": [
           "Contacts API - Segments"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -43732,6 +44902,11 @@
         "tags": [
           "Categories"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_categories/input.schema.json",
@@ -43834,6 +45009,11 @@
       "schema": {
         "tags": [
           "Categories"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -44100,6 +45280,11 @@
         "tags": [
           "Categories"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_categories_stats/input.schema.json",
@@ -44190,6 +45375,11 @@
       "schema": {
         "tags": [
           "Campaigns API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -44415,6 +45605,11 @@
         "tags": [
           "Campaigns API"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_campaigns/input.schema.json",
@@ -44522,6 +45717,11 @@
       "schema": {
         "tags": [
           "Campaigns API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -44649,6 +45849,11 @@
         "tags": [
           "Campaigns API"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_campaigns__campaign_id_/input.schema.json",
@@ -44718,6 +45923,11 @@
       "schema": {
         "tags": [
           "Campaigns API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -44879,6 +46089,11 @@
       "schema": {
         "tags": [
           "Campaigns API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -45149,6 +46364,11 @@
         "tags": [
           "Campaigns API"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_campaigns__campaign_id__schedules/input.schema.json",
@@ -45278,6 +46498,11 @@
       "schema": {
         "tags": [
           "Campaigns API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -45557,6 +46782,11 @@
         "tags": [
           "Campaigns API"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_campaigns__campaign_id__schedules/input.schema.json",
@@ -45716,6 +46946,11 @@
       "schema": {
         "tags": [
           "Campaigns API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -45947,6 +47182,11 @@
         "tags": [
           "Campaigns API"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_campaigns__campaign_id__schedules_test/input.schema.json",
@@ -46120,6 +47360,11 @@
       "schema": {
         "tags": [
           "Transactional Templates"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -46359,6 +47604,11 @@
         "tags": [
           "Transactional Templates"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_templates/input.schema.json",
@@ -46420,6 +47670,11 @@
       "schema": {
         "tags": [
           "Transactional Templates"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -46490,6 +47745,11 @@
         "tags": [
           "Transactional Templates"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_templates__template_id_/input.schema.json",
@@ -46558,6 +47818,11 @@
       "schema": {
         "tags": [
           "Transactional Templates"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -46628,6 +47893,11 @@
         "tags": [
           "Transactional Templates"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/patch_templates__template_id_/input.schema.json",
@@ -46697,6 +47967,11 @@
         "tags": [
           "Transactional Templates Versions"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_templates__template_id__versions/input.schema.json",
@@ -46765,6 +48040,11 @@
       "schema": {
         "tags": [
           "Transactional Templates Versions"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -46841,6 +48121,11 @@
         "tags": [
           "Transactional Templates Versions"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_templates__template_id__versions__version_id_/input.schema.json",
@@ -46915,6 +48200,11 @@
       "schema": {
         "tags": [
           "Transactional Templates Versions"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -46991,6 +48281,11 @@
         "tags": [
           "Transactional Templates Versions"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/patch_templates__template_id__versions__version_id_/input.schema.json",
@@ -47065,6 +48360,11 @@
       "schema": {
         "tags": [
           "Webhooks"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -47212,6 +48512,11 @@
         "tags": [
           "Webhooks"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/patch_user_webhooks_event_settings/input.schema.json",
@@ -47357,6 +48662,11 @@
       "schema": {
         "tags": [
           "Webhooks"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -47613,6 +48923,11 @@
         "tags": [
           "Settings - Inbound Parse"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_user_webhooks_parse_settings/input.schema.json",
@@ -47859,6 +49174,11 @@
         "tags": [
           "Webhooks"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_user_webhooks_parse_stats/input.schema.json",
@@ -47945,6 +49265,11 @@
         "tags": [
           "Webhooks"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_user_webhooks_event_settings_signed/input.schema.json",
@@ -48021,6 +49346,11 @@
       "schema": {
         "tags": [
           "Webhooks"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -48180,6 +49510,11 @@
         "tags": [
           "Webhooks"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_user_webhooks_event_test/input.schema.json",
@@ -48242,6 +49577,11 @@
         "tags": [
           "Query",
           "Messages"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -48487,6 +49827,11 @@
         "tags": [
           "Query",
           "Messages"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -49023,6 +50368,11 @@
           "CSV (UI only)",
           "V3"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_messages_download/input.schema.json",
@@ -49164,6 +50514,11 @@
           "CSV (UI only)",
           "V3"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_messages_download__download_uuid_/input.schema.json",
@@ -49294,6 +50649,11 @@
         "tags": [
           "Settings - Tracking"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_tracking_settings/input.schema.json",
@@ -49389,6 +50749,11 @@
         "tags": [
           "Settings - Tracking"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_tracking_settings_click/input.schema.json",
@@ -49476,6 +50841,11 @@
         "tags": [
           "Settings - Tracking"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/patch_tracking_settings_click/input.schema.json",
@@ -49562,6 +50932,11 @@
       "schema": {
         "tags": [
           "Settings - Tracking"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -49666,6 +51041,11 @@
         "tags": [
           "Settings - Tracking"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/patch_tracking_settings_google_analytics/input.schema.json",
@@ -49769,6 +51149,11 @@
         "tags": [
           "Settings - Tracking"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_tracking_settings_open/input.schema.json",
@@ -49846,6 +51231,11 @@
         "tags": [
           "Settings - Tracking"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/patch_tracking_settings_open/input.schema.json",
@@ -49922,6 +51312,11 @@
       "schema": {
         "tags": [
           "Settings - Tracking"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -50019,6 +51414,11 @@
         "tags": [
           "Settings - Tracking"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/patch_tracking_settings_subscription/input.schema.json",
@@ -50115,6 +51515,11 @@
         "tags": [
           "Stats"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_stats/input.schema.json",
@@ -50200,6 +51605,11 @@
       "schema": {
         "tags": [
           "Stats"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -50291,6 +51701,11 @@
         "tags": [
           "Stats"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_devices_stats/input.schema.json",
@@ -50377,6 +51792,11 @@
         "tags": [
           "Stats"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_clients_stats/input.schema.json",
@@ -50454,6 +51874,11 @@
       "schema": {
         "tags": [
           "Stats"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -50540,6 +51965,11 @@
       "schema": {
         "tags": [
           "Stats"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -50631,6 +52061,11 @@
         "tags": [
           "Stats"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_browsers_stats/input.schema.json",
@@ -50720,6 +52155,11 @@
       "schema": {
         "tags": [
           "Bounces API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -50844,6 +52284,11 @@
         "tags": [
           "Bounces API"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_suppression_bounces/input.schema.json",
@@ -50952,6 +52397,11 @@
         "tags": [
           "Bounces API"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_suppression_bounces__email_/input.schema.json",
@@ -51020,6 +52470,11 @@
       "schema": {
         "tags": [
           "Bounces API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -51144,6 +52599,11 @@
         "tags": [
           "Blocks API"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_suppression_blocks/input.schema.json",
@@ -51223,6 +52683,11 @@
         "tags": [
           "Blocks API"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_suppression_blocks/input.schema.json",
@@ -51291,6 +52756,11 @@
       "schema": {
         "tags": [
           "Blocks API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -51361,6 +52831,11 @@
       "schema": {
         "tags": [
           "Blocks API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -51438,6 +52913,11 @@
       "schema": {
         "tags": [
           "Spam Reports API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -51518,6 +52998,11 @@
         "tags": [
           "Spam Reports API"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_suppression_spam_reports/input.schema.json",
@@ -51586,6 +53071,11 @@
       "schema": {
         "tags": [
           "Spam Reports API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -51656,6 +53146,11 @@
       "schema": {
         "tags": [
           "Spam Reports API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -51733,6 +53228,11 @@
       "schema": {
         "tags": [
           "Suppressions - Global Suppressions"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -51815,6 +53315,11 @@
         "tags": [
           "Suppressions - Global Suppressions"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_suppression_unsubscribes/input.schema.json",
@@ -51893,6 +53398,11 @@
       "schema": {
         "tags": [
           "Suppressions - Global Suppressions"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -51981,6 +53491,11 @@
         "tags": [
           "Suppressions - Global Suppressions"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_asm_suppressions_global__email_/input.schema.json",
@@ -52051,6 +53566,11 @@
         "tags": [
           "Suppressions - Unsubscribe Groups"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_asm_groups/input.schema.json",
@@ -52116,6 +53636,11 @@
       "schema": {
         "tags": [
           "Suppressions - Unsubscribe Groups"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -52209,6 +53734,11 @@
         "tags": [
           "Suppressions - Unsubscribe Groups"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_asm_groups__group_id_/input.schema.json",
@@ -52279,6 +53809,11 @@
         "tags": [
           "Suppressions - Unsubscribe Groups"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_asm_groups__group_id_/input.schema.json",
@@ -52348,6 +53883,11 @@
       "schema": {
         "tags": [
           "Suppressions - Unsubscribe Groups"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -52459,6 +53999,11 @@
         "tags": [
           "Suppressions - Suppressions"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_asm_groups__group_id__suppressions/input.schema.json",
@@ -52528,6 +54073,11 @@
       "schema": {
         "tags": [
           "Suppressions - Suppressions"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -52615,6 +54165,11 @@
         "tags": [
           "Suppressions - Suppressions"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/post_asm_groups__group_id__suppressions_search/input.schema.json",
@@ -52685,6 +54240,11 @@
         "tags": [
           "Suppressions - Suppressions"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/get_asm_suppressions/input.schema.json",
@@ -52746,6 +54306,11 @@
       "schema": {
         "tags": [
           "Suppressions - Suppressions"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -52864,6 +54429,11 @@
         "tags": [
           "Suppressions - Suppressions"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_asm_groups__group_id__suppressions__email_/input.schema.json",
@@ -52938,6 +54508,11 @@
       "schema": {
         "tags": [
           "Invalid Emails API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -53018,6 +54593,11 @@
         "tags": [
           "Invalid Emails API"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_suppression_invalid_emails/input.schema.json",
@@ -53086,6 +54666,11 @@
       "schema": {
         "tags": [
           "Invalid Emails API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -53156,6 +54741,11 @@
       "schema": {
         "tags": [
           "Invalid Emails API"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -53233,6 +54823,11 @@
       "schema": {
         "tags": [
           "Settings - Inbound Parse"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -53488,6 +55083,11 @@
         "tags": [
           "Settings - Inbound Parse"
         ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Email-Activity-(beta)/delete_user_webhooks_parse_settings__hostname_/input.schema.json",
@@ -53711,6 +55311,11 @@
       "schema": {
         "tags": [
           "Settings - Inbound Parse"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -53970,5 +55575,12 @@
     "headerDesc": "HTTP headers sent when making the request",
     "dataDesc": "Data sent with the request",
     "schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "securitySchemes": {
+    "Authorization": {
+      "name": "Authorization",
+      "type": "apiKey",
+      "in": "header"
+    }
   }
 }

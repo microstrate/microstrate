@@ -11,6 +11,7 @@
         "tags": [
           "Workflows"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Maestro-API/get_workflows/input.schema.json",
@@ -315,6 +316,7 @@
         "tags": [
           "Workflows"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Maestro-API/get_workflows__workflowId__trigger-requirements/input.schema.json",
@@ -531,6 +533,7 @@
         "tags": [
           "Workflows"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Maestro-API/post_workflows__workflowId__actions_trigger/input.schema.json",
@@ -834,10 +837,35 @@
         "https://api-d.docusign.com/v1/accounts/{accountId}"
       ]
     },
+    "security": [
+      {
+        "MaestroOAuth2": [
+          "adm_store_unified_repo_read",
+          "aow_manage",
+          "signature"
+        ]
+      }
+    ],
     "queryDesc": "Query parameters sent with the request",
     "paramDesc": "URL parameters sent with the request",
     "headerDesc": "HTTP headers sent when making the request",
     "dataDesc": "Data sent with the request",
     "schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "securitySchemes": {
+    "MaestroOAuth2": {
+      "type": "oauth2",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://account-d.docusign.com/oauth/auth",
+          "tokenUrl": "https://account-d.docusign.com/oauth/token",
+          "scopes": {
+            "adm_store_unified_repo_read": "Allows read access to the unified repository.",
+            "aow_manage": "Allows management of advanced workflow operations.",
+            "signature": "Allows requesting and managing signatures."
+          }
+        }
+      }
+    }
   }
 }

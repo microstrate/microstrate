@@ -11,6 +11,7 @@
         "tags": [
           "badges"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_groups__id__badges__badge_id_/input.schema.json",
@@ -112,6 +113,7 @@
         "tags": [
           "badges"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/delete_groups__id__badges__badge_id_/input.schema.json",
@@ -183,6 +185,7 @@
         "tags": [
           "badges"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/put_groups__id__badges__badge_id_/input.schema.json",
@@ -303,6 +306,7 @@
         "tags": [
           "badges"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_groups__id__badges/input.schema.json",
@@ -385,6 +389,7 @@
         "tags": [
           "badges"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/post_groups__id__badges/input.schema.json",
@@ -504,6 +509,7 @@
         "tags": [
           "badges"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_groups__id__badges_render/input.schema.json",
@@ -606,6 +612,7 @@
         "tags": [
           "access_requests"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/delete_groups__id__access_requests__user_id_/input.schema.json",
@@ -677,6 +684,7 @@
         "tags": [
           "access_requests"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/put_groups__id__access_requests__user_id__approve/input.schema.json",
@@ -822,6 +830,7 @@
         "tags": [
           "access_requests"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_groups__id__access_requests/input.schema.json",
@@ -960,6 +969,7 @@
         "tags": [
           "access_requests"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/post_groups__id__access_requests/input.schema.json",
@@ -1085,6 +1095,7 @@
         "tags": [
           "branches"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/delete_projects__id__repository_merged_branches/input.schema.json",
@@ -1150,6 +1161,7 @@
         "tags": [
           "branches"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_projects__id__repository_branches__branch_/input.schema.json",
@@ -1329,6 +1341,7 @@
         "tags": [
           "branches"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/delete_projects__id__repository_branches__branch_/input.schema.json",
@@ -1399,6 +1412,7 @@
         "tags": [
           "branches"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_projects__id__repository_branches/input.schema.json",
@@ -1498,6 +1512,7 @@
         "tags": [
           "branches"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/post_projects__id__repository_branches/input.schema.json",
@@ -1685,6 +1700,7 @@
         "tags": [
           "branches"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/put_projects__id__repository_branches__branch__unprotect/input.schema.json",
@@ -1864,6 +1880,7 @@
         "tags": [
           "branches"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/put_projects__id__repository_branches__branch__protect/input.schema.json",
@@ -2059,6 +2076,7 @@
         "tags": [
           "badges"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_projects__id__badges__badge_id_/input.schema.json",
@@ -2160,6 +2178,7 @@
         "tags": [
           "badges"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/delete_projects__id__badges__badge_id_/input.schema.json",
@@ -2231,6 +2250,7 @@
         "tags": [
           "badges"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/put_projects__id__badges__badge_id_/input.schema.json",
@@ -2351,6 +2371,7 @@
         "tags": [
           "badges"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_projects__id__badges/input.schema.json",
@@ -2433,6 +2454,7 @@
         "tags": [
           "badges"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/post_projects__id__badges/input.schema.json",
@@ -2552,6 +2574,7 @@
         "tags": [
           "badges"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_projects__id__badges_render/input.schema.json",
@@ -2654,6 +2677,7 @@
         "tags": [
           "access_requests"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/delete_projects__id__access_requests__user_id_/input.schema.json",
@@ -2725,6 +2749,7 @@
         "tags": [
           "access_requests"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/put_projects__id__access_requests__user_id__approve/input.schema.json",
@@ -2870,6 +2895,7 @@
         "tags": [
           "access_requests"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_projects__id__access_requests/input.schema.json",
@@ -3008,6 +3034,7 @@
         "tags": [
           "access_requests"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/post_projects__id__access_requests/input.schema.json",
@@ -3133,6 +3160,7 @@
         "tags": [
           "alert_management"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/delete_projects__id__alert_management_alerts__alert_iid__metric_images__metric_image_id_/input.schema.json",
@@ -3245,6 +3273,7 @@
         "tags": [
           "alert_management"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/put_projects__id__alert_management_alerts__alert_iid__metric_images__metric_image_id_/input.schema.json",
@@ -3373,6 +3402,7 @@
         "tags": [
           "alert_management"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_projects__id__alert_management_alerts__alert_iid__metric_images/input.schema.json",
@@ -3444,6 +3474,7 @@
         "tags": [
           "alert_management"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/post_projects__id__alert_management_alerts__alert_iid__metric_images/input.schema.json",
@@ -3574,6 +3605,7 @@
         "tags": [
           "alert_management"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/post_projects__id__alert_management_alerts__alert_iid__metric_images_authorize/input.schema.json",
@@ -3645,6 +3677,7 @@
         "tags": [
           "batched_background_migrations"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_admin_batched_background_migrations__id_/input.schema.json",
@@ -3759,6 +3792,7 @@
         "tags": [
           "batched_background_migrations"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_admin_batched_background_migrations/input.schema.json",
@@ -3829,6 +3863,7 @@
         "tags": [
           "batched_background_migrations"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/put_admin_batched_background_migrations__id__resume/input.schema.json",
@@ -3950,6 +3985,7 @@
         "tags": [
           "batched_background_migrations"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/put_admin_batched_background_migrations__id__pause/input.schema.json",
@@ -4071,6 +4107,7 @@
         "tags": [
           "ci_variables"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_admin_ci_variables__key_/input.schema.json",
@@ -4170,6 +4207,7 @@
         "tags": [
           "ci_variables"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/delete_admin_ci_variables__key_/input.schema.json",
@@ -4269,6 +4307,7 @@
         "tags": [
           "ci_variables"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/put_admin_ci_variables__key_/input.schema.json",
@@ -4400,6 +4439,7 @@
         "tags": [
           "ci_variables"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_admin_ci_variables/input.schema.json",
@@ -4504,6 +4544,7 @@
         "tags": [
           "ci_variables"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/post_admin_ci_variables/input.schema.json",
@@ -4635,6 +4676,7 @@
         "tags": [
           "admin"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_admin_databases__database_name__dictionary_tables__table_name_/input.schema.json",
@@ -4729,6 +4771,7 @@
         "tags": [
           "clusters"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_admin_clusters__cluster_id_/input.schema.json",
@@ -4968,6 +5011,7 @@
         "tags": [
           "clusters"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/delete_admin_clusters__cluster_id_/input.schema.json",
@@ -5207,6 +5251,7 @@
         "tags": [
           "clusters"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/put_admin_clusters__cluster_id_/input.schema.json",
@@ -5500,6 +5545,7 @@
         "tags": [
           "clusters"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/post_admin_clusters_add/input.schema.json",
@@ -5802,6 +5848,7 @@
         "tags": [
           "clusters"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_admin_clusters/input.schema.json",
@@ -5859,6 +5906,7 @@
         "tags": [
           "migrations"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/post_admin_migrations__timestamp__mark/input.schema.json",
@@ -5945,6 +5993,7 @@
         "tags": [
           "applications"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/delete_applications__id_/input.schema.json",
@@ -6011,6 +6060,7 @@
         "tags": [
           "applications"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_applications/input.schema.json",
@@ -6068,6 +6118,7 @@
         "tags": [
           "applications"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/post_applications/input.schema.json",
@@ -6187,6 +6238,7 @@
         "tags": [
           "avatar"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_avatar/input.schema.json",
@@ -6269,6 +6321,7 @@
         "tags": [
           "broadcast_messages"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_broadcast_messages__id_/input.schema.json",
@@ -6377,6 +6430,7 @@
         "tags": [
           "broadcast_messages"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/delete_broadcast_messages__id_/input.schema.json",
@@ -6485,6 +6539,7 @@
         "tags": [
           "broadcast_messages"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/put_broadcast_messages__id_/input.schema.json",
@@ -6654,6 +6709,7 @@
         "tags": [
           "broadcast_messages"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_broadcast_messages/input.schema.json",
@@ -6766,6 +6822,7 @@
         "tags": [
           "broadcast_messages"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/post_broadcast_messages/input.schema.json",
@@ -6929,6 +6986,7 @@
         "tags": [
           "bulk_imports"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_bulk_imports__import_id__entities__entity_id_/input.schema.json",
@@ -7128,6 +7186,7 @@
         "tags": [
           "bulk_imports"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_bulk_imports__import_id__entities/input.schema.json",
@@ -7218,6 +7277,7 @@
         "tags": [
           "bulk_imports"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_bulk_imports__import_id_/input.schema.json",
@@ -7323,6 +7383,7 @@
         "tags": [
           "bulk_imports"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_bulk_imports_entities/input.schema.json",
@@ -7413,6 +7474,7 @@
         "tags": [
           "bulk_imports"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_bulk_imports/input.schema.json",
@@ -7503,6 +7565,7 @@
         "tags": [
           "bulk_imports"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/post_bulk_imports/input.schema.json",
@@ -7668,6 +7731,7 @@
         "tags": [
           "application"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_application_appearance/input.schema.json",
@@ -7782,6 +7846,7 @@
         "tags": [
           "application"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/put_application_appearance/input.schema.json",
@@ -7972,6 +8037,7 @@
         "tags": [
           "plan_limits"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_application_plan_limits/input.schema.json",
@@ -8156,6 +8222,7 @@
         "tags": [
           "plan_limits"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/put_application_plan_limits/input.schema.json",
@@ -8444,6 +8511,7 @@
         "tags": [
           "metadata"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_metadata/input.schema.json",
@@ -8537,6 +8605,7 @@
         "tags": [
           "metadata"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_version/input.schema.json",
@@ -8630,6 +8699,7 @@
         "tags": [
           "jobs"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_projects__id__jobs/input.schema.json",
@@ -8703,6 +8773,7 @@
         "tags": [
           "jobs"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/get_projects__id__jobs__job_id_/input.schema.json",
@@ -8985,6 +9056,7 @@
         "tags": [
           "jobs"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/GitLab-API/post_projects__id__jobs__job_id__play/input.schema.json",
@@ -9062,10 +9134,22 @@
         "https://www.gitlab.com/api/v4"
       ]
     },
+    "security": [
+      {
+        "ApiKeyAuth": []
+      }
+    ],
     "queryDesc": "Query parameters sent with the request",
     "paramDesc": "URL parameters sent with the request",
     "headerDesc": "HTTP headers sent when making the request",
     "dataDesc": "Data sent with the request",
     "schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "securitySchemes": {
+    "ApiKeyAuth": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Private-Token"
+    }
   }
 }

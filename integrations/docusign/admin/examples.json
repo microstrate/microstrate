@@ -1,986 +1,997 @@
 {
-    "get_v2_organizations": {
-      "Basic Example": {
-        "url": "/v2/organizations",
-        "method": "get",
-        "query": {
-          "mode": "<string>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "post_v2_data_redaction_accounts__accountId__user": {
-      "Basic Example": {
-        "url": "/v2/data_redaction/accounts/{accountId}/user",
-        "method": "post",
-        "path": {
-          "accountId": "<string>"
-        },
-        "data": {
-          "user_id": "00000000-0000-0000-0000-000000000000"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "get_v2_organizations__organizationId__accounts__accountId__permissions": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/accounts/{accountId}/permissions",
-        "method": "get",
-        "path": {
-          "organizationId": "<string>",
-          "accountId": "<string>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "get_v2_organizations__organizationId__accounts__accountId__groups": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/accounts/{accountId}/groups",
-        "method": "get",
-        "path": {
-          "organizationId": "<string>",
-          "accountId": "<string>"
-        },
-        "query": {
-          "start": "<integer>",
-          "take": "<integer>",
-          "end": "<integer>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "get_v2_organizations__organizationId__exports_user_list": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/exports/user_list",
-        "method": "get",
-        "path": {
-          "organizationId": "<string>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "post_v2_organizations__organizationId__exports_user_list": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/exports/user_list",
-        "method": "post",
-        "path": {
-          "organizationId": "<string>"
-        },
-        "data": {
-          "type": "",
-          "accounts": [
-            {
-              "account_id": "00000000-0000-0000-0000-000000000000"
-            }
-          ],
-          "domains": [
-            {
-              "domain": ""
-            }
-          ]
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "get_v2_organizations__organizationId__exports_account_settings": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/exports/account_settings",
-        "method": "get",
-        "path": {
-          "organizationId": "<string>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "post_v2_organizations__organizationId__exports_account_settings": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/exports/account_settings",
-        "method": "post",
-        "path": {
-          "organizationId": "<string>"
-        },
-        "data": {
-          "accounts": [
-            {
-              "account_id": "00000000-0000-0000-0000-000000000000"
-            }
-          ]
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "get_v2_organizations__organizationId__exports_user_list__exportId_": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/exports/user_list/{exportId}",
-        "method": "get",
-        "path": {
-          "organizationId": "<string>",
-          "exportId": "<string>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "delete_v2_organizations__organizationId__exports_user_list__exportId_": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/exports/user_list/{exportId}",
-        "method": "delete",
-        "path": {
-          "organizationId": "<string>",
-          "exportId": "<string>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "get_v2_organizations__organizationId__exports_account_settings__exportId_": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/exports/account_settings/{exportId}",
-        "method": "get",
-        "path": {
-          "organizationId": "<string>",
-          "exportId": "<string>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "delete_v2_organizations__organizationId__exports_account_settings__exportId_": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/exports/account_settings/{exportId}",
-        "method": "delete",
-        "path": {
-          "organizationId": "<string>",
-          "exportId": "<string>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "get_v2_organizations__organizationId__imports_account_settings": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/imports/account_settings",
-        "method": "get",
-        "path": {
-          "organizationId": "<string>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "post_v2_organizations__organizationId__imports_account_settings": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/imports/account_settings",
-        "method": "post",
-        "path": {
-          "organizationId": "<string>"
-        },
-        "headers": {
-          "Content-Type": "multipart/form-data"
-        },
-        "data": {
-          "file.csv": "<file>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "get_v2_organizations__organizationId__imports_account_settings__importId_": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/imports/account_settings/{importId}",
-        "method": "get",
-        "path": {
-          "organizationId": "<string>",
-          "importId": "<string>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "delete_v2_organizations__organizationId__imports_account_settings__importId_": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/imports/account_settings/{importId}",
-        "method": "delete",
-        "path": {
-          "organizationId": "<string>",
-          "importId": "<string>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "post_v2_organizations__organizationId__imports_bulk_users_add": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/imports/bulk_users/add",
-        "method": "post",
-        "path": {
-          "organizationId": "<string>"
-        },
-        "headers": {
-          "Content-Type": "multipart/form-data"
-        },
-        "data": {
-          "file.csv": "<file>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "post_v2_organizations__organizationId__accounts__accountId__imports_bulk_users_add": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/accounts/{accountId}/imports/bulk_users/add",
-        "method": "post",
-        "path": {
-          "organizationId": "<string>",
-          "accountId": "<string>"
-        },
-        "headers": {
-          "Content-Type": "multipart/form-data"
-        },
-        "data": {
-          "file.csv": "<file>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "post_v2_organizations__organizationId__imports_bulk_users_update": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/imports/bulk_users/update",
-        "method": "post",
-        "path": {
-          "organizationId": "<string>"
-        },
-        "headers": {
-          "Content-Type": "multipart/form-data"
-        },
-        "data": {
-          "file.csv": "<file>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "post_v2_organizations__organizationId__accounts__accountId__imports_bulk_users_update": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/accounts/{accountId}/imports/bulk_users/update",
-        "method": "post",
-        "path": {
-          "organizationId": "<string>",
-          "accountId": "<string>"
-        },
-        "headers": {
-          "Content-Type": "multipart/form-data"
-        },
-        "data": {
-          "file.csv": "<file>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "post_v2_organizations__organizationId__imports_bulk_users_close": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/imports/bulk_users/close",
-        "method": "post",
-        "path": {
-          "organizationId": "<string>"
-        },
-        "headers": {
-          "Content-Type": "multipart/form-data"
-        },
-        "data": {
-          "file.csv": "<file>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "post_v2_organizations__organizationId__imports_bulk_users_close_external": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/imports/bulk_users/close_external",
-        "method": "post",
-        "path": {
-          "organizationId": "<string>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "get_v2_organizations__organizationId__imports_bulk_users": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/imports/bulk_users",
-        "method": "get",
-        "path": {
-          "organizationId": "<string>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "get_v2_organizations__organizationId__imports_bulk_users__importId_": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/imports/bulk_users/{importId}",
-        "method": "get",
-        "path": {
-          "organizationId": "<string>",
-          "importId": "<string>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "delete_v2_organizations__organizationId__imports_bulk_users__importId_": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/imports/bulk_users/{importId}",
-        "method": "delete",
-        "path": {
-          "organizationId": "<string>",
-          "importId": "<string>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "get_v2_organizations__organizationId__imports_bulk_users__importId__results_csv": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/imports/bulk_users/{importId}/results_csv",
-        "method": "get",
-        "path": {
-          "organizationId": "<string>",
-          "importId": "<string>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "get_v2_organizations__organizationId__identity_providers": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/identity_providers",
-        "method": "get",
-        "path": {
-          "organizationId": "<string>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "post_v2_data_redaction_organizations__organizationId__user": {
-      "Basic Example": {
-        "url": "/v2/data_redaction/organizations/{organizationId}/user",
-        "method": "post",
-        "path": {
-          "organizationId": "<string>"
-        },
-        "data": {
-          "user_id": "00000000-0000-0000-0000-000000000000",
-          "memberships": [
-            {
-              "account_id": "00000000-0000-0000-0000-000000000000"
-            }
-          ]
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "get_v2_organizations__organizationId__reserved_domains": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/reserved_domains",
-        "method": "get",
-        "path": {
-          "organizationId": "<string>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "post_v2_organizations__organizationId__users_profiles": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/users/profiles",
-        "method": "post",
-        "path": {
-          "organizationId": "<string>"
-        },
-        "data": {
-          "users": [
-            {
-              "id": "00000000-0000-0000-0000-000000000000",
-              "site_id": 0,
-              "user_name": "",
-              "first_name": "",
-              "last_name": "",
-              "email": "",
-              "default_account_id": "00000000-0000-0000-0000-000000000000",
-              "language_culture": "",
-              "selected_languages": "",
-              "federated_status": "",
-              "force_password_change": "<boolean>",
-              "memberships": [
-                {
-                  "account_id": "00000000-0000-0000-0000-000000000000",
-                  "permission_profile": {
-                    "id": 0,
-                    "name": ""
-                  },
-                  "groups": [
-                    {
-                      "id": 0,
-                      "name": "",
-                      "type": ""
-                    }
-                  ],
-                  "company_name": "",
-                  "job_title": "",
-                  "send_activation": "<boolean>",
-                  "access_code": ""
-                }
-              ],
-              "device_verification_enabled": "<boolean>"
-            }
-          ]
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "post_v2_organizations__organizationId__users_email_addresses": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/users/email_addresses",
-        "method": "post",
-        "path": {
-          "organizationId": "<string>"
-        },
-        "data": {
-          "users": [
-            {
-              "id": "00000000-0000-0000-0000-000000000000",
-              "site_id": 0,
-              "email": ""
-            }
-          ]
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "delete_v2_organizations__organizationId__users__userId__accounts": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/users/{userId}/accounts",
-        "method": "delete",
-        "path": {
-          "organizationId": "<string>",
-          "userId": "<string>"
-        },
-        "data": {
-          "accounts": [
-            {
-              "id": "00000000-0000-0000-0000-000000000000"
-            }
-          ]
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "get_v2_organizations__organizationId__users": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/users",
-        "method": "get",
-        "path": {
-          "organizationId": "<string>"
-        },
-        "query": {
-          "start": "<integer>",
-          "take": "<integer>",
-          "end": "<integer>",
-          "email": "<string>",
-          "email_user_name_like": "<string>",
-          "status": "<string>",
-          "membership_status": "<string>",
-          "account_id": "<string>",
-          "organization_reserved_domain_id": "<string>",
-          "last_modified_since": "<string>",
-          "include_ds_groups": "<boolean>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "post_v2_organizations__organizationId__users": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/users",
-        "method": "post",
-        "path": {
-          "organizationId": "<string>"
-        },
-        "data": {
-          "accounts": [
-            {
-              "id": "00000000-0000-0000-0000-000000000000",
-              "permission_profile": {
-                "id": 0,
-                "name": ""
-              },
-              "groups": [
-                {
+  "get_v2_organizations": {
+    "Basic Example": {
+      "url": "/v2/organizations",
+      "method": "get",
+      "query": {
+        "mode": "<string>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "post_v2_data_redaction_accounts__accountId__user": {
+    "Basic Example": {
+      "url": "/v2/data_redaction/accounts/{accountId}/user",
+      "method": "post",
+      "path": {
+        "accountId": "<string>"
+      },
+      "data": {
+        "user_id": "00000000-0000-0000-0000-000000000000"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "get_v2_organizations__organizationId__accounts__accountId__permissions": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/accounts/{accountId}/permissions",
+      "method": "get",
+      "path": {
+        "organizationId": "<string>",
+        "accountId": "<string>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "get_v2_organizations__organizationId__accounts__accountId__groups": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/accounts/{accountId}/groups",
+      "method": "get",
+      "path": {
+        "organizationId": "<string>",
+        "accountId": "<string>"
+      },
+      "query": {
+        "start": "<integer>",
+        "take": "<integer>",
+        "end": "<integer>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "get_v2_organizations__organizationId__exports_user_list": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/exports/user_list",
+      "method": "get",
+      "path": {
+        "organizationId": "<string>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "post_v2_organizations__organizationId__exports_user_list": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/exports/user_list",
+      "method": "post",
+      "path": {
+        "organizationId": "<string>"
+      },
+      "data": {
+        "type": "",
+        "accounts": [
+          {
+            "account_id": "00000000-0000-0000-0000-000000000000"
+          }
+        ],
+        "domains": [
+          {
+            "domain": ""
+          }
+        ]
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "get_v2_organizations__organizationId__exports_account_settings": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/exports/account_settings",
+      "method": "get",
+      "path": {
+        "organizationId": "<string>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "post_v2_organizations__organizationId__exports_account_settings": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/exports/account_settings",
+      "method": "post",
+      "path": {
+        "organizationId": "<string>"
+      },
+      "data": {
+        "accounts": [
+          {
+            "account_id": "00000000-0000-0000-0000-000000000000"
+          }
+        ]
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "get_v2_organizations__organizationId__exports_user_list__exportId_": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/exports/user_list/{exportId}",
+      "method": "get",
+      "path": {
+        "organizationId": "<string>",
+        "exportId": "<string>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "delete_v2_organizations__organizationId__exports_user_list__exportId_": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/exports/user_list/{exportId}",
+      "method": "delete",
+      "path": {
+        "organizationId": "<string>",
+        "exportId": "<string>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "get_v2_organizations__organizationId__exports_account_settings__exportId_": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/exports/account_settings/{exportId}",
+      "method": "get",
+      "path": {
+        "organizationId": "<string>",
+        "exportId": "<string>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "delete_v2_organizations__organizationId__exports_account_settings__exportId_": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/exports/account_settings/{exportId}",
+      "method": "delete",
+      "path": {
+        "organizationId": "<string>",
+        "exportId": "<string>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "get_v2_organizations__organizationId__imports_account_settings": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/imports/account_settings",
+      "method": "get",
+      "path": {
+        "organizationId": "<string>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "post_v2_organizations__organizationId__imports_account_settings": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/imports/account_settings",
+      "method": "post",
+      "path": {
+        "organizationId": "<string>"
+      },
+      "headers": {
+        "Content-Type": "multipart/form-data"
+      },
+      "data": {
+        "file.csv": "<file>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "get_v2_organizations__organizationId__imports_account_settings__importId_": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/imports/account_settings/{importId}",
+      "method": "get",
+      "path": {
+        "organizationId": "<string>",
+        "importId": "<string>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "delete_v2_organizations__organizationId__imports_account_settings__importId_": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/imports/account_settings/{importId}",
+      "method": "delete",
+      "path": {
+        "organizationId": "<string>",
+        "importId": "<string>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "post_v2_organizations__organizationId__imports_bulk_users_add": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/imports/bulk_users/add",
+      "method": "post",
+      "path": {
+        "organizationId": "<string>"
+      },
+      "headers": {
+        "Content-Type": "multipart/form-data"
+      },
+      "data": {
+        "file.csv": "<file>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "post_v2_organizations__organizationId__accounts__accountId__imports_bulk_users_add": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/accounts/{accountId}/imports/bulk_users/add",
+      "method": "post",
+      "path": {
+        "organizationId": "<string>",
+        "accountId": "<string>"
+      },
+      "headers": {
+        "Content-Type": "multipart/form-data"
+      },
+      "data": {
+        "file.csv": "<file>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "post_v2_organizations__organizationId__imports_bulk_users_update": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/imports/bulk_users/update",
+      "method": "post",
+      "path": {
+        "organizationId": "<string>"
+      },
+      "headers": {
+        "Content-Type": "multipart/form-data"
+      },
+      "data": {
+        "file.csv": "<file>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "post_v2_organizations__organizationId__accounts__accountId__imports_bulk_users_update": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/accounts/{accountId}/imports/bulk_users/update",
+      "method": "post",
+      "path": {
+        "organizationId": "<string>",
+        "accountId": "<string>"
+      },
+      "headers": {
+        "Content-Type": "multipart/form-data"
+      },
+      "data": {
+        "file.csv": "<file>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "post_v2_organizations__organizationId__imports_bulk_users_close": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/imports/bulk_users/close",
+      "method": "post",
+      "path": {
+        "organizationId": "<string>"
+      },
+      "headers": {
+        "Content-Type": "multipart/form-data"
+      },
+      "data": {
+        "file.csv": "<file>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "post_v2_organizations__organizationId__imports_bulk_users_close_external": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/imports/bulk_users/close_external",
+      "method": "post",
+      "path": {
+        "organizationId": "<string>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "get_v2_organizations__organizationId__imports_bulk_users": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/imports/bulk_users",
+      "method": "get",
+      "path": {
+        "organizationId": "<string>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "get_v2_organizations__organizationId__imports_bulk_users__importId_": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/imports/bulk_users/{importId}",
+      "method": "get",
+      "path": {
+        "organizationId": "<string>",
+        "importId": "<string>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "delete_v2_organizations__organizationId__imports_bulk_users__importId_": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/imports/bulk_users/{importId}",
+      "method": "delete",
+      "path": {
+        "organizationId": "<string>",
+        "importId": "<string>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "get_v2_organizations__organizationId__imports_bulk_users__importId__results_csv": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/imports/bulk_users/{importId}/results_csv",
+      "method": "get",
+      "path": {
+        "organizationId": "<string>",
+        "importId": "<string>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "get_v2_organizations__organizationId__identity_providers": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/identity_providers",
+      "method": "get",
+      "path": {
+        "organizationId": "<string>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "post_v2_data_redaction_organizations__organizationId__user": {
+    "Basic Example": {
+      "url": "/v2/data_redaction/organizations/{organizationId}/user",
+      "method": "post",
+      "path": {
+        "organizationId": "<string>"
+      },
+      "data": {
+        "user_id": "00000000-0000-0000-0000-000000000000",
+        "memberships": [
+          {
+            "account_id": "00000000-0000-0000-0000-000000000000"
+          }
+        ]
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "get_v2_organizations__organizationId__reserved_domains": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/reserved_domains",
+      "method": "get",
+      "path": {
+        "organizationId": "<string>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "post_v2_organizations__organizationId__users_profiles": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/users/profiles",
+      "method": "post",
+      "path": {
+        "organizationId": "<string>"
+      },
+      "data": {
+        "users": [
+          {
+            "id": "00000000-0000-0000-0000-000000000000",
+            "site_id": 0,
+            "user_name": "",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "default_account_id": "00000000-0000-0000-0000-000000000000",
+            "language_culture": "",
+            "selected_languages": "",
+            "federated_status": "",
+            "force_password_change": "<boolean>",
+            "memberships": [
+              {
+                "account_id": "00000000-0000-0000-0000-000000000000",
+                "permission_profile": {
                   "id": 0,
-                  "name": "",
-                  "type": ""
-                }
-              ],
-              "company_name": "",
-              "job_title": ""
-            }
-          ],
-          "email": "",
-          "user_name": "",
-          "first_name": "",
-          "last_name": "",
-          "default_account_id": "00000000-0000-0000-0000-000000000000",
-          "language_culture": "",
-          "selected_languages": "",
-          "access_code": "",
-          "federated_status": "",
-          "auto_activate_memberships": "<boolean>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "post_v2_organizations__organizationId__users__userId__memberships__membershipId_": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/users/{userId}/memberships/{membershipId}",
-        "method": "post",
-        "path": {
-          "organizationId": "<string>",
-          "userId": "<string>",
-          "membershipId": "<string>"
-        },
-        "data": {
-          "site_id": 0
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "get_v2_organizations__organizationId__users_profile": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/users/profile",
-        "method": "get",
-        "path": {
-          "organizationId": "<string>"
-        },
-        "query": {
-          "email": "<string>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "delete_v2_organizations__organizationId__users__userId__identities": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/users/{userId}/identities",
-        "method": "delete",
-        "path": {
-          "organizationId": "<string>",
-          "userId": "<string>"
-        },
-        "data": {
-          "identities": [
-            {
-              "id": "00000000-0000-0000-0000-000000000000"
-            }
-          ]
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "post_v2_organizations__organizationId__accounts__accountId__users": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/accounts/{accountId}/users",
-        "method": "post",
-        "path": {
-          "organizationId": "<string>",
-          "accountId": "<string>"
-        },
-        "data": {
-          "email": "",
-          "permission_profile": {
-            "id": 0,
-            "name": ""
-          },
-          "groups": [
-            {
+                  "name": ""
+                },
+                "groups": [
+                  {
+                    "id": 0,
+                    "name": "",
+                    "type": ""
+                  }
+                ],
+                "company_name": "",
+                "job_title": "",
+                "send_activation": "<boolean>",
+                "access_code": ""
+              }
+            ],
+            "device_verification_enabled": "<boolean>"
+          }
+        ]
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "post_v2_organizations__organizationId__users_email_addresses": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/users/email_addresses",
+      "method": "post",
+      "path": {
+        "organizationId": "<string>"
+      },
+      "data": {
+        "users": [
+          {
+            "id": "00000000-0000-0000-0000-000000000000",
+            "site_id": 0,
+            "email": ""
+          }
+        ]
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "delete_v2_organizations__organizationId__users__userId__accounts": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/users/{userId}/accounts",
+      "method": "delete",
+      "path": {
+        "organizationId": "<string>",
+        "userId": "<string>"
+      },
+      "data": {
+        "accounts": [
+          {
+            "id": "00000000-0000-0000-0000-000000000000"
+          }
+        ]
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "get_v2_organizations__organizationId__users": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/users",
+      "method": "get",
+      "path": {
+        "organizationId": "<string>"
+      },
+      "query": {
+        "start": "<integer>",
+        "take": "<integer>",
+        "end": "<integer>",
+        "email": "<string>",
+        "email_user_name_like": "<string>",
+        "status": "<string>",
+        "membership_status": "<string>",
+        "account_id": "<string>",
+        "organization_reserved_domain_id": "<string>",
+        "last_modified_since": "<string>",
+        "include_ds_groups": "<boolean>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "post_v2_organizations__organizationId__users": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/users",
+      "method": "post",
+      "path": {
+        "organizationId": "<string>"
+      },
+      "data": {
+        "accounts": [
+          {
+            "id": "00000000-0000-0000-0000-000000000000",
+            "permission_profile": {
               "id": 0,
-              "name": "",
-              "type": ""
-            }
-          ],
-          "user_name": "",
-          "first_name": "",
-          "last_name": "",
-          "default_account_id": "00000000-0000-0000-0000-000000000000",
-          "language_culture": "",
-          "selected_languages": "",
-          "access_code": "",
-          "federated_status": "",
-          "auto_activate_memberships": "<boolean>"
+              "name": ""
+            },
+            "groups": [
+              {
+                "id": 0,
+                "name": "",
+                "type": ""
+              }
+            ],
+            "company_name": "",
+            "job_title": ""
+          }
+        ],
+        "email": "",
+        "user_name": "",
+        "first_name": "",
+        "last_name": "",
+        "default_account_id": "00000000-0000-0000-0000-000000000000",
+        "language_culture": "",
+        "selected_languages": "",
+        "access_code": "",
+        "federated_status": "",
+        "auto_activate_memberships": "<boolean>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "post_v2_organizations__organizationId__users__userId__memberships__membershipId_": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/users/{userId}/memberships/{membershipId}",
+      "method": "post",
+      "path": {
+        "organizationId": "<string>",
+        "userId": "<string>",
+        "membershipId": "<string>"
+      },
+      "data": {
+        "site_id": 0
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "get_v2_organizations__organizationId__users_profile": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/users/profile",
+      "method": "get",
+      "path": {
+        "organizationId": "<string>"
+      },
+      "query": {
+        "email": "<string>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "delete_v2_organizations__organizationId__users__userId__identities": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/users/{userId}/identities",
+      "method": "delete",
+      "path": {
+        "organizationId": "<string>",
+        "userId": "<string>"
+      },
+      "data": {
+        "identities": [
+          {
+            "id": "00000000-0000-0000-0000-000000000000"
+          }
+        ]
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "post_v2_organizations__organizationId__accounts__accountId__users": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/accounts/{accountId}/users",
+      "method": "post",
+      "path": {
+        "organizationId": "<string>",
+        "accountId": "<string>"
+      },
+      "data": {
+        "email": "",
+        "permission_profile": {
+          "id": 0,
+          "name": ""
         },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "get_v2_1_organizations__organizationId__accounts__accountId__dsgroups": {
-      "Basic Example": {
-        "url": "/v2.1/organizations/{organizationId}/accounts/{accountId}/dsgroups",
-        "method": "get",
-        "path": {
-          "organizationId": "<string>",
-          "accountId": "<string>"
-        },
-        "query": {
-          "page": "<integer>",
-          "page_size": "<integer>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "post_v2_1_organizations__organizationId__accounts__accountId__dsgroups": {
-      "Basic Example": {
-        "url": "/v2.1/organizations/{organizationId}/accounts/{accountId}/dsgroups",
-        "method": "post",
-        "path": {
-          "organizationId": "<string>",
-          "accountId": "<string>"
-        },
-        "data": {
-          "group_name": "",
-          "description": ""
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "get_v2_1_organizations__organizationId__accounts__accountId__dsgroups__dsGroupId_": {
-      "Basic Example": {
-        "url": "/v2.1/organizations/{organizationId}/accounts/{accountId}/dsgroups/{dsGroupId}",
-        "method": "get",
-        "path": {
-          "organizationId": "<string>",
-          "accountId": "<string>",
-          "dsGroupId": "<string>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "delete_v2_1_organizations__organizationId__accounts__accountId__dsgroups__dsGroupId_": {
-      "Basic Example": {
-        "url": "/v2.1/organizations/{organizationId}/accounts/{accountId}/dsgroups/{dsGroupId}",
-        "method": "delete",
-        "path": {
-          "organizationId": "<string>",
-          "accountId": "<string>",
-          "dsGroupId": "<string>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "get_v2_1_organizations__organizationId__accounts__accountId__dsgroups__dsGroupId__users": {
-      "Basic Example": {
-        "url": "/v2.1/organizations/{organizationId}/accounts/{accountId}/dsgroups/{dsGroupId}/users",
-        "method": "get",
-        "path": {
-          "organizationId": "<string>",
-          "accountId": "<string>",
-          "dsGroupId": "<string>"
-        },
-        "query": {
-          "page": "<integer>",
-          "page_size": "<integer>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "post_v2_1_organizations__organizationId__accounts__accountId__dsgroups__dsGroupId__users": {
-      "Basic Example": {
-        "url": "/v2.1/organizations/{organizationId}/accounts/{accountId}/dsgroups/{dsGroupId}/users",
-        "method": "post",
-        "path": {
-          "organizationId": "<string>",
-          "accountId": "<string>",
-          "dsGroupId": "<string>"
-        },
-        "data": {
-          "user_ids": [
-            "00000000-0000-0000-0000-000000000000"
-          ]
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "delete_v2_1_organizations__organizationId__accounts__accountId__dsgroups__dsGroupId__users": {
-      "Basic Example": {
-        "url": "/v2.1/organizations/{organizationId}/accounts/{accountId}/dsgroups/{dsGroupId}/users",
-        "method": "delete",
-        "path": {
-          "organizationId": "<string>",
-          "accountId": "<string>",
-          "dsGroupId": "<string>"
-        },
-        "data": {
-          "user_ids": [
-            "00000000-0000-0000-0000-000000000000"
-          ],
-          "user_emails": [
-            ""
-          ]
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "get_v2_1_organizations__organizationId__accounts__accountId__products_permission_profiles": {
-      "Basic Example": {
-        "url": "/v2.1/organizations/{organizationId}/accounts/{accountId}/products/permission_profiles",
-        "method": "get",
-        "path": {
-          "organizationId": "<string>",
-          "accountId": "<string>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "get_v2_1_organizations__organizationId__accounts__accountId__products_users__userId__permission_profiles": {
-      "Basic Example": {
-        "url": "/v2.1/organizations/{organizationId}/accounts/{accountId}/products/users/{userId}/permission_profiles",
-        "method": "get",
-        "path": {
-          "organizationId": "<string>",
-          "accountId": "<string>",
-          "userId": "<string>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "post_v2_1_organizations__organizationId__accounts__accountId__products_users__userId__permission_profiles": {
-      "Basic Example": {
-        "url": "/v2.1/organizations/{organizationId}/accounts/{accountId}/products/users/{userId}/permission_profiles",
-        "method": "post",
-        "path": {
-          "organizationId": "<string>",
-          "accountId": "<string>",
-          "userId": "<string>"
-        },
-        "data": {
-          "product_permission_profiles": [
-            {
-              "product_id": "00000000-0000-0000-0000-000000000000",
-              "permission_profile_id": ""
-            }
-          ]
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "post_v2_1_organizations__organizationId__accounts__accountId__users": {
-      "Basic Example": {
-        "url": "/v2.1/organizations/{organizationId}/accounts/{accountId}/users",
-        "method": "post",
-        "path": {
-          "organizationId": "<string>",
-          "accountId": "<string>"
-        },
-        "data": {
-          "product_permission_profiles": [
-            {
-              "product_id": "00000000-0000-0000-0000-000000000000",
-              "permission_profile_id": ""
-            }
-          ],
-          "email": "",
-          "ds_groups": [
-            {
-              "ds_group_id": "00000000-0000-0000-0000-000000000000"
-            }
-          ],
-          "user_name": "",
-          "first_name": "",
-          "last_name": "",
-          "default_account_id": "00000000-0000-0000-0000-000000000000",
-          "language_culture": "",
-          "access_code": "",
-          "federated_status": "",
-          "auto_activate_memberships": "<boolean>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "get_v2_1_organizations__organizationId__users_dsprofile": {
-      "Basic Example": {
-        "url": "/v2.1/organizations/{organizationId}/users/dsprofile",
-        "method": "get",
-        "path": {
-          "organizationId": "<string>"
-        },
-        "query": {
-          "email": "<string>",
-          "sort": "<boolean>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "get_v2_1_organizations__organizationId__users__userId__dsprofile": {
-      "Basic Example": {
-        "url": "/v2.1/organizations/{organizationId}/users/{userId}/dsprofile",
-        "method": "get",
-        "path": {
-          "organizationId": "<string>",
-          "userId": "<string>"
-        },
-        "query": {
-          "sort": "<boolean>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "delete_v2_1_organizations__organizationId__accounts__accountId__products_users": {
-      "Basic Example": {
-        "url": "/v2.1/organizations/{organizationId}/accounts/{accountId}/products/users",
-        "method": "delete",
-        "path": {
-          "organizationId": "<string>",
-          "accountId": "<string>"
-        },
-        "data": {
-          "product_ids": [
-            "00000000-0000-0000-0000-000000000000"
-          ],
-          "user_email": "",
-          "user_id": "00000000-0000-0000-0000-000000000000"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "get_v2_1_organizations__organizationId__accounts__accountId__products_permission_profiles_users": {
-      "Basic Example": {
-        "url": "/v2.1/organizations/{organizationId}/accounts/{accountId}/products/permission_profiles/users",
-        "method": "get",
-        "path": {
-          "organizationId": "<string>",
-          "accountId": "<string>"
-        },
-        "query": {
-          "email": "<string>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "post_v2_1_organizations__organizationId__accounts__accountId__products_permission_profiles_users": {
-      "Basic Example": {
-        "url": "/v2.1/organizations/{organizationId}/accounts/{accountId}/products/permission_profiles/users",
-        "method": "post",
-        "path": {
-          "organizationId": "<string>",
-          "accountId": "<string>"
-        },
-        "data": {
-          "email": "",
-          "product_permission_profiles": [
-            {
-              "product_id": "00000000-0000-0000-0000-000000000000",
-              "permission_profile_id": ""
-            }
-          ]
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "get_v2_organizations__organizationId__assetGroups_accounts": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/assetGroups/accounts",
-        "method": "get",
-        "path": {
-          "organizationId": "<string>"
-        },
-        "query": {
-          "compliant": "<boolean>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "post_v2_organizations__organizationId__assetGroups_accountClone": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/assetGroups/accountClone",
-        "method": "post",
-        "path": {
-          "organizationId": "<string>"
-        },
-        "data": {
-          "sourceAccount": {
-            "id": "00000000-0000-0000-0000-000000000000",
-            "externalAccountId": 0,
-            "site": "",
-            "name": ""
-          },
-          "targetAccount": {
-            "id": "00000000-0000-0000-0000-000000000000",
+        "groups": [
+          {
+            "id": 0,
             "name": "",
-            "region": "",
-            "countryCode": "",
-            "site": "",
-            "admin": {
-              "email": "",
-              "firstName": "",
-              "lastName": "",
-              "locale": "None"
-            }
-          },
-          "assetGroupWorkId": "00000000-0000-0000-0000-000000000000",
-          "assetGroupId": "00000000-0000-0000-0000-000000000000",
-          "assetGroupWorkType": "Undefined",
-          "status": "Undefined",
-          "cloneRequestId": "00000000-0000-0000-0000-000000000000",
-          "orderId": "00000000-0000-0000-0000-000000000000",
-          "attempts": 0,
-          "createdDate": "2020-01-01T00:00:00Z",
-          "createdByName": "",
-          "createdByEmail": "",
-          "message": "",
-          "cloneProcessingFailureDetails": {
-            "error": "",
-            "errorDescription": "",
-            "isSystemError": "<boolean>"
+            "type": ""
+          }
+        ],
+        "user_name": "",
+        "first_name": "",
+        "last_name": "",
+        "default_account_id": "00000000-0000-0000-0000-000000000000",
+        "language_culture": "",
+        "selected_languages": "",
+        "access_code": "",
+        "federated_status": "",
+        "auto_activate_memberships": "<boolean>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "get_v2_1_organizations__organizationId__accounts__accountId__dsgroups": {
+    "Basic Example": {
+      "url": "/v2.1/organizations/{organizationId}/accounts/{accountId}/dsgroups",
+      "method": "get",
+      "path": {
+        "organizationId": "<string>",
+        "accountId": "<string>"
+      },
+      "query": {
+        "page": "<integer>",
+        "page_size": "<integer>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "post_v2_1_organizations__organizationId__accounts__accountId__dsgroups": {
+    "Basic Example": {
+      "url": "/v2.1/organizations/{organizationId}/accounts/{accountId}/dsgroups",
+      "method": "post",
+      "path": {
+        "organizationId": "<string>",
+        "accountId": "<string>"
+      },
+      "data": {
+        "group_name": "",
+        "description": ""
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "get_v2_1_organizations__organizationId__accounts__accountId__dsgroups__dsGroupId_": {
+    "Basic Example": {
+      "url": "/v2.1/organizations/{organizationId}/accounts/{accountId}/dsgroups/{dsGroupId}",
+      "method": "get",
+      "path": {
+        "organizationId": "<string>",
+        "accountId": "<string>",
+        "dsGroupId": "<string>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "delete_v2_1_organizations__organizationId__accounts__accountId__dsgroups__dsGroupId_": {
+    "Basic Example": {
+      "url": "/v2.1/organizations/{organizationId}/accounts/{accountId}/dsgroups/{dsGroupId}",
+      "method": "delete",
+      "path": {
+        "organizationId": "<string>",
+        "accountId": "<string>",
+        "dsGroupId": "<string>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "get_v2_1_organizations__organizationId__accounts__accountId__dsgroups__dsGroupId__users": {
+    "Basic Example": {
+      "url": "/v2.1/organizations/{organizationId}/accounts/{accountId}/dsgroups/{dsGroupId}/users",
+      "method": "get",
+      "path": {
+        "organizationId": "<string>",
+        "accountId": "<string>",
+        "dsGroupId": "<string>"
+      },
+      "query": {
+        "page": "<integer>",
+        "page_size": "<integer>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "post_v2_1_organizations__organizationId__accounts__accountId__dsgroups__dsGroupId__users": {
+    "Basic Example": {
+      "url": "/v2.1/organizations/{organizationId}/accounts/{accountId}/dsgroups/{dsGroupId}/users",
+      "method": "post",
+      "path": {
+        "organizationId": "<string>",
+        "accountId": "<string>",
+        "dsGroupId": "<string>"
+      },
+      "data": {
+        "user_ids": [
+          "00000000-0000-0000-0000-000000000000"
+        ]
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "delete_v2_1_organizations__organizationId__accounts__accountId__dsgroups__dsGroupId__users": {
+    "Basic Example": {
+      "url": "/v2.1/organizations/{organizationId}/accounts/{accountId}/dsgroups/{dsGroupId}/users",
+      "method": "delete",
+      "path": {
+        "organizationId": "<string>",
+        "accountId": "<string>",
+        "dsGroupId": "<string>"
+      },
+      "data": {
+        "user_ids": [
+          "00000000-0000-0000-0000-000000000000"
+        ],
+        "user_emails": [
+          ""
+        ]
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "get_v2_1_organizations__organizationId__accounts__accountId__products_permission_profiles": {
+    "Basic Example": {
+      "url": "/v2.1/organizations/{organizationId}/accounts/{accountId}/products/permission_profiles",
+      "method": "get",
+      "path": {
+        "organizationId": "<string>",
+        "accountId": "<string>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "get_v2_1_organizations__organizationId__accounts__accountId__products_users__userId__permission_profiles": {
+    "Basic Example": {
+      "url": "/v2.1/organizations/{organizationId}/accounts/{accountId}/products/users/{userId}/permission_profiles",
+      "method": "get",
+      "path": {
+        "organizationId": "<string>",
+        "accountId": "<string>",
+        "userId": "<string>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "post_v2_1_organizations__organizationId__accounts__accountId__products_users__userId__permission_profiles": {
+    "Basic Example": {
+      "url": "/v2.1/organizations/{organizationId}/accounts/{accountId}/products/users/{userId}/permission_profiles",
+      "method": "post",
+      "path": {
+        "organizationId": "<string>",
+        "accountId": "<string>",
+        "userId": "<string>"
+      },
+      "data": {
+        "product_permission_profiles": [
+          {
+            "product_id": "00000000-0000-0000-0000-000000000000",
+            "permission_profile_id": ""
+          }
+        ]
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "post_v2_1_organizations__organizationId__accounts__accountId__users": {
+    "Basic Example": {
+      "url": "/v2.1/organizations/{organizationId}/accounts/{accountId}/users",
+      "method": "post",
+      "path": {
+        "organizationId": "<string>",
+        "accountId": "<string>"
+      },
+      "data": {
+        "product_permission_profiles": [
+          {
+            "product_id": "00000000-0000-0000-0000-000000000000",
+            "permission_profile_id": ""
+          }
+        ],
+        "email": "",
+        "ds_groups": [
+          {
+            "ds_group_id": "00000000-0000-0000-0000-000000000000"
+          }
+        ],
+        "user_name": "",
+        "first_name": "",
+        "last_name": "",
+        "default_account_id": "00000000-0000-0000-0000-000000000000",
+        "language_culture": "",
+        "access_code": "",
+        "federated_status": "",
+        "auto_activate_memberships": "<boolean>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "get_v2_1_organizations__organizationId__users_dsprofile": {
+    "Basic Example": {
+      "url": "/v2.1/organizations/{organizationId}/users/dsprofile",
+      "method": "get",
+      "path": {
+        "organizationId": "<string>"
+      },
+      "query": {
+        "email": "<string>",
+        "sort": "<boolean>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "get_v2_1_organizations__organizationId__users__userId__dsprofile": {
+    "Basic Example": {
+      "url": "/v2.1/organizations/{organizationId}/users/{userId}/dsprofile",
+      "method": "get",
+      "path": {
+        "organizationId": "<string>",
+        "userId": "<string>"
+      },
+      "query": {
+        "sort": "<boolean>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "delete_v2_1_organizations__organizationId__accounts__accountId__products_users": {
+    "Basic Example": {
+      "url": "/v2.1/organizations/{organizationId}/accounts/{accountId}/products/users",
+      "method": "delete",
+      "path": {
+        "organizationId": "<string>",
+        "accountId": "<string>"
+      },
+      "data": {
+        "product_ids": [
+          "00000000-0000-0000-0000-000000000000"
+        ],
+        "user_email": "",
+        "user_id": "00000000-0000-0000-0000-000000000000"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "get_v2_1_organizations__organizationId__accounts__accountId__products_permission_profiles_users": {
+    "Basic Example": {
+      "url": "/v2.1/organizations/{organizationId}/accounts/{accountId}/products/permission_profiles/users",
+      "method": "get",
+      "path": {
+        "organizationId": "<string>",
+        "accountId": "<string>"
+      },
+      "query": {
+        "email": "<string>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "post_v2_1_organizations__organizationId__accounts__accountId__products_permission_profiles_users": {
+    "Basic Example": {
+      "url": "/v2.1/organizations/{organizationId}/accounts/{accountId}/products/permission_profiles/users",
+      "method": "post",
+      "path": {
+        "organizationId": "<string>",
+        "accountId": "<string>"
+      },
+      "data": {
+        "email": "",
+        "product_permission_profiles": [
+          {
+            "product_id": "00000000-0000-0000-0000-000000000000",
+            "permission_profile_id": ""
+          }
+        ]
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "get_v2_organizations__organizationId__assetGroups_accounts": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/assetGroups/accounts",
+      "method": "get",
+      "path": {
+        "organizationId": "<string>"
+      },
+      "query": {
+        "compliant": "<boolean>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "post_v2_organizations__organizationId__assetGroups_accountClone": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/assetGroups/accountClone",
+      "method": "post",
+      "path": {
+        "organizationId": "<string>"
+      },
+      "data": {
+        "sourceAccount": {
+          "id": "00000000-0000-0000-0000-000000000000",
+          "externalAccountId": 0,
+          "site": "",
+          "name": ""
+        },
+        "targetAccount": {
+          "id": "00000000-0000-0000-0000-000000000000",
+          "name": "",
+          "region": "",
+          "countryCode": "",
+          "site": "",
+          "admin": {
+            "email": "",
+            "firstName": "",
+            "lastName": "",
+            "locale": "None"
           }
         },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "get_v2_organizations__organizationId__assetGroups_accountClones": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/assetGroups/accountClones",
-        "method": "get",
-        "path": {
-          "organizationId": "<string>"
+        "assetGroupWorkId": "00000000-0000-0000-0000-000000000000",
+        "assetGroupId": "00000000-0000-0000-0000-000000000000",
+        "assetGroupWorkType": "Undefined",
+        "status": "Undefined",
+        "cloneRequestId": "00000000-0000-0000-0000-000000000000",
+        "orderId": "00000000-0000-0000-0000-000000000000",
+        "attempts": 0,
+        "createdDate": "2020-01-01T00:00:00Z",
+        "createdByName": "",
+        "createdByEmail": "",
+        "message": "",
+        "cloneProcessingFailureDetails": {
+          "error": "",
+          "errorDescription": "",
+          "isSystemError": "<boolean>"
+        }
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "get_v2_organizations__organizationId__assetGroups_accountClones": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/assetGroups/accountClones",
+      "method": "get",
+      "path": {
+        "organizationId": "<string>"
+      },
+      "query": {
+        "since_updated_date": "<string>",
+        "include_details": "<boolean>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "get_v2_organizations__organizationId__assetGroups__assetGroupId__accountClones__assetGroupWorkId_": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/assetGroups/{assetGroupId}/accountClones/{assetGroupWorkId}",
+      "method": "get",
+      "path": {
+        "organizationId": "<string>",
+        "assetGroupId": "<string>",
+        "assetGroupWorkId": "<string>"
+      },
+      "query": {
+        "include_details": "<boolean>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "get_v2_organizations__organizationId__planItems": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/planItems",
+      "method": "get",
+      "path": {
+        "organizationId": "<string>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "post_v2_organizations__organizationId__assetGroups_accountCreate": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/assetGroups/accountCreate",
+      "method": "post",
+      "path": {
+        "organizationId": "<string>"
+      },
+      "data": {
+        "subscriptionDetails": {
+          "id": "",
+          "planId": "00000000-0000-0000-0000-000000000000",
+          "modules": [
+            "00000000-0000-0000-0000-000000000000"
+          ]
         },
-        "query": {
-          "since_updated_date": "<string>",
-          "include_details": "<boolean>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "get_v2_organizations__organizationId__assetGroups__assetGroupId__accountClones__assetGroupWorkId_": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/assetGroups/{assetGroupId}/accountClones/{assetGroupWorkId}",
-        "method": "get",
-        "path": {
-          "organizationId": "<string>",
-          "assetGroupId": "<string>",
-          "assetGroupWorkId": "<string>"
-        },
-        "query": {
-          "include_details": "<boolean>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "get_v2_organizations__organizationId__planItems": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/planItems",
-        "method": "get",
-        "path": {
-          "organizationId": "<string>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "post_v2_organizations__organizationId__assetGroups_accountCreate": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/assetGroups/accountCreate",
-        "method": "post",
-        "path": {
-          "organizationId": "<string>"
-        },
-        "data": {
-          "subscriptionDetails": {
-            "id": "",
-            "planId": "00000000-0000-0000-0000-000000000000",
-            "modules": [
-              "00000000-0000-0000-0000-000000000000"
-            ]
+        "targetAccount": {
+          "id": "",
+          "address": {
+            "street_address": "",
+            "street_address_2": "",
+            "locality": "",
+            "region": "",
+            "postal_code": "",
+            "country": "",
+            "phone": "",
+            "fax": ""
           },
-          "targetAccount": {
-            "id": "",
+          "admin": {
             "address": {
               "street_address": "",
               "street_address_2": "",
@@ -991,58 +1002,47 @@
               "phone": "",
               "fax": ""
             },
-            "admin": {
-              "address": {
-                "street_address": "",
-                "street_address_2": "",
-                "locality": "",
-                "region": "",
-                "postal_code": "",
-                "country": "",
-                "phone": "",
-                "fax": ""
-              },
-              "email": "",
-              "firstName": "",
-              "lastName": "",
-              "locale": "None"
-            },
-            "name": "",
-            "countryCode": "",
-            "region": "",
-            "site": ""
-          }
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "get_v2_organizations__organizationId__subAccountsCreated": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/subAccountsCreated",
-        "method": "get",
-        "path": {
-          "organizationId": "<string>"
-        },
-        "query": {
-          "since_updated_date": "<string>",
-          "include_details": "<boolean>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
-    },
-    "get_v2_organizations__organizationId__assetGroup__assetGroupId__subAccountCreated__assetGroupWorkId_": {
-      "Basic Example": {
-        "url": "/v2/organizations/{organizationId}/assetGroup/{assetGroupId}/subAccountCreated/{assetGroupWorkId}",
-        "method": "get",
-        "path": {
-          "organizationId": "<string>",
-          "assetGroupId": "<string>",
-          "assetGroupWorkId": "<string>"
-        },
-        "query": {
-          "include_details": "<boolean>"
-        },
-        "baseURL": "https://api-d.docusign.net/Management"
-      }
+            "email": "",
+            "firstName": "",
+            "lastName": "",
+            "locale": "None"
+          },
+          "name": "",
+          "countryCode": "",
+          "region": "",
+          "site": ""
+        }
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "get_v2_organizations__organizationId__subAccountsCreated": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/subAccountsCreated",
+      "method": "get",
+      "path": {
+        "organizationId": "<string>"
+      },
+      "query": {
+        "since_updated_date": "<string>",
+        "include_details": "<boolean>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
+    }
+  },
+  "get_v2_organizations__organizationId__assetGroup__assetGroupId__subAccountCreated__assetGroupWorkId_": {
+    "Basic Example": {
+      "url": "/v2/organizations/{organizationId}/assetGroup/{assetGroupId}/subAccountCreated/{assetGroupWorkId}",
+      "method": "get",
+      "path": {
+        "organizationId": "<string>",
+        "assetGroupId": "<string>",
+        "assetGroupWorkId": "<string>"
+      },
+      "query": {
+        "include_details": "<boolean>"
+      },
+      "baseURL": "https://api-d.docusign.net/Management"
     }
   }
+}

@@ -85,6 +85,9 @@
     "Basic Example": {
       "url": "/v1/payments/payouts-item/{payout_item_id}/cancel",
       "method": "post",
+      "path": {
+        "payout_item_id": "<string>"
+      },
       "baseURL": "https://api-m.sandbox.paypal.com"
     }
   }

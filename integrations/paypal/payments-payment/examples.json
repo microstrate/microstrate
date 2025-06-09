@@ -13,6 +13,9 @@
     "Basic Example": {
       "url": "/v2/payments/authorizations/{authorization_id}/capture",
       "method": "post",
+      "path": {
+        "authorization_id": "<string>"
+      },
       "headers": {
         "PayPal-Request-Id": "<string>",
         "Prefer": "return=minimal"
@@ -34,14 +37,18 @@
     "Basic Example": {
       "url": "/v2/payments/authorizations/{authorization_id}/reauthorize",
       "method": "post",
+      "path": {
+        "authorization_id": "<string>"
+      },
+      "headers": {
+        "PayPal-Request-Id": "<string>",
+        "Prefer": "return=minimal"
+      },
       "data": {
         "amount": {
           "value": "10.99",
           "currency_code": "USD"
         }
-      },
-      "headers": {
-        "Content-Type": "application/json"
       },
       "baseURL": "https://api-m.sandbox.paypal.com"
     }
@@ -50,8 +57,12 @@
     "Basic Example": {
       "url": "/v2/payments/authorizations/{authorization_id}/void",
       "method": "post",
+      "path": {
+        "authorization_id": "<string>"
+      },
       "headers": {
-        "PayPal-Auth-Assertion": "<string>"
+        "PayPal-Auth-Assertion": "<string>",
+        "Prefer": "return=minimal"
       },
       "baseURL": "https://api-m.sandbox.paypal.com"
     }
@@ -70,6 +81,14 @@
     "Basic Example": {
       "url": "/v2/payments/captures/{capture_id}/refund",
       "method": "post",
+      "path": {
+        "capture_id": "<string>"
+      },
+      "headers": {
+        "PayPal-Request-Id": "<string>",
+        "Prefer": "return=minimal",
+        "PayPal-Auth-Assertion": "<string>"
+      },
       "data": {
         "amount": {
           "value": "10.00",
@@ -87,9 +106,6 @@
             }
           ]
         }
-      },
-      "headers": {
-        "Content-Type": "application/json"
       },
       "baseURL": "https://api-m.sandbox.paypal.com"
     }

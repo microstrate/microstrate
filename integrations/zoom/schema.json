@@ -1,6 +1,6 @@
 {
-  "name": "Zoom",
-  "description": "Zoom API",
+  "name": "Zoom API",
+  "description": "API Description",
   "nodes": [
     {
       "id": "get_accounts",
@@ -11,6 +11,7 @@
         "tags": [
           "Accounts"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_accounts/input.schema.json",
@@ -77,6 +78,7 @@
         "tags": [
           "Accounts"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/post_accounts/input.schema.json",
@@ -158,6 +160,7 @@
         "tags": [
           "Accounts"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_accounts__accountId_/input.schema.json",
@@ -285,6 +288,7 @@
         "tags": [
           "Accounts"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/delete_accounts__accountId_/input.schema.json",
@@ -350,6 +354,7 @@
         "tags": [
           "Accounts"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/patch_accounts__accountId__options/input.schema.json",
@@ -415,6 +420,7 @@
         "tags": [
           "Accounts"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_accounts__accountId__settings/input.schema.json",
@@ -925,6 +931,7 @@
         "tags": [
           "Accounts"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/patch_accounts__accountId__settings/input.schema.json",
@@ -990,6 +997,7 @@
         "tags": [
           "Accounts"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_accounts__accountId__managed_domains/input.schema.json",
@@ -1088,6 +1096,7 @@
         "tags": [
           "Billing"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_accounts__accountId__billing/input.schema.json",
@@ -1213,6 +1222,7 @@
         "tags": [
           "Billing"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/patch_accounts__accountId__billing/input.schema.json",
@@ -1278,6 +1288,7 @@
         "tags": [
           "Billing"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_accounts__accountId__plans/input.schema.json",
@@ -1464,6 +1475,7 @@
         "tags": [
           "Billing"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/post_accounts__accountId__plans/input.schema.json",
@@ -1650,6 +1662,7 @@
         "tags": [
           "Billing"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/put_accounts__accountId__plans_base/input.schema.json",
@@ -1715,6 +1728,7 @@
         "tags": [
           "Billing"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/post_accounts__accountId__plans_addons/input.schema.json",
@@ -1780,6 +1794,7 @@
         "tags": [
           "Billing"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/put_accounts__accountId__plans_addons/input.schema.json",
@@ -1845,6 +1860,7 @@
         "tags": [
           "Groups"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_groups/input.schema.json",
@@ -1945,6 +1961,7 @@
         "tags": [
           "Groups"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/post_groups/input.schema.json",
@@ -2022,6 +2039,7 @@
         "tags": [
           "Groups"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_groups__groupId_/input.schema.json",
@@ -2087,6 +2105,7 @@
         "tags": [
           "Groups"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/delete_groups__groupId_/input.schema.json",
@@ -2152,6 +2171,7 @@
         "tags": [
           "Groups"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/patch_groups__groupId_/input.schema.json",
@@ -2217,6 +2237,7 @@
         "tags": [
           "Groups"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_groups__groupId__members/input.schema.json",
@@ -2291,6 +2312,7 @@
         "tags": [
           "Groups"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/post_groups__groupId__members/input.schema.json",
@@ -2371,6 +2393,7 @@
         "tags": [
           "Groups"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/delete_groups__groupId__members__memberId_/input.schema.json",
@@ -2441,6 +2464,7 @@
         "tags": [
           "Devices"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_h323_devices/input.schema.json",
@@ -2498,6 +2522,7 @@
         "tags": [
           "Devices"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/post_h323_devices/input.schema.json",
@@ -2555,6 +2580,7 @@
         "tags": [
           "Devices"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/delete_h323_devices__deviceId_/input.schema.json",
@@ -2620,6 +2646,7 @@
         "tags": [
           "Devices"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/patch_h323_devices__deviceId_/input.schema.json",
@@ -2685,6 +2712,7 @@
         "tags": [
           "TrackingField"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_v2_tracking_fields/input.schema.json",
@@ -2742,6 +2770,7 @@
         "tags": [
           "TrackingField"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/post_v2_tracking_fields/input.schema.json",
@@ -2799,6 +2828,7 @@
         "tags": [
           "TrackingField"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_v2_tracking_fields__fieldId_/input.schema.json",
@@ -2864,6 +2894,7 @@
         "tags": [
           "TrackingField"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/delete_v2_tracking_fields__fieldId_/input.schema.json",
@@ -2929,6 +2960,7 @@
         "tags": [
           "TrackingField"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/patch_v2_tracking_fields__fieldId_/input.schema.json",
@@ -2994,6 +3026,7 @@
         "tags": [
           "IM Groups"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_im_groups/input.schema.json",
@@ -3051,6 +3084,7 @@
         "tags": [
           "IM Groups"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/post_im_groups/input.schema.json",
@@ -3140,6 +3174,7 @@
         "tags": [
           "IM Groups"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_im_groups__groupId_/input.schema.json",
@@ -3205,6 +3240,7 @@
         "tags": [
           "IM Groups"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/delete_im_groups__groupId_/input.schema.json",
@@ -3270,6 +3306,7 @@
         "tags": [
           "IM Groups"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/patch_im_groups__groupId_/input.schema.json",
@@ -3335,6 +3372,7 @@
         "tags": [
           "IM Groups"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_im_groups__groupId__members/input.schema.json",
@@ -3409,6 +3447,7 @@
         "tags": [
           "IM Groups"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/post_im_groups__groupId__members/input.schema.json",
@@ -3489,6 +3528,7 @@
         "tags": [
           "IM Groups"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/delete_im_groups__groupId__members__memberId_/input.schema.json",
@@ -3559,6 +3599,7 @@
         "tags": [
           "IM Chat"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_im_chat_sessions/input.schema.json",
@@ -3637,6 +3678,7 @@
         "tags": [
           "IM Chat"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_im_chat_sessions__sessionId_/input.schema.json",
@@ -3723,6 +3765,7 @@
         "tags": [
           "Meetings"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_users__userId__meetings/input.schema.json",
@@ -3801,6 +3844,7 @@
         "tags": [
           "Meetings"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/post_users__userId__meetings/input.schema.json",
@@ -3866,6 +3910,7 @@
         "tags": [
           "Meetings"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_meetings__meetingId_/input.schema.json",
@@ -3931,6 +3976,7 @@
         "tags": [
           "Meetings"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/delete_meetings__meetingId_/input.schema.json",
@@ -4001,6 +4047,7 @@
         "tags": [
           "Meetings"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/patch_meetings__meetingId_/input.schema.json",
@@ -4066,6 +4113,7 @@
         "tags": [
           "Meetings"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/put_meetings__meetingId__status/input.schema.json",
@@ -4131,6 +4179,7 @@
         "tags": [
           "Meetings"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_meetings__meetingId__invitation/input.schema.json",
@@ -4210,6 +4259,7 @@
         "tags": [
           "Meetings"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_meetings__meetingId__registrants/input.schema.json",
@@ -4292,6 +4342,7 @@
         "tags": [
           "Meetings"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/post_meetings__meetingId__registrants/input.schema.json",
@@ -4391,6 +4442,7 @@
         "tags": [
           "Meetings"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/put_meetings__meetingId__registrants_status/input.schema.json",
@@ -4461,6 +4513,7 @@
         "tags": [
           "Meetings"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/patch_meetings__meetingId__livestream/input.schema.json",
@@ -4526,6 +4579,7 @@
         "tags": [
           "Meetings"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/patch_meetings__meetingId__livestream_status/input.schema.json",
@@ -4591,6 +4645,7 @@
         "tags": [
           "Meetings"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_past_meetings__meetingUUID_/input.schema.json",
@@ -4715,6 +4770,7 @@
         "tags": [
           "Meetings"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_past_meetings__meetingUUID__participants/input.schema.json",
@@ -4789,6 +4845,7 @@
         "tags": [
           "Meetings"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_past_meetings__meetingId__instances/input.schema.json",
@@ -4854,6 +4911,7 @@
         "tags": [
           "Meetings"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_meetings__meetingId__polls/input.schema.json",
@@ -4919,6 +4977,7 @@
         "tags": [
           "Meetings"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/post_meetings__meetingId__polls/input.schema.json",
@@ -4984,6 +5043,7 @@
         "tags": [
           "Meetings"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_meetings__meetingId__polls__pollId_/input.schema.json",
@@ -5054,6 +5114,7 @@
         "tags": [
           "Meetings"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/delete_meetings__meetingId__polls__pollId_/input.schema.json",
@@ -5124,6 +5185,7 @@
         "tags": [
           "Meetings"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/put_meetings__meetingId__polls__pollId_/input.schema.json",
@@ -5194,6 +5256,7 @@
         "tags": [
           "Cloud Recording"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_users__userId__recordings/input.schema.json",
@@ -5288,6 +5351,7 @@
         "tags": [
           "Cloud Recording"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_meetings__meetingId__recordings/input.schema.json",
@@ -5353,6 +5417,7 @@
         "tags": [
           "Cloud Recording"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/delete_meetings__meetingId__recordings/input.schema.json",
@@ -5423,6 +5488,7 @@
         "tags": [
           "Cloud Recording"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/delete_meetings__meetingId__recordings__recordingId_/input.schema.json",
@@ -5498,6 +5564,7 @@
         "tags": [
           "Cloud Recording"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/put_meetings__meetingId__recordings_status/input.schema.json",
@@ -5563,6 +5630,7 @@
         "tags": [
           "Cloud Recording"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/put_meetings__meetingId__recordings__recordingId__status/input.schema.json",
@@ -5633,6 +5701,7 @@
         "tags": [
           "Cloud Recording"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_meetings__meetingId__recordings_settings/input.schema.json",
@@ -5745,6 +5814,7 @@
         "tags": [
           "Cloud Recording"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/patch_meetings__meetingId__recordings_settings/input.schema.json",
@@ -5810,6 +5880,7 @@
         "tags": [
           "Dashboards"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_metrics_meetings/input.schema.json",
@@ -5892,6 +5963,7 @@
         "tags": [
           "Dashboards"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_metrics_meetings__meetingId_/input.schema.json",
@@ -6043,6 +6115,7 @@
         "tags": [
           "Dashboards"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_metrics_meetings__meetingId__participants/input.schema.json",
@@ -6121,6 +6194,7 @@
         "tags": [
           "Dashboards"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_metrics_meetings__meetingId__participants__participantId__qos/input.schema.json",
@@ -6526,6 +6600,7 @@
         "tags": [
           "Dashboards"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_metrics_meetings__meetingId__participants_qos/input.schema.json",
@@ -6604,6 +6679,7 @@
         "tags": [
           "Dashboards"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_metrics_meetings__meetingId__participants_sharing/input.schema.json",
@@ -6682,6 +6758,7 @@
         "tags": [
           "Dashboards"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_metrics_webinars/input.schema.json",
@@ -6764,6 +6841,7 @@
         "tags": [
           "Dashboards"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_metrics_webinars__webinarId_/input.schema.json",
@@ -6915,6 +6993,7 @@
         "tags": [
           "Dashboards"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_metrics_webinars__webinarId__participants/input.schema.json",
@@ -6993,6 +7072,7 @@
         "tags": [
           "Dashboards"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_metrics_webinars__webinarId__participants__participantId__qos/input.schema.json",
@@ -7398,6 +7478,7 @@
         "tags": [
           "Dashboards"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_metrics_webinars__webinarId__participants_qos/input.schema.json",
@@ -7476,6 +7557,7 @@
         "tags": [
           "Dashboards"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_metrics_webinars__webinarId__participants_sharing/input.schema.json",
@@ -7554,6 +7636,7 @@
         "tags": [
           "Dashboards"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_metrics_zoomrooms/input.schema.json",
@@ -7620,6 +7703,7 @@
         "tags": [
           "Dashboards"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_metrics_zoomrooms__zoomroomId_/input.schema.json",
@@ -7706,6 +7790,7 @@
         "tags": [
           "Dashboards"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_metrics_crc/input.schema.json",
@@ -7776,6 +7861,7 @@
         "tags": [
           "Dashboards"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_metrics_im/input.schema.json",
@@ -7854,6 +7940,7 @@
         "tags": [
           "Reports"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_report_daily/input.schema.json",
@@ -7965,6 +8052,7 @@
         "tags": [
           "Reports"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_report_users/input.schema.json",
@@ -8047,6 +8135,7 @@
         "tags": [
           "Reports"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_report_users__userId__meetings/input.schema.json",
@@ -8133,6 +8222,7 @@
         "tags": [
           "Reports"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_report_meetings__meetingId_/input.schema.json",
@@ -8269,6 +8359,7 @@
         "tags": [
           "Reports"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_report_meetings__meetingId__participants/input.schema.json",
@@ -8343,6 +8434,7 @@
         "tags": [
           "Reports"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_report_meetings__meetingId__polls/input.schema.json",
@@ -8462,6 +8554,7 @@
         "tags": [
           "Reports"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_report_webinars__webinarId_/input.schema.json",
@@ -8598,6 +8691,7 @@
         "tags": [
           "Reports"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_report_webinars__webinarId__participants/input.schema.json",
@@ -8672,6 +8766,7 @@
         "tags": [
           "Reports"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_report_webinars__webinarId__polls/input.schema.json",
@@ -8791,6 +8886,7 @@
         "tags": [
           "Reports"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_report_webinars__webinarId__qa/input.schema.json",
@@ -8910,6 +9006,7 @@
         "tags": [
           "Reports"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_report_telephone/input.schema.json",
@@ -8992,6 +9089,7 @@
         "tags": [
           "Reports"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_report_cloud_recording/input.schema.json",
@@ -9062,6 +9160,7 @@
         "tags": [
           "TSP"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_tsp/input.schema.json",
@@ -9153,6 +9252,7 @@
         "tags": [
           "TSP"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/patch_tsp/input.schema.json",
@@ -9210,6 +9310,7 @@
         "tags": [
           "Users"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_users/input.schema.json",
@@ -9280,6 +9381,7 @@
         "tags": [
           "Users"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/post_users/input.schema.json",
@@ -9372,6 +9474,7 @@
         "tags": [
           "Users"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_users__userId_/input.schema.json",
@@ -9441,6 +9544,7 @@
         "tags": [
           "Users"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/delete_users__userId_/input.schema.json",
@@ -9527,6 +9631,7 @@
         "tags": [
           "Users"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/patch_users__userId_/input.schema.json",
@@ -9592,6 +9697,7 @@
         "tags": [
           "Users"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_users__userId__assistants/input.schema.json",
@@ -9684,6 +9790,7 @@
         "tags": [
           "Users"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/post_users__userId__assistants/input.schema.json",
@@ -9765,6 +9872,7 @@
         "tags": [
           "Users"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/delete_users__userId__assistants/input.schema.json",
@@ -9830,6 +9938,7 @@
         "tags": [
           "Users"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/delete_users__userId__assistants__assistantId_/input.schema.json",
@@ -9900,6 +10009,7 @@
         "tags": [
           "Users"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_users__userId__schedulers/input.schema.json",
@@ -9992,6 +10102,7 @@
         "tags": [
           "Users"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/delete_users__userId__schedulers/input.schema.json",
@@ -10057,6 +10168,7 @@
         "tags": [
           "Users"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/delete_users__userId__schedulers__schedulerId_/input.schema.json",
@@ -10127,6 +10239,7 @@
         "tags": [
           "Users"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/post_users__userId__picture/input.schema.json",
@@ -10205,6 +10318,7 @@
         "tags": [
           "Users"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_users__userId__settings/input.schema.json",
@@ -10607,6 +10721,7 @@
         "tags": [
           "Users"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/patch_users__userId__settings/input.schema.json",
@@ -10672,6 +10787,7 @@
         "tags": [
           "Users"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/put_users__userId__status/input.schema.json",
@@ -10737,6 +10853,7 @@
         "tags": [
           "Users"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/put_users__userId__password/input.schema.json",
@@ -10802,6 +10919,7 @@
         "tags": [
           "Users"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_users__userId__permissions/input.schema.json",
@@ -10883,6 +11001,7 @@
         "tags": [
           "PAC"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_users__userId__pac/input.schema.json",
@@ -11018,6 +11137,7 @@
         "tags": [
           "TSP"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_users__userId__tsp/input.schema.json",
@@ -11153,6 +11273,7 @@
         "tags": [
           "TSP"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/post_users__userId__tsp/input.schema.json",
@@ -11280,6 +11401,7 @@
         "tags": [
           "TSP"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_users__userId__tsp__tspId_/input.schema.json",
@@ -11412,6 +11534,7 @@
         "tags": [
           "TSP"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/delete_users__userId__tsp__tspId_/input.schema.json",
@@ -11482,6 +11605,7 @@
         "tags": [
           "TSP"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/patch_users__userId__tsp__tspId_/input.schema.json",
@@ -11552,6 +11676,7 @@
         "tags": [
           "Users"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_users__userId__token/input.schema.json",
@@ -11634,6 +11759,7 @@
         "tags": [
           "Users"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/delete_users__userId__token/input.schema.json",
@@ -11699,6 +11825,7 @@
         "tags": [
           "Users"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/put_users__userId__email/input.schema.json",
@@ -11764,6 +11891,7 @@
         "tags": [
           "Users"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_users_zpk/input.schema.json",
@@ -11840,6 +11968,7 @@
         "tags": [
           "Users"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_users_email/input.schema.json",
@@ -11916,6 +12045,7 @@
         "tags": [
           "Users"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_users_vanity_name/input.schema.json",
@@ -11992,6 +12122,7 @@
         "tags": [
           "Webinars"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_users__userId__webinars/input.schema.json",
@@ -12066,6 +12197,7 @@
         "tags": [
           "Webinars"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/post_users__userId__webinars/input.schema.json",
@@ -12131,6 +12263,7 @@
         "tags": [
           "Webinars"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_webinars__webinarId_/input.schema.json",
@@ -12196,6 +12329,7 @@
         "tags": [
           "Webinars"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/delete_webinars__webinarId_/input.schema.json",
@@ -12266,6 +12400,7 @@
         "tags": [
           "Webinars"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/patch_webinars__webinarId_/input.schema.json",
@@ -12331,6 +12466,7 @@
         "tags": [
           "Webinars"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/put_webinars__webinarId__status/input.schema.json",
@@ -12396,6 +12532,7 @@
         "tags": [
           "Webinars"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_webinars__webinarId__panelists/input.schema.json",
@@ -12461,6 +12598,7 @@
         "tags": [
           "Webinars"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/post_webinars__webinarId__panelists/input.schema.json",
@@ -12542,6 +12680,7 @@
         "tags": [
           "Webinars"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/delete_webinars__webinarId__panelists/input.schema.json",
@@ -12607,6 +12746,7 @@
         "tags": [
           "Webinars"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/delete_webinars__webinarId__panelists__panelistId_/input.schema.json",
@@ -12677,6 +12817,7 @@
         "tags": [
           "Webinars"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_webinars__webinarId__registrants/input.schema.json",
@@ -12759,6 +12900,7 @@
         "tags": [
           "Webinars"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/post_webinars__webinarId__registrants/input.schema.json",
@@ -12858,6 +13000,7 @@
         "tags": [
           "Webinars"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/put_webinars__webinarId__registrants_status/input.schema.json",
@@ -12928,6 +13071,7 @@
         "tags": [
           "Webinars"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_past_webinars__webinarId__instances/input.schema.json",
@@ -12993,6 +13137,7 @@
         "tags": [
           "Webinars"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_webinars__webinarId__polls/input.schema.json",
@@ -13058,6 +13203,7 @@
         "tags": [
           "Webinars"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/post_webinars__webinarId__polls/input.schema.json",
@@ -13123,6 +13269,7 @@
         "tags": [
           "Webinars"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_webinars__webinarId__polls__pollId_/input.schema.json",
@@ -13193,6 +13340,7 @@
         "tags": [
           "Webinars"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/delete_webinars__webinarId__polls__pollId_/input.schema.json",
@@ -13263,6 +13411,7 @@
         "tags": [
           "Webinars"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/put_webinars__webinarId__polls__pollId_/input.schema.json",
@@ -13333,6 +13482,7 @@
         "tags": [
           "Webhooks"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/patch_webhooks_options/input.schema.json",
@@ -13390,6 +13540,7 @@
         "tags": [
           "Webhooks"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_webhooks/input.schema.json",
@@ -13447,6 +13598,7 @@
         "tags": [
           "Webhooks"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/post_webhooks/input.schema.json",
@@ -13504,6 +13656,7 @@
         "tags": [
           "Webhooks"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/get_webhooks__webhookId_/input.schema.json",
@@ -13569,6 +13722,7 @@
         "tags": [
           "Webhooks"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/delete_webhooks__webhookId_/input.schema.json",
@@ -13634,6 +13788,7 @@
         "tags": [
           "Webhooks"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Zoom-API/patch_webhooks__webhookId_/input.schema.json",
@@ -13698,10 +13853,22 @@
         "https://api.zoom.us/v2"
       ]
     },
+    "security": [
+      {
+        "global": []
+      }
+    ],
     "queryDesc": "Query parameters sent with the request",
     "paramDesc": "URL parameters sent with the request",
     "headerDesc": "HTTP headers sent when making the request",
     "dataDesc": "Data sent with the request",
     "schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "securitySchemes": {
+    "global": {
+      "type": "apiKey",
+      "name": "access_token",
+      "in": "query"
+    }
   }
 }

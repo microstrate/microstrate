@@ -1,105 +1,105 @@
 {
-    "get_inboxes": {
-      "Basic Example": {
-        "url": "/inboxes",
-        "method": "get",
-        "baseURL": "https://api.airparser.com"
-      }
-    },
-    "delete_inboxes__inbox_id_": {
-      "Basic Example": {
-        "url": "/inboxes/{inbox_id}",
-        "method": "delete",
-        "path": {
-          "inbox_id": "<string>"
-        },
-        "baseURL": "https://api.airparser.com"
-      }
-    },
-    "post_inboxes__inbox_id__upload": {
-      "Basic Example": {
-        "url": "/inboxes/{inbox_id}/upload",
-        "method": "post",
-        "path": {
-          "inbox_id": "<string>"
-        },
-        "data": {
-          "file": "<binary>",
-          "meta": "{\"foo\": \"bar\", \"my_id\": 42}"
-        },
-        "headers": {
-          "Content-Type": "multipart/form-data"
-        },
-        "baseURL": "https://api.airparser.com"
-      }
-    },
-    "get_inboxes__inbox_id__docs": {
-      "Basic Example": {
-        "url": "/inboxes/{inbox_id}/docs",
-        "method": "get",
-        "path": {
-          "inbox_id": "<string>"
-        },
-        "query": {
-          "page": "<integer>",
-          "from": "<string>",
-          "to": "<string>",
-          "q": "<string>",
-          "statuses": "<array>"
-        },
-        "baseURL": "https://api.airparser.com"
-      }
-    },
-    "get_docs__document_id__extended": {
-      "Basic Example": {
-        "url": "/docs/{document_id}/extended",
-        "method": "get",
-        "path": {
-          "document_id": "<string>"
-        },
-        "baseURL": "https://api.airparser.com"
-      }
-    },
-    "post_inboxes__inbox_id__schema": {
-      "Basic Example": {
-        "url": "/inboxes/{inbox_id}/schema",
-        "method": "post",
-        "path": {
-          "inbox_id": "<string>"
-        },
-        "data": {
-          "fields": [
-            {
-              "type": "scalar",
-              "data": {
-                "name": "<string matching ^[a-z0-9_]{1,100}$>",
-                "description": "",
-                "type": "string",
-                "default_value": ""
-              }
-            }
-          ]
-        },
-        "headers": {
-          "Content-Type": "application/json"
-        },
-        "baseURL": "https://api.airparser.com"
-      }
-    },
-    "post_inboxes__inbox_id__schema-clone": {
-      "Basic Example": {
-        "url": "/inboxes/{inbox_id}/schema-clone",
-        "method": "post",
-        "path": {
-          "inbox_id": "<string>"
-        },
-        "data": {
-          "destination_inbox_id": ""
-        },
-        "headers": {
-          "Content-Type": "application/json"
-        },
-        "baseURL": "https://api.airparser.com"
-      }
+  "get_inboxes": {
+    "Basic Example": {
+      "url": "/inboxes",
+      "method": "get",
+      "baseURL": "https://api.airparser.com"
     }
+  },
+  "delete_inboxes__inbox_id_": {
+    "Basic Example": {
+      "url": "/inboxes/{inbox_id}",
+      "method": "delete",
+      "path": {
+        "inbox_id": "<string>"
+      },
+      "baseURL": "https://api.airparser.com"
+    }
+  },
+  "post_inboxes__inbox_id__upload": {
+    "Basic Example": {
+      "url": "/inboxes/{inbox_id}/upload",
+      "method": "post",
+      "path": {
+        "inbox_id": "<string>"
+      },
+      "data": {
+        "file": "<binary>",
+        "meta": "{\"foo\": \"bar\", \"my_id\": 42}"
+      },
+      "headers": {
+        "Content-Type": "multipart/form-data"
+      },
+      "baseURL": "https://api.airparser.com"
+    }
+  },
+  "get_inboxes__inbox_id__docs": {
+    "Basic Example": {
+      "url": "/inboxes/{inbox_id}/docs",
+      "method": "get",
+      "path": {
+        "inbox_id": "<string>"
+      },
+      "query": {
+        "page": "<integer>",
+        "from": "<string>",
+        "to": "<string>",
+        "q": "<string>",
+        "statuses": "<array>"
+      },
+      "baseURL": "https://api.airparser.com"
+    }
+  },
+  "get_docs__document_id__extended": {
+    "Basic Example": {
+      "url": "/docs/{document_id}/extended",
+      "method": "get",
+      "path": {
+        "document_id": "<string>"
+      },
+      "baseURL": "https://api.airparser.com"
+    }
+  },
+  "post_inboxes__inbox_id__schema": {
+    "Basic Example": {
+      "url": "/inboxes/{inbox_id}/schema",
+      "method": "post",
+      "path": {
+        "inbox_id": "<string>"
+      },
+      "data": {
+        "fields": [
+          {
+            "type": "scalar",
+            "data": {
+              "name": "<string matching ^[a-z0-9_]{1,100}$>",
+              "description": "",
+              "type": "string",
+              "default_value": ""
+            }
+          }
+        ]
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.airparser.com"
+    }
+  },
+  "post_inboxes__inbox_id__schema-clone": {
+    "Basic Example": {
+      "url": "/inboxes/{inbox_id}/schema-clone",
+      "method": "post",
+      "path": {
+        "inbox_id": "<string>"
+      },
+      "data": {
+        "destination_inbox_id": ""
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.airparser.com"
+    }
+  }
 }

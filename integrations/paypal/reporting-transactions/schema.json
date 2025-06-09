@@ -11,6 +11,13 @@
         "tags": [
           "transactions"
         ],
+        "security": [
+          {
+            "Oauth2": [
+              "https://uri.paypal.com/services/reporting/search/read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Transaction-Search/get_v1_reporting_transactions/input.schema.json",
@@ -206,12 +213,12 @@
                           "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T,t]([0-1][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)([.][0-9]+)?([Zz]|[+-][0-9]{2}:[0-9]{2})$"
                         },
                         "transaction_updated_date": {
-                          "0": "c",
-                          "1": "y",
-                          "2": "c",
-                          "3": "l",
-                          "4": "e",
-                          "description": "The date and time when the transaction was last changed, as expressed in the time zone of the account on this side of the payment. Specify the value in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6)."
+                          "description": "The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds are required while fractional seconds are optional.<blockquote><strong>Note:</strong> The regular expression provides guidance but does not reject all invalid dates.</blockquote>",
+                          "type": "string",
+                          "format": "ppaas_date_time_v3",
+                          "minLength": 20,
+                          "maxLength": 64,
+                          "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T,t]([0-1][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)([.][0-9]+)?([Zz]|[+-][0-9]{2}:[0-9]{2})$"
                         },
                         "transaction_amount": {
                           "type": "object",
@@ -238,76 +245,220 @@
                           ]
                         },
                         "fee_amount": {
-                          "0": "c",
-                          "1": "y",
-                          "2": "c",
-                          "3": "l",
-                          "4": "e",
-                          "description": "The PayPal fee amount. All transaction fees are included in this amount, which is the record of fee associated with the transaction.<blockquote><strong>Note:</strong> This field contains a value only when a transaction fee is applied and processed for this transaction.</blockquote>"
+                          "type": "object",
+                          "title": "Money",
+                          "description": "The PayPal fee amount. All transaction fees are included in this amount, which is the record of fee associated with the transaction.<blockquote><strong>Note:</strong> This field contains a value only when a transaction fee is applied and processed for this transaction.</blockquote>",
+                          "properties": {
+                            "currency_code": {
+                              "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                              "type": "string",
+                              "format": "ppaas_common_currency_code_v2",
+                              "minLength": 3,
+                              "maxLength": 3
+                            },
+                            "value": {
+                              "type": "string",
+                              "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/).",
+                              "maxLength": 32,
+                              "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                            }
+                          },
+                          "required": [
+                            "currency_code",
+                            "value"
+                          ]
                         },
                         "discount_amount": {
-                          "0": "c",
-                          "1": "y",
-                          "2": "c",
-                          "3": "l",
-                          "4": "e",
-                          "description": "The reduction in price offered for goods or services purchased.<blockquote><strong>Note:</strong> This discount is for a price reduction that is offered for other than that at a individual item level.</blockquote>"
+                          "type": "object",
+                          "title": "Money",
+                          "description": "The reduction in price offered for goods or services purchased.<blockquote><strong>Note:</strong> This discount is for a price reduction that is offered for other than that at a individual item level.</blockquote>",
+                          "properties": {
+                            "currency_code": {
+                              "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                              "type": "string",
+                              "format": "ppaas_common_currency_code_v2",
+                              "minLength": 3,
+                              "maxLength": 3
+                            },
+                            "value": {
+                              "type": "string",
+                              "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/).",
+                              "maxLength": 32,
+                              "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                            }
+                          },
+                          "required": [
+                            "currency_code",
+                            "value"
+                          ]
                         },
                         "insurance_amount": {
-                          "0": "c",
-                          "1": "y",
-                          "2": "c",
-                          "3": "l",
-                          "4": "e",
-                          "description": "An insurance charge. Guarantees the quality or delivery of a product."
+                          "type": "object",
+                          "title": "Money",
+                          "description": "An insurance charge. Guarantees the quality or delivery of a product.",
+                          "properties": {
+                            "currency_code": {
+                              "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                              "type": "string",
+                              "format": "ppaas_common_currency_code_v2",
+                              "minLength": 3,
+                              "maxLength": 3
+                            },
+                            "value": {
+                              "type": "string",
+                              "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/).",
+                              "maxLength": 32,
+                              "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                            }
+                          },
+                          "required": [
+                            "currency_code",
+                            "value"
+                          ]
                         },
                         "sales_tax_amount": {
-                          "0": "c",
-                          "1": "y",
-                          "2": "c",
-                          "3": "l",
-                          "4": "e",
-                          "description": "The PayPal- or merchant-reported sales tax amount for the transaction."
+                          "type": "object",
+                          "title": "Money",
+                          "description": "The PayPal- or merchant-reported sales tax amount for the transaction.",
+                          "properties": {
+                            "currency_code": {
+                              "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                              "type": "string",
+                              "format": "ppaas_common_currency_code_v2",
+                              "minLength": 3,
+                              "maxLength": 3
+                            },
+                            "value": {
+                              "type": "string",
+                              "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/).",
+                              "maxLength": 32,
+                              "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                            }
+                          },
+                          "required": [
+                            "currency_code",
+                            "value"
+                          ]
                         },
                         "shipping_amount": {
-                          "0": "c",
-                          "1": "y",
-                          "2": "c",
-                          "3": "l",
-                          "4": "e",
-                          "description": "The PayPal- or merchant-reported shipping amount for the transaction."
+                          "type": "object",
+                          "title": "Money",
+                          "description": "The PayPal- or merchant-reported shipping amount for the transaction.",
+                          "properties": {
+                            "currency_code": {
+                              "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                              "type": "string",
+                              "format": "ppaas_common_currency_code_v2",
+                              "minLength": 3,
+                              "maxLength": 3
+                            },
+                            "value": {
+                              "type": "string",
+                              "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/).",
+                              "maxLength": 32,
+                              "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                            }
+                          },
+                          "required": [
+                            "currency_code",
+                            "value"
+                          ]
                         },
                         "shipping_discount_amount": {
-                          "0": "c",
-                          "1": "y",
-                          "2": "c",
-                          "3": "l",
-                          "4": "e",
-                          "description": "The discount on the shipping amount."
+                          "type": "object",
+                          "title": "Money",
+                          "description": "The discount on the shipping amount.",
+                          "properties": {
+                            "currency_code": {
+                              "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                              "type": "string",
+                              "format": "ppaas_common_currency_code_v2",
+                              "minLength": 3,
+                              "maxLength": 3
+                            },
+                            "value": {
+                              "type": "string",
+                              "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/).",
+                              "maxLength": 32,
+                              "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                            }
+                          },
+                          "required": [
+                            "currency_code",
+                            "value"
+                          ]
                         },
                         "shipping_tax_amount": {
-                          "0": "c",
-                          "1": "y",
-                          "2": "c",
-                          "3": "l",
-                          "4": "e",
-                          "description": "The tax on the shipping service."
+                          "type": "object",
+                          "title": "Money",
+                          "description": "The tax on the shipping service.",
+                          "properties": {
+                            "currency_code": {
+                              "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                              "type": "string",
+                              "format": "ppaas_common_currency_code_v2",
+                              "minLength": 3,
+                              "maxLength": 3
+                            },
+                            "value": {
+                              "type": "string",
+                              "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/).",
+                              "maxLength": 32,
+                              "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                            }
+                          },
+                          "required": [
+                            "currency_code",
+                            "value"
+                          ]
                         },
                         "other_amount": {
-                          "0": "c",
-                          "1": "y",
-                          "2": "c",
-                          "3": "l",
-                          "4": "e",
-                          "description": "The special amount that is added to the transaction."
+                          "type": "object",
+                          "title": "Money",
+                          "description": "The special amount that is added to the transaction.",
+                          "properties": {
+                            "currency_code": {
+                              "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                              "type": "string",
+                              "format": "ppaas_common_currency_code_v2",
+                              "minLength": 3,
+                              "maxLength": 3
+                            },
+                            "value": {
+                              "type": "string",
+                              "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/).",
+                              "maxLength": 32,
+                              "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                            }
+                          },
+                          "required": [
+                            "currency_code",
+                            "value"
+                          ]
                         },
                         "tip_amount": {
-                          "0": "c",
-                          "1": "y",
-                          "2": "c",
-                          "3": "l",
-                          "4": "e",
-                          "description": "The tip."
+                          "type": "object",
+                          "title": "Money",
+                          "description": "The tip.",
+                          "properties": {
+                            "currency_code": {
+                              "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                              "type": "string",
+                              "format": "ppaas_common_currency_code_v2",
+                              "minLength": 3,
+                              "maxLength": 3
+                            },
+                            "value": {
+                              "type": "string",
+                              "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/).",
+                              "maxLength": 32,
+                              "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                            }
+                          },
+                          "required": [
+                            "currency_code",
+                            "value"
+                          ]
                         },
                         "transaction_status": {
                           "type": "string",
@@ -345,20 +496,52 @@
                           "pattern": "^[a-zA-Z0-9]*$"
                         },
                         "ending_balance": {
-                          "0": "c",
-                          "1": "y",
-                          "2": "c",
-                          "3": "l",
-                          "4": "e",
-                          "description": "The ending balance.<blockquote><strong>Note:</strong> If you specify one or more optional query parameters, the <code>ending_balance</code> response field is empty.</blockquote>"
+                          "type": "object",
+                          "title": "Money",
+                          "description": "The ending balance.<blockquote><strong>Note:</strong> If you specify one or more optional query parameters, the <code>ending_balance</code> response field is empty.</blockquote>",
+                          "properties": {
+                            "currency_code": {
+                              "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                              "type": "string",
+                              "format": "ppaas_common_currency_code_v2",
+                              "minLength": 3,
+                              "maxLength": 3
+                            },
+                            "value": {
+                              "type": "string",
+                              "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/).",
+                              "maxLength": 32,
+                              "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                            }
+                          },
+                          "required": [
+                            "currency_code",
+                            "value"
+                          ]
                         },
                         "available_balance": {
-                          "0": "c",
-                          "1": "y",
-                          "2": "c",
-                          "3": "l",
-                          "4": "e",
-                          "description": "The available amount of transaction currency during the completion of this transaction."
+                          "type": "object",
+                          "title": "Money",
+                          "description": "The available amount of transaction currency during the completion of this transaction.",
+                          "properties": {
+                            "currency_code": {
+                              "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                              "type": "string",
+                              "format": "ppaas_common_currency_code_v2",
+                              "minLength": 3,
+                              "maxLength": 3
+                            },
+                            "value": {
+                              "type": "string",
+                              "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/).",
+                              "maxLength": 32,
+                              "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                            }
+                          },
+                          "required": [
+                            "currency_code",
+                            "value"
+                          ]
                         },
                         "invoice_id": {
                           "type": "string",
@@ -389,20 +572,52 @@
                           "pattern": "^[a-zA-Z0-9.]*$"
                         },
                         "credit_transactional_fee": {
-                          "0": "c",
-                          "1": "y",
-                          "2": "c",
-                          "3": "l",
-                          "4": "e",
-                          "description": "The overall amount of the credit transaction fee."
+                          "type": "object",
+                          "title": "Money",
+                          "description": "The overall amount of the credit transaction fee.",
+                          "properties": {
+                            "currency_code": {
+                              "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                              "type": "string",
+                              "format": "ppaas_common_currency_code_v2",
+                              "minLength": 3,
+                              "maxLength": 3
+                            },
+                            "value": {
+                              "type": "string",
+                              "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/).",
+                              "maxLength": 32,
+                              "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                            }
+                          },
+                          "required": [
+                            "currency_code",
+                            "value"
+                          ]
                         },
                         "credit_promotional_fee": {
-                          "0": "c",
-                          "1": "y",
-                          "2": "c",
-                          "3": "l",
-                          "4": "e",
-                          "description": "The overall amount of the credit promotional fee."
+                          "type": "object",
+                          "title": "Money",
+                          "description": "The overall amount of the credit promotional fee.",
+                          "properties": {
+                            "currency_code": {
+                              "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                              "type": "string",
+                              "format": "ppaas_common_currency_code_v2",
+                              "minLength": 3,
+                              "maxLength": 3
+                            },
+                            "value": {
+                              "type": "string",
+                              "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/).",
+                              "maxLength": 32,
+                              "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                            }
+                          },
+                          "required": [
+                            "currency_code",
+                            "value"
+                          ]
                         },
                         "annual_percentage_rate": {
                           "type": "string",
@@ -569,11 +784,12 @@
                               "description": "The [code](/docs/api/reference/state-codes/) for a US state or the equivalent for other countries. Required for transactions if the address is in one of these countries: [Argentina](/docs/api/reference/state-codes/#argentina), [Brazil](/docs/api/reference/state-codes/#brazil), [Canada](/docs/api/reference/state-codes/#canada), [China](/docs/api/reference/state-codes/#china), [India](/docs/api/reference/state-codes/#india), [Italy](/docs/api/reference/state-codes/#italy), [Japan](/docs/api/reference/state-codes/#japan), [Mexico](/docs/api/reference/state-codes/#mexico), [Thailand](/docs/api/reference/state-codes/#thailand), or [United States](/docs/api/reference/state-codes/#usa). Maximum length is 40 single-byte characters."
                             },
                             "country_code": {
-                              "0": "c",
-                              "1": "y",
-                              "2": "c",
-                              "3": "l",
-                              "4": "e"
+                              "type": "string",
+                              "description": "The [two-character ISO 3166-1 code](/docs/integration/direct/rest/country-codes/) that identifies the country or region.<blockquote><strong>Note:</strong> The country code for Great Britain is <code>GB</code> and not <code>UK</code> as used in the top-level domain names for that country. Use the `C2` country code for China worldwide for comparable uncontrolled price (CUP) method, bank card, and cross-border transactions.</blockquote>",
+                              "format": "ppaas_common_country_code_v2",
+                              "maxLength": 2,
+                              "minLength": 2,
+                              "pattern": "^([A-Z]{2}|C2)$"
                             },
                             "postal_code": {
                               "type": "string",
@@ -608,20 +824,84 @@
                           "pattern": "^[a-zA-Z0-9_'\\-., \":;\\!?]*$"
                         },
                         "address": {
-                          "0": "c",
-                          "1": "y",
-                          "2": "c",
-                          "3": "l",
-                          "4": "e",
-                          "description": "The shipping address that is associated with this order."
+                          "type": "object",
+                          "title": "Simple Postal Address (Coarse-Grained)",
+                          "description": "The shipping address that is associated with this order.",
+                          "properties": {
+                            "line1": {
+                              "type": "string",
+                              "description": "The first line of the address. For example, number or street."
+                            },
+                            "line2": {
+                              "type": "string",
+                              "description": "The second line of the address. For example, suite or apartment number."
+                            },
+                            "city": {
+                              "type": "string",
+                              "description": "The city name."
+                            },
+                            "state": {
+                              "type": "string",
+                              "description": "The [code](/docs/api/reference/state-codes/) for a US state or the equivalent for other countries. Required for transactions if the address is in one of these countries: [Argentina](/docs/api/reference/state-codes/#argentina), [Brazil](/docs/api/reference/state-codes/#brazil), [Canada](/docs/api/reference/state-codes/#canada), [China](/docs/api/reference/state-codes/#china), [India](/docs/api/reference/state-codes/#india), [Italy](/docs/api/reference/state-codes/#italy), [Japan](/docs/api/reference/state-codes/#japan), [Mexico](/docs/api/reference/state-codes/#mexico), [Thailand](/docs/api/reference/state-codes/#thailand), or [United States](/docs/api/reference/state-codes/#usa). Maximum length is 40 single-byte characters."
+                            },
+                            "country_code": {
+                              "type": "string",
+                              "description": "The [two-character ISO 3166-1 code](/docs/integration/direct/rest/country-codes/) that identifies the country or region.<blockquote><strong>Note:</strong> The country code for Great Britain is <code>GB</code> and not <code>UK</code> as used in the top-level domain names for that country. Use the `C2` country code for China worldwide for comparable uncontrolled price (CUP) method, bank card, and cross-border transactions.</blockquote>",
+                              "format": "ppaas_common_country_code_v2",
+                              "maxLength": 2,
+                              "minLength": 2,
+                              "pattern": "^([A-Z]{2}|C2)$"
+                            },
+                            "postal_code": {
+                              "type": "string",
+                              "description": "The postal code, which is the zip code or equivalent. Typically required for countries with a postal code or an equivalent. See [postal code](https://en.wikipedia.org/wiki/Postal_code)."
+                            }
+                          },
+                          "required": [
+                            "line1",
+                            "city",
+                            "country_code"
+                          ]
                         },
                         "secondary_shipping_address": {
-                          "0": "c",
-                          "1": "y",
-                          "2": "c",
-                          "3": "l",
-                          "4": "e",
-                          "description": "The secondary shipping address that is associated with this order."
+                          "type": "object",
+                          "title": "Simple Postal Address (Coarse-Grained)",
+                          "description": "The secondary shipping address that is associated with this order.",
+                          "properties": {
+                            "line1": {
+                              "type": "string",
+                              "description": "The first line of the address. For example, number or street."
+                            },
+                            "line2": {
+                              "type": "string",
+                              "description": "The second line of the address. For example, suite or apartment number."
+                            },
+                            "city": {
+                              "type": "string",
+                              "description": "The city name."
+                            },
+                            "state": {
+                              "type": "string",
+                              "description": "The [code](/docs/api/reference/state-codes/) for a US state or the equivalent for other countries. Required for transactions if the address is in one of these countries: [Argentina](/docs/api/reference/state-codes/#argentina), [Brazil](/docs/api/reference/state-codes/#brazil), [Canada](/docs/api/reference/state-codes/#canada), [China](/docs/api/reference/state-codes/#china), [India](/docs/api/reference/state-codes/#india), [Italy](/docs/api/reference/state-codes/#italy), [Japan](/docs/api/reference/state-codes/#japan), [Mexico](/docs/api/reference/state-codes/#mexico), [Thailand](/docs/api/reference/state-codes/#thailand), or [United States](/docs/api/reference/state-codes/#usa). Maximum length is 40 single-byte characters."
+                            },
+                            "country_code": {
+                              "type": "string",
+                              "description": "The [two-character ISO 3166-1 code](/docs/integration/direct/rest/country-codes/) that identifies the country or region.<blockquote><strong>Note:</strong> The country code for Great Britain is <code>GB</code> and not <code>UK</code> as used in the top-level domain names for that country. Use the `C2` country code for China worldwide for comparable uncontrolled price (CUP) method, bank card, and cross-border transactions.</blockquote>",
+                              "format": "ppaas_common_country_code_v2",
+                              "maxLength": 2,
+                              "minLength": 2,
+                              "pattern": "^([A-Z]{2}|C2)$"
+                            },
+                            "postal_code": {
+                              "type": "string",
+                              "description": "The postal code, which is the zip code or equivalent. Typically required for countries with a postal code or an equivalent. See [postal code](https://en.wikipedia.org/wiki/Postal_code)."
+                            }
+                          },
+                          "required": [
+                            "line1",
+                            "city",
+                            "country_code"
+                          ]
                         }
                       }
                     },
@@ -676,54 +956,131 @@
                                 "pattern": "^[a-zA-Z0-9_'\\-., \":;\\!?]*$"
                               },
                               "item_unit_price": {
-                                "0": "c",
-                                "1": "y",
-                                "2": "c",
-                                "3": "l",
-                                "4": "e",
-                                "description": "The cost for each instance of goods or a service."
+                                "type": "object",
+                                "title": "Money",
+                                "description": "The cost for each instance of goods or a service.",
+                                "properties": {
+                                  "currency_code": {
+                                    "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                                    "type": "string",
+                                    "format": "ppaas_common_currency_code_v2",
+                                    "minLength": 3,
+                                    "maxLength": 3
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/).",
+                                    "maxLength": 32,
+                                    "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                                  }
+                                },
+                                "required": [
+                                  "currency_code",
+                                  "value"
+                                ]
                               },
                               "item_amount": {
-                                "0": "c",
-                                "1": "y",
-                                "2": "c",
-                                "3": "l",
-                                "4": "e",
-                                "description": "The amount of the payment for the item."
+                                "type": "object",
+                                "title": "Money",
+                                "description": "The amount of the payment for the item.",
+                                "properties": {
+                                  "currency_code": {
+                                    "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                                    "type": "string",
+                                    "format": "ppaas_common_currency_code_v2",
+                                    "minLength": 3,
+                                    "maxLength": 3
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/).",
+                                    "maxLength": 32,
+                                    "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                                  }
+                                },
+                                "required": [
+                                  "currency_code",
+                                  "value"
+                                ]
                               },
                               "discount_amount": {
-                                "0": "c",
-                                "1": "y",
-                                "2": "c",
-                                "3": "l",
-                                "4": "e",
-                                "description": "The reduction in price associated with goods or a service."
+                                "type": "object",
+                                "title": "Money",
+                                "description": "The reduction in price associated with goods or a service.",
+                                "properties": {
+                                  "currency_code": {
+                                    "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                                    "type": "string",
+                                    "format": "ppaas_common_currency_code_v2",
+                                    "minLength": 3,
+                                    "maxLength": 3
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/).",
+                                    "maxLength": 32,
+                                    "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                                  }
+                                },
+                                "required": [
+                                  "currency_code",
+                                  "value"
+                                ]
                               },
                               "adjustment_amount": {
-                                "0": "c",
-                                "1": "y",
-                                "2": "c",
-                                "3": "l",
-                                "4": "e",
-                                "description": "An increment or decrement to a purchase amount."
+                                "type": "object",
+                                "title": "Money",
+                                "description": "An increment or decrement to a purchase amount.",
+                                "properties": {
+                                  "currency_code": {
+                                    "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                                    "type": "string",
+                                    "format": "ppaas_common_currency_code_v2",
+                                    "minLength": 3,
+                                    "maxLength": 3
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/).",
+                                    "maxLength": 32,
+                                    "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                                  }
+                                },
+                                "required": [
+                                  "currency_code",
+                                  "value"
+                                ]
                               },
                               "gift_wrap_amount": {
-                                "0": "c",
-                                "1": "y",
-                                "2": "c",
-                                "3": "l",
-                                "4": "e",
-                                "description": "The amount of money charged for gift wrapping an item."
+                                "type": "object",
+                                "title": "Money",
+                                "description": "The amount of money charged for gift wrapping an item.",
+                                "properties": {
+                                  "currency_code": {
+                                    "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                                    "type": "string",
+                                    "format": "ppaas_common_currency_code_v2",
+                                    "minLength": 3,
+                                    "maxLength": 3
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/).",
+                                    "maxLength": 32,
+                                    "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                                  }
+                                },
+                                "required": [
+                                  "currency_code",
+                                  "value"
+                                ]
                               },
                               "tax_percentage": {
-                                "0": "c",
-                                "1": "y",
-                                "2": "c",
-                                "3": "l",
-                                "4": "e",
+                                "type": "string",
                                 "description": "A rate, expressed in hundreds, that is used to calculate a levy for the purchase of goods or services.",
-                                "maxLength": 10,
-                                "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                                "format": "ppaas_common_percentage_v2",
+                                "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$",
+                                "maxLength": 10
                               },
                               "tax_amounts": {
                                 "type": "array",
@@ -736,55 +1093,151 @@
                                   "description": "A tax levied by a government on the purchase of goods or services.",
                                   "properties": {
                                     "tax_amount": {
-                                      "0": "c",
-                                      "1": "y",
-                                      "2": "c",
-                                      "3": "l",
-                                      "4": "e",
-                                      "description": "The tax levied by a government on the purchase of goods or services."
+                                      "type": "object",
+                                      "title": "Money",
+                                      "description": "The tax levied by a government on the purchase of goods or services.",
+                                      "properties": {
+                                        "currency_code": {
+                                          "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                                          "type": "string",
+                                          "format": "ppaas_common_currency_code_v2",
+                                          "minLength": 3,
+                                          "maxLength": 3
+                                        },
+                                        "value": {
+                                          "type": "string",
+                                          "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/).",
+                                          "maxLength": 32,
+                                          "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                                        }
+                                      },
+                                      "required": [
+                                        "currency_code",
+                                        "value"
+                                      ]
                                     }
                                   }
                                 }
                               },
                               "basic_shipping_amount": {
-                                "0": "c",
-                                "1": "y",
-                                "2": "c",
-                                "3": "l",
-                                "4": "e",
-                                "description": "The delivery cost."
+                                "type": "object",
+                                "title": "Money",
+                                "description": "The delivery cost.",
+                                "properties": {
+                                  "currency_code": {
+                                    "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                                    "type": "string",
+                                    "format": "ppaas_common_currency_code_v2",
+                                    "minLength": 3,
+                                    "maxLength": 3
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/).",
+                                    "maxLength": 32,
+                                    "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                                  }
+                                },
+                                "required": [
+                                  "currency_code",
+                                  "value"
+                                ]
                               },
                               "extra_shipping_amount": {
-                                "0": "c",
-                                "1": "y",
-                                "2": "c",
-                                "3": "l",
-                                "4": "e",
-                                "description": "The cost for expedited delivery of the goods."
+                                "type": "object",
+                                "title": "Money",
+                                "description": "The cost for expedited delivery of the goods.",
+                                "properties": {
+                                  "currency_code": {
+                                    "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                                    "type": "string",
+                                    "format": "ppaas_common_currency_code_v2",
+                                    "minLength": 3,
+                                    "maxLength": 3
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/).",
+                                    "maxLength": 32,
+                                    "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                                  }
+                                },
+                                "required": [
+                                  "currency_code",
+                                  "value"
+                                ]
                               },
                               "handling_amount": {
-                                "0": "c",
-                                "1": "y",
-                                "2": "c",
-                                "3": "l",
-                                "4": "e",
-                                "description": "A charge for processing the purchase of goods or services."
+                                "type": "object",
+                                "title": "Money",
+                                "description": "A charge for processing the purchase of goods or services.",
+                                "properties": {
+                                  "currency_code": {
+                                    "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                                    "type": "string",
+                                    "format": "ppaas_common_currency_code_v2",
+                                    "minLength": 3,
+                                    "maxLength": 3
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/).",
+                                    "maxLength": 32,
+                                    "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                                  }
+                                },
+                                "required": [
+                                  "currency_code",
+                                  "value"
+                                ]
                               },
                               "insurance_amount": {
-                                "0": "c",
-                                "1": "y",
-                                "2": "c",
-                                "3": "l",
-                                "4": "e",
-                                "description": "A charge for guaranteeing the quality of a product or delivery of a product."
+                                "type": "object",
+                                "title": "Money",
+                                "description": "A charge for guaranteeing the quality of a product or delivery of a product.",
+                                "properties": {
+                                  "currency_code": {
+                                    "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                                    "type": "string",
+                                    "format": "ppaas_common_currency_code_v2",
+                                    "minLength": 3,
+                                    "maxLength": 3
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/).",
+                                    "maxLength": 32,
+                                    "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                                  }
+                                },
+                                "required": [
+                                  "currency_code",
+                                  "value"
+                                ]
                               },
                               "total_item_amount": {
-                                "0": "c",
-                                "1": "y",
-                                "2": "c",
-                                "3": "l",
-                                "4": "e",
-                                "description": "The sum of all factors, item cost, discounts, tax, shipping, and so on, that goes into the cost of an item."
+                                "type": "object",
+                                "title": "Money",
+                                "description": "The sum of all factors, item cost, discounts, tax, shipping, and so on, that goes into the cost of an item.",
+                                "properties": {
+                                  "currency_code": {
+                                    "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                                    "type": "string",
+                                    "format": "ppaas_common_currency_code_v2",
+                                    "minLength": 3,
+                                    "maxLength": 3
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/).",
+                                    "maxLength": 32,
+                                    "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                                  }
+                                },
+                                "required": [
+                                  "currency_code",
+                                  "value"
+                                ]
                               },
                               "invoice_number": {
                                 "type": "string",
@@ -885,12 +1338,12 @@
                           "pattern": "^[a-zA-Z0-9_'\\-., \":;\\!?]*$"
                         },
                         "auction_closing_date": {
-                          "0": "c",
-                          "1": "y",
-                          "2": "c",
-                          "3": "l",
-                          "4": "e",
-                          "description": "The date and time when the auction closes, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6)."
+                          "description": "The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds are required while fractional seconds are optional.<blockquote><strong>Note:</strong> The regular expression provides guidance but does not reject all invalid dates.</blockquote>",
+                          "type": "string",
+                          "format": "ppaas_date_time_v3",
+                          "minLength": 20,
+                          "maxLength": 64,
+                          "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T,t]([0-1][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)([.][0-9]+)?([Zz]|[+-][0-9]{2}:[0-9]{2})$"
                         }
                       }
                     },
@@ -922,12 +1375,28 @@
                                 "pattern": "^[a-zA-Z0-9_'\\-., \":;\\!?]*$"
                               },
                               "incentive_amount": {
-                                "0": "c",
-                                "1": "y",
-                                "2": "c",
-                                "3": "l",
-                                "4": "e",
-                                "description": "The incentive amount."
+                                "type": "object",
+                                "title": "Money",
+                                "description": "The incentive amount.",
+                                "properties": {
+                                  "currency_code": {
+                                    "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                                    "type": "string",
+                                    "format": "ppaas_common_currency_code_v2",
+                                    "minLength": 3,
+                                    "maxLength": 3
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/).",
+                                    "maxLength": 32,
+                                    "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                                  }
+                                },
+                                "required": [
+                                  "currency_code",
+                                  "value"
+                                ]
                               },
                               "incentive_program_code": {
                                 "type": "string",
@@ -955,28 +1424,28 @@
                 "description": "The merchant account number."
               },
               "start_date": {
-                "0": "c",
-                "1": "y",
-                "2": "c",
-                "3": "l",
-                "4": "e",
-                "description": "The start date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6)."
+                "description": "The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds are required while fractional seconds are optional.<blockquote><strong>Note:</strong> The regular expression provides guidance but does not reject all invalid dates.</blockquote>",
+                "type": "string",
+                "format": "ppaas_date_time_v3",
+                "minLength": 20,
+                "maxLength": 64,
+                "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T,t]([0-1][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)([.][0-9]+)?([Zz]|[+-][0-9]{2}:[0-9]{2})$"
               },
               "end_date": {
-                "0": "c",
-                "1": "y",
-                "2": "c",
-                "3": "l",
-                "4": "e",
-                "description": "The end date and time or the last date when the data can be served, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6)."
+                "description": "The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds are required while fractional seconds are optional.<blockquote><strong>Note:</strong> The regular expression provides guidance but does not reject all invalid dates.</blockquote>",
+                "type": "string",
+                "format": "ppaas_date_time_v3",
+                "minLength": 20,
+                "maxLength": 64,
+                "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T,t]([0-1][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)([.][0-9]+)?([Zz]|[+-][0-9]{2}:[0-9]{2})$"
               },
               "last_refreshed_datetime": {
-                "0": "c",
-                "1": "y",
-                "2": "c",
-                "3": "l",
-                "4": "e",
-                "description": "The date and time when the data was last refreshed, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6)."
+                "description": "The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds are required while fractional seconds are optional.<blockquote><strong>Note:</strong> The regular expression provides guidance but does not reject all invalid dates.</blockquote>",
+                "type": "string",
+                "format": "ppaas_date_time_v3",
+                "minLength": 20,
+                "maxLength": 64,
+                "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T,t]([0-1][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)([.][0-9]+)?([Zz]|[+-][0-9]{2}:[0-9]{2})$"
               },
               "page": {
                 "type": "integer",
@@ -1050,6 +1519,13 @@
       "schema": {
         "tags": [
           "balances"
+        ],
+        "security": [
+          {
+            "Oauth2": [
+              "https://uri.paypal.com/services/reporting/balances/read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -1130,40 +1606,87 @@
                   "description": "The Balance information.",
                   "properties": {
                     "currency": {
-                      "0": "c",
-                      "1": "y",
-                      "2": "c",
-                      "3": "l",
-                      "4": "e",
-                      "description": "Currency Code of the balances listed."
+                      "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                      "type": "string",
+                      "format": "ppaas_common_currency_code_v2",
+                      "minLength": 3,
+                      "maxLength": 3
                     },
                     "primary": {
                       "type": "boolean",
                       "description": "Optional field representing if the currency is primary currency or not."
                     },
                     "total_balance": {
-                      "0": "c",
-                      "1": "y",
-                      "2": "c",
-                      "3": "l",
-                      "4": "e",
-                      "description": "The total amount in PayPal account. It is the sum of all the other balances."
+                      "description": "The currency and amount for a financial transaction, such as a balance or payment due.",
+                      "type": "object",
+                      "title": "Money",
+                      "properties": {
+                        "currency_code": {
+                          "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                          "type": "string",
+                          "format": "ppaas_common_currency_code_v2",
+                          "minLength": 3,
+                          "maxLength": 3
+                        },
+                        "value": {
+                          "type": "string",
+                          "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/).",
+                          "maxLength": 32,
+                          "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                        }
+                      },
+                      "required": [
+                        "currency_code",
+                        "value"
+                      ]
                     },
                     "available_balance": {
-                      "0": "c",
-                      "1": "y",
-                      "2": "c",
-                      "3": "l",
-                      "4": "e",
-                      "description": "The amount of cash in an Account which is at the customer's disposal. This amount is captured at settlement cutoff time in the user's time zone as defined for the user."
+                      "description": "The currency and amount for a financial transaction, such as a balance or payment due.",
+                      "type": "object",
+                      "title": "Money",
+                      "properties": {
+                        "currency_code": {
+                          "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                          "type": "string",
+                          "format": "ppaas_common_currency_code_v2",
+                          "minLength": 3,
+                          "maxLength": 3
+                        },
+                        "value": {
+                          "type": "string",
+                          "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/).",
+                          "maxLength": 32,
+                          "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                        }
+                      },
+                      "required": [
+                        "currency_code",
+                        "value"
+                      ]
                     },
                     "withheld_balance": {
-                      "0": "c",
-                      "1": "y",
-                      "2": "c",
-                      "3": "l",
-                      "4": "e",
-                      "description": "Balance withheld in the account. The portion of funds that PayPal holds for the customer that is not currently at the customer's disposal."
+                      "description": "The currency and amount for a financial transaction, such as a balance or payment due.",
+                      "type": "object",
+                      "title": "Money",
+                      "properties": {
+                        "currency_code": {
+                          "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.",
+                          "type": "string",
+                          "format": "ppaas_common_currency_code_v2",
+                          "minLength": 3,
+                          "maxLength": 3
+                        },
+                        "value": {
+                          "type": "string",
+                          "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/).",
+                          "maxLength": 32,
+                          "pattern": "^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$"
+                        }
+                      },
+                      "required": [
+                        "currency_code",
+                        "value"
+                      ]
                     }
                   },
                   "required": [
@@ -1181,21 +1704,320 @@
                 "pattern": "^[2-9A-HJ-NP-Z]{13}$"
               },
               "as_of_time": {
-                "0": "c",
-                "1": "y",
-                "2": "c",
-                "3": "l",
-                "4": "e",
-                "description": "The requested date and time or the last date and time when the balances can be served, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6)."
+                "description": "The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds are required while fractional seconds are optional.<blockquote><strong>Note:</strong> The regular expression provides guidance but does not reject all invalid dates.</blockquote>",
+                "type": "string",
+                "format": "ppaas_date_time_v3",
+                "minLength": 20,
+                "maxLength": 64,
+                "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T,t]([0-1][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)([.][0-9]+)?([Zz]|[+-][0-9]{2}:[0-9]{2})$"
               },
               "last_refresh_time": {
-                "0": "c",
-                "1": "y",
-                "2": "c",
-                "3": "l",
-                "4": "e",
-                "description": "The date and time when the balances was last refreshed, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6)."
+                "description": "The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds are required while fractional seconds are optional.<blockquote><strong>Note:</strong> The regular expression provides guidance but does not reject all invalid dates.</blockquote>",
+                "type": "string",
+                "format": "ppaas_date_time_v3",
+                "minLength": 20,
+                "maxLength": 64,
+                "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T,t]([0-1][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)([.][0-9]+)?([Zz]|[+-][0-9]{2}:[0-9]{2})$"
               }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Transaction-Search/get_v1_reporting_balances/output-400.schema.json",
+            "type": "object",
+            "title": "Bad Request Error",
+            "description": "Request is not well-formed, syntactically incorrect, or violates schema.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "enum": [
+                  "INVALID_REQUEST"
+                ]
+              },
+              "message": {
+                "type": "string",
+                "enum": [
+                  "Request is not well-formed, syntactically incorrect, or violates schema."
+                ]
+              },
+              "details": {
+                "type": "array",
+                "items": {
+                  "title": "Error Details",
+                  "type": "object",
+                  "description": "The error details. Required for client-side `4XX` errors.",
+                  "properties": {
+                    "field": {
+                      "type": "string",
+                      "description": "The field that caused the error. If this field is in the body, set this value to the field's JSON pointer value. Required for client-side errors."
+                    },
+                    "value": {
+                      "type": "string",
+                      "description": "The value of the field that caused the error."
+                    },
+                    "location": {
+                      "type": "string",
+                      "description": "The location of the field that caused the error. Value is `body`, `path`, or `query`.",
+                      "enum": [
+                        "body",
+                        "path",
+                        "query"
+                      ],
+                      "default": "body"
+                    },
+                    "issue": {
+                      "type": "string",
+                      "description": "The unique, fine-grained application-level error code."
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "The human-readable description for an issue. The description can change over the lifetime of an API, so clients must not depend on this value."
+                    }
+                  },
+                  "required": [
+                    "issue"
+                  ]
+                }
+              },
+              "debug_id": {
+                "type": "string",
+                "description": "The PayPal internal ID. Used for correlation purposes."
+              },
+              "links": {
+                "description": "An array of request-related [HATEOAS links](https://en.wikipedia.org/wiki/HATEOAS).",
+                "type": "array",
+                "minItems": 0,
+                "maxItems": 10000,
+                "items": {
+                  "title": "Link Description",
+                  "description": "The request-related [HATEOAS link](/api/rest/responses/#hateoas-links) information.",
+                  "type": "object",
+                  "required": [
+                    "href",
+                    "rel"
+                  ],
+                  "properties": {
+                    "href": {
+                      "description": "The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call.",
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 20000,
+                      "pattern": "^.*$"
+                    },
+                    "rel": {
+                      "description": "The [link relation type](https://tools.ietf.org/html/rfc5988#section-4), which serves as an ID for a link that unambiguously describes the semantics of the link. See [Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml).",
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 100,
+                      "pattern": "^.*$"
+                    },
+                    "method": {
+                      "description": "The HTTP method required to make the related call.",
+                      "type": "string",
+                      "minLength": 3,
+                      "maxLength": 6,
+                      "pattern": "^[A-Z]*$",
+                      "enum": [
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "PATCH"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Transaction-Search/get_v1_reporting_balances/output-403.schema.json",
+            "type": "object",
+            "title": "Not Authorized Error",
+            "description": "The client is not authorized to access this resource, although it may have valid credentials. ",
+            "properties": {
+              "name": {
+                "type": "string",
+                "enum": [
+                  "NOT_AUTHORIZED"
+                ]
+              },
+              "message": {
+                "type": "string",
+                "enum": [
+                  "Authorization failed due to insufficient permissions."
+                ]
+              },
+              "details": {
+                "type": "array",
+                "items": {
+                  "title": "Error Details",
+                  "type": "object",
+                  "description": "The error details. Required for client-side `4XX` errors.",
+                  "properties": {
+                    "field": {
+                      "type": "string",
+                      "description": "The field that caused the error. If this field is in the body, set this value to the field's JSON pointer value. Required for client-side errors."
+                    },
+                    "value": {
+                      "type": "string",
+                      "description": "The value of the field that caused the error."
+                    },
+                    "location": {
+                      "type": "string",
+                      "description": "The location of the field that caused the error. Value is `body`, `path`, or `query`.",
+                      "enum": [
+                        "body",
+                        "path",
+                        "query"
+                      ],
+                      "default": "body"
+                    },
+                    "issue": {
+                      "type": "string",
+                      "description": "The unique, fine-grained application-level error code."
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "The human-readable description for an issue. The description can change over the lifetime of an API, so clients must not depend on this value."
+                    }
+                  },
+                  "required": [
+                    "issue"
+                  ]
+                }
+              },
+              "debug_id": {
+                "type": "string",
+                "description": "The PayPal internal ID. Used for correlation purposes."
+              },
+              "links": {
+                "description": "An array of request-related [HATEOAS links](https://en.wikipedia.org/wiki/HATEOAS).",
+                "type": "array",
+                "minItems": 0,
+                "maxItems": 10000,
+                "items": {
+                  "title": "Link Description",
+                  "description": "The request-related [HATEOAS link](/api/rest/responses/#hateoas-links) information.",
+                  "type": "object",
+                  "required": [
+                    "href",
+                    "rel"
+                  ],
+                  "properties": {
+                    "href": {
+                      "description": "The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call.",
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 20000,
+                      "pattern": "^.*$"
+                    },
+                    "rel": {
+                      "description": "The [link relation type](https://tools.ietf.org/html/rfc5988#section-4), which serves as an ID for a link that unambiguously describes the semantics of the link. See [Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml).",
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 100,
+                      "pattern": "^.*$"
+                    },
+                    "method": {
+                      "description": "The HTTP method required to make the related call.",
+                      "type": "string",
+                      "minLength": 3,
+                      "maxLength": 6,
+                      "pattern": "^[A-Z]*$",
+                      "enum": [
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "PATCH"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Transaction-Search/get_v1_reporting_balances/output-500.schema.json",
+            "type": "object",
+            "title": "Internal Server Error",
+            "description": "This is either a system or application error, and generally indicates that although the client appeared to provide a correct request, something unexpected has gone wrong on the server.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "enum": [
+                  "INTERNAL_SERVER_ERROR"
+                ]
+              },
+              "message": {
+                "type": "string",
+                "enum": [
+                  "An internal server error occurred."
+                ]
+              },
+              "debug_id": {
+                "type": "string",
+                "description": "The PayPal internal ID. Used for correlation purposes."
+              },
+              "links": {
+                "description": "An array of request-related [HATEOAS links](https://en.wikipedia.org/wiki/HATEOAS).",
+                "type": "array",
+                "minItems": 0,
+                "maxItems": 10000,
+                "items": {
+                  "title": "Link Description",
+                  "description": "The request-related [HATEOAS link](/api/rest/responses/#hateoas-links) information.",
+                  "type": "object",
+                  "required": [
+                    "href",
+                    "rel"
+                  ],
+                  "properties": {
+                    "href": {
+                      "description": "The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call.",
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 20000,
+                      "pattern": "^.*$"
+                    },
+                    "rel": {
+                      "description": "The [link relation type](https://tools.ietf.org/html/rfc5988#section-4), which serves as an ID for a link that unambiguously describes the semantics of the link. See [Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml).",
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 100,
+                      "pattern": "^.*$"
+                    },
+                    "method": {
+                      "description": "The HTTP method required to make the related call.",
+                      "type": "string",
+                      "minLength": 3,
+                      "maxLength": 6,
+                      "pattern": "^[A-Z]*$",
+                      "enum": [
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "PATCH"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "example": {
+              "name": "INTERNAL_SERVER_ERROR",
+              "message": "An internal server error occurred.",
+              "debug_id": "90957fca61718",
+              "links": [
+                {
+                  "href": "https://developer.paypal.com/api/orders/v2/#error-INTERNAL_SERVER_ERROR",
+                  "rel": "information_link"
+                }
+              ]
             }
           }
         ]
@@ -1214,5 +2036,20 @@
     "headerDesc": "HTTP headers sent when making the request",
     "dataDesc": "Data sent with the request",
     "schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "securitySchemes": {
+    "Oauth2": {
+      "type": "oauth2",
+      "description": "Oauth 2.0 authentication",
+      "flows": {
+        "clientCredentials": {
+          "tokenUrl": "https://api-m.paypal.com/v1/oauth2/token",
+          "scopes": {
+            "https://uri.paypal.com/services/reporting/search/read": "Transactions Search",
+            "https://uri.paypal.com/services/reporting/balances/read": "List Balances"
+          }
+        }
+      }
+    }
   }
 }

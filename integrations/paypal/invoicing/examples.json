@@ -235,6 +235,9 @@
     "Basic Example": {
       "url": "/v2/invoicing/invoices/{invoice_id}/remind",
       "method": "post",
+      "path": {
+        "invoice_id": "<string>"
+      },
       "data": {
         "subject": "Reminder: Payment due for the invoice #ABC-123",
         "note": "Please pay before the due date to avoid incurring late payment charges which will be adjusted in the next bill generated.",
@@ -254,6 +257,9 @@
     "Basic Example": {
       "url": "/v2/invoicing/invoices/{invoice_id}/cancel",
       "method": "post",
+      "path": {
+        "invoice_id": "<string>"
+      },
       "data": {
         "subject": "Invoice Cancelled",
         "note": "Cancelling the invoice",
@@ -273,6 +279,9 @@
     "Basic Example": {
       "url": "/v2/invoicing/invoices/{invoice_id}/payments",
       "method": "post",
+      "path": {
+        "invoice_id": "<string>"
+      },
       "data": {
         "method": "BANK_TRANSFER",
         "payment_date": "2018-05-01",
@@ -292,6 +301,7 @@
       "url": "/v2/invoicing/invoices/{invoice_id}/payments/{transaction_id}",
       "method": "delete",
       "path": {
+        "invoice_id": "<string>",
         "transaction_id": "<string>"
       },
       "baseURL": "https://api-m.sandbox.paypal.com"
@@ -301,6 +311,9 @@
     "Basic Example": {
       "url": "/v2/invoicing/invoices/{invoice_id}/refunds",
       "method": "post",
+      "path": {
+        "invoice_id": "<string>"
+      },
       "data": {
         "method": "BANK_TRANSFER",
         "refund_date": "2018-05-21",
@@ -319,6 +332,10 @@
     "Basic Example": {
       "url": "/v2/invoicing/invoices/{invoice_id}/refunds/{transaction_id}",
       "method": "delete",
+      "path": {
+        "invoice_id": "<string>",
+        "transaction_id": "<string>"
+      },
       "baseURL": "https://api-m.sandbox.paypal.com"
     }
   },
@@ -326,6 +343,9 @@
     "Basic Example": {
       "url": "/v2/invoicing/invoices/{invoice_id}/generate-qr-code",
       "method": "post",
+      "path": {
+        "invoice_id": "<string>"
+      },
       "data": {
         "width": 400,
         "height": 400
@@ -347,6 +367,9 @@
     "Basic Example": {
       "url": "/v2/invoicing/invoices/{invoice_id}",
       "method": "get",
+      "path": {
+        "invoice_id": "<string>"
+      },
       "baseURL": "https://api-m.sandbox.paypal.com"
     }
   },
@@ -354,6 +377,9 @@
     "Basic Example": {
       "url": "/v2/invoicing/invoices/{invoice_id}",
       "method": "delete",
+      "path": {
+        "invoice_id": "<string>"
+      },
       "baseURL": "https://api-m.sandbox.paypal.com"
     }
   },
@@ -361,11 +387,160 @@
     "Basic Example": {
       "url": "/v2/invoicing/invoices/{invoice_id}",
       "method": "put",
+      "path": {
+        "invoice_id": "<string>"
+      },
       "query": {
         "send_to_recipient": true,
         "send_to_invoicer": true
       },
-      "data": "<value>",
+      "data": {
+        "detail": {},
+        "id": "",
+        "parent_id": "",
+        "status": "DRAFT",
+        "invoicer": {},
+        "primary_recipients": [
+          {
+            "billing_info": {},
+            "shipping_info": {}
+          }
+        ],
+        "additional_recipients": [
+          "string (ppaas_common_email_address_v2)"
+        ],
+        "items": [
+          {
+            "name": "",
+            "quantity": "",
+            "unit_amount": {
+              "currency_code": "string (ppaas_common_currency_code_v2)",
+              "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+            },
+            "id": "",
+            "description": "",
+            "tax": {
+              "name": "",
+              "percent": "string (ppaas_common_percentage_v2)",
+              "amount": {
+                "currency_code": "string (ppaas_common_currency_code_v2)",
+                "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+              }
+            },
+            "item_date": "string (ppaas_date_notime_v2)",
+            "discount": {
+              "percent": "string (ppaas_common_percentage_v2)",
+              "amount": {
+                "currency_code": "string (ppaas_common_currency_code_v2)",
+                "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+              }
+            },
+            "unit_of_measure": "QUANTITY"
+          }
+        ],
+        "configuration": {},
+        "amount": {
+          "currency_code": "string (ppaas_common_currency_code_v2)",
+          "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>",
+          "breakdown": {
+            "item_total": {
+              "currency_code": "string (ppaas_common_currency_code_v2)",
+              "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+            },
+            "discount": {
+              "invoice_discount": {
+                "percent": "string (ppaas_common_percentage_v2)",
+                "amount": {
+                  "currency_code": "string (ppaas_common_currency_code_v2)",
+                  "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+                }
+              },
+              "item_discount": {
+                "currency_code": "string (ppaas_common_currency_code_v2)",
+                "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+              }
+            },
+            "tax_total": {
+              "currency_code": "string (ppaas_common_currency_code_v2)",
+              "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+            },
+            "shipping": {
+              "amount": {
+                "currency_code": "string (ppaas_common_currency_code_v2)",
+                "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+              },
+              "tax": {
+                "name": "",
+                "percent": "string (ppaas_common_percentage_v2)",
+                "amount": {
+                  "currency_code": "string (ppaas_common_currency_code_v2)",
+                  "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+                }
+              }
+            },
+            "custom": {
+              "label": "",
+              "amount": {
+                "currency_code": "string (ppaas_common_currency_code_v2)",
+                "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+              }
+            }
+          }
+        },
+        "due_amount": {
+          "currency_code": "string (ppaas_common_currency_code_v2)",
+          "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+        },
+        "gratuity": {
+          "currency_code": "string (ppaas_common_currency_code_v2)",
+          "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+        },
+        "payments": {
+          "paid_amount": {
+            "currency_code": "string (ppaas_common_currency_code_v2)",
+            "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+          },
+          "transactions": [
+            {
+              "method": "BANK_TRANSFER",
+              "type": "PAYPAL",
+              "payment_id": "",
+              "payment_date": "string (ppaas_date_notime_v2)",
+              "note": "",
+              "amount": {
+                "currency_code": "string (ppaas_common_currency_code_v2)",
+                "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+              },
+              "shipping_info": {}
+            }
+          ]
+        },
+        "refunds": {
+          "refund_amount": {
+            "currency_code": "string (ppaas_common_currency_code_v2)",
+            "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+          },
+          "transactions": [
+            {
+              "method": "BANK_TRANSFER",
+              "type": "PAYPAL",
+              "refund_id": "",
+              "refund_date": "string (ppaas_date_notime_v2)",
+              "amount": {
+                "currency_code": "string (ppaas_common_currency_code_v2)",
+                "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+              }
+            }
+          ]
+        },
+        "links": [
+          {
+            "href": "",
+            "rel": "",
+            "method": "GET"
+          }
+        ]
+      },
       "headers": {
         "Content-Type": "application/json"
       },
@@ -376,6 +551,11 @@
     "Basic Example": {
       "url": "/v2/invoicing/search-invoices",
       "method": "post",
+      "query": {
+        "page": 1,
+        "page_size": 20,
+        "total_required": "<boolean>"
+      },
       "data": {
         "total_amount_range": {
           "lower_amount": {
@@ -402,6 +582,11 @@
     "Basic Example": {
       "url": "/v2/invoicing/templates",
       "method": "get",
+      "query": {
+        "fields": "all",
+        "page": 1,
+        "page_size": 20
+      },
       "baseURL": "https://api-m.sandbox.paypal.com"
     }
   },
@@ -409,7 +594,144 @@
     "Basic Example": {
       "url": "/v2/invoicing/templates",
       "method": "post",
-      "data": "<value>",
+      "data": {
+        "id": "",
+        "name": "x",
+        "default_template": "<boolean>",
+        "template_info": {
+          "detail": {},
+          "invoicer": {},
+          "primary_recipients": [
+            {
+              "billing_info": {},
+              "shipping_info": {}
+            }
+          ],
+          "additional_recipients": [
+            "string (ppaas_common_email_address_v2)"
+          ],
+          "items": [
+            {
+              "name": "",
+              "quantity": "",
+              "unit_amount": {
+                "currency_code": "string (ppaas_common_currency_code_v2)",
+                "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+              },
+              "id": "",
+              "description": "",
+              "tax": {
+                "name": "",
+                "percent": "string (ppaas_common_percentage_v2)",
+                "amount": {
+                  "currency_code": "string (ppaas_common_currency_code_v2)",
+                  "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+                }
+              },
+              "item_date": "string (ppaas_date_notime_v2)",
+              "discount": {
+                "percent": "string (ppaas_common_percentage_v2)",
+                "amount": {
+                  "currency_code": "string (ppaas_common_currency_code_v2)",
+                  "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+                }
+              },
+              "unit_of_measure": "QUANTITY"
+            }
+          ],
+          "configuration": {
+            "tax_calculated_after_discount": "<boolean>",
+            "tax_inclusive": "<boolean>",
+            "allow_tip": "<boolean>",
+            "partial_payment": {
+              "allow_partial_payment": "<boolean>",
+              "minimum_amount_due": {
+                "currency_code": "string (ppaas_common_currency_code_v2)",
+                "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+              }
+            }
+          },
+          "amount": {
+            "currency_code": "string (ppaas_common_currency_code_v2)",
+            "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>",
+            "breakdown": {
+              "item_total": {
+                "currency_code": "string (ppaas_common_currency_code_v2)",
+                "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+              },
+              "discount": {
+                "invoice_discount": {
+                  "percent": "string (ppaas_common_percentage_v2)",
+                  "amount": {
+                    "currency_code": "string (ppaas_common_currency_code_v2)",
+                    "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+                  }
+                },
+                "item_discount": {
+                  "currency_code": "string (ppaas_common_currency_code_v2)",
+                  "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+                }
+              },
+              "tax_total": {
+                "currency_code": "string (ppaas_common_currency_code_v2)",
+                "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+              },
+              "shipping": {
+                "amount": {
+                  "currency_code": "string (ppaas_common_currency_code_v2)",
+                  "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+                },
+                "tax": {
+                  "name": "",
+                  "percent": "string (ppaas_common_percentage_v2)",
+                  "amount": {
+                    "currency_code": "string (ppaas_common_currency_code_v2)",
+                    "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+                  }
+                }
+              },
+              "custom": {
+                "label": "",
+                "amount": {
+                  "currency_code": "string (ppaas_common_currency_code_v2)",
+                  "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+                }
+              }
+            }
+          },
+          "due_amount": {
+            "currency_code": "string (ppaas_common_currency_code_v2)",
+            "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+          }
+        },
+        "settings": {
+          "template_item_settings": [
+            {
+              "field_name": "ITEMS_QUANTITY",
+              "display_preference": {
+                "hidden": "<boolean>"
+              }
+            }
+          ],
+          "template_subtotal_settings": [
+            {
+              "field_name": "DISCOUNT",
+              "display_preference": {
+                "hidden": "<boolean>"
+              }
+            }
+          ]
+        },
+        "unit_of_measure": "QUANTITY",
+        "standard_template": "<boolean>",
+        "links": [
+          {
+            "href": "",
+            "rel": "",
+            "method": "GET"
+          }
+        ]
+      },
       "headers": {
         "Content-Type": "application/json"
       },
@@ -430,6 +752,9 @@
     "Basic Example": {
       "url": "/v2/invoicing/templates/{template_id}",
       "method": "delete",
+      "path": {
+        "template_id": "<string>"
+      },
       "baseURL": "https://api-m.sandbox.paypal.com"
     }
   },
@@ -437,7 +762,147 @@
     "Basic Example": {
       "url": "/v2/invoicing/templates/{template_id}",
       "method": "put",
-      "data": "<value>",
+      "path": {
+        "template_id": "<string>"
+      },
+      "data": {
+        "id": "",
+        "name": "x",
+        "default_template": "<boolean>",
+        "template_info": {
+          "detail": {},
+          "invoicer": {},
+          "primary_recipients": [
+            {
+              "billing_info": {},
+              "shipping_info": {}
+            }
+          ],
+          "additional_recipients": [
+            "string (ppaas_common_email_address_v2)"
+          ],
+          "items": [
+            {
+              "name": "",
+              "quantity": "",
+              "unit_amount": {
+                "currency_code": "string (ppaas_common_currency_code_v2)",
+                "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+              },
+              "id": "",
+              "description": "",
+              "tax": {
+                "name": "",
+                "percent": "string (ppaas_common_percentage_v2)",
+                "amount": {
+                  "currency_code": "string (ppaas_common_currency_code_v2)",
+                  "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+                }
+              },
+              "item_date": "string (ppaas_date_notime_v2)",
+              "discount": {
+                "percent": "string (ppaas_common_percentage_v2)",
+                "amount": {
+                  "currency_code": "string (ppaas_common_currency_code_v2)",
+                  "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+                }
+              },
+              "unit_of_measure": "QUANTITY"
+            }
+          ],
+          "configuration": {
+            "tax_calculated_after_discount": "<boolean>",
+            "tax_inclusive": "<boolean>",
+            "allow_tip": "<boolean>",
+            "partial_payment": {
+              "allow_partial_payment": "<boolean>",
+              "minimum_amount_due": {
+                "currency_code": "string (ppaas_common_currency_code_v2)",
+                "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+              }
+            }
+          },
+          "amount": {
+            "currency_code": "string (ppaas_common_currency_code_v2)",
+            "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>",
+            "breakdown": {
+              "item_total": {
+                "currency_code": "string (ppaas_common_currency_code_v2)",
+                "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+              },
+              "discount": {
+                "invoice_discount": {
+                  "percent": "string (ppaas_common_percentage_v2)",
+                  "amount": {
+                    "currency_code": "string (ppaas_common_currency_code_v2)",
+                    "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+                  }
+                },
+                "item_discount": {
+                  "currency_code": "string (ppaas_common_currency_code_v2)",
+                  "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+                }
+              },
+              "tax_total": {
+                "currency_code": "string (ppaas_common_currency_code_v2)",
+                "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+              },
+              "shipping": {
+                "amount": {
+                  "currency_code": "string (ppaas_common_currency_code_v2)",
+                  "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+                },
+                "tax": {
+                  "name": "",
+                  "percent": "string (ppaas_common_percentage_v2)",
+                  "amount": {
+                    "currency_code": "string (ppaas_common_currency_code_v2)",
+                    "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+                  }
+                }
+              },
+              "custom": {
+                "label": "",
+                "amount": {
+                  "currency_code": "string (ppaas_common_currency_code_v2)",
+                  "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+                }
+              }
+            }
+          },
+          "due_amount": {
+            "currency_code": "string (ppaas_common_currency_code_v2)",
+            "value": "<string matching ^((-?[0-9]+)|(-?([0-9]+)?[.][0-9]+))$>"
+          }
+        },
+        "settings": {
+          "template_item_settings": [
+            {
+              "field_name": "ITEMS_QUANTITY",
+              "display_preference": {
+                "hidden": "<boolean>"
+              }
+            }
+          ],
+          "template_subtotal_settings": [
+            {
+              "field_name": "DISCOUNT",
+              "display_preference": {
+                "hidden": "<boolean>"
+              }
+            }
+          ]
+        },
+        "unit_of_measure": "QUANTITY",
+        "standard_template": "<boolean>",
+        "links": [
+          {
+            "href": "",
+            "rel": "",
+            "method": "GET"
+          }
+        ]
+      },
       "headers": {
         "Content-Type": "application/json"
       },

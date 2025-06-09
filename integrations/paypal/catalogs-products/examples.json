@@ -44,6 +44,9 @@
     "Basic Example": {
       "url": "/v1/catalogs/products/{product_id}",
       "method": "patch",
+      "path": {
+        "product_id": "<string>"
+      },
       "data": [
         {
           "op": "replace",

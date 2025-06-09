@@ -11,6 +11,13 @@
         "tags": [
           "Organization"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "organization_read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/get_v2_organizations/input.schema.json",
@@ -444,6 +451,13 @@
         "tags": [
           "DataDeletion"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "user_data_redact"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/post_v2_data_redaction_accounts__accountId__user/input.schema.json",
@@ -567,6 +581,13 @@
         "tags": [
           "eSignUserManagement"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "permission_read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/get_v2_organizations__organizationId__accounts__accountId__permissions/input.schema.json",
@@ -664,6 +685,13 @@
       "schema": {
         "tags": [
           "eSignUserManagement"
+        ],
+        "security": [
+          {
+            "accessCode": [
+              "group_read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -813,6 +841,13 @@
       "schema": {
         "tags": [
           "UserExport"
+        ],
+        "security": [
+          {
+            "accessCode": [
+              "user_read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -1056,6 +1091,13 @@
         "tags": [
           "UserExport"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "user_read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/post_v2_organizations__organizationId__exports_user_list/input.schema.json",
@@ -1287,6 +1329,13 @@
       "schema": {
         "tags": [
           "AccountSettingsExport"
+        ],
+        "security": [
+          {
+            "accessCode": [
+              "account_read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -1530,6 +1579,13 @@
         "tags": [
           "AccountSettingsExport"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "account_read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/post_v2_organizations__organizationId__exports_account_settings/input.schema.json",
@@ -1761,6 +1817,13 @@
       "schema": {
         "tags": [
           "UserExport"
+        ],
+        "security": [
+          {
+            "accessCode": [
+              "user_read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -1999,6 +2062,13 @@
         "tags": [
           "UserExport"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "user_read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/delete_v2_organizations__organizationId__exports_user_list__exportId_/input.schema.json",
@@ -2068,6 +2138,13 @@
       "schema": {
         "tags": [
           "AccountSettingsExport"
+        ],
+        "security": [
+          {
+            "accessCode": [
+              "account_read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -2306,6 +2383,13 @@
         "tags": [
           "AccountSettingsExport"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "account_read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/delete_v2_organizations__organizationId__exports_account_settings__exportId_/input.schema.json",
@@ -2376,6 +2460,13 @@
         "tags": [
           "AccountSettingsImport"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "account_read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/get_v2_organizations__organizationId__imports_account_settings/input.schema.json",
@@ -2440,6 +2531,13 @@
       "schema": {
         "tags": [
           "AccountSettingsImport"
+        ],
+        "security": [
+          {
+            "accessCode": [
+              "account_write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -2694,6 +2792,13 @@
         "tags": [
           "AccountSettingsImport"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "account_read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/get_v2_organizations__organizationId__imports_account_settings__importId_/input.schema.json",
@@ -2939,6 +3044,13 @@
         "tags": [
           "AccountSettingsImport"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "account_write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/delete_v2_organizations__organizationId__imports_account_settings__importId_/input.schema.json",
@@ -3008,6 +3120,13 @@
       "schema": {
         "tags": [
           "UserImport"
+        ],
+        "security": [
+          {
+            "accessCode": [
+              "user_write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -3274,6 +3393,13 @@
       "schema": {
         "tags": [
           "SingleAccountUserImport"
+        ],
+        "security": [
+          {
+            "accessCode": [
+              "user_write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -3546,6 +3672,13 @@
         "tags": [
           "UserImport"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "user_write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/post_v2_organizations__organizationId__imports_bulk_users_update/input.schema.json",
@@ -3811,6 +3944,13 @@
       "schema": {
         "tags": [
           "SingleAccountUserImport"
+        ],
+        "security": [
+          {
+            "accessCode": [
+              "user_write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -4083,6 +4223,13 @@
         "tags": [
           "UserImport"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "user_write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/post_v2_organizations__organizationId__imports_bulk_users_close/input.schema.json",
@@ -4349,6 +4496,13 @@
         "tags": [
           "UserImport"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "user_write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/post_v2_organizations__organizationId__imports_bulk_users_close_external/input.schema.json",
@@ -4601,6 +4755,13 @@
       "schema": {
         "tags": [
           "UserImport"
+        ],
+        "security": [
+          {
+            "accessCode": [
+              "user_read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -4865,6 +5026,13 @@
         "tags": [
           "UserImport"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "user_read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/get_v2_organizations__organizationId__imports_bulk_users__importId_/input.schema.json",
@@ -5123,6 +5291,13 @@
         "tags": [
           "UserImport"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "user_write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/delete_v2_organizations__organizationId__imports_bulk_users__importId_/input.schema.json",
@@ -5193,6 +5368,13 @@
         "tags": [
           "UserImport"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "user_read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/get_v2_organizations__organizationId__imports_bulk_users__importId__results_csv/input.schema.json",
@@ -5262,6 +5444,13 @@
       "schema": {
         "tags": [
           "IdentityProviders"
+        ],
+        "security": [
+          {
+            "accessCode": [
+              "identity_provider_read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -5494,6 +5683,13 @@
         "tags": [
           "DataDeletion"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "user_data_redact"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/post_v2_data_redaction_organizations__organizationId__user/input.schema.json",
@@ -5616,6 +5812,13 @@
       "schema": {
         "tags": [
           "ReservedDomains"
+        ],
+        "security": [
+          {
+            "accessCode": [
+              "domain_read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -5765,6 +5968,13 @@
         "tags": [
           "eSignUserManagement"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "user_write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/post_v2_organizations__organizationId__users_profiles/input.schema.json",
@@ -5881,6 +6091,13 @@
       "schema": {
         "tags": [
           "Users"
+        ],
+        "security": [
+          {
+            "accessCode": [
+              "user_write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -5999,6 +6216,13 @@
         "tags": [
           "eSignUserManagement"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "user_write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/delete_v2_organizations__organizationId__users__userId__accounts/input.schema.json",
@@ -6111,6 +6335,13 @@
       "schema": {
         "tags": [
           "Users"
+        ],
+        "security": [
+          {
+            "accessCode": [
+              "user_read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -6382,6 +6613,13 @@
         "tags": [
           "eSignUserManagement"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "user_write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/post_v2_organizations__organizationId__users/input.schema.json",
@@ -6558,6 +6796,13 @@
         "tags": [
           "eSignUserManagement"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "user_write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/post_v2_organizations__organizationId__users__userId__memberships__membershipId_/input.schema.json",
@@ -6645,6 +6890,13 @@
       "schema": {
         "tags": [
           "eSignUserManagement"
+        ],
+        "security": [
+          {
+            "accessCode": [
+              "user_read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -6935,6 +7187,13 @@
         "tags": [
           "eSignUserManagement"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "user_write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/delete_v2_organizations__organizationId__users__userId__identities/input.schema.json",
@@ -7063,6 +7322,13 @@
       "schema": {
         "tags": [
           "eSignUserManagement"
+        ],
+        "security": [
+          {
+            "accessCode": [
+              "user_write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -7245,6 +7511,13 @@
         "tags": [
           "MultiProductUserManagement"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "user_read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/get_v2_1_organizations__organizationId__accounts__accountId__dsgroups/input.schema.json",
@@ -7416,6 +7689,13 @@
         "tags": [
           "MultiProductUserManagement"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "user_write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/post_v2_1_organizations__organizationId__accounts__accountId__dsgroups/input.schema.json",
@@ -7545,6 +7825,13 @@
       "schema": {
         "tags": [
           "MultiProductUserManagement"
+        ],
+        "security": [
+          {
+            "accessCode": [
+              "user_read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -7681,6 +7968,13 @@
         "tags": [
           "MultiProductUserManagement"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "user_write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/delete_v2_1_organizations__organizationId__accounts__accountId__dsgroups__dsGroupId_/input.schema.json",
@@ -7755,6 +8049,13 @@
       "schema": {
         "tags": [
           "MultiProductUserManagement"
+        ],
+        "security": [
+          {
+            "accessCode": [
+              "user_read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -7983,6 +8284,13 @@
         "tags": [
           "MultiProductUserManagement"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "user_write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/post_v2_1_organizations__organizationId__accounts__accountId__dsgroups__dsGroupId__users/input.schema.json",
@@ -8195,6 +8503,13 @@
         "tags": [
           "MultiProductUserManagement"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "user_write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/delete_v2_1_organizations__organizationId__accounts__accountId__dsgroups__dsGroupId__users/input.schema.json",
@@ -8339,6 +8654,13 @@
         "tags": [
           "MultiProductUserManagement"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "user_read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/get_v2_1_organizations__organizationId__accounts__accountId__products_permission_profiles/input.schema.json",
@@ -8460,6 +8782,13 @@
       "schema": {
         "tags": [
           "MultiProductUserManagement"
+        ],
+        "security": [
+          {
+            "accessCode": [
+              "user_read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -8587,6 +8916,13 @@
       "schema": {
         "tags": [
           "MultiProductUserManagement"
+        ],
+        "security": [
+          {
+            "accessCode": [
+              "user_write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -8725,6 +9061,13 @@
       "schema": {
         "tags": [
           "MultiProductUserManagement"
+        ],
+        "security": [
+          {
+            "accessCode": [
+              "user_write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -8974,6 +9317,13 @@
       "schema": {
         "tags": [
           "MultiProductUserManagement"
+        ],
+        "security": [
+          {
+            "accessCode": [
+              "user_read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -9267,6 +9617,13 @@
       "schema": {
         "tags": [
           "MultiProductUserManagement"
+        ],
+        "security": [
+          {
+            "accessCode": [
+              "user_read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -9562,6 +9919,13 @@
         "tags": [
           "MultiProductUserManagement"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "user_write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/delete_v2_1_organizations__organizationId__accounts__accountId__products_users/input.schema.json",
@@ -9665,6 +10029,13 @@
       "schema": {
         "tags": [
           "MultiProductUserManagement"
+        ],
+        "security": [
+          {
+            "accessCode": [
+              "user_write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -9804,6 +10175,13 @@
         "tags": [
           "MultiProductUserManagement"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "user_write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/post_v2_1_organizations__organizationId__accounts__accountId__products_permission_profiles_users/input.schema.json",
@@ -9936,6 +10314,13 @@
       "schema": {
         "tags": [
           "AccountCloning"
+        ],
+        "security": [
+          {
+            "accessCode": [
+              "asset_group_account_read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -10072,6 +10457,13 @@
       "schema": {
         "tags": [
           "AccountCloning"
+        ],
+        "security": [
+          {
+            "accessCode": [
+              "asset_group_account_clone_write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -10354,6 +10746,13 @@
       "schema": {
         "tags": [
           "AccountCloning"
+        ],
+        "security": [
+          {
+            "accessCode": [
+              "asset_group_account_clone_read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -10657,6 +11056,13 @@
         "tags": [
           "AccountCloning"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "asset_group_account_clone_read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/get_v2_organizations__organizationId__assetGroups__assetGroupId__accountClones__assetGroupWorkId_/input.schema.json",
@@ -10954,6 +11360,13 @@
         "tags": [
           "AccountCreation"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "organization_sub_account_read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/get_v2_organizations__organizationId__planItems/input.schema.json",
@@ -11018,6 +11431,13 @@
       "schema": {
         "tags": [
           "AccountCreation"
+        ],
+        "security": [
+          {
+            "accessCode": [
+              "organization_sub_account_write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -11647,6 +12067,13 @@
         "tags": [
           "AccountCreation"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "organization_sub_account_read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/get_v2_organizations__organizationId__subAccountsCreated/input.schema.json",
@@ -11951,6 +12378,13 @@
         "tags": [
           "AccountCreation"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "organization_sub_account_read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Docusign-Admin-API/get_v2_organizations__organizationId__assetGroup__assetGroupId__subAccountCreated__assetGroupWorkId_/input.schema.json",
@@ -12254,5 +12688,31 @@
     "headerDesc": "HTTP headers sent when making the request",
     "dataDesc": "Data sent with the request",
     "schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "securitySchemes": {
+    "accessCode": {
+      "type": "oauth2",
+      "description": "OAuth2 Access code Grant",
+      "flow": "accessCode",
+      "authorizationUrl": "https://account-d.docusign.com/oauth/auth",
+      "tokenUrl": "https://account-d.docusign.com/oauth/auth",
+      "scopes": {
+        "organization_read": "",
+        "user_data_redact": "",
+        "permission_read": "",
+        "group_read": "",
+        "user_read": "",
+        "account_read": "",
+        "account_write": "",
+        "user_write": "",
+        "identity_provider_read": "",
+        "domain_read": "",
+        "asset_group_account_read": "",
+        "asset_group_account_clone_write": "",
+        "asset_group_account_clone_read": "",
+        "organization_sub_account_read": "",
+        "organization_sub_account_write": ""
+      }
+    }
   }
 }

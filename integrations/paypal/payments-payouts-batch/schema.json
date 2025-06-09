@@ -11,6 +11,13 @@
         "tags": [
           "payouts"
         ],
+        "security": [
+          {
+            "Oauth2": [
+              "https://uri.paypal.com/payments/payouts"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Payouts/post_v1_payments_payouts/input.schema.json",
@@ -484,11 +491,352 @@
                 "description": "An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links).",
                 "readOnly": true,
                 "items": {
-                  "0": "c",
-                  "1": "y",
-                  "2": "c",
-                  "3": "l",
-                  "4": "e",
+                  "type": "object",
+                  "title": "Link Description",
+                  "description": "The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information.",
+                  "required": [
+                    "href",
+                    "rel"
+                  ],
+                  "properties": {
+                    "href": {
+                      "type": "string",
+                      "description": "The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call."
+                    },
+                    "rel": {
+                      "type": "string",
+                      "description": "The [link relation type](https://tools.ietf.org/html/rfc5988#section-4), which serves as an ID for a link that unambiguously describes the semantics of the link. See [Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml)."
+                    },
+                    "method": {
+                      "type": "string",
+                      "description": "The HTTP method required to make the related call.",
+                      "enum": [
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "HEAD",
+                        "CONNECT",
+                        "OPTIONS",
+                        "PATCH"
+                      ]
+                    }
+                  },
+                  "readOnly": true
+                }
+              }
+            },
+            "required": [
+              "name",
+              "message",
+              "debug_id"
+            ]
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Payouts/post_v1_payments_payouts/output-403.schema.json",
+            "type": "object",
+            "title": "Error",
+            "description": "The error details.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The human-readable, unique name of the error."
+              },
+              "message": {
+                "type": "string",
+                "description": "The message that describes the error."
+              },
+              "debug_id": {
+                "type": "string",
+                "description": "The PayPal internal ID. Used for correlation purposes."
+              },
+              "information_link": {
+                "type": "string",
+                "description": "The information link, or URI, that shows detailed information about this error for the developer.",
+                "readOnly": true
+              },
+              "details": {
+                "type": "array",
+                "description": "An array of additional details about the error.",
+                "items": {
+                  "title": "Error Details",
+                  "type": "object",
+                  "description": "The error details. Required for client-side `4XX` errors.",
+                  "properties": {
+                    "field": {
+                      "type": "string",
+                      "description": "The field that caused the error. If this field is in the body, set this value to the field's JSON pointer value. Required for client-side errors."
+                    },
+                    "value": {
+                      "type": "string",
+                      "description": "The value of the field that caused the error."
+                    },
+                    "location": {
+                      "type": "string",
+                      "description": "The location of the field that caused the error. Value is `body`, `path`, or `query`.",
+                      "default": "body"
+                    },
+                    "issue": {
+                      "type": "string",
+                      "description": "The unique, fine-grained application-level error code."
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "The human-readable description for an issue. The description can change over the lifetime of an API, so clients must not depend on this value."
+                    }
+                  },
+                  "required": [
+                    "issue"
+                  ]
+                }
+              },
+              "links": {
+                "type": "array",
+                "description": "An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links).",
+                "readOnly": true,
+                "items": {
+                  "type": "object",
+                  "title": "Link Description",
+                  "description": "The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information.",
+                  "required": [
+                    "href",
+                    "rel"
+                  ],
+                  "properties": {
+                    "href": {
+                      "type": "string",
+                      "description": "The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call."
+                    },
+                    "rel": {
+                      "type": "string",
+                      "description": "The [link relation type](https://tools.ietf.org/html/rfc5988#section-4), which serves as an ID for a link that unambiguously describes the semantics of the link. See [Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml)."
+                    },
+                    "method": {
+                      "type": "string",
+                      "description": "The HTTP method required to make the related call.",
+                      "enum": [
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "HEAD",
+                        "CONNECT",
+                        "OPTIONS",
+                        "PATCH"
+                      ]
+                    }
+                  },
+                  "readOnly": true
+                }
+              }
+            },
+            "required": [
+              "name",
+              "message",
+              "debug_id"
+            ]
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Payouts/post_v1_payments_payouts/output-500.schema.json",
+            "type": "object",
+            "title": "Error",
+            "description": "The error details.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The human-readable, unique name of the error."
+              },
+              "message": {
+                "type": "string",
+                "description": "The message that describes the error."
+              },
+              "debug_id": {
+                "type": "string",
+                "description": "The PayPal internal ID. Used for correlation purposes."
+              },
+              "information_link": {
+                "type": "string",
+                "description": "The information link, or URI, that shows detailed information about this error for the developer.",
+                "readOnly": true
+              },
+              "details": {
+                "type": "array",
+                "description": "An array of additional details about the error.",
+                "items": {
+                  "title": "Error Details",
+                  "type": "object",
+                  "description": "The error details. Required for client-side `4XX` errors.",
+                  "properties": {
+                    "field": {
+                      "type": "string",
+                      "description": "The field that caused the error. If this field is in the body, set this value to the field's JSON pointer value. Required for client-side errors."
+                    },
+                    "value": {
+                      "type": "string",
+                      "description": "The value of the field that caused the error."
+                    },
+                    "location": {
+                      "type": "string",
+                      "description": "The location of the field that caused the error. Value is `body`, `path`, or `query`.",
+                      "default": "body"
+                    },
+                    "issue": {
+                      "type": "string",
+                      "description": "The unique, fine-grained application-level error code."
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "The human-readable description for an issue. The description can change over the lifetime of an API, so clients must not depend on this value."
+                    }
+                  },
+                  "required": [
+                    "issue"
+                  ]
+                }
+              },
+              "links": {
+                "type": "array",
+                "description": "An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links).",
+                "readOnly": true,
+                "items": {
+                  "type": "object",
+                  "title": "Link Description",
+                  "description": "The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information.",
+                  "required": [
+                    "href",
+                    "rel"
+                  ],
+                  "properties": {
+                    "href": {
+                      "type": "string",
+                      "description": "The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call."
+                    },
+                    "rel": {
+                      "type": "string",
+                      "description": "The [link relation type](https://tools.ietf.org/html/rfc5988#section-4), which serves as an ID for a link that unambiguously describes the semantics of the link. See [Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml)."
+                    },
+                    "method": {
+                      "type": "string",
+                      "description": "The HTTP method required to make the related call.",
+                      "enum": [
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "HEAD",
+                        "CONNECT",
+                        "OPTIONS",
+                        "PATCH"
+                      ]
+                    }
+                  },
+                  "readOnly": true
+                }
+              }
+            },
+            "required": [
+              "name",
+              "message",
+              "debug_id"
+            ]
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Payouts/post_v1_payments_payouts/output-default.schema.json",
+            "type": "object",
+            "title": "Error",
+            "description": "The error details.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The human-readable, unique name of the error."
+              },
+              "message": {
+                "type": "string",
+                "description": "The message that describes the error."
+              },
+              "debug_id": {
+                "type": "string",
+                "description": "The PayPal internal ID. Used for correlation purposes."
+              },
+              "information_link": {
+                "type": "string",
+                "description": "The information link, or URI, that shows detailed information about this error for the developer.",
+                "readOnly": true
+              },
+              "details": {
+                "type": "array",
+                "description": "An array of additional details about the error.",
+                "items": {
+                  "title": "Error Details",
+                  "type": "object",
+                  "description": "The error details. Required for client-side `4XX` errors.",
+                  "properties": {
+                    "field": {
+                      "type": "string",
+                      "description": "The field that caused the error. If this field is in the body, set this value to the field's JSON pointer value. Required for client-side errors."
+                    },
+                    "value": {
+                      "type": "string",
+                      "description": "The value of the field that caused the error."
+                    },
+                    "location": {
+                      "type": "string",
+                      "description": "The location of the field that caused the error. Value is `body`, `path`, or `query`.",
+                      "default": "body"
+                    },
+                    "issue": {
+                      "type": "string",
+                      "description": "The unique, fine-grained application-level error code."
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "The human-readable description for an issue. The description can change over the lifetime of an API, so clients must not depend on this value."
+                    }
+                  },
+                  "required": [
+                    "issue"
+                  ]
+                }
+              },
+              "links": {
+                "type": "array",
+                "description": "An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links).",
+                "readOnly": true,
+                "items": {
+                  "type": "object",
+                  "title": "Link Description",
+                  "description": "The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information.",
+                  "required": [
+                    "href",
+                    "rel"
+                  ],
+                  "properties": {
+                    "href": {
+                      "type": "string",
+                      "description": "The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call."
+                    },
+                    "rel": {
+                      "type": "string",
+                      "description": "The [link relation type](https://tools.ietf.org/html/rfc5988#section-4), which serves as an ID for a link that unambiguously describes the semantics of the link. See [Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml)."
+                    },
+                    "method": {
+                      "type": "string",
+                      "description": "The HTTP method required to make the related call.",
+                      "enum": [
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "HEAD",
+                        "CONNECT",
+                        "OPTIONS",
+                        "PATCH"
+                      ]
+                    }
+                  },
                   "readOnly": true
                 }
               }
@@ -510,6 +858,13 @@
       "schema": {
         "tags": [
           "payouts"
+        ],
+        "security": [
+          {
+            "Oauth2": [
+              "https://uri.paypal.com/payments/payouts"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -626,12 +981,19 @@
                     "pattern": "^.*$"
                   },
                   "batch_status": {
-                    "0": "c",
-                    "1": "y",
-                    "2": "c",
-                    "3": "l",
-                    "4": "e",
-                    "description": "The PayPal-generated payout status. If the payout passes preliminary checks, the status is `PENDING`."
+                    "description": "The payouts status.",
+                    "title": "Batch status",
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 36,
+                    "pattern": "^[0-9A-Z_]+$",
+                    "enum": [
+                      "DENIED",
+                      "PENDING",
+                      "PROCESSING",
+                      "SUCCESS",
+                      "CANCELED"
+                    ]
                   },
                   "time_created": {
                     "type": "string",
@@ -655,12 +1017,45 @@
                     "maxLength": 100
                   },
                   "sender_batch_header": {
-                    "0": "c",
-                    "1": "y",
-                    "2": "c",
-                    "3": "l",
-                    "4": "e",
-                    "description": "The original payout header, as provided by the payment sender."
+                    "description": "The sender-provided header for a payout request.",
+                    "type": "object",
+                    "title": "Payout Sender Batch Header",
+                    "properties": {
+                      "sender_batch_id": {
+                        "type": "string",
+                        "description": "The sender-specified ID number. Tracks the payout in an accounting system.<blockquote><strong>Note:</strong> <p>PayPal does not process duplicate payouts. If you specify a <code>sender_batch_id</code> that was used in the last 30 days, the API rejects the request with an error message that shows the duplicate <code>sender_batch_id</code> and includes a HATEOAS link to the original payout with the same <code>sender_batch_id</code>.</p><p>If you receive an HTTP <code>5<i>nn</i></code> status code, you can safely retry the request with the same <code>sender_batch_id</code>. The API completes a payment only once for a <code>sender_batch_id</code> that is used within 30 days.</p></blockquote>",
+                        "minLength": 0,
+                        "maxLength": 256,
+                        "pattern": "^.*$"
+                      },
+                      "recipient_type": {
+                        "title": "Recipient type",
+                        "description": "The ID type that identifies the payment receiver.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 36,
+                        "pattern": "^[0-9A-Z_]+$",
+                        "enum": [
+                          "EMAIL",
+                          "PHONE",
+                          "PAYPAL_ID"
+                        ]
+                      },
+                      "email_subject": {
+                        "type": "string",
+                        "description": "The subject line for the email that PayPal sends when payment for a payout item completes. The subject line is the same for all recipients. Value is an alphanumeric string with a maximum length of 255 single-byte characters.",
+                        "minLength": 0,
+                        "maxLength": 255,
+                        "pattern": "^.*$"
+                      },
+                      "email_message": {
+                        "type": "string",
+                        "description": "The email message that PayPal sends when the payout item completes. The message is the same for all recipients.",
+                        "minLength": 0,
+                        "maxLength": 1000,
+                        "pattern": "^.*$"
+                      }
+                    }
                   },
                   "funding_source": {
                     "description": "Identifies a funding source type.",
@@ -674,20 +1069,42 @@
                     ]
                   },
                   "amount": {
-                    "0": "c",
-                    "1": "y",
-                    "2": "c",
-                    "3": "l",
-                    "4": "e",
-                    "description": "The currency and total amount requested for the payouts."
+                    "description": "The currency and amount for a financial transaction, such as a balance or payment due.",
+                    "type": "object",
+                    "title": "Currency",
+                    "properties": {
+                      "currency": {
+                        "type": "string",
+                        "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/)."
+                      },
+                      "value": {
+                        "type": "string",
+                        "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency codes - ISO 4217](https://www.iso.org/iso-4217-currency-codes.html)."
+                      }
+                    },
+                    "required": [
+                      "currency",
+                      "value"
+                    ]
                   },
                   "fees": {
-                    "0": "c",
-                    "1": "y",
-                    "2": "c",
-                    "3": "l",
-                    "4": "e",
-                    "description": "The currency and amount of the total estimate for the applicable payouts fees. Initially, the fee is `0`. The fee is populated after the payout moves to the `PROCESSING` state."
+                    "description": "The currency and amount for a financial transaction, such as a balance or payment due.",
+                    "type": "object",
+                    "title": "Currency",
+                    "properties": {
+                      "currency": {
+                        "type": "string",
+                        "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/)."
+                      },
+                      "value": {
+                        "type": "string",
+                        "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency codes - ISO 4217](https://www.iso.org/iso-4217-currency-codes.html)."
+                      }
+                    },
+                    "required": [
+                      "currency",
+                      "value"
+                    ]
                   }
                 },
                 "required": [
@@ -745,12 +1162,23 @@
                       ]
                     },
                     "payout_item_fee": {
-                      "0": "c",
-                      "1": "y",
-                      "2": "c",
-                      "3": "l",
-                      "4": "e",
-                      "description": "The fee, in U.S. dollars."
+                      "description": "The currency and amount for a financial transaction, such as a balance or payment due.",
+                      "type": "object",
+                      "title": "Currency",
+                      "properties": {
+                        "currency": {
+                          "type": "string",
+                          "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/)."
+                        },
+                        "value": {
+                          "type": "string",
+                          "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency codes - ISO 4217](https://www.iso.org/iso-4217-currency-codes.html)."
+                        }
+                      },
+                      "required": [
+                        "currency",
+                        "value"
+                      ]
                     },
                     "payout_batch_id": {
                       "type": "string",
@@ -765,19 +1193,36 @@
                       "title": "Payout Item Detail",
                       "properties": {
                         "recipient_type": {
-                          "0": "c",
-                          "1": "y",
-                          "2": "c",
-                          "3": "l",
-                          "4": "e"
+                          "title": "Recipient type",
+                          "description": "The ID type that identifies the payment receiver.",
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 36,
+                          "pattern": "^[0-9A-Z_]+$",
+                          "enum": [
+                            "EMAIL",
+                            "PHONE",
+                            "PAYPAL_ID"
+                          ]
                         },
                         "amount": {
-                          "0": "c",
-                          "1": "y",
-                          "2": "c",
-                          "3": "l",
-                          "4": "e",
-                          "description": "The currency and amount of payout item. Might be an integer for currencies like `JPY` that are not typically fractional or a decimal fraction for currencies like `TND` that are subdivided into thousandths. For the required number of decimal places for a currency code, see [Currency codes - ISO 4217](https://www.iso.org/iso-4217-currency-codes.html)."
+                          "description": "The currency and amount for a financial transaction, such as a balance or payment due.",
+                          "type": "object",
+                          "title": "Currency",
+                          "properties": {
+                            "currency": {
+                              "type": "string",
+                              "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/)."
+                            },
+                            "value": {
+                              "type": "string",
+                              "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency codes - ISO 4217](https://www.iso.org/iso-4217-currency-codes.html)."
+                            }
+                          },
+                          "required": [
+                            "currency",
+                            "value"
+                          ]
                         },
                         "note": {
                           "type": "string",
@@ -857,12 +1302,23 @@
                           ]
                         },
                         "purpose": {
-                          "0": "c",
-                          "1": "y",
-                          "2": "c",
-                          "3": "l",
-                          "4": "e",
-                          "description": "The purpose of the transaction."
+                          "description": "The purpose of the transaction.",
+                          "type": "string",
+                          "title": "Purpose",
+                          "minLength": 1,
+                          "maxLength": 40,
+                          "pattern": "^[A-Z0-9_]+$",
+                          "enum": [
+                            "AWARDS",
+                            "PRIZES",
+                            "DONATIONS",
+                            "GOODS",
+                            "SERVICES",
+                            "REBATES",
+                            "CASHBACK",
+                            "DISCOUNTS",
+                            "NON_GOODS_OR_SERVICES"
+                          ]
                         }
                       },
                       "required": [
@@ -876,20 +1332,42 @@
                       "title": "Currency conversion resource",
                       "properties": {
                         "from_amount": {
-                          "0": "c",
-                          "1": "y",
-                          "2": "c",
-                          "3": "l",
-                          "4": "e",
-                          "description": "The amount that is converted from."
+                          "type": "object",
+                          "title": "Currency",
+                          "description": "The amount that is converted from.",
+                          "properties": {
+                            "currency": {
+                              "type": "string",
+                              "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/)."
+                            },
+                            "value": {
+                              "type": "string",
+                              "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency codes - ISO 4217](https://www.iso.org/iso-4217-currency-codes.html)."
+                            }
+                          },
+                          "required": [
+                            "currency",
+                            "value"
+                          ]
                         },
                         "to_amount": {
-                          "0": "c",
-                          "1": "y",
-                          "2": "c",
-                          "3": "l",
-                          "4": "e",
-                          "description": "The amount that is converted to."
+                          "type": "object",
+                          "title": "Currency",
+                          "description": "The amount that is converted to.",
+                          "properties": {
+                            "currency": {
+                              "type": "string",
+                              "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/)."
+                            },
+                            "value": {
+                              "type": "string",
+                              "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency codes - ISO 4217](https://www.iso.org/iso-4217-currency-codes.html)."
+                            }
+                          },
+                          "required": [
+                            "currency",
+                            "value"
+                          ]
                         },
                         "exchange_rate": {
                           "type": "string",
@@ -908,22 +1386,144 @@
                       "description": "The date and time when this item was last processed, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6)."
                     },
                     "errors": {
-                      "0": "c",
-                      "1": "y",
-                      "2": "c",
-                      "3": "l",
-                      "4": "e"
+                      "type": "object",
+                      "title": "Error",
+                      "description": "The error details.",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "description": "The human-readable, unique name of the error."
+                        },
+                        "message": {
+                          "type": "string",
+                          "description": "The message that describes the error."
+                        },
+                        "debug_id": {
+                          "type": "string",
+                          "description": "The PayPal internal ID. Used for correlation purposes."
+                        },
+                        "information_link": {
+                          "type": "string",
+                          "description": "The information link, or URI, that shows detailed information about this error for the developer.",
+                          "readOnly": true
+                        },
+                        "details": {
+                          "type": "array",
+                          "description": "An array of additional details about the error.",
+                          "items": {
+                            "title": "Error Details",
+                            "type": "object",
+                            "description": "The error details. Required for client-side `4XX` errors.",
+                            "properties": {
+                              "field": {
+                                "type": "string",
+                                "description": "The field that caused the error. If this field is in the body, set this value to the field's JSON pointer value. Required for client-side errors."
+                              },
+                              "value": {
+                                "type": "string",
+                                "description": "The value of the field that caused the error."
+                              },
+                              "location": {
+                                "type": "string",
+                                "description": "The location of the field that caused the error. Value is `body`, `path`, or `query`.",
+                                "default": "body"
+                              },
+                              "issue": {
+                                "type": "string",
+                                "description": "The unique, fine-grained application-level error code."
+                              },
+                              "description": {
+                                "type": "string",
+                                "description": "The human-readable description for an issue. The description can change over the lifetime of an API, so clients must not depend on this value."
+                              }
+                            },
+                            "required": [
+                              "issue"
+                            ]
+                          }
+                        },
+                        "links": {
+                          "type": "array",
+                          "description": "An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links).",
+                          "readOnly": true,
+                          "items": {
+                            "type": "object",
+                            "title": "Link Description",
+                            "description": "The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information.",
+                            "required": [
+                              "href",
+                              "rel"
+                            ],
+                            "properties": {
+                              "href": {
+                                "type": "string",
+                                "description": "The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call."
+                              },
+                              "rel": {
+                                "type": "string",
+                                "description": "The [link relation type](https://tools.ietf.org/html/rfc5988#section-4), which serves as an ID for a link that unambiguously describes the semantics of the link. See [Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml)."
+                              },
+                              "method": {
+                                "type": "string",
+                                "description": "The HTTP method required to make the related call.",
+                                "enum": [
+                                  "GET",
+                                  "POST",
+                                  "PUT",
+                                  "DELETE",
+                                  "HEAD",
+                                  "CONNECT",
+                                  "OPTIONS",
+                                  "PATCH"
+                                ]
+                              }
+                            },
+                            "readOnly": true
+                          }
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "message",
+                        "debug_id"
+                      ]
                     },
                     "links": {
                       "type": "array",
                       "description": "An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links).",
                       "readOnly": true,
                       "items": {
-                        "0": "c",
-                        "1": "y",
-                        "2": "c",
-                        "3": "l",
-                        "4": "e"
+                        "type": "object",
+                        "title": "Link Description",
+                        "description": "The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information.",
+                        "required": [
+                          "href",
+                          "rel"
+                        ],
+                        "properties": {
+                          "href": {
+                            "type": "string",
+                            "description": "The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call."
+                          },
+                          "rel": {
+                            "type": "string",
+                            "description": "The [link relation type](https://tools.ietf.org/html/rfc5988#section-4), which serves as an ID for a link that unambiguously describes the semantics of the link. See [Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml)."
+                          },
+                          "method": {
+                            "type": "string",
+                            "description": "The HTTP method required to make the related call.",
+                            "enum": [
+                              "GET",
+                              "POST",
+                              "PUT",
+                              "DELETE",
+                              "HEAD",
+                              "CONNECT",
+                              "OPTIONS",
+                              "PATCH"
+                            ]
+                          }
+                        }
                       },
                       "minItems": 0,
                       "maxItems": 15000
@@ -943,16 +1543,357 @@
                 "description": "An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links).",
                 "readOnly": true,
                 "items": {
-                  "0": "c",
-                  "1": "y",
-                  "2": "c",
-                  "3": "l",
-                  "4": "e"
+                  "type": "object",
+                  "title": "Link Description",
+                  "description": "The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information.",
+                  "required": [
+                    "href",
+                    "rel"
+                  ],
+                  "properties": {
+                    "href": {
+                      "type": "string",
+                      "description": "The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call."
+                    },
+                    "rel": {
+                      "type": "string",
+                      "description": "The [link relation type](https://tools.ietf.org/html/rfc5988#section-4), which serves as an ID for a link that unambiguously describes the semantics of the link. See [Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml)."
+                    },
+                    "method": {
+                      "type": "string",
+                      "description": "The HTTP method required to make the related call.",
+                      "enum": [
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "HEAD",
+                        "CONNECT",
+                        "OPTIONS",
+                        "PATCH"
+                      ]
+                    }
+                  }
                 },
                 "minItems": 0,
                 "maxItems": 15000
               }
             }
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Payouts/get_v1_payments_payouts__id_/output-404.schema.json",
+            "type": "object",
+            "title": "Error",
+            "description": "The error details.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The human-readable, unique name of the error."
+              },
+              "message": {
+                "type": "string",
+                "description": "The message that describes the error."
+              },
+              "debug_id": {
+                "type": "string",
+                "description": "The PayPal internal ID. Used for correlation purposes."
+              },
+              "information_link": {
+                "type": "string",
+                "description": "The information link, or URI, that shows detailed information about this error for the developer.",
+                "readOnly": true
+              },
+              "details": {
+                "type": "array",
+                "description": "An array of additional details about the error.",
+                "items": {
+                  "title": "Error Details",
+                  "type": "object",
+                  "description": "The error details. Required for client-side `4XX` errors.",
+                  "properties": {
+                    "field": {
+                      "type": "string",
+                      "description": "The field that caused the error. If this field is in the body, set this value to the field's JSON pointer value. Required for client-side errors."
+                    },
+                    "value": {
+                      "type": "string",
+                      "description": "The value of the field that caused the error."
+                    },
+                    "location": {
+                      "type": "string",
+                      "description": "The location of the field that caused the error. Value is `body`, `path`, or `query`.",
+                      "default": "body"
+                    },
+                    "issue": {
+                      "type": "string",
+                      "description": "The unique, fine-grained application-level error code."
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "The human-readable description for an issue. The description can change over the lifetime of an API, so clients must not depend on this value."
+                    }
+                  },
+                  "required": [
+                    "issue"
+                  ]
+                }
+              },
+              "links": {
+                "type": "array",
+                "description": "An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links).",
+                "readOnly": true,
+                "items": {
+                  "type": "object",
+                  "title": "Link Description",
+                  "description": "The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information.",
+                  "required": [
+                    "href",
+                    "rel"
+                  ],
+                  "properties": {
+                    "href": {
+                      "type": "string",
+                      "description": "The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call."
+                    },
+                    "rel": {
+                      "type": "string",
+                      "description": "The [link relation type](https://tools.ietf.org/html/rfc5988#section-4), which serves as an ID for a link that unambiguously describes the semantics of the link. See [Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml)."
+                    },
+                    "method": {
+                      "type": "string",
+                      "description": "The HTTP method required to make the related call.",
+                      "enum": [
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "HEAD",
+                        "CONNECT",
+                        "OPTIONS",
+                        "PATCH"
+                      ]
+                    }
+                  },
+                  "readOnly": true
+                }
+              }
+            },
+            "required": [
+              "name",
+              "message",
+              "debug_id"
+            ]
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Payouts/get_v1_payments_payouts__id_/output-500.schema.json",
+            "type": "object",
+            "title": "Error",
+            "description": "The error details.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The human-readable, unique name of the error."
+              },
+              "message": {
+                "type": "string",
+                "description": "The message that describes the error."
+              },
+              "debug_id": {
+                "type": "string",
+                "description": "The PayPal internal ID. Used for correlation purposes."
+              },
+              "information_link": {
+                "type": "string",
+                "description": "The information link, or URI, that shows detailed information about this error for the developer.",
+                "readOnly": true
+              },
+              "details": {
+                "type": "array",
+                "description": "An array of additional details about the error.",
+                "items": {
+                  "title": "Error Details",
+                  "type": "object",
+                  "description": "The error details. Required for client-side `4XX` errors.",
+                  "properties": {
+                    "field": {
+                      "type": "string",
+                      "description": "The field that caused the error. If this field is in the body, set this value to the field's JSON pointer value. Required for client-side errors."
+                    },
+                    "value": {
+                      "type": "string",
+                      "description": "The value of the field that caused the error."
+                    },
+                    "location": {
+                      "type": "string",
+                      "description": "The location of the field that caused the error. Value is `body`, `path`, or `query`.",
+                      "default": "body"
+                    },
+                    "issue": {
+                      "type": "string",
+                      "description": "The unique, fine-grained application-level error code."
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "The human-readable description for an issue. The description can change over the lifetime of an API, so clients must not depend on this value."
+                    }
+                  },
+                  "required": [
+                    "issue"
+                  ]
+                }
+              },
+              "links": {
+                "type": "array",
+                "description": "An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links).",
+                "readOnly": true,
+                "items": {
+                  "type": "object",
+                  "title": "Link Description",
+                  "description": "The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information.",
+                  "required": [
+                    "href",
+                    "rel"
+                  ],
+                  "properties": {
+                    "href": {
+                      "type": "string",
+                      "description": "The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call."
+                    },
+                    "rel": {
+                      "type": "string",
+                      "description": "The [link relation type](https://tools.ietf.org/html/rfc5988#section-4), which serves as an ID for a link that unambiguously describes the semantics of the link. See [Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml)."
+                    },
+                    "method": {
+                      "type": "string",
+                      "description": "The HTTP method required to make the related call.",
+                      "enum": [
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "HEAD",
+                        "CONNECT",
+                        "OPTIONS",
+                        "PATCH"
+                      ]
+                    }
+                  },
+                  "readOnly": true
+                }
+              }
+            },
+            "required": [
+              "name",
+              "message",
+              "debug_id"
+            ]
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Payouts/get_v1_payments_payouts__id_/output-default.schema.json",
+            "type": "object",
+            "title": "Error",
+            "description": "The error details.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The human-readable, unique name of the error."
+              },
+              "message": {
+                "type": "string",
+                "description": "The message that describes the error."
+              },
+              "debug_id": {
+                "type": "string",
+                "description": "The PayPal internal ID. Used for correlation purposes."
+              },
+              "information_link": {
+                "type": "string",
+                "description": "The information link, or URI, that shows detailed information about this error for the developer.",
+                "readOnly": true
+              },
+              "details": {
+                "type": "array",
+                "description": "An array of additional details about the error.",
+                "items": {
+                  "title": "Error Details",
+                  "type": "object",
+                  "description": "The error details. Required for client-side `4XX` errors.",
+                  "properties": {
+                    "field": {
+                      "type": "string",
+                      "description": "The field that caused the error. If this field is in the body, set this value to the field's JSON pointer value. Required for client-side errors."
+                    },
+                    "value": {
+                      "type": "string",
+                      "description": "The value of the field that caused the error."
+                    },
+                    "location": {
+                      "type": "string",
+                      "description": "The location of the field that caused the error. Value is `body`, `path`, or `query`.",
+                      "default": "body"
+                    },
+                    "issue": {
+                      "type": "string",
+                      "description": "The unique, fine-grained application-level error code."
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "The human-readable description for an issue. The description can change over the lifetime of an API, so clients must not depend on this value."
+                    }
+                  },
+                  "required": [
+                    "issue"
+                  ]
+                }
+              },
+              "links": {
+                "type": "array",
+                "description": "An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links).",
+                "readOnly": true,
+                "items": {
+                  "type": "object",
+                  "title": "Link Description",
+                  "description": "The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information.",
+                  "required": [
+                    "href",
+                    "rel"
+                  ],
+                  "properties": {
+                    "href": {
+                      "type": "string",
+                      "description": "The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call."
+                    },
+                    "rel": {
+                      "type": "string",
+                      "description": "The [link relation type](https://tools.ietf.org/html/rfc5988#section-4), which serves as an ID for a link that unambiguously describes the semantics of the link. See [Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml)."
+                    },
+                    "method": {
+                      "type": "string",
+                      "description": "The HTTP method required to make the related call.",
+                      "enum": [
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "HEAD",
+                        "CONNECT",
+                        "OPTIONS",
+                        "PATCH"
+                      ]
+                    }
+                  },
+                  "readOnly": true
+                }
+              }
+            },
+            "required": [
+              "name",
+              "message",
+              "debug_id"
+            ]
           }
         ]
       }
@@ -965,6 +1906,13 @@
       "schema": {
         "tags": [
           "payouts-item"
+        ],
+        "security": [
+          {
+            "Oauth2": [
+              "https://uri.paypal.com/payments/payouts"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -1052,19 +2000,42 @@
                 "pattern": "^.*$"
               },
               "transaction_status": {
-                "0": "c",
-                "1": "y",
-                "2": "c",
-                "3": "l",
-                "4": "e"
+                "title": "Transaction status",
+                "description": "The item transaction status.<blockquote><strong>Note:</strong> For <code>POST/v1/payments/payouts-item/{payout_item_id}/cancel</code>, the only possible <code>transaction_status</code> value is <code>RETURNED</code>.</blockquote>",
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 36,
+                "pattern": "^[0-9A-Z_]+$",
+                "enum": [
+                  "SUCCESS",
+                  "FAILED",
+                  "PENDING",
+                  "UNCLAIMED",
+                  "RETURNED",
+                  "ONHOLD",
+                  "BLOCKED",
+                  "REFUNDED",
+                  "REVERSED"
+                ]
               },
               "payout_item_fee": {
-                "0": "c",
-                "1": "y",
-                "2": "c",
-                "3": "l",
-                "4": "e",
-                "description": "The estimate for the payout fee. Initially, the fee is `0`. The fee is populated after the item moves to the `PENDING` state"
+                "description": "The currency and amount for a financial transaction, such as a balance or payment due.",
+                "type": "object",
+                "title": "Currency",
+                "properties": {
+                  "currency": {
+                    "type": "string",
+                    "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/)."
+                  },
+                  "value": {
+                    "type": "string",
+                    "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency codes - ISO 4217](https://www.iso.org/iso-4217-currency-codes.html)."
+                  }
+                },
+                "required": [
+                  "currency",
+                  "value"
+                ]
               },
               "payout_batch_id": {
                 "type": "string",
@@ -1081,20 +2052,195 @@
                 "pattern": "^.*$"
               },
               "payout_item": {
-                "0": "c",
-                "1": "y",
-                "2": "c",
-                "3": "l",
-                "4": "e",
-                "description": "The sender-provided information for the payout item."
+                "description": "The details for a sender-created payout to a single recipient.",
+                "type": "object",
+                "title": "Payout Item Detail",
+                "properties": {
+                  "recipient_type": {
+                    "title": "Recipient type",
+                    "description": "The ID type that identifies the payment receiver.",
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 36,
+                    "pattern": "^[0-9A-Z_]+$",
+                    "enum": [
+                      "EMAIL",
+                      "PHONE",
+                      "PAYPAL_ID"
+                    ]
+                  },
+                  "amount": {
+                    "description": "The currency and amount for a financial transaction, such as a balance or payment due.",
+                    "type": "object",
+                    "title": "Currency",
+                    "properties": {
+                      "currency": {
+                        "type": "string",
+                        "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/)."
+                      },
+                      "value": {
+                        "type": "string",
+                        "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency codes - ISO 4217](https://www.iso.org/iso-4217-currency-codes.html)."
+                      }
+                    },
+                    "required": [
+                      "currency",
+                      "value"
+                    ]
+                  },
+                  "note": {
+                    "type": "string",
+                    "description": "The sender-specified note for notifications. Supports up to 4000 ASCII characters and 1000 non-ASCII characters.",
+                    "minLength": 0,
+                    "maxLength": 4000,
+                    "pattern": "^.*$"
+                  },
+                  "receiver": {
+                    "type": "string",
+                    "description": "The receiver of the payment. Corresponds to the `recipient_type` value in the request.",
+                    "minLength": 0,
+                    "maxLength": 127,
+                    "pattern": "^.*$"
+                  },
+                  "sender_item_id": {
+                    "type": "string",
+                    "description": "A sender-specified ID number. Tracks the payout in an accounting system.",
+                    "minLength": 0,
+                    "maxLength": 63,
+                    "pattern": "^.*$"
+                  },
+                  "recipient_name": {
+                    "description": "The name of the party.",
+                    "type": "object",
+                    "title": "Name",
+                    "properties": {
+                      "prefix": {
+                        "type": "string",
+                        "description": "The prefix, or title, to the party's name.",
+                        "maxLength": 140
+                      },
+                      "given_name": {
+                        "type": "string",
+                        "description": "When the party is a person, the party's given, or first, name.",
+                        "maxLength": 140
+                      },
+                      "surname": {
+                        "type": "string",
+                        "description": "When the party is a person, the party's surname or family name. Also known as the last name. Required when the party is a person. Use also to store multiple surnames including the matronymic, or mother's, surname.",
+                        "maxLength": 140
+                      },
+                      "middle_name": {
+                        "type": "string",
+                        "description": "When the party is a person, the party's middle name. Use also to store multiple middle names including the patronymic, or father's, middle name.",
+                        "maxLength": 140
+                      },
+                      "suffix": {
+                        "type": "string",
+                        "description": "The suffix for the party's name.",
+                        "maxLength": 140
+                      },
+                      "alternate_full_name": {
+                        "type": "string",
+                        "description": "DEPRECATED. The party's alternate name. Can be a business name, nickname, or any other name that cannot be split into first, last name. Required when the party is a business.",
+                        "maxLength": 300
+                      },
+                      "full_name": {
+                        "type": "string",
+                        "description": "When the party is a person, the party's full name.",
+                        "maxLength": 300
+                      }
+                    }
+                  },
+                  "recipient_wallet": {
+                    "description": "The wallet where the recipient receives the payout. Payouts to Venmo recipients require a 'note' string and a US mobile phone number.",
+                    "title": "Recipient wallet",
+                    "type": "string",
+                    "default": "PAYPAL",
+                    "minLength": 1,
+                    "maxLength": 36,
+                    "pattern": "^[0-9A-Z_]+$",
+                    "enum": [
+                      "PAYPAL",
+                      "VENMO",
+                      "RECIPIENT_SELECTED"
+                    ]
+                  },
+                  "purpose": {
+                    "description": "The purpose of the transaction.",
+                    "type": "string",
+                    "title": "Purpose",
+                    "minLength": 1,
+                    "maxLength": 40,
+                    "pattern": "^[A-Z0-9_]+$",
+                    "enum": [
+                      "AWARDS",
+                      "PRIZES",
+                      "DONATIONS",
+                      "GOODS",
+                      "SERVICES",
+                      "REBATES",
+                      "CASHBACK",
+                      "DISCOUNTS",
+                      "NON_GOODS_OR_SERVICES"
+                    ]
+                  }
+                },
+                "required": [
+                  "amount",
+                  "receiver"
+                ]
               },
               "currency_conversion": {
-                "0": "c",
-                "1": "y",
-                "2": "c",
-                "3": "l",
-                "4": "e",
-                "description": "The currency conversion applicable for this payout item."
+                "description": "The currency conversion resource.",
+                "type": "object",
+                "title": "Currency conversion resource",
+                "properties": {
+                  "from_amount": {
+                    "type": "object",
+                    "title": "Currency",
+                    "description": "The amount that is converted from.",
+                    "properties": {
+                      "currency": {
+                        "type": "string",
+                        "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/)."
+                      },
+                      "value": {
+                        "type": "string",
+                        "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency codes - ISO 4217](https://www.iso.org/iso-4217-currency-codes.html)."
+                      }
+                    },
+                    "required": [
+                      "currency",
+                      "value"
+                    ]
+                  },
+                  "to_amount": {
+                    "type": "object",
+                    "title": "Currency",
+                    "description": "The amount that is converted to.",
+                    "properties": {
+                      "currency": {
+                        "type": "string",
+                        "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/)."
+                      },
+                      "value": {
+                        "type": "string",
+                        "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency codes - ISO 4217](https://www.iso.org/iso-4217-currency-codes.html)."
+                      }
+                    },
+                    "required": [
+                      "currency",
+                      "value"
+                    ]
+                  },
+                  "exchange_rate": {
+                    "type": "string",
+                    "description": "The exchange rate that is applied for this payout.",
+                    "pattern": "^.*$",
+                    "minLength": 0,
+                    "maxLength": 30
+                  }
+                }
               },
               "time_processed": {
                 "type": "string",
@@ -1104,23 +2250,144 @@
                 "maxLength": 100
               },
               "errors": {
-                "0": "c",
-                "1": "y",
-                "2": "c",
-                "3": "l",
-                "4": "e",
-                "description": "The error details."
+                "type": "object",
+                "title": "Error",
+                "description": "The error details.",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "The human-readable, unique name of the error."
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "The message that describes the error."
+                  },
+                  "debug_id": {
+                    "type": "string",
+                    "description": "The PayPal internal ID. Used for correlation purposes."
+                  },
+                  "information_link": {
+                    "type": "string",
+                    "description": "The information link, or URI, that shows detailed information about this error for the developer.",
+                    "readOnly": true
+                  },
+                  "details": {
+                    "type": "array",
+                    "description": "An array of additional details about the error.",
+                    "items": {
+                      "title": "Error Details",
+                      "type": "object",
+                      "description": "The error details. Required for client-side `4XX` errors.",
+                      "properties": {
+                        "field": {
+                          "type": "string",
+                          "description": "The field that caused the error. If this field is in the body, set this value to the field's JSON pointer value. Required for client-side errors."
+                        },
+                        "value": {
+                          "type": "string",
+                          "description": "The value of the field that caused the error."
+                        },
+                        "location": {
+                          "type": "string",
+                          "description": "The location of the field that caused the error. Value is `body`, `path`, or `query`.",
+                          "default": "body"
+                        },
+                        "issue": {
+                          "type": "string",
+                          "description": "The unique, fine-grained application-level error code."
+                        },
+                        "description": {
+                          "type": "string",
+                          "description": "The human-readable description for an issue. The description can change over the lifetime of an API, so clients must not depend on this value."
+                        }
+                      },
+                      "required": [
+                        "issue"
+                      ]
+                    }
+                  },
+                  "links": {
+                    "type": "array",
+                    "description": "An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links).",
+                    "readOnly": true,
+                    "items": {
+                      "type": "object",
+                      "title": "Link Description",
+                      "description": "The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information.",
+                      "required": [
+                        "href",
+                        "rel"
+                      ],
+                      "properties": {
+                        "href": {
+                          "type": "string",
+                          "description": "The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call."
+                        },
+                        "rel": {
+                          "type": "string",
+                          "description": "The [link relation type](https://tools.ietf.org/html/rfc5988#section-4), which serves as an ID for a link that unambiguously describes the semantics of the link. See [Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml)."
+                        },
+                        "method": {
+                          "type": "string",
+                          "description": "The HTTP method required to make the related call.",
+                          "enum": [
+                            "GET",
+                            "POST",
+                            "PUT",
+                            "DELETE",
+                            "HEAD",
+                            "CONNECT",
+                            "OPTIONS",
+                            "PATCH"
+                          ]
+                        }
+                      },
+                      "readOnly": true
+                    }
+                  }
+                },
+                "required": [
+                  "name",
+                  "message",
+                  "debug_id"
+                ]
               },
               "links": {
                 "type": "array",
                 "description": "An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links).",
                 "readOnly": true,
                 "items": {
-                  "0": "c",
-                  "1": "y",
-                  "2": "c",
-                  "3": "l",
-                  "4": "e"
+                  "type": "object",
+                  "title": "Link Description",
+                  "description": "The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information.",
+                  "required": [
+                    "href",
+                    "rel"
+                  ],
+                  "properties": {
+                    "href": {
+                      "type": "string",
+                      "description": "The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call."
+                    },
+                    "rel": {
+                      "type": "string",
+                      "description": "The [link relation type](https://tools.ietf.org/html/rfc5988#section-4), which serves as an ID for a link that unambiguously describes the semantics of the link. See [Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml)."
+                    },
+                    "method": {
+                      "type": "string",
+                      "description": "The HTTP method required to make the related call.",
+                      "enum": [
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "HEAD",
+                        "CONNECT",
+                        "OPTIONS",
+                        "PATCH"
+                      ]
+                    }
+                  }
                 },
                 "minItems": 0,
                 "maxItems": 15000
@@ -1130,6 +2397,321 @@
               "payout_item_id",
               "payout_batch_id",
               "payout_item"
+            ]
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Payouts/get_v1_payments_payouts-item__payout_item_id_/output-404.schema.json",
+            "type": "object",
+            "title": "Error",
+            "description": "The error details.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The human-readable, unique name of the error."
+              },
+              "message": {
+                "type": "string",
+                "description": "The message that describes the error."
+              },
+              "debug_id": {
+                "type": "string",
+                "description": "The PayPal internal ID. Used for correlation purposes."
+              },
+              "information_link": {
+                "type": "string",
+                "description": "The information link, or URI, that shows detailed information about this error for the developer.",
+                "readOnly": true
+              },
+              "details": {
+                "type": "array",
+                "description": "An array of additional details about the error.",
+                "items": {
+                  "title": "Error Details",
+                  "type": "object",
+                  "description": "The error details. Required for client-side `4XX` errors.",
+                  "properties": {
+                    "field": {
+                      "type": "string",
+                      "description": "The field that caused the error. If this field is in the body, set this value to the field's JSON pointer value. Required for client-side errors."
+                    },
+                    "value": {
+                      "type": "string",
+                      "description": "The value of the field that caused the error."
+                    },
+                    "location": {
+                      "type": "string",
+                      "description": "The location of the field that caused the error. Value is `body`, `path`, or `query`.",
+                      "default": "body"
+                    },
+                    "issue": {
+                      "type": "string",
+                      "description": "The unique, fine-grained application-level error code."
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "The human-readable description for an issue. The description can change over the lifetime of an API, so clients must not depend on this value."
+                    }
+                  },
+                  "required": [
+                    "issue"
+                  ]
+                }
+              },
+              "links": {
+                "type": "array",
+                "description": "An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links).",
+                "readOnly": true,
+                "items": {
+                  "type": "object",
+                  "title": "Link Description",
+                  "description": "The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information.",
+                  "required": [
+                    "href",
+                    "rel"
+                  ],
+                  "properties": {
+                    "href": {
+                      "type": "string",
+                      "description": "The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call."
+                    },
+                    "rel": {
+                      "type": "string",
+                      "description": "The [link relation type](https://tools.ietf.org/html/rfc5988#section-4), which serves as an ID for a link that unambiguously describes the semantics of the link. See [Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml)."
+                    },
+                    "method": {
+                      "type": "string",
+                      "description": "The HTTP method required to make the related call.",
+                      "enum": [
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "HEAD",
+                        "CONNECT",
+                        "OPTIONS",
+                        "PATCH"
+                      ]
+                    }
+                  },
+                  "readOnly": true
+                }
+              }
+            },
+            "required": [
+              "name",
+              "message",
+              "debug_id"
+            ]
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Payouts/get_v1_payments_payouts-item__payout_item_id_/output-500.schema.json",
+            "type": "object",
+            "title": "Error",
+            "description": "The error details.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The human-readable, unique name of the error."
+              },
+              "message": {
+                "type": "string",
+                "description": "The message that describes the error."
+              },
+              "debug_id": {
+                "type": "string",
+                "description": "The PayPal internal ID. Used for correlation purposes."
+              },
+              "information_link": {
+                "type": "string",
+                "description": "The information link, or URI, that shows detailed information about this error for the developer.",
+                "readOnly": true
+              },
+              "details": {
+                "type": "array",
+                "description": "An array of additional details about the error.",
+                "items": {
+                  "title": "Error Details",
+                  "type": "object",
+                  "description": "The error details. Required for client-side `4XX` errors.",
+                  "properties": {
+                    "field": {
+                      "type": "string",
+                      "description": "The field that caused the error. If this field is in the body, set this value to the field's JSON pointer value. Required for client-side errors."
+                    },
+                    "value": {
+                      "type": "string",
+                      "description": "The value of the field that caused the error."
+                    },
+                    "location": {
+                      "type": "string",
+                      "description": "The location of the field that caused the error. Value is `body`, `path`, or `query`.",
+                      "default": "body"
+                    },
+                    "issue": {
+                      "type": "string",
+                      "description": "The unique, fine-grained application-level error code."
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "The human-readable description for an issue. The description can change over the lifetime of an API, so clients must not depend on this value."
+                    }
+                  },
+                  "required": [
+                    "issue"
+                  ]
+                }
+              },
+              "links": {
+                "type": "array",
+                "description": "An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links).",
+                "readOnly": true,
+                "items": {
+                  "type": "object",
+                  "title": "Link Description",
+                  "description": "The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information.",
+                  "required": [
+                    "href",
+                    "rel"
+                  ],
+                  "properties": {
+                    "href": {
+                      "type": "string",
+                      "description": "The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call."
+                    },
+                    "rel": {
+                      "type": "string",
+                      "description": "The [link relation type](https://tools.ietf.org/html/rfc5988#section-4), which serves as an ID for a link that unambiguously describes the semantics of the link. See [Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml)."
+                    },
+                    "method": {
+                      "type": "string",
+                      "description": "The HTTP method required to make the related call.",
+                      "enum": [
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "HEAD",
+                        "CONNECT",
+                        "OPTIONS",
+                        "PATCH"
+                      ]
+                    }
+                  },
+                  "readOnly": true
+                }
+              }
+            },
+            "required": [
+              "name",
+              "message",
+              "debug_id"
+            ]
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Payouts/get_v1_payments_payouts-item__payout_item_id_/output-default.schema.json",
+            "type": "object",
+            "title": "Error",
+            "description": "The error details.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The human-readable, unique name of the error."
+              },
+              "message": {
+                "type": "string",
+                "description": "The message that describes the error."
+              },
+              "debug_id": {
+                "type": "string",
+                "description": "The PayPal internal ID. Used for correlation purposes."
+              },
+              "information_link": {
+                "type": "string",
+                "description": "The information link, or URI, that shows detailed information about this error for the developer.",
+                "readOnly": true
+              },
+              "details": {
+                "type": "array",
+                "description": "An array of additional details about the error.",
+                "items": {
+                  "title": "Error Details",
+                  "type": "object",
+                  "description": "The error details. Required for client-side `4XX` errors.",
+                  "properties": {
+                    "field": {
+                      "type": "string",
+                      "description": "The field that caused the error. If this field is in the body, set this value to the field's JSON pointer value. Required for client-side errors."
+                    },
+                    "value": {
+                      "type": "string",
+                      "description": "The value of the field that caused the error."
+                    },
+                    "location": {
+                      "type": "string",
+                      "description": "The location of the field that caused the error. Value is `body`, `path`, or `query`.",
+                      "default": "body"
+                    },
+                    "issue": {
+                      "type": "string",
+                      "description": "The unique, fine-grained application-level error code."
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "The human-readable description for an issue. The description can change over the lifetime of an API, so clients must not depend on this value."
+                    }
+                  },
+                  "required": [
+                    "issue"
+                  ]
+                }
+              },
+              "links": {
+                "type": "array",
+                "description": "An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links).",
+                "readOnly": true,
+                "items": {
+                  "type": "object",
+                  "title": "Link Description",
+                  "description": "The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information.",
+                  "required": [
+                    "href",
+                    "rel"
+                  ],
+                  "properties": {
+                    "href": {
+                      "type": "string",
+                      "description": "The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call."
+                    },
+                    "rel": {
+                      "type": "string",
+                      "description": "The [link relation type](https://tools.ietf.org/html/rfc5988#section-4), which serves as an ID for a link that unambiguously describes the semantics of the link. See [Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml)."
+                    },
+                    "method": {
+                      "type": "string",
+                      "description": "The HTTP method required to make the related call.",
+                      "enum": [
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "HEAD",
+                        "CONNECT",
+                        "OPTIONS",
+                        "PATCH"
+                      ]
+                    }
+                  },
+                  "readOnly": true
+                }
+              }
+            },
+            "required": [
+              "name",
+              "message",
+              "debug_id"
             ]
           }
         ]
@@ -1143,6 +2725,13 @@
       "schema": {
         "tags": [
           "payouts-item"
+        ],
+        "security": [
+          {
+            "Oauth2": [
+              "https://uri.paypal.com/payments/payouts"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -1165,7 +2754,18 @@
             "params": {
               "type": "object",
               "description": "$ref:paramDesc",
-              "properties": {}
+              "required": [
+                "payout_item_id"
+              ],
+              "properties": {
+                "payout_item_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 32,
+                  "pattern": "^.*$",
+                  "description": "The ID of the payout item to cancel."
+                }
+              }
             },
             "headers": {
               "type": "object",
@@ -1189,7 +2789,856 @@
             "method"
           ]
         },
-        "output": []
+        "output": [
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Payouts/post_v1_payments_payouts-item__payout_item_id__cancel/output-200.schema.json",
+            "type": "object",
+            "title": "Payout Item",
+            "description": "The payout item status and other details. A <code>payout_item_id</code> helps you identify denied payments. If a payment is denied, you can use the <code>payout_item_id</code> to identify the payment even if it lacks a <code>transaction_id</code>.",
+            "properties": {
+              "payout_item_id": {
+                "type": "string",
+                "description": "The ID for the payout item. Visible when you show details for a payout.",
+                "minLength": 0,
+                "maxLength": 30,
+                "pattern": "^.*$"
+              },
+              "transaction_id": {
+                "type": "string",
+                "description": "The PayPal-generated ID for the transaction.",
+                "minLength": 0,
+                "maxLength": 30,
+                "pattern": "^.*$"
+              },
+              "activity_id": {
+                "type": "string",
+                "description": "The unique PayPal-generated common ID that links the sender- and receiver-side transactions. Used for tracking.",
+                "minLength": 0,
+                "maxLength": 30,
+                "pattern": "^.*$"
+              },
+              "transaction_status": {
+                "title": "Transaction status",
+                "description": "The item transaction status.<blockquote><strong>Note:</strong> For <code>POST/v1/payments/payouts-item/{payout_item_id}/cancel</code>, the only possible <code>transaction_status</code> value is <code>RETURNED</code>.</blockquote>",
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 36,
+                "pattern": "^[0-9A-Z_]+$",
+                "enum": [
+                  "SUCCESS",
+                  "FAILED",
+                  "PENDING",
+                  "UNCLAIMED",
+                  "RETURNED",
+                  "ONHOLD",
+                  "BLOCKED",
+                  "REFUNDED",
+                  "REVERSED"
+                ]
+              },
+              "payout_item_fee": {
+                "description": "The currency and amount for a financial transaction, such as a balance or payment due.",
+                "type": "object",
+                "title": "Currency",
+                "properties": {
+                  "currency": {
+                    "type": "string",
+                    "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/)."
+                  },
+                  "value": {
+                    "type": "string",
+                    "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency codes - ISO 4217](https://www.iso.org/iso-4217-currency-codes.html)."
+                  }
+                },
+                "required": [
+                  "currency",
+                  "value"
+                ]
+              },
+              "payout_batch_id": {
+                "type": "string",
+                "description": "The PayPal-generated ID for the payout batch.",
+                "minLength": 0,
+                "maxLength": 30,
+                "pattern": "^.*$"
+              },
+              "sender_batch_id": {
+                "type": "string",
+                "description": "A sender-specified ID. Tracks the payout in an accounting system. Should be unique within 30 days.",
+                "minLength": 0,
+                "maxLength": 256,
+                "pattern": "^.*$"
+              },
+              "payout_item": {
+                "description": "The details for a sender-created payout to a single recipient.",
+                "type": "object",
+                "title": "Payout Item Detail",
+                "properties": {
+                  "recipient_type": {
+                    "title": "Recipient type",
+                    "description": "The ID type that identifies the payment receiver.",
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 36,
+                    "pattern": "^[0-9A-Z_]+$",
+                    "enum": [
+                      "EMAIL",
+                      "PHONE",
+                      "PAYPAL_ID"
+                    ]
+                  },
+                  "amount": {
+                    "description": "The currency and amount for a financial transaction, such as a balance or payment due.",
+                    "type": "object",
+                    "title": "Currency",
+                    "properties": {
+                      "currency": {
+                        "type": "string",
+                        "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/)."
+                      },
+                      "value": {
+                        "type": "string",
+                        "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency codes - ISO 4217](https://www.iso.org/iso-4217-currency-codes.html)."
+                      }
+                    },
+                    "required": [
+                      "currency",
+                      "value"
+                    ]
+                  },
+                  "note": {
+                    "type": "string",
+                    "description": "The sender-specified note for notifications. Supports up to 4000 ASCII characters and 1000 non-ASCII characters.",
+                    "minLength": 0,
+                    "maxLength": 4000,
+                    "pattern": "^.*$"
+                  },
+                  "receiver": {
+                    "type": "string",
+                    "description": "The receiver of the payment. Corresponds to the `recipient_type` value in the request.",
+                    "minLength": 0,
+                    "maxLength": 127,
+                    "pattern": "^.*$"
+                  },
+                  "sender_item_id": {
+                    "type": "string",
+                    "description": "A sender-specified ID number. Tracks the payout in an accounting system.",
+                    "minLength": 0,
+                    "maxLength": 63,
+                    "pattern": "^.*$"
+                  },
+                  "recipient_name": {
+                    "description": "The name of the party.",
+                    "type": "object",
+                    "title": "Name",
+                    "properties": {
+                      "prefix": {
+                        "type": "string",
+                        "description": "The prefix, or title, to the party's name.",
+                        "maxLength": 140
+                      },
+                      "given_name": {
+                        "type": "string",
+                        "description": "When the party is a person, the party's given, or first, name.",
+                        "maxLength": 140
+                      },
+                      "surname": {
+                        "type": "string",
+                        "description": "When the party is a person, the party's surname or family name. Also known as the last name. Required when the party is a person. Use also to store multiple surnames including the matronymic, or mother's, surname.",
+                        "maxLength": 140
+                      },
+                      "middle_name": {
+                        "type": "string",
+                        "description": "When the party is a person, the party's middle name. Use also to store multiple middle names including the patronymic, or father's, middle name.",
+                        "maxLength": 140
+                      },
+                      "suffix": {
+                        "type": "string",
+                        "description": "The suffix for the party's name.",
+                        "maxLength": 140
+                      },
+                      "alternate_full_name": {
+                        "type": "string",
+                        "description": "DEPRECATED. The party's alternate name. Can be a business name, nickname, or any other name that cannot be split into first, last name. Required when the party is a business.",
+                        "maxLength": 300
+                      },
+                      "full_name": {
+                        "type": "string",
+                        "description": "When the party is a person, the party's full name.",
+                        "maxLength": 300
+                      }
+                    }
+                  },
+                  "recipient_wallet": {
+                    "description": "The wallet where the recipient receives the payout. Payouts to Venmo recipients require a 'note' string and a US mobile phone number.",
+                    "title": "Recipient wallet",
+                    "type": "string",
+                    "default": "PAYPAL",
+                    "minLength": 1,
+                    "maxLength": 36,
+                    "pattern": "^[0-9A-Z_]+$",
+                    "enum": [
+                      "PAYPAL",
+                      "VENMO",
+                      "RECIPIENT_SELECTED"
+                    ]
+                  },
+                  "purpose": {
+                    "description": "The purpose of the transaction.",
+                    "type": "string",
+                    "title": "Purpose",
+                    "minLength": 1,
+                    "maxLength": 40,
+                    "pattern": "^[A-Z0-9_]+$",
+                    "enum": [
+                      "AWARDS",
+                      "PRIZES",
+                      "DONATIONS",
+                      "GOODS",
+                      "SERVICES",
+                      "REBATES",
+                      "CASHBACK",
+                      "DISCOUNTS",
+                      "NON_GOODS_OR_SERVICES"
+                    ]
+                  }
+                },
+                "required": [
+                  "amount",
+                  "receiver"
+                ]
+              },
+              "currency_conversion": {
+                "description": "The currency conversion resource.",
+                "type": "object",
+                "title": "Currency conversion resource",
+                "properties": {
+                  "from_amount": {
+                    "type": "object",
+                    "title": "Currency",
+                    "description": "The amount that is converted from.",
+                    "properties": {
+                      "currency": {
+                        "type": "string",
+                        "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/)."
+                      },
+                      "value": {
+                        "type": "string",
+                        "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency codes - ISO 4217](https://www.iso.org/iso-4217-currency-codes.html)."
+                      }
+                    },
+                    "required": [
+                      "currency",
+                      "value"
+                    ]
+                  },
+                  "to_amount": {
+                    "type": "object",
+                    "title": "Currency",
+                    "description": "The amount that is converted to.",
+                    "properties": {
+                      "currency": {
+                        "type": "string",
+                        "description": "The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/)."
+                      },
+                      "value": {
+                        "type": "string",
+                        "description": "The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency codes - ISO 4217](https://www.iso.org/iso-4217-currency-codes.html)."
+                      }
+                    },
+                    "required": [
+                      "currency",
+                      "value"
+                    ]
+                  },
+                  "exchange_rate": {
+                    "type": "string",
+                    "description": "The exchange rate that is applied for this payout.",
+                    "pattern": "^.*$",
+                    "minLength": 0,
+                    "maxLength": 30
+                  }
+                }
+              },
+              "time_processed": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The date and time when this item was last processed, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6).",
+                "minLength": 1,
+                "maxLength": 100
+              },
+              "errors": {
+                "type": "object",
+                "title": "Error",
+                "description": "The error details.",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "The human-readable, unique name of the error."
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "The message that describes the error."
+                  },
+                  "debug_id": {
+                    "type": "string",
+                    "description": "The PayPal internal ID. Used for correlation purposes."
+                  },
+                  "information_link": {
+                    "type": "string",
+                    "description": "The information link, or URI, that shows detailed information about this error for the developer.",
+                    "readOnly": true
+                  },
+                  "details": {
+                    "type": "array",
+                    "description": "An array of additional details about the error.",
+                    "items": {
+                      "title": "Error Details",
+                      "type": "object",
+                      "description": "The error details. Required for client-side `4XX` errors.",
+                      "properties": {
+                        "field": {
+                          "type": "string",
+                          "description": "The field that caused the error. If this field is in the body, set this value to the field's JSON pointer value. Required for client-side errors."
+                        },
+                        "value": {
+                          "type": "string",
+                          "description": "The value of the field that caused the error."
+                        },
+                        "location": {
+                          "type": "string",
+                          "description": "The location of the field that caused the error. Value is `body`, `path`, or `query`.",
+                          "default": "body"
+                        },
+                        "issue": {
+                          "type": "string",
+                          "description": "The unique, fine-grained application-level error code."
+                        },
+                        "description": {
+                          "type": "string",
+                          "description": "The human-readable description for an issue. The description can change over the lifetime of an API, so clients must not depend on this value."
+                        }
+                      },
+                      "required": [
+                        "issue"
+                      ]
+                    }
+                  },
+                  "links": {
+                    "type": "array",
+                    "description": "An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links).",
+                    "readOnly": true,
+                    "items": {
+                      "type": "object",
+                      "title": "Link Description",
+                      "description": "The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information.",
+                      "required": [
+                        "href",
+                        "rel"
+                      ],
+                      "properties": {
+                        "href": {
+                          "type": "string",
+                          "description": "The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call."
+                        },
+                        "rel": {
+                          "type": "string",
+                          "description": "The [link relation type](https://tools.ietf.org/html/rfc5988#section-4), which serves as an ID for a link that unambiguously describes the semantics of the link. See [Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml)."
+                        },
+                        "method": {
+                          "type": "string",
+                          "description": "The HTTP method required to make the related call.",
+                          "enum": [
+                            "GET",
+                            "POST",
+                            "PUT",
+                            "DELETE",
+                            "HEAD",
+                            "CONNECT",
+                            "OPTIONS",
+                            "PATCH"
+                          ]
+                        }
+                      },
+                      "readOnly": true
+                    }
+                  }
+                },
+                "required": [
+                  "name",
+                  "message",
+                  "debug_id"
+                ]
+              },
+              "links": {
+                "type": "array",
+                "description": "An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links).",
+                "readOnly": true,
+                "items": {
+                  "type": "object",
+                  "title": "Link Description",
+                  "description": "The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information.",
+                  "required": [
+                    "href",
+                    "rel"
+                  ],
+                  "properties": {
+                    "href": {
+                      "type": "string",
+                      "description": "The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call."
+                    },
+                    "rel": {
+                      "type": "string",
+                      "description": "The [link relation type](https://tools.ietf.org/html/rfc5988#section-4), which serves as an ID for a link that unambiguously describes the semantics of the link. See [Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml)."
+                    },
+                    "method": {
+                      "type": "string",
+                      "description": "The HTTP method required to make the related call.",
+                      "enum": [
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "HEAD",
+                        "CONNECT",
+                        "OPTIONS",
+                        "PATCH"
+                      ]
+                    }
+                  }
+                },
+                "minItems": 0,
+                "maxItems": 15000
+              }
+            },
+            "required": [
+              "payout_item_id",
+              "payout_batch_id",
+              "payout_item"
+            ]
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Payouts/post_v1_payments_payouts-item__payout_item_id__cancel/output-400.schema.json",
+            "type": "object",
+            "title": "Error",
+            "description": "The error details.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The human-readable, unique name of the error."
+              },
+              "message": {
+                "type": "string",
+                "description": "The message that describes the error."
+              },
+              "debug_id": {
+                "type": "string",
+                "description": "The PayPal internal ID. Used for correlation purposes."
+              },
+              "information_link": {
+                "type": "string",
+                "description": "The information link, or URI, that shows detailed information about this error for the developer.",
+                "readOnly": true
+              },
+              "details": {
+                "type": "array",
+                "description": "An array of additional details about the error.",
+                "items": {
+                  "title": "Error Details",
+                  "type": "object",
+                  "description": "The error details. Required for client-side `4XX` errors.",
+                  "properties": {
+                    "field": {
+                      "type": "string",
+                      "description": "The field that caused the error. If this field is in the body, set this value to the field's JSON pointer value. Required for client-side errors."
+                    },
+                    "value": {
+                      "type": "string",
+                      "description": "The value of the field that caused the error."
+                    },
+                    "location": {
+                      "type": "string",
+                      "description": "The location of the field that caused the error. Value is `body`, `path`, or `query`.",
+                      "default": "body"
+                    },
+                    "issue": {
+                      "type": "string",
+                      "description": "The unique, fine-grained application-level error code."
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "The human-readable description for an issue. The description can change over the lifetime of an API, so clients must not depend on this value."
+                    }
+                  },
+                  "required": [
+                    "issue"
+                  ]
+                }
+              },
+              "links": {
+                "type": "array",
+                "description": "An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links).",
+                "readOnly": true,
+                "items": {
+                  "type": "object",
+                  "title": "Link Description",
+                  "description": "The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information.",
+                  "required": [
+                    "href",
+                    "rel"
+                  ],
+                  "properties": {
+                    "href": {
+                      "type": "string",
+                      "description": "The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call."
+                    },
+                    "rel": {
+                      "type": "string",
+                      "description": "The [link relation type](https://tools.ietf.org/html/rfc5988#section-4), which serves as an ID for a link that unambiguously describes the semantics of the link. See [Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml)."
+                    },
+                    "method": {
+                      "type": "string",
+                      "description": "The HTTP method required to make the related call.",
+                      "enum": [
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "HEAD",
+                        "CONNECT",
+                        "OPTIONS",
+                        "PATCH"
+                      ]
+                    }
+                  },
+                  "readOnly": true
+                }
+              }
+            },
+            "required": [
+              "name",
+              "message",
+              "debug_id"
+            ]
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Payouts/post_v1_payments_payouts-item__payout_item_id__cancel/output-404.schema.json",
+            "type": "object",
+            "title": "Error",
+            "description": "The error details.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The human-readable, unique name of the error."
+              },
+              "message": {
+                "type": "string",
+                "description": "The message that describes the error."
+              },
+              "debug_id": {
+                "type": "string",
+                "description": "The PayPal internal ID. Used for correlation purposes."
+              },
+              "information_link": {
+                "type": "string",
+                "description": "The information link, or URI, that shows detailed information about this error for the developer.",
+                "readOnly": true
+              },
+              "details": {
+                "type": "array",
+                "description": "An array of additional details about the error.",
+                "items": {
+                  "title": "Error Details",
+                  "type": "object",
+                  "description": "The error details. Required for client-side `4XX` errors.",
+                  "properties": {
+                    "field": {
+                      "type": "string",
+                      "description": "The field that caused the error. If this field is in the body, set this value to the field's JSON pointer value. Required for client-side errors."
+                    },
+                    "value": {
+                      "type": "string",
+                      "description": "The value of the field that caused the error."
+                    },
+                    "location": {
+                      "type": "string",
+                      "description": "The location of the field that caused the error. Value is `body`, `path`, or `query`.",
+                      "default": "body"
+                    },
+                    "issue": {
+                      "type": "string",
+                      "description": "The unique, fine-grained application-level error code."
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "The human-readable description for an issue. The description can change over the lifetime of an API, so clients must not depend on this value."
+                    }
+                  },
+                  "required": [
+                    "issue"
+                  ]
+                }
+              },
+              "links": {
+                "type": "array",
+                "description": "An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links).",
+                "readOnly": true,
+                "items": {
+                  "type": "object",
+                  "title": "Link Description",
+                  "description": "The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information.",
+                  "required": [
+                    "href",
+                    "rel"
+                  ],
+                  "properties": {
+                    "href": {
+                      "type": "string",
+                      "description": "The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call."
+                    },
+                    "rel": {
+                      "type": "string",
+                      "description": "The [link relation type](https://tools.ietf.org/html/rfc5988#section-4), which serves as an ID for a link that unambiguously describes the semantics of the link. See [Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml)."
+                    },
+                    "method": {
+                      "type": "string",
+                      "description": "The HTTP method required to make the related call.",
+                      "enum": [
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "HEAD",
+                        "CONNECT",
+                        "OPTIONS",
+                        "PATCH"
+                      ]
+                    }
+                  },
+                  "readOnly": true
+                }
+              }
+            },
+            "required": [
+              "name",
+              "message",
+              "debug_id"
+            ]
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Payouts/post_v1_payments_payouts-item__payout_item_id__cancel/output-500.schema.json",
+            "type": "object",
+            "title": "Error",
+            "description": "The error details.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The human-readable, unique name of the error."
+              },
+              "message": {
+                "type": "string",
+                "description": "The message that describes the error."
+              },
+              "debug_id": {
+                "type": "string",
+                "description": "The PayPal internal ID. Used for correlation purposes."
+              },
+              "information_link": {
+                "type": "string",
+                "description": "The information link, or URI, that shows detailed information about this error for the developer.",
+                "readOnly": true
+              },
+              "details": {
+                "type": "array",
+                "description": "An array of additional details about the error.",
+                "items": {
+                  "title": "Error Details",
+                  "type": "object",
+                  "description": "The error details. Required for client-side `4XX` errors.",
+                  "properties": {
+                    "field": {
+                      "type": "string",
+                      "description": "The field that caused the error. If this field is in the body, set this value to the field's JSON pointer value. Required for client-side errors."
+                    },
+                    "value": {
+                      "type": "string",
+                      "description": "The value of the field that caused the error."
+                    },
+                    "location": {
+                      "type": "string",
+                      "description": "The location of the field that caused the error. Value is `body`, `path`, or `query`.",
+                      "default": "body"
+                    },
+                    "issue": {
+                      "type": "string",
+                      "description": "The unique, fine-grained application-level error code."
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "The human-readable description for an issue. The description can change over the lifetime of an API, so clients must not depend on this value."
+                    }
+                  },
+                  "required": [
+                    "issue"
+                  ]
+                }
+              },
+              "links": {
+                "type": "array",
+                "description": "An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links).",
+                "readOnly": true,
+                "items": {
+                  "type": "object",
+                  "title": "Link Description",
+                  "description": "The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information.",
+                  "required": [
+                    "href",
+                    "rel"
+                  ],
+                  "properties": {
+                    "href": {
+                      "type": "string",
+                      "description": "The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call."
+                    },
+                    "rel": {
+                      "type": "string",
+                      "description": "The [link relation type](https://tools.ietf.org/html/rfc5988#section-4), which serves as an ID for a link that unambiguously describes the semantics of the link. See [Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml)."
+                    },
+                    "method": {
+                      "type": "string",
+                      "description": "The HTTP method required to make the related call.",
+                      "enum": [
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "HEAD",
+                        "CONNECT",
+                        "OPTIONS",
+                        "PATCH"
+                      ]
+                    }
+                  },
+                  "readOnly": true
+                }
+              }
+            },
+            "required": [
+              "name",
+              "message",
+              "debug_id"
+            ]
+          },
+          {
+            "$schema": "$ref:schema",
+            "$id": "https://datahub.com/integration/Payouts/post_v1_payments_payouts-item__payout_item_id__cancel/output-default.schema.json",
+            "type": "object",
+            "title": "Error",
+            "description": "The error details.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The human-readable, unique name of the error."
+              },
+              "message": {
+                "type": "string",
+                "description": "The message that describes the error."
+              },
+              "debug_id": {
+                "type": "string",
+                "description": "The PayPal internal ID. Used for correlation purposes."
+              },
+              "information_link": {
+                "type": "string",
+                "description": "The information link, or URI, that shows detailed information about this error for the developer.",
+                "readOnly": true
+              },
+              "details": {
+                "type": "array",
+                "description": "An array of additional details about the error.",
+                "items": {
+                  "title": "Error Details",
+                  "type": "object",
+                  "description": "The error details. Required for client-side `4XX` errors.",
+                  "properties": {
+                    "field": {
+                      "type": "string",
+                      "description": "The field that caused the error. If this field is in the body, set this value to the field's JSON pointer value. Required for client-side errors."
+                    },
+                    "value": {
+                      "type": "string",
+                      "description": "The value of the field that caused the error."
+                    },
+                    "location": {
+                      "type": "string",
+                      "description": "The location of the field that caused the error. Value is `body`, `path`, or `query`.",
+                      "default": "body"
+                    },
+                    "issue": {
+                      "type": "string",
+                      "description": "The unique, fine-grained application-level error code."
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "The human-readable description for an issue. The description can change over the lifetime of an API, so clients must not depend on this value."
+                    }
+                  },
+                  "required": [
+                    "issue"
+                  ]
+                }
+              },
+              "links": {
+                "type": "array",
+                "description": "An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links).",
+                "readOnly": true,
+                "items": {
+                  "type": "object",
+                  "title": "Link Description",
+                  "description": "The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information.",
+                  "required": [
+                    "href",
+                    "rel"
+                  ],
+                  "properties": {
+                    "href": {
+                      "type": "string",
+                      "description": "The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call."
+                    },
+                    "rel": {
+                      "type": "string",
+                      "description": "The [link relation type](https://tools.ietf.org/html/rfc5988#section-4), which serves as an ID for a link that unambiguously describes the semantics of the link. See [Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml)."
+                    },
+                    "method": {
+                      "type": "string",
+                      "description": "The HTTP method required to make the related call.",
+                      "enum": [
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "HEAD",
+                        "CONNECT",
+                        "OPTIONS",
+                        "PATCH"
+                      ]
+                    }
+                  },
+                  "readOnly": true
+                }
+              }
+            },
+            "required": [
+              "name",
+              "message",
+              "debug_id"
+            ]
+          }
+        ]
       }
     }
   ],
@@ -1206,5 +3655,20 @@
     "headerDesc": "HTTP headers sent when making the request",
     "dataDesc": "Data sent with the request",
     "schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "securitySchemes": {
+    "Oauth2": {
+      "type": "oauth2",
+      "description": "Oauth 2.0 authentication",
+      "flows": {
+        "clientCredentials": {
+          "tokenUrl": "/v1/oauth2/token",
+          "scopes": {
+            "https://uri.paypal.com/payments/payouts": "Payout to a list of recipients.",
+            "https://uri.paypal.com/services/payments/payouts-item/reverse": "For reversing a completed payout item."
+          }
+        }
+      }
+    }
   }
 }

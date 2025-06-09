@@ -12,6 +12,13 @@
           "admin.apps",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.apps:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_admin_apps_approve/input.schema.json",
@@ -135,6 +142,13 @@
           "admin.apps.approved",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.apps:read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_admin_apps_approved_list/input.schema.json",
@@ -256,6 +270,13 @@
           "admin.apps.requests",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.apps:read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_admin_apps_requests_list/input.schema.json",
@@ -373,6 +394,13 @@
         "tags": [
           "admin.apps",
           "admin"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.apps:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -497,6 +525,13 @@
           "admin.apps.restricted",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.apps:read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_admin_apps_restricted_list/input.schema.json",
@@ -617,6 +652,13 @@
         "tags": [
           "admin.conversations",
           "admin"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.conversations:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -751,6 +793,13 @@
           "admin.conversations",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.conversations:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_admin_conversations_convertToPrivate/input.schema.json",
@@ -884,6 +933,13 @@
         "tags": [
           "admin.conversations",
           "admin"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.conversations:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -1040,6 +1096,13 @@
           "admin.conversations",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.conversations:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_admin_conversations_delete/input.schema.json",
@@ -1172,6 +1235,13 @@
         "tags": [
           "admin.conversations",
           "admin"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.conversations:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -1315,6 +1385,13 @@
           "admin.conversations.ekm",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.conversations:read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_admin_conversations_ekm_listOriginalConnectedChannelInfo/input.schema.json",
@@ -1437,6 +1514,13 @@
         "tags": [
           "admin.conversations",
           "admin"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.conversations:read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -1606,6 +1690,13 @@
           "admin.conversations",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.conversations:read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_admin_conversations_getTeams/input.schema.json",
@@ -1764,6 +1855,13 @@
           "admin.conversations",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.conversations:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_admin_conversations_invite/input.schema.json",
@@ -1901,6 +1999,13 @@
           "admin.conversations",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.conversations:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_admin_conversations_rename/input.schema.json",
@@ -2037,6 +2142,13 @@
           "admin.conversations.restrictAccess",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.conversations:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_admin_conversations_restrictAccess_addGroup/input.schema.json",
@@ -2163,6 +2275,13 @@
           "admin.conversations.restrictAccess",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.conversations:read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_admin_conversations_restrictAccess_listGroups/input.schema.json",
@@ -2277,6 +2396,13 @@
         "tags": [
           "admin.conversations.restrictAccess",
           "admin"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.conversations:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -2404,6 +2530,13 @@
         "tags": [
           "admin.conversations",
           "admin"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.conversations:read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -3799,6 +3932,13 @@
           "admin.conversations",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.conversations:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_admin_conversations_setConversationPrefs/input.schema.json",
@@ -3937,6 +4077,13 @@
           "admin.conversations",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.conversations:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_admin_conversations_setTeams/input.schema.json",
@@ -4067,6 +4214,13 @@
         "tags": [
           "admin.conversations",
           "admin"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.conversations:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -4201,6 +4355,13 @@
           "admin.emoji",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.teams:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_admin_emoji_add/input.schema.json",
@@ -4322,6 +4483,13 @@
         "tags": [
           "admin.emoji",
           "admin"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.teams:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -4445,6 +4613,13 @@
           "admin.emoji",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.teams:read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_admin_emoji_list/input.schema.json",
@@ -4559,6 +4734,13 @@
         "tags": [
           "admin.emoji",
           "admin"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.teams:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -4676,6 +4858,13 @@
         "tags": [
           "admin.emoji",
           "admin"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.teams:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -4798,6 +4987,13 @@
         "tags": [
           "admin.inviteRequests",
           "admin"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.invites:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -4922,6 +5118,13 @@
           "admin.inviteRequests.approved",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.invites:read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_admin_inviteRequests_approved_list/input.schema.json",
@@ -5042,6 +5245,13 @@
           "admin.inviteRequests.denied",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.invites:read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_admin_inviteRequests_denied_list/input.schema.json",
@@ -5161,6 +5371,13 @@
         "tags": [
           "admin.inviteRequests",
           "admin"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.invites:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -5285,6 +5502,13 @@
           "admin.inviteRequests",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.invites:read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_admin_inviteRequests_list/input.schema.json",
@@ -5405,6 +5629,13 @@
           "admin.teams.admins",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.teams:read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_admin_teams_admins_list/input.schema.json",
@@ -5523,6 +5754,13 @@
         "tags": [
           "admin.teams",
           "admin"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.teams:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -5656,6 +5894,13 @@
           "admin.teams",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.teams:read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_admin_teams_list/input.schema.json",
@@ -5771,6 +6016,13 @@
         "tags": [
           "admin.teams.owners",
           "admin"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.teams:read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -5891,6 +6143,13 @@
           "admin.teams.settings",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.teams:read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_admin_teams_settings_info/input.schema.json",
@@ -6004,6 +6263,13 @@
         "tags": [
           "admin.teams.settings",
           "admin"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.teams:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -6126,6 +6392,13 @@
         "tags": [
           "admin.teams.settings",
           "admin"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.teams:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -6251,6 +6524,13 @@
           "admin.teams.settings",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.teams:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_admin_teams_settings_setDiscoverability/input.schema.json",
@@ -6375,6 +6655,13 @@
           "admin.teams.settings",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.teams:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_admin_teams_settings_setIcon/input.schema.json",
@@ -6496,6 +6783,13 @@
         "tags": [
           "admin.teams.settings",
           "admin"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.teams:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -6620,6 +6914,13 @@
         "tags": [
           "admin.usergroups",
           "admin"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.usergroups:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -6749,6 +7050,13 @@
           "admin.usergroups",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.teams:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_admin_usergroups_addTeams/input.schema.json",
@@ -6877,6 +7185,13 @@
           "admin.usergroups",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.usergroups:read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_admin_usergroups_listChannels/input.schema.json",
@@ -6999,6 +7314,13 @@
         "tags": [
           "admin.usergroups",
           "admin"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.usergroups:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -7123,6 +7445,13 @@
         "tags": [
           "admin.users",
           "admin"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.users:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -7259,6 +7588,13 @@
         "tags": [
           "admin.users",
           "admin"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.users:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -7413,6 +7749,13 @@
           "admin.users",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.users:read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_admin_users_list/input.schema.json",
@@ -7535,6 +7878,13 @@
         "tags": [
           "admin.users",
           "admin"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.users:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -7660,6 +8010,13 @@
           "admin.users.session",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.users:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_admin_users_session_invalidate/input.schema.json",
@@ -7782,6 +8139,13 @@
         "tags": [
           "admin.users.session",
           "admin"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.users:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -7910,6 +8274,13 @@
           "admin.users",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.users:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_admin_users_setAdmin/input.schema.json",
@@ -8033,6 +8404,13 @@
         "tags": [
           "admin.users",
           "admin"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.users:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -8163,6 +8541,13 @@
           "admin.users",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.users:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_admin_users_setOwner/input.schema.json",
@@ -8287,6 +8672,13 @@
           "admin.users",
           "admin"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin.users:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_admin_users_setRegular/input.schema.json",
@@ -8410,6 +8802,13 @@
         "tags": [
           "api"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "none"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_api_test/input.schema.json",
@@ -8525,6 +8924,13 @@
         "tags": [
           "apps.event.authorizations",
           "apps"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "authorizations:read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -8645,6 +9051,13 @@
         "tags": [
           "apps.permissions",
           "apps"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "none"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -9151,6 +9564,13 @@
           "apps.permissions",
           "apps"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "none"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_apps_permissions_request/input.schema.json",
@@ -9300,6 +9720,13 @@
         "tags": [
           "apps.permissions.resources",
           "apps"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "none"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -9474,6 +9901,13 @@
         "tags": [
           "apps.permissions.scopes",
           "apps"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "none"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -9667,6 +10101,13 @@
           "apps.permissions.users",
           "apps"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "none"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_apps_permissions_users_list/input.schema.json",
@@ -9781,6 +10222,13 @@
         "tags": [
           "apps.permissions.users",
           "apps"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "none"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -9902,6 +10350,13 @@
       "schema": {
         "tags": [
           "apps"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "none"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -10046,6 +10501,13 @@
         "tags": [
           "auth"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "none"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_auth_revoke/input.schema.json",
@@ -10187,6 +10649,13 @@
       "schema": {
         "tags": [
           "auth"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "none"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -10349,6 +10818,13 @@
       "schema": {
         "tags": [
           "bots"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "users:read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -10551,6 +11027,13 @@
         "tags": [
           "calls"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "calls:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_calls_add/input.schema.json",
@@ -10698,6 +11181,13 @@
         "tags": [
           "calls"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "calls:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_calls_end/input.schema.json",
@@ -10820,6 +11310,13 @@
         "tags": [
           "calls"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "calls:read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_calls_info/input.schema.json",
@@ -10934,6 +11431,13 @@
         "tags": [
           "calls.participants",
           "calls"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "calls:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -11059,6 +11563,13 @@
           "calls.participants",
           "calls"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "calls:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_calls_participants_remove/input.schema.json",
@@ -11181,6 +11692,13 @@
       "schema": {
         "tags": [
           "calls"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "calls:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -11311,6 +11829,14 @@
       "schema": {
         "tags": [
           "chat"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "chat:write:user",
+              "chat:write:bot"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -11475,6 +12001,14 @@
         "tags": [
           "chat"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "chat:write:user",
+              "chat:write:bot"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_chat_deleteScheduledMessage/input.schema.json",
@@ -11635,6 +12169,13 @@
         "tags": [
           "chat"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "none"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_chat_getPermalink/input.schema.json",
@@ -11791,6 +12332,14 @@
       "schema": {
         "tags": [
           "chat"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "chat:write:user",
+              "chat:write:bot"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -11951,6 +12500,14 @@
       "schema": {
         "tags": [
           "chat"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "chat:write:user",
+              "chat:write:bot"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -12155,6 +12712,14 @@
       "schema": {
         "tags": [
           "chat"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "chat:write:user",
+              "chat:write:bot"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -13422,6 +13987,14 @@
         "tags": [
           "chat"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "chat:write:user",
+              "chat:write:bot"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_chat_scheduleMessage/input.schema.json",
@@ -13741,6 +14314,13 @@
           "chat.scheduledMessages",
           "chat"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "none"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_chat_scheduledMessages_list/input.schema.json",
@@ -13945,6 +14525,13 @@
         "tags": [
           "chat"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "links:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_chat_unfurl/input.schema.json",
@@ -14116,6 +14703,14 @@
       "schema": {
         "tags": [
           "chat"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "chat:write:user",
+              "chat:write:bot"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -14333,6 +14928,16 @@
         "tags": [
           "conversations"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "channels:write",
+              "groups:write",
+              "im:write",
+              "mpim:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_conversations_archive/input.schema.json",
@@ -14487,6 +15092,16 @@
         "tags": [
           "conversations"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "channels:write",
+              "groups:write",
+              "im:write",
+              "mpim:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_conversations_close/input.schema.json",
@@ -14638,6 +15253,16 @@
       "schema": {
         "tags": [
           "conversations"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "channels:write",
+              "groups:write",
+              "im:write",
+              "mpim:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -19368,6 +19993,16 @@
         "tags": [
           "conversations"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "channels:history",
+              "groups:history",
+              "im:history",
+              "mpim:history"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_conversations_history/input.schema.json",
@@ -20609,6 +21244,16 @@
       "schema": {
         "tags": [
           "conversations"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "channels:read",
+              "groups:read",
+              "im:read",
+              "mpim:read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -25324,6 +25969,16 @@
       "schema": {
         "tags": [
           "conversations"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "channels:write",
+              "groups:write",
+              "im:write",
+              "mpim:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -30119,6 +30774,13 @@
         "tags": [
           "conversations"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "channels:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_conversations_join/input.schema.json",
@@ -34855,6 +35517,16 @@
         "tags": [
           "conversations"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "channels:write",
+              "groups:write",
+              "im:write",
+              "mpim:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_conversations_kick/input.schema.json",
@@ -35009,6 +35681,16 @@
       "schema": {
         "tags": [
           "conversations"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "channels:write",
+              "groups:write",
+              "im:write",
+              "mpim:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -35168,6 +35850,16 @@
       "schema": {
         "tags": [
           "conversations"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "channels:read",
+              "groups:read",
+              "im:read",
+              "mpim:read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -39902,6 +40594,16 @@
         "tags": [
           "conversations"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "channels:write",
+              "groups:write",
+              "im:write",
+              "mpim:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_conversations_mark/input.schema.json",
@@ -40052,6 +40754,16 @@
       "schema": {
         "tags": [
           "conversations"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "channels:read",
+              "groups:read",
+              "im:read",
+              "mpim:read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -40219,6 +40931,16 @@
       "schema": {
         "tags": [
           "conversations"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "channels:write",
+              "groups:write",
+              "im:write",
+              "mpim:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -46043,6 +46765,16 @@
         "tags": [
           "conversations"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "channels:write",
+              "groups:write",
+              "im:write",
+              "mpim:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_conversations_rename/input.schema.json",
@@ -50768,6 +51500,16 @@
         "tags": [
           "conversations"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "channels:history",
+              "groups:history",
+              "im:history",
+              "mpim:history"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_conversations_replies/input.schema.json",
@@ -51194,6 +51936,16 @@
       "schema": {
         "tags": [
           "conversations"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "channels:write",
+              "groups:write",
+              "im:write",
+              "mpim:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -55916,6 +56668,16 @@
         "tags": [
           "conversations"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "channels:write",
+              "groups:write",
+              "im:write",
+              "mpim:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_conversations_setTopic/input.schema.json",
@@ -60637,6 +61399,16 @@
         "tags": [
           "conversations"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "channels:write",
+              "groups:write",
+              "im:write",
+              "mpim:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_conversations_unarchive/input.schema.json",
@@ -60787,6 +61559,13 @@
       "schema": {
         "tags": [
           "dialog"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "none"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -60944,6 +61723,13 @@
         "tags": [
           "dnd"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "dnd:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_dnd_endDnd/input.schema.json",
@@ -61079,6 +61865,13 @@
       "schema": {
         "tags": [
           "dnd"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "dnd:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -61232,6 +62025,13 @@
       "schema": {
         "tags": [
           "dnd"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "dnd:read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -61389,6 +62189,13 @@
       "schema": {
         "tags": [
           "dnd"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "dnd:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -61550,6 +62357,13 @@
         "tags": [
           "dnd"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "dnd:read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_dnd_teamInfo/input.schema.json",
@@ -61657,6 +62471,13 @@
         "tags": [
           "emoji"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "emoji:read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_emoji_list/input.schema.json",
@@ -61763,6 +62584,13 @@
         "tags": [
           "files.comments",
           "files"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "files:write:user"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -61906,6 +62734,13 @@
         "tags": [
           "files"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "files:write:user"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_files_delete/input.schema.json",
@@ -62045,6 +62880,13 @@
       "schema": {
         "tags": [
           "files"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "files:read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -62613,6 +63455,13 @@
         "tags": [
           "files"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "files:read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_files_list/input.schema.json",
@@ -63112,6 +63961,13 @@
           "files.remote",
           "files"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "remote_files:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_files_remote_add/input.schema.json",
@@ -63245,6 +64101,13 @@
           "files.remote",
           "files"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "remote_files:read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_files_remote_info/input.schema.json",
@@ -63356,6 +64219,13 @@
         "tags": [
           "files.remote",
           "files"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "remote_files:read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -63481,6 +64351,13 @@
           "files.remote",
           "files"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "remote_files:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_files_remote_remove/input.schema.json",
@@ -63598,6 +64475,13 @@
           "files.remote",
           "files"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "remote_files:share"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_files_remote_share/input.schema.json",
@@ -63713,6 +64597,13 @@
         "tags": [
           "files.remote",
           "files"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "remote_files:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -63849,6 +64740,13 @@
       "schema": {
         "tags": [
           "files"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "files:write:user"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -64295,6 +65193,13 @@
         "tags": [
           "files"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "files:write:user"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_files_sharedPublicURL/input.schema.json",
@@ -64740,6 +65645,13 @@
       "schema": {
         "tags": [
           "files"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "files:write:user"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -65213,6 +66125,13 @@
         "tags": [
           "migration"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "tokens.basic"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_migration_exchange/input.schema.json",
@@ -65385,6 +66304,13 @@
         "tags": [
           "oauth"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "none"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_oauth_access/input.schema.json",
@@ -65503,6 +66429,13 @@
       "schema": {
         "tags": [
           "oauth"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "none"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -65624,6 +66557,13 @@
           "oauth.v2",
           "oauth"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "none"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_oauth_v2_access/input.schema.json",
@@ -65741,6 +66681,13 @@
       "schema": {
         "tags": [
           "pins"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "pins:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -65897,6 +66844,13 @@
         "tags": [
           "pins"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "pins:read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_pins_list/input.schema.json",
@@ -66013,6 +66967,13 @@
       "schema": {
         "tags": [
           "pins"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "pins:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -66167,6 +67128,13 @@
       "schema": {
         "tags": [
           "reactions"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "reactions:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -66328,6 +67296,13 @@
         "tags": [
           "reactions"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "reactions:read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_reactions_get/input.schema.json",
@@ -66462,6 +67437,13 @@
       "schema": {
         "tags": [
           "reactions"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "reactions:read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -68523,6 +69505,13 @@
         "tags": [
           "reactions"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "reactions:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_reactions_remove/input.schema.json",
@@ -68689,6 +69678,13 @@
       "schema": {
         "tags": [
           "reminders"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "reminders:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -68893,6 +69889,13 @@
         "tags": [
           "reminders"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "reminders:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_reminders_complete/input.schema.json",
@@ -69037,6 +70040,13 @@
         "tags": [
           "reminders"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "reminders:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_reminders_delete/input.schema.json",
@@ -69178,6 +70188,13 @@
       "schema": {
         "tags": [
           "reminders"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "reminders:read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -69357,6 +70374,13 @@
         "tags": [
           "reminders"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "reminders:read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_reminders_list/input.schema.json",
@@ -69532,6 +70556,13 @@
       "schema": {
         "tags": [
           "rtm"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "rtm:stream"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -69721,6 +70752,13 @@
         "tags": [
           "search"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "search:read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_search_messages/input.schema.json",
@@ -69850,6 +70888,13 @@
       "schema": {
         "tags": [
           "stars"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "stars:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -70012,6 +71057,13 @@
       "schema": {
         "tags": [
           "stars"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "stars:read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -72078,6 +73130,13 @@
         "tags": [
           "stars"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "stars:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_stars_remove/input.schema.json",
@@ -72239,6 +73298,13 @@
       "schema": {
         "tags": [
           "team"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -72485,6 +73551,13 @@
         "tags": [
           "team"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_team_billableInfo/input.schema.json",
@@ -72594,6 +73667,13 @@
       "schema": {
         "tags": [
           "team"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "team:read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -72934,6 +74014,13 @@
         "tags": [
           "team"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "admin"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_team_integrationLogs/input.schema.json",
@@ -73184,6 +74271,13 @@
           "team.profile",
           "team"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "users.profile:read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_team_profile_get/input.schema.json",
@@ -73425,6 +74519,13 @@
       "schema": {
         "tags": [
           "usergroups"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "usergroups:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -73738,6 +74839,13 @@
         "tags": [
           "usergroups"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "usergroups:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_usergroups_disable/input.schema.json",
@@ -74037,6 +75145,13 @@
       "schema": {
         "tags": [
           "usergroups"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "usergroups:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -74339,6 +75454,13 @@
         "tags": [
           "usergroups"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "usergroups:read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_usergroups_list/input.schema.json",
@@ -74638,6 +75760,13 @@
       "schema": {
         "tags": [
           "usergroups"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "usergroups:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -74958,6 +76087,13 @@
           "usergroups.users",
           "usergroups"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "usergroups:read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_usergroups_users_list/input.schema.json",
@@ -75114,6 +76250,13 @@
         "tags": [
           "usergroups.users",
           "usergroups"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "usergroups:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -75421,6 +76564,16 @@
       "schema": {
         "tags": [
           "users"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "channels:read",
+              "groups:read",
+              "im:read",
+              "mpim:read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -80161,6 +81314,13 @@
         "tags": [
           "users"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "users.profile:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_users_deletePhoto/input.schema.json",
@@ -80301,6 +81461,13 @@
         "tags": [
           "users"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "users:read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_users_getPresence/input.schema.json",
@@ -80436,6 +81603,13 @@
         "tags": [
           "users"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "identity.basic"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_users_identity/input.schema.json",
@@ -80547,6 +81721,13 @@
       "schema": {
         "tags": [
           "users"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "users:read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -81668,6 +82849,13 @@
       "schema": {
         "tags": [
           "users"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "users:read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -82876,6 +84064,13 @@
         "tags": [
           "users"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "users:read.email"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_users_lookupByEmail/input.schema.json",
@@ -83998,6 +85193,13 @@
           "users.profile",
           "users"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "users.profile:read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_users_profile_get/input.schema.json",
@@ -84374,6 +85576,13 @@
         "tags": [
           "users.profile",
           "users"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "users.profile:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -84777,6 +85986,13 @@
         "tags": [
           "users"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "users:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_users_setActive/input.schema.json",
@@ -84910,6 +86126,13 @@
       "schema": {
         "tags": [
           "users"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "users.profile:write"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -85137,6 +86360,13 @@
         "tags": [
           "users"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "users:write"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/post_users_setPresence/input.schema.json",
@@ -85284,6 +86514,13 @@
         "tags": [
           "views"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "none"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_views_open/input.schema.json",
@@ -85402,6 +86639,13 @@
       "schema": {
         "tags": [
           "views"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "none"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -85526,6 +86770,13 @@
         "tags": [
           "views"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "none"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_views_push/input.schema.json",
@@ -85644,6 +86895,13 @@
       "schema": {
         "tags": [
           "views"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "none"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -85768,6 +87026,13 @@
         "tags": [
           "workflows"
         ],
+        "security": [
+          {
+            "slackAuth": [
+              "workflow.steps:execute"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Slack-Web-API/get_workflows_stepCompleted/input.schema.json",
@@ -85885,6 +87150,13 @@
       "schema": {
         "tags": [
           "workflows"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "workflow.steps:execute"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -86004,6 +87276,13 @@
       "schema": {
         "tags": [
           "workflows"
+        ],
+        "security": [
+          {
+            "slackAuth": [
+              "workflow.steps:execute"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -86139,5 +87418,82 @@
     "headerDesc": "HTTP headers sent when making the request",
     "dataDesc": "Data sent with the request",
     "schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "securitySchemes": {
+    "slackAuth": {
+      "authorizationUrl": "https://slack.com/oauth/authorize",
+      "flow": "accessCode",
+      "scopes": {
+        "admin": "admin",
+        "admin.apps:read": "admin.apps:read",
+        "admin.apps:write": "admin.apps:write",
+        "admin.conversations:read": "admin.conversations:read",
+        "admin.conversations:write": "admin.conversations:write",
+        "admin.invites:read": "admin.invites:read",
+        "admin.invites:write": "admin.invites:write",
+        "admin.teams:read": "admin.teams:read",
+        "admin.teams:write": "admin.teams:write",
+        "admin.usergroups:read": "admin.usergroups:read",
+        "admin.usergroups:write": "admin.usergroups:write",
+        "admin.users:read": "admin.users:read",
+        "admin.users:write": "admin.users:write",
+        "authorizations:read": "authorizations:read",
+        "bot": "Bot user scope",
+        "calls:read": "calls:read",
+        "calls:write": "calls:write",
+        "channels:history": "channels:history",
+        "channels:manage": "channels:manage",
+        "channels:read": "channels:read",
+        "channels:write": "channels:write",
+        "chat:write": "chat:write",
+        "chat:write:bot": "Author messages as a bot",
+        "chat:write:user": "Author messages as a user",
+        "conversations:history": "conversations:history",
+        "conversations:read": "conversations:read",
+        "conversations:write": "conversations:write",
+        "dnd:read": "dnd:read",
+        "dnd:write": "dnd:write",
+        "emoji:read": "emoji:read",
+        "files:read": "files:read",
+        "files:write:user": "files:write:user",
+        "groups:history": "groups:history",
+        "groups:read": "groups:read",
+        "groups:write": "groups:write",
+        "identity.basic": "identity.basic",
+        "im:history": "im:history",
+        "im:read": "im:read",
+        "im:write": "im:write",
+        "links:write": "links:write",
+        "mpim:history": "mpim:history",
+        "mpim:read": "mpim:read",
+        "mpim:write": "mpim:write",
+        "none": "No scope required",
+        "pins:read": "pins:read",
+        "pins:write": "pins:write",
+        "reactions:read": "reactions:read",
+        "reactions:write": "reactions:write",
+        "reminders:read": "reminders:read",
+        "reminders:write": "reminders:write",
+        "remote_files:read": "remote_files:read",
+        "remote_files:share": "remote_files:share",
+        "remote_files:write": "remote_files:write",
+        "rtm:stream": "rtm:stream",
+        "search:read": "search:read",
+        "stars:read": "stars:read",
+        "stars:write": "stars:write",
+        "team:read": "team:read",
+        "tokens.basic": "tokens.basic",
+        "usergroups:read": "usergroups:read",
+        "usergroups:write": "usergroups:write",
+        "users.profile:read": "users.profile:read",
+        "users.profile:write": "users.profile:write",
+        "users:read": "users:read",
+        "users:read.email": "users:read.email",
+        "users:write": "users:write",
+        "workflow.steps:execute": "workflow.steps:execute"
+      },
+      "tokenUrl": "https://slack.com/api/oauth.access",
+      "type": "oauth2"
+    }
   }
 }

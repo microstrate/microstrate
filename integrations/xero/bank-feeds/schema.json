@@ -11,6 +11,13 @@
         "tags": [
           "BankFeeds"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "bankfeeds"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Bank-Feeds-API/get_FeedConnections/input.schema.json",
@@ -648,6 +655,13 @@
       "schema": {
         "tags": [
           "BankFeeds"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "bankfeeds"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -2403,6 +2417,13 @@
         "tags": [
           "BankFeeds"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "bankfeeds"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Bank-Feeds-API/get_FeedConnections__id_/input.schema.json",
@@ -3002,6 +3023,13 @@
       "schema": {
         "tags": [
           "BankFeeds"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "bankfeeds"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -4196,6 +4224,13 @@
         "tags": [
           "BankFeeds"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "bankfeeds"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Bank-Feeds-API/get_Statements/input.schema.json",
@@ -4754,6 +4789,13 @@
       "schema": {
         "tags": [
           "BankFeeds"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "bankfeeds"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -6538,6 +6580,13 @@
         "tags": [
           "BankFeeds"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "bankfeeds"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Bank-Feeds-API/get_Statements__statementId_/input.schema.json",
@@ -6818,5 +6867,23 @@
     "headerDesc": "HTTP headers sent when making the request",
     "dataDesc": "Data sent with the request",
     "schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "securitySchemes": {
+    "OAuth2": {
+      "type": "oauth2",
+      "description": "For more information visit https://developer.xero.com/documentation/oauth2/overview",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+          "tokenUrl": "https://identity.xero.com/connect/token",
+          "scopes": {
+            "email": "Grant read-only access to your email",
+            "openid": "Grant read-only access to your open id",
+            "profile": "your profile information",
+            "bankfeeds": "Grant read-write access to bankfeeds"
+          }
+        }
+      }
+    }
   }
 }

@@ -11,6 +11,14 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees",
+              "payroll.employees.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/get_Employees/input.schema.json",
@@ -458,6 +466,13 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -1149,6 +1164,14 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees",
+              "payroll.employees.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/get_Employees__EmployeeID_/input.schema.json",
@@ -1545,6 +1568,13 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -2246,6 +2276,13 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/post_Employees__EmployeeID__Employment/input.schema.json",
@@ -2738,6 +2775,14 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees",
+              "payroll.employees.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/get_Employees__EmployeeID__Tax/input.schema.json",
@@ -2945,6 +2990,14 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees",
+              "payroll.employees.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/get_Employees__EmployeeID__ukopeningbalances/input.schema.json",
@@ -3129,6 +3182,13 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -3406,6 +3466,13 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/put_Employees__EmployeeID__ukopeningbalances/input.schema.json",
@@ -3682,6 +3749,14 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees",
+              "payroll.employees.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/get_Employees__EmployeeID__Leave/input.schema.json",
@@ -3906,6 +3981,13 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -4257,6 +4339,14 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees",
+              "payroll.employees.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/get_Employees__EmployeeID__Leave__LeaveID_/input.schema.json",
@@ -4486,6 +4576,13 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/delete_Employees__EmployeeID__Leave__LeaveID_/input.schema.json",
@@ -4714,6 +4811,13 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -5072,6 +5176,14 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees",
+              "payroll.employees.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/get_Employees__EmployeeID__LeaveBalances/input.schema.json",
@@ -5249,6 +5361,14 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees",
+              "payroll.employees.read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -5437,6 +5557,14 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.settings",
+              "payroll.settings.read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -5644,6 +5772,13 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.settings"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -6045,6 +6180,14 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.settings",
+              "payroll.settings.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/get_StatutoryLeaves_Sick__StatutorySickLeaveID_/input.schema.json",
@@ -6297,6 +6440,14 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees",
+              "payroll.employees.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/get_Employees__EmployeeID__LeavePeriods/input.schema.json",
@@ -6537,6 +6688,14 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees",
+              "payroll.employees.read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -6789,6 +6948,13 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -7096,6 +7262,14 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees",
+              "payroll.employees.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/get_Employees__EmployeeID__PaymentMethods/input.schema.json",
@@ -7336,6 +7510,13 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -7627,6 +7808,14 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees",
+              "payroll.employees.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/get_Employees__EmployeeID__PayTemplates/input.schema.json",
@@ -7875,6 +8064,13 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -8150,6 +8346,13 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/delete_Employees__EmployeeID__PayTemplates_earnings__PayTemplateEarningID_/input.schema.json",
@@ -8231,6 +8434,13 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -8513,6 +8723,13 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/post_Employees__EmployeeID__paytemplateearnings/input.schema.json",
@@ -8793,6 +9010,14 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.settings",
+              "payroll.settings.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/get_Benefits/input.schema.json",
@@ -9022,6 +9247,13 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.settings"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -9383,6 +9615,14 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.settings",
+              "payroll.settings.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/get_Benefits__id_/input.schema.json",
@@ -9613,6 +9853,14 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.settings",
+              "payroll.settings.read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -9854,6 +10102,13 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.settings"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -10237,6 +10492,14 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.settings",
+              "payroll.settings.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/get_Deductions__deductionId_/input.schema.json",
@@ -10479,6 +10742,14 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.settings",
+              "payroll.settings.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/get_EarningsOrders/input.schema.json",
@@ -10673,6 +10944,14 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.settings",
+              "payroll.settings.read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -10869,6 +11148,14 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.settings",
+              "payroll.settings.read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -11106,6 +11393,13 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.settings"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -11481,6 +11775,14 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.settings",
+              "payroll.settings.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/get_EarningsRates__EarningsRateID_/input.schema.json",
@@ -11719,6 +12021,14 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.settings",
+              "payroll.settings.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/get_LeaveTypes/input.schema.json",
@@ -11915,6 +12225,13 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.settings"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -12202,6 +12519,14 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.settings",
+              "payroll.settings.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/get_LeaveTypes__LeaveTypeID_/input.schema.json",
@@ -12396,6 +12721,14 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.settings",
+              "payroll.settings.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/get_Reimbursements/input.schema.json",
@@ -12570,6 +12903,13 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.settings"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -12821,6 +13161,14 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.settings",
+              "payroll.settings.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/get_Reimbursements__ReimbursementID_/input.schema.json",
@@ -12996,6 +13344,14 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.timesheets",
+              "payroll.timesheets.read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -13257,6 +13613,13 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.timesheets"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -13640,6 +14003,14 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.timesheets",
+              "payroll.timesheets.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/get_Timesheets__TimesheetID_/input.schema.json",
@@ -13882,6 +14253,13 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.timesheets"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/delete_Timesheets__TimesheetID_/input.schema.json",
@@ -14042,6 +14420,13 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.timesheets"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -14317,6 +14702,13 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.timesheets"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -14613,6 +15005,13 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.timesheets"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/post_Timesheets__TimesheetID__RevertToDraft/input.schema.json",
@@ -14908,6 +15307,13 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.timesheets"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/delete_Timesheets__TimesheetID__Lines__TimesheetLineID_/input.schema.json",
@@ -15074,6 +15480,13 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.timesheets"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -15356,6 +15769,14 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.settings",
+              "payroll.settings.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/get_PayRunCalendars/input.schema.json",
@@ -15555,6 +15976,13 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.settings"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -15856,6 +16284,14 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.settings",
+              "payroll.settings.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/get_PayRunCalendars__PayRunCalendarID_/input.schema.json",
@@ -16056,6 +16492,14 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees",
+              "payroll.employees.read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -16328,6 +16772,13 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -16665,6 +17116,14 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees",
+              "payroll.employees.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/get_Employees__EmployeeID__SalaryAndWages__SalaryAndWagesID_/input.schema.json",
@@ -16890,6 +17349,13 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/delete_Employees__EmployeeID__SalaryAndWages__SalaryAndWagesID_/input.schema.json",
@@ -16971,6 +17437,13 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.employees"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -17314,6 +17787,14 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.payruns",
+              "payroll.payruns.read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -17978,6 +18459,14 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.payruns",
+              "payroll.payruns.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/get_PayRuns__PayRunID_/input.schema.json",
@@ -18633,6 +19122,13 @@
       "schema": {
         "tags": [
           "PayrollUk"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.payruns"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -19853,6 +20349,14 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.payslip",
+              "payroll.payslip.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/get_Payslips/input.schema.json",
@@ -20439,6 +20943,14 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.payslip",
+              "payroll.payslip.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/get_Payslips__PayslipID_/input.schema.json",
@@ -21018,6 +21530,14 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.settings",
+              "payroll.settings.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/get_Settings/input.schema.json",
@@ -21197,6 +21717,14 @@
         "tags": [
           "PayrollUk"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "payroll.settings",
+              "payroll.settings.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Payroll-UK/get_Settings_trackingCategories/input.schema.json",
@@ -21356,5 +21884,29 @@
     "headerDesc": "HTTP headers sent when making the request",
     "dataDesc": "Data sent with the request",
     "schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "securitySchemes": {
+    "OAuth2": {
+      "type": "oauth2",
+      "description": "For more information visit https://developer.xero.com/documentation/oauth2/overview",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+          "tokenUrl": "https://identity.xero.com/connect/token",
+          "scopes": {
+            "payroll.employees": "Grant read-write access to payroll employees",
+            "payroll.employees.read": "Grant read-only access to payroll employees",
+            "payroll.payruns": "Grant read-write access to payroll payruns",
+            "payroll.payruns.read": "Grant read-only access to payroll payruns",
+            "payroll.payslip": "Grant read-write access to payroll payslips",
+            "payroll.payslip.read": "Grant read-only access to payroll payslips",
+            "payroll.settings": "Grant read-write access to payroll settings",
+            "payroll.settings.read": "Grant read-only access to payroll settings",
+            "payroll.timesheets": "Grant read-write access to payroll timesheets",
+            "payroll.timesheets.read": "Grant read-only access to payroll timesheets"
+          }
+        }
+      }
+    }
   }
 }

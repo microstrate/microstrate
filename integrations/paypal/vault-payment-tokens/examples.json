@@ -44,6 +44,9 @@
     "Basic Example": {
       "url": "/v3/vault/payment-tokens/{id}",
       "method": "delete",
+      "path": {
+        "id": "<string>"
+      },
       "baseURL": "https://api-m.sandbox.paypal.com"
     }
   },
@@ -51,6 +54,9 @@
     "Basic Example": {
       "url": "/v3/vault/setup-tokens",
       "method": "post",
+      "headers": {
+        "PayPal-Request-Id": "<string>"
+      },
       "data": {
         "payment_source": {
           "card": {
@@ -74,9 +80,6 @@
           }
         }
       },
-      "headers": {
-        "Content-Type": "application/json"
-      },
       "baseURL": "https://api-m.sandbox.paypal.com"
     }
   },
@@ -84,6 +87,9 @@
     "Basic Example": {
       "url": "/v3/vault/setup-tokens/{id}",
       "method": "get",
+      "path": {
+        "id": "<string>"
+      },
       "baseURL": "https://api-m.sandbox.paypal.com"
     }
   }

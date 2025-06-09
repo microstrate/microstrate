@@ -11,6 +11,11 @@
         "tags": [
           "identity"
         ],
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-OAuth-2-Identity-Service-API/get_Connections/input.schema.json",
@@ -73,6 +78,11 @@
       "schema": {
         "tags": [
           "identity"
+        ],
+        "security": [
+          {
+            "OAuth2": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -144,5 +154,26 @@
     "headerDesc": "HTTP headers sent when making the request",
     "dataDesc": "Data sent with the request",
     "schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "securitySchemes": {
+    "BasicAuth": {
+      "type": "http",
+      "scheme": "basic"
+    },
+    "OAuth2": {
+      "type": "oauth2",
+      "description": "For more information",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+          "tokenUrl": "https://identity.xero.com/connect/token",
+          "scopes": {
+            "email": "Grant read-only access to your email",
+            "openid": "Grant read-only access to your open id",
+            "profile": "your profile information"
+          }
+        }
+      }
+    }
   }
 }

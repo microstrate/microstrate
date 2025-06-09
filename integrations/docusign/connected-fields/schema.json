@@ -11,6 +11,7 @@
         "tags": [
           "TabInfo"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Connected-Fields-API/get_accounts__accountId__connected-fields_tab-groups/input.schema.json",
@@ -119,10 +120,34 @@
         "https://api-d.docusign.com/v1"
       ]
     },
+    "security": [
+      {
+        "oauth2": [
+          "adm_store_unified_repo_read",
+          "signature"
+        ]
+      }
+    ],
     "queryDesc": "Query parameters sent with the request",
     "paramDesc": "URL parameters sent with the request",
     "headerDesc": "HTTP headers sent when making the request",
     "dataDesc": "Data sent with the request",
     "schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "securitySchemes": {
+    "oauth2": {
+      "type": "oauth2",
+      "description": "JWT Bearer token from Docusign authorization server,",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://account-d.docusign.com/oauth/auth",
+          "tokenUrl": "https://account-d.docusign.com/oauth/token",
+          "scopes": {
+            "adm_store_unified_repo_read": "Required to read agreement data from Connected Fields APIs",
+            "signature": "Used for operations on the Docusign eSignature API"
+          }
+        }
+      }
+    }
   }
 }

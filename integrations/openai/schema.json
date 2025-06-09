@@ -11,6 +11,7 @@
         "tags": [
           "Assistants"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_assistants/input.schema.json",
@@ -477,6 +478,7 @@
         "tags": [
           "Assistants"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_assistants/input.schema.json",
@@ -1376,6 +1378,7 @@
         "tags": [
           "Assistants"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_assistants__assistant_id_/input.schema.json",
@@ -1796,6 +1799,7 @@
         "tags": [
           "Assistants"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_assistants__assistant_id_/input.schema.json",
@@ -2597,6 +2601,7 @@
         "tags": [
           "Assistants"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/delete_assistants__assistant_id_/input.schema.json",
@@ -2687,6 +2692,7 @@
         "tags": [
           "Audio"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_audio_speech/input.schema.json",
@@ -2830,6 +2836,7 @@
         "tags": [
           "Audio"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_audio_transcriptions/input.schema.json",
@@ -2981,6 +2988,7 @@
         "tags": [
           "Audio"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_audio_translations/input.schema.json",
@@ -3093,6 +3101,7 @@
         "tags": [
           "Batch"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_batches/input.schema.json",
@@ -3359,6 +3368,7 @@
         "tags": [
           "Batch"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_batches/input.schema.json",
@@ -3630,6 +3640,7 @@
         "tags": [
           "Batch"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_batches__batch_id_/input.schema.json",
@@ -3864,6 +3875,7 @@
         "tags": [
           "Batch"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_batches__batch_id__cancel/input.schema.json",
@@ -4098,6 +4110,7 @@
         "tags": [
           "Chat"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_chat_completions/input.schema.json",
@@ -4695,6 +4708,7 @@
         "tags": [
           "Chat"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_chat_completions/input.schema.json",
@@ -6432,6 +6446,7 @@
         "tags": [
           "Chat"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_chat_completions__completion_id_/input.schema.json",
@@ -6969,6 +6984,7 @@
         "tags": [
           "Chat"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_chat_completions__completion_id_/input.schema.json",
@@ -7528,6 +7544,7 @@
         "tags": [
           "Chat"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/delete_chat_completions__completion_id_/input.schema.json",
@@ -7621,6 +7638,7 @@
         "tags": [
           "Chat"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_chat_completions__completion_id__messages/input.schema.json",
@@ -7936,6 +7954,7 @@
         "tags": [
           "Completions"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_completions/input.schema.json",
@@ -8408,6 +8427,7 @@
         "tags": [
           "Embeddings"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_embeddings/input.schema.json",
@@ -8643,6 +8663,7 @@
         "tags": [
           "Files"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_files/input.schema.json",
@@ -8827,6 +8848,7 @@
         "tags": [
           "Files"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_files/input.schema.json",
@@ -8989,6 +9011,7 @@
         "tags": [
           "Files"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_files__file_id_/input.schema.json",
@@ -9128,6 +9151,7 @@
         "tags": [
           "Files"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/delete_files__file_id_/input.schema.json",
@@ -9218,6 +9242,7 @@
         "tags": [
           "Files"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_files__file_id__content/input.schema.json",
@@ -9283,6 +9308,7 @@
         "tags": [
           "Fine-tuning"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_fine_tuning_checkpoints__permission_id__permissions/input.schema.json",
@@ -9441,6 +9467,7 @@
         "tags": [
           "Fine-tuning"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_fine_tuning_checkpoints__permission_id__permissions/input.schema.json",
@@ -9596,6 +9623,7 @@
         "tags": [
           "Fine-tuning"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/delete_fine_tuning_checkpoints__permission_id__permissions/input.schema.json",
@@ -9690,6 +9718,7 @@
         "tags": [
           "Fine-tuning"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_fine_tuning_jobs/input.schema.json",
@@ -10218,6 +10247,7 @@
         "tags": [
           "Fine-tuning"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_fine_tuning_jobs/input.schema.json",
@@ -11060,6 +11090,7 @@
         "tags": [
           "Fine-tuning"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_fine_tuning_jobs__fine_tuning_job_id_/input.schema.json",
@@ -11558,6 +11589,7 @@
         "tags": [
           "Fine-tuning"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_fine_tuning_jobs__fine_tuning_job_id__cancel/input.schema.json",
@@ -12056,6 +12088,7 @@
         "tags": [
           "Fine-tuning"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_fine_tuning_jobs__fine_tuning_job_id__checkpoints/input.schema.json",
@@ -12239,6 +12272,7 @@
         "tags": [
           "Fine-tuning"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_fine_tuning_jobs__fine_tuning_job_id__events/input.schema.json",
@@ -12393,6 +12427,7 @@
         "tags": [
           "Images"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_images_edits/input.schema.json",
@@ -12573,6 +12608,7 @@
         "tags": [
           "Images"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_images_generations/input.schema.json",
@@ -12768,6 +12804,7 @@
         "tags": [
           "Images"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_images_variations/input.schema.json",
@@ -12937,6 +12974,7 @@
         "tags": [
           "Models"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_models/input.schema.json",
@@ -13046,6 +13084,7 @@
         "tags": [
           "Models"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_models__model_/input.schema.json",
@@ -13147,6 +13186,7 @@
         "tags": [
           "Models"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/delete_models__model_/input.schema.json",
@@ -13235,6 +13275,7 @@
         "tags": [
           "Moderations"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_moderations/input.schema.json",
@@ -13752,6 +13793,7 @@
       "name": "Admin Api Keys List",
       "description": "List organization API keys",
       "schema": {
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_organization_admin_api_keys/input.schema.json",
@@ -13905,6 +13947,7 @@
       "name": "Admin Api Keys Create",
       "description": "Create an organization admin API key",
       "schema": {
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_organization_admin_api_keys/input.schema.json",
@@ -14034,6 +14077,7 @@
       "name": "Admin Api Keys Get",
       "description": "Retrieve a single organization API key",
       "schema": {
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_organization_admin_api_keys__key_id_/input.schema.json",
@@ -14154,6 +14198,7 @@
       "name": "Admin Api Keys Delete",
       "description": "Delete an organization admin API key",
       "schema": {
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/delete_organization_admin_api_keys__key_id_/input.schema.json",
@@ -14238,6 +14283,7 @@
         "tags": [
           "Audit Logs"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_organization_audit_logs/input.schema.json",
@@ -14941,6 +14987,7 @@
         "tags": [
           "Usage"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_organization_costs/input.schema.json",
@@ -15557,6 +15604,7 @@
         "tags": [
           "Invites"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_organization_invites/input.schema.json",
@@ -15738,6 +15786,7 @@
         "tags": [
           "Invites"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_organization_invites/input.schema.json",
@@ -15928,6 +15977,7 @@
         "tags": [
           "Invites"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_organization_invites__invite_id_/input.schema.json",
@@ -16076,6 +16126,7 @@
         "tags": [
           "Invites"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/delete_organization_invites__invite_id_/input.schema.json",
@@ -16167,6 +16218,7 @@
         "tags": [
           "Projects"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_organization_projects/input.schema.json",
@@ -16319,6 +16371,7 @@
         "tags": [
           "Projects"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_organization_projects/input.schema.json",
@@ -16442,6 +16495,7 @@
         "tags": [
           "Projects"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_organization_projects__project_id_/input.schema.json",
@@ -16557,6 +16611,7 @@
         "tags": [
           "Projects"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_organization_projects__project_id_/input.schema.json",
@@ -16727,6 +16782,7 @@
         "tags": [
           "Projects"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_organization_projects__project_id__api_keys/input.schema.json",
@@ -16970,6 +17026,7 @@
         "tags": [
           "Projects"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_organization_projects__project_id__api_keys__key_id_/input.schema.json",
@@ -17178,6 +17235,7 @@
         "tags": [
           "Projects"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/delete_organization_projects__project_id__api_keys__key_id_/input.schema.json",
@@ -17312,6 +17370,7 @@
         "tags": [
           "Projects"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_organization_projects__project_id__archive/input.schema.json",
@@ -17427,6 +17486,7 @@
         "tags": [
           "Projects"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_organization_projects__project_id__rate_limits/input.schema.json",
@@ -17591,6 +17651,7 @@
         "tags": [
           "Projects"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_organization_projects__project_id__rate_limits__rate_limit_id_/input.schema.json",
@@ -17788,6 +17849,7 @@
         "tags": [
           "Projects"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_organization_projects__project_id__service_accounts/input.schema.json",
@@ -17975,6 +18037,7 @@
         "tags": [
           "Projects"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_organization_projects__project_id__service_accounts/input.schema.json",
@@ -18164,6 +18227,7 @@
         "tags": [
           "Projects"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_organization_projects__project_id__service_accounts__service_account_id_/input.schema.json",
@@ -18277,6 +18341,7 @@
         "tags": [
           "Projects"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/delete_organization_projects__project_id__service_accounts__service_account_id_/input.schema.json",
@@ -18372,6 +18437,7 @@
         "tags": [
           "Projects"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_organization_projects__project_id__users/input.schema.json",
@@ -18561,6 +18627,7 @@
         "tags": [
           "Projects"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_organization_projects__project_id__users/input.schema.json",
@@ -18738,6 +18805,7 @@
         "tags": [
           "Projects"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_organization_projects__project_id__users__user_id_/input.schema.json",
@@ -18856,6 +18924,7 @@
         "tags": [
           "Projects"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_organization_projects__project_id__users__user_id_/input.schema.json",
@@ -19033,6 +19102,7 @@
         "tags": [
           "Projects"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/delete_organization_projects__project_id__users__user_id_/input.schema.json",
@@ -19167,6 +19237,7 @@
         "tags": [
           "Usage"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_organization_usage_audio_speeches/input.schema.json",
@@ -19807,6 +19878,7 @@
         "tags": [
           "Usage"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_organization_usage_audio_transcriptions/input.schema.json",
@@ -20447,6 +20519,7 @@
         "tags": [
           "Usage"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_organization_usage_code_interpreter_sessions/input.schema.json",
@@ -21063,6 +21136,7 @@
         "tags": [
           "Usage"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_organization_usage_completions/input.schema.json",
@@ -21708,6 +21782,7 @@
         "tags": [
           "Usage"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_organization_usage_embeddings/input.schema.json",
@@ -22348,6 +22423,7 @@
         "tags": [
           "Usage"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_organization_usage_images/input.schema.json",
@@ -23016,6 +23092,7 @@
         "tags": [
           "Usage"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_organization_usage_moderations/input.schema.json",
@@ -23656,6 +23733,7 @@
         "tags": [
           "Usage"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_organization_usage_vector_stores/input.schema.json",
@@ -24272,6 +24350,7 @@
         "tags": [
           "Users"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_organization_users/input.schema.json",
@@ -24424,6 +24503,7 @@
         "tags": [
           "Users"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_organization_users__user_id_/input.schema.json",
@@ -24537,6 +24617,7 @@
         "tags": [
           "Users"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_organization_users__user_id_/input.schema.json",
@@ -24670,6 +24751,7 @@
         "tags": [
           "Users"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/delete_organization_users__user_id_/input.schema.json",
@@ -24760,6 +24842,7 @@
         "tags": [
           "Realtime"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_realtime_sessions/input.schema.json",
@@ -25193,6 +25276,7 @@
         "tags": [
           "Realtime"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_realtime_transcription_sessions/input.schema.json",
@@ -25466,6 +25550,7 @@
         "tags": [
           "Responses"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_responses/input.schema.json",
@@ -27458,6 +27543,7 @@
         "tags": [
           "Responses"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_responses__response_id_/input.schema.json",
@@ -27538,6 +27624,7 @@
         "tags": [
           "Responses"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/delete_responses__response_id_/input.schema.json",
@@ -27636,6 +27723,7 @@
         "tags": [
           "Responses"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_responses__response_id__input_items/input.schema.json",
@@ -28798,6 +28886,7 @@
         "tags": [
           "Assistants"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_threads/input.schema.json",
@@ -29306,6 +29395,7 @@
         "tags": [
           "Assistants"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_threads_runs/input.schema.json",
@@ -30805,6 +30895,7 @@
         "tags": [
           "Assistants"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_threads__thread_id_/input.schema.json",
@@ -30948,6 +31039,7 @@
         "tags": [
           "Assistants"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_threads__thread_id_/input.schema.json",
@@ -31147,6 +31239,7 @@
         "tags": [
           "Assistants"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/delete_threads__thread_id_/input.schema.json",
@@ -31237,6 +31330,7 @@
         "tags": [
           "Assistants"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_threads__thread_id__messages/input.schema.json",
@@ -31777,6 +31871,7 @@
         "tags": [
           "Assistants"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_threads__thread_id__messages/input.schema.json",
@@ -32473,6 +32568,7 @@
         "tags": [
           "Assistants"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_threads__thread_id__messages__message_id_/input.schema.json",
@@ -32960,6 +33056,7 @@
         "tags": [
           "Assistants"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_threads__thread_id__messages__message_id_/input.schema.json",
@@ -33467,6 +33564,7 @@
         "tags": [
           "Assistants"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/delete_threads__thread_id__messages__message_id_/input.schema.json",
@@ -33562,6 +33660,7 @@
         "tags": [
           "Assistants"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_threads__thread_id__runs/input.schema.json",
@@ -34289,6 +34388,7 @@
         "tags": [
           "Assistants"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_threads__thread_id__runs/input.schema.json",
@@ -35643,6 +35743,7 @@
         "tags": [
           "Assistants"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_threads__thread_id__runs__run_id_/input.schema.json",
@@ -36321,6 +36422,7 @@
         "tags": [
           "Assistants"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_threads__thread_id__runs__run_id_/input.schema.json",
@@ -37019,6 +37121,7 @@
         "tags": [
           "Assistants"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_threads__thread_id__runs__run_id__cancel/input.schema.json",
@@ -37697,6 +37800,7 @@
         "tags": [
           "Assistants"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_threads__thread_id__runs__run_id__steps/input.schema.json",
@@ -38304,6 +38408,7 @@
         "tags": [
           "Assistants"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_threads__thread_id__runs__run_id__steps__step_id_/input.schema.json",
@@ -38863,6 +38968,7 @@
         "tags": [
           "Assistants"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_threads__thread_id__runs__run_id__submit_tool_outputs/input.schema.json",
@@ -39578,6 +39684,7 @@
         "tags": [
           "Uploads"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_uploads/input.schema.json",
@@ -39810,6 +39917,7 @@
         "tags": [
           "Uploads"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_uploads__upload_id__cancel/input.schema.json",
@@ -40013,6 +40121,7 @@
         "tags": [
           "Uploads"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_uploads__upload_id__complete/input.schema.json",
@@ -40240,6 +40349,7 @@
         "tags": [
           "Uploads"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_uploads__upload_id__parts/input.schema.json",
@@ -40359,6 +40469,7 @@
         "tags": [
           "Vector stores"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_vector_stores/input.schema.json",
@@ -40603,6 +40714,7 @@
         "tags": [
           "Vector stores"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_vector_stores/input.schema.json",
@@ -40912,6 +41024,7 @@
         "tags": [
           "Vector stores"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_vector_stores__vector_store_id_/input.schema.json",
@@ -41110,6 +41223,7 @@
         "tags": [
           "Vector stores"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_vector_stores__vector_store_id_/input.schema.json",
@@ -41364,6 +41478,7 @@
         "tags": [
           "Vector stores"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/delete_vector_stores__vector_store_id_/input.schema.json",
@@ -41454,6 +41569,7 @@
         "tags": [
           "Vector stores"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_vector_stores__vector_store_id__file_batches/input.schema.json",
@@ -41706,6 +41822,7 @@
         "tags": [
           "Vector stores"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_vector_stores__vector_store_id__file_batches__batch_id_/input.schema.json",
@@ -41857,6 +41974,7 @@
         "tags": [
           "Vector stores"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_vector_stores__vector_store_id__file_batches__batch_id__cancel/input.schema.json",
@@ -42006,6 +42124,7 @@
         "tags": [
           "Vector stores"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_vector_stores__vector_store_id__file_batches__batch_id__files/input.schema.json",
@@ -42302,6 +42421,7 @@
         "tags": [
           "Vector stores"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_vector_stores__vector_store_id__files/input.schema.json",
@@ -42593,6 +42713,7 @@
         "tags": [
           "Vector stores"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_vector_stores__vector_store_id__files/input.schema.json",
@@ -42923,6 +43044,7 @@
         "tags": [
           "Vector stores"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_vector_stores__vector_store_id__files__file_id_/input.schema.json",
@@ -43157,6 +43279,7 @@
         "tags": [
           "Vector stores"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_vector_stores__vector_store_id__files__file_id_/input.schema.json",
@@ -43426,6 +43549,7 @@
         "tags": [
           "Vector stores"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/delete_vector_stores__vector_store_id__files__file_id_/input.schema.json",
@@ -43521,6 +43645,7 @@
         "tags": [
           "Vector stores"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/get_vector_stores__vector_store_id__files__file_id__content/input.schema.json",
@@ -43643,6 +43768,7 @@
         "tags": [
           "Vector stores"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/OpenAI-API/post_vector_stores__vector_store_id__search/input.schema.json",
@@ -44015,10 +44141,21 @@
         "https://api.openai.com/v1"
       ]
     },
+    "security": [
+      {
+        "ApiKeyAuth": []
+      }
+    ],
     "queryDesc": "Query parameters sent with the request",
     "paramDesc": "URL parameters sent with the request",
     "headerDesc": "HTTP headers sent when making the request",
     "dataDesc": "Data sent with the request",
     "schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "securitySchemes": {
+    "ApiKeyAuth": {
+      "type": "http",
+      "scheme": "bearer"
+    }
   }
 }

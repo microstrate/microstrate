@@ -4438,5 +4438,6 @@
     "headerDesc": "HTTP headers sent when making the request",
     "dataDesc": "Data sent with the request",
     "schema": "https://json-schema.org/draft/2020-12/schema"
-  }
+  },
+  "securitySchemes": {}
 }

@@ -11,6 +11,11 @@
         "tags": [
           "Api20100401Account"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts_json/input.schema.json",
@@ -231,6 +236,11 @@
         "tags": [
           "Api20100401Account"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/post_2010-04-01_Accounts_json/input.schema.json",
@@ -392,6 +402,11 @@
         "tags": [
           "Api20100401Account"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__Sid__json/input.schema.json",
@@ -549,6 +564,11 @@
       "schema": {
         "tags": [
           "Api20100401Account"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -730,6 +750,11 @@
       "schema": {
         "tags": [
           "Api20100401Address"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -1005,6 +1030,11 @@
         "tags": [
           "Api20100401Address"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/post_2010-04-01_Accounts__AccountSid__Addresses_json/input.schema.json",
@@ -1261,6 +1291,11 @@
         "tags": [
           "Api20100401Address"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__Addresses__Sid__json/input.schema.json",
@@ -1465,6 +1500,11 @@
       "schema": {
         "tags": [
           "Api20100401Address"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -1717,6 +1757,11 @@
         "tags": [
           "Api20100401Address"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__Addresses__Sid__json/input.schema.json",
@@ -1792,6 +1837,11 @@
       "schema": {
         "tags": [
           "Api20100401Application"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -2119,6 +2169,11 @@
       "schema": {
         "tags": [
           "Api20100401Application"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -2489,6 +2544,11 @@
         "tags": [
           "Api20100401Application"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__Applications__Sid__json/input.schema.json",
@@ -2759,6 +2819,11 @@
       "schema": {
         "tags": [
           "Api20100401Application"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -3137,6 +3202,11 @@
         "tags": [
           "Api20100401Application"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__Applications__Sid__json/input.schema.json",
@@ -3212,6 +3282,11 @@
       "schema": {
         "tags": [
           "Api20100401AuthorizedConnectApp"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -3366,6 +3441,11 @@
       "schema": {
         "tags": [
           "Api20100401AuthorizedConnectApp"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -3573,6 +3653,11 @@
         "tags": [
           "Api20100401AvailablePhoneNumberCountry"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__AvailablePhoneNumbers_json/input.schema.json",
@@ -3747,6 +3832,11 @@
         "tags": [
           "Api20100401AvailablePhoneNumberCountry"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__AvailablePhoneNumbers__CountryCode__json/input.schema.json",
@@ -3866,6 +3956,11 @@
       "schema": {
         "tags": [
           "Api20100401Local"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -4191,6 +4286,11 @@
         "tags": [
           "Api20100401MachineToMachine"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__AvailablePhoneNumbers__CountryCode__MachineToMachine_json/input.schema.json",
@@ -4514,6 +4614,11 @@
       "schema": {
         "tags": [
           "Api20100401Mobile"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -4839,6 +4944,11 @@
         "tags": [
           "Api20100401National"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__AvailablePhoneNumbers__CountryCode__National_json/input.schema.json",
@@ -5162,6 +5272,11 @@
       "schema": {
         "tags": [
           "Api20100401SharedCost"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -5487,6 +5602,11 @@
         "tags": [
           "Api20100401TollFree"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__AvailablePhoneNumbers__CountryCode__TollFree_json/input.schema.json",
@@ -5810,6 +5930,11 @@
       "schema": {
         "tags": [
           "Api20100401Voip"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -6135,6 +6260,11 @@
         "tags": [
           "Api20100401Balance"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__Balance_json/input.schema.json",
@@ -6234,6 +6364,11 @@
       "schema": {
         "tags": [
           "Api20100401Call"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -6644,6 +6779,11 @@
       "schema": {
         "tags": [
           "Api20100401Call"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -7132,6 +7272,11 @@
         "tags": [
           "Api20100401Call"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__Calls__Sid__json/input.schema.json",
@@ -7428,6 +7573,11 @@
       "schema": {
         "tags": [
           "Api20100401Call"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -7794,6 +7944,11 @@
         "tags": [
           "Api20100401Call"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__Calls__Sid__json/input.schema.json",
@@ -7869,6 +8024,11 @@
       "schema": {
         "tags": [
           "Api20100401Event"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -8027,6 +8187,11 @@
       "schema": {
         "tags": [
           "Api20100401CallNotification"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -8257,6 +8422,11 @@
       "schema": {
         "tags": [
           "Api20100401CallNotification"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -8537,6 +8707,11 @@
       "schema": {
         "tags": [
           "Api20100401CallRecording"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -8847,6 +9022,11 @@
       "schema": {
         "tags": [
           "Api20100401CallRecording"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -9284,6 +9464,11 @@
         "tags": [
           "Api20100401CallRecording"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__Calls__CallSid__Recordings__Sid__json/input.schema.json",
@@ -9526,6 +9711,11 @@
       "schema": {
         "tags": [
           "Api20100401CallRecording"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -9796,6 +9986,11 @@
         "tags": [
           "Api20100401CallRecording"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__Calls__CallSid__Recordings__Sid__json/input.schema.json",
@@ -9879,6 +10074,11 @@
       "schema": {
         "tags": [
           "Api20100401Conference"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -10065,6 +10265,11 @@
       "schema": {
         "tags": [
           "Api20100401Conference"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -10278,6 +10483,11 @@
       "schema": {
         "tags": [
           "Api20100401Conference"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -10559,6 +10769,11 @@
       "schema": {
         "tags": [
           "Api20100401ConferenceRecording"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -10863,6 +11078,11 @@
         "tags": [
           "Api20100401ConferenceRecording"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__Conferences__ConferenceSid__Recordings__Sid__json/input.schema.json",
@@ -11098,6 +11318,11 @@
       "schema": {
         "tags": [
           "Api20100401ConferenceRecording"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -11361,6 +11586,11 @@
         "tags": [
           "Api20100401ConferenceRecording"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__Conferences__ConferenceSid__Recordings__Sid__json/input.schema.json",
@@ -11444,6 +11674,11 @@
       "schema": {
         "tags": [
           "Api20100401ConnectApp"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -11626,6 +11861,11 @@
       "schema": {
         "tags": [
           "Api20100401ConnectApp"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -11866,6 +12106,11 @@
         "tags": [
           "Api20100401ConnectApp"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__ConnectApps__Sid__json/input.schema.json",
@@ -11941,6 +12186,11 @@
       "schema": {
         "tags": [
           "Api20100401ConnectApp"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -12175,6 +12425,11 @@
       "schema": {
         "tags": [
           "Api20100401DependentPhoneNumber"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -12568,6 +12823,11 @@
       "schema": {
         "tags": [
           "Api20100401IncomingPhoneNumber"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -12972,6 +13232,11 @@
       "schema": {
         "tags": [
           "Api20100401IncomingPhoneNumber"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -13540,6 +13805,11 @@
         "tags": [
           "Api20100401IncomingPhoneNumber"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__IncomingPhoneNumbers__Sid__json/input.schema.json",
@@ -13615,6 +13885,11 @@
       "schema": {
         "tags": [
           "Api20100401IncomingPhoneNumber"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -14088,6 +14363,11 @@
       "schema": {
         "tags": [
           "Api20100401IncomingPhoneNumber"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -14650,6 +14930,11 @@
         "tags": [
           "Api20100401AssignedAddOn"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__IncomingPhoneNumbers__ResourceSid__AssignedAddOns__Sid__json/input.schema.json",
@@ -14831,6 +15116,11 @@
         "tags": [
           "Api20100401AssignedAddOn"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__IncomingPhoneNumbers__ResourceSid__AssignedAddOns__Sid__json/input.schema.json",
@@ -14914,6 +15204,11 @@
       "schema": {
         "tags": [
           "Api20100401AssignedAddOn"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -15148,6 +15443,11 @@
         "tags": [
           "Api20100401AssignedAddOn"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/post_2010-04-01_Accounts__AccountSid__IncomingPhoneNumbers__ResourceSid__AssignedAddOns_json/input.schema.json",
@@ -15341,6 +15641,11 @@
         "tags": [
           "Api20100401AssignedAddOnExtension"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__IncomingPhoneNumbers__ResourceSid__AssignedAddOns__AssignedAddOnSid__Extensions__Sid__json/input.schema.json",
@@ -15515,6 +15820,11 @@
       "schema": {
         "tags": [
           "Api20100401AssignedAddOnExtension"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -15742,6 +16052,11 @@
       "schema": {
         "tags": [
           "Api20100401IncomingPhoneNumberLocal"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -16215,6 +16530,11 @@
       "schema": {
         "tags": [
           "Api20100401IncomingPhoneNumberLocal"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -16776,6 +17096,11 @@
         "tags": [
           "Api20100401IncomingPhoneNumberMobile"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__IncomingPhoneNumbers_Mobile_json/input.schema.json",
@@ -17248,6 +17573,11 @@
       "schema": {
         "tags": [
           "Api20100401IncomingPhoneNumberMobile"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -17809,6 +18139,11 @@
         "tags": [
           "Api20100401IncomingPhoneNumberTollFree"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__IncomingPhoneNumbers_TollFree_json/input.schema.json",
@@ -18281,6 +18616,11 @@
       "schema": {
         "tags": [
           "Api20100401IncomingPhoneNumberTollFree"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -18842,6 +19182,11 @@
         "tags": [
           "Api20100401Key"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__Keys__Sid__json/input.schema.json",
@@ -18958,6 +19303,11 @@
       "schema": {
         "tags": [
           "Api20100401Key"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -19090,6 +19440,11 @@
         "tags": [
           "Api20100401Key"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__Keys__Sid__json/input.schema.json",
@@ -19165,6 +19520,11 @@
       "schema": {
         "tags": [
           "Api20100401Key"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -19335,6 +19695,11 @@
         "tags": [
           "Api20100401NewKey"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/post_2010-04-01_Accounts__AccountSid__Keys_json/input.schema.json",
@@ -19464,6 +19829,11 @@
       "schema": {
         "tags": [
           "Api20100401Media"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -19617,6 +19987,11 @@
         "tags": [
           "Api20100401Media"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__Messages__MessageSid__Media__Sid__json/input.schema.json",
@@ -19700,6 +20075,11 @@
       "schema": {
         "tags": [
           "Api20100401Media"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -19920,6 +20300,11 @@
         "tags": [
           "Api20100401Member"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__Queues__QueueSid__Members__CallSid__json/input.schema.json",
@@ -20053,6 +20438,11 @@
       "schema": {
         "tags": [
           "Api20100401Member"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -20214,6 +20604,11 @@
       "schema": {
         "tags": [
           "Api20100401Member"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -20403,6 +20798,11 @@
       "schema": {
         "tags": [
           "Api20100401Message"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -20734,6 +21134,11 @@
       "schema": {
         "tags": [
           "Api20100401Message"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -21123,6 +21528,11 @@
         "tags": [
           "Api20100401Message"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__Messages__Sid__json/input.schema.json",
@@ -21376,6 +21786,11 @@
       "schema": {
         "tags": [
           "Api20100401Message"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -21651,6 +22066,11 @@
         "tags": [
           "Api20100401Message"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__Messages__Sid__json/input.schema.json",
@@ -21726,6 +22146,11 @@
       "schema": {
         "tags": [
           "Api20100401Feedback"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -21879,6 +22304,11 @@
       "schema": {
         "tags": [
           "Api20100401SigningKey"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -22045,6 +22475,11 @@
         "tags": [
           "Api20100401NewSigningKey"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/post_2010-04-01_Accounts__AccountSid__SigningKeys_json/input.schema.json",
@@ -22174,6 +22609,11 @@
       "schema": {
         "tags": [
           "Api20100401Notification"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -22396,6 +22836,11 @@
       "schema": {
         "tags": [
           "Api20100401Notification"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -22669,6 +23114,11 @@
         "tags": [
           "Api20100401OutgoingCallerId"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__OutgoingCallerIds__Sid__json/input.schema.json",
@@ -22810,6 +23260,11 @@
       "schema": {
         "tags": [
           "Api20100401OutgoingCallerId"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -22967,6 +23422,11 @@
         "tags": [
           "Api20100401OutgoingCallerId"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__OutgoingCallerIds__Sid__json/input.schema.json",
@@ -23042,6 +23502,11 @@
       "schema": {
         "tags": [
           "Api20100401OutgoingCallerId"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -23246,6 +23711,11 @@
         "tags": [
           "Api20100401ValidationRequest"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/post_2010-04-01_Accounts__AccountSid__OutgoingCallerIds_json/input.schema.json",
@@ -23407,6 +23877,11 @@
       "schema": {
         "tags": [
           "Api20100401Participant"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -23620,6 +24095,11 @@
       "schema": {
         "tags": [
           "Api20100401Participant"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -23913,6 +24393,11 @@
         "tags": [
           "Api20100401Participant"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__Conferences__ConferenceSid__Participants__CallSid__json/input.schema.json",
@@ -23993,6 +24478,11 @@
       "schema": {
         "tags": [
           "Api20100401Participant"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -24273,6 +24763,11 @@
       "schema": {
         "tags": [
           "Api20100401Participant"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -24741,6 +25236,11 @@
         "tags": [
           "Api20100401Payment"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/post_2010-04-01_Accounts__AccountSid__Calls__CallSid__Payments_json/input.schema.json",
@@ -24968,6 +25468,11 @@
         "tags": [
           "Api20100401Payment"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/post_2010-04-01_Accounts__AccountSid__Calls__CallSid__Payments__Sid__json/input.schema.json",
@@ -25154,6 +25659,11 @@
         "tags": [
           "Api20100401Queue"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__Queues__Sid__json/input.schema.json",
@@ -25302,6 +25812,11 @@
       "schema": {
         "tags": [
           "Api20100401Queue"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -25470,6 +25985,11 @@
         "tags": [
           "Api20100401Queue"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__Queues__Sid__json/input.schema.json",
@@ -25545,6 +26065,11 @@
       "schema": {
         "tags": [
           "Api20100401Queue"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -25747,6 +26272,11 @@
         "tags": [
           "Api20100401Queue"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/post_2010-04-01_Accounts__AccountSid__Queues_json/input.schema.json",
@@ -25908,6 +26438,11 @@
       "schema": {
         "tags": [
           "Api20100401CallTranscription"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -26128,6 +26663,11 @@
         "tags": [
           "Api20100401CallTranscription"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/post_2010-04-01_Accounts__AccountSid__Calls__CallSid__Transcriptions__Sid__json/input.schema.json",
@@ -26294,6 +26834,11 @@
       "schema": {
         "tags": [
           "Api20100401Recording"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -26544,6 +27089,11 @@
         "tags": [
           "Api20100401Recording"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__Recordings__Sid__json/input.schema.json",
@@ -26619,6 +27169,11 @@
       "schema": {
         "tags": [
           "Api20100401Recording"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -26949,6 +27504,11 @@
         "tags": [
           "Api20100401AddOnResult"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__Recordings__ReferenceSid__AddOnResults__Sid__json/input.schema.json",
@@ -27137,6 +27697,11 @@
         "tags": [
           "Api20100401AddOnResult"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__Recordings__ReferenceSid__AddOnResults__Sid__json/input.schema.json",
@@ -27220,6 +27785,11 @@
       "schema": {
         "tags": [
           "Api20100401AddOnResult"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -27461,6 +28031,11 @@
         "tags": [
           "Api20100401Payload"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__Recordings__ReferenceSid__AddOnResults__AddOnResultSid__Payloads__Sid__json/input.schema.json",
@@ -27659,6 +28234,11 @@
         "tags": [
           "Api20100401Payload"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__Recordings__ReferenceSid__AddOnResults__AddOnResultSid__Payloads__Sid__json/input.schema.json",
@@ -27750,6 +28330,11 @@
       "schema": {
         "tags": [
           "Api20100401Payload"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -28001,6 +28586,11 @@
         "tags": [
           "Api20100401Data"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__Recordings__ReferenceSid__AddOnResults__AddOnResultSid__Payloads__PayloadSid__Data_json/input.schema.json",
@@ -28108,6 +28698,11 @@
       "schema": {
         "tags": [
           "Api20100401RecordingTranscription"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -28306,6 +28901,11 @@
         "tags": [
           "Api20100401RecordingTranscription"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__Recordings__RecordingSid__Transcriptions__Sid__json/input.schema.json",
@@ -28389,6 +28989,11 @@
       "schema": {
         "tags": [
           "Api20100401RecordingTranscription"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -28639,6 +29244,11 @@
         "tags": [
           "Api20100401ShortCode"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__SMS_ShortCodes__Sid__json/input.schema.json",
@@ -28826,6 +29436,11 @@
       "schema": {
         "tags": [
           "Api20100401ShortCode"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -29060,6 +29675,11 @@
       "schema": {
         "tags": [
           "Api20100401ShortCode"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -29309,6 +29929,11 @@
         "tags": [
           "Api20100401SigningKey"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__SigningKeys__Sid__json/input.schema.json",
@@ -29421,6 +30046,11 @@
       "schema": {
         "tags": [
           "Api20100401SigningKey"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -29549,6 +30179,11 @@
         "tags": [
           "Api20100401SigningKey"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__SigningKeys__Sid__json/input.schema.json",
@@ -29624,6 +30259,11 @@
       "schema": {
         "tags": [
           "Api20100401AuthCallsCredentialListMapping"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -29812,6 +30452,11 @@
         "tags": [
           "Api20100401AuthCallsCredentialListMapping"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/post_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__Auth_Calls_CredentialListMappings_json/input.schema.json",
@@ -29959,6 +30604,11 @@
         "tags": [
           "Api20100401AuthCallsCredentialListMapping"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__Auth_Calls_CredentialListMappings__Sid__json/input.schema.json",
@@ -30094,6 +30744,11 @@
         "tags": [
           "Api20100401AuthCallsCredentialListMapping"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__Auth_Calls_CredentialListMappings__Sid__json/input.schema.json",
@@ -30177,6 +30832,11 @@
       "schema": {
         "tags": [
           "Api20100401AuthCallsIpAccessControlListMapping"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -30365,6 +31025,11 @@
         "tags": [
           "Api20100401AuthCallsIpAccessControlListMapping"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/post_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__Auth_Calls_IpAccessControlListMappings_json/input.schema.json",
@@ -30512,6 +31177,11 @@
         "tags": [
           "Api20100401AuthCallsIpAccessControlListMapping"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__Auth_Calls_IpAccessControlListMappings__Sid__json/input.schema.json",
@@ -30647,6 +31317,11 @@
         "tags": [
           "Api20100401AuthCallsIpAccessControlListMapping"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__Auth_Calls_IpAccessControlListMappings__Sid__json/input.schema.json",
@@ -30730,6 +31405,11 @@
       "schema": {
         "tags": [
           "Api20100401AuthRegistrationsCredentialListMapping"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -30918,6 +31598,11 @@
         "tags": [
           "Api20100401AuthRegistrationsCredentialListMapping"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/post_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__Auth_Registrations_CredentialListMappings_json/input.schema.json",
@@ -31065,6 +31750,11 @@
         "tags": [
           "Api20100401AuthRegistrationsCredentialListMapping"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__Auth_Registrations_CredentialListMappings__Sid__json/input.schema.json",
@@ -31200,6 +31890,11 @@
         "tags": [
           "Api20100401AuthRegistrationsCredentialListMapping"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__Auth_Registrations_CredentialListMappings__Sid__json/input.schema.json",
@@ -31283,6 +31978,11 @@
       "schema": {
         "tags": [
           "Api20100401Credential"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -31488,6 +32188,11 @@
         "tags": [
           "Api20100401Credential"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/post_2010-04-01_Accounts__AccountSid__SIP_CredentialLists__CredentialListSid__Credentials_json/input.schema.json",
@@ -31654,6 +32359,11 @@
         "tags": [
           "Api20100401Credential"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__SIP_CredentialLists__CredentialListSid__Credentials__Sid__json/input.schema.json",
@@ -31805,6 +32515,11 @@
       "schema": {
         "tags": [
           "Api20100401Credential"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -31972,6 +32687,11 @@
         "tags": [
           "Api20100401Credential"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__SIP_CredentialLists__CredentialListSid__Credentials__Sid__json/input.schema.json",
@@ -32055,6 +32775,11 @@
       "schema": {
         "tags": [
           "Api20100401CredentialList"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -32250,6 +32975,11 @@
         "tags": [
           "Api20100401CredentialList"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/post_2010-04-01_Accounts__AccountSid__SIP_CredentialLists_json/input.schema.json",
@@ -32401,6 +33131,11 @@
         "tags": [
           "Api20100401CredentialList"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__SIP_CredentialLists__Sid__json/input.schema.json",
@@ -32542,6 +33277,11 @@
       "schema": {
         "tags": [
           "Api20100401CredentialList"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -32702,6 +33442,11 @@
         "tags": [
           "Api20100401CredentialList"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__SIP_CredentialLists__Sid__json/input.schema.json",
@@ -32777,6 +33522,11 @@
       "schema": {
         "tags": [
           "Api20100401CredentialListMapping"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -32982,6 +33732,11 @@
         "tags": [
           "Api20100401CredentialListMapping"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/post_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__CredentialListMappings_json/input.schema.json",
@@ -33146,6 +33901,11 @@
         "tags": [
           "Api20100401CredentialListMapping"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__CredentialListMappings__Sid__json/input.schema.json",
@@ -33298,6 +34058,11 @@
         "tags": [
           "Api20100401CredentialListMapping"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__CredentialListMappings__Sid__json/input.schema.json",
@@ -33381,6 +34146,11 @@
       "schema": {
         "tags": [
           "Api20100401Domain"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -33697,6 +34467,11 @@
       "schema": {
         "tags": [
           "Api20100401Domain"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -34043,6 +34818,11 @@
         "tags": [
           "Api20100401Domain"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__SIP_Domains__Sid__json/input.schema.json",
@@ -34306,6 +35086,11 @@
       "schema": {
         "tags": [
           "Api20100401Domain"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -34657,6 +35442,11 @@
         "tags": [
           "Api20100401Domain"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__SIP_Domains__Sid__json/input.schema.json",
@@ -34732,6 +35522,11 @@
       "schema": {
         "tags": [
           "Api20100401IpAccessControlList"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -34927,6 +35722,11 @@
         "tags": [
           "Api20100401IpAccessControlList"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/post_2010-04-01_Accounts__AccountSid__SIP_IpAccessControlLists_json/input.schema.json",
@@ -35078,6 +35878,11 @@
         "tags": [
           "Api20100401IpAccessControlList"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__SIP_IpAccessControlLists__Sid__json/input.schema.json",
@@ -35219,6 +36024,11 @@
       "schema": {
         "tags": [
           "Api20100401IpAccessControlList"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -35379,6 +36189,11 @@
         "tags": [
           "Api20100401IpAccessControlList"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__SIP_IpAccessControlLists__Sid__json/input.schema.json",
@@ -35454,6 +36269,11 @@
       "schema": {
         "tags": [
           "Api20100401IpAccessControlListMapping"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -35607,6 +36427,11 @@
         "tags": [
           "Api20100401IpAccessControlListMapping"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__IpAccessControlListMappings__Sid__json/input.schema.json",
@@ -35690,6 +36515,11 @@
       "schema": {
         "tags": [
           "Api20100401IpAccessControlListMapping"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -35895,6 +36725,11 @@
         "tags": [
           "Api20100401IpAccessControlListMapping"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/post_2010-04-01_Accounts__AccountSid__SIP_Domains__DomainSid__IpAccessControlListMappings_json/input.schema.json",
@@ -36058,6 +36893,11 @@
       "schema": {
         "tags": [
           "Api20100401SipIpAddress"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -36275,6 +37115,11 @@
         "tags": [
           "Api20100401SipIpAddress"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/post_2010-04-01_Accounts__AccountSid__SIP_IpAccessControlLists__IpAccessControlListSid__IpAddresses_json/input.schema.json",
@@ -36457,6 +37302,11 @@
         "tags": [
           "Api20100401SipIpAddress"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__SIP_IpAccessControlLists__IpAccessControlListSid__IpAddresses__Sid__json/input.schema.json",
@@ -36620,6 +37470,11 @@
       "schema": {
         "tags": [
           "Api20100401SipIpAddress"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -36807,6 +37662,11 @@
         "tags": [
           "Api20100401SipIpAddress"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__SIP_IpAccessControlLists__IpAccessControlListSid__IpAddresses__Sid__json/input.schema.json",
@@ -36890,6 +37750,11 @@
       "schema": {
         "tags": [
           "Api20100401Siprec"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -37867,6 +38732,11 @@
         "tags": [
           "Api20100401Siprec"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/post_2010-04-01_Accounts__AccountSid__Calls__CallSid__Siprec__Sid__json/input.schema.json",
@@ -38034,6 +38904,11 @@
       "schema": {
         "tags": [
           "Api20100401Stream"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -39015,6 +39890,11 @@
         "tags": [
           "Api20100401Stream"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/post_2010-04-01_Accounts__AccountSid__Calls__CallSid__Streams__Sid__json/input.schema.json",
@@ -39183,6 +40063,11 @@
         "tags": [
           "Api20100401Token"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/post_2010-04-01_Accounts__AccountSid__Tokens_json/input.schema.json",
@@ -39344,6 +40229,11 @@
       "schema": {
         "tags": [
           "Api20100401Transcription"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -39534,6 +40424,11 @@
         "tags": [
           "Api20100401Transcription"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__Transcriptions__Sid__json/input.schema.json",
@@ -39609,6 +40504,11 @@
       "schema": {
         "tags": [
           "Api20100401Transcription"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -39850,6 +40750,11 @@
       "schema": {
         "tags": [
           "Api20100401Record"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -41392,6 +42297,11 @@
         "tags": [
           "Api20100401AllTime"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__Usage_Records_AllTime_json/input.schema.json",
@@ -42932,6 +43842,11 @@
       "schema": {
         "tags": [
           "Api20100401Daily"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -44474,6 +45389,11 @@
         "tags": [
           "Api20100401LastMonth"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__Usage_Records_LastMonth_json/input.schema.json",
@@ -46014,6 +46934,11 @@
       "schema": {
         "tags": [
           "Api20100401Monthly"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -47556,6 +48481,11 @@
         "tags": [
           "Api20100401ThisMonth"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__Usage_Records_ThisMonth_json/input.schema.json",
@@ -49096,6 +50026,11 @@
       "schema": {
         "tags": [
           "Api20100401Today"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -50638,6 +51573,11 @@
         "tags": [
           "Api20100401Yearly"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__Usage_Records_Yearly_json/input.schema.json",
@@ -52178,6 +53118,11 @@
       "schema": {
         "tags": [
           "Api20100401Yesterday"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -53720,6 +54665,11 @@
         "tags": [
           "Api20100401Trigger"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/get_2010-04-01_Accounts__AccountSid__Usage_Triggers__Sid__json/input.schema.json",
@@ -54570,6 +55520,11 @@
       "schema": {
         "tags": [
           "Api20100401Trigger"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -55450,6 +56405,11 @@
         "tags": [
           "Api20100401Trigger"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__Usage_Triggers__Sid__json/input.schema.json",
@@ -55525,6 +56485,11 @@
       "schema": {
         "tags": [
           "Api20100401Trigger"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -57091,6 +58056,11 @@
         "tags": [
           "Api20100401Trigger"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/post_2010-04-01_Accounts__AccountSid__Usage_Triggers_json/input.schema.json",
@@ -58632,6 +59602,11 @@
         "tags": [
           "Api20100401UserDefinedMessage"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/post_2010-04-01_Accounts__AccountSid__Calls__CallSid__UserDefinedMessages_json/input.schema.json",
@@ -58774,6 +59749,11 @@
       "schema": {
         "tags": [
           "Api20100401UserDefinedMessageSubscription"
+        ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -58935,6 +59915,11 @@
         "tags": [
           "Api20100401UserDefinedMessageSubscription"
         ],
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Twilio---Api/delete_2010-04-01_Accounts__AccountSid__Calls__CallSid__UserDefinedMessageSubscriptions__Sid__json/input.schema.json",
@@ -59018,10 +60003,21 @@
         "https://api.twilio.com"
       ]
     },
+    "security": [
+      {
+        "accountSid_authToken": []
+      }
+    ],
     "queryDesc": "Query parameters sent with the request",
     "paramDesc": "URL parameters sent with the request",
     "headerDesc": "HTTP headers sent when making the request",
     "dataDesc": "Data sent with the request",
     "schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "securitySchemes": {
+    "accountSid_authToken": {
+      "scheme": "basic",
+      "type": "http"
+    }
   }
 }

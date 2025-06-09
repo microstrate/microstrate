@@ -13,7 +13,26 @@
       "headers": {
         "PayPal-Request-Id": "<string>"
       },
-      "data": "<value>",
+      "data": {
+        "name": "x",
+        "id": "xxxxxxxxxxxxxxxxxxxxxx",
+        "temporary": "<boolean>",
+        "flow_config": {
+          "landing_page_type": "login",
+          "bank_txn_pending_url": "https://example.com",
+          "user_action": "COMMIT",
+          "return_uri_http_method": "GET"
+        },
+        "input_fields": {
+          "no_shipping": 0,
+          "address_override": 0
+        },
+        "presentation": {
+          "brand_name": "x",
+          "logo_image": "x",
+          "locale_code": "xx"
+        }
+      },
       "baseURL": "https://api-m.sandbox.paypal.com"
     }
   },
@@ -21,6 +40,9 @@
     "Basic Example": {
       "url": "/v1/payment-experience/web-profiles/{id}",
       "method": "get",
+      "path": {
+        "id": "<string>"
+      },
       "baseURL": "https://api-m.sandbox.paypal.com"
     }
   },
@@ -28,6 +50,9 @@
     "Basic Example": {
       "url": "/v1/payment-experience/web-profiles/{id}",
       "method": "delete",
+      "path": {
+        "id": "<string>"
+      },
       "baseURL": "https://api-m.sandbox.paypal.com"
     }
   },
@@ -35,6 +60,9 @@
     "Basic Example": {
       "url": "/v1/payment-experience/web-profiles/{id}",
       "method": "patch",
+      "path": {
+        "id": "<string>"
+      },
       "data": [
         {
           "op": "add",
@@ -58,6 +86,29 @@
       "method": "put",
       "path": {
         "id": "<string>"
+      },
+      "data": {
+        "name": "x",
+        "id": "xxxxxxxxxxxxxxxxxxxxxx",
+        "temporary": "<boolean>",
+        "flow_config": {
+          "landing_page_type": "login",
+          "bank_txn_pending_url": "https://example.com",
+          "user_action": "COMMIT",
+          "return_uri_http_method": "GET"
+        },
+        "input_fields": {
+          "no_shipping": 0,
+          "address_override": 0
+        },
+        "presentation": {
+          "brand_name": "x",
+          "logo_image": "x",
+          "locale_code": "xx"
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
       },
       "baseURL": "https://api-m.sandbox.paypal.com"
     }

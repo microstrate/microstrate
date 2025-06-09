@@ -11,6 +11,14 @@
         "tags": [
           "Project"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "projects",
+              "projects.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Projects-API/get_Projects/input.schema.json",
@@ -2910,6 +2918,13 @@
         "tags": [
           "Project"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "projects"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Projects-API/post_Projects/input.schema.json",
@@ -5785,6 +5800,14 @@
         "tags": [
           "Project"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "projects",
+              "projects.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Projects-API/get_Projects__projectId_/input.schema.json",
@@ -8626,6 +8649,13 @@
         "tags": [
           "Project"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "projects"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Projects-API/patch_Projects__projectId_/input.schema.json",
@@ -8745,6 +8775,13 @@
       "schema": {
         "tags": [
           "Project"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "projects"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -8881,6 +8918,14 @@
       "schema": {
         "tags": [
           "Project"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "projects",
+              "projects.read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -9041,6 +9086,14 @@
       "schema": {
         "tags": [
           "Project"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "projects",
+              "projects.read"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -9980,6 +10033,13 @@
       "schema": {
         "tags": [
           "Project"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "projects"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -11080,6 +11140,14 @@
         "tags": [
           "Project"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "projects",
+              "projects.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Projects-API/get_Projects__projectId__Tasks__taskId_/input.schema.json",
@@ -11967,6 +12035,13 @@
         "tags": [
           "Project"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "projects"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Projects-API/delete_Projects__projectId__Tasks__taskId_/input.schema.json",
@@ -12065,6 +12140,13 @@
       "schema": {
         "tags": [
           "Project"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "projects"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -12383,6 +12465,14 @@
         "tags": [
           "Project"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "projects",
+              "projects.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Projects-API/get_Projects__projectId__Time/input.schema.json",
@@ -12624,6 +12714,13 @@
         "tags": [
           "Project"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "projects"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Projects-API/post_Projects__projectId__Time/input.schema.json",
@@ -12824,6 +12921,14 @@
         "tags": [
           "Project"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "projects",
+              "projects.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Projects-API/get_Projects__projectId__Time__timeEntryId_/input.schema.json",
@@ -12984,6 +13089,13 @@
         "tags": [
           "Project"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "projects"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Projects-API/delete_Projects__projectId__Time__timeEntryId_/input.schema.json",
@@ -13082,6 +13194,13 @@
       "schema": {
         "tags": [
           "Project"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "projects"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -13232,5 +13351,24 @@
     "headerDesc": "HTTP headers sent when making the request",
     "dataDesc": "Data sent with the request",
     "schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "securitySchemes": {
+    "OAuth2": {
+      "type": "oauth2",
+      "description": "For more information",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+          "tokenUrl": "https://identity.xero.com/connect/token",
+          "scopes": {
+            "email": "Grant read-only access to your email",
+            "openid": "Grant read-only access to your open id",
+            "profile": "your profile information",
+            "projects": "Grant read-write access to projects",
+            "projects.read": "Grant read-only access to projects"
+          }
+        }
+      }
+    }
   }
 }

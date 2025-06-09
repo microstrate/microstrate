@@ -11,6 +11,7 @@
         "tags": [
           "Geolocation API"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Google-Maps-Platform/post_geolocation_v1_geolocate/input.schema.json",
@@ -602,6 +603,7 @@
         "tags": [
           "Directions API"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Google-Maps-Platform/get_maps_api_directions_json/input.schema.json",
@@ -1930,6 +1932,7 @@
         "tags": [
           "Elevation API"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Google-Maps-Platform/get_maps_api_elevation_json/input.schema.json",
@@ -2082,6 +2085,7 @@
         "tags": [
           "Geocoding API"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Google-Maps-Platform/get_maps_api_geocode_json/input.schema.json",
@@ -2831,6 +2835,7 @@
         "tags": [
           "Time Zone API"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Google-Maps-Platform/get_maps_api_timezone_json/input.schema.json",
@@ -3007,6 +3012,7 @@
         "tags": [
           "Roads API"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Google-Maps-Platform/get_v1_snaptoroads/input.schema.json",
@@ -3139,6 +3145,7 @@
         "tags": [
           "Roads API"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Google-Maps-Platform/get_v1_nearestRoads/input.schema.json",
@@ -3294,6 +3301,7 @@
         "tags": [
           "Distance Matrix API"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Google-Maps-Platform/get_maps_api_distancematrix_json/input.schema.json",
@@ -3914,6 +3922,7 @@
         "tags": [
           "Places API"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Google-Maps-Platform/get_maps_api_place_details_json/input.schema.json",
@@ -5138,6 +5147,7 @@
         "tags": [
           "Places API"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Google-Maps-Platform/get_maps_api_place_findplacefromtext_json/input.schema.json",
@@ -6100,6 +6110,7 @@
         "tags": [
           "Places API"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Google-Maps-Platform/get_maps_api_place_nearbysearch_json/input.schema.json",
@@ -7107,6 +7118,7 @@
         "tags": [
           "Places API"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Google-Maps-Platform/get_maps_api_place_textsearch_json/input.schema.json",
@@ -8365,6 +8377,7 @@
         "tags": [
           "Places API"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Google-Maps-Platform/get_maps_api_place_photo/input.schema.json",
@@ -8438,6 +8451,7 @@
         "tags": [
           "Places API"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Google-Maps-Platform/get_maps_api_place_queryautocomplete_json/input.schema.json",
@@ -8761,6 +8775,7 @@
         "tags": [
           "Places API"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Google-Maps-Platform/get_maps_api_place_autocomplete_json/input.schema.json",
@@ -9375,6 +9390,7 @@
         "tags": [
           "Street View API"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Google-Maps-Platform/get_maps_api_streetview/input.schema.json",
@@ -9480,6 +9496,7 @@
         "tags": [
           "Street View API"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Google-Maps-Platform/get_maps_api_streetview_metadata/input.schema.json",
@@ -9635,10 +9652,22 @@
         "https://www.googleapis.com"
       ]
     },
+    "security": [
+      {
+        "ApiKeyAuth": []
+      }
+    ],
     "queryDesc": "Query parameters sent with the request",
     "paramDesc": "URL parameters sent with the request",
     "headerDesc": "HTTP headers sent when making the request",
     "dataDesc": "Data sent with the request",
     "schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "securitySchemes": {
+    "ApiKeyAuth": {
+      "type": "apiKey",
+      "in": "query",
+      "name": "key"
+    }
   }
 }

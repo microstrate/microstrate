@@ -11,6 +11,7 @@
         "tags": [
           "Agreements"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Agreements-API/get_agreements/input.schema.json",
@@ -1687,6 +1688,7 @@
         "tags": [
           "Agreements"
         ],
+        "security": "$ref:security",
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Agreements-API/get_agreements__agreementId_/input.schema.json",
@@ -3181,6 +3183,14 @@
         "https://api.docusign.com/v1/accounts/{accountId}"
       ]
     },
+    "security": [
+      {
+        "OAuth2Auth": [
+          "read",
+          "write"
+        ]
+      }
+    ],
     "queryDesc": "Query parameters sent with the request",
     "paramDesc": "URL parameters sent with the request",
     "headerDesc": "HTTP headers sent when making the request",

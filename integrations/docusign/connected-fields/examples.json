@@ -1,15 +1,15 @@
 {
-    "get_accounts__accountId__connected-fields_tab-groups": {
-      "Basic Example": {
-        "url": "/accounts/{accountId}/connected-fields/tab-groups",
-        "method": "get",
-        "path": {
-          "accountId": "<string>"
-        },
-        "query": {
-          "appId": "<string>"
-        },
-        "baseURL": "https://api-d.docusign.com/v1"
-      }
+  "get_accounts__accountId__connected-fields_tab-groups": {
+    "Basic Example": {
+      "url": "/accounts/{accountId}/connected-fields/tab-groups",
+      "method": "get",
+      "path": {
+        "accountId": "<string>"
+      },
+      "query": {
+        "appId": "<string>"
+      },
+      "baseURL": "https://api-d.docusign.com/v1"
     }
+  }
 }

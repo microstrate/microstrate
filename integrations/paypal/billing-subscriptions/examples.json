@@ -3,6 +3,9 @@
     "Basic Example": {
       "url": "/v1/billing/plans",
       "method": "get",
+      "headers": {
+        "Prefer": "return=minimal"
+      },
       "query": {
         "product_id": "<string>",
         "plan_ids": "<string>",
@@ -104,6 +107,9 @@
     "Basic Example": {
       "url": "/v1/billing/plans/{id}",
       "method": "patch",
+      "path": {
+        "id": "<string>"
+      },
       "data": [
         {
           "op": "add",
@@ -122,6 +128,9 @@
     "Basic Example": {
       "url": "/v1/billing/plans/{id}/activate",
       "method": "post",
+      "path": {
+        "id": "<string>"
+      },
       "baseURL": "https://api-m.sandbox.paypal.com"
     }
   },
@@ -129,6 +138,9 @@
     "Basic Example": {
       "url": "/v1/billing/plans/{id}/deactivate",
       "method": "post",
+      "path": {
+        "id": "<string>"
+      },
       "baseURL": "https://api-m.sandbox.paypal.com"
     }
   },
@@ -136,6 +148,9 @@
     "Basic Example": {
       "url": "/v1/billing/plans/{id}/update-pricing-schemes",
       "method": "post",
+      "path": {
+        "id": "<string>"
+      },
       "data": {
         "pricing_schemes": [
           {
@@ -186,6 +201,10 @@
     "Basic Example": {
       "url": "/v1/billing/subscriptions",
       "method": "post",
+      "headers": {
+        "Prefer": "return=minimal",
+        "PayPal-Request-Id": "<string>"
+      },
       "data": {
         "plan_id": "P-5ML4271244454362WXNWU5NQ",
         "start_time": "2018-11-01T00:00:00Z",
@@ -227,9 +246,6 @@
           "cancel_url": "https://example.com/cancelUrl"
         }
       },
-      "headers": {
-        "Content-Type": "application/json"
-      },
       "baseURL": "https://api-m.sandbox.paypal.com"
     }
   },
@@ -237,6 +253,9 @@
     "Basic Example": {
       "url": "/v1/billing/subscriptions/{id}",
       "method": "get",
+      "path": {
+        "id": "<string>"
+      },
       "query": {
         "fields": "<string>"
       },
@@ -247,6 +266,20 @@
     "Basic Example": {
       "url": "/v1/billing/subscriptions/{id}",
       "method": "patch",
+      "path": {
+        "id": "<string>"
+      },
+      "data": [
+        {
+          "op": "add",
+          "path": "",
+          "value": "<value>",
+          "from": ""
+        }
+      ],
+      "headers": {
+        "Content-Type": "application/json"
+      },
       "baseURL": "https://api-m.sandbox.paypal.com"
     }
   },
@@ -254,6 +287,9 @@
     "Basic Example": {
       "url": "/v1/billing/subscriptions/{id}/revise",
       "method": "post",
+      "path": {
+        "id": "<string>"
+      },
       "data": {
         "plan_id": "P-5ML4271244454362WXNWU5NQ",
         "shipping_amount": {
@@ -295,6 +331,9 @@
     "Basic Example": {
       "url": "/v1/billing/subscriptions/{id}/suspend",
       "method": "post",
+      "path": {
+        "id": "<string>"
+      },
       "data": {
         "reason": "Item out of stock"
       },
@@ -308,6 +347,9 @@
     "Basic Example": {
       "url": "/v1/billing/subscriptions/{id}/cancel",
       "method": "post",
+      "path": {
+        "id": "<string>"
+      },
       "data": {
         "reason": "Not satisfied with the service"
       },
@@ -321,6 +363,9 @@
     "Basic Example": {
       "url": "/v1/billing/subscriptions/{id}/activate",
       "method": "post",
+      "path": {
+        "id": "<string>"
+      },
       "data": {
         "reason": "Reactivating the subscription"
       },
@@ -334,6 +379,12 @@
     "Basic Example": {
       "url": "/v1/billing/subscriptions/{id}/capture",
       "method": "post",
+      "headers": {
+        "PayPal-Request-Id": "<string>"
+      },
+      "path": {
+        "id": "<string>"
+      },
       "data": {
         "note": "Charging as the balance reached the limit",
         "capture_type": "OUTSTANDING_BALANCE",
@@ -342,9 +393,6 @@
           "value": "100"
         }
       },
-      "headers": {
-        "Content-Type": "application/json"
-      },
       "baseURL": "https://api-m.sandbox.paypal.com"
     }
   },
@@ -352,6 +400,9 @@
     "Basic Example": {
       "url": "/v1/billing/subscriptions/{id}/transactions",
       "method": "get",
+      "path": {
+        "id": "<string>"
+      },
       "query": {
         "start_time": "<string>",
         "end_time": "<string>"

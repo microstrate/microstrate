@@ -11,6 +11,14 @@
         "tags": [
           "Asset"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "assets",
+              "assets.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Assets-API/get_Assets/input.schema.json",
@@ -364,6 +372,13 @@
       "schema": {
         "tags": [
           "Asset"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "assets"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -852,6 +867,14 @@
         "tags": [
           "Asset"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "assets",
+              "assets.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Assets-API/get_Assets__id_/input.schema.json",
@@ -1136,6 +1159,14 @@
         "tags": [
           "Asset"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "assets",
+              "assets.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Assets-API/get_AssetTypes/input.schema.json",
@@ -1200,6 +1231,13 @@
       "schema": {
         "tags": [
           "Asset"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "assets"
+            ]
+          }
         ],
         "input": {
           "$schema": "$ref:schema",
@@ -1496,6 +1534,14 @@
         "tags": [
           "Asset"
         ],
+        "security": [
+          {
+            "OAuth2": [
+              "assets",
+              "assets.read"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Xero-Assets-API/get_Settings/input.schema.json",
@@ -1621,5 +1667,24 @@
     "headerDesc": "HTTP headers sent when making the request",
     "dataDesc": "Data sent with the request",
     "schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "securitySchemes": {
+    "OAuth2": {
+      "type": "oauth2",
+      "description": "For more information",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+          "tokenUrl": "https://identity.xero.com/connect/token",
+          "scopes": {
+            "email": "Grant read-only access to your email",
+            "openid": "Grant read-only access to your open id",
+            "profile": "your profile information",
+            "assets": "Grant read-write access to fixed assets",
+            "assets.read": "Grant read-only access to fixed assets"
+          }
+        }
+      }
+    }
   }
 }

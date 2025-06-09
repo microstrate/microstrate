@@ -23,12 +23,20 @@
             "account_id": "<string matching ^[2-9A-HJ-NP-Z]{13}$>",
             "tracking_url": "https://example.com",
             "links": [
-              "<value>"
+              {
+                "href": "",
+                "rel": "",
+                "method": "GET"
+              }
             ]
           }
         ],
         "links": [
-          "<value>"
+          {
+            "href": "",
+            "rel": "",
+            "method": "GET"
+          }
         ]
       },
       "headers": {
@@ -53,6 +61,45 @@
     "Basic Example": {
       "url": "/v1/shipping/trackers",
       "method": "post",
+      "data": {
+        "trackers": [
+          {
+            "transaction_id": "<string matching ^[a-zA-Z0-9]*$>",
+            "status": "CANCELLED",
+            "tracking_number": "x",
+            "tracking_number_type": "CARRIER_PROVIDED",
+            "shipment_date": "string (ppaas_date_notime_v2)",
+            "carrier": "2EBOX",
+            "carrier_name_other": "x",
+            "postage_payment_id": "x",
+            "notify_buyer": "<boolean>",
+            "quantity": 1,
+            "tracking_number_validated": "<boolean>",
+            "last_updated_time": "string (ppaas_date_time_v3)",
+            "shipment_direction": "FORWARD",
+            "shipment_uploader": "MERCHANT",
+            "account_id": "<string matching ^[2-9A-HJ-NP-Z]{13}$>",
+            "tracking_url": "https://example.com",
+            "links": [
+              {
+                "href": "",
+                "rel": "",
+                "method": "GET"
+              }
+            ]
+          }
+        ],
+        "links": [
+          {
+            "href": "",
+            "rel": "",
+            "method": "GET"
+          }
+        ]
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
       "baseURL": "https://api-m.sandbox.paypal.com"
     }
   },
@@ -60,6 +107,12 @@
     "Basic Example": {
       "url": "/v1/shipping/trackers/{id}",
       "method": "get",
+      "path": {
+        "id": "<string>"
+      },
+      "query": {
+        "account_id": "<string>"
+      },
       "baseURL": "https://api-m.sandbox.paypal.com"
     }
   },
@@ -70,7 +123,31 @@
       "path": {
         "id": "<string>"
       },
-      "data": "<value>",
+      "data": {
+        "transaction_id": "<string matching ^[a-zA-Z0-9]*$>",
+        "status": "CANCELLED",
+        "tracking_number": "x",
+        "tracking_number_type": "CARRIER_PROVIDED",
+        "shipment_date": "string (ppaas_date_notime_v2)",
+        "carrier": "2EBOX",
+        "carrier_name_other": "x",
+        "postage_payment_id": "x",
+        "notify_buyer": "<boolean>",
+        "quantity": 1,
+        "tracking_number_validated": "<boolean>",
+        "last_updated_time": "string (ppaas_date_time_v3)",
+        "shipment_direction": "FORWARD",
+        "shipment_uploader": "MERCHANT",
+        "account_id": "<string matching ^[2-9A-HJ-NP-Z]{13}$>",
+        "tracking_url": "https://example.com",
+        "links": [
+          {
+            "href": "",
+            "rel": "",
+            "method": "GET"
+          }
+        ]
+      },
       "headers": {
         "Content-Type": "application/json"
       },

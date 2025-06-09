@@ -11,6 +11,13 @@
         "tags": [
           "DataSet"
         ],
+        "security": [
+          {
+            "accessCode": [
+              "impersonation"
+            ]
+          }
+        ],
         "input": {
           "$schema": "$ref:schema",
           "$id": "https://datahub.com/integration/Monitor-API/get_api_v_version__datasets__dataSetName__stream/input.schema.json",
@@ -110,10 +117,23 @@
         "https://lens-d.docusign.net"
       ]
     },
+    "security": [
+      {
+        "Bearer": []
+      }
+    ],
     "queryDesc": "Query parameters sent with the request",
     "paramDesc": "URL parameters sent with the request",
     "headerDesc": "HTTP headers sent when making the request",
     "dataDesc": "Data sent with the request",
     "schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "securitySchemes": {
+    "Bearer": {
+      "name": "Authorization",
+      "in": "header",
+      "type": "apiKey",
+      "description": "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\""
+    }
   }
 }
