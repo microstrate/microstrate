@@ -1,0 +1,5377 @@
+{
+  "get_rest_api_3_application-properties": {
+    "Basic Example": {
+      "url": "/rest/api/3/application-properties",
+      "method": "get",
+      "query": {
+        "key": "<string>",
+        "permissionLevel": "<string>",
+        "keyFilter": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_application-properties_advanced-settings": {
+    "Basic Example": {
+      "url": "/rest/api/3/application-properties/advanced-settings",
+      "method": "get",
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_application-properties__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/application-properties/{id}",
+      "method": "put",
+      "path": {
+        "id": "<string>"
+      },
+      "data": {
+        "id": "jira.home",
+        "value": "/var/jira/jira-home"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_applicationrole": {
+    "Basic Example": {
+      "url": "/rest/api/3/applicationrole",
+      "method": "get",
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_applicationrole__key_": {
+    "Basic Example": {
+      "url": "/rest/api/3/applicationrole/{key}",
+      "method": "get",
+      "path": {
+        "key": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_attachment_meta": {
+    "Basic Example": {
+      "url": "/rest/api/3/attachment/meta",
+      "method": "get",
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_attachment__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/attachment/{id}",
+      "method": "get",
+      "path": {
+        "id": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_attachment__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/attachment/{id}",
+      "method": "delete",
+      "path": {
+        "id": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_attachment__id__expand_human": {
+    "Basic Example": {
+      "url": "/rest/api/3/attachment/{id}/expand/human",
+      "method": "get",
+      "path": {
+        "id": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_attachment__id__expand_raw": {
+    "Basic Example": {
+      "url": "/rest/api/3/attachment/{id}/expand/raw",
+      "method": "get",
+      "path": {
+        "id": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_auditing_record": {
+    "Basic Example": {
+      "url": "/rest/api/3/auditing/record",
+      "method": "get",
+      "query": {
+        "offset": "<integer>",
+        "limit": 1000,
+        "filter": "<string>",
+        "from": "<string>",
+        "to": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_avatar__type__system": {
+    "Basic Example": {
+      "url": "/rest/api/3/avatar/{type}/system",
+      "method": "get",
+      "path": {
+        "type": "issuetype"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_comment_list": {
+    "Basic Example": {
+      "url": "/rest/api/3/comment/list",
+      "method": "post",
+      "query": {
+        "expand": "<string>"
+      },
+      "data": {
+        "ids": [
+          1,
+          2,
+          5,
+          10
+        ]
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_comment__commentId__properties": {
+    "Basic Example": {
+      "url": "/rest/api/3/comment/{commentId}/properties",
+      "method": "get",
+      "path": {
+        "commentId": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_comment__commentId__properties__propertyKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/comment/{commentId}/properties/{propertyKey}",
+      "method": "get",
+      "path": {
+        "commentId": "<string>",
+        "propertyKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_comment__commentId__properties__propertyKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/comment/{commentId}/properties/{propertyKey}",
+      "method": "delete",
+      "path": {
+        "commentId": "<string>",
+        "propertyKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_comment__commentId__properties__propertyKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/comment/{commentId}/properties/{propertyKey}",
+      "method": "put",
+      "path": {
+        "commentId": "<string>",
+        "propertyKey": "<string>"
+      },
+      "data": {},
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_component": {
+    "Basic Example": {
+      "url": "/rest/api/3/component",
+      "method": "post",
+      "data": {
+        "assigneeType": "PROJECT_LEAD",
+        "description": "This is a Jira component",
+        "isAssigneeTypeValid": false,
+        "leadAccountId": "99:27935d01-92a7-4687-8272-a9b8d3b2ae2e",
+        "name": "Component 1",
+        "project": "HSP"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_component__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/component/{id}",
+      "method": "get",
+      "path": {
+        "id": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_component__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/component/{id}",
+      "method": "delete",
+      "path": {
+        "id": "<string>"
+      },
+      "query": {
+        "moveIssuesTo": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_component__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/component/{id}",
+      "method": "put",
+      "path": {
+        "id": "<string>"
+      },
+      "data": {
+        "assigneeType": "PROJECT_LEAD",
+        "description": "This is a Jira component",
+        "isAssigneeTypeValid": false,
+        "leadAccountId": "99:27935d01-92a7-4687-8272-a9b8d3b2ae2e",
+        "name": "Component 1"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_component__id__relatedIssueCounts": {
+    "Basic Example": {
+      "url": "/rest/api/3/component/{id}/relatedIssueCounts",
+      "method": "get",
+      "path": {
+        "id": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_configuration": {
+    "Basic Example": {
+      "url": "/rest/api/3/configuration",
+      "method": "get",
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_configuration_timetracking": {
+    "Basic Example": {
+      "url": "/rest/api/3/configuration/timetracking",
+      "method": "get",
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_configuration_timetracking": {
+    "Basic Example": {
+      "url": "/rest/api/3/configuration/timetracking",
+      "method": "delete",
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_configuration_timetracking": {
+    "Basic Example": {
+      "url": "/rest/api/3/configuration/timetracking",
+      "method": "put",
+      "data": {
+        "key": "Jira"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_configuration_timetracking_list": {
+    "Basic Example": {
+      "url": "/rest/api/3/configuration/timetracking/list",
+      "method": "get",
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_configuration_timetracking_options": {
+    "Basic Example": {
+      "url": "/rest/api/3/configuration/timetracking/options",
+      "method": "get",
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_configuration_timetracking_options": {
+    "Basic Example": {
+      "url": "/rest/api/3/configuration/timetracking/options",
+      "method": "put",
+      "data": {
+        "defaultUnit": "hour",
+        "timeFormat": "pretty",
+        "workingDaysPerWeek": 5.5,
+        "workingHoursPerDay": 7.6
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_customFieldOption__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/customFieldOption/{id}",
+      "method": "get",
+      "path": {
+        "id": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_dashboard": {
+    "Basic Example": {
+      "url": "/rest/api/3/dashboard",
+      "method": "get",
+      "query": {
+        "filter": "my",
+        "startAt": "<integer>",
+        "maxResults": 20
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_dashboard_search": {
+    "Basic Example": {
+      "url": "/rest/api/3/dashboard/search",
+      "method": "get",
+      "query": {
+        "dashboardName": "<string>",
+        "accountId": "<string>",
+        "owner": "<string>",
+        "groupname": "<string>",
+        "projectId": "<integer>",
+        "orderBy": "name",
+        "startAt": "<integer>",
+        "maxResults": 50,
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_dashboard__dashboardId__items__itemId__properties": {
+    "Basic Example": {
+      "url": "/rest/api/3/dashboard/{dashboardId}/items/{itemId}/properties",
+      "method": "get",
+      "path": {
+        "dashboardId": "<string>",
+        "itemId": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_dashboard__dashboardId__items__itemId__properties__propertyKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/dashboard/{dashboardId}/items/{itemId}/properties/{propertyKey}",
+      "method": "get",
+      "path": {
+        "dashboardId": "<string>",
+        "itemId": "<string>",
+        "propertyKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_dashboard__dashboardId__items__itemId__properties__propertyKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/dashboard/{dashboardId}/items/{itemId}/properties/{propertyKey}",
+      "method": "delete",
+      "path": {
+        "dashboardId": "<string>",
+        "itemId": "<string>",
+        "propertyKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_dashboard__dashboardId__items__itemId__properties__propertyKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/dashboard/{dashboardId}/items/{itemId}/properties/{propertyKey}",
+      "method": "put",
+      "path": {
+        "dashboardId": "<string>",
+        "itemId": "<string>",
+        "propertyKey": "<string>"
+      },
+      "data": {},
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_dashboard__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/dashboard/{id}",
+      "method": "get",
+      "path": {
+        "id": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_expression_eval": {
+    "Basic Example": {
+      "url": "/rest/api/3/expression/eval",
+      "method": "post",
+      "query": {
+        "expand": "<string>"
+      },
+      "data": {
+        "context": {
+          "board": 10100,
+          "customerRequest": 1450,
+          "issue": {
+            "key": "ACJIRA-1470"
+          },
+          "issues": {
+            "jql": {
+              "maxResults": 100,
+              "query": "project = HSP",
+              "startAt": 0,
+              "validation": "strict"
+            }
+          },
+          "project": {
+            "key": "ACJIRA"
+          },
+          "serviceDesk": 10023,
+          "sprint": 10001
+        },
+        "expression": "{ key: issue.key, type: issue.issueType.name, links: issue.links.map(link => link.linkedIssue.id) }"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_field": {
+    "Basic Example": {
+      "url": "/rest/api/3/field",
+      "method": "get",
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_field": {
+    "Basic Example": {
+      "url": "/rest/api/3/field",
+      "method": "post",
+      "data": {
+        "description": "Custom field for picking groups",
+        "name": "New custom field",
+        "searcherKey": "com.atlassian.jira.plugin.system.customfieldtypes:grouppickersearcher",
+        "type": "com.atlassian.jira.plugin.system.customfieldtypes:grouppicker"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_field_search": {
+    "Basic Example": {
+      "url": "/rest/api/3/field/search",
+      "method": "get",
+      "query": {
+        "startAt": "<integer>",
+        "maxResults": 50,
+        "isCustom": "<boolean>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_field__fieldKey__option": {
+    "Basic Example": {
+      "url": "/rest/api/3/field/{fieldKey}/option",
+      "method": "get",
+      "query": {
+        "startAt": "<integer>",
+        "maxResults": 50
+      },
+      "path": {
+        "fieldKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_field__fieldKey__option": {
+    "Basic Example": {
+      "url": "/rest/api/3/field/{fieldKey}/option",
+      "method": "post",
+      "path": {
+        "fieldKey": "<string>"
+      },
+      "data": {
+        "config": {
+          "attributes": [],
+          "scope": {
+            "global": {},
+            "projects": [],
+            "projects2": [
+              {
+                "attributes": [
+                  "notSelectable"
+                ],
+                "id": 1001
+              },
+              {
+                "attributes": [
+                  "notSelectable"
+                ],
+                "id": 1002
+              }
+            ]
+          }
+        },
+        "properties": {
+          "description": "The team's description",
+          "founded": "2016-06-06T00:00:00.000Z",
+          "leader": {
+            "email": "lname@example.com",
+            "name": "Leader Name"
+          },
+          "members": 42
+        },
+        "value": "Team 1"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_field__fieldKey__option_suggestions_edit": {
+    "Basic Example": {
+      "url": "/rest/api/3/field/{fieldKey}/option/suggestions/edit",
+      "method": "get",
+      "query": {
+        "startAt": "<integer>",
+        "maxResults": 50,
+        "projectId": "<integer>"
+      },
+      "path": {
+        "fieldKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_field__fieldKey__option_suggestions_search": {
+    "Basic Example": {
+      "url": "/rest/api/3/field/{fieldKey}/option/suggestions/search",
+      "method": "get",
+      "query": {
+        "startAt": "<integer>",
+        "maxResults": "<integer>",
+        "projectId": "<integer>"
+      },
+      "path": {
+        "fieldKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_field__fieldKey__option__optionId_": {
+    "Basic Example": {
+      "url": "/rest/api/3/field/{fieldKey}/option/{optionId}",
+      "method": "get",
+      "path": {
+        "fieldKey": "<string>",
+        "optionId": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_field__fieldKey__option__optionId_": {
+    "Basic Example": {
+      "url": "/rest/api/3/field/{fieldKey}/option/{optionId}",
+      "method": "delete",
+      "path": {
+        "fieldKey": "<string>",
+        "optionId": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_field__fieldKey__option__optionId_": {
+    "Basic Example": {
+      "url": "/rest/api/3/field/{fieldKey}/option/{optionId}",
+      "method": "put",
+      "path": {
+        "fieldKey": "<string>",
+        "optionId": "<integer>"
+      },
+      "data": {
+        "config": {
+          "attributes": [],
+          "scope": {
+            "global": {},
+            "projects": [],
+            "projects2": [
+              {
+                "attributes": [
+                  "notSelectable"
+                ],
+                "id": 1001
+              },
+              {
+                "attributes": [
+                  "notSelectable"
+                ],
+                "id": 1002
+              }
+            ]
+          }
+        },
+        "id": 1,
+        "properties": {
+          "description": "The team's description",
+          "founded": "2016-06-06T00:00:00.000Z",
+          "leader": {
+            "email": "lname@example.com",
+            "name": "Leader Name"
+          },
+          "members": 42
+        },
+        "value": "Team 1"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_field__fieldKey__option__optionId__issue": {
+    "Basic Example": {
+      "url": "/rest/api/3/field/{fieldKey}/option/{optionId}/issue",
+      "method": "delete",
+      "query": {
+        "replaceWith": "<integer>",
+        "jql": "<string>"
+      },
+      "path": {
+        "fieldKey": "<string>",
+        "optionId": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_filter": {
+    "Basic Example": {
+      "url": "/rest/api/3/filter",
+      "method": "get",
+      "query": {
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_filter": {
+    "Basic Example": {
+      "url": "/rest/api/3/filter",
+      "method": "post",
+      "query": {
+        "expand": "<string>"
+      },
+      "data": {
+        "description": "Lists all open bugs",
+        "jql": "type = Bug and resolution is empty",
+        "name": "All Open Bugs"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_filter_defaultShareScope": {
+    "Basic Example": {
+      "url": "/rest/api/3/filter/defaultShareScope",
+      "method": "get",
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_filter_defaultShareScope": {
+    "Basic Example": {
+      "url": "/rest/api/3/filter/defaultShareScope",
+      "method": "put",
+      "data": {
+        "scope": "GLOBAL"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_filter_favourite": {
+    "Basic Example": {
+      "url": "/rest/api/3/filter/favourite",
+      "method": "get",
+      "query": {
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_filter_my": {
+    "Basic Example": {
+      "url": "/rest/api/3/filter/my",
+      "method": "get",
+      "query": {
+        "expand": "<string>",
+        "includeFavourites": "<boolean>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_filter_search": {
+    "Basic Example": {
+      "url": "/rest/api/3/filter/search",
+      "method": "get",
+      "query": {
+        "filterName": "<string>",
+        "accountId": "<string>",
+        "owner": "<string>",
+        "groupname": "<string>",
+        "projectId": "<integer>",
+        "orderBy": "name",
+        "startAt": "<integer>",
+        "maxResults": 50,
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_filter__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/filter/{id}",
+      "method": "get",
+      "path": {
+        "id": "<integer>"
+      },
+      "query": {
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_filter__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/filter/{id}",
+      "method": "delete",
+      "path": {
+        "id": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_filter__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/filter/{id}",
+      "method": "put",
+      "path": {
+        "id": "<integer>"
+      },
+      "query": {
+        "expand": "<string>"
+      },
+      "data": {
+        "description": "Lists all open bugs",
+        "jql": "type = Bug and resolution is empty",
+        "name": "All Open Bugs"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_filter__id__columns": {
+    "Basic Example": {
+      "url": "/rest/api/3/filter/{id}/columns",
+      "method": "get",
+      "path": {
+        "id": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_filter__id__columns": {
+    "Basic Example": {
+      "url": "/rest/api/3/filter/{id}/columns",
+      "method": "delete",
+      "path": {
+        "id": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_filter__id__columns": {
+    "Basic Example": {
+      "url": "/rest/api/3/filter/{id}/columns",
+      "method": "put",
+      "path": {
+        "id": "<integer>"
+      },
+      "data": [
+        ""
+      ],
+      "headers": {
+        "Content-Type": "*/*"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_filter__id__favourite": {
+    "Basic Example": {
+      "url": "/rest/api/3/filter/{id}/favourite",
+      "method": "delete",
+      "path": {
+        "id": "<integer>"
+      },
+      "query": {
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_filter__id__favourite": {
+    "Basic Example": {
+      "url": "/rest/api/3/filter/{id}/favourite",
+      "method": "put",
+      "path": {
+        "id": "<integer>"
+      },
+      "query": {
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_filter__id__permission": {
+    "Basic Example": {
+      "url": "/rest/api/3/filter/{id}/permission",
+      "method": "get",
+      "path": {
+        "id": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_filter__id__permission": {
+    "Basic Example": {
+      "url": "/rest/api/3/filter/{id}/permission",
+      "method": "post",
+      "path": {
+        "id": "<integer>"
+      },
+      "data": {
+        "groupname": "jira-administrators",
+        "type": "group"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_filter__id__permission__permissionId_": {
+    "Basic Example": {
+      "url": "/rest/api/3/filter/{id}/permission/{permissionId}",
+      "method": "get",
+      "path": {
+        "id": "<integer>",
+        "permissionId": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_filter__id__permission__permissionId_": {
+    "Basic Example": {
+      "url": "/rest/api/3/filter/{id}/permission/{permissionId}",
+      "method": "delete",
+      "path": {
+        "id": "<integer>",
+        "permissionId": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_group": {
+    "Basic Example": {
+      "url": "/rest/api/3/group",
+      "method": "get",
+      "query": {
+        "groupname": "<string>",
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_group": {
+    "Basic Example": {
+      "url": "/rest/api/3/group",
+      "method": "post",
+      "data": {
+        "name": ""
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_group": {
+    "Basic Example": {
+      "url": "/rest/api/3/group",
+      "method": "delete",
+      "query": {
+        "groupname": "<string>",
+        "swapGroup": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_group_member": {
+    "Basic Example": {
+      "url": "/rest/api/3/group/member",
+      "method": "get",
+      "query": {
+        "groupname": "<string>",
+        "includeInactiveUsers": "<boolean>",
+        "startAt": "<integer>",
+        "maxResults": 50
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_group_user": {
+    "Basic Example": {
+      "url": "/rest/api/3/group/user",
+      "method": "post",
+      "query": {
+        "groupname": "<string>"
+      },
+      "data": {
+        "accountId": "384093:32b4d9w0-f6a5-3535-11a3-9c8c88d10192"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_group_user": {
+    "Basic Example": {
+      "url": "/rest/api/3/group/user",
+      "method": "delete",
+      "query": {
+        "groupname": "<string>",
+        "username": "<string>",
+        "accountId": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_groups_picker": {
+    "Basic Example": {
+      "url": "/rest/api/3/groups/picker",
+      "method": "get",
+      "query": {
+        "accountId": "<string>",
+        "query": "<string>",
+        "exclude": "<array>",
+        "maxResults": "<integer>",
+        "userName": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_groupuserpicker": {
+    "Basic Example": {
+      "url": "/rest/api/3/groupuserpicker",
+      "method": "get",
+      "query": {
+        "query": "<string>",
+        "maxResults": 50,
+        "showAvatar": "<boolean>",
+        "fieldId": "<string>",
+        "projectId": "<array>",
+        "issueTypeId": "<array>",
+        "avatarSize": "xsmall",
+        "caseInsensitive": "<boolean>",
+        "excludeConnectAddons": "<boolean>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_issue": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue",
+      "method": "post",
+      "query": {
+        "updateHistory": "<boolean>"
+      },
+      "data": {
+        "fields": {
+          "assignee": {
+            "id": "e5:e1a16c14-1fe0-1c93-a2b1-ac4493ace0f1"
+          },
+          "components": [
+            {
+              "id": "10000"
+            }
+          ],
+          "customfield_10000": "09/Jun/19",
+          "customfield_20000": "06/Jul/19 3:25 PM",
+          "customfield_30000": [
+            "10000",
+            "10002"
+          ],
+          "customfield_40000": {
+            "content": [
+              {
+                "content": [
+                  {
+                    "text": "this is a text field",
+                    "type": "text"
+                  }
+                ],
+                "type": "paragraph"
+              }
+            ],
+            "type": "doc",
+            "version": 1
+          },
+          "customfield_50000": {
+            "content": [
+              {
+                "content": [
+                  {
+                    "text": "this is a text area. big text.",
+                    "type": "text"
+                  }
+                ],
+                "type": "paragraph"
+              }
+            ],
+            "type": "doc",
+            "version": 1
+          },
+          "customfield_60000": "jira-software-users",
+          "customfield_70000": [
+            "jira-administrators",
+            "jira-software-users"
+          ],
+          "customfield_80000": {
+            "value": "red"
+          },
+          "description": {
+            "content": [
+              {
+                "content": [
+                  {
+                    "text": "description",
+                    "type": "text"
+                  }
+                ],
+                "type": "paragraph"
+              }
+            ],
+            "type": "doc",
+            "version": 1
+          },
+          "duedate": "2019-05-11T00:00:00.000Z",
+          "environment": {
+            "content": [
+              {
+                "content": [
+                  {
+                    "text": "environment",
+                    "type": "text"
+                  }
+                ],
+                "type": "paragraph"
+              }
+            ],
+            "type": "doc",
+            "version": 1
+          },
+          "fixVersions": [
+            {
+              "id": "10001"
+            }
+          ],
+          "issuetype": {
+            "id": "10000"
+          },
+          "labels": [
+            "bugfix",
+            "blitz_test"
+          ],
+          "priority": {
+            "id": "20000"
+          },
+          "project": {
+            "id": "10000"
+          },
+          "reporter": {
+            "id": "99:e2a16dd9-2ffb-4a4b-a9bd-bd1145a020ee"
+          },
+          "security": {
+            "id": "10000"
+          },
+          "summary": "something's wrong",
+          "timetracking": {
+            "originalEstimate": "10",
+            "remainingEstimate": "5"
+          },
+          "versions": [
+            {
+              "id": "10000"
+            }
+          ]
+        },
+        "update": {}
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_issue_bulk": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/bulk",
+      "method": "post",
+      "data": {
+        "issueUpdates": [
+          {
+            "fields": {
+              "assignee": {
+                "id": "5b10a2844c20165700ede21f"
+              },
+              "components": [
+                {
+                  "id": "10000"
+                }
+              ],
+              "customfield_10000": "09/Jun/19",
+              "customfield_20000": "06/Jul/19 3:25 PM",
+              "customfield_30000": [
+                "10000",
+                "10002"
+              ],
+              "customfield_40000": {
+                "content": [
+                  {
+                    "content": [
+                      {
+                        "text": "this is a text field",
+                        "type": "text"
+                      }
+                    ],
+                    "type": "paragraph"
+                  }
+                ],
+                "type": "doc",
+                "version": 1
+              },
+              "customfield_50000": {
+                "content": [
+                  {
+                    "content": [
+                      {
+                        "text": "this is a text area. big text.",
+                        "type": "text"
+                      }
+                    ],
+                    "type": "paragraph"
+                  }
+                ],
+                "type": "doc",
+                "version": 1
+              },
+              "customfield_60000": "jira-software-users",
+              "customfield_70000": [
+                "jira-administrators",
+                "jira-software-users"
+              ],
+              "customfield_80000": {
+                "value": "red"
+              },
+              "description": {
+                "content": [
+                  {
+                    "content": [
+                      {
+                        "text": "description",
+                        "type": "text"
+                      }
+                    ],
+                    "type": "paragraph"
+                  }
+                ],
+                "type": "doc",
+                "version": 1
+              },
+              "duedate": "2011-03-11T00:00:00.000Z",
+              "environment": {
+                "content": [
+                  {
+                    "content": [
+                      {
+                        "text": "environment",
+                        "type": "text"
+                      }
+                    ],
+                    "type": "paragraph"
+                  }
+                ],
+                "type": "doc",
+                "version": 1
+              },
+              "fixVersions": [
+                {
+                  "id": "10001"
+                }
+              ],
+              "issuetype": {
+                "id": "10000"
+              },
+              "labels": [
+                "bugfix",
+                "blitz_test"
+              ],
+              "priority": {
+                "id": "20000"
+              },
+              "project": {
+                "id": "10000"
+              },
+              "reporter": {
+                "id": "557058:d6b5955a-e193-41e1-b051-79cdb0755d68"
+              },
+              "security": {
+                "id": "10000"
+              },
+              "summary": "something's wrong",
+              "timetracking": {
+                "originalEstimate": "10",
+                "remainingEstimate": "5"
+              },
+              "versions": [
+                {
+                  "id": "10000"
+                }
+              ]
+            },
+            "update": {
+              "worklog": [
+                {
+                  "add": {
+                    "started": "2019-07-05T11:05:00.000+0000",
+                    "timeSpent": "60m"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "fields": {
+              "assignee": {
+                "id": "384093:32b4d9w0-f6a5-3535-11a3-9c8c88d10192"
+              },
+              "components": [
+                {
+                  "id": "10000"
+                }
+              ],
+              "customfield_10000": "09/Jun/19",
+              "customfield_20000": "06/Jul/19 3:25 PM",
+              "customfield_30000": [
+                "10000",
+                "10002"
+              ],
+              "customfield_40000": {
+                "content": [
+                  {
+                    "content": [
+                      {
+                        "text": "this is a text field",
+                        "type": "text"
+                      }
+                    ],
+                    "type": "paragraph"
+                  }
+                ],
+                "type": "doc",
+                "version": 1
+              },
+              "customfield_50000": {
+                "content": [
+                  {
+                    "content": [
+                      {
+                        "text": "this is a text area. big text.",
+                        "type": "text"
+                      }
+                    ],
+                    "type": "paragraph"
+                  }
+                ],
+                "type": "doc",
+                "version": 1
+              },
+              "customfield_60000": "jira-software-users",
+              "customfield_70000": [
+                "jira-administrators",
+                "jira-software-users"
+              ],
+              "customfield_80000": {
+                "value": "red"
+              },
+              "description": {
+                "content": [
+                  {
+                    "content": [
+                      {
+                        "text": "description",
+                        "type": "text"
+                      }
+                    ],
+                    "type": "paragraph"
+                  }
+                ],
+                "type": "doc",
+                "version": 1
+              },
+              "duedate": "2019-04-16T00:00:00.000Z",
+              "environment": {
+                "content": [
+                  {
+                    "content": [
+                      {
+                        "text": "environment",
+                        "type": "text"
+                      }
+                    ],
+                    "type": "paragraph"
+                  }
+                ],
+                "type": "doc",
+                "version": 1
+              },
+              "fixVersions": [
+                {
+                  "id": "10001"
+                }
+              ],
+              "issuetype": {
+                "id": "10000"
+              },
+              "labels": [
+                "new_release"
+              ],
+              "priority": {
+                "id": "20000"
+              },
+              "project": {
+                "id": "1000"
+              },
+              "reporter": {
+                "id": "99:27935d01-92a7-4687-8272-a9b8d3b2ae2e"
+              },
+              "security": {
+                "id": "10000"
+              },
+              "summary": "something's very wrong",
+              "timetracking": {
+                "originalEstimate": "15",
+                "remainingEstimate": "5"
+              },
+              "versions": [
+                {
+                  "id": "10000"
+                }
+              ]
+            },
+            "update": {}
+          }
+        ]
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_issue_createmeta": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/createmeta",
+      "method": "get",
+      "query": {
+        "projectIds": "<array>",
+        "projectKeys": "<array>",
+        "issuetypeIds": "<array>",
+        "issuetypeNames": "<array>",
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_issue_picker": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/picker",
+      "method": "get",
+      "query": {
+        "query": "<string>",
+        "currentJQL": "<string>",
+        "currentIssueKey": "<string>",
+        "currentProjectId": "<string>",
+        "showSubTasks": "<boolean>",
+        "showSubTaskParent": "<boolean>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_issue_properties__propertyKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/properties/{propertyKey}",
+      "method": "delete",
+      "path": {
+        "propertyKey": "<string>"
+      },
+      "data": {
+        "currentValue": "deprecated value",
+        "entityIds": [
+          10100,
+          100010
+        ]
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_issue_properties__propertyKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/properties/{propertyKey}",
+      "method": "put",
+      "path": {
+        "propertyKey": "<string>"
+      },
+      "data": {
+        "filter": {
+          "currentValue": {
+            "owner": "admin",
+            "weight": 50
+          },
+          "entityIds": [
+            10100,
+            100010
+          ],
+          "hasProperty": true
+        },
+        "value": {
+          "owner": "admin",
+          "weight": 100
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_issue__issueIdOrKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}",
+      "method": "get",
+      "path": {
+        "issueIdOrKey": "<string>"
+      },
+      "query": {
+        "fields": "<array>",
+        "fieldsByKeys": "<boolean>",
+        "expand": "<string>",
+        "properties": "<array>",
+        "updateHistory": "<boolean>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_issue__issueIdOrKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}",
+      "method": "delete",
+      "path": {
+        "issueIdOrKey": "<string>"
+      },
+      "query": {
+        "deleteSubtasks": "false"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_issue__issueIdOrKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}",
+      "method": "put",
+      "path": {
+        "issueIdOrKey": "<string>"
+      },
+      "query": {
+        "notifyUsers": true,
+        "overrideScreenSecurity": "<boolean>",
+        "overrideEditableFlag": "<boolean>"
+      },
+      "data": {
+        "fields": {
+          "customfield_10000": {
+            "content": [
+              {
+                "content": [
+                  {
+                    "text": "This is a shorthand for a set operation on a text custom field",
+                    "type": "text"
+                  }
+                ],
+                "type": "paragraph"
+              }
+            ],
+            "type": "doc",
+            "version": 1
+          },
+          "customfield_10010": 1,
+          "summary": "This is a shorthand for a set operation on the summary field"
+        },
+        "historyMetadata": {
+          "activityDescription": "text description",
+          "actor": {
+            "avatarUrl": "http://mysystem/avatar/tony.jpg",
+            "displayName": "Tony",
+            "id": "tony",
+            "type": "mysystem-user",
+            "url": "http://mysystem/users/tony"
+          },
+          "cause": {
+            "id": "myevent",
+            "type": "mysystem-event"
+          },
+          "description": "text description",
+          "extraData": {
+            "goes": "here",
+            "keyvalue": "extra data"
+          },
+          "generator": {
+            "id": "mysystem-1",
+            "type": "mysystem-application"
+          },
+          "type": "myplugin:type"
+        },
+        "properties": [
+          {
+            "key": "key1",
+            "value": "can be set at issue create or update time"
+          },
+          {
+            "key": "key2",
+            "value": "and there can be multiple properties"
+          }
+        ],
+        "update": {
+          "components": [
+            {
+              "set": ""
+            }
+          ],
+          "labels": [
+            {
+              "add": "triaged"
+            },
+            {
+              "remove": "blocker"
+            }
+          ],
+          "summary": [
+            {
+              "set": "Bug in business logic"
+            }
+          ],
+          "timetracking": [
+            {
+              "edit": {
+                "originalEstimate": "1w 1d",
+                "remainingEstimate": "4d"
+              }
+            }
+          ]
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_issue__issueIdOrKey__assignee": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/assignee",
+      "method": "put",
+      "path": {
+        "issueIdOrKey": "<string>"
+      },
+      "data": {
+        "accountId": "384093:32b4d9w0-f6a5-3535-11a3-9c8c88d10192"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_issue__issueIdOrKey__attachments": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/attachments",
+      "method": "post",
+      "path": {
+        "issueIdOrKey": "<string>"
+      },
+      "data": "<binary>",
+      "headers": {
+        "Content-Type": "multipart/form-data"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_issue__issueIdOrKey__changelog": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/changelog",
+      "method": "get",
+      "path": {
+        "issueIdOrKey": "<string>"
+      },
+      "query": {
+        "startAt": "<integer>",
+        "maxResults": 100
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_issue__issueIdOrKey__comment": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/comment",
+      "method": "get",
+      "path": {
+        "issueIdOrKey": "<string>"
+      },
+      "query": {
+        "startAt": "<integer>",
+        "maxResults": 50,
+        "orderBy": "created",
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_issue__issueIdOrKey__comment": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/comment",
+      "method": "post",
+      "path": {
+        "issueIdOrKey": "<string>"
+      },
+      "query": {
+        "expand": "<string>"
+      },
+      "data": {
+        "body": {
+          "content": [
+            {
+              "content": [
+                {
+                  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper.",
+                  "type": "text"
+                }
+              ],
+              "type": "paragraph"
+            }
+          ],
+          "type": "doc",
+          "version": 1
+        },
+        "visibility": {
+          "type": "role",
+          "value": "Administrators"
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_issue__issueIdOrKey__comment__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/comment/{id}",
+      "method": "get",
+      "path": {
+        "issueIdOrKey": "<string>",
+        "id": "<string>"
+      },
+      "query": {
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_issue__issueIdOrKey__comment__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/comment/{id}",
+      "method": "delete",
+      "path": {
+        "issueIdOrKey": "<string>",
+        "id": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_issue__issueIdOrKey__comment__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/comment/{id}",
+      "method": "put",
+      "path": {
+        "issueIdOrKey": "<string>",
+        "id": "<string>"
+      },
+      "query": {
+        "expand": "<string>"
+      },
+      "data": {
+        "body": {
+          "content": [
+            {
+              "content": [
+                {
+                  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper.",
+                  "type": "text"
+                }
+              ],
+              "type": "paragraph"
+            }
+          ],
+          "type": "doc",
+          "version": 1
+        },
+        "visibility": {
+          "type": "role",
+          "value": "Administrators"
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_issue__issueIdOrKey__editmeta": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/editmeta",
+      "method": "get",
+      "path": {
+        "issueIdOrKey": "<string>"
+      },
+      "query": {
+        "overrideScreenSecurity": "<boolean>",
+        "overrideEditableFlag": "<boolean>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_issue__issueIdOrKey__notify": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/notify",
+      "method": "post",
+      "path": {
+        "issueIdOrKey": "<string>"
+      },
+      "data": {
+        "htmlBody": "Lorem ipsum <strong>dolor</strong> sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper.",
+        "restrict": {
+          "groups": [
+            {
+              "name": "notification-group"
+            }
+          ],
+          "permissions": [
+            {
+              "key": "BROWSE"
+            }
+          ]
+        },
+        "subject": "Duis eu justo eget augue iaculis fermentum.",
+        "textBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper.",
+        "to": {
+          "assignee": false,
+          "groups": [
+            {
+              "name": "notification-group"
+            }
+          ],
+          "reporter": false,
+          "users": [
+            {
+              "accountId": "5b10a2844c20165700ede21g",
+              "active": false
+            }
+          ],
+          "voters": true,
+          "watchers": true
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_issue__issueIdOrKey__properties": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/properties",
+      "method": "get",
+      "path": {
+        "issueIdOrKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_issue__issueIdOrKey__properties__propertyKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/properties/{propertyKey}",
+      "method": "get",
+      "path": {
+        "issueIdOrKey": "<string>",
+        "propertyKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_issue__issueIdOrKey__properties__propertyKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/properties/{propertyKey}",
+      "method": "delete",
+      "path": {
+        "issueIdOrKey": "<string>",
+        "propertyKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_issue__issueIdOrKey__properties__propertyKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/properties/{propertyKey}",
+      "method": "put",
+      "path": {
+        "issueIdOrKey": "<string>",
+        "propertyKey": "<string>"
+      },
+      "data": {},
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_issue__issueIdOrKey__remotelink": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/remotelink",
+      "method": "get",
+      "path": {
+        "issueIdOrKey": "<string>"
+      },
+      "query": {
+        "globalId": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_issue__issueIdOrKey__remotelink": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/remotelink",
+      "method": "post",
+      "path": {
+        "issueIdOrKey": "<string>"
+      },
+      "data": {
+        "application": {
+          "name": "My Acme Tracker",
+          "type": "com.acme.tracker"
+        },
+        "globalId": "system=http://www.mycompany.com/support&id=1",
+        "object": {
+          "icon": {
+            "title": "Support Ticket",
+            "url16x16": "http://www.mycompany.com/support/ticket.png"
+          },
+          "status": {
+            "icon": {
+              "link": "http://www.mycompany.com/support?id=1&details=closed",
+              "title": "Case Closed",
+              "url16x16": "http://www.mycompany.com/support/resolved.png"
+            },
+            "resolved": true
+          },
+          "summary": "Customer support issue",
+          "title": "TSTSUP-111",
+          "url": "http://www.mycompany.com/support?id=1"
+        },
+        "relationship": "causes"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_issue__issueIdOrKey__remotelink": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/remotelink",
+      "method": "delete",
+      "path": {
+        "issueIdOrKey": "<string>"
+      },
+      "query": {
+        "globalId": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_issue__issueIdOrKey__remotelink__linkId_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/remotelink/{linkId}",
+      "method": "get",
+      "path": {
+        "issueIdOrKey": "<string>",
+        "linkId": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_issue__issueIdOrKey__remotelink__linkId_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/remotelink/{linkId}",
+      "method": "delete",
+      "path": {
+        "issueIdOrKey": "<string>",
+        "linkId": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_issue__issueIdOrKey__remotelink__linkId_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/remotelink/{linkId}",
+      "method": "put",
+      "path": {
+        "issueIdOrKey": "<string>",
+        "linkId": "<string>"
+      },
+      "data": {
+        "application": {
+          "name": "My Acme Tracker",
+          "type": "com.acme.tracker"
+        },
+        "globalId": "system=http://www.mycompany.com/support&id=1",
+        "object": {
+          "icon": {
+            "title": "Support Ticket",
+            "url16x16": "http://www.mycompany.com/support/ticket.png"
+          },
+          "status": {
+            "icon": {
+              "link": "http://www.mycompany.com/support?id=1&details=closed",
+              "title": "Case Closed",
+              "url16x16": "http://www.mycompany.com/support/resolved.png"
+            },
+            "resolved": true
+          },
+          "summary": "Customer support issue",
+          "title": "TSTSUP-111",
+          "url": "http://www.mycompany.com/support?id=1"
+        },
+        "relationship": "causes"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_issue__issueIdOrKey__transitions": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/transitions",
+      "method": "get",
+      "path": {
+        "issueIdOrKey": "<string>"
+      },
+      "query": {
+        "expand": "<string>",
+        "transitionId": "<string>",
+        "skipRemoteOnlyCondition": "<boolean>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_issue__issueIdOrKey__transitions": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/transitions",
+      "method": "post",
+      "path": {
+        "issueIdOrKey": "<string>"
+      },
+      "data": {
+        "fields": {
+          "assignee": {
+            "name": "bob"
+          },
+          "resolution": {
+            "name": "Fixed"
+          }
+        },
+        "historyMetadata": {
+          "activityDescription": "text description",
+          "actor": {
+            "avatarUrl": "http://mysystem/avatar/tony.jpg",
+            "displayName": "Tony",
+            "id": "tony",
+            "type": "mysystem-user",
+            "url": "http://mysystem/users/tony"
+          },
+          "cause": {
+            "id": "myevent",
+            "type": "mysystem-event"
+          },
+          "description": "text description",
+          "extraData": {
+            "goes": "here",
+            "keyvalue": "extra data"
+          },
+          "generator": {
+            "id": "mysystem-1",
+            "type": "mysystem-application"
+          },
+          "type": "myplugin:type"
+        },
+        "transition": {
+          "id": "5"
+        },
+        "update": {
+          "comment": [
+            {
+              "add": {
+                "body": {
+                  "content": [
+                    {
+                      "content": [
+                        {
+                          "text": "Bug has been fixed",
+                          "type": "text"
+                        }
+                      ],
+                      "type": "paragraph"
+                    }
+                  ],
+                  "type": "doc",
+                  "version": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_issue__issueIdOrKey__votes": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/votes",
+      "method": "get",
+      "path": {
+        "issueIdOrKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_issue__issueIdOrKey__votes": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/votes",
+      "method": "post",
+      "path": {
+        "issueIdOrKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_issue__issueIdOrKey__votes": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/votes",
+      "method": "delete",
+      "path": {
+        "issueIdOrKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_issue__issueIdOrKey__watchers": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/watchers",
+      "method": "get",
+      "path": {
+        "issueIdOrKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_issue__issueIdOrKey__watchers": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/watchers",
+      "method": "post",
+      "path": {
+        "issueIdOrKey": "<string>"
+      },
+      "data": "",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_issue__issueIdOrKey__watchers": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/watchers",
+      "method": "delete",
+      "path": {
+        "issueIdOrKey": "<string>"
+      },
+      "query": {
+        "username": "<string>",
+        "accountId": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_issue__issueIdOrKey__worklog": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/worklog",
+      "method": "get",
+      "path": {
+        "issueIdOrKey": "<string>"
+      },
+      "query": {
+        "startAt": "<integer>",
+        "maxResults": 1048576,
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_issue__issueIdOrKey__worklog": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/worklog",
+      "method": "post",
+      "path": {
+        "issueIdOrKey": "<string>"
+      },
+      "query": {
+        "notifyUsers": true,
+        "adjustEstimate": "auto",
+        "newEstimate": "<string>",
+        "reduceBy": "<string>",
+        "expand": "<string>",
+        "overrideEditableFlag": "<boolean>"
+      },
+      "data": {
+        "comment": {
+          "content": [
+            {
+              "content": [
+                {
+                  "text": "I did some work here.",
+                  "type": "text"
+                }
+              ],
+              "type": "paragraph"
+            }
+          ],
+          "type": "doc",
+          "version": 1
+        },
+        "started": "2019-09-12T13:07:06.432+0000",
+        "timeSpentSeconds": 12000,
+        "visibility": {
+          "type": "group",
+          "value": "jira-developers"
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_issue__issueIdOrKey__worklog__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/worklog/{id}",
+      "method": "get",
+      "path": {
+        "issueIdOrKey": "<string>",
+        "id": "<string>"
+      },
+      "query": {
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_issue__issueIdOrKey__worklog__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/worklog/{id}",
+      "method": "delete",
+      "path": {
+        "issueIdOrKey": "<string>",
+        "id": "<string>"
+      },
+      "query": {
+        "notifyUsers": true,
+        "adjustEstimate": "auto",
+        "newEstimate": "<string>",
+        "increaseBy": "<string>",
+        "overrideEditableFlag": "<boolean>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_issue__issueIdOrKey__worklog__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/worklog/{id}",
+      "method": "put",
+      "path": {
+        "issueIdOrKey": "<string>",
+        "id": "<string>"
+      },
+      "query": {
+        "notifyUsers": true,
+        "adjustEstimate": "auto",
+        "newEstimate": "<string>",
+        "expand": "<string>",
+        "overrideEditableFlag": "<boolean>"
+      },
+      "data": {
+        "comment": {
+          "content": [
+            {
+              "content": [
+                {
+                  "text": "I did some work here.",
+                  "type": "text"
+                }
+              ],
+              "type": "paragraph"
+            }
+          ],
+          "type": "doc",
+          "version": 1
+        },
+        "started": "2019-09-12T13:07:06.432+0000",
+        "timeSpentSeconds": 12000,
+        "visibility": {
+          "type": "group",
+          "value": "jira-developers"
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_issue__issueIdOrKey__worklog__worklogId__properties": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/worklog/{worklogId}/properties",
+      "method": "get",
+      "path": {
+        "issueIdOrKey": "<string>",
+        "worklogId": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_issue__issueIdOrKey__worklog__worklogId__properties__propertyKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/worklog/{worklogId}/properties/{propertyKey}",
+      "method": "get",
+      "path": {
+        "issueIdOrKey": "<string>",
+        "worklogId": "<string>",
+        "propertyKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_issue__issueIdOrKey__worklog__worklogId__properties__propertyKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/worklog/{worklogId}/properties/{propertyKey}",
+      "method": "delete",
+      "path": {
+        "issueIdOrKey": "<string>",
+        "worklogId": "<string>",
+        "propertyKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_issue__issueIdOrKey__worklog__worklogId__properties__propertyKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issue/{issueIdOrKey}/worklog/{worklogId}/properties/{propertyKey}",
+      "method": "put",
+      "path": {
+        "issueIdOrKey": "<string>",
+        "worklogId": "<string>",
+        "propertyKey": "<string>"
+      },
+      "data": {},
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_issueLink": {
+    "Basic Example": {
+      "url": "/rest/api/3/issueLink",
+      "method": "post",
+      "data": {
+        "comment": {
+          "body": {
+            "content": [
+              {
+                "content": [
+                  {
+                    "text": "Linked related issue!",
+                    "type": "text"
+                  }
+                ],
+                "type": "paragraph"
+              }
+            ],
+            "type": "doc",
+            "version": 1
+          },
+          "visibility": {
+            "type": "group",
+            "value": "jira-software-users"
+          }
+        },
+        "inwardIssue": {
+          "key": "HSP-1"
+        },
+        "outwardIssue": {
+          "key": "MKY-1"
+        },
+        "type": {
+          "name": "Duplicate"
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_issueLink__linkId_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issueLink/{linkId}",
+      "method": "get",
+      "path": {
+        "linkId": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_issueLink__linkId_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issueLink/{linkId}",
+      "method": "delete",
+      "path": {
+        "linkId": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_issueLinkType": {
+    "Basic Example": {
+      "url": "/rest/api/3/issueLinkType",
+      "method": "get",
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_issueLinkType": {
+    "Basic Example": {
+      "url": "/rest/api/3/issueLinkType",
+      "method": "post",
+      "data": {
+        "inward": "Duplicated by",
+        "name": "Duplicate",
+        "outward": "Duplicates"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_issueLinkType__issueLinkTypeId_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issueLinkType/{issueLinkTypeId}",
+      "method": "get",
+      "path": {
+        "issueLinkTypeId": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_issueLinkType__issueLinkTypeId_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issueLinkType/{issueLinkTypeId}",
+      "method": "delete",
+      "path": {
+        "issueLinkTypeId": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_issueLinkType__issueLinkTypeId_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issueLinkType/{issueLinkTypeId}",
+      "method": "put",
+      "path": {
+        "issueLinkTypeId": "<string>"
+      },
+      "data": {
+        "inward": "Duplicated by",
+        "name": "Duplicate",
+        "outward": "Duplicates"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_issuesecurityschemes": {
+    "Basic Example": {
+      "url": "/rest/api/3/issuesecurityschemes",
+      "method": "get",
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_issuesecurityschemes__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issuesecurityschemes/{id}",
+      "method": "get",
+      "path": {
+        "id": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_issuetype": {
+    "Basic Example": {
+      "url": "/rest/api/3/issuetype",
+      "method": "get",
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_issuetype": {
+    "Basic Example": {
+      "url": "/rest/api/3/issuetype",
+      "method": "post",
+      "data": {
+        "description": "description",
+        "name": "name",
+        "type": "standard"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_issuetype__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issuetype/{id}",
+      "method": "get",
+      "path": {
+        "id": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_issuetype__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issuetype/{id}",
+      "method": "delete",
+      "path": {
+        "id": "<string>"
+      },
+      "query": {
+        "alternativeIssueTypeId": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_issuetype__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issuetype/{id}",
+      "method": "put",
+      "path": {
+        "id": "<string>"
+      },
+      "data": {
+        "avatarId": 1,
+        "description": "description",
+        "name": "name"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_issuetype__id__alternatives": {
+    "Basic Example": {
+      "url": "/rest/api/3/issuetype/{id}/alternatives",
+      "method": "get",
+      "path": {
+        "id": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_issuetype__id__avatar2": {
+    "Basic Example": {
+      "url": "/rest/api/3/issuetype/{id}/avatar2",
+      "method": "post",
+      "path": {
+        "id": "<string>"
+      },
+      "query": {
+        "x": "<integer>",
+        "y": "<integer>",
+        "size": "<integer>"
+      },
+      "data": {},
+      "headers": {
+        "Content-Type": "*/*"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_issuetype__issueTypeId__properties": {
+    "Basic Example": {
+      "url": "/rest/api/3/issuetype/{issueTypeId}/properties",
+      "method": "get",
+      "path": {
+        "issueTypeId": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_issuetype__issueTypeId__properties__propertyKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issuetype/{issueTypeId}/properties/{propertyKey}",
+      "method": "get",
+      "path": {
+        "issueTypeId": "<string>",
+        "propertyKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_issuetype__issueTypeId__properties__propertyKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issuetype/{issueTypeId}/properties/{propertyKey}",
+      "method": "delete",
+      "path": {
+        "issueTypeId": "<string>",
+        "propertyKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_issuetype__issueTypeId__properties__propertyKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/issuetype/{issueTypeId}/properties/{propertyKey}",
+      "method": "put",
+      "path": {
+        "issueTypeId": "<string>",
+        "propertyKey": "<string>"
+      },
+      "data": {
+        "number": 5,
+        "string": "string-value"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_jql_autocompletedata": {
+    "Basic Example": {
+      "url": "/rest/api/3/jql/autocompletedata",
+      "method": "get",
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_jql_autocompletedata_suggestions": {
+    "Basic Example": {
+      "url": "/rest/api/3/jql/autocompletedata/suggestions",
+      "method": "get",
+      "query": {
+        "fieldName": "<string>",
+        "fieldValue": "<string>",
+        "predicateName": "<string>",
+        "predicateValue": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_jql_match": {
+    "Basic Example": {
+      "url": "/rest/api/3/jql/match",
+      "method": "post",
+      "data": {
+        "issueIds": [
+          10001,
+          1000,
+          10042
+        ],
+        "jqls": [
+          "project = FOO",
+          "issuetype = Bug",
+          "summary ~ \"some text\" AND project in (FOO, BAR)"
+        ]
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_jql_parse": {
+    "Basic Example": {
+      "url": "/rest/api/3/jql/parse",
+      "method": "post",
+      "data": {
+        "queries": [
+          "summary ~ test AND (labels in (urgent, blocker) OR lastCommentedBy = currentUser()) AND status CHANGED AFTER startOfMonth(-1M) ORDER BY updated DESC",
+          "invalid query",
+          "summary = test",
+          "summary in test",
+          "project = INVALID",
+          "universe = 42"
+        ]
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_jql_pdcleaner": {
+    "Basic Example": {
+      "url": "/rest/api/3/jql/pdcleaner",
+      "method": "post",
+      "data": {
+        "queryStrings": [
+          "assignee = mia",
+          "issuetype = Bug AND assignee in (mia) AND reporter in (alana) order by lastViewed DESC"
+        ]
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_label": {
+    "Basic Example": {
+      "url": "/rest/api/3/label",
+      "method": "get",
+      "query": {
+        "startAt": "<integer>",
+        "maxResults": 1000
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_mypermissions": {
+    "Basic Example": {
+      "url": "/rest/api/3/mypermissions",
+      "method": "get",
+      "query": {
+        "projectKey": "<string>",
+        "projectId": "<string>",
+        "issueKey": "<string>",
+        "issueId": "<string>",
+        "permissions": "<string>",
+        "projectUuid": "<string>",
+        "projectConfigurationUuid": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_mypreferences": {
+    "Basic Example": {
+      "url": "/rest/api/3/mypreferences",
+      "method": "get",
+      "query": {
+        "key": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_mypreferences": {
+    "Basic Example": {
+      "url": "/rest/api/3/mypreferences",
+      "method": "delete",
+      "query": {
+        "key": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_mypreferences": {
+    "Basic Example": {
+      "url": "/rest/api/3/mypreferences",
+      "method": "put",
+      "query": {
+        "key": "<string>"
+      },
+      "data": "",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_mypreferences_locale": {
+    "Basic Example": {
+      "url": "/rest/api/3/mypreferences/locale",
+      "method": "get",
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_mypreferences_locale": {
+    "Basic Example": {
+      "url": "/rest/api/3/mypreferences/locale",
+      "method": "delete",
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_mypreferences_locale": {
+    "Basic Example": {
+      "url": "/rest/api/3/mypreferences/locale",
+      "method": "put",
+      "data": {
+        "locale": "en_US"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_myself": {
+    "Basic Example": {
+      "url": "/rest/api/3/myself",
+      "method": "get",
+      "query": {
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_notificationscheme": {
+    "Basic Example": {
+      "url": "/rest/api/3/notificationscheme",
+      "method": "get",
+      "query": {
+        "startAt": "<integer>",
+        "maxResults": 50,
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_notificationscheme__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/notificationscheme/{id}",
+      "method": "get",
+      "path": {
+        "id": "<integer>"
+      },
+      "query": {
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_permissions": {
+    "Basic Example": {
+      "url": "/rest/api/3/permissions",
+      "method": "get",
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_permissions_check": {
+    "Basic Example": {
+      "url": "/rest/api/3/permissions/check",
+      "method": "post",
+      "data": {
+        "globalPermissions": [
+          "SYSTEM_ADMIN"
+        ],
+        "projectPermissions": [
+          {
+            "issues": [
+              10010,
+              10011,
+              10012,
+              10013,
+              10014
+            ],
+            "permissions": [
+              "EDIT_ISSUE"
+            ],
+            "projects": [
+              10001
+            ]
+          }
+        ]
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_permissions_project": {
+    "Basic Example": {
+      "url": "/rest/api/3/permissions/project",
+      "method": "post",
+      "data": {
+        "permissions": [
+          ""
+        ]
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_permissionscheme": {
+    "Basic Example": {
+      "url": "/rest/api/3/permissionscheme",
+      "method": "get",
+      "query": {
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_permissionscheme": {
+    "Basic Example": {
+      "url": "/rest/api/3/permissionscheme",
+      "method": "post",
+      "query": {
+        "expand": "<string>"
+      },
+      "data": {
+        "description": "description",
+        "name": "Example permission scheme",
+        "permissions": [
+          {
+            "holder": {
+              "parameter": "jira-core-users",
+              "type": "group"
+            },
+            "permission": "ADMINISTER_PROJECTS"
+          }
+        ]
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_permissionscheme__schemeId_": {
+    "Basic Example": {
+      "url": "/rest/api/3/permissionscheme/{schemeId}",
+      "method": "get",
+      "path": {
+        "schemeId": "<integer>"
+      },
+      "query": {
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_permissionscheme__schemeId_": {
+    "Basic Example": {
+      "url": "/rest/api/3/permissionscheme/{schemeId}",
+      "method": "delete",
+      "path": {
+        "schemeId": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_permissionscheme__schemeId_": {
+    "Basic Example": {
+      "url": "/rest/api/3/permissionscheme/{schemeId}",
+      "method": "put",
+      "path": {
+        "schemeId": "<integer>"
+      },
+      "query": {
+        "expand": "<string>"
+      },
+      "data": {
+        "description": "description",
+        "name": "Example permission scheme",
+        "permissions": [
+          {
+            "holder": {
+              "parameter": "jira-core-users",
+              "type": "group"
+            },
+            "permission": "ADMINISTER_PROJECTS"
+          }
+        ]
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_permissionscheme__schemeId__permission": {
+    "Basic Example": {
+      "url": "/rest/api/3/permissionscheme/{schemeId}/permission",
+      "method": "get",
+      "path": {
+        "schemeId": "<integer>"
+      },
+      "query": {
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_permissionscheme__schemeId__permission": {
+    "Basic Example": {
+      "url": "/rest/api/3/permissionscheme/{schemeId}/permission",
+      "method": "post",
+      "path": {
+        "schemeId": "<integer>"
+      },
+      "query": {
+        "expand": "<string>"
+      },
+      "data": {
+        "holder": {
+          "parameter": "jira-core-users",
+          "type": "group"
+        },
+        "permission": "ADMINISTER_PROJECTS"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_permissionscheme__schemeId__permission__permissionId_": {
+    "Basic Example": {
+      "url": "/rest/api/3/permissionscheme/{schemeId}/permission/{permissionId}",
+      "method": "get",
+      "path": {
+        "schemeId": "<integer>",
+        "permissionId": "<integer>"
+      },
+      "query": {
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_permissionscheme__schemeId__permission__permissionId_": {
+    "Basic Example": {
+      "url": "/rest/api/3/permissionscheme/{schemeId}/permission/{permissionId}",
+      "method": "delete",
+      "path": {
+        "schemeId": "<integer>",
+        "permissionId": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_priority": {
+    "Basic Example": {
+      "url": "/rest/api/3/priority",
+      "method": "get",
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_priority__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/priority/{id}",
+      "method": "get",
+      "path": {
+        "id": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_project": {
+    "Basic Example": {
+      "url": "/rest/api/3/project",
+      "method": "get",
+      "query": {
+        "expand": "<string>",
+        "recent": "<integer>",
+        "properties": "<array>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_project": {
+    "Basic Example": {
+      "url": "/rest/api/3/project",
+      "method": "post",
+      "data": {
+        "assigneeType": "PROJECT_LEAD",
+        "avatarId": 10200,
+        "categoryId": 10120,
+        "description": "Example Project description",
+        "issueSecurityScheme": 10001,
+        "key": "EX",
+        "lead": "Charlie",
+        "name": "Example",
+        "notificationScheme": 10021,
+        "permissionScheme": 10011,
+        "projectTemplateKey": "com.atlassian.jira-core-project-templates:jira-core-simplified-process-control",
+        "projectTypeKey": "business",
+        "url": "http://atlassian.com"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_project_search": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/search",
+      "method": "get",
+      "query": {
+        "startAt": "<integer>",
+        "maxResults": 50,
+        "orderBy": "key",
+        "query": "<string>",
+        "typeKey": "<string>",
+        "categoryId": "<integer>",
+        "searchBy": "key, name",
+        "action": "view",
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_project_type": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/type",
+      "method": "get",
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_project_type__projectTypeKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/type/{projectTypeKey}",
+      "method": "get",
+      "path": {
+        "projectTypeKey": "software"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_project_type__projectTypeKey__accessible": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/type/{projectTypeKey}/accessible",
+      "method": "get",
+      "path": {
+        "projectTypeKey": "software"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_project__projectIdOrKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/{projectIdOrKey}",
+      "method": "get",
+      "path": {
+        "projectIdOrKey": "<string>"
+      },
+      "query": {
+        "expand": "<string>",
+        "properties": "<array>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_project__projectIdOrKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/{projectIdOrKey}",
+      "method": "delete",
+      "path": {
+        "projectIdOrKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_project__projectIdOrKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/{projectIdOrKey}",
+      "method": "put",
+      "path": {
+        "projectIdOrKey": "<string>"
+      },
+      "query": {
+        "expand": "<string>"
+      },
+      "data": {
+        "assigneeType": "PROJECT_LEAD",
+        "avatarId": 10200,
+        "categoryId": 10120,
+        "description": "Example Project description",
+        "issueSecurityScheme": 10001,
+        "key": "EX",
+        "lead": "Charlie",
+        "name": "Example",
+        "notificationScheme": 10021,
+        "permissionScheme": 10011,
+        "projectTemplateKey": "com.atlassian.jira-core-project-templates:jira-core-simplified-process-control",
+        "projectTypeKey": "business",
+        "url": "http://atlassian.com"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_project__projectIdOrKey__avatar": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/{projectIdOrKey}/avatar",
+      "method": "put",
+      "path": {
+        "projectIdOrKey": "<string>"
+      },
+      "data": {
+        "id": "10010"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_project__projectIdOrKey__avatar__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/{projectIdOrKey}/avatar/{id}",
+      "method": "delete",
+      "path": {
+        "projectIdOrKey": "<string>",
+        "id": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_project__projectIdOrKey__avatar2": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/{projectIdOrKey}/avatar2",
+      "method": "post",
+      "path": {
+        "projectIdOrKey": "<string>"
+      },
+      "query": {
+        "x": "<integer>",
+        "y": "<integer>",
+        "size": "<integer>"
+      },
+      "data": {},
+      "headers": {
+        "Content-Type": "*/*"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_project__projectIdOrKey__avatars": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/{projectIdOrKey}/avatars",
+      "method": "get",
+      "path": {
+        "projectIdOrKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_project__projectIdOrKey__component": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/{projectIdOrKey}/component",
+      "method": "get",
+      "path": {
+        "projectIdOrKey": "<string>"
+      },
+      "query": {
+        "startAt": "<integer>",
+        "maxResults": 50,
+        "orderBy": "description",
+        "query": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_project__projectIdOrKey__components": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/{projectIdOrKey}/components",
+      "method": "get",
+      "path": {
+        "projectIdOrKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_project__projectIdOrKey__properties": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/{projectIdOrKey}/properties",
+      "method": "get",
+      "path": {
+        "projectIdOrKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_project__projectIdOrKey__properties__propertyKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/{projectIdOrKey}/properties/{propertyKey}",
+      "method": "get",
+      "path": {
+        "projectIdOrKey": "<string>",
+        "propertyKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_project__projectIdOrKey__properties__propertyKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/{projectIdOrKey}/properties/{propertyKey}",
+      "method": "delete",
+      "path": {
+        "projectIdOrKey": "<string>",
+        "propertyKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_project__projectIdOrKey__properties__propertyKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/{projectIdOrKey}/properties/{propertyKey}",
+      "method": "put",
+      "path": {
+        "projectIdOrKey": "<string>",
+        "propertyKey": "<string>"
+      },
+      "data": {
+        "number": 5,
+        "string": "string-value"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_project__projectIdOrKey__role": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/{projectIdOrKey}/role",
+      "method": "get",
+      "path": {
+        "projectIdOrKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_project__projectIdOrKey__role__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/{projectIdOrKey}/role/{id}",
+      "method": "get",
+      "path": {
+        "projectIdOrKey": "<string>",
+        "id": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_project__projectIdOrKey__role__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/{projectIdOrKey}/role/{id}",
+      "method": "post",
+      "path": {
+        "projectIdOrKey": "<string>",
+        "id": "<integer>"
+      },
+      "data": {
+        "group": [
+          "jira-developers"
+        ]
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_project__projectIdOrKey__role__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/{projectIdOrKey}/role/{id}",
+      "method": "delete",
+      "path": {
+        "projectIdOrKey": "<string>",
+        "id": "<integer>"
+      },
+      "query": {
+        "user": "<string>",
+        "group": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_project__projectIdOrKey__role__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/{projectIdOrKey}/role/{id}",
+      "method": "put",
+      "path": {
+        "projectIdOrKey": "<string>",
+        "id": "<integer>"
+      },
+      "data": {
+        "categorisedActors": {
+          "atlassian-group-role-actor": [
+            "jira-developers"
+          ],
+          "atlassian-user-role-actor": [
+            "12345678-9abc-def1-2345-6789abcdef12"
+          ]
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_project__projectIdOrKey__roledetails": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/{projectIdOrKey}/roledetails",
+      "method": "get",
+      "path": {
+        "projectIdOrKey": "<string>"
+      },
+      "query": {
+        "currentMember": "<boolean>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_project__projectIdOrKey__statuses": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/{projectIdOrKey}/statuses",
+      "method": "get",
+      "path": {
+        "projectIdOrKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_project__projectIdOrKey__type__newProjectTypeKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/{projectIdOrKey}/type/{newProjectTypeKey}",
+      "method": "put",
+      "path": {
+        "projectIdOrKey": "<string>",
+        "newProjectTypeKey": "software"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_project__projectIdOrKey__version": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/{projectIdOrKey}/version",
+      "method": "get",
+      "path": {
+        "projectIdOrKey": "<string>"
+      },
+      "query": {
+        "startAt": "<integer>",
+        "maxResults": 50,
+        "orderBy": "description",
+        "query": "<string>",
+        "status": "<string>",
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_project__projectIdOrKey__versions": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/{projectIdOrKey}/versions",
+      "method": "get",
+      "path": {
+        "projectIdOrKey": "<string>"
+      },
+      "query": {
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_project__projectId__hierarchy": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/{projectId}/hierarchy",
+      "method": "get",
+      "path": {
+        "projectId": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_project__projectKeyOrId__issuesecuritylevelscheme": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/{projectKeyOrId}/issuesecuritylevelscheme",
+      "method": "get",
+      "path": {
+        "projectKeyOrId": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_project__projectKeyOrId__notificationscheme": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/{projectKeyOrId}/notificationscheme",
+      "method": "get",
+      "path": {
+        "projectKeyOrId": "<string>"
+      },
+      "query": {
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_project__projectKeyOrId__permissionscheme": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/{projectKeyOrId}/permissionscheme",
+      "method": "get",
+      "path": {
+        "projectKeyOrId": "<string>"
+      },
+      "query": {
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_project__projectKeyOrId__permissionscheme": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/{projectKeyOrId}/permissionscheme",
+      "method": "put",
+      "path": {
+        "projectKeyOrId": "<string>"
+      },
+      "query": {
+        "expand": "<string>"
+      },
+      "data": {
+        "id": 10000
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_project__projectKeyOrId__securitylevel": {
+    "Basic Example": {
+      "url": "/rest/api/3/project/{projectKeyOrId}/securitylevel",
+      "method": "get",
+      "path": {
+        "projectKeyOrId": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_projectCategory": {
+    "Basic Example": {
+      "url": "/rest/api/3/projectCategory",
+      "method": "get",
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_projectCategory": {
+    "Basic Example": {
+      "url": "/rest/api/3/projectCategory",
+      "method": "post",
+      "data": {
+        "description": "Created Project Category",
+        "name": "CREATED"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_projectCategory__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/projectCategory/{id}",
+      "method": "get",
+      "path": {
+        "id": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_projectCategory__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/projectCategory/{id}",
+      "method": "delete",
+      "path": {
+        "id": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_projectCategory__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/projectCategory/{id}",
+      "method": "put",
+      "path": {
+        "id": "<integer>"
+      },
+      "data": {
+        "description": "Updated Project Category",
+        "name": "UPDATED"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_projectvalidate_key": {
+    "Basic Example": {
+      "url": "/rest/api/3/projectvalidate/key",
+      "method": "get",
+      "query": {
+        "key": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_projectvalidate_validProjectKey": {
+    "Basic Example": {
+      "url": "/rest/api/3/projectvalidate/validProjectKey",
+      "method": "get",
+      "query": {
+        "key": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_projectvalidate_validProjectName": {
+    "Basic Example": {
+      "url": "/rest/api/3/projectvalidate/validProjectName",
+      "method": "get",
+      "query": {
+        "name": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_resolution": {
+    "Basic Example": {
+      "url": "/rest/api/3/resolution",
+      "method": "get",
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_resolution__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/resolution/{id}",
+      "method": "get",
+      "path": {
+        "id": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_role": {
+    "Basic Example": {
+      "url": "/rest/api/3/role",
+      "method": "get",
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_role": {
+    "Basic Example": {
+      "url": "/rest/api/3/role",
+      "method": "post",
+      "data": {
+        "description": "A project role that represents developers in a project",
+        "name": "Developers"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_role__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/role/{id}",
+      "method": "get",
+      "path": {
+        "id": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_role__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/role/{id}",
+      "method": "post",
+      "path": {
+        "id": "<integer>"
+      },
+      "data": {
+        "description": "A project role that represents developers in a project",
+        "name": "Developers"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_role__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/role/{id}",
+      "method": "delete",
+      "path": {
+        "id": "<integer>"
+      },
+      "query": {
+        "swap": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_role__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/role/{id}",
+      "method": "put",
+      "path": {
+        "id": "<integer>"
+      },
+      "data": {
+        "description": "A project role that represents developers in a project",
+        "name": "Developers"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_role__id__actors": {
+    "Basic Example": {
+      "url": "/rest/api/3/role/{id}/actors",
+      "method": "get",
+      "path": {
+        "id": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_role__id__actors": {
+    "Basic Example": {
+      "url": "/rest/api/3/role/{id}/actors",
+      "method": "post",
+      "path": {
+        "id": "<integer>"
+      },
+      "data": {
+        "user": [
+          "admin"
+        ]
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_role__id__actors": {
+    "Basic Example": {
+      "url": "/rest/api/3/role/{id}/actors",
+      "method": "delete",
+      "path": {
+        "id": "<integer>"
+      },
+      "query": {
+        "user": "<string>",
+        "group": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_screens": {
+    "Basic Example": {
+      "url": "/rest/api/3/screens",
+      "method": "get",
+      "query": {
+        "startAt": "<integer>",
+        "maxResults": 100
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_screens_addToDefault__fieldId_": {
+    "Basic Example": {
+      "url": "/rest/api/3/screens/addToDefault/{fieldId}",
+      "method": "post",
+      "path": {
+        "fieldId": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_screens__screenId__availableFields": {
+    "Basic Example": {
+      "url": "/rest/api/3/screens/{screenId}/availableFields",
+      "method": "get",
+      "path": {
+        "screenId": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_screens__screenId__tabs": {
+    "Basic Example": {
+      "url": "/rest/api/3/screens/{screenId}/tabs",
+      "method": "get",
+      "path": {
+        "screenId": "<integer>"
+      },
+      "query": {
+        "projectKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_screens__screenId__tabs": {
+    "Basic Example": {
+      "url": "/rest/api/3/screens/{screenId}/tabs",
+      "method": "post",
+      "path": {
+        "screenId": "<integer>"
+      },
+      "data": {
+        "name": "Fields Tab"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_screens__screenId__tabs__tabId_": {
+    "Basic Example": {
+      "url": "/rest/api/3/screens/{screenId}/tabs/{tabId}",
+      "method": "delete",
+      "path": {
+        "screenId": "<integer>",
+        "tabId": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_screens__screenId__tabs__tabId_": {
+    "Basic Example": {
+      "url": "/rest/api/3/screens/{screenId}/tabs/{tabId}",
+      "method": "put",
+      "path": {
+        "screenId": "<integer>",
+        "tabId": "<integer>"
+      },
+      "data": {
+        "name": "",
+        "id": 0
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_screens__screenId__tabs__tabId__fields": {
+    "Basic Example": {
+      "url": "/rest/api/3/screens/{screenId}/tabs/{tabId}/fields",
+      "method": "get",
+      "path": {
+        "screenId": "<integer>",
+        "tabId": "<integer>"
+      },
+      "query": {
+        "projectKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_screens__screenId__tabs__tabId__fields": {
+    "Basic Example": {
+      "url": "/rest/api/3/screens/{screenId}/tabs/{tabId}/fields",
+      "method": "post",
+      "path": {
+        "screenId": "<integer>",
+        "tabId": "<integer>"
+      },
+      "data": {
+        "fieldId": "summary"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_screens__screenId__tabs__tabId__fields__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/screens/{screenId}/tabs/{tabId}/fields/{id}",
+      "method": "delete",
+      "path": {
+        "screenId": "<integer>",
+        "tabId": "<integer>",
+        "id": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_screens__screenId__tabs__tabId__fields__id__move": {
+    "Basic Example": {
+      "url": "/rest/api/3/screens/{screenId}/tabs/{tabId}/fields/{id}/move",
+      "method": "post",
+      "path": {
+        "screenId": "<integer>",
+        "tabId": "<integer>",
+        "id": "<string>"
+      },
+      "data": {
+        "after": "https://example.com",
+        "position": "Earlier"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_screens__screenId__tabs__tabId__move__pos_": {
+    "Basic Example": {
+      "url": "/rest/api/3/screens/{screenId}/tabs/{tabId}/move/{pos}",
+      "method": "post",
+      "path": {
+        "screenId": "<integer>",
+        "tabId": "<integer>",
+        "pos": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_search": {
+    "Basic Example": {
+      "url": "/rest/api/3/search",
+      "method": "get",
+      "query": {
+        "jql": "<string>",
+        "startAt": "<integer>",
+        "maxResults": 50,
+        "validateQuery": "strict",
+        "fields": "<array>",
+        "expand": "<string>",
+        "properties": "<array>",
+        "fieldsByKeys": "<boolean>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_search": {
+    "Basic Example": {
+      "url": "/rest/api/3/search",
+      "method": "post",
+      "data": {
+        "expand": [
+          "names",
+          "schema",
+          "operations"
+        ],
+        "fields": [
+          "summary",
+          "status",
+          "assignee"
+        ],
+        "fieldsByKeys": false,
+        "jql": "project = HSP",
+        "maxResults": 15,
+        "startAt": 0
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_securitylevel__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/securitylevel/{id}",
+      "method": "get",
+      "path": {
+        "id": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_serverInfo": {
+    "Basic Example": {
+      "url": "/rest/api/3/serverInfo",
+      "method": "get",
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_settings_columns": {
+    "Basic Example": {
+      "url": "/rest/api/3/settings/columns",
+      "method": "get",
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_settings_columns": {
+    "Basic Example": {
+      "url": "/rest/api/3/settings/columns",
+      "method": "put",
+      "data": [
+        ""
+      ],
+      "headers": {
+        "Content-Type": "*/*"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_status": {
+    "Basic Example": {
+      "url": "/rest/api/3/status",
+      "method": "get",
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_status__idOrName_": {
+    "Basic Example": {
+      "url": "/rest/api/3/status/{idOrName}",
+      "method": "get",
+      "path": {
+        "idOrName": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_statuscategory": {
+    "Basic Example": {
+      "url": "/rest/api/3/statuscategory",
+      "method": "get",
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_statuscategory__idOrKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/statuscategory/{idOrKey}",
+      "method": "get",
+      "path": {
+        "idOrKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_task__taskId_": {
+    "Basic Example": {
+      "url": "/rest/api/3/task/{taskId}",
+      "method": "get",
+      "path": {
+        "taskId": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_task__taskId__cancel": {
+    "Basic Example": {
+      "url": "/rest/api/3/task/{taskId}/cancel",
+      "method": "post",
+      "path": {
+        "taskId": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_universal_avatar_type__type__owner__entityId_": {
+    "Basic Example": {
+      "url": "/rest/api/3/universal_avatar/type/{type}/owner/{entityId}",
+      "method": "get",
+      "path": {
+        "type": "<string>",
+        "entityId": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_universal_avatar_type__type__owner__entityId_": {
+    "Basic Example": {
+      "url": "/rest/api/3/universal_avatar/type/{type}/owner/{entityId}",
+      "method": "post",
+      "path": {
+        "type": "<string>",
+        "entityId": "<string>"
+      },
+      "query": {
+        "x": "<integer>",
+        "y": "<integer>",
+        "size": "<integer>"
+      },
+      "data": {},
+      "headers": {
+        "Content-Type": "*/*"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_universal_avatar_type__type__owner__owningObjectId__avatar__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/universal_avatar/type/{type}/owner/{owningObjectId}/avatar/{id}",
+      "method": "delete",
+      "path": {
+        "type": "<string>",
+        "owningObjectId": "<string>",
+        "id": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_user": {
+    "Basic Example": {
+      "url": "/rest/api/3/user",
+      "method": "get",
+      "query": {
+        "accountId": "<string>",
+        "username": "<string>",
+        "key": "<string>",
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_user": {
+    "Basic Example": {
+      "url": "/rest/api/3/user",
+      "method": "post",
+      "data": {
+        "displayName": "Mia Krystof",
+        "emailAddress": "mia@atlassian.com",
+        "name": "",
+        "password": "abracadabra"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_user": {
+    "Basic Example": {
+      "url": "/rest/api/3/user",
+      "method": "delete",
+      "query": {
+        "accountId": "<string>",
+        "username": "<string>",
+        "key": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_user_assignable_multiProjectSearch": {
+    "Basic Example": {
+      "url": "/rest/api/3/user/assignable/multiProjectSearch",
+      "method": "get",
+      "query": {
+        "query": "<string>",
+        "username": "<string>",
+        "accountId": "<string>",
+        "projectKeys": "<string>",
+        "startAt": "<integer>",
+        "maxResults": 50
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_user_assignable_search": {
+    "Basic Example": {
+      "url": "/rest/api/3/user/assignable/search",
+      "method": "get",
+      "query": {
+        "query": "<string>",
+        "sessionId": "<string>",
+        "username": "<string>",
+        "accountId": "<string>",
+        "project": "<string>",
+        "issueKey": "<string>",
+        "startAt": "<integer>",
+        "maxResults": 50,
+        "actionDescriptorId": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_user_bulk": {
+    "Basic Example": {
+      "url": "/rest/api/3/user/bulk",
+      "method": "get",
+      "query": {
+        "startAt": "<integer>",
+        "maxResults": 10,
+        "username": "<array>",
+        "key": "<array>",
+        "accountId": "<array>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_user_bulk_migration": {
+    "Basic Example": {
+      "url": "/rest/api/3/user/bulk/migration",
+      "method": "get",
+      "query": {
+        "startAt": "<integer>",
+        "maxResults": 10,
+        "username": "<array>",
+        "key": "<array>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_user_columns": {
+    "Basic Example": {
+      "url": "/rest/api/3/user/columns",
+      "method": "get",
+      "query": {
+        "accountId": "<string>",
+        "username": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_user_columns": {
+    "Basic Example": {
+      "url": "/rest/api/3/user/columns",
+      "method": "delete",
+      "query": {
+        "accountId": "<string>",
+        "username": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_user_columns": {
+    "Basic Example": {
+      "url": "/rest/api/3/user/columns",
+      "method": "put",
+      "query": {
+        "accountId": "<string>"
+      },
+      "data": [
+        ""
+      ],
+      "headers": {
+        "Content-Type": "*/*"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_user_email": {
+    "Basic Example": {
+      "url": "/rest/api/3/user/email",
+      "method": "get",
+      "query": {
+        "accountId": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_user_email_bulk": {
+    "Basic Example": {
+      "url": "/rest/api/3/user/email/bulk",
+      "method": "get",
+      "query": {
+        "accountId": "<array>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_user_groups": {
+    "Basic Example": {
+      "url": "/rest/api/3/user/groups",
+      "method": "get",
+      "query": {
+        "accountId": "<string>",
+        "username": "<string>",
+        "key": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_user_permission_search": {
+    "Basic Example": {
+      "url": "/rest/api/3/user/permission/search",
+      "method": "get",
+      "query": {
+        "query": "<string>",
+        "username": "<string>",
+        "accountId": "<string>",
+        "permissions": "<string>",
+        "issueKey": "<string>",
+        "projectKey": "<string>",
+        "startAt": "<integer>",
+        "maxResults": 50
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_user_picker": {
+    "Basic Example": {
+      "url": "/rest/api/3/user/picker",
+      "method": "get",
+      "query": {
+        "query": "<string>",
+        "maxResults": 50,
+        "showAvatar": "<boolean>",
+        "exclude": "<array>",
+        "excludeAccountIds": "<array>",
+        "avatarSize": "<string>",
+        "excludeConnectUsers": "<boolean>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_user_properties": {
+    "Basic Example": {
+      "url": "/rest/api/3/user/properties",
+      "method": "get",
+      "query": {
+        "accountId": "<string>",
+        "userKey": "<string>",
+        "username": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_user_properties__propertyKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/user/properties/{propertyKey}",
+      "method": "get",
+      "query": {
+        "accountId": "<string>",
+        "userKey": "<string>",
+        "username": "<string>"
+      },
+      "path": {
+        "propertyKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_user_properties__propertyKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/user/properties/{propertyKey}",
+      "method": "delete",
+      "query": {
+        "accountId": "<string>",
+        "userKey": "<string>",
+        "username": "<string>"
+      },
+      "path": {
+        "propertyKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_user_properties__propertyKey_": {
+    "Basic Example": {
+      "url": "/rest/api/3/user/properties/{propertyKey}",
+      "method": "put",
+      "query": {
+        "accountId": "<string>",
+        "userKey": "<string>",
+        "username": "<string>"
+      },
+      "path": {
+        "propertyKey": "<string>"
+      },
+      "data": {},
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_user_search": {
+    "Basic Example": {
+      "url": "/rest/api/3/user/search",
+      "method": "get",
+      "query": {
+        "query": "<string>",
+        "username": "<string>",
+        "accountId": "<string>",
+        "startAt": "<integer>",
+        "maxResults": 50,
+        "property": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_user_search_query": {
+    "Basic Example": {
+      "url": "/rest/api/3/user/search/query",
+      "method": "get",
+      "query": {
+        "query": "<string>",
+        "startAt": "<integer>",
+        "maxResults": 100
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_user_search_query_key": {
+    "Basic Example": {
+      "url": "/rest/api/3/user/search/query/key",
+      "method": "get",
+      "query": {
+        "query": "<string>",
+        "startAt": "<integer>",
+        "maxResults": 100
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_user_viewissue_search": {
+    "Basic Example": {
+      "url": "/rest/api/3/user/viewissue/search",
+      "method": "get",
+      "query": {
+        "query": "<string>",
+        "username": "<string>",
+        "accountId": "<string>",
+        "issueKey": "<string>",
+        "projectKey": "<string>",
+        "startAt": "<integer>",
+        "maxResults": 50
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_users_search": {
+    "Basic Example": {
+      "url": "/rest/api/3/users/search",
+      "method": "get",
+      "query": {
+        "startAt": "<integer>",
+        "maxResults": 50
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_version": {
+    "Basic Example": {
+      "url": "/rest/api/3/version",
+      "method": "post",
+      "data": {
+        "archived": false,
+        "description": "An excellent version",
+        "name": "New Version 1",
+        "projectId": 10000,
+        "releaseDate": "2010-07-06T00:00:00.000Z",
+        "released": true
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_version__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/version/{id}",
+      "method": "get",
+      "path": {
+        "id": "<string>"
+      },
+      "query": {
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_version__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/version/{id}",
+      "method": "delete",
+      "path": {
+        "id": "<string>"
+      },
+      "query": {
+        "moveFixIssuesTo": "<string>",
+        "moveAffectedIssuesTo": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_version__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/version/{id}",
+      "method": "put",
+      "path": {
+        "id": "<string>"
+      },
+      "data": {
+        "archived": false,
+        "description": "An excellent version",
+        "id": "10000",
+        "name": "New Version 1",
+        "overdue": true,
+        "projectId": 10000,
+        "releaseDate": "2010-07-06T00:00:00.000Z",
+        "released": true,
+        "self": "http://your-domain.atlassian.net/rest/api/~ver~/version/10000",
+        "userReleaseDate": "6/Jul/2010"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_version__id__mergeto__moveIssuesTo_": {
+    "Basic Example": {
+      "url": "/rest/api/3/version/{id}/mergeto/{moveIssuesTo}",
+      "method": "put",
+      "path": {
+        "id": "<string>",
+        "moveIssuesTo": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_version__id__move": {
+    "Basic Example": {
+      "url": "/rest/api/3/version/{id}/move",
+      "method": "post",
+      "path": {
+        "id": "<string>"
+      },
+      "data": {
+        "after": "http://your-domain.atlassian.net/rest/api/~ver~/version/10000"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_version__id__relatedIssueCounts": {
+    "Basic Example": {
+      "url": "/rest/api/3/version/{id}/relatedIssueCounts",
+      "method": "get",
+      "path": {
+        "id": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_version__id__removeAndSwap": {
+    "Basic Example": {
+      "url": "/rest/api/3/version/{id}/removeAndSwap",
+      "method": "post",
+      "path": {
+        "id": "<string>"
+      },
+      "data": {
+        "customFieldReplacementList": [
+          {
+            "customFieldId": 0,
+            "moveTo": 0
+          }
+        ],
+        "moveAffectedIssuesTo": 0,
+        "moveFixIssuesTo": 0
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_version__id__unresolvedIssueCount": {
+    "Basic Example": {
+      "url": "/rest/api/3/version/{id}/unresolvedIssueCount",
+      "method": "get",
+      "path": {
+        "id": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_webhook": {
+    "Basic Example": {
+      "url": "/rest/api/3/webhook",
+      "method": "get",
+      "query": {
+        "startAt": "<integer>",
+        "maxResults": 100
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_webhook": {
+    "Basic Example": {
+      "url": "/rest/api/3/webhook",
+      "method": "post",
+      "data": {
+        "url": "https://your-app.example.com/webhook-received",
+        "webhooks": [
+          {
+            "events": [
+              "jira:issue_created",
+              "jira:issue_updated"
+            ],
+            "jqlFilter": "project = PROJ"
+          },
+          {
+            "events": [
+              "jira:issue_deleted"
+            ],
+            "jqlFilter": "project IN (PROJ, EXP) AND status = done"
+          }
+        ]
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_webhook": {
+    "Basic Example": {
+      "url": "/rest/api/3/webhook",
+      "method": "delete",
+      "data": {
+        "webhookIds": [
+          10000,
+          10001,
+          10042
+        ]
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_webhook_refresh": {
+    "Basic Example": {
+      "url": "/rest/api/3/webhook/refresh",
+      "method": "put",
+      "data": {
+        "webhookIds": [
+          10000,
+          10001,
+          10042
+        ]
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_workflow": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflow",
+      "method": "get",
+      "query": {
+        "workflowName": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_workflow_rule_config": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflow/rule/config",
+      "method": "get",
+      "query": {
+        "startAt": "<integer>",
+        "maxResults": 10,
+        "types": "<array>",
+        "keys": "<array>",
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_workflow_rule_config": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflow/rule/config",
+      "method": "put",
+      "data": {
+        "workflows": [
+          {
+            "conditions": [
+              {
+                "configuration": {
+                  "value": "{ \"size\": \"medium\" }"
+                },
+                "id": "d663bd873d93-59f5-11e9-8647-b4d6cbdc"
+              }
+            ],
+            "postFunctions": [
+              {
+                "configuration": {
+                  "value": "{ \"color\": \"red\" }"
+                },
+                "id": "b4d6cbdc-59f5-11e9-8647-d663bd873d93"
+              }
+            ],
+            "validators": [
+              {
+                "configuration": {
+                  "value": "{ \"shape\": \"square\" }"
+                },
+                "id": "11e9-59f5-b4d6cbdc-8647-d663bd873d93"
+              }
+            ],
+            "workflowId": {
+              "draft": false,
+              "name": "My Workflow name"
+            }
+          }
+        ]
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_workflow_search": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflow/search",
+      "method": "get",
+      "query": {
+        "startAt": "<integer>",
+        "maxResults": 50,
+        "workflowName": "<array>",
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_workflow_transitions__transitionId__properties": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflow/transitions/{transitionId}/properties",
+      "method": "get",
+      "path": {
+        "transitionId": "<integer>"
+      },
+      "query": {
+        "includeReservedKeys": "<boolean>",
+        "key": "<string>",
+        "workflowName": "<string>",
+        "workflowMode": "live"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_workflow_transitions__transitionId__properties": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflow/transitions/{transitionId}/properties",
+      "method": "post",
+      "path": {
+        "transitionId": "<integer>"
+      },
+      "query": {
+        "key": "<string>",
+        "workflowName": "<string>",
+        "workflowMode": "live"
+      },
+      "data": {
+        "value": "createissue"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_workflow_transitions__transitionId__properties": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflow/transitions/{transitionId}/properties",
+      "method": "delete",
+      "path": {
+        "transitionId": "<integer>"
+      },
+      "query": {
+        "key": "<string>",
+        "workflowName": "<string>",
+        "workflowMode": "live"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_workflow_transitions__transitionId__properties": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflow/transitions/{transitionId}/properties",
+      "method": "put",
+      "path": {
+        "transitionId": "<integer>"
+      },
+      "query": {
+        "key": "<string>",
+        "workflowName": "<string>",
+        "workflowMode": "live"
+      },
+      "data": {
+        "value": "createissue"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_workflowscheme": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflowscheme",
+      "method": "post",
+      "data": {
+        "defaultWorkflow": "jira",
+        "description": "The description of the example workflow scheme.",
+        "issueTypeMappings": {
+          "10000": "scrum workflow",
+          "10001": "builds workflow"
+        },
+        "name": "Example workflow scheme"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_workflowscheme_project": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflowscheme/project",
+      "method": "get",
+      "query": {
+        "projectId": "<array>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_workflowscheme__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflowscheme/{id}",
+      "method": "get",
+      "path": {
+        "id": "<integer>"
+      },
+      "query": {
+        "returnDraftIfExists": "<boolean>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_workflowscheme__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflowscheme/{id}",
+      "method": "delete",
+      "path": {
+        "id": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_workflowscheme__id_": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflowscheme/{id}",
+      "method": "put",
+      "path": {
+        "id": "<integer>"
+      },
+      "data": {
+        "defaultWorkflow": "jira",
+        "description": "The description of the example workflow scheme.",
+        "issueTypeMappings": {
+          "10000": "scrum workflow"
+        },
+        "name": "Example workflow scheme",
+        "updateDraftIfNeeded": false
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_workflowscheme__id__createdraft": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflowscheme/{id}/createdraft",
+      "method": "post",
+      "path": {
+        "id": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_workflowscheme__id__default": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflowscheme/{id}/default",
+      "method": "get",
+      "path": {
+        "id": "<integer>"
+      },
+      "query": {
+        "returnDraftIfExists": "<boolean>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_workflowscheme__id__default": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflowscheme/{id}/default",
+      "method": "delete",
+      "path": {
+        "id": "<integer>"
+      },
+      "query": {
+        "updateDraftIfNeeded": "<boolean>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_workflowscheme__id__default": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflowscheme/{id}/default",
+      "method": "put",
+      "path": {
+        "id": "<integer>"
+      },
+      "data": {
+        "updateDraftIfNeeded": false,
+        "workflow": "jira"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_workflowscheme__id__draft": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflowscheme/{id}/draft",
+      "method": "get",
+      "path": {
+        "id": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_workflowscheme__id__draft": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflowscheme/{id}/draft",
+      "method": "delete",
+      "path": {
+        "id": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_workflowscheme__id__draft": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflowscheme/{id}/draft",
+      "method": "put",
+      "path": {
+        "id": "<integer>"
+      },
+      "data": {
+        "defaultWorkflow": "jira",
+        "description": "The description of the example workflow scheme.",
+        "issueTypeMappings": {
+          "10000": "scrum workflow"
+        },
+        "name": "Example workflow scheme",
+        "updateDraftIfNeeded": false
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_workflowscheme__id__draft_default": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflowscheme/{id}/draft/default",
+      "method": "get",
+      "path": {
+        "id": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_workflowscheme__id__draft_default": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflowscheme/{id}/draft/default",
+      "method": "delete",
+      "path": {
+        "id": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_workflowscheme__id__draft_default": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflowscheme/{id}/draft/default",
+      "method": "put",
+      "path": {
+        "id": "<integer>"
+      },
+      "data": {
+        "updateDraftIfNeeded": false,
+        "workflow": "jira"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_workflowscheme__id__draft_issuetype__issueType_": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflowscheme/{id}/draft/issuetype/{issueType}",
+      "method": "get",
+      "path": {
+        "id": "<integer>",
+        "issueType": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_workflowscheme__id__draft_issuetype__issueType_": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflowscheme/{id}/draft/issuetype/{issueType}",
+      "method": "delete",
+      "path": {
+        "id": "<integer>",
+        "issueType": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_workflowscheme__id__draft_issuetype__issueType_": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflowscheme/{id}/draft/issuetype/{issueType}",
+      "method": "put",
+      "path": {
+        "id": "<integer>",
+        "issueType": "<string>"
+      },
+      "data": {
+        "issueType": "10000",
+        "updateDraftIfNeeded": false,
+        "workflow": "jira"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_workflowscheme__id__draft_workflow": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflowscheme/{id}/draft/workflow",
+      "method": "get",
+      "path": {
+        "id": "<integer>"
+      },
+      "query": {
+        "workflowName": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_workflowscheme__id__draft_workflow": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflowscheme/{id}/draft/workflow",
+      "method": "delete",
+      "path": {
+        "id": "<integer>"
+      },
+      "query": {
+        "workflowName": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_workflowscheme__id__draft_workflow": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflowscheme/{id}/draft/workflow",
+      "method": "put",
+      "path": {
+        "id": "<integer>"
+      },
+      "query": {
+        "workflowName": "<string>"
+      },
+      "data": {
+        "issueTypes": [
+          "10000"
+        ],
+        "updateDraftIfNeeded": true,
+        "workflow": "jira"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_workflowscheme__id__issuetype__issueType_": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflowscheme/{id}/issuetype/{issueType}",
+      "method": "get",
+      "path": {
+        "id": "<integer>",
+        "issueType": "<string>"
+      },
+      "query": {
+        "returnDraftIfExists": "<boolean>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_workflowscheme__id__issuetype__issueType_": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflowscheme/{id}/issuetype/{issueType}",
+      "method": "delete",
+      "path": {
+        "id": "<integer>",
+        "issueType": "<string>"
+      },
+      "query": {
+        "updateDraftIfNeeded": "<boolean>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_workflowscheme__id__issuetype__issueType_": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflowscheme/{id}/issuetype/{issueType}",
+      "method": "put",
+      "path": {
+        "id": "<integer>",
+        "issueType": "<string>"
+      },
+      "data": {
+        "issueType": "10000",
+        "updateDraftIfNeeded": false,
+        "workflow": "jira"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_workflowscheme__id__workflow": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflowscheme/{id}/workflow",
+      "method": "get",
+      "path": {
+        "id": "<integer>"
+      },
+      "query": {
+        "workflowName": "<string>",
+        "returnDraftIfExists": "<boolean>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_api_3_workflowscheme__id__workflow": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflowscheme/{id}/workflow",
+      "method": "delete",
+      "path": {
+        "id": "<integer>"
+      },
+      "query": {
+        "workflowName": "<string>",
+        "updateDraftIfNeeded": "<boolean>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_api_3_workflowscheme__id__workflow": {
+    "Basic Example": {
+      "url": "/rest/api/3/workflowscheme/{id}/workflow",
+      "method": "put",
+      "path": {
+        "id": "<integer>"
+      },
+      "query": {
+        "workflowName": "<string>"
+      },
+      "data": {
+        "issueTypes": [
+          "10000"
+        ],
+        "updateDraftIfNeeded": true,
+        "workflow": "jira"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_worklog_deleted": {
+    "Basic Example": {
+      "url": "/rest/api/3/worklog/deleted",
+      "method": "get",
+      "query": {
+        "since": "<integer>"
+      },
+      "baseURL": ""
+    }
+  },
+  "post_rest_api_3_worklog_list": {
+    "Basic Example": {
+      "url": "/rest/api/3/worklog/list",
+      "method": "post",
+      "query": {
+        "expand": "<string>"
+      },
+      "data": {
+        "ids": [
+          1,
+          2,
+          5,
+          10
+        ]
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_api_3_worklog_updated": {
+    "Basic Example": {
+      "url": "/rest/api/3/worklog/updated",
+      "method": "get",
+      "query": {
+        "since": "<integer>",
+        "expand": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_atlassian-connect_1_addons__addonKey__properties": {
+    "Basic Example": {
+      "url": "/rest/atlassian-connect/1/addons/{addonKey}/properties",
+      "method": "get",
+      "path": {
+        "addonKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_atlassian-connect_1_addons__addonKey__properties__propertyKey_": {
+    "Basic Example": {
+      "url": "/rest/atlassian-connect/1/addons/{addonKey}/properties/{propertyKey}",
+      "method": "get",
+      "path": {
+        "addonKey": "<string>",
+        "propertyKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_atlassian-connect_1_addons__addonKey__properties__propertyKey_": {
+    "Basic Example": {
+      "url": "/rest/atlassian-connect/1/addons/{addonKey}/properties/{propertyKey}",
+      "method": "delete",
+      "path": {
+        "addonKey": "<string>",
+        "propertyKey": "<string>"
+      },
+      "baseURL": ""
+    }
+  },
+  "put_rest_atlassian-connect_1_addons__addonKey__properties__propertyKey_": {
+    "Basic Example": {
+      "url": "/rest/atlassian-connect/1/addons/{addonKey}/properties/{propertyKey}",
+      "method": "put",
+      "path": {
+        "addonKey": "<string>",
+        "propertyKey": "<string>"
+      },
+      "data": {},
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "get_rest_atlassian-connect_1_app_module_dynamic": {
+    "Basic Example": {
+      "url": "/rest/atlassian-connect/1/app/module/dynamic",
+      "method": "get",
+      "baseURL": ""
+    }
+  },
+  "post_rest_atlassian-connect_1_app_module_dynamic": {
+    "Basic Example": {
+      "url": "/rest/atlassian-connect/1/app/module/dynamic",
+      "method": "post",
+      "data": {
+        "jiraEntityProperties": [
+          {
+            "entityType": "issue",
+            "key": "dynamic-attachment-entity-property",
+            "keyConfigurations": [
+              {
+                "extractions": [
+                  {
+                    "alias": "attachmentExtension",
+                    "objectName": "extension",
+                    "type": "text"
+                  }
+                ],
+                "propertyKey": "attachment"
+              }
+            ],
+            "name": {
+              "value": "Attachment Index Document"
+            }
+          }
+        ],
+        "jiraIssueFields": [
+          {
+            "description": {
+              "value": "A dynamically added single-select field"
+            },
+            "extractions": [
+              {
+                "name": "categoryName",
+                "path": "category",
+                "type": "text"
+              }
+            ],
+            "key": "dynamic-select-field",
+            "name": {
+              "value": "Dynamic single select"
+            },
+            "type": "single_select"
+          }
+        ]
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": ""
+    }
+  },
+  "delete_rest_atlassian-connect_1_app_module_dynamic": {
+    "Basic Example": {
+      "url": "/rest/atlassian-connect/1/app/module/dynamic",
+      "method": "delete",
+      "query": {
+        "moduleKey": "<array>"
+      },
+      "baseURL": ""
+    }
+  }
+}

@@ -8,6 +8,14 @@
     ]
   },
   {
+    "name": "Jira",
+    "note": "Issue & Project Tracking - Jira API",
+    "folder": "jira",
+    "categories": [
+      "project-management"
+    ]
+  },
+  {
     "name": "Slack",
     "note": "Manage messages,users,and channels in Slack programmatically.",
     "folder": "slack",
@@ -246,7 +254,8 @@
     "name": "PayPal Billing Subscriptions",
     "note": "Create subscriptions that process recurring PayPal payments",
     "categories": [
-      "payment", "billing"
+      "payment",
+      "billing"
     ]
   },
   {
@@ -255,7 +264,8 @@
     "name": "PayPal Catalogs Products",
     "note": "Create products, which are goods and services.",
     "categories": [
-      "payment", "catalog"
+      "payment",
+      "catalog"
     ]
   },
   {
@@ -264,7 +274,8 @@
     "name": "PayPal Checkout Orders",
     "note": "Create, update, retrieve, authorize, and capture orders.",
     "categories": [
-      "payment", "checkout"
+      "payment",
+      "checkout"
     ]
   },
   {
@@ -273,7 +284,8 @@
     "name": "PayPal Customer Disputes",
     "note": "Manage Customer Disputes",
     "categories": [
-      "payment", "disputes"
+      "payment",
+      "disputes"
     ]
   },
   {
@@ -282,7 +294,8 @@
     "name": "PayPal Customer Partner Referrals",
     "note": "Add PayPal seller accounts to PayPal Complete Payments Platform",
     "categories": [
-      "payment", "referral"
+      "payment",
+      "referral"
     ]
   },
   {
@@ -291,7 +304,8 @@
     "name": "PayPal Invoicing",
     "note": "Manage invoicing",
     "categories": [
-      "payment", "invoicing"
+      "payment",
+      "invoicing"
     ]
   },
   {
@@ -327,7 +341,8 @@
     "name": "PayPal Reporting Transactions",
     "note": "Get the history of transactions for a PayPal account",
     "categories": [
-      "payment", "reporting"
+      "payment",
+      "reporting"
     ]
   },
   {
