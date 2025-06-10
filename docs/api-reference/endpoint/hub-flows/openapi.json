@@ -207,7 +207,7 @@
       "parameters": [
         {
           "name": "collection_type",
-          "in": "query",
+          "in": "path",
           "description": "List only 'node' or only 'workflow' collections. If this parameter is omitted, both will be listed",
           "required": false,
           "schema": {
@@ -1555,6 +1555,28 @@
       }
     },
     "/hub/workflows/{collection_topic}/{flow_topic}/run": {
+      "parameters": [
+        {
+          "name": "collection_topic",
+          "in": "path",
+          "description": "Collection topic",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "234234234"
+        },
+        {
+          "name": "flow_topic",
+          "in": "path",
+          "description": "Flow topic - hash of the names the node was created with",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "21312322"
+        }
+      ],
       "post": {
         "tags": [
           "Workflows"
@@ -2199,6 +2221,14 @@
   },
   "components": {
     "schemas": {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          }
+        }
+      },
       "CreateCollectionRequest": {
         "type": "object",
         "required": [
