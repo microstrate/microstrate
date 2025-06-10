@@ -217,6 +217,393 @@
           "role"
         ]
       },
+      "AuthWithApiKeyRequest": {
+        "type": "object",
+        "properties": {
+          "api_key": {
+            "type": "string",
+            "description": "Api key"
+          }
+        },
+        "required": [
+          "api_key"
+        ]
+      },
+      "CompleteAuthWithPasskeyRequest": {
+        "type": "object",
+        "properties": {
+          "account": {
+            "type": "string",
+            "description": "Account name"
+          },
+          "token": {
+            "type": "string",
+            "description": "MFA token"
+          },
+          "credential": {
+            "type": "string",
+            "description": "WebAuthn credential"
+          },
+          "email": {
+            "type": "string",
+            "description": "User email"
+          }
+        },
+        "required": [
+          "credential"
+        ]
+      },
+      "WebAuthCredentialAlias": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Credential ID (base64 encoded)"
+          },
+          "alias": {
+            "type": "string",
+            "description": "User-friendly name"
+          },
+          "created_on": {
+            "type": "string",
+            "description": "Creation date"
+          }
+        },
+        "required": [
+          "id",
+          "alias",
+          "created_on"
+        ]
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "required": [
+          "error",
+          "message"
+        ],
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          }
+        }
+      },
+      "StripePrice": {
+        "type": "object",
+        "required": [
+          "id",
+          "currency",
+          "unit_amount",
+          "amount"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Price ID"
+          },
+          "currency": {
+            "type": "string",
+            "description": "Currency"
+          },
+          "lookup_key": {
+            "type": "string",
+            "description": "Lookup key"
+          },
+          "nickname": {
+            "type": "string",
+            "description": "Nickname"
+          },
+          "unit_amount": {
+            "type": "number",
+            "description": "Unit amount in cents"
+          },
+          "amount": {
+            "type": "number",
+            "description": "Amount in currency units"
+          },
+          "metadata": {
+            "type": "object",
+            "description": "Metadata"
+          }
+        }
+      },
+      "StripeProduct": {
+        "type": "object",
+        "required": [
+          "id",
+          "name"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Product ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Product name"
+          },
+          "marketing_features": {
+            "type": "array",
+            "description": "Marketing features"
+          },
+          "description": {
+            "type": "string",
+            "description": "Product description"
+          },
+          "price": {
+            "$ref": "#/components/schemas/StripePrice",
+            "description": "Default price"
+          },
+          "metadata": {
+            "type": "object",
+            "description": "Metadata"
+          }
+        }
+      },
+      "SubItem": {
+        "type": "object",
+        "required": [
+          "quantity"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Subscription item ID"
+          },
+          "quantity": {
+            "type": "number",
+            "description": "Quantity"
+          },
+          "price": {
+            "type": "string",
+            "description": "Price ID"
+          }
+        }
+      },
+      "SubscriptionItem": {
+        "type": "object",
+        "required": [
+          "id",
+          "quantity",
+          "price"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Subscription item ID"
+          },
+          "quantity": {
+            "type": "number",
+            "description": "Quantity"
+          },
+          "price": {
+            "$ref": "#/components/schemas/StripePrice",
+            "description": "Price"
+          }
+        }
+      },
+      "SessionObject": {
+        "type": "object",
+        "required": [
+          "account_id",
+          "user_id",
+          "account",
+          "role",
+          "expiry",
+          "ip",
+          "agent",
+          "platform",
+          "token",
+          "refresh_token",
+          "is_suspended",
+          "location"
+        ],
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "description": "Account ID"
+          },
+          "user_id": {
+            "type": "string",
+            "description": "User ID"
+          },
+          "account": {
+            "type": "string",
+            "description": "Account name"
+          },
+          "email": {
+            "type": "string",
+            "description": "User email"
+          },
+          "role": {
+            "type": "string",
+            "description": "User role"
+          },
+          "expiry": {
+            "type": "number",
+            "description": "Subscription"
+          },
+          "ip": {
+            "type": "string",
+            "description": "IP address"
+          },
+          "agent": {
+            "type": "string",
+            "description": "User agent"
+          },
+          "platform": {
+            "type": "string",
+            "description": "Platform"
+          },
+          "token": {
+            "type": "string",
+            "description": "Authentication token"
+          },
+          "refresh_token": {
+            "type": "string",
+            "description": "Refresh token"
+          },
+          "is_suspended": {
+            "type": "boolean",
+            "description": "Whether the user is suspended"
+          },
+          "location": {
+            "type": "string",
+            "description": "Location"
+          }
+        }
+      },
+      "UpdateUserRequest": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "User email (optional, defaults to current user)"
+          },
+          "first_name": {
+            "type": "string",
+            "description": "First name"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "Last name"
+          },
+          "sound": {
+            "type": "boolean",
+            "description": "Enable sound"
+          },
+          "theme": {
+            "type": "string",
+            "description": "UI theme (light, dark, auto)"
+          },
+          "totp_enabled": {
+            "type": "boolean",
+            "description": "Enable TOTP authentication"
+          },
+          "passkey_enabled": {
+            "type": "boolean",
+            "description": "Enable passkey authentication"
+          }
+        }
+      },
+      "MfaInfo": {
+        "type": "object",
+        "required": [
+          "passkey_enabled",
+          "totp_enabled"
+        ],
+        "properties": {
+          "passkey_enabled": {
+            "type": "boolean",
+            "description": "Whether passkey authentication is enabled"
+          },
+          "totp_enabled": {
+            "type": "boolean",
+            "description": "Whether TOTP authentication is enabled"
+          }
+        }
+      },
+      "UserInfo": {
+        "type": "object",
+        "required": [
+          "email",
+          "role",
+          "is_suspended",
+          "email_confirmed",
+          "first_name",
+          "last_name",
+          "invitation_pending"
+        ],
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "User email"
+          },
+          "role": {
+            "type": "string",
+            "description": "Role"
+          },
+          "is_suspended": {
+            "type": "boolean",
+            "description": "Whether the user is suspended"
+          },
+          "email_confirmed": {
+            "type": "boolean",
+            "description": "Whether the email is confirmed"
+          },
+          "first_name": {
+            "type": "string",
+            "description": "First name"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "Last name"
+          },
+          "invitation_pending": {
+            "type": "boolean",
+            "description": "Whether the invitation is pending"
+          }
+        }
+      },
+      "CheckoutURLRequest": {
+        "type": "object",
+        "required": [
+          "base_subscription",
+          "message"
+        ],
+        "properties": {
+          "base_subscription": {
+            "type": "string",
+            "description": "Base subscription price ID"
+          },
+          "addons": {
+            "type": "array",
+            "description": "Subscription addons",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "type",
+                "quantity"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "Addon price ID"
+                },
+                "type": {
+                  "type": "string",
+                  "description": "Addon type"
+                },
+                "quantity": {
+                  "type": "number",
+                  "description": "Quantity"
+                }
+              }
+            }
+          }
+        }
+      },
       "MeshNode": {
         "type": "object",
         "properties": {
