@@ -1352,7 +1352,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AccountPublicInfo"
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/AccountPublicInfo"
+                    }
+                  }
                 }
               }
             }
