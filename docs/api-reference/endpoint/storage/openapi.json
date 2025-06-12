@@ -11,8 +11,12 @@
   },
   "servers": [
     {
+      "url": "https://api.staging.microstrate.io",
+      "description": "Staging API server"
+    },
+    {
       "url": "https://api.microstrate.io",
-      "description": "Production server"
+      "description": "Production API server"
     }
   ],
   "components": {
