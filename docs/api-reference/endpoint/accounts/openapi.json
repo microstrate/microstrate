@@ -604,27 +604,6 @@
           }
         }
       },
-      "MeshNode": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Node ID"
-          },
-          "name": {
-            "type": "string",
-            "description": "Node name"
-          },
-          "provider": {
-            "type": "string",
-            "description": "Cloud provider"
-          },
-          "region": {
-            "type": "string",
-            "description": "Region"
-          }
-        }
-      },
       "UserProfileImage": {
         "type": "object",
         "properties": {
@@ -1210,7 +1189,19 @@
         ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.post.oauth-login",
+        "security": [],
+        "operationId": "getOAuthLoginUrl",
         "parameters": [
+          {
+            "name": "Referer",
+            "in": "header",
+            "required": true,
+            "description": "Referer URL",
+            "schema": {
+              "type": "string"
+            },
+            "example": "https://app.staging.microstrate.io/"
+          },
           {
             "name": "account",
             "in": "query",
@@ -1224,9 +1215,19 @@
             "name": "connection",
             "in": "query",
             "required": false,
-            "description": "OAuth connection type (e.g., github, google)",
+            "description": "OAuth connection type (e.g., github, google-oauth2)",
             "schema": {
               "type": "string"
+            },
+            "examples": {
+              "github": {
+                "value": "github",
+                "description": "GitHub OAuth connection"
+              },
+              "google": {
+                "value": "google-oauth2",
+                "description": "Google OAuth connection"
+              }
             }
           }
         ],
@@ -1237,12 +1238,20 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "required": [
+                    "data"
+                  ],
                   "properties": {
-                    "oauth_url": {
-                      "type": "string",
-                      "format": "uri",
-                      "description": "URL to redirect user for OAuth authentication",
-                      "example": "https://domain.auth0.com/authorize?client_id=...&response_type=code&redirect_uri=...&state=..."
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "oauth_url": {
+                          "type": "string",
+                          "format": "uri",
+                          "description": "URL to redirect user for OAuth authentication",
+                          "example": "https://domain.auth0.com/authorize?client_id=...&response_type=code&redirect_uri=...&state=..."
+                        }
+                      }
                     }
                   }
                 }
@@ -1281,6 +1290,8 @@
         ],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.get.oauth-callback",
+        "security": [],
+        "operationId": "handleOAuthCallback",
         "parameters": [
           {
             "name": "code",
@@ -1308,7 +1319,15 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "description": "Success response (implementation may vary based on authOrMFA function)"
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "description": "Success response (implementation may vary based on authOrMFA function)"
+                    }
+                  }
                 }
               }
             }
@@ -1352,7 +1371,15 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AccountPublicInfo"
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/AccountPublicInfo"
+                    }
+                  }
                 }
               }
             }
@@ -1396,7 +1423,15 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ApiKeyResponse"
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/ApiKeyResponse"
+                    }
+                  }
                 }
               }
             }
@@ -1448,7 +1483,15 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ApiKeyResponse"
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/ApiKeyResponse"
+                    }
+                  }
                 }
               }
             }
@@ -1493,9 +1536,17 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ViewApiKey"
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/ViewApiKey"
+                      }
+                    }
                   }
                 }
               }
@@ -1559,38 +1610,50 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "oneOf": [
-                    {
-                      "$ref": "#/components/schemas/AuthResponse"
-                    },
-                    {
-                      "$ref": "#/components/schemas/MfaRequiredResponse"
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "oneOf": [
+                        {
+                          "$ref": "#/components/schemas/AuthResponse"
+                        },
+                        {
+                          "$ref": "#/components/schemas/MfaRequiredResponse"
+                        }
+                      ]
                     }
-                  ]
+                  }
                 },
                 "examples": {
                   "authSuccess": {
                     "summary": "Authentication successful (no MFA)",
                     "value": {
-                      "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-                      "auth_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-                      "passkey_enabled": false,
-                      "totp_enabled": false,
-                      "account": {
-                        "name": "acme",
-                        "id": "acct_12345",
-                        "display_name": "ACME Corporation",
-                        "root_email": "admin@acme.com",
-                        "subscription_status": "active"
+                      "data": {
+                        "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+                        "auth_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+                        "passkey_enabled": false,
+                        "totp_enabled": false,
+                        "account": {
+                          "name": "acme",
+                          "id": "acct_12345",
+                          "display_name": "ACME Corporation",
+                          "root_email": "admin@acme.com",
+                          "subscription_status": "active"
+                        }
                       }
                     }
                   },
                   "mfaRequired": {
                     "summary": "MFA verification required",
                     "value": {
-                      "token": "mfa_token_abcdef1234567890",
-                      "passkey_enabled": true,
-                      "totp_enabled": true
+                      "data": {
+                        "token": "mfa_token_abcdef1234567890",
+                        "passkey_enabled": true,
+                        "totp_enabled": true
+                      }
                     }
                   }
                 }
@@ -1735,16 +1798,26 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
                   }
                 },
-                "example": [
-                  "ABCD-1234",
-                  "EFGH-5678",
-                  "IJKL-9012"
-                ]
+                "example": {
+                  "data": [
+                    "ABCD-1234",
+                    "EFGH-5678",
+                    "IJKL-9012"
+                  ]
+                }
               }
             }
           },
@@ -1796,16 +1869,26 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
                   }
                 },
-                "example": [
-                  "ABCD-1234",
-                  "EFGH-5678",
-                  "IJKL-9012"
-                ]
+                "example": {
+                  "data": [
+                    "ABCD-1234",
+                    "EFGH-5678",
+                    "IJKL-9012"
+                  ]
+                }
               }
             }
           },
@@ -1854,7 +1937,15 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AuthResponse"
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/AuthResponse"
+                    }
+                  }
                 }
               }
             }
@@ -2109,19 +2200,27 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "required": [
+                    "data"
+                  ],
                   "properties": {
-                    "account_id": {
-                      "type": "string"
-                    },
-                    "user_id": {
-                      "type": "string"
-                    },
-                    "account": {
-                      "type": "string"
-                    },
-                    "email": {
-                      "type": "string",
-                      "format": "email"
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "account_id": {
+                          "type": "string"
+                        },
+                        "user_id": {
+                          "type": "string"
+                        },
+                        "account": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string",
+                          "format": "email"
+                        }
+                      }
                     }
                   }
                 }
@@ -2158,20 +2257,30 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "required": [
+                    "data"
+                  ],
                   "properties": {
-                    "otpauth_url": {
-                      "type": "string",
-                      "description": "OTP Auth URL for QR code generation"
-                    },
-                    "secret": {
-                      "type": "string",
-                      "description": "TOTP secret key"
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "otpauth_url": {
+                          "type": "string",
+                          "description": "OTP Auth URL for QR code generation"
+                        },
+                        "secret": {
+                          "type": "string",
+                          "description": "TOTP secret key"
+                        }
+                      }
                     }
                   }
                 },
                 "example": {
-                  "otpauth_url": "otpauth://totp/Microstrate:user@example.com?secret=JBSWY3DPEHPK3PXP&issuer=Microstrate",
-                  "secret": "JBSWY3DPEHPK3PXP"
+                  "data": {
+                    "otpauth_url": "otpauth://totp/Microstrate:user@example.com?secret=JBSWY3DPEHPK3PXP&issuer=Microstrate",
+                    "secret": "JBSWY3DPEHPK3PXP"
+                  }
                 }
               }
             }
@@ -2234,11 +2343,19 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "required": [
+                    "data"
+                  ],
                   "properties": {
-                    "recovery_codes": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "recovery_codes": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
                       }
                     }
                   }
@@ -2301,7 +2418,15 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AuthResponse"
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/AuthResponse"
+                    }
+                  }
                 }
               }
             }
@@ -2414,7 +2539,7 @@
                 ]
               },
               "example": {
-                "emergency_credit": 100.00
+                "emergency_credit": 100
               }
             }
           }
@@ -2575,15 +2700,25 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "required": [
+                    "data"
+                  ],
                   "properties": {
-                    "email_confirmed": {
-                      "type": "boolean"
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "email_confirmed": {
+                          "type": "boolean"
+                        }
+                      }
                     }
                   }
                 },
                 "example": {
-                  "email_confirmed": false,
-                  "description": "This flag confirms whether a new or an existing user is the root of the newly created account."
+                  "data": {
+                    "email_confirmed": false,
+                    "description": "This flag confirms whether a new or an existing user is the root of the newly created account."
+                  }
                 }
               }
             }
@@ -2636,7 +2771,15 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AccountPublicInfo"
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/AccountPublicInfo"
+                    }
+                  }
                 }
               }
             }
@@ -2768,19 +2911,29 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "required": [
+                    "data"
+                  ],
                   "properties": {
-                    "message": {
-                      "type": "string"
-                    },
-                    "deletion_date": {
-                      "type": "string",
-                      "format": "date-time"
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string"
+                        },
+                        "deletion_date": {
+                          "type": "string",
+                          "format": "date-time"
+                        }
+                      }
                     }
                   }
                 },
                 "example": {
-                  "message": "The accounts is going to be deleted on 2023-05-12T12:34:56Z",
-                  "deletion_date": "2023-05-12T12:34:56Z"
+                  "data": {
+                    "message": "The accounts is going to be deleted on 2023-05-12T12:34:56Z",
+                    "deletion_date": "2023-05-12T12:34:56Z"
+                  }
                 }
               }
             }
@@ -3373,9 +3526,17 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/UserInfo"
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/UserInfo"
+                      }
+                    }
                   }
                 }
               }
@@ -3410,15 +3571,25 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
                   }
                 },
-                "example": [
-                  "acct_123456789",
-                  "acct_987654321"
-                ]
+                "example": {
+                  "data": [
+                    "acct_123456789",
+                    "acct_987654321"
+                  ]
+                }
               }
             }
           },
@@ -3480,28 +3651,18 @@
         },
         "responses": {
           "200": {
-            "description": "Mesh nodes created successfully",
+            "description": "Mesh nodes updated successfully",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "required": [
+                    "message"
+                  ],
                   "properties": {
                     "message": {
-                      "type": "string"
-                    },
-                    "result": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "created": {
-                            "$ref": "#/components/schemas/MeshNode"
-                          },
-                          "error": {
-                            "type": "string"
-                          }
-                        }
-                      }
+                      "type": "string",
+                      "description": "Success message"
                     }
                   }
                 }
@@ -3548,7 +3709,15 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "description": "WebAuthn registration options"
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "description": "WebAuthn registration options"
+                    }
+                  }
                 }
               }
             }
@@ -3607,14 +3776,22 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "required": [
+                    "data"
+                  ],
                   "properties": {
-                    "passkey": {
-                      "$ref": "#/components/schemas/WebAuthCredentialAlias"
-                    },
-                    "recovery_codes": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "passkey": {
+                          "$ref": "#/components/schemas/WebAuthCredentialAlias"
+                        },
+                        "recovery_codes": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
                       }
                     }
                   }
@@ -3677,7 +3854,15 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CredentialAssertion"
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/CredentialAssertion"
+                    }
+                  }
                 }
               }
             }
@@ -3966,7 +4151,15 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MfaInfo"
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/MfaInfo"
+                    }
+                  }
                 }
               }
             }
@@ -4001,45 +4194,53 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "properties": {
-                    "account": {
-                      "$ref": "#/components/schemas/AccountPublicInfo"
-                    },
-                    "user": {
-                      "type": "string",
-                      "format": "email"
-                    },
-                    "user_id": {
-                      "type": "string"
-                    },
-                    "first_name": {
-                      "type": "string"
-                    },
-                    "last_name": {
-                      "type": "string"
-                    },
-                    "role": {
-                      "type": "string"
-                    },
-                    "mfa": {
-                      "$ref": "#/components/schemas/MfaInfo"
-                    },
-                    "theme": {
-                      "type": "string"
-                    },
-                    "sound": {
-                      "type": "boolean"
-                    },
-                    "profile_image": {
-                      "$ref": "#/components/schemas/UserProfileImage"
-                    }
-                  },
                   "required": [
-                    "account",
-                    "user",
-                    "user_id",
-                    "role"
-                  ]
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "account": {
+                          "$ref": "#/components/schemas/AccountPublicInfo"
+                        },
+                        "user": {
+                          "type": "string",
+                          "format": "email"
+                        },
+                        "user_id": {
+                          "type": "string"
+                        },
+                        "first_name": {
+                          "type": "string"
+                        },
+                        "last_name": {
+                          "type": "string"
+                        },
+                        "role": {
+                          "type": "string"
+                        },
+                        "mfa": {
+                          "$ref": "#/components/schemas/MfaInfo"
+                        },
+                        "theme": {
+                          "type": "string"
+                        },
+                        "sound": {
+                          "type": "boolean"
+                        },
+                        "profile_image": {
+                          "$ref": "#/components/schemas/UserProfileImage"
+                        }
+                      },
+                      "required": [
+                        "account",
+                        "user",
+                        "user_id",
+                        "role"
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -4096,9 +4297,19 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "boolean"
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "boolean"
+                    }
+                  }
                 },
-                "example": true
+                "example": {
+                  "data": true
+                }
               }
             }
           }
@@ -4133,9 +4344,19 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "string"
+                    }
+                  }
                 },
-                "example": "-----BEGIN Microstrate USER JWT-----\n[JWT TOKEN]\n------END Microstrate USER JWT------\n************************* IMPORTANT *************************\nBKEY Seed printed below can be used to sign and prove identity.\nBKEYs are sensitive and should be treated as secrets.\n-----BEGIN USER BKEY SEED-----\n[BKEY SEED]\n------END USER BKEY SEED------\n*************************************************************"
+                "example": {
+                  "data": "-----BEGIN Microstrate USER JWT-----\n[JWT TOKEN]\n------END Microstrate USER JWT------\n************************* IMPORTANT *************************\nBKEY Seed printed below can be used to sign and prove identity.\nBKEYs are sensitive and should be treated as secrets.\n-----BEGIN USER BKEY SEED-----\n[BKEY SEED]\n------END USER BKEY SEED------\n*************************************************************"
+                }
               }
             }
           },
@@ -4193,7 +4414,15 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AuthResponse"
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/AuthResponse"
+                    }
+                  }
                 }
               }
             }
@@ -4299,17 +4528,25 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "required": [
+                    "data"
+                  ],
                   "properties": {
-                    "auth": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/SessionObject"
-                      }
-                    },
-                    "refresh": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/RefreshTokenObject"
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "auth": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/SessionObject"
+                          }
+                        },
+                        "refresh": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/RefreshTokenObject"
+                          }
+                        }
                       }
                     }
                   }
@@ -4451,7 +4688,15 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AuthResponse"
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/AuthResponse"
+                    }
+                  }
                 }
               }
             }
@@ -4582,27 +4827,37 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "required": [
+                    "data"
+                  ],
                   "properties": {
-                    "account": {
-                      "type": "string"
-                    },
-                    "email": {
-                      "type": "string",
-                      "format": "email"
-                    },
-                    "account_id": {
-                      "type": "string"
-                    },
-                    "user_id": {
-                      "type": "string"
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "account": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string",
+                          "format": "email"
+                        },
+                        "account_id": {
+                          "type": "string"
+                        },
+                        "user_id": {
+                          "type": "string"
+                        }
+                      }
                     }
                   }
                 },
                 "example": {
-                  "account": "acme",
-                  "email": "user@example.com",
-                  "account_id": "acct_123456789",
-                  "user_id": "usr_123456789"
+                  "data": {
+                    "account": "acme",
+                    "email": "user@example.com",
+                    "account_id": "acct_123456789",
+                    "user_id": "usr_123456789"
+                  }
                 }
               }
             }
@@ -4658,10 +4913,18 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "required": [
+                    "data"
+                  ],
                   "properties": {
-                    "message": {
-                      "type": "string",
-                      "example": "Please check your inbox. If a root account is associated with this email and remains unconfirmed, a reconfirmation message should have been sent."
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Please check your inbox. If a root account is associated with this email and remains unconfirmed, a reconfirmation message should have been sent."
+                        }
+                      }
                     }
                   }
                 }
@@ -4751,7 +5014,15 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AuthResponse"
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/AuthResponse"
+                    }
+                  }
                 }
               }
             }
@@ -4895,9 +5166,17 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/StripeProduct"
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/StripeProduct"
+                      }
+                    }
                   }
                 }
               }
@@ -4932,9 +5211,17 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/StripePrice"
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/StripePrice"
+                      }
+                    }
                   }
                 }
               }
@@ -4989,10 +5276,20 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "uri"
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  }
                 },
-                "example": "https://checkout.stripe.com/c/pay/cs_test_1234567890"
+                "example": {
+                  "data": "https://checkout.stripe.com/c/pay/cs_test_1234567890"
+                }
               }
             }
           },
@@ -5035,10 +5332,20 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "uri"
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  }
                 },
-                "example": "https://billing.stripe.com/p/session/live_1234567890"
+                "example": {
+                  "data": "https://billing.stripe.com/p/session/live_1234567890"
+                }
               }
             }
           },
@@ -5072,14 +5379,22 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "required": [
+                    "data"
+                  ],
                   "properties": {
-                    "has_default_payment_method": {
-                      "type": "boolean"
-                    },
-                    "items": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/SubscriptionItem"
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "has_default_payment_method": {
+                          "type": "boolean"
+                        },
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/SubscriptionItem"
+                          }
+                        }
                       }
                     }
                   }
@@ -5127,7 +5442,15 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "description": "Stripe subscription object"
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "description": "Stripe subscription object"
+                    }
+                  }
                 }
               }
             }
@@ -5199,7 +5522,15 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "description": "Stripe subscription object"
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "description": "Stripe subscription object"
+                    }
+                  }
                 }
               }
             }
@@ -5252,7 +5583,15 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "description": "Stripe subscription object"
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "description": "Stripe subscription object"
+                    }
+                  }
                 }
               }
             }
@@ -5297,7 +5636,15 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "description": "Stripe subscription object"
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "description": "Stripe subscription object"
+                    }
+                  }
                 }
               }
             }
