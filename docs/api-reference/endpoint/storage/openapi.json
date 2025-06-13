@@ -11,8 +11,12 @@
   },
   "servers": [
     {
+      "url": "https://api.staging.microstrate.io",
+      "description": "Staging API server"
+    },
+    {
       "url": "https://api.microstrate.io",
-      "description": "Production server"
+      "description": "Production API server"
     }
   ],
   "components": {
@@ -41,7 +45,10 @@
         "type": "object",
         "properties": {
           "message": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "Success"
+            ]
           }
         }
       },
@@ -269,93 +276,6 @@
           "value": {
             "type": "object",
             "description": "Value of the entry"
-          }
-        }
-      },
-      "StreamCreateResponse": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "example": "evari.bellerophon.streaming.api.v1.stream_create_response"
-          },
-          "config": {
-            "$ref": "#/components/schemas/StreamConfig"
-          },
-          "created": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "state": {
-            "type": "object",
-            "properties": {
-              "messages": {
-                "type": "integer",
-                "format": "int64"
-              },
-              "bytes": {
-                "type": "integer",
-                "format": "int64"
-              },
-              "first_seq": {
-                "type": "integer",
-                "format": "int64"
-              },
-              "first_ts": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "last_seq": {
-                "type": "integer",
-                "format": "int64"
-              },
-              "last_ts": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "consumer_count": {
-                "type": "integer"
-              },
-              "deleted": {
-                "type": "array",
-                "items": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "num_deleted": {
-                "type": "integer"
-              },
-              "num_subjects": {
-                "type": "integer",
-                "format": "int64"
-              },
-              "subjects": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          },
-          "did_create": {
-            "type": "boolean"
-          },
-          "error": {
-            "type": "object",
-            "nullable": true,
-            "properties": {
-              "code": {
-                "type": "integer"
-              },
-              "err_code": {
-                "type": "integer"
-              },
-              "description": {
-                "type": "string"
-              }
-            }
           }
         }
       },
@@ -593,65 +513,6 @@
             "example": {
               "owner": "app-team",
               "environment": "production"
-            }
-          }
-        }
-      },
-      "ObjectStoreStatus": {
-        "type": "object",
-        "properties": {
-          "bucket": {
-            "type": "string",
-            "description": "Name of the object store",
-            "example": "documents"
-          },
-          "description": {
-            "type": "string",
-            "description": "Description of the object store",
-            "example": "Document storage for the organization"
-          },
-          "max_age": {
-            "type": "integer",
-            "format": "int64",
-            "description": "Maximum age of objects in the store in nanoseconds",
-            "example": 86400000000000
-          },
-          "storage": {
-            "$ref": "#/components/schemas/Storage"
-          },
-          "num_replicas": {
-            "$ref": "#/components/schemas/NumReplicas"
-          },
-          "sealed": {
-            "type": "boolean",
-            "description": "Indicates if the stream is sealed and cannot be modified",
-            "example": false
-          },
-          "size": {
-            "type": "integer",
-            "format": "int64",
-            "description": "Combined size of all data in the bucket including metadata, in bytes",
-            "example": 1073741824
-          },
-          "backing_store": {
-            "type": "string",
-            "description": "Technology used for storage of the bucket",
-            "example": "BStream"
-          },
-          "is_compressed": {
-            "type": "boolean",
-            "description": "Indicates if the data is compressed on disk",
-            "example": true
-          },
-          "metadata": {
-            "type": "object",
-            "description": "User-supplied metadata for the bucket",
-            "additionalProperties": {
-              "type": "string"
-            },
-            "example": {
-              "created_by": "admin",
-              "department": "engineering"
             }
           }
         }
@@ -1122,20 +983,25 @@
           }
         ]
       },
-      "Message": {
+      "MessagePublish": {
         "type": "object",
         "required": [
-          "event",
-          "data"
+          "stream",
+          "subject",
+          "body"
         ],
         "properties": {
-          "event": {
+          "stream": {
             "type": "string",
-            "description": "Event type"
+            "description": "Name of the stream"
           },
-          "data": {
-            "type": "object",
-            "description": "Message payload"
+          "subject": {
+            "type": "string",
+            "description": "Message subject. It has to match the subject pattern of the stream.",
+            "example": "orders.>"
+          },
+          "body": {
+            "type": "object"
           }
         }
       },
@@ -1381,19 +1247,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "bucket": {
-                      "type": "string"
-                    },
-                    "status": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "bucket": "my-bucket",
-                  "status": "created"
+                  "$ref": "#/components/schemas/Success"
                 }
               }
             }
@@ -1474,19 +1328,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "bucket": {
-                      "type": "string"
-                    },
-                    "status": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "bucket": "my-bucket",
-                  "status": "put"
+                  "$ref": "#/components/schemas/Success"
                 }
               }
             }
@@ -1509,11 +1351,6 @@
         "summary": "Get Key-Value Store information",
         "description": "Retrieves information about a specific Key-Value Store including its configuration and runtime status",
         "operationId": "getKVInfo",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
         "x-resource-type": "service",
         "x-resource": "microstrate.storage.get.kv",
         "responses": {
@@ -1544,19 +1381,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "bucket": {
-                      "type": "string"
-                    },
-                    "status": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "bucket": "my-bucket",
-                  "status": "deleted"
+                  "$ref": "#/components/schemas/Success"
                 }
               }
             }
@@ -1598,13 +1423,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "example": "Key-value bucket purged successfully"
-                    }
-                  }
+                  "$ref": "#/components/schemas/Success"
                 }
               }
             }
@@ -1851,23 +1670,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "bucket": {
-                      "type": "string"
-                    },
-                    "key": {
-                      "type": "string"
-                    },
-                    "status": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "bucket": "my-bucket",
-                  "key": "user123",
-                  "status": "updated"
+                  "$ref": "#/components/schemas/Success"
                 }
               }
             }
@@ -1927,23 +1730,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "bucket": {
-                      "type": "string"
-                    },
-                    "key": {
-                      "type": "string"
-                    },
-                    "status": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "bucket": "my-bucket",
-                  "key": "my-key",
-                  "status": "deleted"
+                  "$ref": "#/components/schemas/Success"
                 }
               }
             }
@@ -2371,19 +2158,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "bucket": {
-                      "type": "string"
-                    },
-                    "status": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "bucket": "my-obj-bucket",
-                  "status": "created"
+                  "$ref": "#/components/schemas/Success"
                 }
               }
             }
@@ -2445,19 +2220,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "bucket": {
-                      "type": "string"
-                    },
-                    "status": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "bucket": "my-obj-bucket",
-                  "status": "created"
+                  "$ref": "#/components/schemas/Success"
                 }
               }
             }
@@ -2484,23 +2247,88 @@
         ],
         "responses": {
           "200": {
-            "description": "Coming Soon: Bucket retrieved successfully",
+            "description": "Bucket retrieved successfully",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "bucket": {
-                      "type": "string"
+                    "config": {
+                      "$ref": "#/components/schemas/ObjectStoreConfig"
                     },
-                    "status": {
-                      "type": "string"
+                    "stream_info": {
+                      "$ref": "#/components/schemas/StreamInfo"
                     }
                   }
                 },
                 "example": {
-                  "bucket": "my-obj-bucket",
-                  "status": "created"
+                  "body": {
+                    "config": {
+                      "bucket": "rules",
+                      "max_bytes": -1,
+                      "num_replicas": 1,
+                      "placement": {
+                        "cluster": ""
+                      }
+                    },
+                    "stream_info": {
+                      "cluster": {
+                        "leader": "ms-eu-one",
+                        "name": "Microstrate"
+                      },
+                      "config": {
+                        "allow_direct": true,
+                        "allow_rollup_hdrs": true,
+                        "compression": "none",
+                        "consumer_limits": {},
+                        "discard": "new",
+                        "duplicate_window": 120000000000,
+                        "index_config": {
+                          "engine": "",
+                          "idBy": "",
+                          "mappings": null,
+                          "partitions": 0,
+                          "version": 0
+                        },
+                        "max_age": 0,
+                        "max_bytes": -1,
+                        "max_consumers": -1,
+                        "max_msg_size": -1,
+                        "max_msgs": -1,
+                        "max_msgs_per_subject": -1,
+                        "mirror_direct": false,
+                        "name": "OBJ_rules",
+                        "num_replicas": 1,
+                        "placement": {
+                          "cluster": ""
+                        },
+                        "retention": "limits",
+                        "storage": "file",
+                        "subjects": [
+                          "$O.rules.C.>",
+                          "$O.rules.M.>"
+                        ]
+                      },
+                      "created": "2025-04-18T22:54:54.776333201Z",
+                      "state": {
+                        "bytes": 0,
+                        "consumer_count": 0,
+                        "deleted": null,
+                        "first_seq": 0,
+                        "first_ts": "0001-01-01T00:00:00Z",
+                        "last_seq": 0,
+                        "last_ts": "0001-01-01T00:00:00Z",
+                        "messages": 0,
+                        "num_deleted": 0,
+                        "num_subjects": 0,
+                        "subjects": null
+                      },
+                      "ts": "2025-06-12T13:39:57.723164773Z"
+                    }
+                  },
+                  "metadata": {
+                    "bucket": "rules"
+                  }
                 }
               }
             }
@@ -2531,19 +2359,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "bucket": {
-                      "type": "string"
-                    },
-                    "status": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "bucket": "my-obj-bucket",
-                  "status": "deleted"
+                  "$ref": "#/components/schemas/Success"
                 }
               }
             }
@@ -2585,13 +2401,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "example": "Bucket purged successfully"
-                    }
-                  }
+                  "$ref": "#/components/schemas/Success"
                 }
               }
             }
@@ -2754,23 +2564,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "bucket": {
-                      "type": "string"
-                    },
-                    "key": {
-                      "type": "string"
-                    },
-                    "status": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "bucket": "my-obj-bucket",
-                  "key": "my-key",
-                  "status": "deleted"
+                  "$ref": "#/components/schemas/Success"
                 }
               }
             }
@@ -2915,7 +2709,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StreamCreateResponse"
+                  "$ref": "#/components/schemas/Success"
+                },
+                "example": {
+                  "message": "Success"
                 }
               }
             }
@@ -3145,11 +2942,6 @@
         "tags": [
           "Streams"
         ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
         "parameters": [
           {
             "name": "name",
@@ -3195,7 +2987,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StreamInfo"
+                  "$ref": "#/components/schemas/Success"
+                },
+                "example": {
+                  "message": "Success"
                 }
               }
             }
@@ -3240,11 +3035,6 @@
         "operationId": "getStreamInfo",
         "x-resource-type": "service",
         "x-resource": "microstrate.storage.get.stream",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
         "parameters": [
           {
             "name": "name",
@@ -3273,7 +3063,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StreamInfo"
+                  "type": "object",
+                  "properties": {
+                    "body": {
+                      "$ref": "#/components/schemas/StreamInfo"
+                    }
+                  }
                 }
               }
             }
@@ -3323,11 +3118,6 @@
         "tags": [
           "Streams"
         ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
         "parameters": [
           {
             "name": "name",
@@ -3346,7 +3136,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StreamInfo"
+                  "$ref": "#/components/schemas/Success"
+                },
+                "example": {
+                  "message": "Success"
                 }
               }
             }
@@ -3392,11 +3185,6 @@
         "x-resource": "microstrate.storage.delete.messages",
         "tags": [
           "Streams"
-        ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
         ],
         "parameters": [
           {
@@ -3452,109 +3240,6 @@
           },
           "401": {
             "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "summary": "Send message to stream",
-        "description": "Posts a new message to the specified stream",
-        "operationId": "sendStreamMessage",
-        "tags": [
-          "Streams"
-        ],
-        "parameters": [
-          {
-            "name": "name",
-            "in": "path",
-            "required": true,
-            "description": "Name of the stream",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "subject": {
-                    "type": "string",
-                    "description": "Message subject"
-                  },
-                  "data": {
-                    "type": "string",
-                    "description": "Message payload"
-                  },
-                  "headers": {
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "string"
-                    },
-                    "description": "Optional message headers"
-                  }
-                },
-                "required": [
-                  "data"
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Message sent successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "sequence": {
-                      "type": "integer",
-                      "format": "int64",
-                      "description": "Sequence number of the message"
-                    },
-                    "timestamp": {
-                      "type": "string",
-                      "format": "date-time",
-                      "description": "When the message was stored"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Stream not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
             "content": {
               "application/json": {
                 "schema": {
@@ -3627,17 +3312,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "example": "Stream purged successfully"
-                    },
-                    "purged_count": {
-                      "type": "integer",
-                      "description": "Number of messages that were purged"
-                    }
-                  }
+                  "$ref": "#/components/schemas/Success"
                 }
               }
             }
@@ -4101,12 +3776,13 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Message"
+                "$ref": "#/components/schemas/MessagePublish"
               },
               "example": {
-                "event": "user_created",
-                "data": {
-                  "user_id": "123",
+                "stream": "user_events",
+                "subject": "user.543",
+                "body": {
+                  "user_id": "543",
                   "name": "John Doe"
                 }
               }
@@ -4114,24 +3790,12 @@
           }
         },
         "responses": {
-          "201": {
+          "200": {
             "description": "Message published successfully",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "event": {
-                      "type": "string"
-                    },
-                    "status": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "event": "user_created",
-                  "status": "published"
+                  "$ref": "#/components/schemas/Success"
                 }
               }
             }
