@@ -487,7 +487,10 @@
             "type": "integer"
           },
           "metadata": {
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           },
           "placement": {
             "type": "object",
@@ -539,7 +542,274 @@
         "properties": {
           "body": {
             "type": "object",
-            "additionalProperties": true
+            "properties": {
+              "status": {
+                "type": "object",
+                "properties": {
+                  "backing_store": {
+                    "type": "string"
+                  },
+                  "bucket": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "bytes": {
+                    "type": "integer",
+                    "format": "uint64"
+                  },
+                  "history": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "ttl": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "is_compressed": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "config": {
+                "type": "object",
+                "properties": {
+                  "bucket": {
+                    "type": "string"
+                  },
+                  "max_bytes": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "max_value_size": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "history": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "num_replicas": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "stream_info": {
+                "type": "object",
+                "properties": {
+                  "cluster": {
+                    "type": "object",
+                    "properties": {
+                      "leader": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "replicas": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "active": {
+                              "type": "integer",
+                              "format": "uint64"
+                            },
+                            "current": {
+                              "type": "boolean"
+                            },
+                            "name": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "config": {
+                    "type": "object",
+                    "properties": {
+                      "allow_direct": {
+                        "type": "boolean"
+                      },
+                      "allow_rollup_hdrs": {
+                        "type": "boolean"
+                      },
+                      "compression": {
+                        "type": "string"
+                      },
+                      "consumer_limits": {
+                        "type": "object",
+                        "properties": {
+                          "inactive_threshold": {
+                            "type": "integer",
+                            "format": "int64"
+                          },
+                          "max_ack_pending": {
+                            "type": "integer"
+                          }
+                        }
+                      },
+                      "deny_delete": {
+                        "type": "boolean"
+                      },
+                      "discard": {
+                        "type": "string",
+                        "enum": [
+                          "old",
+                          "new"
+                        ]
+                      },
+                      "duplicate_window": {
+                        "type": "integer",
+                        "format": "int64"
+                      },
+                      "index_config": {
+                        "type": "object",
+                        "properties": {
+                          "engine": {
+                            "type": "string"
+                          },
+                          "idBy": {
+                            "type": "string"
+                          },
+                          "partitions": {
+                            "type": "integer"
+                          },
+                          "version": {
+                            "type": "integer"
+                          }
+                        }
+                      },
+                      "max_age": {
+                        "type": "integer",
+                        "format": "int64"
+                      },
+                      "max_bytes": {
+                        "type": "integer",
+                        "format": "int64"
+                      },
+                      "max_consumers": {
+                        "type": "integer"
+                      },
+                      "max_msg_size": {
+                        "type": "integer",
+                        "format": "int32"
+                      },
+                      "max_msgs": {
+                        "type": "integer",
+                        "format": "int64"
+                      },
+                      "max_msgs_per_subject": {
+                        "type": "integer",
+                        "format": "int64"
+                      },
+                      "mirror_direct": {
+                        "type": "boolean"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "num_replicas": {
+                        "type": "integer"
+                      },
+                      "retention": {
+                        "type": "string",
+                        "enum": [
+                          "Limits",
+                          "Interest",
+                          "WorkQueue"
+                        ]
+                      },
+                      "storage": {
+                        "type": "string",
+                        "enum": [
+                          "file",
+                          "memory"
+                        ]
+                      },
+                      "subject_transform": {
+                        "type": "object",
+                        "properties": {
+                          "dest": {
+                            "type": "string"
+                          },
+                          "src": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "subjects": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "metadata": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "created": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "state": {
+                    "type": "object",
+                    "properties": {
+                      "bytes": {
+                        "type": "integer",
+                        "format": "uint64"
+                      },
+                      "consumer_count": {
+                        "type": "integer"
+                      },
+                      "deleted": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer",
+                          "format": "uint64"
+                        }
+                      },
+                      "first_seq": {
+                        "type": "integer",
+                        "format": "uint64"
+                      },
+                      "first_ts": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "last_seq": {
+                        "type": "integer",
+                        "format": "uint64"
+                      },
+                      "last_ts": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "messages": {
+                        "type": "integer",
+                        "format": "uint64"
+                      },
+                      "num_deleted": {
+                        "type": "integer"
+                      },
+                      "num_subjects": {
+                        "type": "integer",
+                        "format": "uint64"
+                      },
+                      "subjects": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
           },
           "metadata": {
             "$ref": "#/components/schemas/Metadata"
