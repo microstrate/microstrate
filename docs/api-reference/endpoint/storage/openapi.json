@@ -63,13 +63,11 @@
     },
     "schemas": {
       "StorageType": {
-        "type": "integer",
+        "type": "string",
         "enum": [
-          0,
-          1
-        ],
-        "description": "Storage type: 0 = FileStorage (disk), 1 = MemoryStorage (RAM)",
-        "default": 0
+          "file",
+          "memory"
+        ]
       },
       "IndexMapping": {
         "type": "object",
@@ -161,12 +159,14 @@
           "max_bytes": {
             "type": "integer",
             "description": "Maximum size of the bucket in bytes",
-            "minimum": 1
+            "minimum": 1,
+            "format": "int64"
           },
           "max_value_size": {
             "type": "integer",
             "description": "Maximum size of individual values in bytes",
-            "minimum": 1
+            "minimum": 1,
+            "format": "int32"
           },
           "replicas": {
             "type": "integer",
