@@ -1,0 +1,1086 @@
+{
+  "post_auth_v2_token": {
+    "Basic Example": {
+      "url": "/auth/v2/token",
+      "method": "post",
+      "data": {
+        "grant_type": "client_credentials",
+        "scope": "default"
+      },
+      "headers": {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_address_parse": {
+    "Basic Example": {
+      "url": "/v1/address/parse",
+      "method": "post",
+      "data": {
+        "address": "1700 district ave #300 burlington, ma"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_address_parse_batch": {
+    "Basic Example": {
+      "url": "/v1/address/parse/batch",
+      "method": "post",
+      "data": {
+        "addresses": [
+          {
+            "address": "1700 district ave #300 burlington, ma",
+            "id": "1"
+          },
+          {
+            "address": "170 district ave burlington, ma",
+            "id": "2"
+          }
+        ]
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "get_v1_files": {
+    "Basic Example": {
+      "url": "/v1/files",
+      "method": "get",
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "delete_v1_files_<fileId>": {
+    "Basic Example": {
+      "url": "/v1/files/<fileId>",
+      "method": "delete",
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_files_upload-url": {
+    "Basic Example": {
+      "url": "/v1/files/upload-url",
+      "method": "post",
+      "data": {
+        "fileName": "<sampleFileName>"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "put_": {
+    "Basic Example": {
+      "url": "/",
+      "method": "put",
+      "data": {
+        "content": {}
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_bulk-geocode": {
+    "Basic Example": {
+      "url": "/v1/bulk-geocode",
+      "method": "post",
+      "data": {
+        "fileId": "1b955466-e417-4c0c-a4c6-8dd0d0e6096a"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_bulk-verify": {
+    "Basic Example": {
+      "url": "/v1/bulk-verify",
+      "method": "post",
+      "data": {
+        "fileId": "11ba1c26-8e38-42ff-bf85-9d3301bac29e"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "get_verify>": {
+    "Basic Example": {
+      "url": "/verify>",
+      "method": "get",
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_data-graph_graphql": {
+    "Basic Example": {
+      "url": "/data-graph/graphql",
+      "method": "post",
+      "headers": {
+        "cache-disabled": "<string>"
+      },
+      "data": {
+        "query": "query propertyAttributesByAddress {\n  getByAddress(address: \"3145 Geneva St Denver\") {\n    propertyAttributes {\n      data {\n        livingSquareFootage\n        bedroomCount\n        bathroomCount {\n          value\n        }\n        saleAmount\n      }\n    }\n  }\n}"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_emails_verify": {
+    "Basic Example": {
+      "url": "/v1/emails/verify",
+      "method": "post",
+      "data": {
+        "email": "abc@example.com.com"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_emails_verify_batch": {
+    "Basic Example": {
+      "url": "/v1/emails/verify/batch",
+      "method": "post",
+      "data": {
+        "emails": [
+          {
+            "email": "example@example.com",
+            "id": "1"
+          },
+          {
+            "email": "john.smith@example.org",
+            "id": "2"
+          }
+        ]
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_emergency-info_psap_address": {
+    "Basic Example": {
+      "url": "/v1/emergency-info/psap/address",
+      "method": "post",
+      "data": {
+        "address": {
+          "addressLines": [
+            "860 White Plains Road Trumbull CT 06611, USA"
+          ],
+          "admin1": "",
+          "admin2": "",
+          "borough": "",
+          "city": "",
+          "placeName": "",
+          "postalCode": "",
+          "postalCodeExt": "",
+          "suburb": ""
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_emergency-info_psap_location": {
+    "Basic Example": {
+      "url": "/v1/emergency-info/psap/location",
+      "method": "post",
+      "data": {
+        "location": {
+          "coordinates": [
+            -73.22344,
+            41.23443
+          ]
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_emergency-info_psap-ahj_address": {
+    "Basic Example": {
+      "url": "/v1/emergency-info/psap-ahj/address",
+      "method": "post",
+      "data": {
+        "address": {
+          "addressLines": [
+            "860 White Plains Road Trumbull CT 06611, USA"
+          ],
+          "admin1": "",
+          "admin2": "",
+          "borough": "",
+          "city": "",
+          "placeName": "",
+          "postalCode": "",
+          "postalCodeExt": "",
+          "suburb": ""
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "get_v1_emergency-info_psap-ahj_fccid": {
+    "Basic Example": {
+      "url": "/v1/emergency-info/psap-ahj/fccid",
+      "method": "get",
+      "query": {
+        "fccId": "<string>"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post__host__v1_emergency-info_psap-ahj_location": {
+    "Basic Example": {
+      "url": "/{host}/v1/emergency-info/psap-ahj/location",
+      "method": "post",
+      "path": {
+        "host": "<string>"
+      },
+      "data": {
+        "location": {
+          "coordinates": [
+            -73.22344,
+            41.23443
+          ]
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "get_v1_geolocation_ip-address": {
+    "Basic Example": {
+      "url": "/v1/geolocation/ip-address",
+      "method": "get",
+      "query": {
+        "ipAddress": "<string>"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_geolocation_access-point": {
+    "Basic Example": {
+      "url": "/v1/geolocation/access-point",
+      "method": "post",
+      "data": "{\r\n\t\"servingCell\": {\r\n\t\t// \"mac\": \"00-15-5D-FF-\",\r\n        \"mac\": \"00-15-5D-FF-60-05\",\r\n\t\t\"ssid\": \"\",\r\n\t\t\"rssi\": \"0\",\r\n\t\t\"speed\": \"9866666666667987979\"\r\n\t},\r\n\t\"otherCells\": [\r\n\t\t{\r\n\t\t\t\"mac\": \"00-22:75-10:d5:91\",\r\n\t\t\t\"ssid\": \"0\",\r\n\t\t\t\"rssi\": \"-90\"\r\n\t\t}\r\n\t]\r\n}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_geo-tax_address": {
+    "Basic Example": {
+      "url": "/v1/geo-tax/address",
+      "method": "post",
+      "data": {
+        "address": {
+          "addressLines": [
+            "1206 Bob Pennell Rd,Fort Sill, OK  73503"
+          ],
+          "admin1": "",
+          "admin2": "",
+          "city": "",
+          "postalCode": "",
+          "postalCodeExt": ""
+        },
+        "preferences": {
+          "geocoding": {
+            "defaultBufferWidth": "0",
+            "latLongAltFormat": "DecimalSign",
+            "latLongOffset": "NONE",
+            "squeeze": "NO"
+          },
+          "matching": {
+            "matchMode": "CLOSE"
+          },
+          "output": {
+            "outputCasing": "MIXED",
+            "salesTaxRateType": "GENERAL",
+            "taxDistrict": "SPD"
+          }
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_geo-tax_location": {
+    "Basic Example": {
+      "url": "/v1/geo-tax/location",
+      "method": "post",
+      "data": {
+        "location": {
+          "latitude": "34.688726",
+          "longitude": "-98.401796"
+        },
+        "preferences": {
+          "geocoding": {
+            "defaultBufferWidth": "0",
+            "latLongAltFormat": "DecimalSign",
+            "latLongOffset": "NONE",
+            "squeeze": "NO"
+          },
+          "matching": {
+            "matchMode": "CLOSE"
+          },
+          "output": {
+            "outputCasing": "MIXED",
+            "salesTaxRateType": "GENERAL",
+            "taxDistrict": "SPD"
+          }
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_autocomplete_postal-city": {
+    "Basic Example": {
+      "url": "/v1/autocomplete/postal-city",
+      "method": "post",
+      "data": {
+        "address": {
+          "country": "USA",
+          "postAddress": "troy",
+          "type": "CITY"
+        },
+        "preferences": {
+          "customPreferences": {},
+          "maxResults": 1,
+          "returnAllInfo": true
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_verify": {
+    "Basic Example": {
+      "url": "/v1/verify",
+      "method": "post",
+      "data": {
+        "addresses": [
+          {
+            "addressId": "1",
+            "addressLines": [
+              "BAG 5000, BC, REVELSTOKE, V0E 2S0"
+            ],
+            "country": "CAN"
+          },
+          {
+            "addressId": "2",
+            "addressLines": [
+              "Wasserburgstraße 41 Rommerskirchen 41569"
+            ],
+            "country": "DEU"
+          },
+          {
+            "addressId": "3",
+            "addressLines": [
+              "11 RUE JEAN JAURES CANNES 6400"
+            ],
+            "country": "FRA"
+          },
+          {
+            "addressId": "4",
+            "addressLines": [
+              "80 gordon view prospect"
+            ],
+            "country": "AUS"
+          },
+          {
+            "addressId": "5",
+            "addressLines": [
+              "221 b baker streeet london"
+            ],
+            "country": "United Kingdom"
+          },
+          {
+            "addressId": "6",
+            "addressLines": [
+              "1 Global View Troy NY 12180 "
+            ],
+            "country": "USA"
+          }
+        ],
+        "preferences": {
+          "factoryDescription": {
+            "featureSpecific": {},
+            "label": "ggs"
+          },
+          "returnAllInfo": true
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_geocode": {
+    "Basic Example": {
+      "url": "/v1/geocode",
+      "method": "post",
+      "data": {
+        "addresses": [
+          {
+            "addressId": "1",
+            "addressLines": [
+              "BAG 5000, BC, REVELSTOKE, V0E 2S0"
+            ],
+            "country": "CAN"
+          },
+          {
+            "addressId": "2",
+            "addressLines": [
+              "Wasserburgstraße 41 Rommerskirchen 41569"
+            ],
+            "country": "DEU"
+          },
+          {
+            "addressId": "3",
+            "addressLines": [
+              "11 RUE JEAN JAURES CANNES 6400"
+            ],
+            "country": "FRA"
+          },
+          {
+            "addressId": "4",
+            "addressLines": [
+              "80 gordon view prospect"
+            ],
+            "country": "AUS"
+          },
+          {
+            "addressId": "5",
+            "addressLines": [
+              "221 b baker streeet london"
+            ],
+            "country": "United Kingdom"
+          },
+          {
+            "addressId": "6",
+            "addressLines": [
+              "1 Global View Troy NY 12180 "
+            ],
+            "country": "USA"
+          }
+        ],
+        "preferences": {
+          "factoryDescription": {
+            "featureSpecific": {},
+            "label": "ggs"
+          },
+          "returnAllInfo": true
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_autocomplete": {
+    "Basic Example": {
+      "url": "/v1/autocomplete",
+      "method": "post",
+      "data": {
+        "address": {
+          "addressLines": [
+            "1 global view "
+          ],
+          "admin1": "NY",
+          "city": "Troy",
+          "country": "USA",
+          "postalCode": "12180"
+        },
+        "preferences": {
+          "customPreferences": {},
+          "maxResults": 10,
+          "returnAllInfo": true
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_express-autocomplete": {
+    "Basic Example": {
+      "url": "/v1/express-autocomplete",
+      "method": "post",
+      "data": {
+        "address": {
+          "addressLines": [
+            "350 Jordan"
+          ],
+          "country": "USA"
+        },
+        "preferences": {
+          "customPreferences": {},
+          "maxResults": 1,
+          "returnAllInfo": true
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_lookup": {
+    "Basic Example": {
+      "url": "/v1/lookup",
+      "method": "post",
+      "data": {
+        "keys": [
+          {
+            "country": "USA",
+            "key": "P0000GL41OME",
+            "type": "PB_KEY"
+          }
+        ],
+        "preferences": {
+          "returnAllInfo": true
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_reverse-geocode": {
+    "Basic Example": {
+      "url": "/v1/reverse-geocode",
+      "method": "post",
+      "data": {
+        "locations": [
+          {
+            "country": "USA",
+            "latitude": 42.682251,
+            "longitude": -73.704719
+          }
+        ],
+        "preferences": {
+          "returnAllInfo": true
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_names_parse": {
+    "Basic Example": {
+      "url": "/v1/names/parse",
+      "method": "post",
+      "data": {
+        "name": "Jack and Daniel Smith"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_phone-numbers_validate": {
+    "Basic Example": {
+      "url": "/v1/phone-numbers/validate",
+      "method": "post",
+      "data": {
+        "country": "US",
+        "phoneNumber": "+17063062767"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_phone-numbers_validate_batch": {
+    "Basic Example": {
+      "url": "/v1/phone-numbers/validate/batch",
+      "method": "post",
+      "data": {
+        "phoneNumbers": [
+          {
+            "country": "ind",
+            "id": "12345",
+            "phoneNumber": "+9197116779"
+          },
+          {
+            "country": "us",
+            "id": "12346",
+            "phoneNumber": "+17063062767"
+          }
+        ]
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_streets_intersection-address": {
+    "Basic Example": {
+      "url": "/v1/streets/intersection-address",
+      "method": "post",
+      "data": {
+        "address": {
+          "addressLines": [
+            "1807 Market Blvd"
+          ],
+          "admin1": "Minnesota",
+          "admin2": "Dakota County",
+          "borough": "",
+          "city": "hastings",
+          "placeName": "",
+          "postalCode": "55033",
+          "postalCodeExt": "3492",
+          "suburb": ""
+        },
+        "driveTime": "100",
+        "driveTimeUnit": "MINUTES",
+        "historicSpeed": "NONE",
+        "maxCandidates": 10,
+        "roadClass": "ALL",
+        "searchRadius": 70,
+        "searchRadiusUnit": "METERS"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_streets_intersection-location": {
+    "Basic Example": {
+      "url": "/v1/streets/intersection-location",
+      "method": "post",
+      "data": {
+        "driveTime": 100,
+        "driveTimeUnit": "MINUTES",
+        "historicSpeed": "NONE",
+        "location": {
+          "coordinates": [
+            -93.176563,
+            44.709968
+          ]
+        },
+        "maxCandidates": 10,
+        "roadClass": "ALL",
+        "searchRadius": 1000,
+        "searchRadiusUnit": "meters"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_streets_speed-limit": {
+    "Basic Example": {
+      "url": "/v1/streets/speed-limit",
+      "method": "post",
+      "data": {
+        "path": {
+          "coordinates": [
+            [
+              -74.044812,
+              40.61171
+            ],
+            [
+              -74.045644,
+              40.613625
+            ],
+            [
+              -74.046322,
+              40.615183
+            ]
+          ]
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_timezone_address": {
+    "Basic Example": {
+      "url": "/v1/timezone/address",
+      "method": "post",
+      "data": {
+        "addresses": [
+          {
+            "address": {
+              "addressLines": [
+                "950 Josephine Street Denver CO 80204"
+              ],
+              "country": "USA",
+              "id": "1"
+            },
+            "timestamp": 1692169676000
+          }
+        ]
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_timezone_location": {
+    "Basic Example": {
+      "url": "/v1/timezone/location",
+      "method": "post",
+      "data": {
+        "locations": [
+          {
+            "geometry": {
+              "coordinates": [
+                -89.398528,
+                40.633125
+              ]
+            },
+            "id": "1",
+            "timestamp": 1692169676000
+          }
+        ]
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "get_v1_spatial_tables": {
+    "Basic Example": {
+      "url": "/v1/spatial/tables",
+      "method": "get",
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "get_v1_spatial_tables_pbb_usa_metadata": {
+    "Basic Example": {
+      "url": "/v1/spatial/tables/pbb_usa/metadata",
+      "method": "get",
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_spatial_findNearest": {
+    "Basic Example": {
+      "url": "/v1/spatial/findNearest",
+      "method": "post",
+      "query": {
+        "sortBy": "<string>",
+        "sortOrder": "<string>"
+      },
+      "data": {
+        "attributes": [
+          "statecode",
+          "type",
+          "mapname"
+        ],
+        "bearingAttributeName": "bearingAngle",
+        "distanceAttributeName": "dist",
+        "geometry": "MULTIPOLYGON (((-122.399306 37.712211, -122.398975 37.712132, -122.399007 37.712049, -122.399338 37.712127, -122.399316 37.712185, -122.399306 37.712211)))",
+        "geometryFormat": "WKT",
+        "inputPointAttributeName": "ip",
+        "maxFeatures": "1",
+        "tableName": "flr_usa_comm",
+        "targetPointAttributeName": "tp",
+        "uomAttributeName": "unit",
+        "withinDistance": "10 mi"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_spatial_searchAtLocation": {
+    "Basic Example": {
+      "url": "/v1/spatial/searchAtLocation",
+      "method": "post",
+      "query": {
+        "sortBy": "<string>",
+        "sortOrder": "<string>",
+        "limit": "<string>",
+        "maxFeatures": "<string>"
+      },
+      "data": {
+        "attributes": [
+          "*"
+        ],
+        "bufferDistance": "10 mi",
+        "geometry": "MULTIPOLYGON (((-122.399306 37.712211, -122.398975 37.712132, -122.399007 37.712049, -122.399338 37.712127, -122.399316 37.712185, -122.399306 37.712211)))",
+        "geometryFormat": "WKT",
+        "spatialOperation": "INTERSECTS",
+        "tableName": "flr_usa_comm"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_spatial_summarize": {
+    "Basic Example": {
+      "url": "/v1/spatial/summarize",
+      "method": "post",
+      "data": {
+        "aggregateColumns": {
+          "map_eff_date": [
+            "min",
+            "max",
+            "median"
+          ]
+        },
+        "geometry": "GEOMETRYCOLLECTION (MULTIPOLYGON (((-122.399306 37.712211, -122.398975 37.712132, -122.399007 37.712049, -122.399338 37.712127, -122.399316 37.712185, -122.399306 37.712211))), LINESTRING (-121.756899 37.653383, -121.158302 37.304645, -121.690998 37.120906))",
+        "geometryFormat": "WKT",
+        "proportionalCalculation": true,
+        "spatialOperation": "intersects",
+        "tableName": "flr_usa_floodrisk"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_spatial_overlap": {
+    "Basic Example": {
+      "url": "/v1/spatial/overlap",
+      "method": "post",
+      "query": {
+        "limit": "<string>",
+        "offset": "<string>"
+      },
+      "data": {
+        "areaAttributeName": "ar",
+        "attributes": [
+          "fips"
+        ],
+        "geometry": "POLYGON ((-74.01316 40.700479, -74.012028 40.700479, -74.012028 40.701403, -74.01316 40.701403, -74.01316 40.700479))",
+        "geometryFormat": "WKT",
+        "lengthAttributeName": "len",
+        "percentInputAttributeName": "PerIn",
+        "percentTargetAttributeName": "PerTargt",
+        "tableName": "pbb_usa",
+        "totalAttributeName": "tc",
+        "uom": "m",
+        "uomAttributeName": "SIUnit"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "get_v1_ogcapi_enrich_collections_pbb_usa_items": {
+    "Basic Example": {
+      "url": "/v1/ogcapi/enrich/collections/pbb_usa/items",
+      "method": "get",
+      "query": {
+        "filter": "<string>",
+        "limit": "<string>"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "get_v1_ogcapi_enrich_api": {
+    "Basic Example": {
+      "url": "/v1/ogcapi/enrich/api",
+      "method": "get",
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "get_v1_ogcapi_enrich_conformance": {
+    "Basic Example": {
+      "url": "/v1/ogcapi/enrich/conformance",
+      "method": "get",
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "get_v1_ogcapi_enrich_collections": {
+    "Basic Example": {
+      "url": "/v1/ogcapi/enrich/collections",
+      "method": "get",
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "get_v1_ogcapi_enrich_collections_pbb_usa": {
+    "Basic Example": {
+      "url": "/v1/ogcapi/enrich/collections/pbb_usa",
+      "method": "get",
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "get_v1_ogcapi_enrich_collections_pas_usa_queryables": {
+    "Basic Example": {
+      "url": "/v1/ogcapi/enrich/collections/pas_usa/queryables",
+      "method": "get",
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "get_v1_ogcapi_enrich_collections_flr_usa_floodrisk_schema": {
+    "Basic Example": {
+      "url": "/v1/ogcapi/enrich/collections/flr_usa_floodrisk/schema",
+      "method": "get",
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "get_v1_travel-boundary_location": {
+    "Basic Example": {
+      "url": "/v1/travel-boundary/location",
+      "method": "get",
+      "query": {
+        "point": "<string>",
+        "costs": "<string>",
+        "costUnit": "<string>",
+        "country": "<string>",
+        "maxOffroadDistance": "<string>",
+        "maxOffroadDistanceUnit": "<string>",
+        "destinationSrs": "<string>",
+        "majorRoads": "<string>",
+        "returnHoles": "<string>",
+        "returnIslands": "<string>",
+        "simplificationFactor": "<string>",
+        "bandingStyle": "<string>",
+        "historicTrafficTimeBucket": "<string>",
+        "defaultAmbientSpeed": "<string>",
+        "ambientSpeedUnit": "<string>",
+        "propagationFactor": "<string>",
+        "version": "<string>",
+        "networkType": "<string>"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "post_v1_travel-boundary_location": {
+    "Basic Example": {
+      "url": "/v1/travel-boundary/location",
+      "method": "post",
+      "query": {
+        "point": "<string>",
+        "costs": "<string>",
+        "costUnit": "<string>",
+        "country": "<string>",
+        "maxOffroadDistance": "<string>",
+        "maxOffroadDistanceUnit": "<string>",
+        "destinationSrs": "<string>",
+        "majorRoads": "<string>",
+        "returnHoles": "<string>",
+        "returnIslands": "<string>",
+        "simplificationFactor": "<string>",
+        "bandingStyle": "<string>",
+        "historicTrafficTimeBucket": "<string>",
+        "defaultAmbientSpeed": "<string>",
+        "ambientSpeedUnit": "<string>",
+        "propagationFactor": "<string>",
+        "version": "<string>",
+        "networkType": "<string>"
+      },
+      "data": {
+        "ambientSpeeds": {
+          "ambientSpeedOverrides": {
+            "Primary Highway Urban": 25,
+            "Secondary Highway Urban": 10
+          },
+          "ambientSpeedUnit": "MPH",
+          "defaultAmbientSpeed": 25
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "get_v1_spatial_wms": {
+    "Basic Example": {
+      "url": "/v1/spatial/wms",
+      "method": "get",
+      "query": {
+        "VERSION": "<string>",
+        "SERVICE": "<string>",
+        "REQUEST": "<string>",
+        "CRS": "<string>",
+        "BBOX": "<string>",
+        "WIDTH": "<string>",
+        "HEIGHT": "<string>",
+        "Layers": "<string>",
+        "STYLES": "<string>",
+        "FORMAT": "<string>",
+        "LAYERS": "<string>",
+        "INFO_FORMAT": "<string>",
+        "QUERY_LAYERS": "<string>",
+        "I": "<string>",
+        "J": "<string>",
+        "PIXELSEARCHRADIUS": "<string>"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "get_v1_spatial_wmts": {
+    "Basic Example": {
+      "url": "/v1/spatial/wmts",
+      "method": "get",
+      "query": {
+        "Service": "<string>",
+        "Request": "<string>",
+        "Version": "<string>",
+        "Layer": "<string>",
+        "Style": "<string>",
+        "TileMatrixSet": "<string>",
+        "TileMatrix": "<string>",
+        "TileRow": "<string>",
+        "TileCol": "<string>",
+        "Format": "<string>"
+      },
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "get_v1_spatial_wmts_1_0_0_default_tiles_par-usa_default_WorldWebMercatorQuad_0_to_19_17_31118_50069_png": {
+    "Basic Example": {
+      "url": "/v1/spatial/wmts/1.0.0/default/tiles/par-usa/default/WorldWebMercatorQuad_0_to_19/17/31118/50069.png",
+      "method": "get",
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  },
+  "get_v1_spatial_wmts_1_0_0_simpleProfileTile_tiles_par-usa_17_31118_50069_png": {
+    "Basic Example": {
+      "url": "/v1/spatial/wmts/1.0.0/simpleProfileTile/tiles/par-usa/17/31118/50069.png",
+      "method": "get",
+      "baseURL": "https://api.gb1.cloud.precisely.com"
+    }
+  }
+}

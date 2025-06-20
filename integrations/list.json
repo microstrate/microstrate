@@ -1,5 +1,16 @@
 [
   {
+    "name": "Precisely",
+    "note": "Precisely APIs",
+    "folder": "precisely",
+    "categories": [
+        "address",
+        "location",
+        "risk",
+        "data-enrichment"
+    ]
+  },
+  {
     "folder": "asana",
     "name": "Asana",
     "note": "Task and project management - Asana API",

@@ -1,0 +1,5373 @@
+{
+  "name": "Precisely DIS APIs",
+  "nodes": [
+    {
+      "id": "post_auth_v2_token",
+      "operationId": "generateToken",
+      "name": "Generate Token",
+      "description": "Generate Token",
+      "schema": {
+        "tags": [
+          "Auth Token"
+        ],
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_auth_v2_token/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/auth/v2/token"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/x-www-form-urlencoded"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "grant_type": {
+                    "type": "string",
+                    "example": "client_credentials"
+                  },
+                  "scope": {
+                    "type": "string",
+                    "example": "default"
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_address_parse",
+      "operationId": "singleRequest",
+      "name": "Single Request",
+      "description": "Single Request",
+      "schema": {
+        "tags": [
+          "Address Parser"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_address_parse/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/address/parse"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "address": {
+                    "type": "string",
+                    "example": "1700 district ave #300 burlington, ma"
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_address_parse_batch",
+      "operationId": "batchRequest",
+      "name": "Batch Request",
+      "description": "Batch Request",
+      "schema": {
+        "tags": [
+          "Address Parser"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_address_parse_batch/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/address/parse/batch"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "addresses": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "address": {
+                          "type": "string",
+                          "example": "1700 district ave #300 burlington, ma"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "1"
+                        }
+                      }
+                    },
+                    "example": [
+                      {
+                        "address": "1700 district ave #300 burlington, ma",
+                        "id": "1"
+                      },
+                      {
+                        "address": "170 district ave burlington, ma",
+                        "id": "2"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "get_v1_files",
+      "operationId": "listInputFiles",
+      "name": "List Input Files",
+      "description": "List Input Files",
+      "schema": {
+        "tags": [
+          "Bulk Geo Addressing"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/get_v1_files/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/files"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "delete_v1_files_<fileId>",
+      "operationId": "deleteInputFile",
+      "name": "Delete Input File",
+      "description": "Delete Input File",
+      "schema": {
+        "tags": [
+          "Bulk Geo Addressing"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/delete_v1_files_<fileId>/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/files/<fileId>"
+            },
+            "method": {
+              "type": "string",
+              "const": "delete"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_files_upload-url",
+      "operationId": "generateUploadPreSignedUrl",
+      "name": "Generate Upload Pre Signed Url",
+      "description": "Generate upload pre-signed URL",
+      "schema": {
+        "tags": [
+          "Bulk Geo Addressing"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_files_upload-url/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/files/upload-url"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "fileName": {
+                    "type": "string",
+                    "example": "<sampleFileName>"
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "put_",
+      "operationId": "uploadFileUsingPreSignedUrl",
+      "name": "Upload File Using Pre Signed Url",
+      "description": "Upload File using pre-signed url",
+      "schema": {
+        "tags": [
+          "Bulk Geo Addressing"
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/put_/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/"
+            },
+            "method": {
+              "type": "string",
+              "const": "put"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_bulk-geocode",
+      "operationId": "bulkGeocode",
+      "name": "Bulk Geocode",
+      "description": "Bulk Geocode",
+      "schema": {
+        "tags": [
+          "Bulk Geo Addressing"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_bulk-geocode/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/bulk-geocode"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "fileId": {
+                    "type": "string",
+                    "example": "1b955466-e417-4c0c-a4c6-8dd0d0e6096a"
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_bulk-verify",
+      "operationId": "bulkVerify",
+      "name": "Bulk Verify",
+      "description": "Bulk Verify",
+      "schema": {
+        "tags": [
+          "Bulk Geo Addressing"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_bulk-verify/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/bulk-verify"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "fileId": {
+                    "type": "string",
+                    "example": "11ba1c26-8e38-42ff-bf85-9d3301bac29e"
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "get_verify>",
+      "operationId": "bulkJobStatus",
+      "name": "Bulk Job Status",
+      "description": "Bulk Job Status",
+      "schema": {
+        "tags": [
+          "Bulk Geo Addressing"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/get_verify>/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/verify>"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_data-graph_graphql",
+      "operationId": "queryWithPagenumberAsVariable",
+      "name": "Query With Pagenumber As Variable",
+      "description": "Query With PageNumber as Variable",
+      "schema": {
+        "tags": [
+          "Data Graph"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_data-graph_graphql/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/data-graph/graphql"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "cache-disabled": {
+                  "type": "string",
+                  "example": "true"
+                },
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "query": {
+                    "type": "string"
+                  },
+                  "variables": {
+                    "type": "object"
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_emails_verify",
+      "operationId": "singleRequest1",
+      "name": "Single Request 1",
+      "description": "Single Request",
+      "schema": {
+        "tags": [
+          "Email Verification"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_emails_verify/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/emails/verify"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "abc@example.com.com"
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_emails_verify_batch",
+      "operationId": "batchRequest1",
+      "name": "Batch Request 1",
+      "description": "Batch Request",
+      "schema": {
+        "tags": [
+          "Email Verification"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_emails_verify_batch/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/emails/verify/batch"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "emails": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "email": {
+                          "type": "string",
+                          "example": "example@example.com"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "1"
+                        }
+                      }
+                    },
+                    "example": [
+                      {
+                        "email": "example@example.com",
+                        "id": "1"
+                      },
+                      {
+                        "email": "john.smith@example.org",
+                        "id": "2"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_emergency-info_psap_address",
+      "operationId": "psapByAddress",
+      "name": "Psap By Address",
+      "description": "Psap By Address",
+      "schema": {
+        "tags": [
+          "Emergency Info"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_emergency-info_psap_address/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/emergency-info/psap/address"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "address": {
+                    "type": "object",
+                    "properties": {
+                      "addressLines": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "example": "860 White Plains Road Trumbull CT 06611, USA"
+                        },
+                        "example": [
+                          "860 White Plains Road Trumbull CT 06611, USA"
+                        ]
+                      },
+                      "admin1": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "admin2": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "borough": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "city": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "placeName": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "postalCode": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "postalCodeExt": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "suburb": {
+                        "type": "string",
+                        "example": ""
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_emergency-info_psap_location",
+      "operationId": "psapByLocation",
+      "name": "Psap By Location",
+      "description": "Psap By Location",
+      "schema": {
+        "tags": [
+          "Emergency Info"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_emergency-info_psap_location/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/emergency-info/psap/location"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "location": {
+                    "type": "object",
+                    "properties": {
+                      "coordinates": {
+                        "type": "array",
+                        "items": {
+                          "type": "number",
+                          "example": -73.22344
+                        },
+                        "example": [
+                          -73.22344,
+                          41.23443
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_emergency-info_psap-ahj_address",
+      "operationId": "psapAhjByAddress",
+      "name": "Psap Ahj By Address",
+      "description": "Psap Ahj By Address",
+      "schema": {
+        "tags": [
+          "Emergency Info"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_emergency-info_psap-ahj_address/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/emergency-info/psap-ahj/address"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "address": {
+                    "type": "object",
+                    "properties": {
+                      "addressLines": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "example": "860 White Plains Road Trumbull CT 06611, USA"
+                        },
+                        "example": [
+                          "860 White Plains Road Trumbull CT 06611, USA"
+                        ]
+                      },
+                      "admin1": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "admin2": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "borough": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "city": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "placeName": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "postalCode": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "postalCodeExt": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "suburb": {
+                        "type": "string",
+                        "example": ""
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "get_v1_emergency-info_psap-ahj_fccid",
+      "operationId": "psapAhjByFccid",
+      "name": "Psap Ahj By Fccid",
+      "description": "Psap Ahj By Fccid",
+      "schema": {
+        "tags": [
+          "Emergency Info"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/get_v1_emergency-info_psap-ahj_fccid/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/emergency-info/psap-ahj/fccid"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {
+                "fccId": {
+                  "type": "string",
+                  "example": "1048"
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post__host__v1_emergency-info_psap-ahj_location",
+      "operationId": "psapAhjByLocation",
+      "name": "Psap Ahj By Location",
+      "description": "Psap Ahj By Location",
+      "schema": {
+        "tags": [
+          "Emergency Info"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post__host__v1_emergency-info_psap-ahj_location/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/{host}/v1/emergency-info/psap-ahj/location"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "required": [
+                "host"
+              ],
+              "properties": {
+                "host": {
+                  "type": "string"
+                }
+              }
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "location": {
+                    "type": "object",
+                    "properties": {
+                      "coordinates": {
+                        "type": "array",
+                        "items": {
+                          "type": "number",
+                          "example": -73.22344
+                        },
+                        "example": [
+                          -73.22344,
+                          41.23443
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "get_v1_geolocation_ip-address",
+      "operationId": "ipAddress",
+      "name": "Ip Address",
+      "description": "IP Address",
+      "schema": {
+        "tags": [
+          "Geolocation"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/get_v1_geolocation_ip-address/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/geolocation/ip-address"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {
+                "ipAddress": {
+                  "type": "string",
+                  "example": "232.45.42"
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_geolocation_access-point",
+      "operationId": "wifiAccessPoint",
+      "name": "Wifi Access Point",
+      "description": "WIFI Access Point",
+      "schema": {
+        "tags": [
+          "Geolocation"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_geolocation_access-point/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/geolocation/access-point"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_geo-tax_address",
+      "operationId": "byAddress",
+      "name": "By Address",
+      "description": "By Address",
+      "schema": {
+        "tags": [
+          "GeoTAX"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_geo-tax_address/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/geo-tax/address"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "address": {
+                    "type": "object",
+                    "properties": {
+                      "addressLines": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "example": "1206 Bob Pennell Rd,Fort Sill, OK  73503"
+                        },
+                        "example": [
+                          "1206 Bob Pennell Rd,Fort Sill, OK  73503"
+                        ]
+                      },
+                      "admin1": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "admin2": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "city": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "postalCode": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "postalCodeExt": {
+                        "type": "string",
+                        "example": ""
+                      }
+                    }
+                  },
+                  "preferences": {
+                    "type": "object",
+                    "properties": {
+                      "geocoding": {
+                        "type": "object",
+                        "properties": {
+                          "defaultBufferWidth": {
+                            "type": "string",
+                            "example": "0"
+                          },
+                          "latLongAltFormat": {
+                            "type": "string",
+                            "example": "DecimalSign"
+                          },
+                          "latLongOffset": {
+                            "type": "string",
+                            "example": "NONE"
+                          },
+                          "squeeze": {
+                            "type": "string",
+                            "example": "NO"
+                          }
+                        }
+                      },
+                      "matching": {
+                        "type": "object",
+                        "properties": {
+                          "matchMode": {
+                            "type": "string",
+                            "example": "CLOSE"
+                          }
+                        }
+                      },
+                      "output": {
+                        "type": "object",
+                        "properties": {
+                          "outputCasing": {
+                            "type": "string",
+                            "example": "MIXED"
+                          },
+                          "salesTaxRateType": {
+                            "type": "string",
+                            "example": "GENERAL"
+                          },
+                          "taxDistrict": {
+                            "type": "string",
+                            "example": "SPD"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_geo-tax_location",
+      "operationId": "byLocation",
+      "name": "By Location",
+      "description": "By Location",
+      "schema": {
+        "tags": [
+          "GeoTAX"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_geo-tax_location/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/geo-tax/location"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "location": {
+                    "type": "object",
+                    "properties": {
+                      "latitude": {
+                        "type": "string",
+                        "example": "34.688726"
+                      },
+                      "longitude": {
+                        "type": "string",
+                        "example": "-98.401796"
+                      }
+                    }
+                  },
+                  "preferences": {
+                    "type": "object",
+                    "properties": {
+                      "geocoding": {
+                        "type": "object",
+                        "properties": {
+                          "defaultBufferWidth": {
+                            "type": "string",
+                            "example": "0"
+                          },
+                          "latLongAltFormat": {
+                            "type": "string",
+                            "example": "DecimalSign"
+                          },
+                          "latLongOffset": {
+                            "type": "string",
+                            "example": "NONE"
+                          },
+                          "squeeze": {
+                            "type": "string",
+                            "example": "NO"
+                          }
+                        }
+                      },
+                      "matching": {
+                        "type": "object",
+                        "properties": {
+                          "matchMode": {
+                            "type": "string",
+                            "example": "CLOSE"
+                          }
+                        }
+                      },
+                      "output": {
+                        "type": "object",
+                        "properties": {
+                          "outputCasing": {
+                            "type": "string",
+                            "example": "MIXED"
+                          },
+                          "salesTaxRateType": {
+                            "type": "string",
+                            "example": "GENERAL"
+                          },
+                          "taxDistrict": {
+                            "type": "string",
+                            "example": "SPD"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_autocomplete_postal-city",
+      "operationId": "postalAndCityBoth",
+      "name": "Postal And City Both",
+      "description": "Postal and City Both",
+      "schema": {
+        "tags": [
+          "Geo Addressing",
+          "Autocomplete Postal-City"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_autocomplete_postal-city/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/autocomplete/postal-city"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "address": {
+                    "type": "object",
+                    "properties": {
+                      "country": {
+                        "type": "string",
+                        "example": "USA"
+                      },
+                      "postAddress": {
+                        "type": "string",
+                        "example": "034"
+                      },
+                      "type": {
+                        "type": "string",
+                        "example": "POSTAL"
+                      }
+                    }
+                  },
+                  "preferences": {
+                    "type": "object",
+                    "properties": {
+                      "customPreferences": {
+                        "type": "object",
+                        "properties": {}
+                      },
+                      "maxResults": {
+                        "type": "number",
+                        "example": 1
+                      },
+                      "returnAllInfo": {
+                        "type": "boolean",
+                        "example": true
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_verify",
+      "operationId": "singleLine",
+      "name": "Single Line",
+      "description": "Single Line",
+      "schema": {
+        "tags": [
+          "Geo Addressing",
+          "Verify"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_verify/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/verify"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "addresses": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "addressId": {
+                          "type": "string",
+                          "example": "1"
+                        },
+                        "addressLines": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "example": "BAG 5000, BC, REVELSTOKE, V0E 2S0"
+                          },
+                          "example": [
+                            "BAG 5000, BC, REVELSTOKE, V0E 2S0"
+                          ]
+                        },
+                        "country": {
+                          "type": "string",
+                          "example": "CAN"
+                        }
+                      }
+                    },
+                    "example": [
+                      {
+                        "addressId": "1",
+                        "addressLines": [
+                          "BAG 5000, BC, REVELSTOKE, V0E 2S0"
+                        ],
+                        "country": "CAN"
+                      },
+                      {
+                        "addressId": "2",
+                        "addressLines": [
+                          "Wasserburgstraße 41 Rommerskirchen 41569"
+                        ],
+                        "country": "DEU"
+                      },
+                      {
+                        "addressId": "3",
+                        "addressLines": [
+                          "11 RUE JEAN JAURES CANNES 6400"
+                        ],
+                        "country": "FRA"
+                      },
+                      {
+                        "addressId": "4",
+                        "addressLines": [
+                          "80 gordon view prospect"
+                        ],
+                        "country": "AUS"
+                      },
+                      {
+                        "addressId": "5",
+                        "addressLines": [
+                          "221 b baker streeet london"
+                        ],
+                        "country": "United Kingdom"
+                      },
+                      {
+                        "addressId": "6",
+                        "addressLines": [
+                          "1 Global View Troy NY 12180 "
+                        ],
+                        "country": "USA"
+                      }
+                    ]
+                  },
+                  "preferences": {
+                    "type": "object",
+                    "properties": {
+                      "factoryDescription": {
+                        "type": "object",
+                        "properties": {
+                          "featureSpecific": {
+                            "type": "object",
+                            "properties": {}
+                          },
+                          "label": {
+                            "type": "string",
+                            "example": "ggs"
+                          }
+                        }
+                      },
+                      "returnAllInfo": {
+                        "type": "boolean",
+                        "example": true
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_geocode",
+      "operationId": "singleLine1",
+      "name": "Single Line 1",
+      "description": "Single Line",
+      "schema": {
+        "tags": [
+          "Geo Addressing",
+          "Geocode"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_geocode/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/geocode"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "addresses": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "addressId": {
+                          "type": "string",
+                          "example": "1"
+                        },
+                        "addressLines": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "example": "BAG 5000, BC, REVELSTOKE, V0E 2S0"
+                          },
+                          "example": [
+                            "BAG 5000, BC, REVELSTOKE, V0E 2S0"
+                          ]
+                        },
+                        "country": {
+                          "type": "string",
+                          "example": "CAN"
+                        }
+                      }
+                    },
+                    "example": [
+                      {
+                        "addressId": "1",
+                        "addressLines": [
+                          "BAG 5000, BC, REVELSTOKE, V0E 2S0"
+                        ],
+                        "country": "CAN"
+                      },
+                      {
+                        "addressId": "2",
+                        "addressLines": [
+                          "Wasserburgstraße 41 Rommerskirchen 41569"
+                        ],
+                        "country": "DEU"
+                      },
+                      {
+                        "addressId": "3",
+                        "addressLines": [
+                          "11 RUE JEAN JAURES CANNES 6400"
+                        ],
+                        "country": "FRA"
+                      },
+                      {
+                        "addressId": "4",
+                        "addressLines": [
+                          "80 gordon view prospect"
+                        ],
+                        "country": "AUS"
+                      },
+                      {
+                        "addressId": "5",
+                        "addressLines": [
+                          "221 b baker streeet london"
+                        ],
+                        "country": "United Kingdom"
+                      },
+                      {
+                        "addressId": "6",
+                        "addressLines": [
+                          "1 Global View Troy NY 12180 "
+                        ],
+                        "country": "USA"
+                      }
+                    ]
+                  },
+                  "preferences": {
+                    "type": "object",
+                    "properties": {
+                      "factoryDescription": {
+                        "type": "object",
+                        "properties": {
+                          "featureSpecific": {
+                            "type": "object",
+                            "properties": {}
+                          },
+                          "label": {
+                            "type": "string",
+                            "example": "ggs"
+                          }
+                        }
+                      },
+                      "returnAllInfo": {
+                        "type": "boolean",
+                        "example": true
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_autocomplete",
+      "operationId": "singleLine2",
+      "name": "Single Line 2",
+      "description": "Single Line",
+      "schema": {
+        "tags": [
+          "Geo Addressing",
+          "Autocomplete"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_autocomplete/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/autocomplete"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "address": {
+                    "type": "object",
+                    "properties": {
+                      "addressLines": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "example": "1 global view "
+                        },
+                        "example": [
+                          "1 global view "
+                        ]
+                      },
+                      "admin1": {
+                        "type": "string",
+                        "example": "NY"
+                      },
+                      "city": {
+                        "type": "string",
+                        "example": "Troy"
+                      },
+                      "country": {
+                        "type": "string",
+                        "example": "USA"
+                      },
+                      "postalCode": {
+                        "type": "string",
+                        "example": "12180"
+                      }
+                    }
+                  },
+                  "preferences": {
+                    "type": "object",
+                    "properties": {
+                      "customPreferences": {
+                        "type": "object",
+                        "properties": {}
+                      },
+                      "maxResults": {
+                        "type": "number",
+                        "example": 10
+                      },
+                      "returnAllInfo": {
+                        "type": "boolean",
+                        "example": true
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_express-autocomplete",
+      "operationId": "autocompleteExpressApi",
+      "name": "Autocomplete Express Api",
+      "description": "Autocomplete Express API",
+      "schema": {
+        "tags": [
+          "Geo Addressing"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_express-autocomplete/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/express-autocomplete"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "address": {
+                    "type": "object",
+                    "properties": {
+                      "addressLines": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "example": "350 Jordan"
+                        },
+                        "example": [
+                          "350 Jordan"
+                        ]
+                      },
+                      "country": {
+                        "type": "string",
+                        "example": "USA"
+                      }
+                    }
+                  },
+                  "preferences": {
+                    "type": "object",
+                    "properties": {
+                      "customPreferences": {
+                        "type": "object",
+                        "properties": {}
+                      },
+                      "maxResults": {
+                        "type": "number",
+                        "example": 1
+                      },
+                      "returnAllInfo": {
+                        "type": "boolean",
+                        "example": true
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_lookup",
+      "operationId": "lookupApi",
+      "name": "Lookup Api",
+      "description": "Lookup API",
+      "schema": {
+        "tags": [
+          "Geo Addressing"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_lookup/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/lookup"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "keys": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "country": {
+                          "type": "string",
+                          "example": "USA"
+                        },
+                        "key": {
+                          "type": "string",
+                          "example": "P0000GL41OME"
+                        },
+                        "type": {
+                          "type": "string",
+                          "example": "PB_KEY"
+                        }
+                      }
+                    },
+                    "example": [
+                      {
+                        "country": "USA",
+                        "key": "P0000GL41OME",
+                        "type": "PB_KEY"
+                      }
+                    ]
+                  },
+                  "preferences": {
+                    "type": "object",
+                    "properties": {
+                      "returnAllInfo": {
+                        "type": "boolean",
+                        "example": true
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_reverse-geocode",
+      "operationId": "reverseGeocodeApi",
+      "name": "Reverse Geocode Api",
+      "description": "Reverse Geocode API",
+      "schema": {
+        "tags": [
+          "Geo Addressing"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_reverse-geocode/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/reverse-geocode"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "locations": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "country": {
+                          "type": "string",
+                          "example": "USA"
+                        },
+                        "latitude": {
+                          "type": "number",
+                          "example": 42.682251
+                        },
+                        "longitude": {
+                          "type": "number",
+                          "example": -73.704719
+                        }
+                      }
+                    },
+                    "example": [
+                      {
+                        "country": "USA",
+                        "latitude": 42.682251,
+                        "longitude": -73.704719
+                      }
+                    ]
+                  },
+                  "preferences": {
+                    "type": "object",
+                    "properties": {
+                      "returnAllInfo": {
+                        "type": "boolean",
+                        "example": true
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_names_parse",
+      "operationId": "nameParser",
+      "name": "Name Parser",
+      "description": "Name parser ",
+      "schema": {
+        "tags": [
+          "Name Parser"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_names_parse/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/names/parse"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Jack and Daniel Smith"
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_phone-numbers_validate",
+      "operationId": "singleRequest2",
+      "name": "Single Request 2",
+      "description": "Single Request",
+      "schema": {
+        "tags": [
+          "Phone Validation"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_phone-numbers_validate/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/phone-numbers/validate"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "country": {
+                    "type": "string",
+                    "example": "US"
+                  },
+                  "phoneNumber": {
+                    "type": "string",
+                    "example": "+17063062767"
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_phone-numbers_validate_batch",
+      "operationId": "batchRequest2",
+      "name": "Batch Request 2",
+      "description": "Batch Request",
+      "schema": {
+        "tags": [
+          "Phone Validation"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_phone-numbers_validate_batch/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/phone-numbers/validate/batch"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "phoneNumbers": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "country": {
+                          "type": "string",
+                          "example": "ind"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "12345"
+                        },
+                        "phoneNumber": {
+                          "type": "string",
+                          "example": "+9197116779"
+                        }
+                      }
+                    },
+                    "example": [
+                      {
+                        "country": "ind",
+                        "id": "12345",
+                        "phoneNumber": "+9197116779"
+                      },
+                      {
+                        "country": "us",
+                        "id": "12346",
+                        "phoneNumber": "+17063062767"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_streets_intersection-address",
+      "operationId": "intersectionByAddress",
+      "name": "Intersection By Address",
+      "description": "Intersection By Address",
+      "schema": {
+        "tags": [
+          "Streets"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_streets_intersection-address/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/streets/intersection-address"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "address": {
+                    "type": "object",
+                    "properties": {
+                      "addressLines": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "example": "1807 Market Blvd"
+                        },
+                        "example": [
+                          "1807 Market Blvd"
+                        ]
+                      },
+                      "admin1": {
+                        "type": "string",
+                        "example": "Minnesota"
+                      },
+                      "admin2": {
+                        "type": "string",
+                        "example": "Dakota County"
+                      },
+                      "borough": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "city": {
+                        "type": "string",
+                        "example": "hastings"
+                      },
+                      "placeName": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "postalCode": {
+                        "type": "string",
+                        "example": "55033"
+                      },
+                      "postalCodeExt": {
+                        "type": "string",
+                        "example": "3492"
+                      },
+                      "suburb": {
+                        "type": "string",
+                        "example": ""
+                      }
+                    }
+                  },
+                  "driveTime": {
+                    "type": "string",
+                    "example": "100"
+                  },
+                  "driveTimeUnit": {
+                    "type": "string",
+                    "example": "MINUTES"
+                  },
+                  "historicSpeed": {
+                    "type": "string",
+                    "example": "NONE"
+                  },
+                  "maxCandidates": {
+                    "type": "number",
+                    "example": 10
+                  },
+                  "roadClass": {
+                    "type": "string",
+                    "example": "ALL"
+                  },
+                  "searchRadius": {
+                    "type": "number",
+                    "example": 70
+                  },
+                  "searchRadiusUnit": {
+                    "type": "string",
+                    "example": "METERS"
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_streets_intersection-location",
+      "operationId": "intersectionByLocation",
+      "name": "Intersection By Location",
+      "description": "Intersection By Location",
+      "schema": {
+        "tags": [
+          "Streets"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_streets_intersection-location/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/streets/intersection-location"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "driveTime": {
+                    "type": "number",
+                    "example": 100
+                  },
+                  "driveTimeUnit": {
+                    "type": "string",
+                    "example": "MINUTES"
+                  },
+                  "historicSpeed": {
+                    "type": "string",
+                    "example": "NONE"
+                  },
+                  "location": {
+                    "type": "object",
+                    "properties": {
+                      "coordinates": {
+                        "type": "array",
+                        "items": {
+                          "type": "number",
+                          "example": -93.176563
+                        },
+                        "example": [
+                          -93.176563,
+                          44.709968
+                        ]
+                      }
+                    }
+                  },
+                  "maxCandidates": {
+                    "type": "number",
+                    "example": 10
+                  },
+                  "roadClass": {
+                    "type": "string",
+                    "example": "ALL"
+                  },
+                  "searchRadius": {
+                    "type": "number",
+                    "example": 1000
+                  },
+                  "searchRadiusUnit": {
+                    "type": "string",
+                    "example": "meters"
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_streets_speed-limit",
+      "operationId": "speedLimit",
+      "name": "Speed Limit",
+      "description": "Speed Limit",
+      "schema": {
+        "tags": [
+          "Streets"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_streets_speed-limit/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/streets/speed-limit"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "object",
+                    "properties": {
+                      "coordinates": {
+                        "type": "array",
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "type": "number",
+                            "example": -74.044812
+                          },
+                          "example": [
+                            -74.044812,
+                            40.61171
+                          ]
+                        },
+                        "example": [
+                          [
+                            -74.044812,
+                            40.61171
+                          ],
+                          [
+                            -74.045644,
+                            40.613625
+                          ],
+                          [
+                            -74.046322,
+                            40.615183
+                          ]
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_timezone_address",
+      "operationId": "byAddress1",
+      "name": "By Address 1",
+      "description": "By Address",
+      "schema": {
+        "tags": [
+          "Timezone"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_timezone_address/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/timezone/address"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "addresses": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "address": {
+                          "type": "object",
+                          "properties": {
+                            "addressLines": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "example": "950 Josephine Street Denver CO 80204"
+                              },
+                              "example": [
+                                "950 Josephine Street Denver CO 80204"
+                              ]
+                            },
+                            "country": {
+                              "type": "string",
+                              "example": "USA"
+                            },
+                            "id": {
+                              "type": "string",
+                              "example": "1"
+                            }
+                          }
+                        },
+                        "timestamp": {
+                          "type": "number",
+                          "example": 1692169676000
+                        }
+                      }
+                    },
+                    "example": [
+                      {
+                        "address": {
+                          "addressLines": [
+                            "950 Josephine Street Denver CO 80204"
+                          ],
+                          "country": "USA",
+                          "id": "1"
+                        },
+                        "timestamp": 1692169676000
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_timezone_location",
+      "operationId": "byLocation1",
+      "name": "By Location 1",
+      "description": "By Location",
+      "schema": {
+        "tags": [
+          "Timezone"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_timezone_location/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/timezone/location"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "locations": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "geometry": {
+                          "type": "object",
+                          "properties": {
+                            "coordinates": {
+                              "type": "array",
+                              "items": {
+                                "type": "number",
+                                "example": -89.398528
+                              },
+                              "example": [
+                                -89.398528,
+                                40.633125
+                              ]
+                            }
+                          }
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "1"
+                        },
+                        "timestamp": {
+                          "type": "number",
+                          "example": 1692169676000
+                        }
+                      }
+                    },
+                    "example": [
+                      {
+                        "geometry": {
+                          "coordinates": [
+                            -89.398528,
+                            40.633125
+                          ]
+                        },
+                        "id": "1",
+                        "timestamp": 1692169676000
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "get_v1_spatial_tables",
+      "operationId": "listTables",
+      "name": "List Tables",
+      "description": "List Tables",
+      "schema": {
+        "tags": [
+          "Spatial APIs",
+          "Analysis"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/get_v1_spatial_tables/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/spatial/tables"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "get_v1_spatial_tables_pbb_usa_metadata",
+      "operationId": "getTableMetadata",
+      "name": "Get Table Metadata",
+      "description": "Get Table Metadata",
+      "schema": {
+        "tags": [
+          "Spatial APIs",
+          "Analysis"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/get_v1_spatial_tables_pbb_usa_metadata/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/spatial/tables/pbb_usa/metadata"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_spatial_findNearest",
+      "operationId": "syncFindNearest",
+      "name": "Sync Find Nearest",
+      "description": "Sync Find Nearest",
+      "schema": {
+        "tags": [
+          "Spatial APIs",
+          "Analysis"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_spatial_findNearest/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/spatial/findNearest"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {
+                "sortBy": {
+                  "type": "string",
+                  "example": "mapname"
+                },
+                "sortOrder": {
+                  "type": "string",
+                  "example": "ASCENDING"
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "attributes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "example": "statecode"
+                    },
+                    "example": [
+                      "statecode",
+                      "type",
+                      "mapname"
+                    ]
+                  },
+                  "bearingAttributeName": {
+                    "type": "string",
+                    "example": "bearingAngle"
+                  },
+                  "distanceAttributeName": {
+                    "type": "string",
+                    "example": "dist"
+                  },
+                  "geometry": {
+                    "type": "string",
+                    "example": "MULTIPOLYGON (((-122.399306 37.712211, -122.398975 37.712132, -122.399007 37.712049, -122.399338 37.712127, -122.399316 37.712185, -122.399306 37.712211)))"
+                  },
+                  "geometryFormat": {
+                    "type": "string",
+                    "example": "WKT"
+                  },
+                  "inputPointAttributeName": {
+                    "type": "string",
+                    "example": "ip"
+                  },
+                  "maxFeatures": {
+                    "type": "string",
+                    "example": "1"
+                  },
+                  "tableName": {
+                    "type": "string",
+                    "example": "flr_usa_comm"
+                  },
+                  "targetPointAttributeName": {
+                    "type": "string",
+                    "example": "tp"
+                  },
+                  "uomAttributeName": {
+                    "type": "string",
+                    "example": "unit"
+                  },
+                  "withinDistance": {
+                    "type": "string",
+                    "example": "10 mi"
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_spatial_searchAtLocation",
+      "operationId": "syncSearchAtLocation",
+      "name": "Sync Search At Location",
+      "description": "Sync Search At Location",
+      "schema": {
+        "tags": [
+          "Spatial APIs",
+          "Analysis"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_spatial_searchAtLocation/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/spatial/searchAtLocation"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {
+                "sortBy": {
+                  "type": "string",
+                  "example": "mapname"
+                },
+                "sortOrder": {
+                  "type": "string",
+                  "example": "DESCENDING"
+                },
+                "limit": {
+                  "type": "string",
+                  "example": "3"
+                },
+                "maxFeatures": {
+                  "type": "string",
+                  "example": "1"
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "attributes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "example": "*"
+                    },
+                    "example": [
+                      "*"
+                    ]
+                  },
+                  "bufferDistance": {
+                    "type": "string",
+                    "example": "10 mi"
+                  },
+                  "geometry": {
+                    "type": "string",
+                    "example": "MULTIPOLYGON (((-122.399306 37.712211, -122.398975 37.712132, -122.399007 37.712049, -122.399338 37.712127, -122.399316 37.712185, -122.399306 37.712211)))"
+                  },
+                  "geometryFormat": {
+                    "type": "string",
+                    "example": "WKT"
+                  },
+                  "spatialOperation": {
+                    "type": "string",
+                    "example": "INTERSECTS"
+                  },
+                  "tableName": {
+                    "type": "string",
+                    "example": "flr_usa_comm"
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_spatial_summarize",
+      "operationId": "aggregateIntersects",
+      "name": "Aggregate Intersects",
+      "description": "Aggregate Intersects",
+      "schema": {
+        "tags": [
+          "Spatial APIs",
+          "Analysis"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_spatial_summarize/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/spatial/summarize"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "aggregateColumns": {
+                    "type": "object",
+                    "properties": {
+                      "map_eff_date": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "example": "min"
+                        },
+                        "example": [
+                          "min",
+                          "max",
+                          "median"
+                        ]
+                      }
+                    }
+                  },
+                  "geometry": {
+                    "type": "string",
+                    "example": "GEOMETRYCOLLECTION (MULTIPOLYGON (((-122.399306 37.712211, -122.398975 37.712132, -122.399007 37.712049, -122.399338 37.712127, -122.399316 37.712185, -122.399306 37.712211))), LINESTRING (-121.756899 37.653383, -121.158302 37.304645, -121.690998 37.120906))"
+                  },
+                  "geometryFormat": {
+                    "type": "string",
+                    "example": "WKT"
+                  },
+                  "proportionalCalculation": {
+                    "type": "boolean",
+                    "example": true
+                  },
+                  "spatialOperation": {
+                    "type": "string",
+                    "example": "intersects"
+                  },
+                  "tableName": {
+                    "type": "string",
+                    "example": "flr_usa_floodrisk"
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_spatial_overlap",
+      "operationId": "overlap",
+      "name": "Overlap",
+      "description": "Overlap",
+      "schema": {
+        "tags": [
+          "Spatial APIs",
+          "Analysis"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_spatial_overlap/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/spatial/overlap"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {
+                "limit": {
+                  "type": "string",
+                  "example": "10"
+                },
+                "offset": {
+                  "type": "string",
+                  "example": "0"
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "areaAttributeName": {
+                    "type": "string",
+                    "example": "ar"
+                  },
+                  "attributes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "example": "fips"
+                    },
+                    "example": [
+                      "fips"
+                    ]
+                  },
+                  "geometry": {
+                    "type": "string",
+                    "example": "POLYGON ((-74.01316 40.700479, -74.012028 40.700479, -74.012028 40.701403, -74.01316 40.701403, -74.01316 40.700479))"
+                  },
+                  "geometryFormat": {
+                    "type": "string",
+                    "example": "WKT"
+                  },
+                  "lengthAttributeName": {
+                    "type": "string",
+                    "example": "len"
+                  },
+                  "percentInputAttributeName": {
+                    "type": "string",
+                    "example": "PerIn"
+                  },
+                  "percentTargetAttributeName": {
+                    "type": "string",
+                    "example": "PerTargt"
+                  },
+                  "tableName": {
+                    "type": "string",
+                    "example": "pbb_usa"
+                  },
+                  "totalAttributeName": {
+                    "type": "string",
+                    "example": "tc"
+                  },
+                  "uom": {
+                    "type": "string",
+                    "example": "m"
+                  },
+                  "uomAttributeName": {
+                    "type": "string",
+                    "example": "SIUnit"
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "get_v1_ogcapi_enrich_collections_pbb_usa_items",
+      "operationId": "queryFilterSContains",
+      "name": "Query Filter S Contains",
+      "description": "Query Filter (s_contains)",
+      "schema": {
+        "tags": [
+          "Spatial APIs",
+          "Features"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/get_v1_ogcapi_enrich_collections_pbb_usa_items/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/ogcapi/enrich/collections/pbb_usa/items"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {
+                "filter": {
+                  "type": "string",
+                  "example": "s_contains(GEOM,POINT(-74.0116656 40.7009890))"
+                },
+                "limit": {
+                  "type": "string",
+                  "example": "1"
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "get_v1_ogcapi_enrich_api",
+      "operationId": "ogcOpenapiDetails",
+      "name": "Ogc Openapi Details",
+      "description": "OGC OpenAPi Details",
+      "schema": {
+        "tags": [
+          "Spatial APIs",
+          "Features"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/get_v1_ogcapi_enrich_api/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/ogcapi/enrich/api"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "get_v1_ogcapi_enrich_conformance",
+      "operationId": "getConformance",
+      "name": "Get Conformance",
+      "description": "Get Conformance",
+      "schema": {
+        "tags": [
+          "Spatial APIs",
+          "Features"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/get_v1_ogcapi_enrich_conformance/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/ogcapi/enrich/conformance"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "get_v1_ogcapi_enrich_collections",
+      "operationId": "getCollections",
+      "name": "Get Collections",
+      "description": "Get Collections",
+      "schema": {
+        "tags": [
+          "Spatial APIs",
+          "Features"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/get_v1_ogcapi_enrich_collections/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/ogcapi/enrich/collections"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "get_v1_ogcapi_enrich_collections_pbb_usa",
+      "operationId": "specificTableinfo",
+      "name": "Specific Tableinfo",
+      "description": "Specific TableInfo",
+      "schema": {
+        "tags": [
+          "Spatial APIs",
+          "Features"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/get_v1_ogcapi_enrich_collections_pbb_usa/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/ogcapi/enrich/collections/pbb_usa"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "get_v1_ogcapi_enrich_collections_pas_usa_queryables",
+      "operationId": "queryTables",
+      "name": "Query Tables",
+      "description": "Query Tables",
+      "schema": {
+        "tags": [
+          "Spatial APIs",
+          "Features"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/get_v1_ogcapi_enrich_collections_pas_usa_queryables/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/ogcapi/enrich/collections/pas_usa/queryables"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "get_v1_ogcapi_enrich_collections_flr_usa_floodrisk_schema",
+      "operationId": "getSchema",
+      "name": "Get Schema",
+      "description": "Get Schema",
+      "schema": {
+        "tags": [
+          "Spatial APIs",
+          "Features"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/get_v1_ogcapi_enrich_collections_flr_usa_floodrisk_schema/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/ogcapi/enrich/collections/flr_usa_floodrisk/schema"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "get_v1_travel-boundary_location",
+      "operationId": "getTravelboundary",
+      "name": "Get Travelboundary",
+      "description": "Get TravelBoundary",
+      "schema": {
+        "tags": [
+          "Spatial APIs",
+          "Routing"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/get_v1_travel-boundary_location/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/travel-boundary/location"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {
+                "point": {
+                  "type": "string",
+                  "example": "-73.970257%2C40.794045%2Cepsg%3A4326"
+                },
+                "costs": {
+                  "type": "string",
+                  "example": "15.2"
+                },
+                "costUnit": {
+                  "type": "string",
+                  "example": "min"
+                },
+                "country": {
+                  "type": "string",
+                  "example": "USA"
+                },
+                "maxOffroadDistance": {
+                  "type": "string",
+                  "example": "60"
+                },
+                "maxOffroadDistanceUnit": {
+                  "type": "string",
+                  "example": "mi"
+                },
+                "destinationSrs": {
+                  "type": "string",
+                  "example": "epsg%3A4326"
+                },
+                "majorRoads": {
+                  "type": "string",
+                  "example": "true"
+                },
+                "returnHoles": {
+                  "type": "string",
+                  "example": "false"
+                },
+                "returnIslands": {
+                  "type": "string",
+                  "example": "false"
+                },
+                "simplificationFactor": {
+                  "type": "string",
+                  "example": "0.5"
+                },
+                "bandingStyle": {
+                  "type": "string",
+                  "example": "Donut"
+                },
+                "historicTrafficTimeBucket": {
+                  "type": "string",
+                  "example": "None"
+                },
+                "defaultAmbientSpeed": {
+                  "type": "string",
+                  "example": "15"
+                },
+                "ambientSpeedUnit": {
+                  "type": "string",
+                  "example": "MPH"
+                },
+                "propagationFactor": {
+                  "type": "string",
+                  "example": "0.16"
+                },
+                "version": {
+                  "type": "string",
+                  "example": "1"
+                },
+                "networkType": {
+                  "type": "string",
+                  "example": "driving"
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "post_v1_travel-boundary_location",
+      "operationId": "postTravelboundary",
+      "name": "Post Travelboundary",
+      "description": "Post TravelBoundary",
+      "schema": {
+        "tags": [
+          "Spatial APIs",
+          "Routing"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/post_v1_travel-boundary_location/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/travel-boundary/location"
+            },
+            "method": {
+              "type": "string",
+              "const": "post"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {
+                "point": {
+                  "type": "string",
+                  "example": "-73.970257%2C40.794045%2Cepsg%3A4326"
+                },
+                "costs": {
+                  "type": "string",
+                  "example": "15.2"
+                },
+                "costUnit": {
+                  "type": "string",
+                  "example": "min"
+                },
+                "country": {
+                  "type": "string",
+                  "example": "USA"
+                },
+                "maxOffroadDistance": {
+                  "type": "string",
+                  "example": "60"
+                },
+                "maxOffroadDistanceUnit": {
+                  "type": "string",
+                  "example": "mi"
+                },
+                "destinationSrs": {
+                  "type": "string",
+                  "example": "epsg%3A4326"
+                },
+                "majorRoads": {
+                  "type": "string",
+                  "example": "true"
+                },
+                "returnHoles": {
+                  "type": "string",
+                  "example": "false"
+                },
+                "returnIslands": {
+                  "type": "string",
+                  "example": "false"
+                },
+                "simplificationFactor": {
+                  "type": "string",
+                  "example": "0.5"
+                },
+                "bandingStyle": {
+                  "type": "string",
+                  "example": "Donut"
+                },
+                "historicTrafficTimeBucket": {
+                  "type": "string",
+                  "example": "None"
+                },
+                "defaultAmbientSpeed": {
+                  "type": "string",
+                  "example": "15"
+                },
+                "ambientSpeedUnit": {
+                  "type": "string",
+                  "example": "MPH"
+                },
+                "propagationFactor": {
+                  "type": "string",
+                  "example": "0.16"
+                },
+                "version": {
+                  "type": "string",
+                  "example": "1"
+                },
+                "networkType": {
+                  "type": "string",
+                  "example": "driving"
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {
+                "Content-Type": {
+                  "type": "string",
+                  "const": "application/json"
+                }
+              }
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "ambientSpeeds": {
+                    "type": "object",
+                    "properties": {
+                      "ambientSpeedOverrides": {
+                        "type": "object",
+                        "properties": {
+                          "Primary Highway Urban": {
+                            "type": "number",
+                            "example": 25
+                          },
+                          "Secondary Highway Urban": {
+                            "type": "number",
+                            "example": 10
+                          }
+                        }
+                      },
+                      "ambientSpeedUnit": {
+                        "type": "string",
+                        "example": "MPH"
+                      },
+                      "defaultAmbientSpeed": {
+                        "type": "number",
+                        "example": 25
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "get_v1_spatial_wms",
+      "operationId": "getMap",
+      "name": "Get Map",
+      "description": "Get Map",
+      "schema": {
+        "tags": [
+          "Spatial APIs",
+          "WMS"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/get_v1_spatial_wms/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/spatial/wms"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {
+                "VERSION": {
+                  "type": "string",
+                  "example": "1.3.0"
+                },
+                "SERVICE": {
+                  "type": "string",
+                  "example": "WMS"
+                },
+                "REQUEST": {
+                  "type": "string",
+                  "example": "GetMap"
+                },
+                "CRS": {
+                  "type": "string",
+                  "example": "crs:84"
+                },
+                "BBOX": {
+                  "type": "string",
+                  "example": "-149.778548,60.136759,-147.065888,61.310969"
+                },
+                "WIDTH": {
+                  "type": "string",
+                  "example": "640"
+                },
+                "HEIGHT": {
+                  "type": "string",
+                  "example": "480"
+                },
+                "Layers": {
+                  "type": "string",
+                  "example": "wfr_usa_fireriskpro_layer"
+                },
+                "STYLES": {
+                  "type": "string",
+                  "example": ""
+                },
+                "FORMAT": {
+                  "type": "string",
+                  "example": "image/png"
+                },
+                "LAYERS": {
+                  "type": "string",
+                  "example": "wfr_usa_fireriskpro_layer"
+                },
+                "INFO_FORMAT": {
+                  "type": "string",
+                  "example": "application/json"
+                },
+                "QUERY_LAYERS": {
+                  "type": "string",
+                  "example": "wfr_usa_fireriskpro_layer"
+                },
+                "I": {
+                  "type": "string",
+                  "example": "1"
+                },
+                "J": {
+                  "type": "string",
+                  "example": "1"
+                },
+                "PIXELSEARCHRADIUS": {
+                  "type": "string",
+                  "example": "10"
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "get_v1_spatial_wmts",
+      "operationId": "getCapabilities",
+      "name": "Get Capabilities",
+      "description": "Get Capabilities",
+      "schema": {
+        "tags": [
+          "Spatial APIs",
+          "WMTS"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/get_v1_spatial_wmts/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/spatial/wmts"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {
+                "Service": {
+                  "type": "string",
+                  "example": "WMTS"
+                },
+                "Request": {
+                  "type": "string",
+                  "example": "GetCapabilities"
+                },
+                "Version": {
+                  "type": "string",
+                  "example": "1.0.0"
+                },
+                "Layer": {
+                  "type": "string",
+                  "example": "pbb-usa"
+                },
+                "Style": {
+                  "type": "string",
+                  "example": "default"
+                },
+                "TileMatrixSet": {
+                  "type": "string",
+                  "example": "WorldWebMercatorQuad_0_to_19"
+                },
+                "TileMatrix": {
+                  "type": "string",
+                  "example": "12"
+                },
+                "TileRow": {
+                  "type": "string",
+                  "example": "1550"
+                },
+                "TileCol": {
+                  "type": "string",
+                  "example": "1190"
+                },
+                "Format": {
+                  "type": "string",
+                  "example": "png"
+                }
+              }
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "get_v1_spatial_wmts_1_0_0_default_tiles_par-usa_default_WorldWebMercatorQuad_0_to_19_17_31118_50069_png",
+      "operationId": "getDefaultProfile",
+      "name": "Get Default Profile",
+      "description": "Get Default Profile",
+      "schema": {
+        "tags": [
+          "Spatial APIs",
+          "WMTS"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/get_v1_spatial_wmts_1_0_0_default_tiles_par-usa_default_WorldWebMercatorQuad_0_to_19_17_31118_50069_png/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/spatial/wmts/1.0.0/default/tiles/par-usa/default/WorldWebMercatorQuad_0_to_19/17/31118/50069.png"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    },
+    {
+      "id": "get_v1_spatial_wmts_1_0_0_simpleProfileTile_tiles_par-usa_17_31118_50069_png",
+      "operationId": "getSimpleProfileTile",
+      "name": "Get Simple Profile Tile",
+      "description": "Get Simple Profile Tile",
+      "schema": {
+        "tags": [
+          "Spatial APIs",
+          "WMTS"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "input": {
+          "$schema": "$ref:schema",
+          "$id": "https://datahub.com/integration/Precisely-DIS-APIs/get_v1_spatial_wmts_1_0_0_simpleProfileTile_tiles_par-usa_17_31118_50069_png/input.schema.json",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "const": "/v1/spatial/wmts/1.0.0/simpleProfileTile/tiles/par-usa/17/31118/50069.png"
+            },
+            "method": {
+              "type": "string",
+              "const": "get"
+            },
+            "query": {
+              "type": "object",
+              "description": "$ref:queryDesc",
+              "properties": {}
+            },
+            "params": {
+              "type": "object",
+              "description": "$ref:paramDesc",
+              "properties": {}
+            },
+            "headers": {
+              "type": "object",
+              "description": "$ref:headerDesc",
+              "properties": {}
+            },
+            "data": {
+              "description": "$ref:dataDesc",
+              "properties": {}
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Timeout specifies the number of milliseconds before the request times out. If the request takes longer than timeout, the request will be aborted.",
+              "minimum": 0,
+              "default": 0
+            },
+            "baseURL": "$ref:baseURL"
+          },
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "output": []
+      }
+    }
+  ],
+  "references": {
+    "baseURL": {
+      "type": "string",
+      "enum": [
+        "https://api.gb1.cloud.precisely.com",
+        "https://api.eu1.cloud.precisely.com",
+        "https://api.au1.cloud.precisely.com",
+        "https://api.cloud.precisely.com"
+      ]
+    },
+    "queryDesc": "Query parameters sent with the request",
+    "paramDesc": "URL parameters sent with the request",
+    "headerDesc": "HTTP headers sent when making the request",
+    "dataDesc": "Data sent with the request",
+    "schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "securitySchemes": {
+    "basicAuth": {
+      "type": "http",
+      "scheme": "basic"
+    },
+    "bearerAuth": {
+      "type": "http",
+      "scheme": "bearer"
+    }
+  }
+}
