@@ -1766,6 +1766,7 @@
       "get": {
         "summary": "List OAuth configurations",
         "description": "Get list of all OAuth configurations",
+        "operationId": "getIntegrationsOauthConfigs",
         "tags": [
           "Oauth"
         ],
@@ -1809,6 +1810,7 @@
       "get": {
         "summary": "Get OAuth configuration",
         "description": "Get OAuth configuration for a specific integration",
+        "operationId": "getIntegrationsOauthConfig",
         "tags": [
           "Oauth"
         ],
@@ -1864,6 +1866,7 @@
       "get": {
         "summary": "List OAuth connections",
         "description": "Get list of OAuth connections for the authenticated user",
+        "operationId": "getIntegrationsOauthConnections",
         "tags": [
           "Oauth"
         ],
@@ -1907,6 +1910,7 @@
       "get": {
         "summary": "Get OAuth connection",
         "description": "Get OAuth connection details for a specific integration and connection",
+        "operationId": "getIntegrationsOauthConnection",
         "tags": [
           "Oauth"
         ],
@@ -1962,6 +1966,7 @@
       "delete": {
         "summary": "Delete OAuth connection",
         "description": "Delete an OAuth connection for a specific integration",
+        "operationId": "deleteIntegrationsOauthConnection",
         "tags": [
           "Oauth"
         ],
@@ -2017,6 +2022,7 @@
       "get": {
         "summary": "Initiate OAuth login",
         "description": "Get OAuth authorization URL to initiate login flow",
+        "operationId": "getIntegrationsOauthLogin",
         "tags": [
           "Oauth"
         ],
@@ -2082,6 +2088,7 @@
       "get": {
         "summary": "OAuth callback",
         "description": "Handle OAuth callback after user authorization",
+        "operationId": "integrationsOauthCallback",
         "tags": [
           "Oauth"
         ],
@@ -2147,6 +2154,7 @@
       "get": {
         "summary": "Refresh OAuth token",
         "description": "Refresh an OAuth access token using the refresh token",
+        "operationId": "refreshIntegrationsOauthToken",
         "tags": [
           "Oauth"
         ],
