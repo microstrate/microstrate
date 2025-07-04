@@ -4882,6 +4882,7 @@
         "tags": [
           "Account Management"
         ],
+        "operationId": "resendAccountConfirmation",
         "security": [],
         "x-resource-type": "service",
         "x-resource": "microstrate.accounts.post.resend-confirmation",

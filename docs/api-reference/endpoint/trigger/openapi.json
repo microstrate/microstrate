@@ -24,6 +24,8 @@
         "summary": "Retrieve all triggers",
         "description": "Retrieves all triggers matching a specific subject pattern. This endpoint provides a comprehensive view of all available triggers that match the given pattern, including their configurations, types, and associated metadata.\n\n**Usage Notes:**\n- Use wildcards in the subject pattern to match multiple triggers\n- Results include all trigger types (gateway, stream, subject)\n- Each trigger includes its complete configuration\n- The subject pattern forms part of the unique identifier for triggers\n- The response includes total count of matching triggers",
         "operationId": "getTriggers",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.trigger.get.triggers",
         "tags": [
           "Triggers"
         ],
@@ -97,6 +99,8 @@
         "summary": "Retrieve a specific trigger",
         "description": "Retrieves detailed information about a specific trigger identified by its type and topic. This endpoint returns comprehensive configuration data including all trigger properties, associated resources, and metadata.\n\n**Usage Notes:**\n- The `trigger_type` parameter identifies the category of trigger (gateway, stream, subject)\n- The `topic` parameter is the unique name identifier for the specific trigger\n- The system constructs the full subject using these parameters: `ms.trigger.{trigger_type}.{topic}`\n- Different trigger types will return different sets of properties in the response\n- The response includes the full subject identifier which may be needed for other operations",
         "operationId": "getTrigger",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.trigger.get.trigger",
         "tags": [
           "Triggers"
         ],
@@ -203,6 +207,8 @@
         "summary": "Delete a trigger",
         "description": "Marks a trigger as deleted (poison-pilled). This operation logically removes the trigger from the system while preserving the record.\n\n**Usage Notes:**\n- This operation cannot be undone through the API\n- The `trigger_type` and `topic` parameters together identify the exact trigger to delete\n- The system constructs the full subject using these parameters: `ms.trigger.{trigger_type}.{topic}`\n- For gateway triggers, associated mappings remain but are no longer accessible\n- For stream triggers, connections between source and target are terminated\n- In-flight operations may still complete, but new operations will be rejected\n- The trigger remains in the system's history for audit purposes",
         "operationId": "deleteTrigger",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.trigger.delete.item",
         "tags": [
           "Triggers"
         ],
@@ -274,6 +280,8 @@
         "summary": "Create a gateway trigger",
         "description": "Creates a new gateway trigger for API endpoint management. A gateway trigger establishes an HTTP endpoint that can be accessed from outside the system and routes requests to appropriate handlers.\n\n**Usage Notes:**\n- The system automatically generates a unique topic for your gateway trigger\n- Default timeout is 30 seconds (30000ms) if not specified\n- Gateway mappings define the HTTP method, path, and access controls\n- Setting `is_public: true` allows the endpoint to be accessed without authentication\n- Rate limits can be configured per endpoint\n- After creation, the gateway endpoint is immediately available for traffic\n- The response includes the full subject identifier which may be needed for other operations",
         "operationId": "createGatewayTrigger",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.trigger.post.gateway",
         "tags": [
           "Gateway Triggers"
         ],
@@ -343,6 +351,8 @@
         "summary": "Create a stream trigger",
         "description": "Creates a new stream trigger for data processing and routing. A stream trigger connects a data source to a target, enabling real-time data flow between components.\n\n**Usage Notes:**\n- The system automatically creates necessary import/export pairs\n- Stream triggers define both source and target configurations\n- The source configuration specifies where data originates\n- The target configuration specifies where data should be delivered\n- Response types can be Singleton (single response), Stream (continuous), or Chunked (paginated)\n- Source and target types determine how data flows through the system\n- The trigger is active immediately after creation\n- Both synchronous and asynchronous data processing patterns are supported",
         "operationId": "createStreamTrigger",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.trigger.post.stream",
         "tags": [
           "Stream Triggers"
         ],
