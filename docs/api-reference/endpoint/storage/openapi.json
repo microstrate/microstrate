@@ -59,6 +59,15 @@
         "schema": {
           "type": "string"
         }
+      },
+      "stream": {
+        "name": "stream",
+        "in": "path",
+        "description": "Name of the stream",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
       }
     },
     "schemas": {
@@ -2718,7 +2727,7 @@
         }
       }
     },
-    "/storage/streams/{name}/search-by-subject": {
+    "/storage/streams/{stream}/search-by-subject": {
       "get": {
         "tags": [
           "Stream Search"
@@ -2730,7 +2739,7 @@
         "x-resource": "microstrate.storage.get.search-stream-by-subject",
         "parameters": [
           {
-            "$ref": "#/components/parameters/streamName"
+            "$ref": "#/components/parameters/stream"
           },
           {
             "name": "search",

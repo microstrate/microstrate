@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "Bellerophon Trigger Service API",
+    "title": "Microstrate Gateway",
     "description": "# Bellerophon Trigger Service API\n\nThe Trigger Service is a Bellerophon API service that provides an interface for managing various types of triggers through a subject-based messaging system.\n\nThis API allows you to create, retrieve, and delete different types of triggers including gateway and stream triggers.\n\n## Core Concepts\n\n### Triggers\nTriggers are the foundation of the Bellerophon platform's event-driven architecture. A trigger connects different parts of the system, allowing events in one component to initiate actions in another. Each trigger has a unique subject identifier that follows a specific naming pattern.\n\n### Gateway Triggers\nGateway triggers create API endpoints that can be accessed from outside the system. They define HTTP methods, paths, rate limits, and connect incoming requests to processing functions.\n\n### Stream Triggers\nStream triggers connect data sources to targets, enabling real-time data flow between components. They define how data should be processed, transformed, and routed within the system.\n\n## Subject Structure\n\nThe service follows a subject naming pattern which typically expands to:\n```\nms.trigger.[trigger_type].[resource_name]\n```\n\nAll API endpoints use the /trigger/ prefix in their paths for consistency and to clearly identify the trigger service.",
     "contact": {
       "name": "Bellerophon Support"

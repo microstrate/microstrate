@@ -41,6 +41,14 @@
     {
       "name": "Runtimes",
       "description": "Operations related to compute runtimes"
+    },
+    {
+      "name": "Machines",
+      "description": "Operations related to machines"
+    },
+    {
+      "name": "Services",
+      "description": "Operations related to services"
     }
   ],
   "security": [
@@ -173,14 +181,7 @@
     "/compute/collections/{collection_topic}": {
       "parameters": [
         {
-          "name": "collection_topic",
-          "in": "path",
-          "description": "Collection topic identifier",
-          "required": true,
-          "schema": {
-            "type": "string"
-          },
-          "example": "123456789"
+          "$ref": "#/components/parameters/CollectionTopic"
         }
       ],
       "get": {
@@ -276,48 +277,24 @@
         }
       }
     },
-    "/compute/collections/{collection_topic}/resources": {
+    "/compute/collections/{collection_topic}/containers": {
       "parameters": [
         {
-          "name": "collection_topic",
-          "in": "path",
-          "description": "Collection topic identifier",
-          "required": true,
-          "schema": {
-            "type": "string"
-          },
-          "example": "123456789"
+          "$ref": "#/components/parameters/CollectionTopic"
         }
       ],
       "get": {
         "tags": [
-          "Collections"
+          "Containers"
         ],
-        "summary": "Get all resources in a collection",
-        "description": "Retrieves all functions and containers belonging to a specific collection",
-        "operationId": "getCollectionResources",
+        "summary": "Get containers by collection",
+        "description": "Retrieves all containers belonging to a specific collection",
+        "operationId": "getContainersByCollection",
         "x-resource-type": "service",
-        "x-resource": "microstrate.compute.get.collection-resources",
-        "parameters": [
-          {
-            "name": "resource_type",
-            "in": "query",
-            "description": "Filter by resource type",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "enum": [
-                "function",
-                "container",
-                "all"
-              ]
-            },
-            "example": "all"
-          }
-        ],
+        "x-resource": "microstrate.compute.get.containers-by-collection",
         "responses": {
           "200": {
-            "description": "A list of resources in the collection",
+            "description": "A list of containers",
             "content": {
               "application/json": {
                 "schema": {
@@ -329,12 +306,76 @@
                         "results": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/ComputeResource"
+                            "$ref": "#/components/schemas/Container"
                           }
                         },
                         "results_total": {
                           "type": "integer",
-                          "description": "Total number of resources"
+                          "description": "Total number of containers"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "body": {
+                    "results": [
+                      {
+                        "description": "A container for my application",
+                        "name": "my-container",
+                        "runtime": "docker",
+                        "subject": "ms.compute.my-namespace.container.123456789",
+                        "type": "created",
+                        "modified": 1714378974
+                      }
+                    ],
+                    "results_total": 1
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error"
+          }
+        }
+      }
+    },
+    "/compute/collections/{collection_topic}/functions": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/CollectionTopic"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Functions"
+        ],
+        "summary": "Get functions by collection",
+        "description": "Retrieves all functions belonging to a specific collection",
+        "operationId": "getFunctionsByCollection",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.compute.get.functions-by-collection",
+        "responses": {
+          "200": {
+            "description": "A list of functions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Function"
+                          }
+                        },
+                        "results_total": {
+                          "type": "integer",
+                          "description": "Total number of functions"
                         }
                       }
                     }
@@ -347,29 +388,16 @@
                         "description": "A serverless function",
                         "name": "my-function",
                         "runtime": "nodejs",
-                        "resource_type": "function",
-                        "subject": "compute.my-namespace.function.123456789",
-                        "type": "created",
-                        "modified": 1714378974
-                      },
-                      {
-                        "description": "A container for my application",
-                        "name": "my-container",
-                        "runtime": "docker",
-                        "resource_type": "container",
-                        "subject": "compute.my-namespace.container.123456789",
+                        "subject": "ms.compute.my-namespace.function.123456789",
                         "type": "created",
                         "modified": 1714378974
                       }
                     ],
-                    "results_total": 2
+                    "results_total": 1
                   }
                 }
               }
             }
-          },
-          "404": {
-            "$ref": "#/components/responses/not_found"
           },
           "500": {
             "$ref": "#/components/responses/internal_server_error"
@@ -563,14 +591,7 @@
     "/compute/functions/{collection_topic}/{function_topic}": {
       "parameters": [
         {
-          "name": "collection_topic",
-          "in": "path",
-          "description": "Collection topic identifier",
-          "required": true,
-          "schema": {
-            "type": "string"
-          },
-          "example": "my-namespace"
+          "$ref": "#/components/parameters/CollectionTopic"
         },
         {
           "name": "function_topic",
@@ -698,14 +719,7 @@
     "/compute/functions/{collection_topic}/{function_topic}/invoke": {
       "parameters": [
         {
-          "name": "collection_topic",
-          "in": "path",
-          "description": "Collection topic identifier",
-          "required": true,
-          "schema": {
-            "type": "string"
-          },
-          "example": "my-namespace"
+          "$ref": "#/components/parameters/CollectionTopic"
         },
         {
           "name": "function_topic",
@@ -777,14 +791,7 @@
     "/compute/compute-assets/{collection_topic}/{resource_topic}": {
       "parameters": [
         {
-          "name": "collection_topic",
-          "in": "path",
-          "description": "Collection topic identifier",
-          "required": true,
-          "schema": {
-            "type": "string"
-          },
-          "example": "my-namespace"
+          "$ref": "#/components/parameters/CollectionTopic"
         },
         {
           "name": "resource_topic",
@@ -913,14 +920,7 @@
     "/compute/compute-assets/{collection_topic}/{resource_topic}/history": {
       "parameters": [
         {
-          "name": "collection_topic",
-          "in": "path",
-          "description": "Collection topic identifier",
-          "required": true,
-          "schema": {
-            "type": "string"
-          },
-          "example": "my-namespace"
+          "$ref": "#/components/parameters/CollectionTopic"
         },
         {
           "name": "resource_topic",
@@ -1167,14 +1167,7 @@
     "/compute/containers/{collection_topic}/{container_topic}": {
       "parameters": [
         {
-          "name": "collection_topic",
-          "in": "path",
-          "description": "Collection topic identifier",
-          "required": true,
-          "schema": {
-            "type": "string"
-          },
-          "example": "my-namespace"
+          "$ref": "#/components/parameters/CollectionTopic"
         },
         {
           "name": "container_topic",
@@ -1295,6 +1288,508 @@
             "$ref": "#/components/responses/internal_server_error"
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Containers"
+        ],
+        "summary": "Delete a container instance",
+        "description": "Terminates and deletes a specific container instance",
+        "operationId": "deleteContainerInstance",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.compute.delete.container-instance",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/SuccessResponse"
+          },
+          "400": {
+            "$ref": "#/components/responses/bad_request"
+          },
+          "404": {
+            "$ref": "#/components/responses/not_found"
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error"
+          }
+        }
+      }
+    },
+    "/compute/containers/scale/{collection_topic}/{container_topic}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/CollectionTopic"
+        },
+        {
+          "name": "container_topic",
+          "in": "path",
+          "description": "Container topic identifier",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "123456789"
+        }
+      ],
+      "post": {
+        "tags": [
+          "Containers"
+        ],
+        "summary": "Scale container instances",
+        "description": "Scales the number of container instances up or down",
+        "operationId": "scaleContainer",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.compute.post.container-scale",
+        "requestBody": {
+          "description": "Container scaling parameters",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContainerScaleRequest"
+              },
+              "example": {
+                "count": 3,
+                "subject": "ms.compute.my-namespace.container.123456789"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/SuccessResponse"
+          },
+          "400": {
+            "$ref": "#/components/responses/bad_request"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error"
+          }
+        }
+      }
+    },
+    "/compute/containers/instance/start": {
+      "post": {
+        "tags": [
+          "Containers"
+        ],
+        "summary": "Start container instance",
+        "description": "Starts a stopped container instance",
+        "operationId": "startContainerInstance",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.compute.post.container-instance-start",
+        "requestBody": {
+          "description": "Container instance start request",
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BasicRequest"
+              },
+              "example": {
+                "subject": "ms.compute.my-namespace.container.123456789.instance.abc123"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/SuccessResponse"
+          },
+          "400": {
+            "$ref": "#/components/responses/bad_request"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error"
+          }
+        }
+      }
+    },
+    "/compute/containers/instance/stop": {
+      "post": {
+        "tags": [
+          "Containers"
+        ],
+        "summary": "Stop container instance",
+        "description": "Stops a running container instance",
+        "operationId": "stopContainerInstance",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.compute.post.container-instance-stop",
+        "requestBody": {
+          "description": "Container instance stop request",
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BasicRequest"
+              },
+              "example": {
+                "subject": "ms.compute.my-namespace.container.123456789.instance.abc123"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/SuccessResponse"
+          },
+          "400": {
+            "$ref": "#/components/responses/bad_request"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error"
+          }
+        }
+      }
+    },
+    "/compute/machines": {
+      "get": {
+        "tags": [
+          "Machines"
+        ],
+        "summary": "Get compute machines",
+        "description": "Retrieves information about Hydra compute machines with optional filtering",
+        "operationId": "getMachines",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.compute.get.machines",
+        "parameters": [
+          {
+            "name": "machine",
+            "in": "query",
+            "description": "Filter by specific machine identifier",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "namespace",
+            "in": "query",
+            "description": "Filter by namespace",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "runtime",
+            "in": "query",
+            "description": "Filter by runtime type",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "service",
+            "in": "query",
+            "description": "Filter by service identifier",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Filter by machine status",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "running",
+                "paused",
+                "stopped",
+                "*"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of compute machines",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/ComputeMachine"
+                          }
+                        },
+                        "results_total": {
+                          "type": "integer",
+                          "description": "Total number of machines"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "body": {
+                    "results": [
+                      {
+                        "hydra_machine_version": "0.0.1",
+                        "id": "QVzJ6dGqpS6bsaY0qdZLtC",
+                        "pid": 94890,
+                        "status": "running",
+                        "runtime": "nodejs",
+                        "runtime_version": "4165",
+                        "memory": "512.00 MB",
+                        "rootfs": "/home/compute/machines/ABCD1234/QVzJ6dGqpS6bsaY0qdZLtC/rootfs",
+                        "created": "2025-07-07T12:19:37.195049286Z",
+                        "annotations": {
+                          "account": "ABCD1234",
+                          "bundle": "/home/compute",
+                          "cpu": "824671010504",
+                          "hydra.node": "mc-eu-two",
+                          "machine": "QVzJ6dGqpS6bsaY0qdZLtC",
+                          "mem": "512MB",
+                          "namespace": "1753641292",
+                          "runtime.version": "4165",
+                          "service": "112623013",
+                          "service.auto": "%strue",
+                          "service.handler": "/main.main",
+                          "service.version": "5116"
+                        },
+                        "owner": "ABCD1234",
+                        "stats": {
+                          "CgroupStats": {
+                            "blkio_stats": {
+                              "io_service_bytes_recursive": [
+                                {
+                                  "major": 9,
+                                  "minor": 2,
+                                  "op": "Read"
+                                },
+                                {
+                                  "major": 9,
+                                  "minor": 2,
+                                  "op": "Write",
+                                  "value": 114688
+                                }
+                              ],
+                              "io_serviced_recursive": [
+                                {
+                                  "major": 9,
+                                  "minor": 2,
+                                  "op": "Read"
+                                },
+                                {
+                                  "major": 9,
+                                  "minor": 2,
+                                  "op": "Write",
+                                  "value": 25
+                                }
+                              ],
+                              "psi": {
+                                "full": {
+                                  "avg10": 0,
+                                  "avg300": 0,
+                                  "avg60": 0,
+                                  "total": 0
+                                },
+                                "some": {
+                                  "avg10": 0,
+                                  "avg300": 0,
+                                  "avg60": 0,
+                                  "total": 0
+                                }
+                              }
+                            },
+                            "cpu_stats": {
+                              "cpu_usage": {
+                                "percpu_usage_in_kernelmode": null,
+                                "percpu_usage_in_usermode": null,
+                                "total_usage": 494712000,
+                                "usage_in_kernelmode": 62501000,
+                                "usage_in_usermode": 432211000
+                              },
+                              "psi": {
+                                "full": {
+                                  "avg10": 0,
+                                  "avg300": 0,
+                                  "avg60": 0,
+                                  "total": 1434
+                                },
+                                "some": {
+                                  "avg10": 0,
+                                  "avg300": 0,
+                                  "avg60": 0,
+                                  "total": 1434
+                                }
+                              },
+                              "throttling_data": {
+                                "periods": 318
+                              }
+                            },
+                            "cpuset_stats": {
+                              "cpu_exclusive": 0,
+                              "mem_exclusive": 0,
+                              "mem_hardwall": 0,
+                              "memory_migrate": 0,
+                              "memory_pressure": 0,
+                              "memory_spread_page": 0,
+                              "memory_spread_slab": 0,
+                              "sched_load_balance": 0,
+                              "sched_relax_domain_level": 0
+                            },
+                            "memory_stats": {
+                              "cache": 40960,
+                              "kernel_tcp_usage": {
+                                "failcnt": 0,
+                                "limit": 0
+                              },
+                              "kernel_usage": {
+                                "failcnt": 0,
+                                "limit": 0
+                              },
+                              "page_usage_by_numa": {
+                                "anon": {},
+                                "file": {},
+                                "hierarchical": {
+                                  "anon": {},
+                                  "file": {},
+                                  "total": {},
+                                  "unevictable": {}
+                                },
+                                "total": {},
+                                "unevictable": {}
+                              },
+                              "psi": {
+                                "full": {
+                                  "avg10": 0,
+                                  "avg300": 0,
+                                  "avg60": 0,
+                                  "total": 0
+                                },
+                                "some": {
+                                  "avg10": 0,
+                                  "avg300": 0,
+                                  "avg60": 0,
+                                  "total": 0
+                                }
+                              },
+                              "stats": {
+                                "active_anon": 29196288,
+                                "active_file": 0,
+                                "anon": 29196288,
+                                "anon_thp": 0,
+                                "file": 40960,
+                                "file_dirty": 0,
+                                "file_mapped": 0,
+                                "file_thp": 0,
+                                "file_writeback": 0,
+                                "inactive_anon": 0,
+                                "inactive_file": 40960,
+                                "kernel": 1617920,
+                                "kernel_stack": 180224,
+                                "pagetables": 966656,
+                                "percpu": 10880,
+                                "pgactivate": 0,
+                                "pgdeactivate": 0,
+                                "pgfault": 16794,
+                                "pglazyfree": 0,
+                                "pglazyfreed": 0,
+                                "pgmajfault": 0,
+                                "pgrefill": 0,
+                                "pgscan": 0,
+                                "pgscan_direct": 0,
+                                "pgscan_khugepaged": 0,
+                                "pgscan_kswapd": 0,
+                                "pgsteal": 0,
+                                "pgsteal_direct": 0,
+                                "pgsteal_khugepaged": 0,
+                                "pgsteal_kswapd": 0,
+                                "sec_pagetables": 0,
+                                "shmem": 0,
+                                "shmem_thp": 0,
+                                "slab": 444776,
+                                "slab_reclaimable": 113824,
+                                "slab_unreclaimable": 330952,
+                                "sock": 0,
+                                "swapcached": 0,
+                                "thp_collapse_alloc": 0,
+                                "thp_fault_alloc": 0,
+                                "thp_swpout": 0,
+                                "thp_swpout_fallback": 0,
+                                "unevictable": 0,
+                                "vmalloc": 0,
+                                "workingset_activate_anon": 0,
+                                "workingset_activate_file": 0,
+                                "workingset_nodereclaim": 0,
+                                "workingset_refault_anon": 0,
+                                "workingset_refault_file": 0,
+                                "workingset_restore_anon": 0,
+                                "workingset_restore_file": 0,
+                                "zswap": 0,
+                                "zswapped": 0,
+                                "zswpin": 0,
+                                "zswpout": 0,
+                                "zswpwb": 0
+                              },
+                              "swap_only_usage": {
+                                "failcnt": 0,
+                                "limit": 0
+                              },
+                              "swap_usage": {
+                                "failcnt": 0,
+                                "limit": 1073741824,
+                                "usage": 30855168
+                              },
+                              "usage": {
+                                "failcnt": 0,
+                                "limit": 1073741824,
+                                "max_usage": 32432128,
+                                "usage": 30855168
+                              },
+                              "use_hierarchy": true
+                            },
+                            "pids_stats": {
+                              "current": 11,
+                              "limit": 231354
+                            },
+                            "rdma_stats": {}
+                          },
+                          "IntelRdtStats": null,
+                          "Interfaces": [
+                            {
+                              "Name": "hh00",
+                              "RxBytes": 440358,
+                              "RxDropped": 0,
+                              "RxErrors": 0,
+                              "RxPackets": 1640,
+                              "TxBytes": 688993,
+                              "TxDropped": 0,
+                              "TxErrors": 0,
+                              "TxPackets": 1911
+                            }
+                          ]
+                        },
+                        "type": "Compute Function"
+                      }
+                    ],
+                    "results_total": 1
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/bad_request"
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error"
+          }
+        }
       }
     },
     "/compute/runtimes": {
@@ -1363,6 +1858,59 @@
           }
         }
       }
+    },
+    "/compute/services": {
+      "get": {
+        "tags": [
+          "Services"
+        ],
+        "summary": "Get compute services",
+        "description": "Retrieves a list of all available compute services",
+        "operationId": "getServices",
+        "x-resource-type": "service",
+        "x-resource": "microstrate.compute.get.services",
+        "responses": {
+          "200": {
+            "description": "List of compute services",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "additionalProperties": true
+                          }
+                        },
+                        "results_total": {
+                          "type": "integer",
+                          "description": "Total number of services"
+                        }
+                      }
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "subject": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1378,7 +1926,127 @@
         "name": "X-Api-Key"
       }
     },
+    "parameters": {
+      "CollectionTopic": {
+        "name": "collection_topic",
+        "in": "path",
+        "description": "Collection topic identifier",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "example": "123456789"
+      }
+    },
     "schemas": {
+      "BasicRequest": {
+        "type": "object",
+        "properties": {
+          "subject": {
+            "type": "string",
+            "description": "The subject identifier for the resource"
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of request"
+          }
+        },
+        "example": {
+          "subject": "ms.compute.my-namespace.container.123456789"
+        }
+      },
+      "ComputeMachine": {
+        "type": "object",
+        "properties": {
+          "hydra_machine_version": {
+            "type": "string",
+            "description": "The hydra node version"
+          },
+          "id": {
+            "type": "string",
+            "description": "The machine's VM ID"
+          },
+          "pid": {
+            "type": "integer",
+            "description": "The init process ID in the parent namespace"
+          },
+          "status": {
+            "type": "string",
+            "description": "Current status of the machine (running, paused, stopped, etc.)"
+          },
+          "runtime": {
+            "type": "string",
+            "description": "Runtime running within this machine"
+          },
+          "runtime_version": {
+            "type": "string",
+            "description": "Runtime version running within this machine"
+          },
+          "memory": {
+            "type": "string",
+            "description": "Memory limit for the hydra machine"
+          },
+          "rootfs": {
+            "type": "string",
+            "description": "Path to a directory containing the hydra machine's root filesystem"
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation time of the container in UTC"
+          },
+          "annotations": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "User defined annotations added to the config"
+          },
+          "owner": {
+            "type": "string",
+            "description": "The owner of the state directory (the owner of the machine)"
+          },
+          "stats": {
+            "type": "object",
+            "description": "Machine statistics"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of workload running on machine (function, service, etc.)"
+          }
+        }
+      },
+      "GetMachinesRequest": {
+        "type": "object",
+        "properties": {
+          "machine": {
+            "type": "string",
+            "description": "Filter by specific machine identifier"
+          },
+          "namespace": {
+            "type": "string",
+            "description": "Filter by namespace"
+          },
+          "runtime": {
+            "type": "string",
+            "description": "Filter by runtime type"
+          },
+          "service": {
+            "type": "string",
+            "description": "Filter by service identifier"
+          },
+          "status": {
+            "type": "string",
+            "description": "Filter by machine status",
+            "enum": [
+              "running",
+              "paused",
+              "stopped",
+              "*"
+            ]
+          }
+        }
+      },
       "Collection": {
         "type": "object",
         "properties": {
@@ -1500,6 +2168,31 @@
           "modified": {
             "type": "integer",
             "description": "Last modification timestamp"
+          }
+        }
+      },
+      "ContainerScaleRequest": {
+        "type": "object",
+        "required": [
+          "count"
+        ],
+        "properties": {
+          "count": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Number of container instances to scale to"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Container subject identifier"
+          },
+          "namespace": {
+            "type": "string",
+            "description": "Container namespace (auto-populated from subject)"
+          },
+          "service": {
+            "type": "string",
+            "description": "Container service identifier (auto-populated from subject)"
           }
         }
       },
